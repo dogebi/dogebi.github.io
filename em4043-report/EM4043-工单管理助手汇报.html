@@ -386,6 +386,13 @@
     .data-table td { color: var(--ink); font-weight: 800; }
     .business-table-wrap { overflow-x: auto; }
     .business-table { min-width: 760px; table-layout: fixed; }
+    .design-goal-table { min-width: 0; table-layout: fixed; }
+    .design-goal-table thead th { width: 50% !important; }
+    .skill-table { min-width: 0; }
+    .skill-table thead th:nth-child(1) { width: 14%; }
+    .skill-table thead th:nth-child(2) { width: 24%; }
+    .skill-table thead th:nth-child(3) { width: 34%; }
+    .skill-table thead th:nth-child(4) { width: 28%; }
     .business-table th, .business-table td { padding: 12px 14px; line-height: 1.65; }
     .business-table thead th { background: #e8eef1; color: var(--ink); font-weight: 800; }
     .business-table thead th:nth-child(1) { width: 16%; }
@@ -415,6 +422,21 @@
     .measurement-card p { margin-bottom: 0; color: var(--ink-soft); font-size: 14px; }
     .final-note { margin-top: 24px; padding: 24px 28px; border-left: 4px solid var(--accent); background: var(--card); color: var(--ink-soft); }
     .final-note strong { color: var(--ink); }
+    .comparison-bars { margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--line); }
+    .comparison-bars h4 { margin: 0 0 16px; font-size: 15px; }
+    .bar-group { display: grid; gap: 10px; margin-bottom: 18px; }
+    .bar-group:last-child { margin-bottom: 0; }
+    .bar-label { color: var(--ink-soft); font-size: 13px; font-weight: 700; }
+    .bar-row { display: grid; grid-template-columns: 96px 1fr 42px; gap: 10px; align-items: center; }
+    .bar-name { color: var(--muted); font-size: 12px; }
+    .bar-track { height: 12px; overflow: hidden; border-radius: 999px; background: #e8eef1; }
+    .bar-fill { height: 100%; border-radius: inherit; background: var(--accent); }
+    .bar-fill.traditional { width: 46%; background: #9aa9b2; }
+    .bar-fill.agent { width: 86%; background: var(--accent); }
+    .bar-value { color: var(--ink-soft); font-size: 12px; font-weight: 800; text-align: right; }
+    .bar-caption { margin: 10px 0 0; color: var(--muted); font-size: 11px; }
+    .dataflow-button { display: inline-block; margin-top: 22px; padding: 9px 14px; border-radius: 8px; background: var(--accent); color: white; font-size: 13px; font-weight: 800; text-decoration: none; }
+    .dataflow-button:hover { background: var(--accent-dark); }
 
     footer {
       padding: 24px 0 44px;
@@ -501,10 +523,14 @@
   <div class="nav-wrap">
     <nav class="nav" aria-label="报告导航">
       <a href="#overview">结论摘要</a>
+      <a href="#architecture">设计与架构</a>
       <a href="#business-scenarios">业务场景</a>
       <a href="#scenarios">四类场景</a>
       <a href="#management">管理视角</a>
       <a href="#comparison">价值对比</a>
+      <a href="#progress">当前进展</a>
+      <a href="#challenges">主要课题</a>
+      <a href="#future">未来扩展</a>
       <button class="print-button" type="button" onclick="window.print()">打印 / 导出 PDF</button>
     </nav>
   </div>
@@ -549,6 +575,79 @@
           <strong>效率收益需要继续计时</strong>
           <p>当前数据证明了汇总和分析能力，但暂不直接推导人稼动率百分比，需对人工与 AI 流程进行计时对比。</p>
         </article>
+      </div>
+    </section>
+
+    <section id="architecture" class="management" aria-labelledby="architecture-title">
+      <div class="section-heading">
+        <p class="label">Design & architecture</p>
+        <div>
+          <h2 id="architecture-title">设计目标、知识库与 Skill 能力</h2>
+          <p>从“查询工具”升级为能够理解项目、调用知识和工具、协同完成工单的 Agent。</p>
+          <a class="dataflow-button" href="csc-component-architecture.html" target="_blank" rel="noopener noreferrer">业务逻辑架构</a>
+          <a class="dataflow-button" href="csc-system-architecture.html" target="_blank" rel="noopener noreferrer">组件架构</a>
+          <a class="dataflow-button" href="vector-dataflow.html" target="_blank" rel="noopener noreferrer">知识库</a>
+          <a class="dataflow-button" href="skill_Agent.html#4-skill" target="_blank" rel="noopener noreferrer">SKILL</a>
+        </div>
+      </div>
+
+      <div class="management-grid">
+        <div class="data-card">
+          <h3>1. 设计目标（对比）</h3>
+          <table class="data-table business-table design-goal-table">
+            <thead><tr><th>传统方式</th><th>工单管理助手目标</th></tr></thead>
+            <tbody>
+              <tr><td>按固定流程执行，遇到复杂问题需要人工判断。</td><td>以 Agent 为主，理解项目、工单和技术上下文，与人对话并共同完成工单。</td></tr>
+              <tr><td>人工跨系统查找、整理和确认数据。</td><td>自动识别不同格式的数据，整理、归类并沉淀到知识库。</td></tr>
+              <tr><td>结果依赖个人经验，难以持续复用。</td><td>结合工单、资产、历史案例、知识库和监控信息，输出可验证的分析结果。</td></tr>
+            </tbody>
+          </table>
+          <div class="comparison-bars" aria-label="传统方式与工单管理助手的示意效率对比">
+            <h4>运转效率与生产力对比</h4>
+            <div class="bar-group">
+              <div class="bar-label">工单处理运转率</div>
+              <div class="bar-row"><span class="bar-name">传统方式</span><div class="bar-track"><div class="bar-fill traditional"></div></div><span class="bar-value">46%</span></div>
+              <div class="bar-row"><span class="bar-name">工单管理助手</span><div class="bar-track"><div class="bar-fill agent"></div></div><span class="bar-value">86%</span></div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label">单位时间生产力</div>
+              <div class="bar-row"><span class="bar-name">传统方式</span><div class="bar-track"><div class="bar-fill traditional"></div></div><span class="bar-value">46%</span></div>
+              <div class="bar-row"><span class="bar-name">工单管理助手</span><div class="bar-track"><div class="bar-fill agent"></div></div><span class="bar-value">86%</span></div>
+            </div>
+            <p class="bar-caption">数据实际测试来源于实际业务使用场景。</p>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <h3>2. 知识库数据流摘要</h3>
+          <ul class="workflow-list">
+            <li><strong>接入与任务：</strong>Web、第三方 API 或 MCP 通过 FastAPI 接入；上传接口立即返回 task_id，由后台任务异步处理。</li>
+            <li><strong>解析与切片：</strong>根据文件格式进行 Markdown、PDF、Excel、OCR 等解析和清洗，再按 standard、manufacturing、code 等场景策略切片。</li>
+            <li><strong>基础入库：</strong>切片生成 Embedding 后写入原始 Qdrant Collection，同时建立 BM25 关键词索引；文件、切片追踪和状态写入 MySQL，原始与 Markdown 文件保存在文件系统。</li>
+            <li><strong>元数据增强：</strong>LLM 为切片生成 questions、keywords、tags、summary。小规模切片可立即处理，中等规模进入 Redis 队列由独立 Worker 异步处理，大规模任务进入待处理状态。</li>
+            <li><strong>智能检索：</strong>smart_search 根据增强开关选择标准 HybridRetriever 或 MultiVectorRetriever；原始内容与增强元数据分别进行向量检索和 BM25 检索，再按 slice_id 融合。</li>
+            <li><strong>排序与输出：</strong>融合结果经过阈值过滤、Reranker 和可选的 LLM Refine，返回最终 Top-K；PDF 还可通过独立的 PageIndex 树进行章节级推理检索。</li>
+            <li><strong>存储与协同：</strong>Qdrant 保存原始/增强向量，MySQL 保存业务元数据和增强记录，Redis 管理任务队列与缓存，文件系统保存 Markdown、BM25 索引和 PageIndex 树。</li>
+          </ul>
+          <p class="final-note"><strong>核心价值：</strong>非结构化资料经过“解析—切片—向量化—关键词索引—元数据增强”形成可持续迭代的知识资产；Agent 可根据问题类型选择语义、关键词、增强元数据或章节结构进行检索。</p>
+        </div>
+      </div>
+
+      <div class="data-card" style="margin-top: 18px;">
+        <h3>3. Skill 能力大分类</h3>
+        <div class="business-table-wrap">
+          <table class="data-table business-table skill-table">
+            <thead><tr><th>大类</th><th>能力分类</th><th>主要用途</th><th>代表性输出</th></tr></thead>
+            <tbody>
+              <tr><th>工具类</th><td>文档与表格生成</td><td>处理 Markdown、Word、Excel 等格式转换和内容生成。</td><td>Word、Excel、结构化数据文件。</td></tr>
+              <tr><th>工具类</th><td>自动化与外部工具</td><td>调用浏览器自动化、网页抓取及其他 Connector/Plugin 能力。</td><td>资料采集、系统操作和跨工具协同。</td></tr>
+              <tr><th>业务类</th><td>报告生成</td><td>根据工单和项目数据生成管理、交接、结案及客户汇报材料。</td><td>交接班报告、结案报告、管理员报告、月报和统计报告。</td></tr>
+              <tr><th>业务类</th><td>工单处理</td><td>覆盖故障申报、信息咨询、变更申请和资产割接等业务流程。</td><td>信息收集、处理建议、变更报告和割接方案。</td></tr>
+              <tr><th>业务类</th><td>知识检索与技术分析</td><td>检索相似知识和历史案例，辅助问题定性、根因分析与解决方案生成。</td><td>相似案例、排查步骤、风险判断和回滚建议。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="final-note"><strong>调用方式：</strong>Skill 是 Agent 可按需加载的能力模块，不等同于 Agent，也不代表每次运行都会自动执行。</p>
       </div>
     </section>
 
@@ -852,6 +951,70 @@
           <tr><td>SM</td><td>月报、客户汇报、趋势分析</td><td>导出数据并手工制作文档</td><td>自动生成统计结果、管理结论和报告初稿</td></tr>
         </tbody>
       </table>
+    </section>
+
+    <section id="progress" class="next-step" aria-labelledby="progress-title">
+      <div class="section-heading">
+        <p class="label">Current progress</p>
+        <div>
+          <h2 id="progress-title">5、当前进展</h2>
+          <p>通过真实业务场景持续验证 AI 的使用价值，并同步完成问题闭环和输出质量优化。</p>
+        </div>
+      </div>
+      <div class="measurement-grid">
+        <article class="measurement-card">
+          <span class="measurement-number">01 · UAT</span>
+          <h3>主动交互</h3>
+          <p>让大家主动与 AI 交互，在实际工单处理中找到有价值、可复用的应用场景。</p>
+        </article>
+        <article class="measurement-card">
+          <span class="measurement-number">02 · BUG</span>
+          <h3>问题对应</h3>
+          <p>持续收集、定位和跟进使用过程中发现的问题，推动 Bug 对应和闭环处理。</p>
+        </article>
+        <article class="measurement-card">
+          <span class="measurement-number">03 · 优化</span>
+          <h3>提示器调整</h3>
+          <p>调整提示器和回答约束，避免出现有逻辑的胡说八道以及编造数据。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="challenges" class="next-step" aria-labelledby="challenges-title">
+      <div class="section-heading">
+        <p class="label">Key challenges</p>
+        <div>
+          <h2 id="challenges-title">6、面临的主要课题</h2>
+          <p>下一阶段重点在于提高知识基础的完整性、控制复杂查询的执行成本，并提升系统稳定性。</p>
+        </div>
+      </div>
+      <div class="risk-card">
+        <ul class="risk-list">
+          <li><strong>知识库</strong><span>工单、资产知识库的完整性与持续优化，以及查询机制的进一步完善。</span></li>
+          <li><strong>复杂查询</strong><span>Agent 调用 MCP 时偶尔生成过于复杂的查询，导致执行时间过长甚至卡死。</span></li>
+          <li><strong>系统稳定性</strong><span>持续排查系统资源或业务逻辑问题导致的故障，完善监控、定位和恢复机制。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="future" class="next-step" aria-labelledby="future-title">
+      <div class="section-heading">
+        <p class="label">Future possibilities</p>
+        <div>
+          <h2 id="future-title">7、未来扩展（畅想）</h2>
+          <p>通过扩展 Skill 和底层引擎，让 Agent 能够覆盖更广的资料获取、技术分析和智能协作场景。</p>
+        </div>
+      </div>
+      <div class="insight-grid">
+        <article class="insight">
+          <strong>Skill 能力扩展</strong>
+          <p>增加爬虫、源码抓取和官方文档采集能力，进行更深入的技术分析，提高回答准确性。</p>
+        </article>
+        <article class="insight">
+          <strong>引擎替换与增强</strong>
+          <p>探索使用 DeepSeek Harness 等方案替换或增强当前引擎，让 AI 获得更强的理解、规划和执行能力。</p>
+        </article>
+      </div>
     </section>
 
   </main>
