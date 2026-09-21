@@ -526,6 +526,7 @@
   <div class="internal-badge">NTT社内用</div>
   <nav class="section-rail" aria-label="报告章节导航">
     <a class="section-dot is-active" href="#overview" aria-label="结论摘要"></a>
+    <a class="section-dot" href="#design-goal" aria-label="设计目标（对比）"></a>
     <a class="section-dot" href="#architecture" aria-label="设计与架构"></a>
     <a class="section-dot" href="#business-scenarios" aria-label="业务场景"></a>
     <a class="section-dot" href="#scenarios" aria-label="四类场景"></a>
@@ -562,6 +563,7 @@
   <div class="nav-wrap">
     <nav class="nav" aria-label="报告导航">
       <a href="#overview">结论摘要</a>
+      <a href="#design-goal">设计目标（对比）</a>
       <a href="#architecture">设计与架构</a>
       <a href="#business-scenarios">业务场景</a>
       <a href="#scenarios">四类场景</a>
@@ -617,6 +619,41 @@
       </div>
     </section>
 
+    <section id="design-goal" class="management" aria-labelledby="design-goal-title">
+      <div class="section-heading">
+        <p class="label">Design goal</p>
+        <div>
+          <h2 id="design-goal-title">设计目标（对比）</h2>
+          <p>从固定流程与人工整理，转向以 Agent 为主、可理解上下文并持续沉淀知识的工单协作方式。</p>
+        </div>
+      </div>
+      <div class="data-card">
+        <h3>1. 设计目标（对比）</h3>
+        <table class="data-table business-table design-goal-table">
+          <thead><tr><th>传统方式</th><th>工单管理助手目标</th></tr></thead>
+          <tbody>
+            <tr><td>按固定流程执行，遇到复杂问题需要人工判断。</td><td>以 Agent 为主，理解项目、工单和技术上下文，与人对话并共同完成工单。</td></tr>
+            <tr><td>人工跨系统查找、整理和确认数据。</td><td>自动识别不同格式的数据，整理、归类并沉淀到知识库。</td></tr>
+            <tr><td>结果依赖个人经验，难以持续复用。</td><td>结合工单、资产、历史案例、知识库和监控信息，输出可验证的分析结果。</td></tr>
+          </tbody>
+        </table>
+        <div class="comparison-bars" aria-label="传统方式与工单管理助手的示意效率对比">
+          <h4>运转效率与生产力对比</h4>
+          <div class="bar-group">
+            <div class="bar-label">工单处理运转率</div>
+            <div class="bar-row"><span class="bar-name">传统方式</span><div class="bar-track"><div class="bar-fill traditional"></div></div><span class="bar-value">46%</span></div>
+            <div class="bar-row"><span class="bar-name">工单管理助手</span><div class="bar-track"><div class="bar-fill agent"></div></div><span class="bar-value">86%</span></div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-label">单位时间生产力</div>
+            <div class="bar-row"><span class="bar-name">传统方式</span><div class="bar-track"><div class="bar-fill traditional"></div></div><span class="bar-value">46%</span></div>
+            <div class="bar-row"><span class="bar-name">工单管理助手</span><div class="bar-track"><div class="bar-fill agent"></div></div><span class="bar-value">86%</span></div>
+          </div>
+          <p class="bar-caption">数据实际测试来源于实际业务使用场景。</p>
+        </div>
+      </div>
+    </section>
+
     <section id="architecture" class="management" aria-labelledby="architecture-title">
       <div class="section-heading">
         <p class="label">Design & architecture</p>
@@ -631,32 +668,6 @@
       </div>
 
       <div class="management-grid">
-        <div class="data-card">
-          <h3>1. 设计目标（对比）</h3>
-          <table class="data-table business-table design-goal-table">
-            <thead><tr><th>传统方式</th><th>工单管理助手目标</th></tr></thead>
-            <tbody>
-              <tr><td>按固定流程执行，遇到复杂问题需要人工判断。</td><td>以 Agent 为主，理解项目、工单和技术上下文，与人对话并共同完成工单。</td></tr>
-              <tr><td>人工跨系统查找、整理和确认数据。</td><td>自动识别不同格式的数据，整理、归类并沉淀到知识库。</td></tr>
-              <tr><td>结果依赖个人经验，难以持续复用。</td><td>结合工单、资产、历史案例、知识库和监控信息，输出可验证的分析结果。</td></tr>
-            </tbody>
-          </table>
-          <div class="comparison-bars" aria-label="传统方式与工单管理助手的示意效率对比">
-            <h4>运转效率与生产力对比</h4>
-            <div class="bar-group">
-              <div class="bar-label">工单处理运转率</div>
-              <div class="bar-row"><span class="bar-name">传统方式</span><div class="bar-track"><div class="bar-fill traditional"></div></div><span class="bar-value">46%</span></div>
-              <div class="bar-row"><span class="bar-name">工单管理助手</span><div class="bar-track"><div class="bar-fill agent"></div></div><span class="bar-value">86%</span></div>
-            </div>
-            <div class="bar-group">
-              <div class="bar-label">单位时间生产力</div>
-              <div class="bar-row"><span class="bar-name">传统方式</span><div class="bar-track"><div class="bar-fill traditional"></div></div><span class="bar-value">46%</span></div>
-              <div class="bar-row"><span class="bar-name">工单管理助手</span><div class="bar-track"><div class="bar-fill agent"></div></div><span class="bar-value">86%</span></div>
-            </div>
-            <p class="bar-caption">数据实际测试来源于实际业务使用场景。</p>
-          </div>
-        </div>
-
         <div class="data-card">
           <h3>2. 知识库数据流摘要</h3>
           <ul class="workflow-list">
