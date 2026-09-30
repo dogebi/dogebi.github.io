@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head><style id="daw-inject">*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important;content-visibility:visible!important}html{scroll-behavior:auto!important}</style>
+<meta charset="utf-8">
+<title>Indestructible — the website that cannot be destroyed</title>
+<style>
+  * { box-sizing: border-box; }
+  html { background: #ffffff; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; color: #0f172a; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+  nav { background: #0b1020; color: #fff; }
+  nav .wrap { display: flex; align-items: center; height: 68px; gap: 34px; }
+  .logo { font-weight: 800; font-size: 20px; letter-spacing: 0.04em; display: flex; align-items: center; gap: 10px; }
+  .logo i { display: inline-block; width: 22px; height: 22px; border-radius: 6px; background: linear-gradient(135deg, #ff7a2e, #ff3d8b); }
+  nav .links { display: flex; gap: 28px; font-size: 15px; color: #b6bfd6; margin-left: auto; }
+  nav .cta { background: #fff; color: #0b1020; font-weight: 700; font-size: 14px; padding: 10px 16px; border-radius: 8px; }
+  .hero { padding: 72px 0 56px; background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%); }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .badge { display: inline-block; font-size: 13px; font-weight: 700; color: #c2410c; background: #ffedd5; border: 1px solid #fed7aa; padding: 6px 12px; border-radius: 99px; }
+  h1 { font-size: 64px; line-height: 1.02; letter-spacing: -0.02em; margin: 18px 0 18px; font-weight: 800; }
+  h1 em { font-style: normal; color: #ff3d8b; }
+  .lede { font-size: 19px; line-height: 1.6; color: #475569; margin: 0 0 30px; max-width: 520px; }
+  .btns { display: flex; gap: 14px; }
+  .btn { display: inline-block; font-weight: 700; font-size: 17px; padding: 16px 24px; border-radius: 12px; }
+  .btn.primary { background: #0f172a; color: #fff; box-shadow: 0 8px 20px -8px rgba(15, 23, 42, 0.6); }
+  .btn.ghost { background: #fff; border: 2px solid #e2e8f0; }
+  .trust { margin-top: 38px; font-size: 13px; color: #94a3b8; }
+  .trust b { display: inline-block; margin: 10px 22px 0 0; font-size: 18px; color: #64748b; letter-spacing: 0.02em; }
+  .mock { background: #0f172a; border-radius: 18px; padding: 16px; box-shadow: 0 30px 60px -20px rgba(15, 23, 42, 0.45); }
+  .mock .top { display: flex; gap: 7px; margin-bottom: 14px; }
+  .mock .top i { width: 12px; height: 12px; border-radius: 50%; background: #ff5f57; }
+  .mock .top i:nth-child(2) { background: #febc2e; }
+  .mock .top i:nth-child(3) { background: #28c840; }
+  .mock .screen { background: #fff; border-radius: 10px; padding: 22px; }
+  .stat { display: inline-block; width: 31%; margin-right: 2%; padding: 12px; border-radius: 10px; background: #f1f5f9; }
+  .stat small { display: block; font-size: 12px; color: #64748b; }
+  .stat b { font-size: 24px; }
+  .chart { display: flex; align-items: flex-end; gap: 10px; height: 150px; margin-top: 20px; padding: 0 4px; }
+  .chart i { flex: 1; border-radius: 6px 6px 0 0; background: linear-gradient(180deg, #ff3d8b, #ff7a2e); }
+  .chart i:nth-child(even) { background: linear-gradient(180deg, #6366f1, #22d3ee); }
+  section.features { padding: 70px 0 30px; }
+  h2 { font-size: 40px; letter-spacing: -0.02em; margin: 0 0 12px; }
+  .sub { font-size: 18px; color: #64748b; margin: 0 0 36px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .card { border-radius: 16px; padding: 28px; background: #f8fafc; border: 1px solid #e2e8f0; }
+  .card .ic { font-size: 34px; }
+  .card h3 { font-size: 22px; margin: 12px 0 8px; }
+  .card p { margin: 0; font-size: 16px; line-height: 1.6; color: #475569; }
+  .card:nth-child(1) { background: #fef3c7; border-color: #fde68a; }
+  .card:nth-child(2) { background: #dcfce7; border-color: #bbf7d0; }
+  .card:nth-child(3) { background: #e0e7ff; border-color: #c7d2fe; }
+  section.pricing { padding: 60px 0; }
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .plan { border-radius: 18px; padding: 30px; border: 2px solid #e2e8f0; background: #fff; }
+  .plan.hot { background: #0f172a; color: #fff; border-color: #0f172a; }
+  .plan .price { font-size: 48px; font-weight: 800; margin: 10px 0; }
+  .plan ul { padding: 0; margin: 0 0 24px; list-style: none; font-size: 16px; line-height: 2; color: #64748b; }
+  .plan.hot ul { color: #cbd5e1; }
+  .plan .btn { width: 100%; text-align: center; }
+  .plan.hot .btn { background: #ff3d8b; color: #fff; }
+  blockquote { margin: 0; padding: 50px 0 60px; text-align: center; }
+  blockquote p { font-size: 32px; line-height: 1.35; font-weight: 700; max-width: 900px; margin: 0 auto 16px; }
+  blockquote cite { font-style: normal; color: #64748b; }
+  .signup { display: flex; gap: 12px; justify-content: center; margin-bottom: 70px; }
+  .signup input { width: 360px; font-size: 17px; padding: 16px 18px; border: 2px solid #cbd5e1; border-radius: 12px; }
+  footer { background: #0b1020; color: #94a3b8; font-size: 14px; padding: 36px 0 48px; }
+  footer .wrap { display: flex; gap: 40px; }
+  footer b { color: #fff; }
+</style>
+</head>
+<body>
+  <nav><div class="wrap">
+    <div class="logo"><i></i>INDESTRUCTIBLE</div>
+    <div class="links"><a href="#">Product</a><a href="#">Security</a><a href="#">Pricing</a><a href="#">Docs</a></div>
+    <a class="cta" href="#">Sign in</a>
+  </div></nav>
+
+  <header class="hero"><div class="wrap">
+    <div>
+      <span class="badge">NEW · Now with 100% more armor</span>
+      <h1>The website that <em>cannot</em> be destroyed.</h1>
+      <p class="lede">Military-grade HTML, bulletproof CSS and a layout so stable it has never moved a single pixel. Go ahead, try to break it.</p>
+      <div class="btns"><a class="btn primary" href="#">Start for free</a><a class="btn ghost" href="#">Book a demo</a></div>
+      <div class="trust">Trusted by teams that really like their websites<br><b>NORTHWIND</b><b>GLOBEX</b><b>INITECH</b><b>UMBRELLA</b></div>
+    </div>
+    <div class="mock">
+      <div class="top"><i></i><i></i><i></i></div>
+      <div class="screen">
+        <div class="stat"><small>Uptime</small><b>100%</b></div><div class="stat"><small>Damage</small><b>0.00</b></div><div class="stat"><small>Threats</small><b>1</b></div>
+        <div class="chart"><i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:85%"></i><i style="height:70%"></i><i style="height:95%"></i><i style="height:60%"></i><i style="height:100%"></i></div>
+      </div>
+    </div>
+  </div></header>
+
+  <section class="features"><div class="wrap">
+    <h2>Built to last. Forever.</h2>
+    <p class="sub">Three layers of protection between your content and the stickman.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">🛡️</div><h3>Reinforced paragraphs</h3><p>Every letter is welded to the baseline with industrial kerning. Nothing gets knocked off.</p></div>
+      <div class="card"><div class="ic">🔒</div><h3>Locked layout</h3><p>Boxes stay exactly where the designer put them. Gravity has been disabled for your safety.</p></div>
+      <div class="card"><div class="ic">⚡</div><h3>Fireproof pixels</h3><p>Our images are rated for explosions up to 3,000 degrees and at least one rocket launcher.</p></div>
+    </div>
+  </div></section>
+
+  <section class="pricing"><div class="wrap">
+    <h2>Simple pricing</h2>
+    <p class="sub">Pay once, stay intact forever. Probably.</p>
+    <div class="plans">
+      <div class="plan"><b>Starter</b><div class="price">$0</div><ul><li>1 sturdy page</li><li>Basic bubble wrap</li><li>Email support</li></ul><a class="btn ghost" href="#">Choose Starter</a></div>
+      <div class="plan hot"><b>Fortress</b><div class="price">$29</div><ul><li>Unlimited pages</li><li>Blast doors on every div</li><li>24/7 bodyguard</li></ul><a class="btn" href="#">Choose Fortress</a></div>
+      <div class="plan"><b>Bunker</b><div class="price">$∞</div><ul><li>Underground hosting</li><li>Titanium font weights</li><li>A lawyer</li></ul><a class="btn ghost" href="#">Talk to sales</a></div>
+    </div>
+  </div></section>
+
+  <blockquote><div class="wrap">
+    <p>“We tried everything to break our site. Nothing worked. Then a tiny orange man showed up with a railgun.”</p>
+    <cite>— Former customer</cite>
+  </div></blockquote>
+
+  <div class="signup"><input placeholder="you@company.com"><a class="btn primary" href="#">Get protected</a></div>
+
+  <footer><div class="wrap">
+    <div><b>INDESTRUCTIBLE</b><br>© 2026 Indestructible Inc. A fictional company.</div>
+    <div>Status: all systems nominal<br>Last incident: never</div>
+  </div></footer>
+</body>
+</html>
