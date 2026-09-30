@@ -2,14 +2,14 @@
  *  - 언어 전환 UI (en/zh/ja/ko) + 브라우저 언어 자동 리다이렉트
  *  - /api/page 프록시가 없는 정적 호스팅(GitHub Pages)에서 공개 CORS 프록시로 폴백
  *  - 정적 호스팅에서는 멀티플레이 블록을 숨김 (서버 필요)
- * 빌드 시 /pohuai/ / zh / [["en", "English"], ["zh", "中文"], ["ja", "日本語"], ["ko", "한국어"]] / {"multiplayer": "多人对战", "loadFailed": "无法加载该网站。"} / __MSG__ 가 치환된다.
+ * 빌드 시 /pohuai/ / zh / [["en", "English"], ["zh", "中文"], ["ja", "日本語"], ["ko", "한국어"]] / {"multiplayer": "多人对战", "loadFailed": "无法加载该网站。", "proxyTrying": "正在尝试页面代理 {i}/{n}…", "noProxy": "此处无法连接任何页面代理，因此无法加载该网站。请用 ?proxy=<代理地址> 重新打开（例如你本机的服务器：http://localhost:8380/api/page?url=）——演示页面无需代理。", "staticNote": "静态部署：这里只有演示页面可用，其它网站需要页面代理（?proxy=…）。"} / __MSG__ 가 치환된다.
  */
 (function () {
   var BASE = "/pohuai/";            // 예: "/pohuai/"
   var LANG = "zh";            // en | zh | ja | ko
   var LABELS = [["en", "English"], ["zh", "中文"], ["ja", "日本語"], ["ko", "한국어"]];          // [["en","English"],["zh","中文"],...]
   var DIRS = {"en": "", "zh": "zh", "ja": "ja", "ko": "ko"};              // {en:"",zh:"zh",...}
-  var UI = {"multiplayer": "多人对战", "loadFailed": "无法加载该网站。"};                  // {multiplayer:"Multiplayer", loadFailed:"...", ...}
+  var UI = {"multiplayer": "多人对战", "loadFailed": "无法加载该网站。", "proxyTrying": "正在尝试页面代理 {i}/{n}…", "noProxy": "此处无法连接任何页面代理，因此无法加载该网站。请用 ?proxy=<代理地址> 重新打开（例如你本机的服务器：http://localhost:8380/api/page?url=）——演示页面无需代理。", "staticNote": "静态部署：这里只有演示页面可用，其它网站需要页面代理（?proxy=…）。"};                  // {multiplayer:"Multiplayer", loadFailed:"...", ...}
   var STATIC = !/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
 
   if (STATIC) window.__DAW_NO_RUNNER = true; // 원본 /p/ 러너는 서버 기능 → 정적에선 건너뜀
@@ -21,10 +21,9 @@
   var PROXIES = [
     "https://api.allorigins.win/raw?url=",
     "https://api.codetabs.com/v1/proxy?quest=",
-    "https://corsproxy.io/?url=",
-    "https://api.cors.lol/?url=",
-    "https://whateverorigin.org/get?url="
+    "https://corsproxy.io/?url="
   ];
+  var ATTEMPT_TIMEOUT = 6000;   // 프록시 1개당 시도 시간(ms) — 없으면 '멈춘 것처럼' 보인다
 
   // 직접 만든 프록시를 쓸 수 있게: ?proxy=<url> 또는 localStorage("daw:proxy")
   // 예) ?proxy=http://localhost:8380/api/page%3Furl%3D  (로컬 server.py 를 프록시로 사용)
@@ -63,6 +62,28 @@
     return null;
   }
 
+  function fetchT(url, ms) {
+    return new Promise(function (resolve, reject) {
+      var ctl = new AbortController();
+      var timer = setTimeout(function () { ctl.abort(); reject(new Error("timeout")); }, ms);
+      fetch(url, { cache: "no-store", signal: ctl.signal }).then(function (r) {
+        clearTimeout(timer);
+        resolve(r);
+      }, function (e) {
+        clearTimeout(timer);
+        reject(e);
+      });
+    });
+  }
+
+  function setLoadingHint(text) {
+    // 클라이언트가 쓰는 로딩 문구를 덮어써서 '멈춘 게 아니다'를 보여준다
+    try {
+      var el = document.getElementById("load-msg");
+      if (el) el.textContent = text;
+    } catch (e) { }
+  }
+
   window.__dawLoadPage = async function (raw) {
     var input = String(raw || "").trim();
     if (input === "demo") {
@@ -79,10 +100,12 @@
     for (var i = 0; i < PROXIES.length; i++) {
       attempts.push({ url: PROXIES[i] + encodeURIComponent(url), direct: false });
     }
-    var lastErr = new Error(UI.loadFailed);
+    var lastErr = null;
+    var minePrefix = customProxy();
     for (var k = 0; k < attempts.length; k++) {
+      if (!attempts[k].direct) setLoadingHint(UI.proxyTrying.replace("{i}", k + 1).replace("{n}", attempts.length));
       try {
-        var res = await fetch(attempts[k].url, { cache: "no-store" });
+        var res = await fetchT(attempts[k].url, ATTEMPT_TIMEOUT);
         if (!res.ok) {
           var msg = errorOf(await res.text());
           if (msg) throw msg;
@@ -95,10 +118,11 @@
         var finalUrl = res.headers.get("x-final-url") || url;
         return { html: prepare(body, finalUrl), finalUrl: finalUrl };
       } catch (e) {
-        lastErr = e && e.message ? e : lastErr;
+        // 공개 프록시의 401/429 같은 잡음은 사용자에게 보여주지 않는다 (내 프록시일 때만 그대로 전달)
+        if (minePrefix && attempts[k].url.indexOf(minePrefix) === 0 && e && e.message) lastErr = e;
       }
     }
-    throw lastErr instanceof Error ? lastErr : new Error(UI.loadFailed);
+    throw (lastErr instanceof Error ? lastErr : new Error(UI.noProxy));
   };
 
   // ── 언어 전환 UI ───────────────────────────────────────────────
@@ -140,6 +164,18 @@
     }
   }
 
+  function addStaticNote() {
+    if (!STATIC || document.getElementById("daw-note")) return;
+    var anchor = document.getElementById("err");
+    if (!anchor || !anchor.parentNode) return;
+    var p = document.createElement("p");
+    p.id = "daw-note";
+    p.className = "muted";
+    p.style.cssText = "font-size:12px;line-height:1.5;margin-top:6px;opacity:.85";
+    p.textContent = UI.staticNote;
+    anchor.parentNode.insertBefore(p, anchor);
+  }
+
   function autoRedirect() {
     if (LANG !== "en" || STATIC === false) return;
     try { if (localStorage.getItem("daw:lang")) return; } catch (e) { }
@@ -154,6 +190,7 @@
   function boot() {
     if (!mountSwitcher()) return setTimeout(boot, 200);
     hideMultiplayer();
+    addStaticNote();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
