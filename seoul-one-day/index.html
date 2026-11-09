@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff"><meta name="description" content="궁궐의 아침부터 한강의 저녁까지. 취향대로 고르는 서울 관광 8장 인터랙티브 프레젠테이션.">
+<title>서울의 하루, 나만의 여행 · 영상 표지 버전</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='17' fill='%23d52b48'/%3E%3Ctext x='20' y='27' text-anchor='middle' fill='white' font-size='24'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css?v=20261026-presentation-only">
+</head>
+<body>
+<div class="presentation">
+ <header class="topbar">
+  <a href="#1" class="brand" aria-label="서울 여행 첫 장"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>서울의 하루<span class="brand-en">SEOUL, YOUR WAY</span></a>
+  <div class="creator-brand"><img src="assets/aker-channel-logo.png" alt="에이커 채널 로고"><span>만든이 : 유튜브 에이커</span></div>
+  <div class="top-actions"><span class="edition">서울 관광 이야기 <span>2026</span></span><button id="fullscreen" class="icon-button" aria-label="전체 화면" title="전체 화면 F">⛶</button></div>
+ </header>
+ <nav class="rail" aria-label="슬라이드 이동"><button data-goto="0" aria-label="1장 서울의 하루">01</button><button data-goto="1" aria-label="2장 취향별 경험">02</button><button data-goto="2" aria-label="3장 궁궐과 문화 체험">03</button><button data-goto="3" aria-label="4장 동네의 맛">04</button><button data-goto="4" aria-label="5장 한강과 야경">05</button><button data-goto="5" aria-label="6장 나만의 3일">06</button><button data-goto="6" aria-label="7장 여행의 시작">07</button><button data-goto="7" aria-label="8장 제작 안내">08</button></nav>
+ <main id="slides">
+  <section class="slide cover active" id="slide-1" data-title="서울의 하루" aria-labelledby="title-1">
+   <div class="cover-copy"><p class="eyebrow"><span class="dot red"></span>서울에서 만나는 나만의 여행</p><h1 id="title-1">궁궐의 아침부터<br><em>한강의 저녁까지</em></h1><p class="summary"><strong>궁궐을 걷고, 골목을 맛보고,<br>한강에서 하루를 마무리하세요.</strong></p><p class="english">Walk. Taste. Stay a little longer.</p><button class="start-button" data-goto="1">서울의 하루 만나기 <span>↗</span></button><p class="cover-note">나의 취향으로 고르는 서울의 일곱 장면</p></div>
+   <div class="cover-visual landscape-cover-video" aria-label="서울의 하루 영상, 무음 자동 반복 재생">
+    <div class="landscape-video-frame"><video id="dayCoverVideo" src="assets/seoul-day-cover-muted.mp4" autoplay muted loop playsinline preload="auto" aria-label="서울의 하루, 무음 자동 재생 영상, 15초"></video></div>
+    <div class="landscape-video-toolbar"><span>서울의 하루 · 무음 자동 재생</span><button id="dayCoverToggle" aria-label="표지 영상 일시정지">일시정지</button></div>
+   </div>
+  </section>
+
+  <section class="slide" id="slide-3" data-title="취향별 경험" aria-labelledby="title-3" hidden>
+   <div class="slide-heading"><p class="eyebrow"><span class="number red">02</span>CHOOSE YOUR SEOUL</p><h1 id="title-3">좋아하는 경험으로 채우는 <em>서울</em></h1><p class="subtitle">음식과 쇼핑, 역사와 도시 풍경. 원하는 만큼 조합해 보세요.</p></div>
+   <div class="experience-layout">
+    <div class="activity-chart" aria-label="2025년 서울 방문객 활동 경험률, 복수응답">
+     <div class="chart-caption">서울 여행에서 경험한 것 <span>2025년 · %</span></div>
+     <button class="bar-row" style="--accent:var(--red);--value:.831" data-value="83.1" data-chart-title="동네를 둘러보는 쇼핑" data-chart-desc="명동의 거리부터 성수의 작은 상점까지" aria-label="쇼핑 경험률 83.1퍼센트"><span class="bar-label">쇼핑</span><span class="bar-track"><i class="bar-fill"></i></span><strong>83.1<span>%</span></strong></button>
+     <button class="bar-row" style="--accent:var(--yellow);--value:.817" data-value="81.7" data-chart-title="여행의 목적이 되는 한 끼" data-chart-desc="시장의 현장 조리와 골목의 음식 이야기" aria-label="음식 미식 경험률 81.7퍼센트"><span class="bar-label">음식·미식</span><span class="bar-track"><i class="bar-fill"></i></span><strong>81.7<span>%</span></strong></button>
+     <button class="bar-row" style="--accent:var(--purple);--value:.452" data-value="45.2" data-chart-title="역사 속을 걷는 시간" data-chart-desc="궁궐과 유적지, 박물관에서 만나는 서울" aria-label="궁궐 역사 유적지 박물관 경험률 45.2퍼센트"><span class="bar-label">역사·박물관</span><span class="bar-track"><i class="bar-fill"></i></span><strong>45.2<span>%</span></strong></button>
+     <button class="bar-row" style="--accent:var(--teal);--value:.438" data-value="43.8" data-chart-title="풍경을 바라보는 휴식" data-chart-desc="도시의 전망과 강변에 남겨두는 여유" aria-label="도시 경관 감상 경험률 43.8퍼센트"><span class="bar-label">도시 경관</span><span class="bar-track"><i class="bar-fill"></i></span><strong>43.8<span>%</span></strong></button>
+     <p class="source-line">2025 서울관광 실태조사 · 외국인 6,067명 · 복수응답<br>활동 경험률이며 소비 비중이나 만족률을 뜻하지 않습니다.</p>
+    </div>
+    <div class="experience-focus"><div class="focus-ring" style="--accent:var(--red)"><span class="focus-label">쇼핑 경험률</span><div><strong id="focusNumber">83.1</strong><span>%</span></div><small>서울에서 해본 경험</small></div><h2 id="focusTitle">동네를 둘러보는 쇼핑</h2><p id="focusDesc">명동의 거리부터 성수의 작은 상점까지</p><span class="interaction-hint">그래프에 마우스를 올려보세요</span></div>
+   </div>
+   <div class="stats-ribbon"><div><strong data-count="1454.3" data-decimals="1">1,454.3</strong><span>만 명<small>2025 서울 방문 외래객 추정</small></span></div><div><strong data-count="6.0" data-decimals="1">6.0</strong><span>일<small>2025 서울 평균 체류</small></span></div><div><strong data-count="53.6" data-decimals="1">53.6</strong><span>%<small>2025 서울 재방문율</small></span></div></div>
+  </section>
+  <section class="slide" id="slide-4" data-title="궁궐과 문화 체험" aria-labelledby="title-4" hidden>
+   <div class="slide-heading"><p class="eyebrow"><span class="number purple">03</span>HISTORY & CULTURE</p><h1 id="title-4">역사를 걷고, <em class="purple-text">문화를 직접 경험하다</em></h1></div>
+   <div class="culture-layout"><figure class="palace-photo reactive-photo"><img id="palacePhoto" src="assets/ai-gyeongbokgung.png" alt="AI로 생성한 경복궁 근정전의 아침 풍경"><figcaption aria-live="polite"><span id="palaceName">경복궁</span><small id="palaceCaption">1395년 건립 · 조선의 왕궁</small></figcaption><span class="ai-image-label">AI 생성 이미지</span></figure>
+    <div class="culture-content"><div class="heritage-line" role="group" aria-label="연도별 유산 이미지 선택"><button class="heritage-node selected" data-heritage="0" aria-label="1395 경복궁 이미지 보기" aria-pressed="true" aria-controls="palacePhoto"><span>1395</span><h2>경복궁</h2><p>조선의 왕궁을 걷는 시간</p></button><button class="heritage-node" data-heritage="1" aria-label="1995 종묘 이미지 보기" aria-pressed="false" aria-controls="palacePhoto"><span>1995</span><h2>종묘</h2><p>유네스코 세계유산 등재</p></button><button class="heritage-node" data-heritage="2" aria-label="1997 창덕궁 이미지 보기" aria-pressed="false" aria-controls="palacePhoto"><span>1997</span><h2>창덕궁</h2><p>유네스코 세계유산 등재</p></button></div><p class="heritage-hint">연도를 누르면 유산의 풍경이 바뀝니다</p><div class="culture-pick"><p class="small-title">오늘은 무엇을 해볼까요? <span class="click-hint">클릭해 자세히 보기 ↗</span></p><div class="culture-choices" role="group" aria-label="문화 체험 선택"><button class="culture-choice selected" data-culture="0" style="--accent:var(--red)" aria-pressed="true" aria-haspopup="dialog" aria-controls="detailDrawer"><span>01</span>한복과 궁궐</button><button class="culture-choice" data-culture="1" style="--accent:var(--yellow)" aria-pressed="false" aria-haspopup="dialog" aria-controls="detailDrawer"><span>02</span>나만의 공예</button><button class="culture-choice" data-culture="2" style="--accent:var(--teal)" aria-pressed="false" aria-haspopup="dialog" aria-controls="detailDrawer"><span>03</span>K-pop 댄스</button></div><div class="culture-detail" aria-live="polite"><h2 id="cultureTitle">한복을 입고 궁궐 산책</h2><p id="cultureDesc">복식과 사진으로 기억하는 서울의 역사.<br>궁궐 관람 방식과 한복 대여 조건을 확인하세요.</p></div></div>
+     <p class="source-line">출처: UNESCO · 비짓서울 · 서울컬처라운지<br>체험 프로그램의 운영일·언어·예약은 방문 날짜에 맞춰 확인하세요.</p>
+    </div>
+   </div>
+  </section>
+  <section class="slide" id="slide-5" data-title="동네의 맛" aria-labelledby="title-5" hidden>
+   <div class="slide-heading"><p class="eyebrow"><span class="number yellow">04</span>TASTE THE NEIGHBORHOOD</p><h1 id="title-5">동네를 고르면, <em class="gold-text">서울의 맛이 따라온다</em></h1><p class="subtitle">마우스를 올려 풍경을 바꾸고, 동네를 클릭해 여행 이야기를 열어보세요.</p></div>
+   <div class="taste-layout"><div class="taste-wheel"><div class="taste-center"><span>음식·미식 경험률</span><strong data-count="81.7" data-decimals="1">81.7</strong><small>% · 2025년 서울 방문객</small></div><button class="taste-stop taste-1 selected" data-taste="0" style="--accent:var(--red)" aria-pressed="true" aria-haspopup="dialog" aria-controls="detailDrawer"><i>01</i><span>광장시장<small>시장 먹거리</small></span></button><button class="taste-stop taste-2" data-taste="1" style="--accent:var(--yellow)" aria-pressed="false" aria-haspopup="dialog" aria-controls="detailDrawer"><i>02</i><span>명동<small>식사와 쇼핑</small></span></button><button class="taste-stop taste-3" data-taste="2" style="--accent:var(--purple)" aria-pressed="false" aria-haspopup="dialog" aria-controls="detailDrawer"><i>03</i><span>동대문<small>음식 골목</small></span></button><button class="taste-stop taste-4" data-taste="3" style="--accent:var(--teal)" aria-pressed="false" aria-haspopup="dialog" aria-controls="detailDrawer"><i>04</i><span>성수<small>카페와 산책</small></span></button></div>
+    <div class="taste-story"><figure class="taste-photo reactive-photo"><img id="tastePhoto" src="assets/ai-gwangjang.png" alt="AI로 생성한 광장시장의 빈대떡과 김밥 장면"><figcaption id="tastePhotoCaption">광장시장 · 골목에서 만나는 한 끼</figcaption><span class="ai-image-label">AI 생성 이미지</span></figure><div class="taste-text"><span id="tasteIndex">01</span><div><h2 id="tasteTitle">시장에서 맛보는 서울</h2><p id="tasteDesc">빈대떡과 김밥, 모둠전을 고르고<br>눈앞에서 조리하는 시장의 풍경을 즐겨보세요.</p></div></div></div>
+   </div><p class="source-line taste-source">메뉴는 공식 관광안내의 대표 사례이며 외국인 주문량 순위가 아닙니다. 식재료와 식단 조건은 음식점별로 확인하세요.<br>출처: 2025 서울관광 실태조사 · 비짓서울 · 한국관광공사</p>
+  </section>
+  <section class="slide night-slide" id="slide-6" data-title="한강과 야경" aria-labelledby="title-6" hidden>
+   <div class="slide-heading"><p class="eyebrow"><span class="number teal">05</span>MAKE TIME FOR THE RIVER</p><h1 id="title-6">하루의 끝에는, <em class="teal-text">한강과 서울의 밤</em></h1></div>
+   <div class="night-layout"><figure class="night-photo reactive-photo" tabindex="0"><img id="nightPhoto" src="assets/ai-hangang.png" alt="AI로 생성한 해 질 무렵 한강공원의 강변 풍경"><figcaption><small id="nightPhotoTag">HANGANG PARK</small><h2 id="nightPhotoTitle">강변에 남겨두는 여유</h2><p id="nightPhotoCaption">한강공원 · 해 질 무렵의 산책</p></figcaption><span class="ai-image-label">AI 생성 이미지</span><span class="night-orbit" aria-hidden="true"></span></figure>
+    <div class="night-options"><p class="night-interaction">마우스를 올려 풍경 보기 · 클릭해 자세히 보기 ↗</p><button class="night-option selected" data-night="0" style="--accent:var(--teal)" aria-pressed="true" aria-haspopup="dialog" aria-controls="detailDrawer"><span>01</span><div><h2>한강공원</h2><p>강변 산책과 자전거,<br>해 질 무렵의 휴식</p></div></button><button class="night-option" data-night="1" style="--accent:var(--purple)" aria-pressed="false" aria-haspopup="dialog" aria-controls="detailDrawer"><span>02</span><div><h2>남산서울타워</h2><p>도시의 낮과 밤을<br>한눈에 바라보는 전망</p></div></button><button class="night-option" data-night="2" style="--accent:var(--yellow)" aria-pressed="false" aria-haspopup="dialog" aria-controls="detailDrawer"><span>03</span><div><h2>여의도 서울달</h2><p>한강과 도심을 내려다보는<br>계류식 헬륨 기구 체험</p></div></button><div class="night-tip" aria-live="polite"><strong id="nightTipTitle">강변에 남겨두는 여유</strong><p id="nightTip">날씨와 계절에 맞춰 산책이나 야외 활동을 골라보세요.</p></div></div>
+   </div><p class="source-line">출처: 서울특별시 한강공원 · 남산서울타워 · 서울달 안내. 서울달과 야외 활동은 기상·운영 조건에 따라 달라집니다.</p>
+  </section>
+  <section class="slide" id="slide-7" data-title="나만의 3일" aria-labelledby="title-7" hidden>
+   <div class="slide-heading"><p class="eyebrow"><span class="number red">06</span>THREE DAYS, YOUR PACE</p><h1 id="title-7">처음 만나는 서울, <em>하루에 한 가지 주제</em></h1><p class="subtitle">가까운 권역을 묶어 시작하는 3일 코스 제안</p></div>
+   <div class="day-tabs" role="tablist" aria-label="추천 코스 날짜"><button class="day-tab selected" role="tab" id="day-tab-0" aria-controls="day-panel" aria-selected="true" data-day="0" style="--accent:var(--red)"><span>DAY 01</span><h2>전통과 골목</h2><small>경복궁 · 인사동 · 시장</small></button><button class="day-tab" role="tab" id="day-tab-1" aria-controls="day-panel" aria-selected="false" data-day="1" style="--accent:var(--teal)"><span>DAY 02</span><h2>동네와 한강</h2><small>서울숲 · 성수 · 뚝섬</small></button><button class="day-tab" role="tab" id="day-tab-2" aria-controls="day-panel" aria-selected="false" data-day="2" style="--accent:var(--purple)"><span>DAY 03</span><h2>쇼핑과 도시 전망</h2><small>명동 · 남산 · 야경</small></button></div>
+   <div class="day-panel" id="day-panel" role="tabpanel" aria-labelledby="day-tab-0" style="--accent:var(--red)"><div class="day-label"><span id="dayNumeral">01</span><small id="dayTheme">전통과 골목</small></div><div class="day-route"><div class="route-line"></div><div class="route-stop"><span>오전</span><i></i><h3 id="stop1">경복궁</h3><p id="stop1Desc">왕궁의 공간을 천천히 걷기</p></div><div class="route-stop"><span>오후</span><i></i><h3 id="stop2">인사동 또는 서촌</h3><p id="stop2Desc">공예와 골목의 분위기 즐기기</p></div><div class="route-stop"><span>저녁</span><i></i><h3 id="stop3">광장시장·청계천</h3><p id="stop3Desc">시장 식사 후 물길 따라 산책</p></div></div></div>
+   <div class="route-adjust"><span>여행의 여유를 남기는 방법</span><p id="dayAdjustment" aria-live="polite">궁궐 휴궁일에는 방문 장소를 바꾸고, 관람·식사·이동 시간을 충분히 두세요.</p></div><p class="source-line">보고서 기반 제안 코스 · 확정 여행상품이나 실측 이동시간표가 아닙니다. 권역 간 이동은 교통편과 출발지에 맞춰 확인하세요.</p>
+  </section>
+  <section class="slide closing" id="slide-8" data-title="여행의 시작" aria-labelledby="title-8" hidden>
+   <div class="closing-content"><div class="closing-intro"><p class="eyebrow"><span class="number teal">07</span>YOUR NEXT CHAPTER</p><h1 id="title-8">서울에서 해보고 싶은<br><em class="teal-text">한 가지를 골라보세요</em></h1><p class="subtitle">그 경험에서 나만의 서울 여행이 시작됩니다.</p><a class="start-button teal-button" href="https://english.visitseoul.net/map-guide-book" target="_blank" rel="noopener">공식 여행 지도와 가이드북 <span>↗</span></a><p class="english">Your Seoul begins with one experience.</p><div class="closing-colors" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div>
+   <div class="prepare-list"><a href="https://english.visitseoul.net/transportation" target="_blank" rel="noopener" style="--accent:var(--red)"><span class="prepare-number">01</span><div><h2>이동 경로 확인</h2><p>공항에서 숙소까지, 역 이름과 출구까지</p></div><span>↗</span></a><a href="https://www.seoulculturelounge.com/?lang=env" target="_blank" rel="noopener" style="--accent:var(--yellow)"><span class="prepare-number">02</span><div><h2>문화 체험 예약</h2><p>원하는 수업의 운영일과 언어 확인</p></div><span>↗</span></a><a href="https://english.visitseoul.net/walking-tour" target="_blank" rel="noopener" style="--accent:var(--purple)"><span class="prepare-number">03</span><div><h2>이야기와 함께 걷기</h2><p>서울 도보해설관광 코스와 예약</p></div><span>↗</span></a><a href="https://www.seouldanurim.net/en/index" target="_blank" rel="noopener" style="--accent:var(--teal)"><span class="prepare-number">04</span><div><h2>나에게 맞는 이동 편의</h2><p>방문 장소별 접근성과 편의시설 확인</p></div><span>↗</span></a><p class="source-line">여행일에 맞춰 운영시간·예약 조건·교통 정보를 확인하세요.<br>공식 관광 안내로 연결됩니다.</p></div>
+   </div>
+   <figure class="closing-film">
+    <div class="closing-film-frame"><video id="closingShortsVideo" src="assets/seoul-closing-shorts-muted.mp4" autoplay muted loop playsinline preload="metadata" aria-label="서울 관광 쇼츠, 무음 자동 재생 영상, 16.5초"></video></div>
+    <figcaption><span>서울의 하루 · 무음 자동 재생</span><button id="closingShortsToggle" aria-label="7페이지 영상 일시정지">일시정지</button></figcaption>
+   </figure>
+   <p class="created-time">작성 시간 2026/10/17/14시 · 자료 기준 2026년 10월 16일</p>
+  </section>
+  <section class="slide credits-slide" id="slide-9" data-title="제작 안내" aria-labelledby="title-9" hidden>
+   <img class="credits-logo" src="assets/aker-channel-logo.png" alt="에이커 채널 로고">
+   <h1 id="title-9"><span>이 HTML 슬라이드는 AI 활용법 교육을 위해 제작되었으며</span><span>사용한 모든 이미지와 영상은 AI로 제작되었습니다</span></h1>
+   <a class="credits-link" id="tutorialLink" href="https://youtu.be/byShnblO4Oc?si=5gac__NYbK-EVf8T" target="_blank" rel="noopener noreferrer">제작법 바로 보기(클릭)<span aria-hidden="true">↗</span></a>
+   <p class="credits-author">만든이 : 유튜브 에이커</p>
+  </section>
+ </main>
+ <footer class="bottom-bar"><button id="overviewBtn" class="page-counter" aria-label="전체 슬라이드 보기"><strong id="currentPage">01</strong><span>/ 08</span></button><span id="currentTitle">서울의 하루</span><p class="footer-hint">마우스로 발견하는 서울 <span>·</span> ← → 이동</p><div class="bottom-actions"><button id="prev" class="icon-button arrow" aria-label="이전 슬라이드">←</button><button id="next" class="icon-button arrow" aria-label="다음 슬라이드">→</button></div></footer><div class="progress-track"><div id="progress"></div></div>
+</div>
+<div id="live" class="sr-only" aria-live="polite"></div>
+<dialog id="detailDrawer" class="detail-drawer drawer-right" aria-labelledby="detailTitle" aria-describedby="detailLead">
+ <div class="drawer-head"><span id="detailCategory"></span><button class="close-dialog icon-button" aria-label="상세 내용 닫기" autofocus>×</button></div>
+ <figure class="drawer-photo"><img id="detailImage" alt=""><figcaption>AI 생성 이미지</figcaption></figure>
+ <div class="drawer-body"><p id="detailKicker" class="drawer-kicker"></p><h2 id="detailTitle"></h2><p id="detailLead" class="drawer-lead"></p><div id="detailSections"></div><div class="drawer-tip"><span>방문 전 체크</span><p id="detailTip"></p></div><a id="detailLink" class="drawer-link" target="_blank" rel="noopener">공식 안내에서 더 알아보기 <span>↗</span></a></div>
+</dialog>
+<dialog id="overviewDialog" aria-labelledby="overviewTitle"><div class="dialog-top"><h2 id="overviewTitle">전체 슬라이드</h2><button class="close-dialog icon-button" aria-label="전체 슬라이드 닫기">×</button></div><div class="overview-grid"></div></dialog>
+<script src="app.js"></script>
+</body></html>
+
