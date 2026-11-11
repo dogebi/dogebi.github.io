@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1초는 누가 어떻게 정했을까?</title>
+<style>
+  :root { color-scheme: dark; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; background: #070a12; overflow: hidden; }
+  body {
+    display: grid; place-items: center;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  }
+  .stage {
+    position: relative;
+    width: min(100vw, calc(100vh * 16 / 9));
+    aspect-ratio: 16/9;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 108%, rgba(230,185,92,.07), transparent 70%),
+      radial-gradient(ellipse 50% 40% at 85% -5%, rgba(91,214,162,.04), transparent 70%),
+      #0b0f17;
+    overflow: hidden;
+  }
+  .scene {
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    opacity: 0;
+  }
+  .scene .inner { text-align: center; max-width: 78%; }
+  h2.t {
+    font-size: clamp(1.4rem, 4.2vw, 3.2rem);
+    font-weight: 900; letter-spacing: -0.02em;
+    color: #efeae0; line-height: 1.3; margin-bottom: 1.2em;
+  }
+  h2.t em { font-style: normal; color: #e6b95c; }
+
+  /* ── 자막 ── */
+  .cap {
+    position: absolute; left: 50%; bottom: 7.5%;
+    transform: translateX(-50%);
+    width: 76%;
+    text-align: center;
+    font-size: clamp(.85rem, 1.9vw, 1.35rem);
+    line-height: 1.75;
+    color: #c7cedb;
+    font-weight: 500;
+    pointer-events: none;
+  }
+  .cap span { opacity: 0; display: inline-block; }
+
+  /* ── 씬 1: 태양과 하루 ── */
+  .sun {
+    width: 120px; height: 120px; border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #ffe9b0, #e6b95c 55%, #b07f24);
+    box-shadow: 0 0 60px rgba(230,185,92,.5);
+    margin: 0 auto .9em;
+    animation: breathe 4s ease-in-out infinite;
+  }
+  @keyframes breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+  .ticks { display: flex; justify-content: center; gap: 6px; margin-top: 1.1em; }
+  .ticks i {
+    width: 5px; height: 26px; border-radius: 3px;
+    background: linear-gradient(180deg, #e6b95c, #8f6a22);
+    opacity: .25;
+  }
+  .ticks i.on { opacity: 1; box-shadow: 0 0 12px rgba(230,185,92,.6); }
+
+  /* ── 씬 2: 흔들리는 지구 ── */
+  .earth {
+    width: 150px; height: 150px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #3d6a9e, #24415f 60%, #16283f);
+    position: relative; margin: 0 auto 1em;
+    animation: wobble 5s ease-in-out infinite;
+  }
+  .earth::after {
+    content: ""; position: absolute; inset: -14px;
+    border: 1.5px dashed rgba(152,162,179,.4); border-radius: 50%;
+  }
+  @keyframes wobble { 0%,100%{transform:rotate(-2deg) translateY(0)} 50%{transform:rotate(2deg) translateY(-6px)} }
+  .drift { max-width: 420px; margin: 0 auto; }
+  .drift svg { width: 100%; overflow: visible; }
+  .drift path { fill: none; stroke: #5bd6a2; stroke-width: 2.5; stroke-linecap: round;
+    stroke-dasharray: 700; stroke-dashoffset: 700; }
+  .scene.live .drift path { animation: draw 4s ease-out .4s forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  /* ── 씬 3: 진자 ── */
+  .pend { width: 4px; height: 190px; background: #3a465c; margin: 0 auto;
+    transform-origin: top center; border-radius: 2px; position: relative; }
+  .pend::after {
+    content: ""; position: absolute; bottom: -26px; left: 50%;
+    width: 56px; height: 56px; margin-left: -28px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #f2d489, #e6b95c 55%, #8f6a22);
+    box-shadow: 0 0 30px rgba(230,185,92,.4);
+  }
+  .scene.live .pend { animation: swing 2.4s cubic-bezier(.45,.05,.55,.95) infinite alternate; }
+  @keyframes swing { from{transform:rotate(24deg)} to{transform:rotate(-24deg)} }
+
+  /* ── 씬 4: 세슘 원자 ── */
+  .atom { position: relative; width: 200px; height: 200px; margin: 0 auto 1.1em; }
+  .atom .core {
+    position: absolute; left: 50%; top: 50%; width: 26px; height: 26px;
+    margin: -13px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ffe9b0, #e6b95c);
+    box-shadow: 0 0 30px rgba(230,185,92,.7);
+    animation: breathe 1.6s ease-in-out infinite;
+  }
+  .orbit {
+    position: absolute; inset: 0; border-radius: 50%;
+    border: 1.5px solid rgba(152,162,179,.35);
+    animation: orbit 3.2s linear infinite;
+  }
+  .orbit:nth-child(2) { inset: 22px; animation-duration: 2.1s; animation-direction: reverse; }
+  .orbit:nth-child(3) { inset: 44px; animation-duration: 1.4s; }
+  .orbit::before {
+    content: ""; position: absolute; top: -5px; left: 50%; width: 10px; height: 10px;
+    margin-left: -5px; border-radius: 50%; background: #5bd6a2;
+    box-shadow: 0 0 10px rgba(91,214,162,.8);
+  }
+  @keyframes orbit { to { transform: rotate(360deg); } }
+  .big {
+    font-size: clamp(1.6rem, 4.6vw, 3.4rem);
+    font-weight: 900; letter-spacing: .02em;
+    color: #e6b95c; font-variant-numeric: tabular-nums;
+    margin-top: .25em;
+  }
+  .big small { display: block; font-size: .38em; font-weight: 500; color: #98a2b3; margin-top: .3em; }
+
+  /* ── 씬 5: UTC ── */
+  .clocks { display: flex; justify-content: center; align-items: flex-end; gap: 14px; margin: 0 auto 1.2em; height: 90px; }
+  .clocks i {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: #5bd6a2; opacity: .3;
+    animation: tickdot 2s ease-in-out infinite;
+  }
+  .clocks i:nth-child(odd) { animation-delay: .6s; }
+  .clocks i:nth-child(3n) { animation-delay: 1.1s; }
+  @keyframes tickdot { 0%,100%{opacity:.25; transform:scale(.8)} 50%{opacity:1; transform:scale(1.25)} }
+  .merge {
+    width: 0; height: 3px; margin: 0 auto; border-radius: 2px;
+    background: linear-gradient(90deg, #5bd6a2, #e6b95c);
+  }
+  .scene.live .merge { animation: grow 3s ease-out .5s forwards; }
+  @keyframes grow { to { width: 62%; } }
+  .utc {
+    font-size: clamp(1.2rem, 3vw, 2.2rem); font-weight: 800; color: #efeae0;
+    opacity: 0; margin-top: 1em;
+  }
+  .scene.live .utc { animation: fadeup .8s ease-out 2.2s forwards; }
+  @keyframes fadeup { from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none} }
+
+  /* ── 씬 6: 결론 ── */
+  .final .inner { max-width: 72%; }
+  .lede {
+    font-size: clamp(1rem, 2.4vw, 1.6rem);
+    color: #c7cedb; line-height: 1.9; font-weight: 500;
+  }
+  .lede b { color: #e6b95c; font-weight: 800; }
+  .pulse {
+    width: 14px; height: 14px; border-radius: 50%; background: #e6b95c;
+    margin: 2.2em auto 0; position: relative;
+    animation: breathe 1.6s ease-in-out infinite;
+  }
+  .pulse::before, .pulse::after {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    border: 1.5px solid #e6b95c; animation: ring 2.4s ease-out infinite;
+  }
+  .pulse::after { animation-delay: 1.2s; }
+  @keyframes ring { from{transform:scale(1);opacity:.7} to{transform:scale(3.4);opacity:0} }
+
+  /* ── 진행 바 / 씬 라벨 ── */
+  .bar { position: absolute; left: 8%; right: 8%; top: 5.5%; height: 2px; background: rgba(152,162,179,.18); }
+  .bar i { position: absolute; left: 0; top: 0; height: 100%; background: #e6b95c; width: 0; }
+  .label {
+    position: absolute; left: 8%; top: 3.2%;
+    font-size: clamp(.6rem, 1.2vw, .8rem); font-weight: 700; color: #6b7686;
+    letter-spacing: .06em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scene *, .scene.live * { animation: none !important; }
+    .scene.live .drift path { stroke-dashoffset: 0; }
+    .scene.live .merge { width: 62%; }
+    .scene.live .utc { opacity: 1; }
+    .cap span { opacity: 1 !important; }
+  }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="bar"><i id="barFill"></i></div>
+  <div class="label" id="sceneLabel">씬 1 / 6</div>
+
+  <!-- 1. 태양에서 태어난 초 -->
+  <div class="scene" id="sc0">
+    <div class="inner">
+      <h2 class="t">하루를 <em>86,400</em>으로 나눈 사람들</h2>
+      <div class="sun"></div>
+      <div class="ticks" id="ticks"></div>
+    </div>
+    <p class="cap" data-cap="태양이 뜨고 지는 주기, 하루. 고대 이집트인은 밤을 12, 낮을 12로 나눴고, 바빌론의 60진법을 거쳐 시간·분·초가 자리 잡았다. 처음의 1초는 하루를 86,400으로 나눈 길이였다."></p>
+  </div>
+
+  <!-- 2. 흔들리는 지구 -->
+  <div class="scene" id="sc1">
+    <div class="inner">
+      <h2 class="t">하지만 지구는 <em>흔들린다</em></h2>
+      <div class="earth"></div>
+      <div class="drift"><svg viewBox="0 0 420 70"><path d="M0 20 C 60 18, 120 26, 180 30 S 300 40, 360 46 S 410 52, 420 55"/></svg></div>
+    </div>
+    <p class="cap" data-cap="문제는 태양이 아니라 지구였다. 조수의 마찰로 지구 자전은 아주 천천히 느려진다. 하루에 묶인 초는 태양마다 조금씩 달라졌고, 더 단단한 기준이 필요해졌다."></p>
+  </div>
+
+  <!-- 3. 진자 -->
+  <div class="scene" id="sc2">
+    <div class="inner">
+      <h2 class="t">갈릴레이가 본 <em>등시성</em></h2>
+      <div class="pend"></div>
+    </div>
+    <p class="cap" data-cap="1583년, 갈릴레이는 진자의 길이만 같으면 흔들리는 시간도 같다는 등시성을 발견했다. 1656년 하위헌스가 진자시계를 만들면서 시계는 규칙을 얻었지만, 초의 정의는 여전히 지구의 그림자 안에 있었다."></p>
+  </div>
+
+  <!-- 4. 세슘 원자 -->
+  <div class="scene" id="sc3">
+    <div class="inner">
+      <h2 class="t">1967년, 회의 테이블의 <em>결정</em></h2>
+      <div class="atom"><div class="orbit"></div><div class="orbit"></div><div class="orbit"></div><div class="core"></div></div>
+      <div class="big"><span id="count">0</span> 회<small>세슘-133 원자의 전이 진동 = 정확히 1초</small></div>
+    </div>
+    <p class="cap" data-cap="1955년 에센과 파리가 세슘 원자시계를 만들었다. 원자는 언제나 같게 진동한다. 1967년 제13차 국제도량형총회는 정했다 — 세슘-133 원자 바닥상태의 두 초미세 준위 사이 전이 9,192,631,770번이 바로 1초라고."></p>
+  </div>
+
+  <!-- 5. UTC -->
+  <div class="scene" id="sc4">
+    <div class="inner">
+      <h2 class="t">지금의 1초, <em>UTC</em></h2>
+      <div class="clocks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="merge"></div>
+      <div class="utc">세계 표준시 = 400여 개 원자시계의 평균</div>
+    </div>
+    <p class="cap" data-cap="오늘날 1초는 전 세계 원자시계들이 평균을 내 만드는 유닉 세계시에서 나온다. 느려지는 지구와의 차이는 윤초로 메워 왔다. 초는 더 이상 하루 속에 있지 않고, 하루가 초들 속에 있다."></p>
+  </div>
+
+  <!-- 6. 결론 -->
+  <div class="scene final" id="sc5">
+    <div class="inner">
+      <p class="lede">1초는 <b>태양</b>에서 시작해 <b>원자</b> 안에 자리 잡았다.<br>정한 것은 회의 테이블의 사람들이었고,<br>그 기준은 흔들리지 않는 세슘 원자 하나다.</p>
+      <div class="pulse"></div>
+    </div>
+    <p class="cap" data-cap="지구는 흔들리고, 원자는 흔들리지 않는다. 그래서 우리의 1초는 오늘도 세슘과 함께 간다."></p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var LOOP = 75, FADE = 0.9;
+  var scenes = [
+    { el: sc0, t0: 0,   t1: 13 },
+    { el: sc1, t0: 13,  t1: 26 },
+    { el: sc2, t0: 26,  t1: 39 },
+    { el: sc3, t0: 39,  t1: 57 },
+    { el: sc4, t0: 57,  t1: 68 },
+    { el: sc5, t0: 68,  t1: LOOP }
+  ];
+  var label = document.getElementById('sceneLabel');
+
+  /* 씬 1 눈금: 자막에 맞춰 하나씩 켜기 */
+  var ticks = document.getElementById('ticks');
+  for (var i = 0; i < 12; i++) ticks.appendChild(document.createElement('i'));
+  var tickEls = ticks.children;
+
+  /* 자막을 단어 스팬으로 */
+  scenes.forEach(function (s) {
+    var p = s.el.querySelector('[data-cap]');
+    if (!p) return;
+    s.words = p.textContent.split(' ').map(function (w) {
+      var sp = document.createElement('span');
+      sp.textContent = w;
+      p.textContent = '';
+      p.appendChild(sp);
+      p.appendChild(document.createTextNode(' '));
+      return sp;
+    });
+  });
+
+  function ss(a, b, t) { var x = Math.min(1, Math.max(0, (t - a) / (b - a))); return x * x * (3 - 2 * x); }
+
+  var t0 = null, paused = false, seekT = -1, time = 0;
+  window.seek = function (t) { seekT = t % LOOP; frame(performance.now()); };
+
+  function frame(now) {
+    if (seekT >= 0) time = seekT;
+    else {
+      if (t0 === null) t0 = now;
+      if (!paused) time = ((now - t0) / 1000) % LOOP;
+    }
+    seekT = -1;
+
+    scenes.forEach(function (s, i) {
+      var vis = time >= s.t0 && time < s.t1;
+      var a = vis ? Math.min(ss(s.t0, s.t0 + FADE, time), ss(s.t1, s.t1 - FADE, time)) : 0;
+      s.el.style.opacity = a;
+      s.el.classList.toggle('live', vis);
+      if (vis) {
+        label.textContent = '씬 ' + (i + 1) + ' / ' + scenes.length;
+        if (s.words) {
+          var local = time - s.t0;
+          s.words.forEach(function (w, wi) {
+            w.style.opacity = ss(0.4 + wi * 0.13, 0.4 + wi * 0.13 + 0.25, local);
+          });
+        }
+        if (i === 0) {
+          var on = Math.floor(ss(1.5, 10.5, time) * 12);
+          for (var k = 0; k < 12; k++) tickEls[k].className = k < on ? 'on' : '';
+        }
+        if (i === 3) {
+          var target = 9192631770;
+          var p = ss(1.2, 11, time - s.t0);
+          var eased = 1 - Math.pow(1 - p, 3);
+          document.getElementById('count').textContent = Math.round(target * eased).toLocaleString('ko-KR');
+        }
+      }
+    });
+    document.getElementById('barFill').style.width = (time / LOOP * 100) + '%';
+    if (seekT < 0 && !paused) requestAnimationFrame(frame);
+    if (seekT >= 0) requestAnimationFrame(function () {}); /* seek는 한 프레임 */
+  }
+
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (window.FILM_SEEK != null) { window.seek(window.FILM_SEEK); return; }
+  requestAnimationFrame(frame);
+  window.addEventListener('keydown', function (e) {
+    if (e.code === 'Space') { paused = !paused; e.preventDefault(); }
+    if (e.code === 'ArrowRight') window.seek(time + 2);
+    if (e.code === 'ArrowLeft') window.seek(time - 2);
+  });
+})();
+</script>
+</body>
+</html>
