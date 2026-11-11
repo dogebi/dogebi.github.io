@@ -9,7 +9,7 @@ window.VIDEO_DATA = {
   "tail": 2.0,
   "placeholder": false,
   "narration": true,
-  "voice": "sherpa-vits-zh-aishell3 sid=0",
+  "voice": "sherpa-vits-melo-tts-zh_en",
   "model": "sherpa-onnx-vits",
   "scriptSig": "5d866a9269a45979",
   "chapters": [
