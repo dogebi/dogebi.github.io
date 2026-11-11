@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>措施说明 CSC-v1104</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="fonts/noto-sans-kr/noto-sans-kr-700.css">
+  <link rel="stylesheet" href="css/player.css">
+  <link rel="stylesheet" href="css/fxkit.css">
+  <link rel="stylesheet" href="css/typefx.css">
+  <link rel="stylesheet" href="css/reckit.css">
+  <link rel="stylesheet" href="css/look.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="stage" data-width="1920" data-height="1080">
+    <!-- the world: one hall, the camera travels it (js/hall.js) -->
+    <canvas id="hall"></canvas>
+    <div class="grade"></div>
+
+    <!-- chapters mount their scenes here (js/seg/<id>.js) -->
+    <div id="segs"></div>
+
+    <!-- the signature transition between chapters: the signal's pulse re-lights the hall -->
+    <div class="lightwipe"></div>
+
+    <svg class="grain" width="1920" height="1080" aria-hidden="true">
+      <filter id="grainF">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+        <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.055 0"/>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grainF)"/>
+    </svg>
+  </div>
+
+  <script src="vendor/gsap/gsap.min.js"></script>
+  <script src="vendor/gsap/SplitText.min.js"></script>
+  <script src="vendor/gsap/CustomEase.min.js"></script>
+  <script src="vendor/gsap/CustomBounce.min.js"></script>
+  <script src="vendor/gsap/CustomWiggle.min.js"></script>
+  <script src="vendor/gsap/DrawSVGPlugin.min.js"></script>
+  <script src="vendor/gsap/MorphSVGPlugin.min.js"></script>
+  <script src="vendor/gsap/MotionPathPlugin.min.js"></script>
+  <script src="vendor/gsap/TextPlugin.min.js"></script>
+  <script src="vendor/gsap/ScrambleTextPlugin.min.js"></script>
+  <script src="js/cues.js"></script>
+  <script src="js/sync.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/fxkit.js"></script>
+  <script src="js/typefx.js"></script>
+  <script src="js/art/core.js"></script>
+  <script src="js/media-src.js"></script>
+  <script src="js/media.js"></script>
+  <script src="js/reckit.js"></script>
+  <script src="js/hall.js"></script>
+  <script src="js/seg/bk.js"></script>
+  <script src="js/seg/kd.js"></script>
+  <script src="js/seg/jf.js"></script>
+  <script src="js/seg/ap.js"></script>
+  <script src="js/seg/pc.js"></script>
+  <script src="js/seg/cg.js"></script>
+  <script src="js/scenes.js"></script>
+</body>
+</html>
