@@ -55,8 +55,8 @@ Video.define(({ tl, cue, cues, scene, onFrame, rand, fitCanvas, stage, W, H }) =
   tl.fromTo('#s02 .stone-number', { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.6 }, 'c05+=0.2');
   tl.fromTo('#s02 .sun-orbit, #s02 .shadow-clock', { autoAlpha: 1 }, { autoAlpha: 0.38, duration: 0.9 }, 'c06+=0.1');
 
-  tl.fromTo('#s02 .scene-kicker', { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.5 }, 'c06+=0.2');
-  tl.fromTo('#s03 .scene-kicker', { y: -20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8 }, 'c06+=0.4');
+  tl.fromTo('#s02 .scene-kicker', { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.35 }, 'c06+=0.15');
+  tl.fromTo('#s03 .scene-kicker', { y: -20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.65 }, 'c06+=0.53');
   tl.fromTo('#s03 .lab-window', { x: 180, rotation: 16, autoAlpha: 0 }, { x: 0, rotation: 8, autoAlpha: 1, duration: 1.2, ease: 'power2.out' }, 'c06');
   tl.fromTo('#s03 .beam', { scaleX: 0.1, autoAlpha: 0 }, { scaleX: 1, autoAlpha: 1, duration: 1.3, ease: 'power2.out' }, 'c06+=0.4');
   tl.fromTo('#s03 .vacuum-tube', { y: 60, x: -980, scale: 0.72, autoAlpha: 0 }, { y: 0, x: -850, scale: 1.7, autoAlpha: 1, duration: 1.1, ease: 'power2.out' }, 'c07');
