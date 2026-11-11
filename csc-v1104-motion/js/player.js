@@ -40,6 +40,7 @@
   let anchorT = 0;
   let anchorPerf = 0;
   let scale = 1;
+  let mcapEl = null, mbarFillEl = null;   // the phone's caption line and progress bar (made by the ui, placed by fit())
   let rate = 1;             // playback speed (Shift+> / Shift+<) — a review tool only; R (restart, for recording) resets it to 1
   let booted = false;       // the scenes are built and the start position restored (resume): before that nothing renders or is saved
   let refit = false;        // the canvases were re-sized (which blanks them): the next frame tells onFrame to redraw everything
@@ -223,8 +224,21 @@
   }
 
   // ---------- layout ----------
+  // a phone held upright (and ?render off): the frame keeps its 16:9 shape scaled to the width and sits under the top
+  // edge, so the caption line below it has the rest of the screen — the in-stage captions would be 8px there
+  const MOBILE_Q = '(max-width: 900px) and (orientation: portrait)';
   function fit() {
     scale = Math.min(innerWidth / W, innerHeight / H);
+    const mobile = !params.has('render') && matchMedia(MOBILE_Q).matches && !document.fullscreenElement;
+    document.body.classList.toggle('vp-mobile', mobile);
+    if (mobile) {
+      const margin = Math.min(Math.max(innerHeight * 0.06, 22), 84);
+      stage.style.top = Math.round(margin + (H * scale) / 2) + 'px';   // inline top beats the CSS 50%
+      if (mcapEl) mcapEl.style.top = Math.round(margin + H * scale + 16) + 'px';   // the caption line sits under the frame
+    } else {
+      stage.style.top = '';
+      if (mcapEl) mcapEl.style.top = '';
+    }
     stage.style.transform = `translate(-50%, -50%) scale(${scale})`;
     for (const e of canvases) sizeCanvas(e);
     if (canvases.length) refit = true;   // a re-sized canvas is blank: every onFrame gets redraw = true on the next frame
@@ -420,6 +434,12 @@
     start.addEventListener('click', () => { if (start.classList.contains('vp-blocked')) ui.startNow(); });
 
     const captions = el('div', 'vp-captions', stage);
+    const mcap = el('div', 'vp-mcap');   // the phone's caption line: outside the stage, so it is not scaled down with it
+    mcapEl = mcap;
+    const mbar = el('div', 'vp-mbar');
+    mbarFillEl = el('div', 'vp-mbar-fill', mbar);
+    const mhint = el('div', 'vp-mhint');
+    mhint.textContent = '横屏观看 · 画面更大';
     const measurer = el('span', 'vp-captions vp-measure', stage); // same font as captions, never shown
     // the debug bar is one row: the time in seconds (the unit render.py's --from / --to take) on the left, the timeline
     // beside it, and the current cue's id and line written inside the timeline
@@ -624,8 +644,11 @@
         const c = currentCue();
         const seg = showCaptions && plan ? plan.find((p) => t >= p.start && t < p.end) || null : null;
         captions.classList.toggle('vp-on', !!seg);
+        mcap.classList.toggle('vp-on', !!seg && document.body.classList.contains('vp-mobile'));
+        if (mbarFillEl) mbarFillEl.style.width = duration ? (t / duration) * 100 + '%' : '0';
         if (seg !== lastSeg) {
           captions.textContent = seg ? seg.text : '';
+          mcap.textContent = seg ? seg.text : '';
           lastSeg = seg;
         }
         debug.classList.toggle('vp-on', showDebug);
