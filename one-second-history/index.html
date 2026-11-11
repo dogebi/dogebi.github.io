@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1초는 누가 어떻게 정했을까?</title>
+  <link rel="stylesheet" href="fonts/noto-sans-kr/noto-sans-kr-700.css">
+  <link rel="stylesheet" href="css/player.css">
+  <link rel="stylesheet" href="css/fxkit.css">
+  <link rel="stylesheet" href="css/typefx.css">
+  <link rel="stylesheet" href="css/reckit.css">
+  <link rel="stylesheet" href="css/look.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav id="language-switcher" aria-label="언어 선택">
+    <button type="button" data-language="ko" aria-label="한국어">한국어</button>
+    <button type="button" data-language="cn" aria-label="简体中文">中文</button>
+    <button type="button" data-language="jp" aria-label="日本語">日本語</button>
+    <button type="button" data-language="en" aria-label="English">EN</button>
+  </nav>
+  <div id="stage" data-width="1920" data-height="1080">
+    <!--
+      Persistent layers (background, grain, frame) go directly in #stage.
+      Each storyboard scene is a <section class="scene" id="sNN"> — full-stage, absolutely positioned,
+      shown/hidden by scene() in js/scenes.js.
+    -->
+    <div class="world" aria-hidden="true"><div class="haze haze-a"></div><div class="haze haze-b"></div><div class="floor"></div><div class="grain"></div></div>
+    <section class="scene observatory" id="s01">
+      <div class="scene-kicker">시간의 기준</div><div class="brass-dial"><i class="dial-hand"></i><b class="dial-pin"></b></div>
+      <div class="hero-copy"><p>시간의 단위</p><h1>1초는 누가<br>정했을까?</h1><span class="answer">한 사람의 답이 아닙니다</span></div>
+      <div class="gathering"><span>관측</span><i></i><span>합의</span><i></i><span>표준</span></div><div class="scope-rim"></div><div class="foreground-brass"></div>
+    </section>
+    <section class="scene sundial" id="s02">
+      <div class="scene-kicker">태양을 따라 세던 시간</div><div class="sun-orbit"><div class="sun"></div><div class="orbit-mark"></div></div>
+      <div class="stone-number">86,400</div><div class="stone-caption">평균 태양일을 나눈 초</div>
+      <div class="shadow-clock"><div class="clock-ticks"></div><div class="shadow-gnomon"></div><div class="shadow-line"></div><div class="shadow-pointer"></div></div>
+      <div class="orbit-year">1900 · 열대년</div><div class="year-astrolabe"></div><div class="year-number">31,556,925.9747</div>
+    </section>
+    <section class="scene chamber" id="s03">
+      <div class="scene-kicker">하늘에서 원자로</div><div class="lab-window"></div><div class="beam"></div><div class="resonator"></div>
+      <div class="vacuum-tube"><div class="atom"><i></i><i></i><i></i><b></b></div><span class="level level-top">높은 에너지</span><span class="level level-bottom">낮은 에너지</span></div>
+      <div class="standard-plate">국제도량형총회</div>
+      <div class="count-number">9,192,631,770</div><div class="count-caption">세슘 133 원자의 진동 횟수</div>
+      <div class="year-stamp">1967 · 국제도량형총회</div><div class="refine">2018 · 정의의 표현을 더 정밀하게</div>
+    </section>
+    <section class="scene present" id="s04">
+      <div class="scene-kicker">오늘의 1초</div><div class="wave-ribbon"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="one-second">1초</div><div class="present-caption">세슘 원자의 일정한 리듬을 기준으로</div>
+      <div class="closing">하늘을 보던 시간에서<br><em>원자의 리듬</em>을 세는 시간으로</div><div class="closing-foot">더 정확한 시간을 찾으려는 사람들의 합의</div>
+      <div class="closing-clock"><i></i><b></b></div><div class="far-clock far-clock-a"></div><div class="far-clock far-clock-b"></div><div class="far-clock far-clock-c"></div>
+    </section>
+  </div>
+
+  <script src="vendor/gsap/gsap.min.js"></script>
+  <script src="vendor/gsap/SplitText.min.js"></script>
+  <script src="vendor/gsap/CustomEase.min.js"></script>
+  <script src="vendor/gsap/CustomBounce.min.js"></script>
+  <script src="vendor/gsap/CustomWiggle.min.js"></script>
+  <script src="vendor/gsap/DrawSVGPlugin.min.js"></script>
+  <script src="vendor/gsap/MorphSVGPlugin.min.js"></script>
+  <script src="vendor/gsap/MotionPathPlugin.min.js"></script>
+  <script src="vendor/gsap/TextPlugin.min.js"></script>
+  <script src="vendor/gsap/ScrambleTextPlugin.min.js"></script>
+  <script src="js/cues.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/sync.js"></script>          <!-- measured phrase times (scripts/sync.mjs): cue(id).when() uses them -->
+  <script src="js/player.js"></script>
+  <script src="js/fxkit.js"></script>          <!-- optional effects kit: FXKit.install(ctx) — references/fx-kit.md -->
+  <script src="js/typefx.js"></script>         <!-- expressive typography: TypeFX.install(ctx) — references/type-fx.md -->
+  <script src="js/art/core.js"></script>       <!-- illustration modules: add js/art/<group>.js below — references/art-library.md -->
+  <script src="js/media-src.js"></script>      <!-- footage: the clips this video shows (empty when none) — references/footage.md -->
+  <script src="js/media.js"></script>          <!-- footage on the master clock: MEDIA.install(ctx) -->
+  <script src="js/reckit.js"></script>         <!-- screen recordings without zooming: RecKit.install(ctx) -->
+  <script src="js/scenes.js"></script>
+</body>
+</html>

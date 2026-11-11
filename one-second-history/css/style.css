@@ -1,0 +1,121 @@
+/* style.css — art direction for this video. Replace the tokens with the palette and type scale
+   chosen in storyboard.md. Sizes are in stage pixels (the stage is scaled as a whole). */
+
+:root {
+  --bg: #10161b;
+  --fg: #f4eee2;
+  --muted: #c6b9a0;
+  --accent: #eab86d;
+  --accent-2: #79d8e5;
+
+  /* SIL OFL 1.1 catalogue fonts only (installed in fonts/, see player.css) — never add a system font to these stacks */
+  --font: 'Pretendard', sans-serif;
+  --mono: 'D2Coding', 'Pretendard', monospace;   /* code, ids, numbers in a terminal look; has Hangul */
+  --safe: 96px;
+}
+
+#stage {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+}
+/* browsers don't let form controls inherit the page font: a <button>/<input>/<select>/<textarea> in a scene would show a
+   system font — they take the scene's font like everything else */
+#stage button, #stage input, #stage select, #stage textarea { font: inherit; letter-spacing: inherit; }
+
+.world,.scene { position:absolute; inset:0; overflow:hidden; }
+.world { background:radial-gradient(ellipse at 78% 20%,#34464a 0,transparent 28%),linear-gradient(125deg,#11181c 0%,#273036 48%,#11171b 100%); }
+.world:before { content:"";position:absolute;inset:-10%;opacity:.27;background:repeating-linear-gradient(113deg,transparent 0 118px,#d8c39a20 119px 121px,transparent 122px 210px);transform:perspective(700px) rotateX(8deg); }
+.world:after { content:"";position:absolute;left:4%;top:-31%;width:63%;height:120%;border:2px solid #e1c48a20;border-radius:48% 48% 0 0;box-shadow:inset 22px 0 70px #e0bc7510,24px 0 90px #090d0f66;transform:rotate(-8deg); }
+.haze { position:absolute;border-radius:50%;filter:blur(50px);opacity:.18; }
+.haze-a { width:620px;height:240px;left:60px;top:180px;background:#e4a75d;transform:rotate(-22deg); }
+.haze-b { width:500px;height:360px;right:50px;bottom:20px;background:#5aa4b0; }
+.floor { position:absolute;left:-10%;right:-10%;height:58%;bottom:-37%;background:radial-gradient(ellipse at 45% 0%,#293237aa,transparent 52%),linear-gradient(180deg,#20292b80,#0b1013);transform:perspective(650px) rotateX(54deg);transform-origin:top;box-shadow:0 -25px 80px #eab86d0a; }
+.grain { position:absolute;inset:0;opacity:.12;background-image:radial-gradient(#fff 0.55px,transparent .7px);background-size:5px 5px;mask-image:linear-gradient(transparent,#000); }
+.scene { visibility:hidden; color:var(--fg); }
+.scene-kicker { position:absolute;left:150px;top:96px;font-size:30px;letter-spacing:.12em;color:#dfc28f; }
+.hero-copy { position:absolute;left:180px;top:285px;z-index:3; }
+.hero-copy p { margin:0 0 24px;font-size:34px;color:#ddc69f;letter-spacing:.12em; }
+.hero-copy h1 { margin:0;font-size:130px;line-height:1.08;letter-spacing:-.055em;font-weight:800;text-shadow:0 5px 32px #0008; }
+.answer { display:block;margin-top:32px;font-size:42px;color:#f1d39c; }
+.brass-dial { position:absolute;width:610px;height:610px;right:195px;top:165px;border-radius:50%;border:14px solid #a87840;background:repeating-conic-gradient(from 0deg,#d8b778 0 1deg,transparent 1deg 15deg),radial-gradient(circle at 40% 36%,#716044,#1b2428 70%);box-shadow:inset 0 0 55px #000,0 0 0 22px #c38e4b22,0 35px 100px #0009; }
+.brass-dial:before { content:"";position:absolute;inset:38px;border-radius:50%;border:2px solid #e3c4867a;box-shadow:inset 0 0 35px #080d10; }
+.dial-hand { position:absolute;width:6px;height:235px;left:50%;top:68px;background:linear-gradient(#fff0c9,#af793d);transform-origin:50% 100%;box-shadow:0 0 20px #ffd387; }
+.dial-pin { position:absolute;left:calc(50% - 13px);top:calc(50% - 13px);width:26px;height:26px;border-radius:50%;background:#f7d99c;box-shadow:0 0 18px #ffd387; }
+.gathering { position:absolute;bottom:106px;left:245px;display:flex;align-items:center;gap:28px;font-size:29px;letter-spacing:.12em;color:#e3c591; }
+.gathering i { width:125px;height:2px;background:linear-gradient(90deg,#e4b66f,#71ced8);box-shadow:0 0 14px #e4b66f; }
+.scope-rim { position:absolute;left:-250px;top:170px;width:720px;height:900px;border:36px solid #9472473a;border-radius:50%;transform:rotate(19deg);box-shadow:inset 26px 0 70px #0009,20px 0 45px #c9a26c20; }
+.foreground-brass { position:absolute;right:-80px;bottom:-135px;width:510px;height:410px;border:44px solid #8a62383d;border-radius:54% 0 0 0;transform:rotate(-15deg);filter:blur(2px); }
+.sun-orbit { position:absolute;width:780px;height:650px;left:90px;top:205px;border:2px solid #d3a56b44;border-radius:50%;transform:rotate(-21deg);box-shadow:inset 0 0 70px #ddaa5c10,0 0 65px #edb86915; }
+.sun { position:absolute;width:175px;height:175px;left:120px;top:25px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff2c9,#e5a64f 42%,#a34f2d 78%);box-shadow:0 0 60px #efad59aa,0 0 180px #e8974266; }
+.orbit-mark { position:absolute;right:3%;bottom:22%;width:30px;height:30px;border-radius:50%;background:#f8db9c;box-shadow:0 0 32px #ffd17b; }
+.stone-number { position:absolute;right:150px;top:290px;font-size:148px;font-weight:800;letter-spacing:-.065em;color:#e4c992;text-shadow:0 4px 0 #72563a,0 12px 38px #000; }
+.stone-caption { position:absolute;right:175px;top:454px;font-size:36px;color:#d6c6a4; }
+.shadow-clock { position:absolute;left:285px;bottom:95px;width:420px;height:165px;border:9px solid #8b633d;background:repeating-conic-gradient(from 4deg at 50% 50%,#e1bf7a 0deg 1deg,transparent 1deg 15deg),radial-gradient(ellipse at 45% 34%,#9c7545,#282824 70%);border-radius:50%;transform:rotate(-8deg);box-shadow:inset 0 0 48px #090d10,0 25px 55px #0009,0 0 0 8px #d6ad6822; }
+.clock-ticks { position:absolute;inset:18px;border:2px solid #f0d3938a;border-radius:50%;box-shadow:inset 0 0 20px #e0bb6b33; }
+.shadow-gnomon { position:absolute;width:12px;height:275px;left:175px;bottom:15px;background:linear-gradient(90deg,#493a2d,#d0a66a,#5b4630);transform:rotate(26deg);transform-origin:bottom;box-shadow:10px 0 25px #0007; }
+.shadow-line { position:absolute;left:105px;top:51px;width:195px;height:3px;background:#f0c985;transform:rotate(-19deg);box-shadow:0 0 15px #f0c985; }
+.shadow-pointer { position:absolute;left:50%;top:48%;width:4px;height:138px;transform-origin:50% 4px;transform:rotate(38deg);background:linear-gradient(#f8e0a3,#977042);box-shadow:0 0 16px #e9c983; }
+.orbit-year { position:absolute;left:1050px;top:180px;font-size:34px;letter-spacing:.1em;color:#f1ce91; }
+.year-astrolabe { position:absolute;left:865px;top:315px;width:385px;height:385px;border:13px solid #946b4077;border-radius:50%;background:repeating-conic-gradient(from 1deg,#d8ba8066 0deg 1deg,transparent 1deg 30deg),radial-gradient(circle,#514632,#222728 72%);box-shadow:inset 0 0 60px #000b,0 0 35px #cf9c5544,0 0 0 22px #a7794416; }
+.year-astrolabe:before,.year-astrolabe:after { content:"";position:absolute;inset:38px;border:2px solid #dfbd7c6b;border-radius:50%;transform:rotate(35deg) scaleX(.44); }
+.year-astrolabe:after { transform:rotate(-35deg) scaleX(.44); }
+.year-number { position:absolute;left:730px;top:470px;font-size:66px;font-weight:780;letter-spacing:-.045em;color:#f0d49a;text-shadow:0 2px #664a2c,0 0 24px #d79d58;white-space:nowrap; }
+.chamber { background:radial-gradient(ellipse at 67% 50%,#1b525e77,transparent 38%); }
+.lab-window { position:absolute;right:60px;top:100px;width:760px;height:720px;border-radius:48% 48% 30% 30%;border:7px solid #9eb6ac55;background:linear-gradient(115deg,#b9d5d422,#2c697344 28%,#071317b0 72%);box-shadow:inset 0 0 70px #79d8e555,0 0 100px #6ed2de22;transform:rotate(8deg); }
+.beam { position:absolute;right:500px;top:310px;width:800px;height:220px;transform:rotate(-15deg);background:linear-gradient(90deg,transparent,#75ddec32 28%,#d7fbffbb 50%,#60cfdf30 72%,transparent);filter:blur(2px);clip-path:polygon(0 45%,100% 0,100% 100%,0 55%); }
+.vacuum-tube { position:absolute;right:310px;top:180px;width:360px;height:600px;border-radius:48% 48% 24% 24%;border:5px solid #c5e4db88;background:linear-gradient(110deg,#d5f5e51c,#8bd5db0b 48%,#d5f5e522);box-shadow:inset 25px 0 65px #7edbe522,0 30px 90px #0009; }
+.vacuum-tube:before,.vacuum-tube:after { content:"";position:absolute;left:25%;width:50%;height:4px;background:#b2f0ee;box-shadow:0 0 26px #8af2f0; }
+.vacuum-tube:before { top:26%; }.vacuum-tube:after { bottom:25%; }
+.atom { position:absolute;left:50%;top:48%;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 20px 12px #86f4f0,0 0 75px 35px #34b9d580; }
+.atom i { position:absolute;left:-76px;top:-25px;width:152px;height:50px;border:2px solid #94eeecbb;border-radius:50%; }
+.atom i:nth-child(2) { transform:rotate(60deg); }.atom i:nth-child(3) { transform:rotate(-60deg); }
+.atom b { position:absolute;left:-4px;top:-4px;width:8px;height:8px;background:#fff;border-radius:50%; }
+.level { position:absolute;left:0;width:100%;text-align:center;font-size:26px;letter-spacing:.05em;color:#a9e7e3; }
+.level-top { top:17%; }.level-bottom { bottom:16%; }
+.count-number { position:absolute;left:150px;top:355px;font-size:102px;letter-spacing:-.07em;font-weight:850;color:#bffaff;text-shadow:0 0 24px #65e5ef,0 0 60px #2eb9d7; }
+.count-caption { position:absolute;left:165px;top:492px;font-size:37px;color:#c3dfdc; }
+.year-stamp { position:absolute;left:165px;top:580px;font-size:32px;letter-spacing:.1em;color:#e7c892; }
+.refine { position:absolute;right:160px;bottom:92px;font-size:29px;color:#b9dddd;letter-spacing:.04em; }
+.present { background:radial-gradient(ellipse at 50% 51%,#306b7260,transparent 47%); }
+.wave-ribbon { position:absolute;left:130px;top:330px;width:1660px;height:300px;display:flex;align-items:center;justify-content:space-between;transform:rotate(-8deg);filter:drop-shadow(0 0 22px #62e1ea); }
+.wave-ribbon i { display:block;width:44px;border-radius:50%;background:linear-gradient(180deg,#edffff,#54cedb 45%,#26777f);box-shadow:0 0 24px #70e5ee; }
+.wave-ribbon i:nth-child(4n+1) { height:55px; }.wave-ribbon i:nth-child(4n+2) { height:170px; }.wave-ribbon i:nth-child(4n+3) { height:275px; }.wave-ribbon i:nth-child(4n) { height:105px; }
+.one-second { position:absolute;left:690px;top:245px;font-size:230px;font-weight:850;letter-spacing:-.08em;color:#efffff;text-shadow:0 4px 0 #267078,0 0 45px #77eaf2,0 0 120px #2dc3d2; }
+.present-caption { position:absolute;left:0;right:0;top:544px;text-align:center;font-size:40px;color:#cce7e2;letter-spacing:.04em; }
+.closing { position:absolute;left:0;right:0;top:260px;text-align:center;font-size:76px;line-height:1.38;font-weight:730;letter-spacing:-.04em;text-shadow:0 6px 40px #000b; }
+.closing em { font-style:normal;color:#98edf0;text-shadow:0 0 36px #3dc9d2; }
+.closing-foot { position:absolute;left:0;right:0;bottom:165px;text-align:center;font-size:34px;letter-spacing:.08em;color:#e3c995; }
+.closing-clock { position:absolute;right:185px;bottom:52px;width:225px;height:225px;border:11px solid #9e7748;border-radius:50%;background:repeating-conic-gradient(#d9bb8066 0deg 1deg,transparent 1deg 30deg),radial-gradient(circle at 38% 30%,#62583f,#11191b 70%);box-shadow:inset 0 0 36px #000b,0 0 42px #d6a85c33; }
+.closing-clock i { position:absolute;left:calc(50% - 3px);top:18px;width:6px;height:103px;background:linear-gradient(#fff0c9,#a87840);transform-origin:50% 94px;transform:rotate(22deg);box-shadow:0 0 15px #f0cb88; }
+.closing-clock b { position:absolute;left:calc(50% - 7px);top:calc(50% - 7px);width:14px;height:14px;border-radius:50%;background:#f3d9a3;box-shadow:0 0 12px #ffd888; }
+.far-clock { position:absolute;border:7px solid #a7845740;border-radius:50%;background:radial-gradient(circle,#71624433,#0e1518aa);box-shadow:inset 0 0 30px #0009,0 0 25px #d4b57912; }
+.far-clock-a { right:425px;bottom:88px;width:120px;height:120px; }.far-clock-b { right:75px;bottom:320px;width:82px;height:82px; }.far-clock-c { left:130px;bottom:110px;width:156px;height:156px; }
+
+/* Instrument scale: the former sky measure is now etched into one continuous brass floor dial. */
+.shadow-clock { left:150px;bottom:-35px;width:1200px;height:430px;border-width:16px;background:repeating-conic-gradient(from 4deg at 50% 50%,#e1bf7a 0deg 1deg,transparent 1deg 15deg),radial-gradient(ellipse at 45% 34%,#856743,#202729 70%);box-shadow:inset 0 0 90px #090d10,0 25px 70px #0009,0 0 0 15px #d6ad6822; }
+.clock-ticks { inset:26px;border-width:3px; }
+.shadow-gnomon { left:400px;bottom:22px;width:16px;height:355px; }
+.shadow-line { left:355px;top:135px;width:440px;height:4px; }
+.shadow-pointer { height:330px;width:7px; }
+.stone-number { left:590px;right:auto;top:700px;font-size:116px;line-height:1;font-weight:820;color:#f1d297;z-index:2; }
+.stone-caption { left:630px;right:auto;top:835px;color:#ead8b4;z-index:2; }
+.year-astrolabe { left:710px;top:260px;width:650px;height:650px;border-width:17px;box-shadow:inset 0 0 90px #000b,0 0 48px #cf9c5544,0 0 0 26px #a7794416; }
+.year-number { left:740px;top:540px;width:590px;text-align:center;font-size:57px;font-weight:800;white-space:nowrap; }
+.atom { width:18px;height:18px;box-shadow:0 0 28px 18px #86f4f0,0 0 95px 48px #34b9d580; }
+.standard-plate { position:absolute;left:160px;bottom:140px;width:310px;height:310px;border:14px solid #a17d4d;border-radius:50%;display:grid;place-items:center;text-align:center;padding:38px;box-sizing:border-box;color:#f2d69e;font-size:29px;line-height:1.25;letter-spacing:.04em;background:repeating-conic-gradient(#d9bc8366 0deg 1deg,transparent 1deg 20deg),radial-gradient(circle at 35% 30%,#766242,#1b2629 75%);box-shadow:inset 0 0 42px #000b,0 0 40px #d7a95844; }
+.beam { right:auto;left:390px;width:1190px;transform-origin:left center; }
+.resonator { position:absolute;left:360px;top:312px;width:1220px;height:252px;border:20px solid #8eb7b7a8;border-radius:50%;background:linear-gradient(180deg,#8edce21f,#0521268a 47%,#93d6db20);box-shadow:inset 0 0 55px #a2f2f222,0 0 28px #68dbe45c,0 0 0 8px #9fe7e51a; }
+.resonator:before { content:"";position:absolute;inset:22px 34px;border:2px solid #def8e744;border-radius:50%;box-shadow:inset 0 0 30px #b5f3f322; }
+.resonator:after { content:"";position:absolute;left:8%;right:8%;top:50%;height:2px;background:linear-gradient(90deg,transparent,#c8faffaa,transparent);box-shadow:0 0 20px #85e9f2; }
+.count-number { left:390px;top:386px;font-size:92px;z-index:2; }
+
+/* aspect 16:9 · stage 1920×1080 — layout tokens written by new_project.mjs (SKILL.md → Aspect ratio).
+   --safe: minimum text margin. --safe-top/-bottom/-right: keep text and key visuals inside them. */
+:root { --safe: 96px; --safe-top: 96px; --safe-bottom: 96px; --safe-right: 96px; }
+#stage { --caption-bottom: 20px; }
+
+#language-switcher { position:fixed;top:20px;right:24px;z-index:1100;display:flex;gap:6px;padding:6px;border:1px solid #ffffff35;border-radius:999px;background:#11191bcc;backdrop-filter:blur(12px); }
+#language-switcher button { border:0;border-radius:999px;padding:8px 13px;background:transparent;color:#d9e5e2;font:600 15px/1.2 var(--font);cursor:pointer; }
+#language-switcher button:hover,#language-switcher button[aria-pressed="true"] { background:#d8bd85;color:#172024; }
+#language-switcher button:focus-visible { outline:2px solid #8ee8ef;outline-offset:2px; }
