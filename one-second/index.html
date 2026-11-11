@@ -178,6 +178,7 @@
     letter-spacing: .06em;
   }
 
+  .language { position: absolute; z-index: 10; right: 8%; top: 2%; color: #c7cedb; background: #151c29; border: 1px solid #536071; border-radius: 4px; padding: 4px; font: inherit; font-size: clamp(.6rem, 1.2vw, .8rem); }
   @media (prefers-reduced-motion: reduce) {
     .scene *, .scene.live * { animation: none !important; }
     .scene.live .drift path { stroke-dashoffset: 0; }
@@ -189,6 +190,9 @@
 </head>
 <body>
 <div class="stage" id="stage">
+  <select class="language" id="language" aria-label="Language">
+    <option value="ko">한국어</option><option value="en">English</option><option value="ja">日本語</option><option value="zh-CN">简体中文</option>
+  </select>
   <div class="bar"><i id="barFill"></i></div>
   <div class="label" id="sceneLabel">씬 1 / 6</div>
 
@@ -270,19 +274,62 @@
   for (var i = 0; i < 12; i++) ticks.appendChild(document.createElement('i'));
   var tickEls = ticks.children;
 
-  /* 자막을 단어 스팬으로 */
-  scenes.forEach(function (s) {
-    var p = s.el.querySelector('[data-cap]');
-    if (!p) return;
-    s.words = p.textContent.split(' ').map(function (w) {
-      var sp = document.createElement('span');
-      sp.textContent = w;
+  var translations = {
+    ko: {
+      title: '1초는 누가 어떻게 정했을까?', label: '씬',
+      headings: ['하루를 <em>86,400</em>으로 나눈 사람들', '하지만 지구는 <em>흔들린다</em>', '갈릴레이가 본 <em>등시성</em>', '1967년, 회의 테이블의 <em>결정</em>', '지금의 1초, <em>UTC</em>'],
+      unit: ' 회', detail: '세슘-133 원자의 전이 진동 = 정확히 1초', utc: '세계 표준시 = 400여 개 원자시계의 평균',
+      final: '1초는 <b>태양</b>에서 시작해 <b>원자</b> 안에 자리 잡았다.<br>정한 것은 회의 테이블의 사람들이었고,<br>그 기준은 흔들리지 않는 세슘 원자 하나다.',
+      captions: scenes.map(function (s) { return s.el.querySelector('[data-cap]').getAttribute('data-cap'); })
+    },
+    en: {
+      title: 'Who defined the second, and how?', label: 'Scene',
+      headings: ['The people who divided a day into <em>86,400</em>', 'But Earth <em>wobbles</em>', 'Galileo and <em>isochronism</em>', '1967: a <em>decision</em> at the table', 'The second today: <em>UTC</em>'],
+      unit: ' cycles', detail: 'Cesium-133 transition oscillations = exactly one second', utc: 'World time = the average of over 400 atomic clocks',
+      final: 'The second began with the <b>Sun</b> and found its home in the <b>atom</b>.<br>People at a conference defined it,<br>using the unwavering cesium atom as their reference.',
+      captions: ['A day is the cycle of sunrise and sunset. Ancient Egyptians divided night and day into twelve parts each; Babylonian base-60 arithmetic helped establish hours, minutes, and seconds. The first second was one 86,400th of a day.', 'The problem was not the Sun, but Earth. Tidal friction slowly slows its rotation. A second tied to the day varied, so a more stable reference was needed.', 'In 1583, Galileo observed that pendulums of the same length swing in equal times. Huygens built a pendulum clock in 1656, giving clocks a regular rhythm, but the second was still tied to Earth.', 'In 1955, Essen and Parry built a cesium atomic clock. In 1967, the 13th General Conference on Weights and Measures defined one second as 9,192,631,770 periods of the transition between two hyperfine levels of cesium-133.', 'Today, clocks around the world contribute to the atomic time scale behind UTC. Leap seconds have been used to account for the difference from Earth’s rotation. The day is now measured in seconds.', 'Earth wobbles, but atoms provide a stable reference. Our second still keeps time with cesium.']
+    },
+    ja: {
+      title: '1秒は誰がどう決めたのか？', label: 'シーン',
+      headings: ['1日を<em>86,400</em>に分けた人々', 'しかし地球は<em>揺らぐ</em>', 'ガリレオが見た<em>等時性</em>', '1967年、会議での<em>決定</em>', '現代の1秒、<em>UTC</em>'],
+      unit: ' 回', detail: 'セシウム133原子の遷移の振動 = 正確に1秒', utc: '世界標準時 = 400台以上の原子時計の平均',
+      final: '1秒は<b>太陽</b>から始まり、<b>原子</b>の中に居場所を見つけた。<br>会議の人々がその定義を決め、<br>揺るがないセシウム原子を基準にした。',
+      captions: ['日の出から日の入りを繰り返す1日。古代エジプトでは昼と夜をそれぞれ12に分け、バビロニアの60進法を経て時・分・秒が定着した。最初の1秒は1日の86,400分の1だった。', '問題は太陽ではなく地球だった。潮汐の摩擦で地球の自転は少しずつ遅くなる。1日に結びついた秒は変動するため、より安定した基準が必要になった。', '1583年、ガリレオは同じ長さの振り子が同じ周期で振れる等時性に注目した。1656年にホイヘンスが振り子時計を作ったが、秒の定義はまだ地球に結びついていた。', '1955年、エッセンとパリーがセシウム原子時計を作った。1967年の第13回国際度量衡総会は、セシウム133の2つの超微細準位間の遷移に対応する振動9,192,631,770回を1秒と定めた。', '現在、世界中の原子時計がUTCの基礎となる原子時を作っている。地球の自転との差は、うるう秒で調整されてきた。今では1日が秒で測られる。', '地球は揺らぐが、原子は安定した基準となる。私たちの1秒は今日もセシウムとともに刻まれる。']
+    },
+    'zh-CN': {
+      title: '一秒是谁如何定义的？', label: '场景',
+      headings: ['将一天分成<em>86,400</em>份的人们', '但地球在<em>摇摆</em>', '伽利略发现的<em>等时性</em>', '1967年，会议桌上的<em>决定</em>', '今天的一秒，<em>UTC</em>'],
+      unit: ' 次', detail: '铯-133原子的跃迁振荡 = 精确的一秒', utc: '世界标准时间 = 400多台原子钟的平均',
+      final: '一秒从<b>太阳</b>开始，最终安身于<b>原子</b>之中。<br>会议上的人们确定了它的定义，<br>以稳定的铯原子作为基准。',
+      captions: ['日升日落的周期就是一天。古埃及人将白天和黑夜各分成十二份，巴比伦的六十进制促成了时、分、秒的形成。最初的一秒是一天的八万六千四百分之一。', '问题不在太阳，而在地球。潮汐摩擦使地球自转缓慢减速。与一天绑定的秒会发生变化，因此需要更稳定的基准。', '1583年，伽利略观察到相同长度的摆具有相同的摆动周期。1656年，惠更斯制造了摆钟，但秒的定义仍与地球有关。', '1955年，埃森和帕里制造了铯原子钟。1967年第十三届国际计量大会规定，铯-133两个超精细能级之间跃迁对应的振荡9,192,631,770次为一秒。', '如今，世界各地的原子钟共同形成UTC所依据的原子时。人们曾用闰秒调整它与地球自转之间的差异。现在，一天由秒来衡量。', '地球会摇摆，原子却能提供稳定的基准。我们的一秒至今仍与铯同行。']
+    }
+  };
+  var language = document.getElementById('language');
+  var current = translations.ko;
+  function setLanguage(code) {
+    current = translations[code] || translations.ko;
+    document.documentElement.lang = code;
+    document.title = current.title;
+    scenes.slice(0, 5).forEach(function (s, i) { s.el.querySelector('h2').innerHTML = current.headings[i]; });
+    document.querySelector('.big small').textContent = current.detail;
+    document.getElementById('count').nextSibling.textContent = current.unit;
+    document.querySelector('.utc').textContent = current.utc;
+    document.querySelector('.lede').innerHTML = current.final;
+    scenes.forEach(function (s, i) {
+      var p = s.el.querySelector('[data-cap]');
       p.textContent = '';
-      p.appendChild(sp);
-      p.appendChild(document.createTextNode(' '));
-      return sp;
+      var words = code === 'ja' || code === 'zh-CN' ? Array.from(current.captions[i]) : current.captions[i].split(' ');
+      s.words = words.map(function (word) {
+        var span = document.createElement('span');
+        span.textContent = word;
+        p.appendChild(span);
+        if (code !== 'ja' && code !== 'zh-CN') p.appendChild(document.createTextNode(' '));
+        return span;
+      });
     });
-  });
+  }
+  language.addEventListener('change', function () { setLanguage(language.value); var live = scenes.findIndex(function (s) { return s.el.classList.contains('live'); }); if (live >= 0) label.textContent = current.label + ' ' + (live + 1) + ' / ' + scenes.length; });
+  setLanguage('ko');
 
   function ss(a, b, t) { var x = Math.min(1, Math.max(0, (t - a) / (b - a))); return x * x * (3 - 2 * x); }
 
@@ -303,11 +350,12 @@
       s.el.style.opacity = a;
       s.el.classList.toggle('live', vis);
       if (vis) {
-        label.textContent = '씬 ' + (i + 1) + ' / ' + scenes.length;
+        label.textContent = current.label + ' ' + (i + 1) + ' / ' + scenes.length;
         if (s.words) {
           var local = time - s.t0;
           s.words.forEach(function (w, wi) {
-            w.style.opacity = ss(0.4 + wi * 0.13, 0.4 + wi * 0.13 + 0.25, local);
+            var delay = wi * Math.min(0.13, (s.t1 - s.t0 - 1) / s.words.length);
+            w.style.opacity = ss(0.4 + delay, 0.4 + delay + 0.25, local);
           });
         }
         if (i === 0) {
@@ -318,7 +366,7 @@
           var target = 9192631770;
           var p = ss(1.2, 11, time - s.t0);
           var eased = 1 - Math.pow(1 - p, 3);
-          document.getElementById('count').textContent = Math.round(target * eased).toLocaleString('ko-KR');
+          document.getElementById('count').textContent = Math.round(target * eased).toLocaleString(document.documentElement.lang);
         }
       }
     });
@@ -331,6 +379,7 @@
   if (window.FILM_SEEK != null) { window.seek(window.FILM_SEEK); return; }
   requestAnimationFrame(frame);
   window.addEventListener('keydown', function (e) {
+    if (e.target === language) return;
     if (e.code === 'Space') { paused = !paused; e.preventDefault(); }
     if (e.code === 'ArrowRight') window.seek(time + 2);
     if (e.code === 'ArrowLeft') window.seek(time - 2);
