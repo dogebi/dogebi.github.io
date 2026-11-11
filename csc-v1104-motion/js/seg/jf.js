@@ -277,7 +277,6 @@ window.SEG.jf = (ctx, K, TX, H, win) => {
         经过 leader <span class="hl">审核放行</span>
       </div>
       <div class="jf7-four" style="position:absolute;left:104px;top:600px;width:820px;display:flex;flex-wrap:wrap;gap:18px 26px"></div>
-      <div class="jf7-paper" style="position:absolute;right:120px;top:420px"></div>
     </div>
   </section>`);
   const OUTS = ['统计', '预警', '审计'];
@@ -298,9 +297,9 @@ window.SEG.jf = (ctx, K, TX, H, win) => {
   const approval = D.paper({
     meta: 'leader 审阅', title: '放行',
     lines: ['结论与证据一并提交', '签字后对外'], stamp: 'APPROVED',
-    style: 'width:520px;transform:rotate(-2.4deg)',
+    style: 'right:110px;top:410px;width:470px;transform:rotate(-2.4deg)',
   });
-  s18.querySelector('.jf7-paper').appendChild(approval);
+  s18.querySelector('.cam').appendChild(approval);
   gsap.set(routeEls, { autoAlpha: 0, x: -20 });
   gsap.set(fourEls, { autoAlpha: 0, y: 14 });
   gsap.set(approval, { autoAlpha: 0, y: 40, rotation: 0 });
