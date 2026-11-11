@@ -1,0 +1,10 @@
+/* fonts.css — @font-face for fonts added with scripts/add_font.mjs (catalogue or Google Fonts OFL). Generated; don't add other fonts by hand. */
+
+/* noto-sans-sc — Google Fonts ofl/notosanssc @ 5bb28733cec3 · SANS_SERIF */
+@font-face {
+  font-family: 'Noto Sans SC';   /* SIL OFL 1.1 · (c) 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'. · fonts/noto-sans-sc/OFL.txt */
+  src: url('../fonts/noto-sans-sc/NotoSansSC[wght].ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: block;
+}

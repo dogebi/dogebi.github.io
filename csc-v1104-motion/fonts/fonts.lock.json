@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "note": "fonts installed from Google Fonts (ofl/ only) by add_font.mjs — pinned commit + sha256 of every file. Generated; do not edit.",
+  "fonts": [
+    {
+      "id": "noto-sans-sc",
+      "family": "Noto Sans SC",
+      "source": "google/fonts",
+      "path": "ofl/notosanssc",
+      "commit": "5bb28733cec313b63fbd415b574b5ae35c8aa8b8",
+      "license": "SIL OFL 1.1",
+      "copyright": "(c) 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'.",
+      "category": "SANS_SERIF",
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100,
+          "max": 900
+        }
+      ],
+      "subsets": [
+        "chinese-simplified",
+        "cyrillic",
+        "latin",
+        "latin-ext",
+        "menu",
+        "vietnamese"
+      ],
+      "files": [
+        {
+          "dest": "fonts/noto-sans-sc/NotoSansSC[wght].ttf",
+          "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+          "bytes": 17772300,
+          "style": "normal",
+          "weight": "100 900"
+        }
+      ],
+      "licenseFile": {
+        "dest": "fonts/noto-sans-sc/OFL.txt",
+        "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+        "bytes": 4388
+      }
+    }
+  ]
+}

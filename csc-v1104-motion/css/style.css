@@ -1,0 +1,199 @@
+/* style.css — 措施说明 CSC-v1104 · 夜里的运营现场
+   Tokens are the art direction in storyboard.md §2. Sizes are stage pixels (1920×1080). */
+
+:root {
+  --ink: #060A12;          /* the hall's dark */
+  --ink-2: #0A1120;
+  --ink-3: #111A2C;
+  --fg: #F2F5FA;
+  --muted: #8C97AA;
+  --blue: #2E6BFF;         /* AI execution / the signal — always "something flowing" */
+  --blue-dim: #1B3B8F;
+  --amber: #FFC069;        /* human judgement: hands, desk lamps, signatures */
+  --amber-dim: #8A6231;
+  --red: #FF4D3D;          /* only 危 / alarms / backlog */
+  --jade: #5AE3B6;         /* only "restored / verified" — a handful of times */
+
+  --font: 'Noto Sans SC', 'Pretendard', sans-serif;
+  --mono: 'Noto Sans SC', 'D2Coding', monospace;
+  --safe: 96px;
+  --safe-top: 96px;
+  --safe-bottom: 96px;
+  --safe-right: 96px;
+}
+
+#stage {
+  background: var(--ink);
+  color: var(--fg);
+  font-family: var(--font);
+  --caption-font: 'Noto Sans SC', 'Noto Sans KR', sans-serif;
+  --caption-bottom: 18px;
+  --caption-max: 1560px;
+}
+
+#stage button, #stage input, #stage select, #stage textarea { font: inherit; letter-spacing: inherit; }
+
+.scene { position: absolute; inset: 0; }
+.scene .cam { position: absolute; inset: 0; transform-origin: 50% 60%; }
+
+/* ── the world layers ─────────────────────────────────────── */
+#hall { position: absolute; inset: 0; }
+.grade {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 50% 42%, rgba(10,20,40,0) 40%, rgba(2,5,12,.55) 100%),
+    linear-gradient(180deg, rgba(4,8,18,.55) 0%, rgba(4,8,18,0) 22%, rgba(3,6,14,0) 74%, rgba(3,6,14,.72) 100%);
+}
+.grain { position: absolute; inset: 0; pointer-events: none; z-index: 40; opacity: .5; mix-blend-mode: overlay; }
+
+/* ── type as material ─────────────────────────────────────── */
+.stencil {
+  font-family: var(--font); font-weight: 900; letter-spacing: -.045em; line-height: .92;
+  color: transparent;
+  background: linear-gradient(102deg, #C9D6FF 0%, #FFFFFF 26%, #8FB0FF 48%, #F6FAFF 66%, #6E8CD0 100%);
+  -webkit-background-clip: text; background-clip: text;
+  filter: drop-shadow(0 10px 26px rgba(6,14,34,.75));
+}
+.stencil.amber {
+  background: linear-gradient(100deg, #FFD79A 0%, #FFF3DF 30%, #FFB65E 58%, #FFE7C4 78%, #B97C33 100%);
+  -webkit-background-clip: text; background-clip: text;
+}
+.stencil.red {
+  background: linear-gradient(100deg, #FF9A8E 0%, #FFE0DB 28%, #FF4D3D 56%, #FFC7BF 80%, #8E241A 100%);
+  -webkit-background-clip: text; background-clip: text;
+}
+.stencil.ghost {
+  background: linear-gradient(100deg, rgba(150,168,200,.5), rgba(220,232,255,.26) 40%, rgba(120,140,175,.4));
+  -webkit-background-clip: text; background-clip: text;
+}
+.num { font-variant-numeric: tabular-nums; font-weight: 900; letter-spacing: -.03em; }
+.hero { font-weight: 900; letter-spacing: -.035em; line-height: 1.0; text-wrap: balance; }
+.head { font-weight: 800; letter-spacing: -.03em; line-height: 1.12; }
+.sub  { font-weight: 400; letter-spacing: -.01em; line-height: 1.55; color: #D8DFEC; }
+.kicker { font-weight: 500; font-size: 28px; letter-spacing: .16em; color: var(--amber); }
+.kicker.blue { color: #9FB8FF; }
+.kicker.dim { color: var(--muted); }
+.hl { color: var(--amber); }
+.hl-blue { color: #9FB8FF; }
+
+/* ── a metal plate: stamped label in the world ────────────── */
+.plate {
+  position: absolute; display: inline-flex; align-items: center; gap: 12px;
+  padding: 10px 18px 9px; border-radius: 3px;
+  font-size: 27px; font-weight: 600; letter-spacing: .02em; color: #E9EEF8;
+  background: linear-gradient(180deg, rgba(38,50,72,.92), rgba(18,25,38,.95));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -1px 0 rgba(0,0,0,.55), 0 8px 20px rgba(0,0,0,.5);
+  border: 1px solid rgba(160,180,215,.16);
+}
+.plate::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FFF, #6E7C93 60%, #2B3446);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.5);
+}
+
+/* ── paper: real sheets on a desk ─────────────────────────── */
+.paper {
+  position: absolute; color: #191D26;
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgba(255,255,255,.95), rgba(246,243,235,.98) 55%, rgba(232,228,217,.99)),
+    #F6F3EB;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,.5), 0 18px 38px rgba(0,0,0,.55), 0 3px 8px rgba(0,0,0,.4);
+  padding: 26px 30px;
+}
+.paper .p-title { font-size: 30px; font-weight: 800; letter-spacing: -.01em; }
+.paper .p-line { font-size: 24px; font-weight: 400; line-height: 1.6; color: #2A303C; }
+.paper .p-meta { font-size: 19px; letter-spacing: .06em; color: #7A8394; }
+.paper .p-rule { height: 1px; background: rgba(20,26,38,.16); margin: 14px 0; }
+.paper .p-stamp {
+  position: absolute; right: 22px; bottom: 18px; padding: 6px 12px;
+  border: 2px solid rgba(198,52,38,.72); color: rgba(198,52,38,.86);
+  font-size: 20px; font-weight: 800; letter-spacing: .08em; transform: rotate(-6deg);
+}
+
+/* ── a monitor: glass, rim, reflection ────────────────────── */
+.screen {
+  position: absolute; border-radius: 8px; overflow: hidden;
+  background: linear-gradient(165deg, #0C1424 0%, #060B16 60%);
+  box-shadow:
+    0 0 0 3px #1A2233, 0 0 0 5px #0A0E16,
+    0 30px 60px rgba(0,0,0,.7), inset 0 0 60px rgba(46,107,255,.10);
+}
+.screen::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(118deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,.02) 26%, rgba(255,255,255,0) 40%);
+}
+.screen .s-body { position: absolute; inset: 18px 22px; font-size: 24px; line-height: 1.65; color: #CBD8F2; }
+.screen .s-log { font-size: 18px; color: #7FA0D8; opacity: .8; line-height: 1.7; }
+
+/* ── the tool wall: Skill as tools on a pegboard ──────────── */
+.peg {
+  position: absolute; border-radius: 4px;
+  background:
+    radial-gradient(rgba(6,10,17,.85) 2.2px, transparent 2.4px) 0 0 / 26px 26px,
+    linear-gradient(178deg, #1C2637 0%, #121A28 46%, #0A101A 100%);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.10), inset 0 -2px 0 rgba(0,0,0,.6),
+    inset 0 0 120px rgba(0,0,0,.55), 0 40px 80px rgba(0,0,0,.55);
+}
+.peg::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(120% 90% at 18% -10%, rgba(150,190,255,.14), rgba(150,190,255,0) 55%);
+}
+.tool { position: absolute; width: 116px; text-align: center; }
+.tool .t-shape {
+  height: 86px; display: flex; align-items: flex-end; justify-content: center;
+  filter: drop-shadow(0 8px 10px rgba(0,0,0,.55));
+}
+.tool .t-tag {
+  margin-top: 8px; font-size: 19px; font-weight: 600; color: #AFBCCD; letter-spacing: .02em; opacity: .55;
+  text-shadow: 0 2px 6px rgba(0,0,0,.8); white-space: nowrap;
+}
+.tool.lit .t-tag { color: #EAF1FF; opacity: 1; }
+.tool .t-hook { width: 2px; height: 10px; background: rgba(190,205,230,.45); margin: 0 auto; }
+
+/* ── the rail: one direction only ─────────────────────────── */
+.rail { position: absolute; height: 26px; border-radius: 4px;
+  background: linear-gradient(180deg, #2B3648 0%, #5A6A85 22%, #1B2434 55%, #0C1119 100%);
+  box-shadow: 0 22px 40px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.28); }
+.rail::after { content: ''; position: absolute; left: 0; right: 0; bottom: -11px; height: 10px;
+  background: linear-gradient(180deg, rgba(46,107,255,.28), rgba(46,107,255,0)); filter: blur(6px); }
+.station { position: absolute; width: 2px; background: linear-gradient(180deg, rgba(150,175,215,.5), rgba(150,175,215,.06)); }
+.station .st-lb { position: absolute; top: -42px; left: 50%; transform: translateX(-50%); white-space: nowrap;
+  font-size: 20px; font-weight: 600; color: #93A2BA; letter-spacing: .03em; }
+.station.done .st-lb { color: #DCE6F7; }
+
+/* ── emergency beacon ─────────────────────────────────────── */
+.beacon {
+  position: absolute; width: 46px; height: 46px; border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #FFD9D2, #FF4D3D 45%, #7A1309 100%);
+  box-shadow: 0 0 60px 18px rgba(255,77,61,.45), 0 0 160px 60px rgba(255,77,61,.16);
+}
+.sweep { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; }
+
+/* ── gauges on the wall ───────────────────────────────────── */
+.gauge { position: absolute; width: 210px; text-align: center; }
+.gauge .g-face {
+  position: relative; width: 190px; height: 190px; margin: 0 auto; border-radius: 50%;
+  background: radial-gradient(circle at 42% 34%, #26314A, #121A28 68%, #0A0F18 100%);
+  box-shadow: inset 0 0 40px rgba(0,0,0,.8), 0 14px 30px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.16);
+}
+.gauge .g-lb { margin-top: 16px; font-size: 24px; font-weight: 600; color: #B9C6D8; }
+.gauge .g-val { font-size: 26px; font-weight: 800; color: #EAF1FF; font-variant-numeric: tabular-nums; }
+
+/* ── chapter card + signature transition ──────────────────── */
+.chap { position: absolute; inset: 0; z-index: 20; }   /* title beats sit above the chapter's own scenes */
+.chap::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(120% 130% at 50% 50%, rgba(3,6,12,.62), rgba(3,6,12,.82) 70%, rgba(3,6,12,.92)),
+    linear-gradient(90deg, rgba(4,8,16,.55), rgba(4,8,16,.2) 60%, rgba(4,8,16,.5));
+}
+.chap .c-num { position: absolute; left: 96px; top: 118px; font-size: 190px; }
+.chap .c-q { position: absolute; left: 96px; bottom: 190px; width: 1340px; font-size: 100px; }
+.chap .c-strip { position: absolute; left: 96px; bottom: 140px; width: 520px; height: 2px;
+  background: linear-gradient(90deg, rgba(255,192,105,.9), rgba(255,192,105,0)); }
+.lightwipe {
+  position: absolute; inset: 0; pointer-events: none; z-index: 30;
+  background: linear-gradient(90deg, rgba(46,107,255,0) 0%, rgba(120,165,255,.30) 46%, rgba(220,235,255,.5) 50%, rgba(120,165,255,.30) 54%, rgba(46,107,255,0) 100%);
+  transform: scaleX(0); transform-origin: left center; mix-blend-mode: screen;
+}
