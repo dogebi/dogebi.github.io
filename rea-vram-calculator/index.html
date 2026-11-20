@@ -8,7 +8,7 @@
     <meta name="description" content="Estimate LLM inference memory, decode speed, prefill, and GPU fit with a transparent Roofline model." />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='20' cy='20' r='13' fill='%2336bd72'/%3E%3Ccircle cx='44' cy='20' r='13' fill='%232c7048'/%3E%3Ccircle cx='20' cy='44' r='13' fill='%232c7048'/%3E%3Ccircle cx='44' cy='44' r='13' fill='%2336bd72'/%3E%3C/svg%3E" />
     <title>LLM 显存计算器 - 我能运行这个 LLM 吗？</title>
-    <script type="module" crossorigin src="/rea-vram-calculator/assets/index-CwC3CQ_p.js"></script>
+    <script type="module" crossorigin src="/rea-vram-calculator/assets/index-UAjN2gSX.js"></script>
     <link rel="stylesheet" crossorigin href="/rea-vram-calculator/assets/index-BhvoQIhD.css">
   </head>
   <body>
@@ -47,6 +47,8 @@
             <div class="mode-tabs" role="tablist" aria-label="Workload">
               <button type="button" class="mode-tab active" role="tab" aria-selected="true" data-mode="inference" data-i18n="inference">推理</button>
               <button type="button" class="mode-tab" role="tab" aria-selected="false" data-mode="finetune" data-i18n="fineTune">微调估算</button>
+              <button type="button" class="mode-tab" role="tab" aria-selected="false" data-mode="singlepass" data-i18n="singlePass">单次推理</button>
+              <button type="button" class="mode-tab" role="tab" aria-selected="false" data-mode="diffusion" data-i18n="diffusion">图像 / 视频</button>
             </div>
 
             <div class="field-block">
@@ -79,6 +81,13 @@
                   <div class="field-block"><label class="field-label" for="model-kv-heads">KV 头数</label><input class="plain-input" id="model-kv-heads" type="number" min="1" value="8"></div>
                   <div class="field-block"><label class="field-label" for="model-active">MoE 活跃参数 (B)</label><input class="plain-input" id="model-active" type="number" min="0" step="0.1" placeholder="同总参数"></div>
                 </div>
+                <div class="field-row">
+                  <div class="field-block"><label class="field-label" for="model-ffn">FFN intermediate</label><input class="plain-input" id="model-ffn" type="number" min="1" value="11008"></div>
+                  <div class="field-block"><label class="field-label" for="model-vocab">Vocabulary size</label><input class="plain-input" id="model-vocab" type="number" min="1" value="128000"></div>
+                  <div class="field-block"><label class="field-label" for="model-query-heads">Query heads</label><input class="plain-input" id="model-query-heads" type="number" min="1" value="32"></div>
+                  <div class="field-block"><label class="field-label" for="model-head-dim">Head dimension</label><input class="plain-input" id="model-head-dim" type="number" min="1" value="128"></div>
+                </div>
+                <div class="field-row check-row"><label><input id="untied-embeddings" type="checkbox" checked> Untied embeddings / output head</label><div class="field-block"><label class="field-label" for="unquantized-tower">Unquantized tower params (B)</label><input class="plain-input" id="unquantized-tower" type="number" min="0" step="0.01" value="0"></div></div>
               </details>
             </div>
 
@@ -110,7 +119,7 @@
               <div class="field-block">
                 <label class="field-label" for="engine" data-i18n="engine">推理引擎</label>
                 <select id="engine" class="control-select">
-                  <option value="auto">Auto</option><option value="vllm">vLLM</option><option value="llamacpp">llama.cpp</option><option value="ollama">Ollama</option><option value="transformers">Transformers</option>
+                  <option value="auto">Auto</option><option value="vllm">vLLM</option><option value="sglang">SGLang</option><option value="trtllm">TensorRT-LLM</option><option value="llamacpp">llama.cpp</option><option value="ollama">Ollama</option><option value="transformers">Transformers</option>
                 </select>
               </div>
               <div class="field-block"><label class="field-label" for="profile">性能配置</label><select id="profile" class="control-select"><option value="latency">优化最低延迟</option><option value="balanced">均衡</option><option value="throughput">最大化吞吐</option></select></div>
@@ -121,8 +130,10 @@
               <div class="field-row runtime-advanced">
                 <div class="field-block"><label class="field-label" for="memory-reserved">GPU 메모리 예약</label><div class="input-with-unit"><input id="memory-reserved" type="number" min="50" max="98" value="92"><span>%</span></div></div>
                 <div class="field-block"><label class="field-label" for="prefill-chunk">Prefill 청크</label><select id="prefill-chunk" class="control-select"><option>256</option><option>512</option><option selected>1024</option><option>2048</option><option>4096</option><option>8192</option><option>16384</option></select></div>
+                <div class="field-block"><label class="field-label" for="target-ttft">Target TTFT / request SLA</label><div class="input-with-unit"><input id="target-ttft" type="number" min="0.01" step="0.1" value="2"><span>sec</span></div></div>
               </div>
               <div class="field-row check-row"><label><input id="prefix-cache" type="checkbox"> Prefix caching</label><label><input id="continuous-batch" type="checkbox" checked> Continuous batching</label><label><input id="static-pool" type="checkbox"> Pre-allocate KV pool</label></div>
+              <div class="field-block"><label class="field-label" for="shared-prefix-ratio">Shared prompt prefix</label><div class="input-with-unit"><input id="shared-prefix-ratio" type="number" min="0" max="100" value="0"><span>%</span></div></div>
               <div class="field-row">
                 <div class="field-block">
                   <label class="field-label" for="batch" data-i18n="batch">批量大小</label>
@@ -176,12 +187,15 @@
                 <div class="field-block"><label class="field-label" for="interconnect">노드 연결</label><select id="interconnect" class="control-select"><option value="nvlink">NVLink / xGMI</option><option value="pcie5">PCIe 5.0</option><option value="ib">InfiniBand HDR</option><option value="ethernet">Ethernet 100G</option><option value="ethernet400">Ethernet 400G</option></select></div>
                 <div class="field-block"><label class="field-label" for="tp-degree">Tensor parallel degree</label><input class="plain-input" id="tp-degree" type="number" min="1" value="1"></div>
                 <div class="field-block"><label class="field-label" for="pp-degree">Pipeline parallel degree</label><input class="plain-input" id="pp-degree" type="number" min="1" value="1"></div>
+                <div class="field-block"><label class="field-label" for="dp-degree">Data parallel degree</label><input class="plain-input" id="dp-degree" type="number" min="1" value="1"></div>
               </div>
             </details>
 
             <div class="field-block hidden" id="tune-options">
               <div class="field-row">
+                <div><label class="field-label" for="training-framework">Training framework</label><select id="training-framework" class="control-select"><option value="auto">Auto</option><option value="hf">HF Transformers + PEFT</option><option value="unsloth">Unsloth</option><option value="torchtune">torchtune</option></select></div>
                 <div><label class="field-label" for="tune-method" data-i18n="tuneMethod">微调方式</label><select id="tune-method" class="control-select"><option value="full">Full fine-tuning</option><option value="lora">LoRA</option><option value="qlora">QLoRA</option></select></div>
+                <div><label class="field-label" for="fine-tune-precision">Full tuning precision</label><select id="fine-tune-precision" class="control-select"><option value="4">FP32</option><option value="2" selected>FP16 / BF16</option><option value="1">FP8</option></select></div>
                 <div><label class="field-label" for="optimizer">优化器</label><select id="optimizer" class="control-select"><option value="adamw">AdamW 32-bit</option><option value="8bit">8-bit Adam</option><option value="paged">Paged AdamW</option><option value="bf16">Pure BF16</option><option value="sgd">SGD</option><option value="adafactor">Adafactor</option></select></div>
                 <div><label class="field-label" for="zero-stage">ZeRO Stage</label><select id="zero-stage" class="control-select"><option value="0">Off</option><option value="1">Stage 1</option><option value="2">Stage 2</option><option value="3">Stage 3 / FSDP</option></select></div>
                 <div><label class="field-label" for="lora-rank">LoRA rank</label><select id="lora-rank" class="control-select"><option>8</option><option selected>16</option><option>32</option><option>64</option><option>128</option></select></div>
@@ -189,7 +203,21 @@
                 <div><label class="field-label" for="dataset-samples">데이터 샘플 수</label><input class="plain-input" id="dataset-samples" type="number" min="1" value="10000"></div>
                 <div><label class="field-label" for="epochs">Epochs</label><input class="plain-input" id="epochs" type="number" min="1" value="3"></div>
               </div>
-              <div class="field-row check-row"><label><input id="gradient-checkpointing" type="checkbox" checked> Gradient checkpointing</label><label><input id="flash-attention" type="checkbox" checked> Flash Attention</label></div>
+              <div class="field-row check-row"><label><input id="gradient-checkpointing" type="checkbox" checked> Gradient checkpointing</label><label><input id="flash-attention" type="checkbox" checked> Flash Attention</label><label><input id="fused-kernels" type="checkbox"> Fused kernels</label><label><input id="activation-offloading" type="checkbox"> Activation offloading</label><label><input id="zero-offload" type="checkbox"> Offload ZeRO states</label></div>
+              <div class="field-row"><div class="field-block"><label class="field-label" for="zero-offload-target">ZeRO offload target</label><select id="zero-offload-target" class="control-select"><option value="ram">System RAM</option><option value="nvme">NVMe</option></select></div></div>
+            </div>
+
+            <div class="field-block hidden" id="singlepass-options">
+              <label class="field-label" for="singlepass-task">Single-pass workload</label>
+              <select id="singlepass-task" class="control-select"><option value="embedding">Embedding</option><option value="reranking">Reranking</option><option value="decision">Decision model</option></select>
+              <p class="metric-caption">Single-pass workloads do not allocate an autoregressive KV cache.</p>
+            </div>
+
+            <div class="field-block hidden" id="diffusion-options">
+              <div class="field-row"><div class="field-block"><label class="field-label" for="diffusion-engine">Diffusion engine</label><select id="diffusion-engine" class="control-select"><option value="diffusers">Diffusers Pipeline</option><option value="comfyui">ComfyUI Node Engine</option><option value="trtdiff">TensorRT Diffusion</option></select></div><div class="field-block"><label class="field-label" for="diffusion-backbone">Backbone</label><select id="diffusion-backbone" class="control-select"><option value="dit">DiT</option><option value="unet">UNet</option></select></div></div>
+              <div class="field-row"><div class="field-block"><label class="field-label" for="diffusion-width">Width</label><input class="plain-input" id="diffusion-width" type="number" min="64" step="64" value="1024"></div><div class="field-block"><label class="field-label" for="diffusion-height">Height</label><input class="plain-input" id="diffusion-height" type="number" min="64" step="64" value="1024"></div></div>
+              <div class="field-row"><div class="field-block"><label class="field-label" for="diffusion-frames">Frames</label><input class="plain-input" id="diffusion-frames" type="number" min="1" value="1"></div><div class="field-block"><label class="field-label" for="diffusion-steps">Denoising steps</label><input class="plain-input" id="diffusion-steps" type="number" min="1" value="30"></div></div>
+                <div class="field-row"><div class="field-block"><label class="field-label" for="diffusion-guidance">Guidance scale</label><input class="plain-input" id="diffusion-guidance" type="number" min="1" step="0.1" value="7.5"></div><label class="check-row"><input id="vae-tiling" type="checkbox"> VAE tiling</label><label class="check-row"><input id="encoder-offload" type="checkbox" checked> Encoder offload</label></div>
             </div>
 
             <details class="settings-group"><summary><span class="summary-title">고급 구성</span></summary>
@@ -201,6 +229,7 @@
                 <div class="field-block"><label class="field-label" for="draft-mode">Draft architecture</label><select id="draft-mode" class="control-select"><option value="sequential">Sequential</option><option value="block">Block-parallel</option></select></div>
                 <div class="field-block"><label class="field-label" for="offload-target">오프로딩 대상</label><select id="offload-target" class="control-select"><option value="ram">CPU / RAM</option><option value="nvme">NVMe</option></select></div>
                 <div class="field-block"><label class="field-label" for="offload-percent">레이어 오프로딩 비율</label><div class="input-with-unit"><input id="offload-percent" type="number" min="0" max="100" value="0"><span>%</span></div></div>
+                <div class="field-block"><label class="field-label" for="offload-layers">Number of layers to offload</label><input class="plain-input" id="offload-layers" type="number" min="0" value="0"></div>
                 <div class="field-block"><label class="field-label" for="grid-carbon">전력망 탄소 강도</label><div class="input-with-unit"><input id="grid-carbon" type="number" min="0" value="400"><span>g/kWh</span></div></div>
                 <div class="field-block"><label class="field-label" for="electricity-price">전기 요금</label><div class="input-with-unit"><input id="electricity-price" type="number" min="0" step="0.01" value="0.15"><span>USD/kWh</span></div></div>
                 <div class="field-block"><label class="field-label" for="duty-cycle">일일 사용률</label><div class="input-with-unit"><input id="duty-cycle" type="number" min="1" max="100" value="25"><span>%</span></div></div>
@@ -240,6 +269,9 @@
               </article>
               <article class="metric-card"><div class="metric-topline"><span>可持续 QPS</span></div><div class="metric-number"><strong id="sustainable-qps">—</strong><span>req/s</span></div><p class="metric-caption">基于并发与 KV 容量</p></article>
               <article class="metric-card"><div class="metric-topline"><span>TTFT P50 / P95 / P99</span></div><div class="metric-number"><strong id="ttft-percentiles">—</strong><span>sec</span></div><p class="metric-caption">并发导致的排队延迟估算</p></article>
+              <article class="metric-card hidden" id="training-throughput-card"><div class="metric-topline"><span>Training MFU / safe micro-batch</span></div><div class="metric-number"><strong id="training-mfu">—</strong><span>%</span></div><p class="metric-caption" id="training-batch-capacity">—</p></article>
+              <article class="metric-card hidden" id="diffusion-output-card"><div class="metric-topline"><span>Generation steps / image time</span></div><div class="metric-number"><strong id="diffusion-image-time">—</strong><span>sec</span></div><p class="metric-caption" id="diffusion-latent-tokens">—</p></article>
+              <article class="metric-card hidden" id="singlepass-output-card"><div class="metric-topline"><span>Single-pass latency</span></div><div class="metric-number"><strong id="singlepass-latency">—</strong><span>ms</span></div><p class="metric-caption" id="singlepass-rate">—</p></article>
             </div>
 
             <div class="selected-model"><strong id="model-summary-name">DeepSeek-R1 3B</strong><span id="model-summary-details">Weights FP16 · KV cache FP16 · MLA · RoPE</span><span id="profile-summary">Profile: Optimized for Lowest Latency</span></div>
@@ -271,7 +303,7 @@
               <div class="breakdown-total"><span data-i18n="requiredMemory">预计需要</span><strong id="required-memory">—</strong></div>
             </div>
 
-            <details class="settings-group result-details"><summary><span class="summary-title">模型与推理诊断</span></summary><div id="diagnostics" class="diagnostics">选择工作负载后显示运行时建议。</div></details>
+            <details class="settings-group result-details"><summary><span class="summary-title">模型、网络与推理诊断</span></summary><div id="diagnostics" class="diagnostics">选择工作负载后显示运行时建议。</div><div class="diagnostics" id="network-budget"></div></details>
 
             <p class="assumption-note"><span class="note-icon">i</span><span id="assumptions" data-i18n="assumptions">估算基于选定模型、GQA 缓存和理论硬件峰值；真实结果受推理引擎、量化内核与多卡通信影响。</span></p>
           </section>
