@@ -4,21 +4,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#101a2b" />
+    <meta name="theme-color" content="#1d1d1d" />
     <meta name="description" content="Estimate LLM inference memory, decode speed, prefill, and GPU fit with a transparent Roofline model." />
-    <title>Matrix — LLM Serving Planner</title>
-    <script type="module" crossorigin src="/rea-vram-calculator/assets/index-Rin9Ldzt.js"></script>
-    <link rel="stylesheet" crossorigin href="/rea-vram-calculator/assets/index-SmwtCOF-.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='20' cy='20' r='13' fill='%2336bd72'/%3E%3Ccircle cx='44' cy='20' r='13' fill='%232c7048'/%3E%3Ccircle cx='20' cy='44' r='13' fill='%232c7048'/%3E%3Ccircle cx='44' cy='44' r='13' fill='%2336bd72'/%3E%3C/svg%3E" />
+    <title>LLM 显存计算器 - 我能运行这个 LLM 吗？</title>
+    <script type="module" crossorigin src="/rea-vram-calculator/assets/index-CwC3CQ_p.js"></script>
+    <link rel="stylesheet" crossorigin href="/rea-vram-calculator/assets/index-BhvoQIhD.css">
   </head>
   <body>
     <div class="app-shell">
       <header class="topbar">
-        <a class="wordmark" href="#top" aria-label="Matrix home">
+        <a class="wordmark" href="#top" aria-label="ApX home">
           <span class="wordmark-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-          <span>MATRIX<span class="wordmark-sub">SERVING PLANNER</span></span>
+          <span>趋近智<span class="wordmark-sub">APX MACHINE LEARNING</span></span>
         </a>
+        <nav class="site-nav" aria-label="主导航"><a data-i18n="navModels" href="https://apxml.com/zh/llm">大模型</a><a class="current" data-i18n="navCalculator" href="https://apxml.com/zh/tools/vram-calculator">显存计算器</a><a data-i18n="navHardware" href="https://apxml.com/zh/hardware">硬件</a><a data-i18n="navCourses" href="https://apxml.com/zh/courses">课程</a><a data-i18n="navPricing" href="https://apxml.com/zh/pricing">定价</a></nav>
         <div class="topbar-right">
-          <span class="status-pill"><span class="status-dot"></span><span data-i18n="localOnly">本地估算 · 无数据上传</span></span>
+          <a class="auth-link" data-i18n="loginSignup" href="https://apxml.com/zh/login">登录 / 注册</a>
           <label class="language-select"><span class="sr-only" data-i18n="language">语言</span>
             <select id="language"><option value="zh">中文</option><option value="ko">한국어</option><option value="en">English</option></select>
           </label>
@@ -28,11 +30,11 @@
       <main id="top" class="workspace">
         <section class="intro">
           <div>
-            <p class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="eyebrow">硬件规划工作台</span></p>
-            <h1 data-i18n="title">你的模型，需要多大的算力？</h1>
-            <p class="intro-copy" data-i18n="subtitle">从权重、KV 缓存到 Roofline 性能上限，先估算，再部署。</p>
+            <p class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="eyebrow">大模型推理</span></p>
+            <h1 data-i18n="title">LLM 推理：显存与性能计算器</h1>
+            <p class="intro-copy" data-i18n="subtitle">估算模型显存占用、生成速度与硬件适配情况。</p>
           </div>
-          <div class="intro-stamp"><span>INFERENCE</span><b>01</b></div>
+          <div class="intro-stamp"><span>MODEL SIMULATION</span><b>v4.5</b></div>
         </section>
 
         <div class="planner-grid">
@@ -50,28 +52,48 @@
             <div class="field-block">
               <label class="field-label" for="model" data-i18n="model">选择模型</label>
               <select id="model" class="control-select">
+                <option value="3" selected>DeepSeek-R1 · 3B</option>
+                <option value="1.5">DeepSeek-R1 · 1.5B</option>
+                <option value="7">DeepSeek-R1 · 7B</option>
+                <option value="14">DeepSeek-R1 · 14B</option>
+                <option value="32">DeepSeek-R1 · 32B</option>
+                <option value="70">DeepSeek-R1 · 70B</option>
+                <option value="671">DeepSeek-R1 · 671B (MoE)</option>
                 <option value="8">Llama 3.1 · 8B</option>
-                <option value="7">Qwen · 7B</option>
-                <option value="14">Qwen · 14B</option>
-                <option value="32">Qwen · 32B</option>
                 <option value="70">Llama 3.1 · 70B</option>
+                <option value="7">Qwen 2.5 · 7B</option>
+                <option value="32">Qwen 2.5 · 32B</option>
                 <option value="custom" data-i18n="customModel">自定义参数</option>
               </select>
               <label class="sr-only" for="custom-params" data-i18n="customModelSize">自定义模型参数量，单位十亿</label>
               <div id="custom-model-wrap" class="inline-input hidden"><input id="custom-params" type="number" min="0.1" max="1000" step="0.1" value="13" inputmode="decimal"><span>B params</span></div>
+              <details class="model-geometry">
+                <summary>模型架构参数</summary>
+                <div class="field-row">
+                  <div class="field-block"><label class="field-label" for="model-arch">模型架构</label><select id="model-arch" class="control-select"><option value="dense">Dense</option><option value="moe">Mixture of Experts</option></select></div>
+                  <div class="field-block"><label class="field-label" for="modality">模型类型</label><select id="modality" class="control-select"><option value="text">文本生成</option><option value="multimodal">多模态</option><option value="audio">音频语言</option></select></div>
+                </div>
+                <div class="field-row">
+                  <div class="field-block"><label class="field-label" for="model-layers">层数</label><input class="plain-input" id="model-layers" type="number" min="1" value="32"></div>
+                  <div class="field-block"><label class="field-label" for="model-hidden">隐藏维度</label><input class="plain-input" id="model-hidden" type="number" min="1" value="4096"></div>
+                  <div class="field-block"><label class="field-label" for="model-kv-heads">KV 头数</label><input class="plain-input" id="model-kv-heads" type="number" min="1" value="8"></div>
+                  <div class="field-block"><label class="field-label" for="model-active">MoE 活跃参数 (B)</label><input class="plain-input" id="model-active" type="number" min="0" step="0.1" placeholder="同总参数"></div>
+                </div>
+              </details>
             </div>
 
             <div class="field-row">
               <div class="field-block">
                 <label class="field-label" for="weight-precision" data-i18n="weightPrecision">权重量化</label>
                 <select id="weight-precision" class="control-select">
-                  <option value="2">FP16 / BF16</option><option value="1">FP8 / INT8</option><option value="0.5625" selected>INT4 / Q4</option><option value="0.75">INT6 / Q6</option>
+                  <optgroup label="Standard"><option value="4">FP32</option><option value="2" selected>FP16 / BF16</option><option value="1">FP8 / INT8</option><option value="0.75">NVFP6</option><option value="0.5">NVFP4 / INT4</option></optgroup>
+                  <optgroup label="GGUF / llama.cpp"><option value="1.0625">Q8_0</option><option value="0.8125">Q6_K</option><option value="0.6875">Q5_K_M</option><option value="0.5625">Q4_K_M</option><option value="0.4375">Q3_K_M</option><option value="0.34375">Q2_K</option><option value="0.5625">Q4_0 (legacy)</option></optgroup>
                 </select>
               </div>
               <div class="field-block">
                 <label class="field-label" for="kv-precision" data-i18n="kvPrecision">KV 缓存</label>
                 <select id="kv-precision" class="control-select">
-                  <option value="2">BF16</option><option value="1">FP8 / INT8</option><option value="0.5">INT4</option>
+                  <option value="4">FP32</option><option value="2" selected>FP16 / BF16</option><option value="1">FP8 / INT8</option><option value="0.5">INT4</option>
                 </select>
               </div>
             </div>
@@ -79,7 +101,7 @@
             <div class="field-block">
               <label class="field-label" for="attention" data-i18n="attention">注意力结构 <span class="help-mark" title="影响每位用户的 KV 缓存体积">?</span></label>
               <select id="attention" class="control-select">
-                <option value="1">GQA  ·  分组查询</option><option value="8">MHA  ·  多头</option><option value="0.125">MQA  ·  多查询</option><option value="0.25">MLA  ·  潜在注意力</option>
+                <option value="gqa">GQA · 分组查询</option><option value="mha">MHA · 多头</option><option value="mqa">MQA · 多查询</option><option value="mla">MLA · 潜在注意力</option><option value="swa">SWA · 滑动窗口</option><option value="dsa">DSA · 稀疏注意力</option><option value="csa2">CSA2 · 压缩稀疏注意力</option><option value="hybrid">Hybrid · 混合注意力</option><option value="ssm">SSM · 状态空间</option>
               </select>
             </div>
 
@@ -91,51 +113,101 @@
                   <option value="auto">Auto</option><option value="vllm">vLLM</option><option value="llamacpp">llama.cpp</option><option value="ollama">Ollama</option><option value="transformers">Transformers</option>
                 </select>
               </div>
+              <div class="field-block"><label class="field-label" for="profile">性能配置</label><select id="profile" class="control-select"><option value="latency">优化最低延迟</option><option value="balanced">均衡</option><option value="throughput">最大化吞吐</option></select></div>
+              <div class="field-row runtime-advanced">
+                <div class="field-block"><label class="field-label" for="execution-mode">执行模式</label><select id="execution-mode" class="control-select"><option value="eager">Dynamic Eager</option><option value="graph">Graph Captured</option></select></div>
+                <div class="field-block"><label class="field-label" for="prefill-mode">Prefill 模式</label><select id="prefill-mode" class="control-select"><option value="chunked">Chunked</option><option value="full">Full Sequence</option></select></div>
+              </div>
+              <div class="field-row runtime-advanced">
+                <div class="field-block"><label class="field-label" for="memory-reserved">GPU 메모리 예약</label><div class="input-with-unit"><input id="memory-reserved" type="number" min="50" max="98" value="92"><span>%</span></div></div>
+                <div class="field-block"><label class="field-label" for="prefill-chunk">Prefill 청크</label><select id="prefill-chunk" class="control-select"><option>256</option><option>512</option><option selected>1024</option><option>2048</option><option>4096</option><option>8192</option><option>16384</option></select></div>
+              </div>
+              <div class="field-row check-row"><label><input id="prefix-cache" type="checkbox"> Prefix caching</label><label><input id="continuous-batch" type="checkbox" checked> Continuous batching</label><label><input id="static-pool" type="checkbox"> Pre-allocate KV pool</label></div>
               <div class="field-row">
                 <div class="field-block">
                   <label class="field-label" for="batch" data-i18n="batch">批量大小</label>
-                  <div class="stepper"><button type="button" data-step="batch" data-delta="-1" aria-label="Decrease batch size">−</button><input id="batch" type="number" min="1" max="128" value="4" inputmode="numeric"><button type="button" data-step="batch" data-delta="1" aria-label="Increase batch size">+</button></div>
+                  <div class="stepper"><button type="button" data-step="batch" data-delta="-1" aria-label="Decrease batch size">−</button><input id="batch" type="number" min="1" max="128" value="1" inputmode="numeric"><button type="button" data-step="batch" data-delta="1" aria-label="Increase batch size">+</button></div>
+                  <div class="range-setting"><label><input id="batch-log" type="checkbox"> Log Scale</label><output id="batch-value">1</output></div><input id="batch-range" class="range" type="range" min="0" max="100" value="0" aria-label="Batch size range">
                 </div>
                 <div class="field-block">
                   <label class="field-label" for="users" data-i18n="users">并发用户</label>
-                  <div class="stepper"><button type="button" data-step="users" data-delta="-1" aria-label="Decrease concurrent users">−</button><input id="users" type="number" min="1" max="512" value="8" inputmode="numeric"><button type="button" data-step="users" data-delta="1" aria-label="Increase concurrent users">+</button></div>
+                  <div class="stepper"><button type="button" data-step="users" data-delta="-1" aria-label="Decrease concurrent users">−</button><input id="users" type="number" min="1" max="512" value="1" inputmode="numeric"><button type="button" data-step="users" data-delta="1" aria-label="Increase concurrent users">+</button></div>
+                  <div class="range-setting"><label><input id="users-log" type="checkbox"> Log Scale</label><output id="users-value">1</output></div><input id="users-range" class="range" type="range" min="0" max="100" value="0" aria-label="Concurrent user range">
                 </div>
               </div>
               <div class="field-block range-block">
                 <div class="range-label"><label class="field-label" for="context" data-i18n="context">序列长度</label><output id="context-value" for="context">16K</output></div>
-                <input id="context" class="range" type="range" min="1024" max="131072" step="1024" value="16384">
+                <input id="context" class="range" type="range" min="1024" max="131072" step="1024" value="1024">
                 <div class="range-ticks"><span>1K</span><span>64K</span><span>128K</span></div>
               </div>
               <div class="field-block">
                 <label class="field-label" for="prompt" data-i18n="promptLength">输入提示词长度</label>
-                <div class="input-with-unit"><input id="prompt" type="number" min="1" max="131072" step="256" value="2048" inputmode="numeric"><span data-i18n="tokens">tokens</span></div>
+                <div class="input-with-unit"><input id="prompt" type="number" min="1" max="131072" step="256" value="1024" inputmode="numeric"><span data-i18n="tokens">tokens</span></div>
               </div>
             </details>
 
             <details class="settings-group hardware-group" open>
-              <summary><span class="summary-title"><span class="summary-glyph">▦</span><span data-i18n="hardware">硬件配置</span></span><span class="summary-state" data-i18n="singleRig">单机</span></summary>
+              <summary><span class="summary-title"><span class="summary-glyph">▦</span><span data-i18n="hardware">硬件配置</span></span><span class="summary-state" id="rig-summary">单机</span></summary>
+              <div class="mode-tabs rig-tabs"><button type="button" class="mode-tab active" data-rig="single">单机 Rig</button><button type="button" class="mode-tab" data-rig="cluster">集群 Cluster</button></div>
               <div class="field-block">
                 <label class="field-label" for="gpu" data-i18n="gpu">设备 / GPU</label>
                 <select id="gpu" class="control-select">
-                  <option value="custom" data-i18n="custom">自定义硬件</option>
-                  <option value="rtx5090">NVIDIA GeForce RTX 5090</option><option value="rtx4090">NVIDIA GeForce RTX 4090</option><option value="rtx3090">NVIDIA GeForce RTX 3090</option>
-                  <option value="h100">NVIDIA H100 SXM</option><option value="a100">NVIDIA A100 80GB</option><option value="l40s">NVIDIA L40S</option>
-                  <option value="mi300x">AMD Instinct MI300X</option><option value="rx7900">AMD Radeon RX 7900 XTX</option><option value="m4max">Apple M4 Max</option>
+                <option value="custom" data-i18n="custom">自定义硬件</option>
+                <option value="rtx5090">NVIDIA GeForce RTX 5090</option><option value="rtx4090">NVIDIA GeForce RTX 4090</option><option value="rtx3090">NVIDIA GeForce RTX 3090</option>
+                <option value="h100">NVIDIA H100 SXM 80GB</option><option value="h100pcie">NVIDIA H100 PCIe 80GB</option><option value="h200">NVIDIA H200 141GB</option><option value="b200">NVIDIA B200 180GB</option>
+                <option value="a100">NVIDIA A100 80GB</option><option value="l40s">NVIDIA L40S</option><option value="l4">NVIDIA L4</option>
+                <option value="mi300x">AMD Instinct MI300X</option><option value="mi325x">AMD Instinct MI325X</option><option value="rx7900">AMD Radeon RX 7900 XTX</option><option value="rx9070">AMD Radeon RX 9070</option>
+                <option value="m4max">Apple M4 Max</option><option value="m5ultra">Apple M5 Ultra</option>
                 </select>
               </div>
               <div class="hardware-specs">
                 <div class="field-block"><label class="field-label" for="gpu-vram" data-i18n="vramPerGpu">显存 / GPU</label><div class="input-with-unit"><input id="gpu-vram" type="number" min="1" max="1024" step="1" value="24" inputmode="numeric"><span>GB</span></div></div>
                 <div class="field-block"><label class="field-label" for="gpu-bandwidth" data-i18n="memoryBandwidth">内存带宽</label><div class="input-with-unit"><input id="gpu-bandwidth" type="number" min="1" max="20000" step="1" value="1008" inputmode="numeric"><span>GB/s</span></div></div>
                 <div class="field-block"><label class="field-label" for="gpu-compute" data-i18n="denseCompute">FP16/BF16 算力</label><div class="input-with-unit"><input id="gpu-compute" type="number" min="0.1" max="100000" step="0.1" value="82.6" inputmode="decimal"><span>TFLOPS</span></div></div>
-                <div class="field-block"><label class="field-label" for="gpu-count" data-i18n="gpuCount">GPU 数量</label><div class="stepper"><button type="button" data-step="gpu-count" data-delta="-1" aria-label="Decrease GPU count">−</button><input id="gpu-count" type="number" min="1" max="64" value="1" inputmode="numeric"><button type="button" data-step="gpu-count" data-delta="1" aria-label="Increase GPU count">+</button></div></div>
-                <div class="field-block"><label class="field-label" for="gpu-cost" data-i18n="rentalCost">单卡租赁价格</label><div class="input-with-unit"><input id="gpu-cost" type="number" min="0" max="10000" step="0.01" value="0" inputmode="decimal"><span>USD/h</span></div></div>
+                <div class="field-block" id="single-gpu-count-wrap"><label class="field-label" for="gpu-count" data-i18n="gpuCount">GPU 数量</label><div class="stepper"><button type="button" data-step="gpu-count" data-delta="-1" aria-label="Decrease GPU count">−</button><input id="gpu-count" type="number" min="1" max="64" value="1" inputmode="numeric"><button type="button" data-step="gpu-count" data-delta="1" aria-label="Increase GPU count">+</button></div></div>
+                <div class="field-block"><label class="field-label" for="gpu-cost" data-i18n="rentalCost">Spot 单卡价格</label><div class="input-with-unit"><input id="gpu-cost" type="number" min="0" max="10000" step="0.01" value="0" inputmode="decimal"><span>USD/h</span></div></div>
+                <div class="field-block"><label class="field-label" for="gpu-ondemand">On-demand 单卡价格</label><div class="input-with-unit"><input id="gpu-ondemand" type="number" min="0" max="10000" step="0.01" value="0" inputmode="decimal"><span>USD/h</span></div></div>
+                <div class="field-block"><label class="field-label" for="gpu-power">单卡功耗</label><div class="input-with-unit"><input id="gpu-power" type="number" min="1" max="5000" value="350"><span>W</span></div></div>
+              </div>
+              <div id="cluster-options" class="field-row hidden">
+                <div class="field-block"><label class="field-label" for="node-count">노드 수</label><input class="plain-input" id="node-count" type="number" min="1" max="128" value="1"></div>
+                <div class="field-block"><label class="field-label" for="gpus-per-node">노드당 GPU</label><input class="plain-input" id="gpus-per-node" type="number" min="1" max="64" value="8"></div>
+                <div class="field-block"><label class="field-label" for="parallelism">병렬화 전략</label><select id="parallelism" class="control-select"><option value="tp">Tensor Parallel</option><option value="pp">Pipeline Parallel</option><option value="sp">Sequence Parallel</option><option value="dp">Data Parallel</option></select></div>
+                <div class="field-block"><label class="field-label" for="interconnect">노드 연결</label><select id="interconnect" class="control-select"><option value="nvlink">NVLink / xGMI</option><option value="pcie5">PCIe 5.0</option><option value="ib">InfiniBand HDR</option><option value="ethernet">Ethernet 100G</option><option value="ethernet400">Ethernet 400G</option></select></div>
+                <div class="field-block"><label class="field-label" for="tp-degree">Tensor parallel degree</label><input class="plain-input" id="tp-degree" type="number" min="1" value="1"></div>
+                <div class="field-block"><label class="field-label" for="pp-degree">Pipeline parallel degree</label><input class="plain-input" id="pp-degree" type="number" min="1" value="1"></div>
               </div>
             </details>
 
             <div class="field-block hidden" id="tune-options">
-              <label class="field-label" for="tune-method" data-i18n="tuneMethod">微调方式</label>
-              <select id="tune-method" class="control-select"><option value="16">Full fine-tuning · AdamW</option><option value="8">LoRA · BF16</option><option value="4">QLoRA · NF4</option></select>
+              <div class="field-row">
+                <div><label class="field-label" for="tune-method" data-i18n="tuneMethod">微调方式</label><select id="tune-method" class="control-select"><option value="full">Full fine-tuning</option><option value="lora">LoRA</option><option value="qlora">QLoRA</option></select></div>
+                <div><label class="field-label" for="optimizer">优化器</label><select id="optimizer" class="control-select"><option value="adamw">AdamW 32-bit</option><option value="8bit">8-bit Adam</option><option value="paged">Paged AdamW</option><option value="bf16">Pure BF16</option><option value="sgd">SGD</option><option value="adafactor">Adafactor</option></select></div>
+                <div><label class="field-label" for="zero-stage">ZeRO Stage</label><select id="zero-stage" class="control-select"><option value="0">Off</option><option value="1">Stage 1</option><option value="2">Stage 2</option><option value="3">Stage 3 / FSDP</option></select></div>
+                <div><label class="field-label" for="lora-rank">LoRA rank</label><select id="lora-rank" class="control-select"><option>8</option><option selected>16</option><option>32</option><option>64</option><option>128</option></select></div>
+                <div><label class="field-label" for="grad-accum">Gradient accumulation</label><input class="plain-input" id="grad-accum" type="number" min="1" value="1"></div>
+                <div><label class="field-label" for="dataset-samples">데이터 샘플 수</label><input class="plain-input" id="dataset-samples" type="number" min="1" value="10000"></div>
+                <div><label class="field-label" for="epochs">Epochs</label><input class="plain-input" id="epochs" type="number" min="1" value="3"></div>
+              </div>
+              <div class="field-row check-row"><label><input id="gradient-checkpointing" type="checkbox" checked> Gradient checkpointing</label><label><input id="flash-attention" type="checkbox" checked> Flash Attention</label></div>
             </div>
+
+            <details class="settings-group"><summary><span class="summary-title">고급 구성</span></summary>
+              <div class="field-row check-row"><label><input id="speculative" type="checkbox"> Speculative decoding</label><label><input id="offload-enabled" type="checkbox"> CPU/RAM 또는 NVMe 오프로딩</label><label><input id="offload-kv" type="checkbox"> KV 캐시 오프로딩</label></div>
+              <div class="field-row">
+                <div class="field-block"><label class="field-label" for="draft-size">Draft 모델 (B)</label><input class="plain-input" id="draft-size" type="number" min="0.1" step="0.1" value="3"></div>
+                <div class="field-block"><label class="field-label" for="draft-acceptance">Draft acceptance</label><div class="input-with-unit"><input id="draft-acceptance" type="number" min="10" max="100" value="75"><span>%</span></div></div>
+                <div class="field-block"><label class="field-label" for="draft-tokens">Draft tokens / step</label><input class="plain-input" id="draft-tokens" type="number" min="1" max="10" value="5"></div>
+                <div class="field-block"><label class="field-label" for="draft-mode">Draft architecture</label><select id="draft-mode" class="control-select"><option value="sequential">Sequential</option><option value="block">Block-parallel</option></select></div>
+                <div class="field-block"><label class="field-label" for="offload-target">오프로딩 대상</label><select id="offload-target" class="control-select"><option value="ram">CPU / RAM</option><option value="nvme">NVMe</option></select></div>
+                <div class="field-block"><label class="field-label" for="offload-percent">레이어 오프로딩 비율</label><div class="input-with-unit"><input id="offload-percent" type="number" min="0" max="100" value="0"><span>%</span></div></div>
+                <div class="field-block"><label class="field-label" for="grid-carbon">전력망 탄소 강도</label><div class="input-with-unit"><input id="grid-carbon" type="number" min="0" value="400"><span>g/kWh</span></div></div>
+                <div class="field-block"><label class="field-label" for="electricity-price">전기 요금</label><div class="input-with-unit"><input id="electricity-price" type="number" min="0" step="0.01" value="0.15"><span>USD/kWh</span></div></div>
+                <div class="field-block"><label class="field-label" for="duty-cycle">일일 사용률</label><div class="input-with-unit"><input id="duty-cycle" type="number" min="1" max="100" value="25"><span>%</span></div></div>
+                <div class="field-block"><label class="field-label" for="api-price">API 요금 / 1M tokens</label><div class="input-with-unit"><input id="api-price" type="number" min="0" step="0.01" value="0"><span>USD</span></div></div>
+                <div class="field-block"><label class="field-label" for="hardware-capex">GPU 구매가 / 대</label><div class="input-with-unit"><input id="hardware-capex" type="number" min="0" step="1" value="0"><span>USD</span></div></div>
+              </div>
+            </details>
 
             <button id="calculate" class="calculate-button" type="button"><span data-i18n="calculate">计算配置</span><span aria-hidden="true">↗</span></button>
             <p class="privacy-note"><span aria-hidden="true">◈</span><span data-i18n="privacy">计算在本地浏览器完成，输入不会上传。</span></p>
@@ -150,21 +222,27 @@
             <div class="summary-grid">
               <article class="memory-card">
                 <div class="metric-topline"><span data-i18n="totalMemory">显存占用</span><span class="metric-icon">◫</span></div>
-                <div class="memory-number"><strong id="memory-used">—</strong><span id="memory-total">/ — GB</span></div>
-                <div id="memory-track" class="memory-track" role="meter" aria-label="GPU memory utilization" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="memory-fill"></span><i id="memory-marker"></i></div>
-                <div class="memory-foot"><span id="memory-status" data-i18n="waiting">等待计算</span><span id="memory-percent">0%</span></div>
+                <div class="memory-summary">
+                  <div id="memory-track" class="memory-ring" role="meter" aria-label="GPU memory utilization" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring-track" cx="50" cy="50" r="40"></circle><circle id="memory-fill" class="ring-value" cx="50" cy="50" r="40"></circle></svg><span id="memory-percent">0%</span></div>
+                  <div class="memory-values"><span id="memory-status" data-i18n="waiting">等待计算</span><strong><b id="memory-used">—</b> GB</strong><span id="memory-total">of — GB</span></div>
+                </div>
               </article>
               <article class="metric-card speed-card">
                 <div class="metric-topline"><span data-i18n="decodeSpeed">生成速度 · 每用户</span><span class="metric-icon">↗</span></div>
                 <div class="metric-number"><strong id="decode-speed">—</strong><span>tok/s</span></div>
                 <p class="metric-caption" id="aggregate-speed">— tok/s · <span data-i18n="aggregate">系统总吞吐</span></p>
+                <p class="metric-caption" id="decode-latency">— ms/token</p>
               </article>
               <article class="metric-card latency-card">
                 <div class="metric-topline"><span data-i18n="ttft">首个令牌时间</span><span class="metric-icon">◷</span></div>
                 <div class="metric-number"><strong id="ttft">—</strong><span>sec</span></div>
                 <p class="metric-caption" data-i18n="ttftCaption">估算提示词处理延迟</p>
               </article>
+              <article class="metric-card"><div class="metric-topline"><span>可持续 QPS</span></div><div class="metric-number"><strong id="sustainable-qps">—</strong><span>req/s</span></div><p class="metric-caption">基于并发与 KV 容量</p></article>
+              <article class="metric-card"><div class="metric-topline"><span>TTFT P50 / P95 / P99</span></div><div class="metric-number"><strong id="ttft-percentiles">—</strong><span>sec</span></div><p class="metric-caption">并发导致的排队延迟估算</p></article>
             </div>
+
+            <div class="selected-model"><strong id="model-summary-name">DeepSeek-R1 3B</strong><span id="model-summary-details">Weights FP16 · KV cache FP16 · MLA · RoPE</span><span id="profile-summary">Profile: Optimized for Lowest Latency</span></div>
 
             <div class="roofline-panel">
               <div class="chart-heading"><div><p class="panel-kicker" data-i18n="rooflineEyebrow">COMPUTE × BANDWIDTH</p><h3 data-i18n="roofline">Roofline 性能模型</h3></div><span class="chart-state"><i></i><span data-i18n="estimate">估算</span></span></div>
@@ -184,16 +262,23 @@
               <div class="breakdown-row"><span><i class="break-dot weights"></i><span data-i18n="weights">模型权重</span></span><strong id="weight-memory">—</strong></div>
               <div class="breakdown-row"><span><i class="break-dot kv"></i><span data-i18n="kvCache">KV 缓存</span></span><strong id="kv-memory">—</strong></div>
               <div class="breakdown-row"><span><i class="break-dot activations"></i><span data-i18n="activations">激活与运行时</span></span><strong id="activation-memory">—</strong></div>
+              <div class="breakdown-row"><span><i class="break-dot cost-dot"></i><span>CUDA 图与驱动预留</span></span><strong id="runtime-memory">—</strong></div>
+              <div class="breakdown-row"><span><i class="break-dot kv"></i><span>已卸载到主机内存</span></span><strong id="offloaded-memory">—</strong></div>
               <div class="breakdown-row"><span><i class="break-dot cost-dot"></i><span data-i18n="rentalEstimate">GPU 租赁估算</span></span><strong id="rental-estimate">—</strong></div>
+              <div class="breakdown-row"><span><i class="break-dot activations"></i><span>本地电费估算 / 日</span></span><strong id="electricity-daily">—</strong></div>
+              <div class="breakdown-row"><span><i class="break-dot weights"></i><span>功耗 / 年度 CO₂</span></span><strong id="power-carbon">—</strong></div>
+              <div class="breakdown-row"><span><i class="break-dot cost-dot"></i><span>与 Token API 成本对比 / 月</span></span><strong id="tco-comparison">—</strong></div>
               <div class="breakdown-total"><span data-i18n="requiredMemory">预计需要</span><strong id="required-memory">—</strong></div>
             </div>
+
+            <details class="settings-group result-details"><summary><span class="summary-title">模型与推理诊断</span></summary><div id="diagnostics" class="diagnostics">选择工作负载后显示运行时建议。</div></details>
 
             <p class="assumption-note"><span class="note-icon">i</span><span id="assumptions" data-i18n="assumptions">估算基于选定模型、GQA 缓存和理论硬件峰值；真实结果受推理引擎、量化内核与多卡通信影响。</span></p>
           </section>
         </div>
       </main>
 
-      <footer class="footer"><span>MATRIX <span data-i18n="footerCaption">LLM 推理资源估算</span></span><span>ROOFLINE · VRAM · THROUGHPUT</span></footer>
+      <footer class="footer"><span>© 2025 趋近智 <span data-i18n="footerCaption">LLM 推理资源估算</span></span><span>VRAM · PERFORMANCE · ENERGY</span></footer>
     </div>
   </body>
 </html>
