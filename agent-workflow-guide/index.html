@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 <header class="top shell">
 <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">✳</span> Agent Field Guide</a>
-<nav aria-label="주 메뉴"><a href="#herdr">Herdr</a><a href="#paseo">Paseo</a><a href="#connect">연결하기</a><a href="#compare">비교</a></nav>
+<nav aria-label="주 메뉴"><a href="#herdr">Herdr</a><a href="#paseo">Paseo</a><a href="#connect">연결하기</a><a href="#compare">비교</a><a href="#gallery">이미지</a></nav>
 </header>
 <main id="main">
 <section class="hero shell">
@@ -99,6 +99,29 @@ paseo --host ssh://user@agent-host ls -a</code></pre><p>세 명령은 클라이�
 <header class="section-head"><p class="eyebrow">06 / 문제 해결</p><h2 data-split>연결이 멈춘 지점 찾기</h2></header>
 <dl class="diagnostics"><dt>SSH가 먼저 실패합니다.</dt><dd><code>ssh -v user@agent-host</code>로 네트워크, 호스트 키, 인증 키 문제를 순서대로 확인하세요.</dd><dt>SSH는 되는데 Paseo가 거절됩니다.</dt><dd>호스트에서 <code>paseo daemon status</code>로 실행 여부를 확인하고, SSH 접속이 참조하는 데몬 포트와 비밀번호를 대조하세요.</dd><dt>Tailscale 직접 연결이 시간 초과됩니다.</dt><dd>두 기기가 같은 tailnet인지 확인한 뒤 IP, 포트, 접근 정책을 확인하세요. Linux·WSL 호스트에서는 <code>ss -ltn</code>으로 데몬이 듣는 주소를 확인할 수 있습니다.</dd><dt>앱을 닫고 나니 연결이 끊깁니다.</dt><dd>호스트가 절전 중인지, 데몬이나 Herdr 서버가 실제로 살아 있는지 확인하세요. 클라이언트 재연결과 호스트 종료는 구분해서 점검하세요.</dd></dl>
 </section>
+<section id="gallery" class="section shell" aria-labelledby="gallery-heading">
+<header class="section-head"><p class="eyebrow">07 / 참고 화면</p><h2 id="gallery-heading" data-split>참고 이미지 모아보기</h2><p>이미지를 선택하면 원본 크기로 열립니다. 비교 화면의 기능과 버전은 캡처 당시 기준입니다.</p></header>
+<h3 class="gallery-group">Herdr 작업 화면</h3><div class="gallery-grid">
+<figure class="capture"><a href="./assets/reference/reference-01.png" target="_blank" rel="noopener" aria-label="Herdr 화면에서 두 작업 pane을 나란히 보는 예시 원본 이미지 (새 탭)"><img src="./assets/reference/reference-01.png" alt="Herdr 화면에서 두 작업 pane을 나란히 보는 예시" loading="lazy" decoding="async"></a><figcaption>01 · Herdr 화면에서 두 작업 pane을 나란히 보는 예시</figcaption></figure>
+<figure class="capture"><a href="./assets/reference/reference-02.png" target="_blank" rel="noopener" aria-label="나뉜 작업의 결과를 모아 검토하는 흐름 원본 이미지 (새 탭)"><img src="./assets/reference/reference-02.png" alt="나뉜 작업의 결과를 모아 검토하는 흐름" loading="lazy" decoding="async"></a><figcaption>02 · 나뉜 작업의 결과를 모아 검토하는 흐름</figcaption></figure>
+<figure class="capture"><a href="./assets/reference/reference-03.png" target="_blank" rel="noopener" aria-label="독립 pane과 한 세션 안의 하위 에이전트 비교 원본 이미지 (새 탭)"><img src="./assets/reference/reference-03.png" alt="독립 pane과 한 세션 안의 하위 에이전트 비교" loading="lazy" decoding="async"></a><figcaption>03 · 독립 pane과 한 세션 안의 하위 에이전트 비교</figcaption></figure>
+<figure class="capture"><a href="./assets/reference/reference-04.png" target="_blank" rel="noopener" aria-label="각 pane의 세션이 별도로 실행되는 모습 원본 이미지 (새 탭)"><img src="./assets/reference/reference-04.png" alt="각 pane의 세션이 별도로 실행되는 모습" loading="lazy" decoding="async"></a><figcaption>04 · 각 pane의 세션이 별도로 실행되는 모습</figcaption></figure>
+<figure class="capture"><a href="./assets/reference/reference-05.png" target="_blank" rel="noopener" aria-label="Herdr 세션 운용 팁을 설명하는 화면 원본 이미지 (새 탭)"><img src="./assets/reference/reference-05.png" alt="Herdr 세션 운용 팁을 설명하는 화면" loading="lazy" decoding="async"></a><figcaption>05 · Herdr 세션 운용 팁을 설명하는 화면</figcaption></figure>
+<figure class="capture"><a href="./assets/reference/reference-06.png" target="_blank" rel="noopener" aria-label="터미널 멀티플렉서의 사용 방식을 비교하는 장면 원본 이미지 (새 탭)"><img src="./assets/reference/reference-06.png" alt="터미널 멀티플렉서의 사용 방식을 비교하는 장면" loading="lazy" decoding="async"></a><figcaption>06 · 터미널 멀티플렉서의 사용 방식을 비교하는 장면</figcaption></figure>
+</div>
+<h3 class="gallery-group">Paseo 데몬과 연결</h3><div class="gallery-grid">
+<figure class="capture"><a href="./assets/reference/reference-07.png" target="_blank" rel="noopener" aria-label="Paseo 데몬과 데스크톱·모바일·웹·CLI 관계 원본 이미지 (새 탭)"><img src="./assets/reference/reference-07.png" alt="Paseo 데몬과 데스크톱·모바일·웹·CLI 관계" loading="lazy" decoding="async"></a><figcaption>07 · Paseo 데몬과 데스크톱·모바일·웹·CLI 관계</figcaption></figure>
+<figure class="capture"><a href="./assets/reference/reference-08.png" target="_blank" rel="noopener" aria-label="Mac mini에서 실행하고 MacBook과 iPhone에서 접속하는 구성 원본 이미지 (새 탭)"><img src="./assets/reference/reference-08.png" alt="Mac mini에서 실행하고 MacBook과 iPhone에서 접속하는 구성" loading="lazy" decoding="async"></a><figcaption>08 · Mac mini에서 실행하고 MacBook과 iPhone에서 접속하는 구성</figcaption></figure>
+<figure class="capture"><a href="./assets/reference/reference-09.png" target="_blank" rel="noopener" aria-label="Paseo Relay와 Tailscale 직접 연결 비교 원본 이미지 (새 탭)"><img src="./assets/reference/reference-09.png" alt="Paseo Relay와 Tailscale 직접 연결 비교" loading="lazy" decoding="async"></a><figcaption>09 · Paseo Relay와 Tailscale 직접 연결 비교</figcaption></figure>
+</div>
+<h3 class="gallery-group">Orca와 Paseo 비교</h3><div class="gallery-grid">
+<figure class="capture"><a href="./assets/reference/reference-10.png" target="_blank" rel="noopener" aria-label="Orca와 Paseo의 이용 방식 비교 원본 이미지 (새 탭)"><img src="./assets/reference/reference-10.png" alt="Orca와 Paseo의 이용 방식 비교" loading="lazy" decoding="async"></a><figcaption>10 · Orca와 Paseo의 이용 방식 비교</figcaption></figure>
+<figure class="capture"><a href="./assets/reference/reference-11.png" target="_blank" rel="noopener" aria-label="캡처 당시 Orca·Paseo의 채팅 지원 에이전트 원본 이미지 (새 탭)"><img src="./assets/reference/reference-11.png" alt="캡처 당시 Orca·Paseo의 채팅 지원 에이전트" loading="lazy" decoding="async"></a><figcaption>11 · 캡처 당시 Orca·Paseo의 채팅 지원 에이전트</figcaption></figure>
+<figure class="capture"><a href="./assets/reference/reference-12.png" target="_blank" rel="noopener" aria-label="Orca의 데스크톱 작업과 Paseo의 이동 중 사용 비교 원본 이미지 (새 탭)"><img src="./assets/reference/reference-12.png" alt="Orca의 데스크톱 작업과 Paseo의 이동 중 사용 비교" loading="lazy" decoding="async"></a><figcaption>12 · Orca의 데스크톱 작업과 Paseo의 이동 중 사용 비교</figcaption></figure>
+</div>
+<h3 class="gallery-group">원격 기기 연결도</h3><div class="gallery-grid">
+<figure class="capture"><a href="./assets/reference/reference-13.png" target="_blank" rel="noopener" aria-label="Mac mini 호스트와 원격 기기를 강조한 연결도 원본 이미지 (새 탭)"><img src="./assets/reference/reference-13.png" alt="Mac mini 호스트와 원격 기기를 강조한 연결도" loading="lazy" decoding="async"></a><figcaption>13 · Mac mini 호스트와 원격 기기를 강조한 연결도</figcaption></figure>
+</div></section>
 </main>
 <footer class="footer shell"><strong>Agent Field Guide</strong><p>참고 이미지 13장을 재구성한 비공식 한국어 가이드 · 2026-11-25 문서 확인</p><div><a href="https://herdr.dev/">Herdr</a><a href="https://paseo.sh/docs">Paseo 문서</a><a href="https://tailscale.com/docs/how-to/quickstart">Tailscale 가이드</a><a href="https://orca.dev/docs/remote-servers">Orca</a></div></footer>
 </body>
