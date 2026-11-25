@@ -1,0 +1,105 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Herdr, Paseo, Tailscale로 코딩 에이전트를 운영하고 원격으로 연결하는 한국어 실전 가이드">
+<title>에이전트 원격 운영 가이드 · Herdr × Paseo</title>
+<link rel="stylesheet" href="./style.css"><script defer src="./app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="top shell">
+<a class="brand" href="./"><span class="brand-mark" aria-hidden="true">✳</span> Agent Field Guide</a>
+<nav aria-label="주 메뉴"><a href="#herdr">Herdr</a><a href="#paseo">Paseo</a><a href="#connect">연결하기</a><a href="#compare">비교</a></nav>
+</header>
+<main id="main">
+<section class="hero shell">
+<div>
+<p class="eyebrow"><span></span> 코딩 에이전트 원격 운영 가이드</p>
+<h1 data-split>작업은 호스트에.<br>제어는 어디서든.</h1>
+<p class="lead">Herdr로 터미널을 나누고, Paseo로 다른 기기에서 작업을 이어가세요. Tailscale과 Relay를 언제 쓰는지 실제 연결 순서로 정리했습니다.</p>
+<div class="hero-actions"><a class="button magnetic" href="#connect">연결 가이드 시작 <span aria-hidden="true">↘</span></a><a class="secondary" href="#compare">도구부터 비교하기</a></div>
+</div>
+<figure class="terminal" aria-label="호스트와 원격 기기의 연결 예시">
+<div class="term-top"><span class="dots" aria-hidden="true">● ● ●</span><span>agent-host / 연결 구조</span></div>
+<div class="term-body"><div class="host"><span class="pill">실행 호스트</span><strong>Mac mini · Linux · VPS</strong><small>프로젝트와 에이전트가 실행되는 곳</small>
+<div class="lanes"><div><b>▦ Herdr</b><small>워크스페이스 → 탭 → pane</small></div><div><b>◈ Paseo daemon</b><small>에이전트 세션 관리</small></div></div></div>
+<div class="bridge"><i></i><span>SSH · Relay · Tailscale</span><i></i></div>
+<div class="clients"><span>⌘ 노트북</span><span>▯ 휴대폰</span></div>
+</div><figcaption>같은 호스트에 둘 수 있는 별개의 실행 경로</figcaption>
+</figure>
+</section>
+<section class="stats shell" aria-label="가이드 구성">
+<div><strong data-count="13">13</strong><span>참고 이미지</span></div><div><strong data-count="3">3</strong><span>Paseo 연결 경로</span></div><div><strong data-count="3">3</strong><span>비교 도구</span></div>
+</section>
+<section class="ecosystem shell" aria-label="관련 도구">
+<div class="marquee"><div class="marquee-track">
+<div class="wordmarks"><span>▦ Herdr</span><span>◈ Paseo</span><span>⠿ Tailscale</span><span>◓ Orca</span><span>⌘ OpenSSH</span></div>
+<div class="wordmarks" aria-hidden="true"><span>▦ Herdr</span><span>◈ Paseo</span><span>⠿ Tailscale</span><span>◓ Orca</span><span>⌘ OpenSSH</span></div>
+</div></div>
+</section>
+<section id="herdr" class="section shell">
+<header class="section-head"><p class="eyebrow">01 / 터미널 작업</p><h2 data-split>Herdr로 작업을 나누기</h2><p>워크스페이스는 프로젝트 단위, 탭은 작업 묶음, pane은 실행 중인 개별 터미널로 사용합니다.</p></header>
+<div class="grid">
+<article class="card reveal"><h3>설치하고 시작하기</h3><p>macOS·Linux에서는 공식 설치 스크립트를 사용할 수 있습니다. Windows나 WSL은 실제로 작업할 환경에 설치하고 그 환경에서 에이전트 CLI도 준비합니다.</p><pre><code>curl -fsSL https://herdr.dev/install.sh | sh
+herdr --version
+herdr</code></pre><a href="https://herdr.dev/tui/">Herdr 설치 문서 ↗</a></article>
+<article class="card reveal"><h3>구현과 검토를 다른 pane에서</h3><p>Herdr 안에서 오른쪽 pane을 열고, 각 터미널에서 별도의 에이전트를 실행합니다. 같은 파일을 수정할 때는 Git worktree 또는 파일 범위를 분리합니다.</p><pre><code>herdr pane split --current --direction right
+herdr pane list
+herdr agent list</code></pre><a href="https://herdr.dev/tui/docs/cli-reference/">pane 명령 레퍼런스 ↗</a></article>
+<article class="card reveal"><h3>상태를 보고 결과를 합치기</h3><p>먼저 에이전트 상태를 확인합니다. <code>blocked</code>는 승인이나 입력 대기, <code>done</code>은 작업 완료 상태입니다. 최종 반영은 각 pane의 diff와 테스트 결과를 확인한 뒤 결정합니다.</p><pre><code>herdr status
+herdr agent list
+herdr pane read &lt;pane_id&gt; --source recent --lines 60</code></pre><p>pane ID는 명령 결과에서 복사하세요. 단축키는 설치 버전과 사용자 설정에 따라 달라질 수 있습니다.</p></article>
+</div>
+</section>
+<section id="paseo" class="section shell">
+<header class="section-head"><p class="eyebrow">02 / 실행 호스트</p><h2 data-split>Paseo 데몬 준비하기</h2><p>호스트의 에이전트 CLI를 데몬이 실행하고, 데스크톱·CLI·모바일 클라이언트가 해당 데몬에 접속합니다.</p></header>
+<div class="grid two">
+<article class="card reveal"><h3>데스크톱</h3><p>Paseo Desktop을 설치해 실행합니다. 앱에 포함된 데몬이 시작됩니다. 작업에 사용할 Codex, Claude Code 등은 호스트에 설치하고 로그인까지 끝냅니다.</p><a href="https://paseo.sh/docs">Paseo 시작 문서 ↗</a></article>
+<article class="card reveal"><h3>화면 없는 서버</h3><p>Node.js와 npm을 준비한 호스트에서 CLI를 설치합니다. 파일과 에이전트 계정이 올바른 호스트에 있는지 확인합니다.</p><pre><code>npm install -g @getpaseo/cli
+paseo
+paseo daemon status</code></pre></article>
+</div>
+<div class="note"><strong>Herdr와 함께 쓰는 법.</strong> 같은 호스트에 Herdr와 Paseo를 설치하고 같은 저장소를 열 수 있습니다. Herdr에서 이미 실행한 pane이 Paseo 세션으로 자동 전환된다고 가정하지 마세요. 각 도구에서 시작한 세션을 해당 도구로 관리하세요.</div>
+</section>
+<section id="connect" class="section shell">
+<header class="section-head"><p class="eyebrow">03 / 연결 실습</p><h2 data-split>내 기기에 맞는 연결 고르기</h2><p>모바일은 Relay 또는 Tailscale, 데스크톱과 CLI는 SSH 경로를 사용할 수 있습니다.</p></header>
+<div class="routes">
+<details open class="route"><summary><span>01</span> Paseo Relay <small>모바일 · 빠른 페어링</small></summary><div class="route-body"><ol><li>호스트에서 Paseo 데몬을 실행합니다.</li><li>Desktop의 Settings → 호스트 → Pair a device에서 Relay를 켜거나, 아래 명령을 실행합니다.</li><li>휴대폰 Paseo에서 QR을 스캔하거나 페어링 링크를 붙여넣습니다. 기기에서 호스트가 열리는지 확인합니다.</li></ol><pre><code>paseo daemon pair</code></pre><p>Relay는 옵트인 방식이고 종단 간 암호화를 사용합니다. 초기 연결에는 Tailscale이나 라우터 포트 개방이 필요 없습니다. 페어링 QR과 링크는 공개 게시물에 올리지 마세요.</p><a href="https://paseo.sh/docs/connectivity#paseo-relay">Relay 공식 절차 ↗</a></div></details>
+<details class="route"><summary><span>02</span> Tailscale 직접 연결 <small>모바일 · 사설 네트워크</small></summary><div class="route-body"><ol><li>데몬이 동작하는 호스트와 휴대폰에 Tailscale을 설치하고, 같은 tailnet에 로그인합니다.</li><li>호스트에서 <code>tailscale status</code>와 <code>tailscale ip -4</code>로 장치와 주소를 확인합니다.</li><li><code>~/.paseo/config.json</code>의 기존 설정을 유지하고 <code>daemon.listen</code>에 호스트의 Tailscale IP와 포트를 지정합니다. 아래 주소는 예시입니다.</li><li>Paseo 비밀번호 인증을 설정한 뒤 데몬을 재시작합니다. Tailscale 정책이나 방화벽에서 필요한 기기의 TCP 6767 접근만 허용합니다.</li><li>휴대폰 Paseo에서 Settings → Add host → Direct connection을 엽니다. Tailscale IP, <code>6767</code>, 설정한 비밀번호를 입력합니다. 공식 문서의 직접 연결 방식에서는 Use SSL을 끕니다.</li></ol><pre><code>{
+  "version": 1,
+  "daemon": { "listen": "100.101.102.103:6767" }
+}</code></pre><pre><code>tailscale status
+tailscale ip -4
+paseo daemon restart
+paseo daemon status</code></pre><p>WSL에서 데몬을 실행한다면 해당 IP가 WSL 내부에 실제 할당되어 있는지 확인하세요. Windows 호스트의 IP를 WSL에서 그대로 바인딩할 수 있다고 가정하지 마세요.</p><a href="https://tailscale.com/docs/how-to/quickstart">Tailscale 설치 ↗</a> <a href="https://paseo.sh/docs/security">Paseo 비밀번호 설정 ↗</a> <a href="https://paseo.sh/docs/connectivity#tailscale">직접 연결 공식 절차 ↗</a></div></details>
+<details class="route"><summary><span>03</span> SSH 원격 연결 <small>노트북 · 터미널</small></summary><div class="route-body"><ol><li>SSH 키 기반 접속을 먼저 검증합니다. <code>agent-host</code>는 실제 DNS 이름, Tailscale 주소 또는 SSH 별칭으로 바꿉니다.</li><li>Herdr 터미널을 원격에서 이어보려면 <code>herdr --remote</code>를 사용합니다. 원격 설정이나 버전 확인 안내가 나오면 화면의 지시를 확인합니다.</li><li>Paseo는 호스트에서 데몬을 먼저 실행합니다. SSH 경로에서는 기본 바인딩 <code>127.0.0.1:6767</code>을 사용합니다. Desktop에서는 Settings → Add host → Remote SSH를 고릅니다.</li></ol><pre><code>ssh user@agent-host
+herdr --remote ssh://user@agent-host
+paseo --host ssh://user@agent-host ls -a</code></pre><p>세 명령은 클라이언트 터미널에서 실행합니다. 첫 명령으로 접속을 확인한 뒤 <code>exit</code>으로 돌아와 나머지를 실행하세요. Paseo SSH URL의 포트는 SSH 서버 포트입니다. 데몬 포트를 바꾸면 <code>?daemonPort=7777</code>을 추가합니다. Tailscale 직접 연결 설정에서 데몬을 Tailscale IP에만 바인딩한 경우는 이 SSH 루프백 예시와 별도 구성입니다.</p><a href="https://herdr.dev/tui/docs/cli-reference/">Herdr SSH 레퍼런스 ↗</a> <a href="https://paseo.sh/docs/connectivity#ssh">Paseo SSH 절차 ↗</a></div></details>
+</div>
+</section>
+<section id="compare" class="section shell">
+<header class="section-head"><p class="eyebrow">04 / 선택 기준</p><h2 data-split>Herdr, Paseo 그리고 Orca</h2></header>
+<div class="table-wrap"><table><thead><tr><th scope="col">기준</th><th scope="col">Herdr TUI</th><th scope="col">Paseo</th><th scope="col">Orca</th></tr></thead><tbody>
+<tr><th scope="row">주 작업 방식</th><td>독립 터미널 pane을 한 화면에서 운영</td><td>호스트 데몬 중심으로 에이전트 세션 제어</td><td>데스크톱 작업공간과 Git worktree 관리</td></tr>
+<tr><th scope="row">원격 연결</th><td>SSH로 원격 세션 접속</td><td>Desktop·CLI는 SSH, 모바일은 Relay 또는 Tailscale</td><td>원격 Orca 서버를 사설 네트워크에서 연결하는 베타 기능</td></tr>
+<tr><th scope="row">잘 맞는 상황</th><td>구현·검토·테스트 터미널을 나란히 배치</td><td>항상 켜진 호스트에 휴대폰으로 접속</td><td>여러 프로젝트와 worktree를 데스크톱에서 정리</td></tr>
+</tbody></table></div>
+<p class="note">참고 캡처의 앱 버전과 제공 기능은 달라질 수 있습니다. 최신 지원 에이전트와 원격 기능은 각 공식 문서에서 확인하세요. <a href="https://orca.dev/docs/remote-servers">Orca 원격 서버 문서 ↗</a></p>
+</section>
+<section id="checklist" class="section shell">
+<header class="section-head"><p class="eyebrow">05 / 실행 확인</p><h2 data-split>첫 연결 체크리스트</h2><p>직접 확인한 항목에 체크하세요. 체크 상태는 이 브라우저에 저장됩니다.</p></header>
+<div class="check-card"><fieldset><legend>연결 준비 상태</legend>
+<label><input type="checkbox" data-check="host"> 호스트에서 에이전트 CLI를 실행하고 로그인했다.</label>
+<label><input type="checkbox" data-check="process"> Herdr 상태 또는 Paseo 데몬 상태를 확인했다.</label>
+<label><input type="checkbox" data-check="client"> 다른 기기에서 호스트를 열고 세션 또는 pane을 확인했다.</label>
+</fieldset><button type="button" class="button magnetic" id="complete" disabled>첫 연결 완료</button><p role="status" id="progress"></p></div>
+</section>
+<section class="section shell" id="troubleshoot">
+<header class="section-head"><p class="eyebrow">06 / 문제 해결</p><h2 data-split>연결이 멈춘 지점 찾기</h2></header>
+<dl class="diagnostics"><dt>SSH가 먼저 실패합니다.</dt><dd><code>ssh -v user@agent-host</code>로 네트워크, 호스트 키, 인증 키 문제를 순서대로 확인하세요.</dd><dt>SSH는 되는데 Paseo가 거절됩니다.</dt><dd>호스트에서 <code>paseo daemon status</code>로 실행 여부를 확인하고, SSH 접속이 참조하는 데몬 포트와 비밀번호를 대조하세요.</dd><dt>Tailscale 직접 연결이 시간 초과됩니다.</dt><dd>두 기기가 같은 tailnet인지 확인한 뒤 IP, 포트, 접근 정책을 확인하세요. Linux·WSL 호스트에서는 <code>ss -ltn</code>으로 데몬이 듣는 주소를 확인할 수 있습니다.</dd><dt>앱을 닫고 나니 연결이 끊깁니다.</dt><dd>호스트가 절전 중인지, 데몬이나 Herdr 서버가 실제로 살아 있는지 확인하세요. 클라이언트 재연결과 호스트 종료는 구분해서 점검하세요.</dd></dl>
+</section>
+</main>
+<footer class="footer shell"><strong>Agent Field Guide</strong><p>참고 이미지 13장을 재구성한 비공식 한국어 가이드 · 2026-11-25 문서 확인</p><div><a href="https://herdr.dev/">Herdr</a><a href="https://paseo.sh/docs">Paseo 문서</a><a href="https://tailscale.com/docs/how-to/quickstart">Tailscale 가이드</a><a href="https://orca.dev/docs/remote-servers">Orca</a></div></footer>
+</body>
+</html>
