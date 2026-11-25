@@ -1,4 +1,4 @@
-﻿/* 야간 운영 가이드의 레이아웃, 타이포그래피와 모션을 정의합니다. */
+/* 야간 운영 가이드의 레이아웃, 타이포그래피와 모션을 정의합니다. */
 :root{color-scheme:dark;--bg:#111323;--surface:#1b1e34;--surface2:#232640;--text:#f6f3ff;--muted:#c3c0d8;--lavender:#d1bcff;--yellow:#ffe28a;--line:#424461;--motion:400ms;--ease:cubic-bezier(.16,1,.3,1);font-family:"Noto Sans KR","Malgun Gothic",system-ui,sans-serif}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:radial-gradient(ellipse at 68% 6%,#27234a 0,transparent 37rem),var(--bg);color:var(--text);line-height:1.7;min-width:300px}
@@ -102,7 +102,19 @@ legend{font-weight:760;margin-bottom:8px}
 .pause[hidden]{display:none}
 
 /* 참고 캡처의 원본 비율과 작은 화면을 지원합니다. */
-.gallery-group{margin:26px 0 12px}
+.guide-figure{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);align-items:center;gap:clamp(16px,3vw,38px);margin:0 0 26px;padding:clamp(12px,2.3vw,24px);border:1px solid var(--line);border-radius:16px;background:linear-gradient(115deg,#20233b,var(--surface))}
+.guide-image{display:grid;place-items:center;background:#101222;border-radius:9px;overflow:hidden}
+.guide-image img{display:block;width:100%;max-height:330px;object-fit:contain}
+.guide-figure figcaption{margin:0;font-size:1rem}
+.guide-figure figcaption h3{color:var(--text)}
+.guide-figure figcaption p{margin:10px 0}
+.guide-figure figcaption a{font-size:.86rem;font-weight:700}
+.gallery-group{margin:10px 0;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.gallery-group summary{padding:12px 15px;cursor:pointer;font-weight:760}
+.gallery-group summary small{float:right;color:var(--muted);font-weight:500}
+.gallery-group[open]>summary{border-bottom:1px solid var(--line)}
+.gallery-group .gallery-grid{padding:12px}
+@media(max-width:670px){.guide-figure{grid-template-columns:1fr}.guide-image img{max-height:280px}}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .capture{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .capture a{display:grid;place-items:center;background:#101222;aspect-ratio:16/10}
