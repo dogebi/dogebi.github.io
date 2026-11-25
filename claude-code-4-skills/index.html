@@ -35,7 +35,9 @@
   --code-ink: #23241f;
   --callout-ink: #58290f;
   --callout-strong: #3f1d0d;
-  --rail-num: #a29a86;
+  --t-body: 14.5px;
+  --t-dense: 13.5px;
+  --t-label: 11px;
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Serif KR", serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Helvetica Neue", sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
@@ -56,7 +58,6 @@
   --code-ink: #e9e4d6;
   --callout-ink: #f0d9c9;
   --callout-strong: #ffd9c2;
-  --rail-num: #7d7666;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -86,7 +87,7 @@ a:hover { color: var(--oxide); }
   color: var(--muted); padding-bottom: 13px; border-bottom: 1px solid var(--rule);
 }
 .mast-kicker b { color: var(--ink); font-weight: 600; }
-.mast-tools { display: flex; align-items: center; gap: 16px; }
+.mast-tools { display: flex; align-items: center; gap: 16px; margin-left: auto; }
 .theme-btn {
   font: 11px var(--sans); letter-spacing: .02em; white-space: nowrap;
   background: none; border: 1px solid var(--rule); color: var(--ink-2);
@@ -117,21 +118,18 @@ a:hover { color: var(--oxide); }
 .layout > * { min-width: 0; }
 main { min-width: 0; }
 .rail { position: sticky; top: 26px; }
-.rail h2 { font: 600 10px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+.rail h2 { font: 600 10px/1 var(--mono); letter-spacing: .04em; color: var(--muted); margin: 0 0 10px; }
 .rail ol { list-style: none; margin: 0; padding: 0; }
 .rail li { border-top: 1px solid var(--rule); }
 .rail li:last-child { border-bottom: 1px solid var(--rule); }
-.rail a { display: grid; grid-template-columns: 2.4ch 1fr; gap: 4px; padding: 8px 0; font-size: 13px; color: var(--ink-2); border: 0; }
-.rail a i { font: 10px var(--mono); color: var(--rail-num); font-style: normal; padding-top: 3px; }
+.rail a { display: block; padding: 8px 0; font-size: 13px; color: var(--ink-2); border: 0; }
 .rail a:hover { color: var(--oxide); }
 .rail a.active { color: var(--ink); font-weight: 600; }
-.rail a.active i { color: var(--oxide); }
 .rail-note { margin: 18px 0 0; font-size: 11.5px; line-height: 1.6; color: var(--muted); }
 
 /* sections */
 section.block { margin-bottom: 76px; scroll-margin-top: 22px; }
-.sec-head { display: grid; grid-template-columns: 86px 1fr auto; gap: 16px; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid var(--rule-ink); margin-bottom: 26px; }
-.sec-head .n { font: 400 28px/1 var(--serif); color: var(--oxide); letter-spacing: -.02em; white-space: nowrap; }
+.sec-head { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid var(--rule-ink); margin-bottom: 26px; }
 .sec-head h2 { font: 400 29px/1.15 var(--serif); letter-spacing: -.012em; margin: 0; }
 .sec-head p { margin: 0; font: 11px/1.5 var(--mono); color: var(--muted); text-align: right; max-width: 22ch; }
 
@@ -140,11 +138,11 @@ section.block { margin-bottom: 76px; scroll-margin-top: 22px; }
 .tldr-row { display: grid; grid-template-columns: 190px minmax(0, 1fr) 150px; gap: 20px; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--rule); }
 .tldr-row .k { font: 600 13.5px var(--sans); }
 .tldr-row .k small { display: block; font: 10.5px var(--mono); color: var(--muted); font-weight: 400; margin-top: 2px; }
-.tldr-row .d { font-size: 14.5px; color: var(--ink-2); text-wrap: pretty; }
+.tldr-row .d { font-size: var(--t-body); color: var(--ink-2); text-wrap: pretty; }
 .tldr-row .w { font: 10.5px var(--mono); color: var(--muted); text-align: right; padding-right: 6px; }
 .tldr-row:hover .k { color: var(--oxide); }
 
-.callout { margin: 22px 0 0; padding: 14px 16px; background: var(--oxide-soft); font-size: 13.5px; color: var(--callout-ink); }
+.callout { margin: 22px 0 0; padding: 14px 16px; background: var(--oxide-soft); font-size: var(--t-dense); color: var(--callout-ink); }
 .callout b { color: var(--callout-strong); }
 
 /* diagram */
@@ -195,19 +193,19 @@ figure.plate .pl-opt-text { fill: var(--oxide); }
 .marker .tags { margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 4px; }
 .marker .tags span { font: 9.5px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); padding: 4px 5px; }
 
-.prose p { margin: 0 0 12px; font-size: 14.5px; color: var(--ink-2); }
+.prose p { margin: 0 0 12px; font-size: var(--t-body); color: var(--ink-2); }
 .prose p strong { color: var(--ink); font-weight: 600; }
 .prose ul { margin: 0 0 14px; padding: 0; list-style: none; }
-.prose li { position: relative; padding-left: 15px; margin-bottom: 6px; font-size: 14px; color: var(--ink-2); }
+.prose li { position: relative; padding-left: 15px; margin-bottom: 6px; font-size: var(--t-body); color: var(--ink-2); }
 .prose li::before { content: '—'; position: absolute; left: 0; color: var(--oxide); }
-.prose h4 { font: 600 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 18px 0 8px; }
+.prose h4 { font: 600 10px var(--mono); letter-spacing: .04em; color: var(--muted); margin: 18px 0 8px; }
 .limits li::before { content: '!'; color: var(--oxide); font: 600 10px var(--mono); top: 4px; }
 
-.cmds h4 { font: 600 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 7px; }
+.cmds h4 { font: 600 10px var(--mono); letter-spacing: .04em; color: var(--muted); margin: 0 0 7px; }
 .cmds h4:not(:first-child) { margin-top: 20px; }
 .cmd { border: 1px solid var(--rule); background: var(--surface); }
 .cmd-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 5px 6px 5px 10px; border-bottom: 1px solid var(--rule); }
-.cmd-head span { font: 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.cmd-head span { font: 10px var(--mono); letter-spacing: .04em; color: var(--muted); }
 .cmd[data-kind="install"] .cmd-head span { color: var(--deep); }
 .copy {
   font: 11px var(--sans); padding: 5px 10px; min-width: 62px; min-height: 28px;
@@ -221,11 +219,11 @@ figure.plate .pl-opt-text { fill: var(--oxide); }
 
 /* safe / checklist */
 .gate { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 44px; }
-.gate p { margin: 0 0 12px; font-size: 14.5px; color: var(--ink-2); }
+.gate p { margin: 0 0 12px; font-size: var(--t-body); color: var(--ink-2); }
 .checkbox-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
 .check-item { display: grid; grid-template-columns: 18px 1fr auto; gap: 10px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--rule); }
 .check-item input { width: 15px; height: 15px; margin: 4px 0 0; accent-color: var(--deep); cursor: pointer; }
-.check-item label { font-size: 13.5px; cursor: pointer; line-height: 1.45; }
+.check-item label { font-size: var(--t-dense); cursor: pointer; line-height: 1.45; }
 .check-item label small { display: block; font-size: 11.5px; color: var(--muted); margin-top: 1px; }
 .check-item .tag { font: 9.5px var(--mono); color: var(--muted); padding-top: 4px; white-space: nowrap; letter-spacing: .06em; }
 .check-item input:checked + label { color: var(--muted); }
@@ -244,27 +242,30 @@ summary { cursor: pointer; list-style: none; display: flex; justify-content: spa
 summary::-webkit-details-marker { display: none; }
 summary::after { content: '+'; font: 400 17px var(--mono); color: var(--muted); }
 details[open] summary::after { content: '−'; }
-details p { margin: 0 0 14px; font-size: 14px; color: var(--ink-2); max-width: 70ch; }
+details p { margin: 0 0 14px; font-size: var(--t-body); color: var(--ink-2); max-width: 70ch; }
 
 /* applied */
 .applied { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 36px; }
 .applied div { border-top: 1px solid var(--rule); padding: 14px 0 6px; }
-.applied h3 { font: 600 10.5px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--oxide); margin: 0 0 6px; }
-.applied p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); }
+.applied h3 { font: 600 10.5px var(--mono); letter-spacing: .04em; color: var(--oxide); margin: 0 0 6px; }
+.applied p { margin: 0 0 10px; font-size: var(--t-dense); color: var(--ink-2); }
 
 /* footer */
 footer.site { border-top: 1px solid var(--rule-ink); padding: 20px 0 48px; display: flex; justify-content: space-between; gap: 26px; flex-wrap: wrap; font: 11px/1.75 var(--mono); color: var(--muted); }
 footer.site a { border-bottom-color: var(--rule); }
 footer.site a:hover { border-bottom-color: var(--oxide); }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .gate-bar i { transition: none; }
+}
 @media (max-width: 980px) {
   .layout { grid-template-columns: 1fr; gap: 28px; padding-top: 26px; }
   .rail { position: static; order: 2; padding-top: 16px; border-top: 1px solid var(--rule); }
   .rail h2 { display: none; }
   .rail ol { display: flex; flex-wrap: wrap; gap: 0 18px; }
   .rail li { border: 0; }
-  .rail a { grid-template-columns: auto; padding: 3px 0; }
-  .rail a i { display: none; }
+  .rail a { padding: 3px 0; }
   .rail-note { display: none; }
   main { order: 1; }
   .mast-foot { grid-template-columns: 1fr; gap: 22px; }
@@ -291,10 +292,9 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
   .masthead h1 { margin-top: 18px; }
   .roles { grid-template-columns: 1fr; }
   .tldr-row { grid-template-columns: 1fr; gap: 4px; }
-  .sec-head { grid-template-columns: 54px 1fr; }
-  .sec-head .n { font-size: 19px; }
+  .sec-head { grid-template-columns: 1fr; }
   .sec-head h2 { font-size: 23px; }
-  .prose p, .prose li { font-size: 13.5px; }
+  .prose p, .prose li { font-size: var(--t-dense); }
   .cmd pre { font-size: 11px; }
 }
 @media print {
@@ -313,13 +313,12 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
   <header class="masthead">
     <div class="mast-kicker">
       <span>Claude Code · Community skills · <b><span style="white-space:nowrap">2026-11-24</span> 확인</b></span>
-      <span class="mast-tools"><span>약 12분</span><button id="theme-toggle" class="theme-btn" type="button" aria-pressed="false">다크</button></span>
+      <span class="mast-tools"><span>약 7분</span><button id="theme-toggle" class="theme-btn" type="button" aria-pressed="false">다크</button></span>
     </div>
     <h1>AI 티 나는 화면을 <em>네 번</em> 고친다</h1>
     <div class="mast-foot">
-      <p class="lede">화면이 어디서 본 듯하다면, 문제는 대개 네 군데 중 하나입니다.
-        <b>방향</b>이 없거나, <b>구조</b>가 안 보이거나, <b>문장</b>이 늘어지거나, <b>간격</b>이 흐트러져 있습니다.
-        네 개의 커뮤니티 스킬이 각각 그 한 곳을 맡습니다. 설치 명령과 프롬프트, 그리고 각 스킬이 하지 않는 일까지 적었습니다.</p>
+      <p class="lede">화면이 어디서 본 듯하다면, 원인은 대개 <b>방향</b>·<b>구조</b>·<b>문장</b>·<b>간격</b> 중 하나입니다.
+        네 개의 커뮤니티 스킬이 하나씩 맡습니다. 설치 명령과 프롬프트, 각 스킬이 하지 않는 일까지 적었습니다.</p>
       <ul class="roles">
         <li><b>Unslop</b>화면 점검</li>
         <li><b>UI UX Pro Max</b>디자인 방향</li>
@@ -334,15 +333,15 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
     <aside class="rail">
       <h2>목차</h2>
       <ol>
-        <li><a href="#glance"><i>01</i>한눈에</a></li>
-        <li><a href="#order"><i>02</i>작업 순서</a></li>
-        <li><a href="#unslop"><i>03</i>Unslop</a></li>
-        <li><a href="#uiux"><i>04</i>UI UX Pro Max</a></li>
-        <li><a href="#diagram"><i>05</i>Diagram Design</a></li>
-        <li><a href="#humanizer"><i>06</i>Humanizer</a></li>
-        <li><a href="#safe"><i>07</i>안전하게 고치기</a></li>
-        <li><a href="#applied"><i>08</i>이 페이지에 적용</a></li>
-        <li><a href="#faq"><i>09</i>질문</a></li>
+        <li><a href="#glance">한눈에</a></li>
+        <li><a href="#order">작업 순서</a></li>
+        <li><a href="#unslop">Unslop</a></li>
+        <li><a href="#uiux">UI UX Pro Max</a></li>
+        <li><a href="#diagram">Diagram Design</a></li>
+        <li><a href="#humanizer">Humanizer</a></li>
+        <li><a href="#safe">안전하게 고치기</a></li>
+        <li><a href="#applied">이 페이지에 적용</a></li>
+        <li><a href="#faq">질문</a></li>
       </ol>
       <p class="rail-note">설치 명령은 <span style="white-space:nowrap">2026-11-24</span> 기준입니다.
         저장소의 최신 릴리스와 권한 요청을 직접 확인한 뒤 설치하세요.</p>
@@ -351,7 +350,7 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
     <main>
 
       <section class="block" id="glance">
-        <div class="sec-head"><span class="n">01</span><h2>한눈에</h2><p>역할이 겹치지 않는다</p></div>
+        <div class="sec-head"><h2>한눈에</h2><p>역할이 겹치지 않는다</p></div>
         <div class="tldr">
           <div class="tldr-row">
             <div class="k">Unslop<small>화면 점검</small></div>
@@ -379,71 +378,73 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
       </section>
 
       <section class="block" id="order">
-        <div class="sec-head"><span class="n">02</span><h2>작업 순서</h2><p>전부 설치할 필요는 없다</p></div>
+        <div class="sec-head"><h2>작업 순서</h2><p>전부 설치할 필요는 없다</p></div>
 
         <figure class="plate">
-          <svg viewBox="0 0 1080 268" role="img" aria-labelledby="pipe-title pipe-desc">
+          <svg viewBox="0 0 1080 272" role="img" aria-labelledby="pipe-title pipe-desc">
             <title id="pipe-title">네 스킬을 쓰는 순서</title>
-            <desc id="pipe-desc">디자인 방향을 정하고 화면을 구현한 뒤 렌더링 화면을 점검한다. 구조 설명과 문장 교정은 필요할 때 끼워 넣고, 마지막은 사람이 검수한 뒤 배포한다.</desc>
-            <line class="pl-rule" x1="40" y1="148" x2="1040" y2="148" stroke-width="1"/>
-            <line class="pl-opt" x1="360" y1="148" x2="680" y2="148" stroke-width="1" stroke-dasharray="4 4"/>
+            <desc id="pipe-desc">01 UI UX Pro Max로 디자인 방향을 정하고, 02 직접 구현한 뒤, 03 Unslop으로 렌더링 화면을 점검한다. 04 Diagram Design과 05 Humanizer는 점선 구간 안에서 필요할 때만 끼워 넣고, 06 사람이 검수한 뒤 07 배포한다.</desc>
+            <line class="pl-rule" x1="40" y1="152" x2="1040" y2="152" stroke-width="1"/>
+            <line class="pl-opt" x1="360" y1="152" x2="840" y2="152" stroke-width="1" stroke-dasharray="4 4"/>
             <g class="pl-rule" stroke-width="1">
-              <line x1="40" y1="148" x2="40" y2="138"/>
-              <line x1="200" y1="148" x2="200" y2="138"/>
-              <line x1="360" y1="148" x2="360" y2="138"/>
-              <line x1="840" y1="148" x2="840" y2="138"/>
-              <line x1="1000" y1="148" x2="1000" y2="138"/>
+              <line x1="40" y1="152" x2="40" y2="142"/>
+              <line x1="200" y1="152" x2="200" y2="142"/>
+              <line x1="360" y1="152" x2="360" y2="142"/>
+              <line class="pl-opt" x1="520" y1="152" x2="520" y2="142"/>
+              <line class="pl-opt" x1="680" y1="152" x2="680" y2="142"/>
+              <line x1="840" y1="152" x2="840" y2="142"/>
+              <line x1="1000" y1="152" x2="1000" y2="142"/>
             </g>
             <g stroke-width="1.5">
-              <circle class="pl-node" cx="40" cy="148" r="5"/>
-              <circle class="pl-node" cx="200" cy="148" r="5"/>
-              <circle class="pl-node" cx="360" cy="148" r="5"/>
-              <circle class="pl-node pl-node-opt" cx="520" cy="148" r="5"/>
-              <circle class="pl-node pl-node-opt" cx="680" cy="148" r="5"/>
-              <circle class="pl-node" cx="840" cy="148" r="5"/>
-              <circle class="pl-node" cx="1000" cy="148" r="5"/>
+              <circle class="pl-node" cx="40" cy="152" r="5"/>
+              <circle class="pl-node" cx="200" cy="152" r="5"/>
+              <circle class="pl-node" cx="360" cy="152" r="5"/>
+              <circle class="pl-node pl-node-opt" cx="520" cy="152" r="5"/>
+              <circle class="pl-node pl-node-opt" cx="680" cy="152" r="5"/>
+              <circle class="pl-node" cx="840" cy="152" r="5"/>
+              <circle class="pl-node" cx="1000" cy="152" r="5"/>
             </g>
-            <g class="pl-num" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10">
-              <text x="40" y="120">01</text>
-              <text x="200" y="120" text-anchor="middle">02</text>
-              <text x="360" y="120" text-anchor="middle">03</text>
-              <text x="520" y="120" text-anchor="middle">04</text>
-              <text x="680" y="120" text-anchor="middle">05</text>
-              <text x="840" y="120" text-anchor="middle">06</text>
-              <text x="1000" y="120" text-anchor="middle">07</text>
+            <g class="pl-num" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" text-anchor="middle">
+              <text x="40" y="124">01</text>
+              <text x="200" y="124">02</text>
+              <text x="360" y="124">03</text>
+              <text x="520" y="124">04</text>
+              <text x="680" y="124">05</text>
+              <text x="840" y="124">06</text>
+              <text x="1000" y="124">07</text>
             </g>
             <g class="pl-label" font-family="-apple-system, 'Segoe UI', 'Noto Sans KR', sans-serif" font-size="13" font-weight="600">
-              <text x="40" y="188">UI UX Pro Max</text>
-              <text x="200" y="188" text-anchor="middle">구현</text>
-              <text x="360" y="188" text-anchor="middle">Unslop</text>
-              <text x="520" y="188" text-anchor="middle">Diagram Design</text>
-              <text x="680" y="188" text-anchor="middle">Humanizer</text>
-              <text x="840" y="188" text-anchor="middle">사람 검수</text>
-              <text x="1000" y="188" text-anchor="end">배포</text>
+              <text x="40" y="196">UI UX Pro Max</text>
+              <text x="200" y="196" text-anchor="middle">구현</text>
+              <text x="360" y="196" text-anchor="middle">Unslop</text>
+              <text x="520" y="196" text-anchor="middle">Diagram Design</text>
+              <text x="680" y="196" text-anchor="middle">Humanizer</text>
+              <text x="840" y="196" text-anchor="middle">사람 검수</text>
+              <text x="1000" y="196" text-anchor="end">배포</text>
             </g>
-            <g class="pl-num" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10">
-              <text x="40" y="208">방향·팔레트·피할 패턴</text>
-              <text x="200" y="208" text-anchor="middle">Claude Code</text>
-              <text x="360" y="208" text-anchor="middle">AI 티 진단</text>
-              <text x="520" y="208" text-anchor="middle">구조·흐름</text>
-              <text x="680" y="208" text-anchor="middle">문장 리듬</text>
-              <text x="840" y="208" text-anchor="middle">모바일·포커스·대비</text>
-              <text x="1000" y="208" text-anchor="end"> </text>
+            <g class="pl-num" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" text-anchor="middle">
+              <text x="40" y="216" text-anchor="start">방향·팔레트·피할 패턴</text>
+              <text x="200" y="216">Claude Code</text>
+              <text x="360" y="216">AI 티 진단</text>
+              <text x="520" y="216">구조·흐름</text>
+              <text x="680" y="216">문장 리듬</text>
+              <text x="840" y="216">모바일·포커스·대비</text>
+              <text x="1000" y="216" text-anchor="end"> </text>
             </g>
-            <path class="pl-opt" d="M440 236 L440 244 L600 244 L600 236" fill="none" stroke-width="1"/>
-            <text class="pl-opt-text" x="520" y="262" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10">04·05는 필요할 때만</text>
+            <path class="pl-opt" d="M440 240 L440 248 L760 248 L760 240" fill="none" stroke-width="1"/>
+            <text class="pl-opt-text" x="600" y="264" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10">04·05는 필요할 때만</text>
           </svg>
-          <figcaption>실선은 매번 하는 일, 점선과 붉은 구간은 필요할 때 끼우는 작업입니다.</figcaption>
+          <figcaption>실선은 매번 하는 일, 점선 구간과 붉은 원은 필요할 때 끼우는 작업입니다.</figcaption>
           <p class="plate-hint">작은 화면에서는 옆으로 넘겨 보세요.</p>
         </figure>
 
         <p style="margin:24px 0 0;font-size:14.5px;color:var(--ink-2)">
-          이미 만든 사이트를 손본다면 Unslop부터. 다이어그램이나 글만 필요하면 해당 스킬 하나만 써도 됩니다.
-          순서는 편의일 뿐, 앞 단계를 끝내야 다음이 되는 구조가 아닙니다.</p>
+          이미 만든 사이트를 손본다면 Unslop부터 시작하면 됩니다. 다이어그램이나 글만 필요하면 해당 스킬 하나만 써도 됩니다.
+          앞 단계를 끝내야 다음으로 넘어가는 구조는 아닙니다.</p>
       </section>
 
       <section class="block" id="skills" style="margin-bottom:0">
-        <div class="sec-head"><span class="n">03–06</span><h2>스킬별로</h2><p>설치 · 프롬프트 · 한계</p></div>
+        <div class="sec-head"><h2>스킬별로</h2><p>설치 · 프롬프트 · 한계</p></div>
       </section>
 
       <article class="skill" id="unslop">
@@ -627,7 +628,7 @@ uipro update</pre>
       </article>
 
       <section class="block" id="safe" style="margin-top:76px">
-        <div class="sec-head"><span class="n">07</span><h2>안전하게 고치기</h2><p>진단 → 승인 → 작은 단위</p></div>
+        <div class="sec-head"><h2>안전하게 고치기</h2><p>진단 → 승인 → 작은 단위</p></div>
         <div class="gate">
           <div>
             <p>전체를 한 번에 다시 그리게 하면 검토할 수 없는 diff가 나옵니다. 아래 프롬프트는 진단과 계획만 먼저 받고,
@@ -655,37 +656,42 @@ uipro update</pre>
       </section>
 
       <section class="block" id="applied">
-        <div class="sec-head"><span class="n">08</span><h2>이 페이지에 적용한 것</h2><p>네 스킬을 이 문서에 돌렸다</p></div>
+        <div class="sec-head"><h2>이 페이지에 적용한 것</h2><p>네 스킬을 이 문서에 돌렸다</p></div>
         <div class="applied">
           <div>
             <h3>Unslop — 걷어낸 것</h3>
-            <p>같은 모양의 카드 4장과 3중 박스(표·카드·코드)를 없앴습니다. 코드 위에 겹쳐 있던 복사 버튼은
-              블록 머리줄로 옮겼습니다. 카드마다 같은 정보를 같은 밀도로 쌓지 않으려고 마커·본문·명령 3단으로 나눴습니다.</p>
+            <p>섹션마다 붙던 01–09 번호를 지웠습니다. 목차·본문 머리·스킬 카드가 같은 섹션을 서로 다른 세 체계로
+              세고 있었고, 목차 번호 색(#a29a86)은 종이색 대비 2.55:1로 읽히지 않았습니다. 한글 소제목에 걸려 있던
+              대문자 변환과 0.12em 자간도 0.04em로 줄였습니다.</p>
           </div>
           <div>
             <h3>UI UX Pro Max — 정한 것</h3>
-            <p>액센트는 산화철 주황 하나로 줄이고 링크와 경고에만 씁니다. 제목은 세리프, 숫자와 명령은 모노.
-              표 대신 행 구분선만 남겼고, 모바일에서도 설치 명령을 숨기지 않습니다.</p>
+            <p>본문 크기를 14.5 / 13.5 / 11 세 단으로 토큰화했습니다(<code>--t-body</code> · <code>--t-dense</code> ·
+              <code>--t-label</code>). 13.5~15px 사이에 흩어져 있던 다섯 단계를 정리했고, 부드러운 스크롤과 진행 막대
+              애니메이션은 <code>prefers-reduced-motion</code>에서 끕니다. 액센트는 산화철 주황 하나, 카드·그림자·
+              그라데이션은 쓰지 않습니다.</p>
           </div>
           <div>
             <h3>Diagram Design — 그린 것</h3>
-            <p>작업 순서를 번호 목록이 아니라 SVG 타임라인으로 그렸습니다. 선택 단계는 점선과 붉은 원,
-              아래 브래킷으로 구분했습니다. 좌표는 4px 배수, 그림자 없음, 라벨은 노드 아래 두 줄로 고정했습니다.</p>
+            <p>눈금이 없던 04·05 노드에 눈금을 채우고, 점선 구간을 03~06 사이로 맞췄습니다. “필요할 때만” 브래킷이
+              05를 덮지 않던 좌표(440–600)도 440–760으로 고쳤습니다. y좌표는 전부 4px 배수로 맞췄고,
+              읽어주기용 설명에는 단계 번호를 넣었습니다.</p>
           </div>
           <div>
             <h3>Humanizer — 고친 것</h3>
-            <p>“단순한 X가 아니라 Y” 류의 대비 문장과 “~할 수 있습니다” 남발, 세 항목 나열을 걷어냈습니다.
-              확인하지 않은 수치는 쓰지 않았고, 각 스킬의 한계는 그대로 남겼습니다.</p>
+            <p>리드의 “없거나·안 보이거나·늘어지거나·흐트러져” 네 갈래 병렬을 걷어내고 원인을 명사로 나열했습니다.
+              “순서는 편의일 뿐, ~구조가 아닙니다” 대비 강조문과 FAQ에 세 번 반복된 “아니요.”도 지웠습니다.
+              읽는 시간은 본문 3,196자로 다시 계산해 12분에서 7분으로 고쳤습니다.</p>
           </div>
         </div>
       </section>
 
       <section class="block" id="faq">
-        <div class="sec-head"><span class="n">09</span><h2>질문</h2><p>원문 FAQ 요약</p></div>
+        <div class="sec-head"><h2>질문</h2><p>원문 FAQ 요약</p></div>
 
         <details>
           <summary>Anthropic 공식 스킬인가요?</summary>
-          <p>아니요. 커뮤니티 제작자가 공개한 스킬·플러그인이고 Claude Code의 스킬 기능으로 실행됩니다.
+          <p>커뮤니티 제작자가 공개한 스킬·플러그인이고 Claude Code의 스킬 기능으로 실행됩니다.
             설치 전에 저장소와 권한 요청을 직접 확인하세요.</p>
         </details>
         <details>
@@ -695,7 +701,7 @@ uipro update</pre>
         </details>
         <details>
           <summary>Unslop이 운영 사이트를 직접 고치나요?</summary>
-          <p>아니요. 페이지를 저장해 사본으로 수정 HTML을 만들 뿐입니다. 자동 배포는 없고,
+          <p>직접 고치지 않습니다. 페이지를 저장해 사본으로 수정 HTML을 만들 뿐입니다. 자동 배포는 없고,
             동적 요소는 저장본에서 빠질 수 있습니다.</p>
         </details>
         <details>
@@ -705,7 +711,7 @@ uipro update</pre>
         </details>
         <details>
           <summary>네 개를 모두 설치해야 하나요?</summary>
-          <p>아니요. 필요한 작업부터 하나씩 쓰면 됩니다. 이미 만든 사이트는 Unslop부터,
+          <p>필요한 작업부터 하나씩 쓰면 됩니다. 이미 만든 사이트는 Unslop부터,
             구조나 문장만 필요하면 해당 스킬만 설치하세요.</p>
         </details>
         <details>
@@ -863,6 +869,12 @@ uipro update</pre>
     const line = window.scrollY + 120;
     let current = offsets[0];
     for (const o of offsets) if (o.top <= line) current = o;
+    /* 마지막 섹션이 짧으면 스크롤이 끝까지 가지 않아 목차 마지막 항목이 영영
+       활성화되지 않는다. 바닥에 닿으면 마지막 항목을 강제로 선택한다. */
+    const doc = document.documentElement;
+    if (Math.ceil(window.scrollY + window.innerHeight) >= doc.scrollHeight - 2) {
+      current = offsets[offsets.length - 1];
+    }
     links.forEach(a => a.classList.toggle('active', current && a === current.link));
   }
 
