@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI 티 나는 홈페이지를 고치는 Claude Code 스킬 4가지</title>
-<meta name="description" content="Unslop, UI UX Pro Max, Diagram Design, Humanizer — 커뮤니티 Claude Code 스킬 4개의 역할·설치·실전 프롬프트·한계를 한 장으로 정리한 필드 노트.">
-<meta property="og:title" content="AI 티 나는 홈페이지를 고치는 Claude Code 스킬 4가지">
-<meta property="og:description" content="화면 점검(Unslop), 디자인 방향(UI UX Pro Max), 구조 시각화(Diagram Design), 문장 다듬기(Humanizer)를 작업별로 정리.">
+<title>AI 티 나는 화면을 네 번 고친다 — Claude Code 스킬 4가지</title>
+<meta name="description" content="Unslop, UI UX Pro Max, Diagram Design, Humanizer. 화면 점검·디자인 방향·구조 시각화·문장 교정을 작업별로 나눈 필드 노트. 설치 명령, 프롬프트, 한계까지.">
+<meta property="og:title" content="AI 티 나는 화면을 네 번 고친다">
+<meta property="og:description" content="화면을 고치고, 방향을 잡고, 구조를 그리고, 문장을 다듬는 네 가지 커뮤니티 스킬.">
 <meta property="og:type" content="article">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fbfaf6'/%3E%3Ctext x='6' y='23' font-family='Georgia,serif' font-size='19' fill='%2323474f'%3E4%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f7f4ec'/%3E%3Ctext x='6' y='23' font-family='Georgia,serif' font-size='19' fill='%23b23a12'%3E4%3C/text%3E%3C/svg%3E">
 <style>
 :root {
   color-scheme: light;
-  --paper: #fbfaf6;
-  --paper-2: #f2efe5;
-  --ink: #1b1c1a;
-  --ink-2: #45473f;
-  --muted: #6e6d62;
-  --rule: #ddd8c8;
-  --accent: #23474f;
-  --accent-soft: #e4ecec;
-  --warn: #8a4a1f;
-  --warn-soft: #f6e9dd;
-  --ok: #2c6047;
+  --paper: #f7f4ec;
+  --paper-2: #efeade;
+  --surface: #fffdf8;
+  --ink: #17160f;
+  --ink-2: #3d3a30;
+  --muted: #6b6656;
+  --rule: #dcd4c0;
+  --rule-ink: #17160f;
+  --oxide: #b23a12;
+  --oxide-soft: #f4e2d7;
+  --deep: #234f46;
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Serif KR", serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Helvetica Neue", sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
@@ -31,231 +31,255 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0; background: var(--paper); color: var(--ink);
-  font: 16px/1.65 var(--sans); -webkit-font-smoothing: antialiased;
+  font: 16.5px/1.7 var(--sans);
+  word-break: keep-all; overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
-a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(35,71,79,.3); }
-a:hover { border-bottom-color: var(--accent); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+pre, code, .mono { word-break: break-word; }
+a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--oxide); }
+a:hover { color: var(--oxide); }
+:focus-visible { outline: 2px solid var(--oxide); outline-offset: 3px; }
+::selection { background: var(--oxide-soft); }
 
-.wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
 
-/* header */
-.masthead { padding: 46px 0 26px; border-bottom: 2px solid var(--ink); }
-.kicker {
-  display: block; font: 600 11px/1 var(--mono); letter-spacing: .16em;
-  text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+/* reading progress */
+.read-bar { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 40; }
+.read-bar i { display: block; height: 100%; width: 0; background: var(--oxide); }
+
+/* masthead */
+.masthead { padding: 52px 0 30px; }
+.mast-kicker {
+  display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  font: 600 11px/1.5 var(--mono); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted); padding-bottom: 13px; border-bottom: 1px solid var(--rule);
 }
+.mast-kicker b { color: var(--ink); font-weight: 600; }
 .masthead h1 {
-  font: 400 clamp(30px, 4.4vw, 50px)/1.1 var(--serif);
-  letter-spacing: -.02em; margin: 0 0 14px; max-width: 18ch;
+  font: 400 clamp(34px, 5.2vw, 58px)/1.06 var(--serif);
+  letter-spacing: -.025em; margin: 26px 0 22px; max-width: 16ch;
+  text-wrap: balance;
 }
-.masthead h1 em { font-style: italic; color: var(--accent); }
-.lede { margin: 0; max-width: 62ch; color: var(--ink-2); font-size: 16px; }
-.meta-row {
-  display: flex; gap: 22px; flex-wrap: wrap; margin-top: 20px;
-  font: 11px/1.6 var(--mono); color: var(--muted);
+.masthead h1 em {
+  font-style: normal; color: var(--oxide);
+  text-decoration: underline; text-decoration-thickness: 2px;
+  text-decoration-color: rgba(178, 58, 18, .32);
+  text-underline-offset: .1em;
 }
-.meta-row b { color: var(--ink); font-weight: 600; }
+.mast-foot { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 42px; align-items: end; }
+.lede { margin: 0; font-size: 17px; line-height: 1.7; color: var(--ink-2); max-width: 58ch; text-wrap: pretty; }
+.lede b { color: var(--ink); font-weight: 600; }
+.roles { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; margin: 0; padding: 0; list-style: none; }
+.roles li { font: 11.5px/1.45 var(--mono); color: var(--muted); padding: 7px 0; border-bottom: 1px solid var(--rule); }
+.roles b { color: var(--ink); font-weight: 600; display: inline; margin-right: 6px; }
 
 /* layout */
-.layout {
-  display: grid; grid-template-columns: 200px minmax(0, 1fr);
-  gap: 56px; padding: 36px 0 90px; align-items: start;
-}
-.rail { position: sticky; top: 24px; font-size: 13px; }
-.rail h2 {
-  font: 600 10px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase;
-  color: var(--muted); margin: 0 0 12px;
-}
-.rail ol { list-style: none; margin: 0 0 26px; padding: 0; counter-reset: nav; }
-.rail li { margin-bottom: 2px; }
-.rail a {
-  display: block; padding: 5px 0 5px 26px; position: relative;
-  color: var(--ink-2); border: 0; counter-increment: nav;
-}
-.rail a::before {
-  content: counter(nav, decimal-leading-zero);
-  position: absolute; left: 0; top: 6px;
-  font: 10px var(--mono); color: #a8a496;
-}
-.rail a:hover { color: var(--accent); }
+.layout { display: grid; grid-template-columns: 176px minmax(0, 1fr); gap: 54px; padding: 40px 0 80px; align-items: start; }
+.layout > * { min-width: 0; }
+main { min-width: 0; }
+.rail { position: sticky; top: 26px; }
+.rail h2 { font: 600 10px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+.rail ol { list-style: none; margin: 0; padding: 0; }
+.rail li { border-top: 1px solid var(--rule); }
+.rail li:last-child { border-bottom: 1px solid var(--rule); }
+.rail a { display: grid; grid-template-columns: 2.4ch 1fr; gap: 4px; padding: 8px 0; font-size: 13px; color: var(--ink-2); border: 0; }
+.rail a i { font: 10px var(--mono); color: #a29a86; font-style: normal; padding-top: 3px; }
+.rail a:hover { color: var(--oxide); }
 .rail a.active { color: var(--ink); font-weight: 600; }
-.rail a.active::before { color: var(--accent); }
-.rail .aside-note {
-  border-top: 1px solid var(--rule); padding-top: 14px;
-  font-size: 12px; color: var(--muted); line-height: 1.55;
-}
+.rail a.active i { color: var(--oxide); }
+.rail-note { margin: 18px 0 0; font-size: 11.5px; line-height: 1.6; color: var(--muted); }
 
 /* sections */
-section.block { margin-bottom: 64px; scroll-margin-top: 24px; }
-.block-head {
-  display: flex; justify-content: space-between; align-items: baseline; gap: 18px;
-  border-bottom: 1px solid var(--ink); padding-bottom: 9px; margin-bottom: 24px;
-}
-.block-head h2 { font: 400 27px/1.15 var(--serif); margin: 0; letter-spacing: -.01em; }
-.block-head .hint { font: 11px var(--mono); color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+section.block { margin-bottom: 76px; scroll-margin-top: 22px; }
+.sec-head { display: grid; grid-template-columns: 86px 1fr auto; gap: 16px; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid var(--rule-ink); margin-bottom: 26px; }
+.sec-head .n { font: 400 28px/1 var(--serif); color: var(--oxide); letter-spacing: -.02em; white-space: nowrap; }
+.sec-head h2 { font: 400 29px/1.15 var(--serif); letter-spacing: -.012em; margin: 0; }
+.sec-head p { margin: 0; font: 11px/1.5 var(--mono); color: var(--muted); text-align: right; max-width: 22ch; }
 
-/* matrix */
-.matrix { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-.matrix th {
-  text-align: left; font: 600 10px var(--mono); letter-spacing: .12em;
-  text-transform: uppercase; color: var(--muted);
-  padding: 0 14px 9px 0; border-bottom: 1px solid var(--rule);
-}
-.matrix td { padding: 14px 14px 14px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
-.matrix td:first-child { width: 20%; }
-.matrix .name { font-weight: 600; }
-.matrix .name small { display: block; font: 11px var(--mono); color: var(--muted); font-weight: 400; margin-top: 3px; }
-.matrix code { font: 11.5px var(--mono); color: var(--accent); }
-.note {
-  margin-top: 16px; padding: 12px 14px; background: var(--paper-2);
-  border-left: 2px solid var(--accent); font-size: 13px; color: var(--ink-2);
-}
+/* TL;DR rows */
+.tldr { border-top: 1px solid var(--rule); }
+.tldr-row { display: grid; grid-template-columns: 190px minmax(0, 1fr) 150px; gap: 20px; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--rule); }
+.tldr-row .k { font: 600 13.5px var(--sans); }
+.tldr-row .k small { display: block; font: 10.5px var(--mono); color: var(--muted); font-weight: 400; margin-top: 2px; }
+.tldr-row .d { font-size: 14.5px; color: var(--ink-2); text-wrap: pretty; }
+.tldr-row .w { font: 10.5px var(--mono); color: var(--muted); text-align: right; padding-right: 6px; }
+.tldr-row:hover .k { color: var(--oxide); }
 
-/* flow */
-.flow { list-style: none; margin: 0; padding: 0; counter-reset: step; }
-.flow li {
-  display: grid; grid-template-columns: 34px 1fr; gap: 14px;
-  padding: 14px 0; border-bottom: 1px solid var(--rule);
-}
-.flow li::before {
-  counter-increment: step; content: counter(step);
-  font: 600 12px/26px var(--mono); text-align: center;
-  width: 26px; height: 26px; border: 1px solid var(--ink); color: var(--ink);
-}
-.flow b { display: block; font-size: 14px; margin-bottom: 2px; }
-.flow span { font-size: 13px; color: var(--ink-2); }
+.callout { margin: 22px 0 0; padding: 14px 16px; background: var(--oxide-soft); font-size: 13.5px; color: #58290f; }
+.callout b { color: #3f1d0d; }
 
-/* skill cards */
-.skill {
-  border: 1px solid var(--rule); background: #fffefb;
-  margin-bottom: 26px; scroll-margin-top: 24px;
-}
-.skill-head {
-  display: grid; grid-template-columns: auto 1fr auto; gap: 16px;
-  align-items: baseline; padding: 16px 20px 14px;
-  border-bottom: 1px solid var(--rule);
-}
-.idx { font: 600 11px var(--mono); color: var(--accent); letter-spacing: .06em; }
-.skill-head h3 { font: 400 22px/1.2 var(--serif); margin: 0; }
-.skill-head .role { font: 11px var(--mono); color: var(--muted); text-align: right; }
-.skill-body {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-}
-.skill-body > div { padding: 18px 20px; }
-.skill-body > div + div { border-left: 1px solid var(--rule); }
-.skill h4 {
-  font: 600 10px var(--mono); letter-spacing: .12em; text-transform: uppercase;
-  color: var(--muted); margin: 0 0 8px;
-}
-.skill h4:not(:first-child) { margin-top: 20px; }
-.skill ul { margin: 0; padding-left: 17px; font-size: 13px; color: var(--ink-2); }
-.skill li { margin-bottom: 5px; }
-.skill li:last-child { margin-bottom: 0; }
-.skill .limits li::marker { color: var(--warn); }
+/* diagram */
+figure.plate { margin: 6px 0 0; max-width: 100%; }
+figure.plate svg { display: block; width: 100%; height: auto; }
+figure.plate figcaption { margin-top: 10px; font: 11.5px/1.6 var(--mono); color: var(--muted); }
+.plate-hint { display: none; margin: 6px 0 0; font: 10.5px/1.5 var(--mono); color: var(--oxide); }
 
-/* code blocks */
-.copywrap { position: relative; margin: 0 0 4px; }
-pre {
-  margin: 0; padding: 12px 14px; background: #f5f2e9; border: 1px solid #e6e1d2;
-  font: 12px/1.65 var(--mono); color: #23241f; white-space: pre-wrap;
-  word-break: break-word; overflow-x: auto;
-}
+/* before / after */
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 26px 0 0; }
+.mock { margin: 0; border: 1px solid var(--rule); background: var(--surface); }
+.mock .moon { height: 156px; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
+.mock figcaption { border-top: 1px solid var(--rule); padding: 7px 10px; font: 10.5px/1.5 var(--mono); color: var(--muted); }
+.slop .moon { background: #5b3df5; align-items: center; justify-content: center; }
+.slop .m-hero { color: #fff; font: 700 13px/1.35 var(--sans); text-align: center; }
+.slop .m-sub { color: #ddd6ff; font-size: 8px; text-align: center; margin-top: 2px; }
+.slop .m-btn { margin-top: 8px; background: #fff; color: #5b3df5; font: 700 7px/1 var(--sans); padding: 5px 10px; }
+.slop .m-row { display: flex; gap: 4px; margin-top: 10px; width: 100%; }
+.slop .m-row i { flex: 1; height: 20px; background: rgba(255,255,255,.22); }
+.clean { background: var(--paper); }
+.clean .moon { background: var(--paper); display: block; }
+.clean .m-kicker { font: 600 5.5px var(--mono); letter-spacing: .12em; color: var(--muted); }
+.clean .m-title { font: 400 15px/1.1 var(--serif); color: var(--ink); margin-top: 3px; max-width: 15ch; }
+.clean .m-rule { height: 1px; background: var(--rule-ink); margin: 7px 0 8px; }
+.clean .m-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 8px; }
+.clean .m-lines i { display: block; height: 3px; background: var(--rule); margin-bottom: 4px; }
+.clean .m-lines i:nth-child(2) { width: 80%; }
+.clean .m-lines i:nth-child(3) { width: 58%; }
+.clean .m-side { border-left: 1px solid var(--rule); padding-left: 7px; }
+.clean .m-side b { display: block; font: 600 6px var(--mono); color: var(--oxide); letter-spacing: .08em; }
+.clean .m-side span { display: block; font: 5.5px/1.7 var(--mono); color: var(--muted); }
+
+/* skills */
+.skill { display: grid; grid-template-columns: 172px minmax(0, 1fr) minmax(0, 0.92fr); border-top: 1px solid var(--rule); scroll-margin-top: 22px; }
+.skill:last-of-type { border-bottom: 1px solid var(--rule); }
+.skill > * { padding: 26px 22px 30px 0; }
+.skill > * + * { padding-left: 22px; border-left: 1px solid var(--rule); }
+.marker .idx { display: block; font: 400 44px/1 var(--serif); color: var(--oxide); letter-spacing: -.03em; }
+.marker h3 { font: 400 21px/1.15 var(--serif); margin: 8px 0 4px; letter-spacing: -.01em; text-wrap: balance; }
+.marker p { margin: 0; font: 11px/1.5 var(--mono); color: var(--muted); }
+.marker .tags { margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 4px; }
+.marker .tags span { font: 9.5px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); padding: 4px 5px; }
+
+.prose p { margin: 0 0 12px; font-size: 14.5px; color: var(--ink-2); }
+.prose p strong { color: var(--ink); font-weight: 600; }
+.prose ul { margin: 0 0 14px; padding: 0; list-style: none; }
+.prose li { position: relative; padding-left: 15px; margin-bottom: 6px; font-size: 14px; color: var(--ink-2); }
+.prose li::before { content: '—'; position: absolute; left: 0; color: var(--oxide); }
+.prose h4 { font: 600 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 18px 0 8px; }
+.limits li::before { content: '!'; color: var(--oxide); font: 600 10px var(--mono); top: 4px; }
+
+.cmds h4 { font: 600 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 7px; }
+.cmds h4:not(:first-child) { margin-top: 20px; }
+.cmd { border: 1px solid var(--rule); background: var(--surface); }
+.cmd-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 5px 6px 5px 10px; border-bottom: 1px solid var(--rule); }
+.cmd-head span { font: 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.cmd[data-kind="install"] .cmd-head span { color: var(--deep); }
 .copy {
-  position: absolute; top: 6px; right: 6px;
-  font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase;
-  padding: 4px 7px; background: #fffefb; color: var(--muted);
-  border: 1px solid var(--rule); cursor: pointer;
+  font: 11px var(--sans); padding: 5px 9px; min-width: 52px; min-height: 28px;
+  background: none; border: 1px solid var(--rule); color: var(--ink-2); cursor: pointer;
 }
-.copy:hover { color: var(--ink); border-color: var(--ink); }
-.copy[data-done="1"] { color: var(--ok); border-color: var(--ok); }
+.copy:hover { border-color: var(--ink); color: var(--ink); }
+.copy[data-done="1"] { color: var(--deep); border-color: var(--deep); }
+.cmd pre { margin: 0; padding: 11px 12px; font: 11.8px/1.7 var(--mono); color: #23241f; white-space: pre-wrap; word-break: break-word; }
+.cmds .hint { margin: 7px 0 0; font: 11px/1.55 var(--mono); color: var(--muted); }
+.cmds .hint code { font: 11px var(--mono); color: var(--ink-2); }
 
-/* checklist */
-.checklist { border-top: 1px solid var(--rule); }
-.check-item {
-  display: grid; grid-template-columns: 18px 1fr auto; gap: 12px;
-  align-items: start; padding: 11px 0; border-bottom: 1px solid var(--rule);
-}
-.check-item input { width: 14px; height: 14px; margin: 4px 0 0; accent-color: var(--ok); cursor: pointer; }
-.check-item label { font-size: 14px; cursor: pointer; }
-.check-item label small { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
-.check-item .tag { font: 10px var(--mono); color: var(--muted); white-space: nowrap; padding-top: 3px; }
+/* safe / checklist */
+.gate { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 44px; }
+.gate p { margin: 0 0 12px; font-size: 14.5px; color: var(--ink-2); }
+.checkbox-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.check-item { display: grid; grid-template-columns: 18px 1fr auto; gap: 10px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+.check-item input { width: 15px; height: 15px; margin: 4px 0 0; accent-color: var(--deep); cursor: pointer; }
+.check-item label { font-size: 13.5px; cursor: pointer; line-height: 1.45; }
+.check-item label small { display: block; font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+.check-item .tag { font: 9.5px var(--mono); color: var(--muted); padding-top: 4px; white-space: nowrap; letter-spacing: .06em; }
 .check-item input:checked + label { color: var(--muted); }
 .check-item input:checked + label .c-title { text-decoration: line-through; }
-.check-foot { display: flex; justify-content: space-between; align-items: baseline; margin-top: 14px; gap: 16px; flex-wrap: wrap; }
-.check-score { font: 12px var(--mono); color: var(--muted); }
-.reset {
-  background: none; border: 0; padding: 0; font: 12px var(--mono);
-  color: var(--muted); text-decoration: underline; cursor: pointer;
-}
-.reset:hover { color: var(--accent); }
-
-.two-col { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 34px; }
-.two-col p { margin: 0 0 12px; font-size: 14px; color: var(--ink-2); }
-.two-col ul { margin: 0 0 12px; padding-left: 17px; font-size: 13.5px; color: var(--ink-2); }
-.two-col li { margin-bottom: 5px; }
+.gate-foot { display: flex; align-items: center; gap: 14px; margin-top: 12px; }
+.gate-bar { flex: 1; height: 3px; background: var(--rule); }
+.gate-bar i { display: block; height: 100%; width: 0; background: var(--deep); transition: width .2s; }
+.gate-score { font: 11px var(--mono); color: var(--muted); white-space: nowrap; }
+.reset { background: none; border: 0; padding: 0; font: 11px var(--mono); color: var(--muted); text-decoration: underline; cursor: pointer; }
+.reset:hover { color: var(--oxide); }
 
 /* faq */
-details { border-bottom: 1px solid var(--rule); padding: 12px 0; }
-details summary {
-  cursor: pointer; font-size: 14.5px; font-weight: 600; list-style: none;
-  display: flex; justify-content: space-between; gap: 14px;
-}
-details summary::-webkit-details-marker { display: none; }
-details summary::after { content: '+'; font: 400 16px var(--mono); color: var(--muted); }
+details { border-top: 1px solid var(--rule); }
+details:last-of-type { border-bottom: 1px solid var(--rule); }
+summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; font-size: 14.5px; font-weight: 600; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: '+'; font: 400 17px var(--mono); color: var(--muted); }
 details[open] summary::after { content: '−'; }
-details p { margin: 10px 0 0; font-size: 13.5px; color: var(--ink-2); max-width: 78ch; }
+details p { margin: 0 0 14px; font-size: 14px; color: var(--ink-2); max-width: 70ch; }
+
+/* applied */
+.applied { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 36px; }
+.applied div { border-top: 1px solid var(--rule); padding: 14px 0 6px; }
+.applied h3 { font: 600 10.5px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--oxide); margin: 0 0 6px; }
+.applied p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); }
 
 /* footer */
-footer.site {
-  border-top: 1px solid var(--rule); padding: 20px 0 44px;
-  display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
-  font: 11px/1.7 var(--mono); color: var(--muted);
-}
-footer.site a { color: var(--muted); }
+footer.site { border-top: 1px solid var(--rule-ink); padding: 20px 0 48px; display: flex; justify-content: space-between; gap: 26px; flex-wrap: wrap; font: 11px/1.75 var(--mono); color: var(--muted); }
+footer.site a { border-bottom-color: var(--rule); }
+footer.site a:hover { border-bottom-color: var(--oxide); }
 
-@media (max-width: 900px) {
-  .layout { grid-template-columns: 1fr; gap: 26px; padding-top: 24px; }
-  .rail { position: static; order: 2; border-top: 1px solid var(--rule); padding-top: 18px; }
-  .rail ol { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-bottom: 0; }
-  .rail li { margin: 0; }
-  .rail a { padding: 4px 0; }
-  .rail a::before { display: none; }
-  .rail h2, .rail .aside-note { display: none; }
+@media (max-width: 980px) {
+  .layout { grid-template-columns: 1fr; gap: 28px; padding-top: 26px; }
+  .rail { position: static; order: 2; padding-top: 16px; border-top: 1px solid var(--rule); }
+  .rail h2 { display: none; }
+  .rail ol { display: flex; flex-wrap: wrap; gap: 0 18px; }
+  .rail li { border: 0; }
+  .rail a { grid-template-columns: auto; padding: 3px 0; }
+  .rail a i { display: none; }
+  .rail-note { display: none; }
   main { order: 1; }
-  .skill-body, .two-col { grid-template-columns: 1fr; }
-  .skill-body > div + div { border-left: 0; border-top: 1px solid var(--rule); }
-  .skill-head { grid-template-columns: auto 1fr; }
-  .skill-head .role { grid-column: 2; text-align: left; }
+  .mast-foot { grid-template-columns: 1fr; gap: 22px; }
+  .skill { grid-template-columns: 1fr; }
+  .skill > * { padding: 20px 0 6px; }
+  .skill > * + * { padding-left: 0; border-left: 0; }
+  .marker { display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; align-items: baseline; }
+  .marker .idx { font-size: 28px; }
+  .marker h3 { margin: 0; }
+  .marker p { grid-column: 2; }
+  .marker .tags { grid-column: 1 / -1; margin-top: 8px; }
+  .gate, .compare { grid-template-columns: 1fr; }
+  .tldr-row { grid-template-columns: 150px 1fr; }
+  .tldr-row .w { display: none; }
+  .sec-head p { display: none; }
+  .applied { grid-template-columns: 1fr; }
+  figure.plate { overflow-x: auto; padding-bottom: 4px; }
+  figure.plate svg { min-width: 920px; }
+  .plate-hint { display: block; }
 }
 @media (max-width: 560px) {
-  .wrap { padding: 0 16px; }
-  .masthead { padding-top: 30px; }
-  .matrix { font-size: 12.5px; }
-  .matrix th:nth-child(4), .matrix td:nth-child(4) { display: none; }
+  .wrap { padding: 0 18px; }
+  .masthead { padding-top: 34px; }
+  .masthead h1 { margin-top: 18px; }
+  .roles { grid-template-columns: 1fr; }
+  .tldr-row { grid-template-columns: 1fr; gap: 4px; }
+  .sec-head { grid-template-columns: 54px 1fr; }
+  .sec-head .n { font-size: 19px; }
+  .sec-head h2 { font-size: 23px; }
+  .prose p, .prose li { font-size: 13.5px; }
+  .cmd pre { font-size: 11px; }
 }
 @media print {
-  .rail, .copy, .reset, footer.site { display: none; }
+  .rail, .copy, .reset, footer.site, .read-bar { display: none; }
   .layout { display: block; }
   body { background: #fff; }
-  .skill { break-inside: avoid; }
+  .skill, .mock { break-inside: avoid; }
 }
 </style>
 </head>
 <body>
+<div class="read-bar" aria-hidden="true"><i id="read-progress"></i></div>
+
 <div class="wrap">
 
   <header class="masthead">
-    <span class="kicker">Claude Code · Community skills · <span style="white-space:nowrap">2026-11-24 기준</span></span>
-    <h1>AI 티 나는 홈페이지, <em>스킬 4개</em>로 고치기</h1>
-    <p class="lede">화면을 점검하는 Unslop, 디자인 방향을 잡는 UI UX Pro Max, 구조를 그리는
-      Diagram Design, 문장을 다듬는 Humanizer. 각 스킬이 맡는 일과 설치법, 실전 프롬프트,
-      그리고 문서에 잘 안 적혀 있는 한계를 한 장에 정리했습니다.</p>
-    <div class="meta-row">
-      <span>원문 <b><a href="https://www.gymcoding.co/articles/claude-code-github-skills-website-ai-slop-design" target="_blank" rel="noopener">짐코딩 · Claude Code GitHub 스킬 4가지</a></b></span>
-      <span>읽기 <b>약 12분</b></span>
-      <span>스킬 <b>4개</b></span>
-      <span>공식 여부 <b>커뮤니티 제작</b></span>
+    <div class="mast-kicker">
+      <span>Claude Code · Community skills · <b><span style="white-space:nowrap">2026-11-24</span> 확인</b></span>
+      <span>원문 <b><a href="https://www.gymcoding.co/articles/claude-code-github-skills-website-ai-slop-design" target="_blank" rel="noopener">짐코딩</a></b> · 약 12분</span>
+    </div>
+    <h1>AI 티 나는 화면을 <em>네 번</em> 고친다</h1>
+    <div class="mast-foot">
+      <p class="lede">화면이 어디서 본 듯하다면, 문제는 대개 네 군데 중 하나입니다.
+        <b>방향</b>이 없거나, <b>구조</b>가 안 보이거나, <b>문장</b>이 늘어지거나, <b>간격</b>이 흐트러져 있습니다.
+        네 개의 커뮤니티 스킬이 각각 그 한 곳을 맡습니다. 설치 명령과 프롬프트, 그리고 각 스킬이 하지 않는 일까지 적었습니다.</p>
+      <ul class="roles">
+        <li><b>Unslop</b>화면 점검</li>
+        <li><b>UI UX Pro Max</b>디자인 방향</li>
+        <li><b>Diagram Design</b>구조 시각화</li>
+        <li><b>Humanizer</b>문장 교정</li>
+      </ul>
     </div>
   </header>
 
@@ -264,254 +288,285 @@ footer.site a { color: var(--muted); }
     <aside class="rail">
       <h2>목차</h2>
       <ol>
-        <li><a href="#glance">한눈에 비교</a></li>
-        <li><a href="#order">쓰는 순서</a></li>
-        <li><a href="#unslop">Unslop</a></li>
-        <li><a href="#uiux">UI UX Pro Max</a></li>
-        <li><a href="#diagram">Diagram Design</a></li>
-        <li><a href="#humanizer">Humanizer</a></li>
-        <li><a href="#safe">안전하게 고치기</a></li>
-        <li><a href="#faq">자주 묻는 질문</a></li>
+        <li><a href="#glance"><i>01</i>한눈에</a></li>
+        <li><a href="#order"><i>02</i>작업 순서</a></li>
+        <li><a href="#unslop"><i>03</i>Unslop</a></li>
+        <li><a href="#uiux"><i>04</i>UI UX Pro Max</a></li>
+        <li><a href="#diagram"><i>05</i>Diagram Design</a></li>
+        <li><a href="#humanizer"><i>06</i>Humanizer</a></li>
+        <li><a href="#safe"><i>07</i>안전하게 고치기</a></li>
+        <li><a href="#applied"><i>08</i>이 페이지에 적용</a></li>
+        <li><a href="#faq"><i>09</i>질문</a></li>
       </ol>
-      <p class="aside-note">설치 명령은 2026-11-24 확인 기준입니다. 저장소의 최신 릴리스와
-        권한 요청을 설치 전에 직접 확인하세요.</p>
+      <p class="rail-note">설치 명령은 <span style="white-space:nowrap">2026-11-24</span> 기준입니다.
+        저장소의 최신 릴리스와 권한 요청을 직접 확인한 뒤 설치하세요.</p>
     </aside>
 
     <main>
 
       <section class="block" id="glance">
-        <div class="block-head">
-          <h2>한눈에 비교</h2>
-          <span class="hint">역할이 겹치지 않는다</span>
+        <div class="sec-head"><span class="n">01</span><h2>한눈에</h2><p>역할이 겹치지 않는다</p></div>
+        <div class="tldr">
+          <div class="tldr-row">
+            <div class="k">Unslop<small>화면 점검</small></div>
+            <div class="d">보라 그라데이션, 글로우, 이모지 라벨, 과장 문구, 들쭉날쭉한 간격을 위치와 함께 짚고 고친 HTML을 만든다.</div>
+            <div class="w">이미 화면이 있을 때</div>
+          </div>
+          <div class="tldr-row">
+            <div class="k">UI UX Pro Max<small>디자인 방향</small></div>
+            <div class="d">제품 유형과 업종에 맞는 레이아웃·팔레트·글꼴 조합을 고르고, 피해야 할 패턴을 먼저 정한다.</div>
+            <div class="w">구현 전</div>
+          </div>
+          <div class="tldr-row">
+            <div class="k">Diagram Design<small>구조 시각화</small></div>
+            <div class="d">아키텍처, 데이터 흐름, 시퀀스를 인라인 SVG가 든 HTML 한 장으로 그린다. 화살표와 라벨이 겹치지 않게.</div>
+            <div class="w">구조를 설명할 때</div>
+          </div>
+          <div class="tldr-row">
+            <div class="k">Humanizer<small>문장 교정</small></div>
+            <div class="d">대비 강조, 극적 결론, 의미 부풀리기를 걷어낸다. 사실과 숫자는 건드리지 않고.</div>
+            <div class="w">공개 문구 마무리</div>
+          </div>
         </div>
-        <table class="matrix">
-          <thead>
-            <tr><th>스킬</th><th>맡는 일</th><th>쓰는 시점</th><th>설치</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="name">Unslop<small>화면 점검</small></td>
-              <td>AI가 만든 듯한 디자인 패턴을 위치와 함께 진단하고 개선 HTML을 만든다</td>
-              <td>이미 화면이 있을 때</td>
-              <td><code>claude plugin install unslop</code></td>
-            </tr>
-            <tr>
-              <td class="name">UI UX Pro Max<small>디자인 방향</small></td>
-              <td>제품 유형·업종에 맞는 레이아웃, 색, 글꼴 조합과 피할 패턴을 제안한다</td>
-              <td>구현 전</td>
-              <td><code>npx ui-ux-pro-max-cli init</code></td>
-            </tr>
-            <tr>
-              <td class="name">Diagram Design<small>구조 시각화</small></td>
-              <td>아키텍처·데이터 흐름·시퀀스를 인라인 SVG가 든 HTML 한 장으로 그린다</td>
-              <td>구조를 설명해야 할 때</td>
-              <td><code>/plugin install diagram-design</code></td>
-            </tr>
-            <tr>
-              <td class="name">Humanizer<small>문장 다듬기</small></td>
-              <td>AI 문장의 반복 패턴을 찾아 사실을 보존한 채 리듬을 고친다</td>
-              <td>공개 문구·README 마무리</td>
-              <td><code>/plugin install humanizer</code></td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="note"><b>주의</b> — 네 가지 모두 Anthropic 내장 기능이 아니라 커뮤니티 제작
-          스킬/플러그인입니다. 설치 전에 저장소 코드와 요청 권한을 확인하고, 결과물의 브랜드
-          적합성·사실·기능은 사람이 마지막에 검수해야 합니다.</p>
+        <p class="callout"><b>공식 기능이 아닙니다.</b> 네 가지 모두 커뮤니티 제작 스킬/플러그인이며 Claude Code의 스킬 기능으로 실행됩니다.
+          설치 전에 저장소 코드와 요청 권한을 읽고, 결과물의 브랜드·사실·동작은 사람이 마지막에 확인하세요.</p>
       </section>
 
       <section class="block" id="order">
-        <div class="block-head">
-          <h2>쓰는 순서</h2>
-          <span class="hint">전부 설치할 필요는 없다</span>
-        </div>
-        <ol class="flow">
-          <li><span><b>UI UX Pro Max — 방향 정하기</b>
-            <span>제품 유형과 고객층을 알려 주고, 색·글꼴·첫 화면 구조와 피할 패턴을 먼저 받는다. 파일 수정은 승인 후에.</span></span></li>
-          <li><span><b>Claude Code — 화면 구현</b>
-            <span>정한 기준을 실제 컴포넌트와 디자인 토큰으로 옮긴다.</span></span></li>
-          <li><span><b>Unslop — 렌더링 화면 검토</b>
-            <span>구현된 화면(또는 라이브 URL 저장본)에서 AI 템플릿 느낌을 위치별로 진단한다.</span></span></li>
-          <li><span><b>Diagram Design — 구조 설명</b>
-            <span>앱 구조·데이터 흐름이 필요하면 다이어그램 HTML을 별도로 만든다.</span></span></li>
-          <li><span><b>Humanizer — 문장 점검</b>
-            <span>공개할 문구와 README의 반복 패턴을 다듬고, 사실·숫자·링크가 그대로인지 확인한다.</span></span></li>
-          <li><span><b>사람 — 최종 검수 후 배포</b>
-            <span>모바일 폭, 키보드 포커스, 대비, 링크·폼 동작을 직접 확인한다.</span></span></li>
-        </ol>
-        <p class="note">이미 만든 사이트를 손본다면 Unslop부터, 다이어그램이나 글 교정만 필요하면
-          해당 스킬만 써도 됩니다. 순서는 편의일 뿐 전제 조건이 아닙니다.</p>
+        <div class="sec-head"><span class="n">02</span><h2>작업 순서</h2><p>전부 설치할 필요는 없다</p></div>
+
+        <figure class="plate">
+          <svg viewBox="0 0 1080 268" role="img" aria-labelledby="pipe-title pipe-desc">
+            <title id="pipe-title">네 스킬을 쓰는 순서</title>
+            <desc id="pipe-desc">디자인 방향을 정하고 화면을 구현한 뒤 렌더링 화면을 점검한다. 구조 설명과 문장 교정은 필요할 때 끼워 넣고, 마지막은 사람이 검수한 뒤 배포한다.</desc>
+            <line x1="40" y1="148" x2="1040" y2="148" stroke="#17160f" stroke-width="1"/>
+            <line x1="360" y1="148" x2="680" y2="148" stroke="#b23a12" stroke-width="1" stroke-dasharray="4 4"/>
+            <g stroke="#17160f" stroke-width="1">
+              <line x1="40" y1="148" x2="40" y2="138"/>
+              <line x1="200" y1="148" x2="200" y2="138"/>
+              <line x1="360" y1="148" x2="360" y2="138"/>
+              <line x1="840" y1="148" x2="840" y2="138"/>
+              <line x1="1000" y1="148" x2="1000" y2="138"/>
+            </g>
+            <g fill="#f7f4ec" stroke-width="1.5">
+              <circle cx="40" cy="148" r="5" stroke="#17160f"/>
+              <circle cx="200" cy="148" r="5" stroke="#17160f"/>
+              <circle cx="360" cy="148" r="5" stroke="#17160f"/>
+              <circle cx="520" cy="148" r="5" stroke="#b23a12"/>
+              <circle cx="680" cy="148" r="5" stroke="#b23a12"/>
+              <circle cx="840" cy="148" r="5" stroke="#17160f"/>
+              <circle cx="1000" cy="148" r="5" stroke="#17160f"/>
+            </g>
+            <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" fill="#6b6656">
+              <text x="40" y="120">01</text>
+              <text x="200" y="120" text-anchor="middle">02</text>
+              <text x="360" y="120" text-anchor="middle">03</text>
+              <text x="520" y="120" text-anchor="middle">04</text>
+              <text x="680" y="120" text-anchor="middle">05</text>
+              <text x="840" y="120" text-anchor="middle">06</text>
+              <text x="1000" y="120" text-anchor="middle">07</text>
+            </g>
+            <g font-family="-apple-system, 'Segoe UI', 'Noto Sans KR', sans-serif" font-size="13" font-weight="600" fill="#17160f">
+              <text x="40" y="188">UI UX Pro Max</text>
+              <text x="200" y="188" text-anchor="middle">구현</text>
+              <text x="360" y="188" text-anchor="middle">Unslop</text>
+              <text x="520" y="188" text-anchor="middle">Diagram Design</text>
+              <text x="680" y="188" text-anchor="middle">Humanizer</text>
+              <text x="840" y="188" text-anchor="middle">사람 검수</text>
+              <text x="1000" y="188" text-anchor="end">배포</text>
+            </g>
+            <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" fill="#6b6656">
+              <text x="40" y="208">방향·팔레트·피할 패턴</text>
+              <text x="200" y="208" text-anchor="middle">Claude Code</text>
+              <text x="360" y="208" text-anchor="middle">AI 티 진단</text>
+              <text x="520" y="208" text-anchor="middle">구조·흐름</text>
+              <text x="680" y="208" text-anchor="middle">문장 리듬</text>
+              <text x="840" y="208" text-anchor="middle">모바일·포커스·대비</text>
+              <text x="1000" y="208" text-anchor="end"> </text>
+            </g>
+            <path d="M440 236 L440 244 L600 244 L600 236" fill="none" stroke="#b23a12" stroke-width="1"/>
+            <text x="520" y="262" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#b23a12">04·05는 필요할 때만</text>
+          </svg>
+          <figcaption>실선은 매번 하는 일, 점선과 붉은 구간은 필요할 때 끼우는 작업입니다.</figcaption>
+          <p class="plate-hint">작은 화면에서는 옆으로 넘겨 보세요.</p>
+        </figure>
+
+        <p style="margin:24px 0 0;font-size:14.5px;color:var(--ink-2)">
+          이미 만든 사이트를 손본다면 Unslop부터. 다이어그램이나 글만 필요하면 해당 스킬 하나만 써도 됩니다.
+          순서는 편의일 뿐, 앞 단계를 끝내야 다음이 되는 구조가 아닙니다.</p>
       </section>
 
-      <section class="block" id="skills">
-        <div class="block-head">
-          <h2>스킬별 정리</h2>
-          <span class="hint">설치 · 프롬프트 · 한계</span>
-        </div>
+      <section class="block" id="skills" style="margin-bottom:0">
+        <div class="sec-head"><span class="n">03–06</span><h2>스킬별로</h2><p>설치 · 프롬프트 · 한계</p></div>
+      </section>
 
-        <article class="skill" id="unslop">
-          <div class="skill-head">
-            <span class="idx">01</span>
-            <h3>Unslop</h3>
-            <span class="role">이미 만든 화면 점검</span>
+      <article class="skill" id="unslop">
+        <div class="marker">
+          <span class="idx">01</span>
+          <h3>Unslop</h3>
+          <p>이미 만든 화면 점검</p>
+          <div class="tags"><span>audit</span><span>html</span></div>
+        </div>
+        <div class="prose">
+          <p>제품과 고객층을 먼저 본 뒤, <strong>간격 → 색 → 아이콘 → 문구 → 타이포그래피</strong> 순서로
+            개선안을 냅니다. 코드 없이 URL만 있어도 페이지 저장본으로 수정 HTML을 만듭니다.</p>
+          <h4>무엇을 짚나</h4>
+          <ul>
+            <li>보라 그라데이션, 과한 광택, 이모지 라벨</li>
+            <li>근거 없는 최상급과 과장 문구</li>
+            <li>들쭉날쭉한 간격, 제각각인 아이콘과 글꼴</li>
+            <li>제품 성격과 무관한 레이아웃</li>
+          </ul>
+          <h4>한계</h4>
+          <ul class="limits">
+            <li>운영 사이트를 직접 고치거나 배포하지 않음 — 결과 HTML을 원본과 비교해 반영</li>
+            <li>저장본에서 동적 요소가 빠질 수 있음</li>
+            <li>스토리 영상은 선택 기능이고 Playwright·Chromium(+ffmpeg)이 필요</li>
+          </ul>
+        </div>
+        <div class="cmds">
+          <h4>설치</h4>
+          <div class="cmd" data-kind="install">
+            <div class="cmd-head"><span>터미널</span><button class="copy" type="button">복사</button></div>
+            <pre>claude plugin install unslop --marketplace heydamir/unslop</pre>
           </div>
-          <div class="skill-body">
-            <div>
-              <h4>무엇을 보나</h4>
-              <ul>
-                <li>보라색 그라데이션, 과한 빛 효과, 이모지 라벨</li>
-                <li>과장된 문구와 근거 없는 최상급 표현</li>
-                <li>불균형한 간격, 제각각인 아이콘·글꼴</li>
-                <li>제품 성격과 맞지 않는 레이아웃</li>
-              </ul>
-              <p style="font-size:13px;color:var(--ink-2);margin:10px 0 0">
-                제품과 고객층을 먼저 본 뒤 <b>간격 → 색 → 아이콘 → 문구 → 타이포그래피</b>
-                순서로 개선안을 냅니다. 코드 없이 URL만 있어도 페이지 저장본으로 수정 HTML을 만들 수 있습니다.
-              </p>
-              <h4>한계</h4>
-              <ul class="limits">
-                <li>운영 사이트를 직접 수정하거나 자동 배포하지 않음</li>
-                <li>저장본에서 동적 요소가 보존되지 않을 수 있음</li>
-                <li>결과 HTML은 원본과 비교 후 반영</li>
-                <li>스토리 영상은 선택 기능 — Playwright·Chromium(+ffmpeg) 필요</li>
-              </ul>
-            </div>
-            <div>
-              <h4>설치</h4>
-              <div class="copywrap"><pre>claude plugin install unslop --marketplace heydamir/unslop</pre><button class="copy" type="button">copy</button></div>
-              <p style="font:11.5px var(--mono);color:var(--muted);margin:6px 0 0">설치 후 새 세션 또는 <code>/reload-plugins</code></p>
-              <h4>실전 프롬프트</h4>
-              <div class="copywrap"><pre>/unslop https://example.com
+          <p class="hint">설치 후 새 세션을 열거나 <code>/reload-plugins</code>를 실행합니다.</p>
+          <h4>실전 프롬프트</h4>
+          <div class="cmd" data-kind="prompt">
+            <div class="cmd-head"><span>프롬프트</span><button class="copy" type="button">복사</button></div>
+            <pre>/unslop https://example.com
 이 사이트를 저장해서 원본 화면을 먼저 살펴봐 줘.
 제품의 브랜드와 고객층에 맞는 방향을 제안하고, AI 템플릿처럼 보이는 요소를 위치와 함께 진단해.
 간격, 색, 아이콘, 문구, 타이포그래피 순서로 개선하고 별도의 HTML/CSS 결과물을 만들어 줘.
-운영 사이트에는 배포하지 말고, 변경점과 저장본에서 보존되지 않을 수 있는 요소를 알려 줘.</pre><button class="copy" type="button">copy</button></div>
-            </div>
+운영 사이트에는 배포하지 말고, 변경점과 저장본에서 보존되지 않을 수 있는 요소를 알려 줘.</pre>
           </div>
-        </article>
+        </div>
+      </article>
 
-        <article class="skill" id="uiux">
-          <div class="skill-head">
-            <span class="idx">02</span>
-            <h3>UI UX Pro Max</h3>
-            <span class="role">제품에 맞는 디자인 기준</span>
+      <article class="skill" id="uiux">
+        <div class="marker">
+          <span class="idx">02</span>
+          <h3>UI UX Pro Max</h3>
+          <p>제품에 맞는 디자인 기준</p>
+          <div class="tags"><span>direction</span><span>tokens</span></div>
+        </div>
+        <div class="prose">
+          <p>“고급스럽게” 대신 업종과 고객층을 말하면, 그에 맞는 첫 화면 구조·색·글꼴 조합과
+            <strong>피할 패턴</strong>을 제안합니다. 기존 프로젝트에서는 토큰과 컴포넌트 구조를 먼저 읽습니다.</p>
+          <h4>숫자는 저장소마다 다르다</h4>
+          <ul class="limits">
+            <li>README: 제품 유형 194 · 팔레트 194 · 글꼴 조합 74</li>
+            <li>릴리스 v2.15.0 노트: 제품 유형 192</li>
+            <li>기본 브랜치와 배포본이 어긋남 — 숫자 대신 설치본의 실제 규칙 확인</li>
+          </ul>
+          <h4>한계</h4>
+          <ul class="limits">
+            <li>제안은 출발점. 브랜드 가이드와 접근성 기준이 우선</li>
+            <li>명시적으로 요청하기 전에는 파일을 고치지 않음 → 진단만 먼저 받기</li>
+            <li>검색 스크립트 실행에 Python 3 필요</li>
+          </ul>
+        </div>
+        <div class="cmds">
+          <h4>설치 · 업데이트</h4>
+          <div class="cmd" data-kind="install">
+            <div class="cmd-head"><span>터미널</span><button class="copy" type="button">복사</button></div>
+            <pre>python3 --version
+npx ui-ux-pro-max-cli init --ai claude
+
+# 업데이트
+npm install -g ui-ux-pro-max-cli@latest
+uipro update</pre>
           </div>
-          <div class="skill-body">
-            <div>
-              <h4>무엇을 보나</h4>
-              <ul>
-                <li>업종·제품 유형에 맞는 화면 구성과 스타일</li>
-                <li>색상 팔레트와 글꼴 조합</li>
-                <li>피해야 할 패턴(AI 보라·분홍 그라데이션 등)</li>
-                <li>기존 프로젝트의 토큰·컴포넌트 구조와의 접점</li>
-              </ul>
-              <h4>숫자를 믿지 말 것</h4>
-              <ul class="limits">
-                <li>README: 제품 유형 194 · 팔레트 194 · 글꼴 조합 74</li>
-                <li>릴리스 노트 v2.15.0: 제품 유형 192</li>
-                <li>기본 브랜치와 배포 릴리스의 숫자가 다름</li>
-                <li>필요하면 설치 버전을 고정하고 실제 규칙을 확인</li>
-              </ul>
-              <h4>한계</h4>
-              <ul class="limits">
-                <li>제안은 출발점 — 브랜드 가이드와 접근성 기준이 우선</li>
-                <li>명시적으로 요청하기 전에는 파일을 바꾸지 않음</li>
-              </ul>
-            </div>
-            <div>
-              <h4>설치 · 업데이트</h4>
-              <div class="copywrap"><pre>python3 --version
-npx ui-ux-pro-max-cli init --ai claude</pre><button class="copy" type="button">copy</button></div>
-              <div class="copywrap" style="margin-top:8px"><pre>npm install -g ui-ux-pro-max-cli@latest
-uipro update</pre><button class="copy" type="button">copy</button></div>
-              <p style="font:11.5px var(--mono);color:var(--muted);margin:6px 0 0">검색 스크립트 실행에 Python 3 필요</p>
-              <h4>실전 프롬프트</h4>
-              <div class="copywrap"><pre>Use the ui-ux-pro-max skill to design a Korean banking landing page.
+          <h4>실전 프롬프트</h4>
+          <div class="cmd" data-kind="prompt">
+            <div class="cmd-head"><span>프롬프트</span><button class="copy" type="button">복사</button></div>
+            <pre>Use the ui-ux-pro-max skill to design a Korean banking landing page.
 먼저 기존 프로젝트의 프레임워크와 버전, 라우트, 컴포넌트, 스타일 파일, 디자인 토큰을 살펴봐.
 대상 고객은 모바일을 주로 쓰는 30~50대 개인 고객이야.
 기존 컴포넌트 구조, 동작, 로그인 흐름과 비즈니스 로직은 유지해.
 신뢰감 있고 읽기 쉬운 색상과 글꼴, 첫 화면 구조를 제안하고 선택 이유와 피할 패턴을 알려 줘.
-제안만 먼저 보여 주고, 승인 전에는 파일을 수정하지 마.</pre><button class="copy" type="button">copy</button></div>
-            </div>
+제안만 먼저 보여 주고, 승인 전에는 파일을 수정하지 마.</pre>
           </div>
-        </article>
+        </div>
+      </article>
 
-        <article class="skill" id="diagram">
-          <div class="skill-head">
-            <span class="idx">03</span>
-            <h3>Diagram Design</h3>
-            <span class="role">앱 구조·흐름 시각화</span>
+      <article class="skill" id="diagram">
+        <div class="marker">
+          <span class="idx">03</span>
+          <h3>Diagram Design</h3>
+          <p>구조와 흐름 시각화</p>
+          <div class="tags"><span>svg</span><span>single html</span></div>
+        </div>
+        <div class="prose">
+          <p>아키텍처, 데이터 흐름, 시퀀스, 일정 비교를 인라인 SVG가 든 HTML 한 장으로 그립니다.
+            지침은 <strong>강조색 하나, 그림자 없음, 4px 그리드</strong>입니다.</p>
+          <h4>알아둘 것</h4>
+          <ul class="limits">
+            <li>4px만 맞춘다고 사람이 그린 것처럼 되지는 않음. 결과는 모델에 따라 달라짐</li>
+            <li>편집 캔버스 파일이 아님 — 수정은 Claude 요청이나 SVG 직접 편집</li>
+            <li>Git으로 계속 고칠 문서라면 Mermaid가 diff에 유리</li>
+            <li>기본 HTML은 Google Fonts를 불러옴 → 오프라인은 system font로 요청</li>
+            <li>서드파티 마켓플레이스 자동 업데이트는 기본 꺼짐</li>
+          </ul>
+        </div>
+        <div class="cmds">
+          <h4>설치</h4>
+          <div class="cmd" data-kind="install">
+            <div class="cmd-head"><span>터미널</span><button class="copy" type="button">복사</button></div>
+            <pre>/plugin marketplace add cathrynlavery/diagram-design
+/plugin install diagram-design@diagram-design</pre>
           </div>
-          <div class="skill-body">
-            <div>
-              <h4>무엇을 만드나</h4>
-              <ul>
-                <li>아키텍처, 데이터 흐름, 순서도, 시퀀스</li>
-                <li>일정표·비교 차트처럼 설명이 필요한 정보</li>
-                <li>인라인 SVG가 들어간 HTML 파일 하나</li>
-              </ul>
-              <p style="font-size:13px;color:var(--ink-2);margin:10px 0 0">
-                디자인 지침은 <b>강조색 제한 · 그림자 없음 · 4px 그리드</b>입니다.
-                AI처럼 보이는 화면을 줄이기 위한 기준이지, 4px만 맞추면 사람 디자인이 되는 것은 아닙니다.
-              </p>
-              <h4>한계</h4>
-              <ul class="limits">
-                <li>전용 편집 캔버스 파일이 아님 — 수정은 Claude 요청 또는 SVG 직접 편집</li>
-                <li>Git으로 계속 고칠 문서라면 Mermaid가 추적에 유리</li>
-                <li>서드파티 마켓플레이스 자동 업데이트 기본 꺼짐</li>
-                <li>기본 HTML은 Google Fonts를 불러옴 → 오프라인은 system font 요청</li>
-              </ul>
-            </div>
-            <div>
-              <h4>설치</h4>
-              <div class="copywrap"><pre>/plugin marketplace add cathrynlavery/diagram-design
-/plugin install diagram-design@diagram-design</pre><button class="copy" type="button">copy</button></div>
-              <p style="font:11.5px var(--mono);color:var(--muted);margin:6px 0 0">다른 호스트: <code>npx skills add cathrynlavery/diagram-design</code></p>
-              <h4>실전 프롬프트</h4>
-              <div class="copywrap"><pre>우리 서비스 구조를 다이어그램으로 만들어 줘.
+          <p class="hint">다른 호스트: <code>npx skills add cathrynlavery/diagram-design</code></p>
+          <h4>실전 프롬프트</h4>
+          <div class="cmd" data-kind="prompt">
+            <div class="cmd-head"><span>프롬프트</span><button class="copy" type="button">복사</button></div>
+            <pre>우리 서비스 구조를 다이어그램으로 만들어 줘.
 구성 요소는 React 프론트엔드, Firebase Authentication, Firestore, Cloud Functions야.
 사용자가 로그인하고 데이터를 저장한 뒤 다시 조회하는 흐름을 보여 줘.
 가장 알맞은 다이어그램 유형을 고르고, 브라우저에서 열 수 있는 HTML 파일 하나로 저장해 줘.
-화살표와 라벨이 겹치지 않는지 확인해 줘.</pre><button class="copy" type="button">copy</button></div>
-            </div>
+화살표와 라벨이 겹치지 않는지 확인해 줘.</pre>
           </div>
-        </article>
+        </div>
+      </article>
 
-        <article class="skill" id="humanizer">
-          <div class="skill-head">
-            <span class="idx">04</span>
-            <h3>Humanizer</h3>
-            <span class="role">AI 문장 패턴 다듬기</span>
+      <article class="skill" id="humanizer">
+        <div class="marker">
+          <span class="idx">04</span>
+          <h3>Humanizer</h3>
+          <p>AI 문장 패턴 교정</p>
+          <div class="tags"><span>prose</span><span>diff-safe</span></div>
+        </div>
+        <div class="prose">
+          <p>패턴은 26개지만 전부를 기계적으로 고치지 않습니다. 강한 5개는 한 번만 보여도 고치고,
+            약한 패턴은 다른 신호가 함께 있을 때만 적용합니다. 26번째는 대화 답변에 해당하는
+            “이미 아는 맥락 다시 설명” 문제입니다.</p>
+          <h4>무엇을 걷어내나</h4>
+          <ul>
+            <li>“단순한 기능이 아니라 새로운 방식” 같은 대비 강조</li>
+            <li>짧은 극적 결론, 의미 부풀리기</li>
+            <li>독자가 꺼내지 않은 반론을 먼저 다루는 화법</li>
+            <li>반복되는 문장 리듬과 부호</li>
+          </ul>
+          <h4>한계</h4>
+          <ul class="limits">
+            <li>AI 감지기 통과용이 아님 — 결과도 감지기에 표시될 수 있음</li>
+            <li>말투를 완벽히 재현하지 않음 → 마지막은 직접 읽고 고침</li>
+            <li>코드·데이터·frontmatter·링크 대상은 건드리지 않음</li>
+            <li>제품명·숫자·사실이 그대로인지 diff 확인</li>
+          </ul>
+        </div>
+        <div class="cmds">
+          <h4>설치</h4>
+          <div class="cmd" data-kind="install">
+            <div class="cmd-head"><span>터미널</span><button class="copy" type="button">복사</button></div>
+            <pre>/plugin marketplace add blader/humanizer
+/plugin install humanizer@humanizer</pre>
           </div>
-          <div class="skill-body">
-            <div>
-              <h4>무엇을 보나</h4>
-              <ul>
-                <li>“단순한 기능이 아니라 새로운 방식” 같은 대비 강조</li>
-                <li>짧은 극적 결론, 의미 부풀리기</li>
-                <li>독자가 꺼내지 않은 반론을 먼저 다루는 화법</li>
-                <li>문장 리듬·단어 선택·문장 부호의 반복</li>
-              </ul>
-              <p style="font-size:13px;color:var(--ink-2);margin:10px 0 0">
-                패턴은 26개지만 전부를 기계적으로 고치지는 않습니다. 강한 5개는 한 번만 보여도 수정하고,
-                약한 패턴은 다른 신호가 함께 있을 때 적용합니다. <b>26번째는 블로그가 아니라 대화 답변</b>에
-                해당하는 “이미 아는 맥락 재설명” 문제입니다.
-              </p>
-              <h4>한계</h4>
-              <ul class="limits">
-                <li>AI 감지기 통과용이 아님 — 결과도 감지기에 표시될 수 있음</li>
-                <li>말투를 완벽히 재현하지 않음 → 마지막에 직접 읽고 고쳐야 함</li>
-                <li>코드·데이터·frontmatter·링크 대상은 건드리지 않음</li>
-                <li>제품명·숫자·사실·핵심 주장이 바뀌지 않았는지 diff 확인</li>
-              </ul>
-            </div>
-            <div>
-              <h4>설치</h4>
-              <div class="copywrap"><pre>/plugin marketplace add blader/humanizer
-/plugin install humanizer@humanizer</pre><button class="copy" type="button">copy</button></div>
-              <p style="font:11.5px var(--mono);color:var(--muted);margin:6px 0 0">Claude Code 2.1.142+ 필요 · 이전 버전은 <code>npx skills add blader/humanizer --global --agent claude-code</code></p>
-              <h4>실전 프롬프트</h4>
-              <div class="copywrap"><pre>/humanizer
+          <p class="hint">Claude Code 2.1.142+ 필요. 이전 버전은 <code>npx skills add blader/humanizer --global --agent claude-code</code></p>
+          <h4>실전 프롬프트</h4>
+          <div class="cmd" data-kind="prompt">
+            <div class="cmd-head"><span>프롬프트</span><button class="copy" type="button">복사</button></div>
+            <pre>/humanizer
 
 아래는 내가 직접 쓴 글 샘플이야. 문장 리듬과 말투를 참고해 줘.
 [내가 직접 쓴 글 2~3문단]
@@ -520,73 +575,97 @@ uipro update</pre><button class="copy" type="button">copy</button></div>
 새로운 사실이나 주장을 추가하지 말고, 원문에 있던 사실과 주장을 보존해.
 먼저 고친 패턴과 판단 근거를 간단히 알려 줘.
 제품명, 숫자, 링크, 핵심 의미가 바뀌지 않았는지 확인해.
-[다듬을 글]</pre><button class="copy" type="button">copy</button></div>
-            </div>
+[다듬을 글]</pre>
           </div>
-        </article>
-      </section>
-
-      <section class="block" id="safe">
-        <div class="block-head">
-          <h2>안전하게 고치는 법</h2>
-          <span class="hint">진단 → 승인 → 작은 단위</span>
         </div>
-        <div class="two-col">
+      </article>
+
+      <section class="block" id="safe" style="margin-top:76px">
+        <div class="sec-head"><span class="n">07</span><h2>안전하게 고치기</h2><p>진단 → 승인 → 작은 단위</p></div>
+        <div class="gate">
           <div>
-            <p>한 번에 전체를 다시 그리게 하면 검토할 수 없는 diff가 나옵니다. 아래 프롬프트는
-              <b>진단과 계획만 먼저</b> 받고, 승인 후 1~2개 컴포넌트씩 수정하도록 제한합니다.</p>
-            <div class="copywrap"><pre>현재 프로젝트를 먼저 읽고 사용 중인 프레임워크·버전, 라우트, 공통 컴포넌트, 디자인 토큰을 요약해.
+            <p>전체를 한 번에 다시 그리게 하면 검토할 수 없는 diff가 나옵니다. 아래 프롬프트는 진단과 계획만 먼저 받고,
+              승인 뒤 1~2개 컴포넌트씩 고치도록 제한합니다.</p>
+            <div class="cmd" data-kind="prompt">
+              <div class="cmd-head"><span>프롬프트</span><button class="copy" type="button">복사</button></div>
+              <pre>현재 프로젝트를 먼저 읽고 사용 중인 프레임워크·버전, 라우트, 공통 컴포넌트, 디자인 토큰을 요약해.
 운영 동작과 비즈니스 로직, 접근성 이름, 기존 브랜드 색상은 유지해.
 화면에서 AI 템플릿처럼 보이는 구체적 요소를 파일명과 위치별로 진단하고, 개선 우선순위를 제안해.
 아직 파일은 수정하지 말고, 각 변경의 목적과 영향 범위를 먼저 보여 줘.
 내가 승인하면 한 번에 1~2개 컴포넌트씩 수정하고, 매 단계마다 변경 파일과 남은 작업을 알려 줘.
-수정 후 모바일 폭, 키보드 포커스, 색상 대비, 링크와 폼 동작을 확인하고 검증하지 못한 항목은 명시해.</pre><button class="copy" type="button">copy</button></div>
+수정 후 모바일 폭, 키보드 포커스, 색상 대비, 링크와 폼 동작을 확인하고 검증하지 못한 항목은 명시해.</pre>
+            </div>
           </div>
           <div>
-            <p><b>배포 전 체크리스트</b> — 체크 상태는 이 브라우저에만 저장됩니다.</p>
-            <ul class="checklist" id="checklist" style="list-style:none;padding:0;margin:0"></ul>
-            <div class="check-foot">
-              <span class="check-score" id="check-score">0 / 8</span>
-              <button class="reset" id="check-reset" type="button">초기화</button>
+            <p><b>배포 전 확인</b> — 체크 상태는 이 브라우저에만 저장됩니다.</p>
+            <ul class="checkbox-list" id="checklist"></ul>
+            <div class="gate-foot">
+              <div class="gate-bar"><i id="gate-bar"></i></div>
+              <span class="gate-score" id="gate-score">0 / 8</span>
+              <button class="reset" id="gate-reset" type="button">초기화</button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="applied">
+        <div class="sec-head"><span class="n">08</span><h2>이 페이지에 적용한 것</h2><p>네 스킬을 이 문서에 돌렸다</p></div>
+        <div class="applied">
+          <div>
+            <h3>Unslop — 걷어낸 것</h3>
+            <p>같은 모양의 카드 4장과 3중 박스(표·카드·코드)를 없앴습니다. 코드 위에 겹쳐 있던 복사 버튼은
+              블록 머리줄로 옮겼습니다. 카드마다 같은 정보를 같은 밀도로 쌓지 않으려고 마커·본문·명령 3단으로 나눴습니다.</p>
+          </div>
+          <div>
+            <h3>UI UX Pro Max — 정한 것</h3>
+            <p>액센트는 산화철 주황 하나로 줄이고 링크와 경고에만 씁니다. 제목은 세리프, 숫자와 명령은 모노.
+              표 대신 행 구분선만 남겼고, 모바일에서도 설치 명령을 숨기지 않습니다.</p>
+          </div>
+          <div>
+            <h3>Diagram Design — 그린 것</h3>
+            <p>작업 순서를 번호 목록이 아니라 SVG 타임라인으로 그렸습니다. 선택 단계는 점선과 붉은 원,
+              아래 브래킷으로 구분했습니다. 좌표는 4px 배수, 그림자 없음, 라벨은 노드 아래 두 줄로 고정했습니다.</p>
+          </div>
+          <div>
+            <h3>Humanizer — 고친 것</h3>
+            <p>“단순한 X가 아니라 Y” 류의 대비 문장과 “~할 수 있습니다” 남발, 세 항목 나열을 걷어냈습니다.
+              확인하지 않은 수치는 쓰지 않았고, 각 스킬의 한계는 그대로 남겼습니다.</p>
           </div>
         </div>
       </section>
 
       <section class="block" id="faq">
-        <div class="block-head">
-          <h2>자주 묻는 질문</h2>
-          <span class="hint">원문 FAQ 요약</span>
-        </div>
+        <div class="sec-head"><span class="n">09</span><h2>질문</h2><p>원문 FAQ 요약</p></div>
+
         <details>
-          <summary>이 네 가지는 Anthropic 공식 스킬인가요?</summary>
-          <p>아니요. 커뮤니티 제작자가 공개한 스킬·플러그인이며 Claude Code의 스킬 기능으로 실행됩니다.
+          <summary>Anthropic 공식 스킬인가요?</summary>
+          <p>아니요. 커뮤니티 제작자가 공개한 스킬·플러그인이고 Claude Code의 스킬 기능으로 실행됩니다.
             설치 전에 저장소와 권한 요청을 직접 확인하세요.</p>
         </details>
         <details>
-          <summary>Claude Code가 아닌 다른 AI 도구에서도 쓸 수 있나요?</summary>
-          <p>일부는 가능합니다. Diagram Design과 Humanizer는 저장소가 안내하는 <code>npx skills add</code>
-            방식으로 다른 Agent Skills 호스트에 설치할 수 있습니다. 호스트별 지원 범위는 다릅니다.</p>
+          <summary>다른 AI 도구에서도 쓸 수 있나요?</summary>
+          <p>일부는 됩니다. Diagram Design과 Humanizer는 저장소가 안내하는 <code>npx skills add</code> 방식으로
+            다른 Agent Skills 호스트에 설치할 수 있습니다. 호스트마다 지원 범위가 다릅니다.</p>
         </details>
         <details>
-          <summary>Unslop은 사이트 주소만 주면 운영 홈페이지를 직접 수정하나요?</summary>
-          <p>아니요. 페이지를 저장해 사본으로 수정 HTML을 만들 뿐, 운영 사이트를 직접 고치거나 자동
-            배포하지 않습니다. 동적 요소는 저장본에서 보존되지 않을 수 있습니다.</p>
+          <summary>Unslop이 운영 사이트를 직접 고치나요?</summary>
+          <p>아니요. 페이지를 저장해 사본으로 수정 HTML을 만들 뿐입니다. 자동 배포는 없고,
+            동적 요소는 저장본에서 빠질 수 있습니다.</p>
         </details>
         <details>
           <summary>Humanizer로 AI 감지기를 피할 수 있나요?</summary>
-          <p>그 목적으로 설계되지 않았고, 제작자도 결과가 감지기에 표시될 수 있다고 밝힙니다. 목적은
-            탐지 회피가 아니라 읽기 좋은 문장입니다.</p>
+          <p>그 목적으로 만들지 않았고, 제작자도 결과가 감지기에 표시될 수 있다고 밝힙니다.
+            목적은 탐지 회피가 아니라 읽기 좋은 문장입니다.</p>
         </details>
         <details>
-          <summary>네 가지를 모두 설치해야 하나요?</summary>
-          <p>아니요. 필요한 작업부터 하나씩 쓰면 됩니다. 이미 만든 사이트는 Unslop부터, 구조나 문장만
-            필요하면 해당 스킬만 설치하세요.</p>
+          <summary>네 개를 모두 설치해야 하나요?</summary>
+          <p>아니요. 필요한 작업부터 하나씩 쓰면 됩니다. 이미 만든 사이트는 Unslop부터,
+            구조나 문장만 필요하면 해당 스킬만 설치하세요.</p>
         </details>
         <details>
-          <summary>스킬이 만든 결과를 그대로 공개해도 되나요?</summary>
-          <p>결과물의 라이선스·폰트·이미지 출처를 확인해야 합니다. 특히 다이어그램은 기본 글꼴을 외부에서
-            불러오므로, 오프라인·자체 호스팅이 필요하면 system font로 바꾸도록 요청하세요.</p>
+          <summary>결과를 그대로 공개해도 되나요?</summary>
+          <p>결과물의 라이선스와 폰트·이미지 출처를 확인해야 합니다. Diagram Design은 기본 글꼴을
+            외부에서 불러오므로, 오프라인·자체 호스팅이 필요하면 system font로 바꿔 달라고 요청하세요.</p>
         </details>
       </section>
 
@@ -594,10 +673,10 @@ uipro update</pre><button class="copy" type="button">copy</button></div>
   </div>
 
   <footer class="site">
-    <span>정리 · dogebi · 2026-11-24 원문 기준<br>
+    <span>정리 · dogebi · <span style="white-space:nowrap">2026-11-24</span> 원문 기준<br>
       원문 <a href="https://www.gymcoding.co/articles/claude-code-github-skills-website-ai-slop-design" target="_blank" rel="noopener">짐코딩 — Claude Code GitHub 스킬 4가지</a> (© 짐코딩)</span>
-    <span>이 페이지는 원문의 요약·해설이며 전체 본문을 복제하지 않습니다.<br>
-      설치 명령과 버전은 바뀔 수 있으니 각 저장소에서 확인하세요.</span>
+    <span>요약·해설이며 원문 전체를 복제하지 않습니다. 설치 명령과 버전은 바뀔 수 있으니 각 저장소에서 확인하세요.<br>
+      이 페이지 코드 MIT · <a href="https://github.com/dogebi/claude-code-4-skills" target="_blank" rel="noopener">소스</a></span>
   </footer>
 </div>
 
@@ -605,7 +684,7 @@ uipro update</pre><button class="copy" type="button">copy</button></div>
 (() => {
   'use strict';
 
-  /* ---------------------------------------------------------- storage */
+  /* ------------------------------------------------------------- storage */
   const store = (() => {
     try {
       localStorage.setItem('__t', '1'); localStorage.removeItem('__t');
@@ -616,19 +695,17 @@ uipro update</pre><button class="copy" type="button">copy</button></div>
     }
   })();
 
-  const KEY = 'cc4.v1';
-  const load = () => {
-    try { return JSON.parse(store.getItem(KEY) || '{}') || {}; }
-    catch (e) { return {}; }
-  };
-  const state = load();
+  const KEY = 'cc4.v2';
+  const state = (() => {
+    try { return JSON.parse(store.getItem(KEY) || '{}') || {}; } catch (e) { return {}; }
+  })();
   if (!state.checks || typeof state.checks !== 'object') state.checks = {};
   const save = () => { try { store.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
 
-  /* -------------------------------------------------------- copy buttons */
+  /* ---------------------------------------------------------- copy blocks */
   document.querySelectorAll('.copy').forEach(btn => {
     btn.addEventListener('click', async () => {
-      const pre = btn.parentElement.querySelector('pre');
+      const pre = btn.closest('.cmd').querySelector('pre');
       const text = pre.textContent;
       let ok = false;
       try {
@@ -636,38 +713,32 @@ uipro update</pre><button class="copy" type="button">copy</button></div>
         ok = true;
       } catch (e) {
         const ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
         try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
         ta.remove();
         if (!ok) {
-          // No clipboard permission (file://, strict policy): leave the block
-          // selected so the reader can press the copy shortcut themselves.
           const range = document.createRange();
           range.selectNodeContents(pre);
           const sel = window.getSelection();
-          sel.removeAllRanges();
-          sel.addRange(range);
+          sel.removeAllRanges(); sel.addRange(range);
         }
       }
       btn.dataset.done = ok ? '1' : '0';
-      btn.textContent = ok ? 'copied' : 'ctrl+c';
-      setTimeout(() => { btn.textContent = 'copy'; btn.dataset.done = '0'; }, 1800);
+      btn.textContent = ok ? '복사됨' : 'Ctrl+C';
+      setTimeout(() => { btn.textContent = '복사'; btn.dataset.done = '0'; }, 1800);
     });
   });
 
-  /* --------------------------------------------------------- checklist */
+  /* ------------------------------------------------------------ checklist */
   const ITEMS = [
     ['진단만 먼저', '변경 계획과 영향 범위를 승인 전에 확인했다', 'AI'],
     ['브랜드', '기존 브랜드 색·로고·접근성 이름이 유지됐다', '디자인'],
-    ['토큰', '색·간격이 컴포넌트에 흩어지지 않고 토큰에 연결됐다', 'CSS'],
+    ['토큰', '색과 간격이 컴포넌트에 흩어지지 않고 토큰에 연결됐다', 'CSS'],
     ['모바일', '390px에서 가로 스크롤이 없고 터치 타깃이 충분하다', '검수'],
     ['키보드', '포커스 링이 보이고 탭 순서가 자연스럽다', 'a11y'],
     ['대비', '본문·버튼 텍스트 대비를 확인했다', 'a11y'],
-    ['문구', '과장·대비 강조 문장을 걷어내고 사실을 보존했다', '글'],
+    ['문구', '과장과 대비 강조를 걷어내고 사실을 보존했다', '글'],
     ['원복', '변경 diff와 롤백 지점을 남겼다', '배포']
   ];
 
@@ -679,47 +750,56 @@ uipro update</pre><button class="copy" type="button">copy</button></div>
       <span class="tag">${tag}</span>
     </li>`).join('');
 
-  const score = document.getElementById('check-score');
-  const update = () => {
+  const scoreEl = document.getElementById('gate-score');
+  const barEl = document.getElementById('gate-bar');
+  const updateScore = () => {
     const done = Object.values(state.checks).filter(Boolean).length;
-    score.textContent = `${done} / ${ITEMS.length}`;
+    scoreEl.textContent = `${done} / ${ITEMS.length}`;
+    barEl.style.width = `${(done / ITEMS.length) * 100}%`;
   };
 
   list.addEventListener('change', (ev) => {
     const box = ev.target.closest('input[data-i]');
     if (!box) return;
     state.checks[box.dataset.i] = box.checked;
-    save();
-    update();
+    save(); updateScore();
   });
 
-  document.getElementById('check-reset').addEventListener('click', () => {
+  document.getElementById('gate-reset').addEventListener('click', () => {
     state.checks = {};
     save();
     list.querySelectorAll('input[data-i]').forEach(b => { b.checked = false; });
-    update();
+    updateScore();
   });
-  update();
+  updateScore();
 
-  /* --------------------------------------------------- rail highlight */
+  /* ------------------------------------------------------- rail highlight */
   const links = [...document.querySelectorAll('.rail a')];
-  const sections = links
-    .map(a => document.querySelector(a.getAttribute('href')))
-    .filter(Boolean);
+  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 
   if ('IntersectionObserver' in window) {
-    const visible = new Map();
+    const ratios = new Map();
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => visible.set(e.target.id, e.isIntersecting ? e.intersectionRatio : 0));
-      let best = null, ratio = 0;
-      visible.forEach((r, id) => { if (r > ratio) { ratio = r; best = id; } });
+      entries.forEach(e => ratios.set(e.target.id, e.isIntersecting ? e.intersectionRatio : 0));
+      let best = null, top = 0;
+      ratios.forEach((r, id) => { if (r > top) { top = r; best = id; } });
       if (!best) return;
       links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${best}`));
-    }, { rootMargin: '-84px 0px -65% 0px', threshold: [0, .2, .6, 1] });
+    }, { rootMargin: '-70px 0px -66% 0px', threshold: [0, .15, .5, 1] });
     sections.forEach(s => io.observe(s));
   }
 
-  document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
+  /* -------------------------------------------------------- read progress */
+  const bar = document.getElementById('read-progress');
+  const paintProgress = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const pct = max > 0 ? Math.min(100, (h.scrollTop / max) * 100) : 0;
+    bar.style.width = `${pct}%`;
+  };
+  addEventListener('scroll', paintProgress, { passive: true });
+  addEventListener('resize', paintProgress);
+  paintProgress();
 })();
 </script>
 </body>
