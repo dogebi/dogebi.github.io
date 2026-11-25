@@ -164,7 +164,7 @@ figure.plate figcaption { margin-top: 10px; font: 11.5px/1.6 var(--mono); color:
 .cmd-head span { font: 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .cmd[data-kind="install"] .cmd-head span { color: var(--deep); }
 .copy {
-  font: 11px var(--sans); padding: 5px 9px; min-width: 52px; min-height: 28px;
+  font: 11px var(--sans); padding: 5px 10px; min-width: 62px; min-height: 28px;
   background: none; border: 1px solid var(--rule); color: var(--ink-2); cursor: pointer;
 }
 .copy:hover { border-color: var(--ink); color: var(--ink); }
@@ -775,19 +775,23 @@ uipro update</pre>
 
   /* ------------------------------------------------------- rail highlight */
   const links = [...document.querySelectorAll('.rail a')];
-  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const targets = links.map(a => ({
+    link: a,
+    section: document.querySelector(a.getAttribute('href'))
+  })).filter(t => t.section);
 
-  if ('IntersectionObserver' in window) {
-    const ratios = new Map();
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => ratios.set(e.target.id, e.isIntersecting ? e.intersectionRatio : 0));
-      let best = null, top = 0;
-      ratios.forEach((r, id) => { if (r > top) { top = r; best = id; } });
-      if (!best) return;
-      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${best}`));
-    }, { rootMargin: '-70px 0px -66% 0px', threshold: [0, .15, .5, 1] });
-    sections.forEach(s => io.observe(s));
-  }
+  const highlight = () => {
+    const line = window.scrollY + 120;
+    let current = targets[0];
+    for (const t of targets) {
+      const top = t.section.getBoundingClientRect().top + window.scrollY;
+      if (top <= line) current = t;
+    }
+    links.forEach(a => a.classList.toggle('active', current && a === current.link));
+  };
+  addEventListener('scroll', highlight, { passive: true });
+  addEventListener('resize', highlight);
+  highlight();
 
   /* -------------------------------------------------------- read progress */
   const bar = document.getElementById('read-progress');
