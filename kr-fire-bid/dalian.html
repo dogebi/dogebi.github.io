@@ -96,6 +96,16 @@
 <div class="grid">
 <main>
 
+  <div class="warnline" style="border-width:2px;border-color:#c9a9a9;background:#fdf6f6;padding:16px 18px">
+    <b style="color:var(--red);font-size:15.5px">SK 海力士 · 查询结果摘要（2026-11-25 实测，12 条原始返回见 5.0）</b>
+    <ul style="margin:9px 0 0 18px">
+      <li><b>公开招标公告：0 条。</b>中国招标投标公共服务平台检索「海力士」为空；不存在公开 SRM 前端（srm·supplier·ep·partner 子域全部 000）。</li>
+      <li><b>唯一官方入口：</b><a href="https://bizpartner.skhynix.com/" target="_blank" rel="noopener">bizpartner.skhynix.com</a>「파트너 협업 포털」——只有<b>供应商登记与登录</b>，没有公告板。</li>
+      <li><b>「什么时候招标」没有公开日程：</b>只能反推——<b>2027-05~06 年度维保招标是新供应商唯一现实窗口</b>；龙仁 Y1 消防包（2026-10-26 已在施工）与大连主包均已关闭，大连只剩收尾/维保。</li>
+      <li><b>现在出申请：</b>对 2027-05 来得及（缓冲约 2 个月），对 2026-12~2027-02 <b>来不及</b> → 判断见 <a href="#sk">第 05 节 5.4 判断矩阵</a>。</li>
+    </ul>
+  </div>
+
   <div class="lead">
     <strong>大连这一层的结论：</strong>消防改造在大连不是「一个公告池」，而是<b>四条互不相通的发布链</b>——①消防站/政府类走辽宁政府采购网与市交易平台；②国企与平台公司（如大连中山发展投资）走<b>大连国企阳光采购服务平台</b>；③医院与高校<b>自己在官网发</b>（三院、友谊/老年病医院、东财、医科大、海事大）；④韩资厂务走 SRM 或邀标。只盯全国平台，会漏掉 3/4。
   </div>
@@ -285,7 +295,52 @@
   <h2 id="sk"><span class="no">05</span>SK 海力士：通道 · 时间窗 · 现在申请来不来得及</h2>
   <p class="small">本节是判断材料，不是情报堆叠——每个结论后面跟着「依据」和「所以我方怎么办」。核实日 <b>2026-11-25</b>。</p>
 
-  <h3>5.1 通道：有登记门户，没有招标公告板</h3>
+  <h3>5.0 查询记录（原始返回，2026-11-25 逐条实测）</h3>
+  <table class="list">
+    <colgroup><col style="width:30%"><col style="width:46%"><col style="width:24%"></colgroup>
+    <thead><tr><th>查询 / 入口</th><th>实际返回</th><th>判定</th></tr></thead>
+    <tbody>
+      <tr><td>https://www.skhynix.com/ 首页源码</td>
+        <td>200；从站内链接解析出唯一供应商入口 bizpartner.skhynix.com</td>
+        <td>找到官方线索</td></tr>
+      <tr class="hl"><td><a href="https://bizpartner.skhynix.com/" target="_blank" rel="noopener">bizpartner.skhynix.com</a>「파트너 협업 포털」</td>
+        <td>200；菜单 구매정책 및 규정 / 상생협력정책 / 상생협력 지원프로그램 / 고객지원；操作 협력사 신규등록·협력사 등록 방법·아이디추가·로그인；客服 1588-8883；새소식 最新＝2026-10-14（金融支援说明）</td>
+        <td><b>只有登记门户，无公告板</b></td></tr>
+      <tr><td>srm / supplier / ep / partner.skhynix.com</td>
+        <td>四个子域全部无法解析（HTTP 000）</td>
+        <td>不存在公开 SRM 前端</td></tr>
+      <tr><td>检索「SK hynix supplier registration」「SK하이닉스 협력사 등록 SRM」「SK hynix e-procurement」</td>
+        <td>无官方招标页；返回结果以报道、招聘、第三方转述为主</td>
+        <td>无公开公告源</td></tr>
+      <tr><td>中国招标投标公共服务平台（cebpubservice）检索「海力士」</td>
+        <td><b>0 条</b></td>
+        <td>中国法人不发公开公告</td></tr>
+      <tr><td>全国公共资源交易平台 / 采购与招标网检索「海力士」</td>
+        <td>仅见总包痕迹：「大连海力士 MSB3 新建机房」——中国电子系统工程第四建设；正文需会员，金额不可见</td>
+        <td>包在总包层流动</td></tr>
+      <tr><td>检索「SK하이닉스 용인 클린룸 일정 / Y1」</td>
+        <td>首个洁净室 2027-02 开放、Trinity 洁净室 2027-05、2027 量产；先开工区进度 89%</td>
+        <td>给出时间锚点</td></tr>
+      <tr class="hl"><td>招聘站检索「SK하이닉스 용인 소방전기공사 현장」</td>
+        <td>잡코리아 2026-10-26：오에스엘이엔지 招现场管理，工作内容＝半导体厂内<b>空气吸入式火灾探测器</b>施工管理</td>
+        <td><b>消防包已发标并施工 → 窗口关闭</b></td></tr>
+      <tr><td>检索「청주 M15 배관 유지보수 입찰」</td>
+        <td>2026-06 招标、07-01 起 1 年合约；受邀范围限于「1군 협력사」</td>
+        <td>年度维保节拍＝5~6 月发标</td></tr>
+      <tr><td>检索「SK hynix Dalian expansion」</td>
+        <td>2 工厂建筑 2026 上半年完工、2026-11 起搬入设备</td>
+        <td>只剩收尾/维保残值</td></tr>
+      <tr><td>检索「SK hynix China US export license」</td>
+        <td>大连厂设备出口许可 2026 年底到期，2027 年需新安排</td>
+        <td>顺延风险</td></tr>
+      <tr><td>检索「SK hynix Indiana packaging plant」</td>
+        <td>2026-08-27 动工，投资 40 亿美元+</td>
+        <td>2027 观察项</td></tr>
+    </tbody>
+  </table>
+  <p class="small">以上 12 条为当次实跑的查询与返回，聚合平台正文收费的只记标题级；发标日历由这些返回反推，非 SK 官方日程。</p>
+
+  <h3>5.1 通道汇总：有登记门户，没有招标公告板</h3>
   <table class="list">
     <colgroup><col style="width:22%"><col style="width:44%"><col style="width:34%"></colgroup>
     <thead><tr><th>入口（已逐个实测）</th><th>实测结果</th><th>对我方的含义</th></tr></thead>
