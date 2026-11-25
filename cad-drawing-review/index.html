@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>手绘图与建筑图纸对照</title><link rel="stylesheet" href="style.css"></head>
+<body><main>
+<header><div><h1 data-i18n="title"></h1><p data-i18n="intro"></p></div>
+<label><span data-i18n="language"></span> <select id="language"><option value="zh-CN" lang="zh-CN">简体中文</option><option value="ja" lang="ja">日本語</option></select></label></header>
+<p id="local-info" hidden><span data-i18n="localNotice"></span> <a id="local-app" data-i18n="localApp"></a></p>
+<form id="compare">
+<div class="panels">
+<section><h2 data-i18n="drawing"></h2><label><span data-i18n="pdf"></span> <input id="pdf" name="pdf" type="file" accept="application/pdf,image/png,.pdf,.png" required></label>
+<label><span data-i18n="page"></span> <input id="page" name="page" type="number" min="1" value="1" required></label>
+<iframe id="drawing" hidden></iframe><img id="drawing-image" alt="" hidden></section>
+<section><h2 data-i18n="sketch"></h2><label><span data-i18n="image"></span> <input id="image" name="image" type="file" accept="image/png,image/jpeg,image/webp" required></label>
+<img id="sketch-image" alt="" hidden></section>
+</div>
+<p id="anchors" hidden><span id="anchor-help"></span> <button id="clear-anchors" type="button" data-i18n="clearAnchors"></button></p><div class="actions compare-actions"><button class="primary" id="submit" data-i18n="compare"></button><a id="download" download="annotated-plan.pdf" data-i18n="download" hidden></a></div>
+<p id="status" role="status"></p>
+<div id="results" class="panels" hidden>
+<section><h2 data-i18n="drawingOnly"></h2><ul id="drawing-only"></ul></section>
+<section><h2 data-i18n="sketchOnly"></h2><ul id="sketch-only"></ul></section>
+</div>
+</form>
+</main><script type="module" src="compare.mjs"></script></body></html>
