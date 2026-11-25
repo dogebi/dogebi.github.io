@@ -10,6 +10,15 @@
 <meta property="og:description" content="the book 111페이지를 90단위로 쪼개 진행률·오늘의 분량·소유권 랩·퀴즈로 읽는 학습 도구.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fbfaf6'/%3E%3Ctext x='4' y='23' font-family='Georgia,serif' font-size='20' fill='%23a8401b'%3ER%3C/text%3E%3C/svg%3E">
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('rfg.theme');
+      var mode = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.theme = mode;
+    } catch (e) {}
+  })();
+</script>
 <style>:root {
   color-scheme: light;
   --paper: #fbfaf6;
@@ -26,9 +35,45 @@
   --blue: #3d5478;
   --blue-soft: #e6eaf1;
   --amber: #8a611c;
+  --surface: #fffefb;
+  --code-bg: #f8f5ec;
+  --code-num: #a9a294;
+  --code-row: #efe6d2;
+  --err-bg: #f6e3dc;
+  --off: #9a9588;
+  --off-2: #b4ae9f;
+  --green-ink: #204633;
+  --rust-ink: #7c2f13;
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Serif KR", serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Helvetica Neue", sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #16150f;
+  --paper-2: #1e1c15;
+  --surface: #1c1a13;
+  --ink: #f2eee3;
+  --ink-2: #cdc7b6;
+  --muted: #9a9382;
+  --rule: #35322a;
+  --rule-strong: #e8e2d2;
+  --rust: #e07a4a;
+  --rust-soft: #33221a;
+  --green: #7fb2a4;
+  --green-soft: #1d2f28;
+  --blue: #93b3d8;
+  --blue-soft: #1e2632;
+  --amber: #d7ab63;
+  --code-bg: #191712;
+  --code-num: #6f6a5c;
+  --code-row: #2a2820;
+  --err-bg: #3a211a;
+  --off: #7a7466;
+  --off-2: #6a6458;
+  --green-ink: #c6e6d6;
+  --rust-ink: #f2c8b4;
 }
 
 * { box-sizing: border-box; }
@@ -43,7 +88,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: var(--rust); text-decoration: none; border-bottom: 1px solid rgba(168, 64, 27, 0.35); }
+a { color: var(--rust); text-decoration: none; border-bottom: 1px solid var(--rule); }
 a:hover { border-bottom-color: var(--rust); }
 a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
   outline: 2px solid var(--rust);
@@ -62,6 +107,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
   gap: 32px;
   flex-wrap: wrap;
 }
+.mast-top { display: flex; justify-content: flex-start; align-items: center; gap: 14px; margin-bottom: 14px; }
+.mast-top .kicker { margin-bottom: 0; }
+.theme-btn {
+  font: 11px var(--sans); letter-spacing: 0.02em; white-space: nowrap;
+  background: none; border: 1px solid var(--rule); color: var(--muted);
+  padding: 5px 10px; min-height: 26px; cursor: pointer;
+}
+.theme-btn:hover { border-color: var(--ink); color: var(--ink); }
+.theme-btn[aria-pressed="true"] { color: var(--rust); border-color: var(--rust); }
 .kicker {
   display: block;
   font: 600 11px/1 var(--mono);
@@ -122,7 +176,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 
 .panel {
   border: 1px solid var(--rule);
-  background: #fffefb;
+  background: var(--surface);
   padding: 16px 16px 14px;
   margin-bottom: 18px;
 }
@@ -147,7 +201,7 @@ input[type="search"] {
   background: var(--paper);
   color: var(--ink);
 }
-input[type="search"]::placeholder { color: #9a9588; }
+input[type="search"]::placeholder { color: var(--off); }
 
 .rail-note { font-size: 12px; color: var(--muted); line-height: 1.5; margin: 10px 0 0; }
 
@@ -236,7 +290,7 @@ section.block { margin-bottom: 58px; scroll-margin-top: 24px; }
 .reset:hover { color: var(--rust); }
 
 /* ownership lab */
-.lab { border: 1px solid var(--rule); background: #fffefb; }
+.lab { border: 1px solid var(--rule); background: var(--surface); }
 .lab-tabs { display: flex; flex-wrap: wrap; gap: 0; border-bottom: 1px solid var(--rule); }
 .lab-tabs button {
   font: 12px var(--mono);
@@ -252,14 +306,14 @@ section.block { margin-bottom: 58px; scroll-margin-top: 24px; }
 .lab-code {
   font: 13px/1.75 var(--mono);
   padding: 16px 0 16px 0;
-  background: #f8f5ec;
+  background: var(--code-bg);
   border-right: 1px solid var(--rule);
   overflow-x: auto;
 }
 .lab-code .row { display: grid; grid-template-columns: 34px 1fr; padding: 0 14px 0 0; white-space: pre; }
-.lab-code .ln { text-align: right; padding-right: 12px; color: #a9a294; user-select: none; }
-.lab-code .row.active { background: #efe6d2; }
-.lab-code .row.err { background: #f6e3dc; }
+.lab-code .ln { text-align: right; padding-right: 12px; color: var(--code-num); user-select: none; }
+.lab-code .row.active { background: var(--code-row); }
+.lab-code .row.err { background: var(--err-bg); }
 .lab-state { padding: 16px; }
 .lab-state h4 { font: 600 10px var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
 .vars { list-style: none; margin: 0 0 14px; padding: 0; }
@@ -269,16 +323,16 @@ section.block { margin-bottom: 58px; scroll-margin-top: 24px; }
 .tag-own { color: var(--green); }
 .tag-shared { color: var(--blue); }
 .tag-mut { color: var(--amber); }
-.tag-dead { color: #9a9588; text-decoration: line-through; }
+.tag-dead { color: var(--off); text-decoration: line-through; }
 .lab-note { font-size: 13px; line-height: 1.55; color: var(--ink-2); min-height: 72px; margin: 0 0 14px; }
-.lab-error { font: 11px/1.6 var(--mono); background: #f6e3dc; border-left: 2px solid var(--rust); padding: 9px 10px; margin: 0 0 14px; white-space: pre; overflow-x: auto; }
+.lab-error { font: 11px/1.6 var(--mono); background: var(--err-bg); border-left: 2px solid var(--rust); padding: 9px 10px; margin: 0 0 14px; white-space: pre; overflow-x: auto; }
 .lab-controls { display: flex; align-items: center; gap: 10px; }
 .lab-controls button {
   font: 12px var(--mono); padding: 7px 11px; background: none;
   border: 1px solid var(--ink); color: var(--ink); cursor: pointer;
 }
 .lab-controls button:hover:not(:disabled) { background: var(--ink); color: var(--paper); }
-.lab-controls button:disabled { border-color: var(--rule); color: #b4ae9f; cursor: default; }
+.lab-controls button:disabled { border-color: var(--rule); color: var(--off-2); cursor: default; }
 .lab-step { font: 11px var(--mono); color: var(--muted); margin-left: auto; }
 
 /* quiz */
@@ -294,8 +348,8 @@ section.block { margin-bottom: 58px; scroll-margin-top: 24px; }
   cursor: pointer;
 }
 .opts button:hover { border-color: var(--ink); color: var(--ink); }
-.opts button[data-state="right"] { border-color: var(--green); background: var(--green-soft); color: #204633; }
-.opts button[data-state="wrong"] { border-color: var(--rust); background: var(--rust-soft); color: #7c2f13; }
+.opts button[data-state="right"] { border-color: var(--green); background: var(--green-soft); color: var(--green-ink); }
+.opts button[data-state="wrong"] { border-color: var(--rust); background: var(--rust-soft); color: var(--rust-ink); }
 .opts button:disabled { cursor: default; }
 .why { font-size: 12.5px; color: var(--ink-2); margin: 10px 0 0; padding-left: 12px; border-left: 2px solid var(--green); }
 .why.bad { border-left-color: var(--rust); }
@@ -352,7 +406,10 @@ footer.site {
 
   <header class="masthead">
     <div>
-      <span class="kicker">The Rust Book · 111 pages · 89 units</span>
+      <div class="mast-top">
+        <span class="kicker">The Rust Book · 111 pages · 89 units</span>
+        <button id="theme-toggle" class="theme-btn" type="button" aria-pressed="false">다크</button>
+      </div>
       <h1>Rust <em>필드 가이드</em></h1>
       <p class="lede">공식 책을 읽는 순서 그대로, 89개 단위로 나눠 진도를 남기고,
         소유권 규칙은 한 줄씩 실행해 보며 익히는 개인 학습 도구입니다.</p>
@@ -519,6 +576,26 @@ footer.site {
       };
     }
   })();
+
+  /* --------------------------------------------------------------- theme */
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('theme-toggle');
+  const paintTheme = (mode) => {
+    const dark = mode === 'dark';
+    root.dataset.theme = dark ? 'dark' : 'light';
+    if (!themeBtn) return;
+    themeBtn.setAttribute('aria-pressed', String(dark));
+    themeBtn.textContent = dark ? '라이트' : '다크';
+    themeBtn.setAttribute('aria-label', dark ? '라이트 모드로 전환' : '다크 모드로 전환');
+  };
+  paintTheme(root.dataset.theme === 'dark' ? 'dark' : 'light');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      try { store.setItem('rfg.theme', next); } catch (e) {}
+      paintTheme(next);
+    });
+  }
 
   const todayISO = () => {
     const d = new Date();
