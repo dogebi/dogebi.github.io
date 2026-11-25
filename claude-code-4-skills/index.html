@@ -780,30 +780,49 @@ uipro update</pre>
     section: document.querySelector(a.getAttribute('href'))
   })).filter(t => t.section);
 
-  const highlight = () => {
-    const line = window.scrollY + 120;
-    let current = targets[0];
-    for (const t of targets) {
-      const top = t.section.getBoundingClientRect().top + window.scrollY;
-      if (top <= line) current = t;
-    }
-    links.forEach(a => a.classList.toggle('active', current && a === current.link));
+  let offsets = [];
+  const measure = () => {
+    offsets = targets.map(t => ({
+      link: t.link,
+      top: t.section.getBoundingClientRect().top + window.scrollY
+    }));
   };
-  addEventListener('scroll', highlight, { passive: true });
-  addEventListener('resize', highlight);
-  highlight();
+  measure();
+  addEventListener('resize', () => { measure(); highlight(); });
+
+  function highlight() {
+    const line = window.scrollY + 120;
+    let current = offsets[0];
+    for (const o of offsets) if (o.top <= line) current = o;
+    links.forEach(a => a.classList.toggle('active', current && a === current.link));
+  }
 
   /* -------------------------------------------------------- read progress */
   const bar = document.getElementById('read-progress');
   const paintProgress = () => {
     const h = document.documentElement;
     const max = h.scrollHeight - h.clientHeight;
-    const pct = max > 0 ? Math.min(100, (h.scrollTop / max) * 100) : 0;
-    bar.style.width = `${pct}%`;
+    bar.style.width = `${max > 0 ? Math.min(100, (h.scrollTop / max) * 100) : 0}%`;
   };
-  addEventListener('scroll', paintProgress, { passive: true });
-  addEventListener('resize', paintProgress);
+
+  /* Both read scrollY in a frame loop: programmatic jumps and some embedded
+     browsers do not dispatch `scroll` reliably, and a missed event leaves the
+     rail stuck on the first item. */
+  let lastY = -1;
+  const sync = () => {
+    const y = window.scrollY;
+    if (y !== lastY) {
+      lastY = y;
+      highlight();
+      paintProgress();
+    }
+  };
+  const tick = () => { sync(); requestAnimationFrame(tick); };
+  addEventListener('scroll', sync, { passive: true });
+  setInterval(sync, 250);
+  highlight();
   paintProgress();
+  requestAnimationFrame(tick);
 })();
 </script>
 </body>
