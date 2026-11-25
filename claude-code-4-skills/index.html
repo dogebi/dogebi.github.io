@@ -9,6 +9,15 @@
 <meta property="og:description" content="화면을 고치고, 방향을 잡고, 구조를 그리고, 문장을 다듬는 네 가지 커뮤니티 스킬.">
 <meta property="og:type" content="article">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f7f4ec'/%3E%3Ctext x='6' y='23' font-family='Georgia,serif' font-size='19' fill='%23b23a12'%3E4%3C/text%3E%3C/svg%3E">
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('cc4.theme');
+      var mode = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.theme = mode;
+    } catch (e) {}
+  })();
+</script>
 <style>
 :root {
   color-scheme: light;
@@ -23,9 +32,31 @@
   --oxide: #b23a12;
   --oxide-soft: #f4e2d7;
   --deep: #234f46;
+  --code-ink: #23241f;
+  --callout-ink: #58290f;
+  --callout-strong: #3f1d0d;
+  --rail-num: #a29a86;
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Serif KR", serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Helvetica Neue", sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #16150f;
+  --paper-2: #1e1c15;
+  --surface: #1c1a13;
+  --ink: #f2eee3;
+  --ink-2: #cfc8b6;
+  --muted: #9b9482;
+  --rule: #35322a;
+  --rule-ink: #e8e2d2;
+  --oxide: #e07a4a;
+  --oxide-soft: #33221a;
+  --deep: #7fb2a4;
+  --code-ink: #e9e4d6;
+  --callout-ink: #f0d9c9;
+  --callout-strong: #ffd9c2;
+  --rail-num: #7d7666;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -55,6 +86,14 @@ a:hover { color: var(--oxide); }
   color: var(--muted); padding-bottom: 13px; border-bottom: 1px solid var(--rule);
 }
 .mast-kicker b { color: var(--ink); font-weight: 600; }
+.mast-tools { display: flex; align-items: center; gap: 16px; }
+.theme-btn {
+  font: 11px var(--sans); letter-spacing: .02em; white-space: nowrap;
+  background: none; border: 1px solid var(--rule); color: var(--ink-2);
+  padding: 5px 10px; min-height: 28px; cursor: pointer;
+}
+.theme-btn:hover { border-color: var(--ink); color: var(--ink); }
+.theme-btn[aria-pressed="true"] { color: var(--oxide); border-color: var(--oxide); }
 .masthead h1 {
   font: 400 clamp(34px, 5.2vw, 58px)/1.06 var(--serif);
   letter-spacing: -.025em; margin: 26px 0 22px; max-width: 16ch;
@@ -83,7 +122,7 @@ main { min-width: 0; }
 .rail li { border-top: 1px solid var(--rule); }
 .rail li:last-child { border-bottom: 1px solid var(--rule); }
 .rail a { display: grid; grid-template-columns: 2.4ch 1fr; gap: 4px; padding: 8px 0; font-size: 13px; color: var(--ink-2); border: 0; }
-.rail a i { font: 10px var(--mono); color: #a29a86; font-style: normal; padding-top: 3px; }
+.rail a i { font: 10px var(--mono); color: var(--rail-num); font-style: normal; padding-top: 3px; }
 .rail a:hover { color: var(--oxide); }
 .rail a.active { color: var(--ink); font-weight: 600; }
 .rail a.active i { color: var(--oxide); }
@@ -105,14 +144,21 @@ section.block { margin-bottom: 76px; scroll-margin-top: 22px; }
 .tldr-row .w { font: 10.5px var(--mono); color: var(--muted); text-align: right; padding-right: 6px; }
 .tldr-row:hover .k { color: var(--oxide); }
 
-.callout { margin: 22px 0 0; padding: 14px 16px; background: var(--oxide-soft); font-size: 13.5px; color: #58290f; }
-.callout b { color: #3f1d0d; }
+.callout { margin: 22px 0 0; padding: 14px 16px; background: var(--oxide-soft); font-size: 13.5px; color: var(--callout-ink); }
+.callout b { color: var(--callout-strong); }
 
 /* diagram */
 figure.plate { margin: 6px 0 0; max-width: 100%; }
 figure.plate svg { display: block; width: 100%; height: auto; }
 figure.plate figcaption { margin-top: 10px; font: 11.5px/1.6 var(--mono); color: var(--muted); }
 .plate-hint { display: none; margin: 6px 0 0; font: 10.5px/1.5 var(--mono); color: var(--oxide); }
+figure.plate .pl-rule { stroke: var(--ink); }
+figure.plate .pl-opt { stroke: var(--oxide); }
+figure.plate .pl-node { fill: var(--paper); stroke: var(--ink); }
+figure.plate .pl-node-opt { stroke: var(--oxide); }
+figure.plate .pl-num { fill: var(--muted); }
+figure.plate .pl-label { fill: var(--ink); }
+figure.plate .pl-opt-text { fill: var(--oxide); }
 
 /* before / after */
 .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 26px 0 0; }
@@ -169,7 +215,7 @@ figure.plate figcaption { margin-top: 10px; font: 11.5px/1.6 var(--mono); color:
 }
 .copy:hover { border-color: var(--ink); color: var(--ink); }
 .copy[data-done="1"] { color: var(--deep); border-color: var(--deep); }
-.cmd pre { margin: 0; padding: 11px 12px; font: 11.8px/1.7 var(--mono); color: #23241f; white-space: pre-wrap; word-break: break-word; }
+.cmd pre { margin: 0; padding: 11px 12px; font: 11.8px/1.7 var(--mono); color: var(--code-ink); white-space: pre-wrap; word-break: break-word; }
 .cmds .hint { margin: 7px 0 0; font: 11px/1.55 var(--mono); color: var(--muted); }
 .cmds .hint code { font: 11px var(--mono); color: var(--ink-2); }
 
@@ -267,7 +313,7 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
   <header class="masthead">
     <div class="mast-kicker">
       <span>Claude Code · Community skills · <b><span style="white-space:nowrap">2026-11-24</span> 확인</b></span>
-      <span>원문 <b><a href="https://www.gymcoding.co/articles/claude-code-github-skills-website-ai-slop-design" target="_blank" rel="noopener">짐코딩</a></b> · 약 12분</span>
+      <span class="mast-tools"><span>원문 <b><a href="https://www.gymcoding.co/articles/claude-code-github-skills-website-ai-slop-design" target="_blank" rel="noopener">짐코딩</a></b> · 약 12분</span><button id="theme-toggle" class="theme-btn" type="button" aria-pressed="false">다크</button></span>
     </div>
     <h1>AI 티 나는 화면을 <em>네 번</em> 고친다</h1>
     <div class="mast-foot">
@@ -339,25 +385,25 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
           <svg viewBox="0 0 1080 268" role="img" aria-labelledby="pipe-title pipe-desc">
             <title id="pipe-title">네 스킬을 쓰는 순서</title>
             <desc id="pipe-desc">디자인 방향을 정하고 화면을 구현한 뒤 렌더링 화면을 점검한다. 구조 설명과 문장 교정은 필요할 때 끼워 넣고, 마지막은 사람이 검수한 뒤 배포한다.</desc>
-            <line x1="40" y1="148" x2="1040" y2="148" stroke="#17160f" stroke-width="1"/>
-            <line x1="360" y1="148" x2="680" y2="148" stroke="#b23a12" stroke-width="1" stroke-dasharray="4 4"/>
-            <g stroke="#17160f" stroke-width="1">
+            <line class="pl-rule" x1="40" y1="148" x2="1040" y2="148" stroke-width="1"/>
+            <line class="pl-opt" x1="360" y1="148" x2="680" y2="148" stroke-width="1" stroke-dasharray="4 4"/>
+            <g class="pl-rule" stroke-width="1">
               <line x1="40" y1="148" x2="40" y2="138"/>
               <line x1="200" y1="148" x2="200" y2="138"/>
               <line x1="360" y1="148" x2="360" y2="138"/>
               <line x1="840" y1="148" x2="840" y2="138"/>
               <line x1="1000" y1="148" x2="1000" y2="138"/>
             </g>
-            <g fill="#f7f4ec" stroke-width="1.5">
-              <circle cx="40" cy="148" r="5" stroke="#17160f"/>
-              <circle cx="200" cy="148" r="5" stroke="#17160f"/>
-              <circle cx="360" cy="148" r="5" stroke="#17160f"/>
-              <circle cx="520" cy="148" r="5" stroke="#b23a12"/>
-              <circle cx="680" cy="148" r="5" stroke="#b23a12"/>
-              <circle cx="840" cy="148" r="5" stroke="#17160f"/>
-              <circle cx="1000" cy="148" r="5" stroke="#17160f"/>
+            <g stroke-width="1.5">
+              <circle class="pl-node" cx="40" cy="148" r="5"/>
+              <circle class="pl-node" cx="200" cy="148" r="5"/>
+              <circle class="pl-node" cx="360" cy="148" r="5"/>
+              <circle class="pl-node pl-node-opt" cx="520" cy="148" r="5"/>
+              <circle class="pl-node pl-node-opt" cx="680" cy="148" r="5"/>
+              <circle class="pl-node" cx="840" cy="148" r="5"/>
+              <circle class="pl-node" cx="1000" cy="148" r="5"/>
             </g>
-            <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" fill="#6b6656">
+            <g class="pl-num" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10">
               <text x="40" y="120">01</text>
               <text x="200" y="120" text-anchor="middle">02</text>
               <text x="360" y="120" text-anchor="middle">03</text>
@@ -366,7 +412,7 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
               <text x="840" y="120" text-anchor="middle">06</text>
               <text x="1000" y="120" text-anchor="middle">07</text>
             </g>
-            <g font-family="-apple-system, 'Segoe UI', 'Noto Sans KR', sans-serif" font-size="13" font-weight="600" fill="#17160f">
+            <g class="pl-label" font-family="-apple-system, 'Segoe UI', 'Noto Sans KR', sans-serif" font-size="13" font-weight="600">
               <text x="40" y="188">UI UX Pro Max</text>
               <text x="200" y="188" text-anchor="middle">구현</text>
               <text x="360" y="188" text-anchor="middle">Unslop</text>
@@ -375,7 +421,7 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
               <text x="840" y="188" text-anchor="middle">사람 검수</text>
               <text x="1000" y="188" text-anchor="end">배포</text>
             </g>
-            <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" fill="#6b6656">
+            <g class="pl-num" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10">
               <text x="40" y="208">방향·팔레트·피할 패턴</text>
               <text x="200" y="208" text-anchor="middle">Claude Code</text>
               <text x="360" y="208" text-anchor="middle">AI 티 진단</text>
@@ -384,8 +430,8 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
               <text x="840" y="208" text-anchor="middle">모바일·포커스·대비</text>
               <text x="1000" y="208" text-anchor="end"> </text>
             </g>
-            <path d="M440 236 L440 244 L600 244 L600 236" fill="none" stroke="#b23a12" stroke-width="1"/>
-            <text x="520" y="262" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="#b23a12">04·05는 필요할 때만</text>
+            <path class="pl-opt" d="M440 236 L440 244 L600 244 L600 236" fill="none" stroke-width="1"/>
+            <text class="pl-opt-text" x="520" y="262" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10">04·05는 필요할 때만</text>
           </svg>
           <figcaption>실선은 매번 하는 일, 점선과 붉은 구간은 필요할 때 끼우는 작업입니다.</figcaption>
           <p class="plate-hint">작은 화면에서는 옆으로 넘겨 보세요.</p>
@@ -700,6 +746,30 @@ uipro update</pre>
   })();
   if (!state.checks || typeof state.checks !== 'object') state.checks = {};
   const save = () => { try { store.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+
+  /* --------------------------------------------------------------- theme */
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('theme-toggle');
+  const THEME_KEY = 'cc4.theme';
+
+  const paintTheme = (mode) => {
+    const dark = mode === 'dark';
+    root.dataset.theme = dark ? 'dark' : 'light';
+    if (!themeBtn) return;
+    themeBtn.setAttribute('aria-pressed', String(dark));
+    themeBtn.textContent = dark ? '라이트' : '다크';
+    themeBtn.setAttribute('aria-label', dark ? '라이트 모드로 전환' : '다크 모드로 전환');
+  };
+
+  paintTheme(root.dataset.theme === 'dark' ? 'dark' : 'light');
+
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      try { store.setItem(THEME_KEY, next); } catch (e) {}
+      paintTheme(next);
+    });
+  }
 
   /* ---------------------------------------------------------- copy blocks */
   document.querySelectorAll('.copy').forEach(btn => {
