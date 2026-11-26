@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rust 필드 가이드 — the book을 읽는 나만의 루프</title>
-<meta name="description" content="The Rust Programming Language(111페이지, 90단위)를 하루 페이스로 읽고, 소유권을 단계별로 실험하고, 퀴즈로 확인하는 개인 학습 도구.">
+<title data-i18n="meta.title">Rust 필드 가이드 — the book을 읽는 나만의 루프</title>
+<meta name="description" content="The Rust Programming Language(111페이지, 89단위)를 하루 페이스로 읽고, 소유권을 단계별로 실험하고, 퀴즈로 확인하는 개인 학습 도구.">
 <meta name="author" content="dogebi">
 <meta property="og:title" content="Rust 필드 가이드">
-<meta property="og:description" content="the book 111페이지를 90단위로 쪼개 진행률·오늘의 분량·소유권 랩·퀴즈로 읽는 학습 도구.">
+<meta property="og:description" content="the book 111페이지를 89단위로 쪼개 진행률·오늘의 분량·소유권 랩·퀴즈로 읽는 학습 도구.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fbfaf6'/%3E%3Ctext x='4' y='23' font-family='Georgia,serif' font-size='20' fill='%23a8401b'%3ER%3C/text%3E%3C/svg%3E">
 <script>
@@ -139,9 +139,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 .gauges { display: flex; gap: 34px; }
 .gauge span {
   display: block;
-  font: 600 10px/1 var(--mono);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font: 600 10.5px/1 var(--sans);
+  letter-spacing: 0.04em;
   color: var(--muted);
   margin-bottom: 6px;
 }
@@ -181,9 +180,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
   margin-bottom: 18px;
 }
 .panel h2 {
-  font: 600 10px/1 var(--mono);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font: 600 10.5px/1 var(--sans);
+  letter-spacing: 0.04em;
   color: var(--muted);
   margin: 0 0 12px;
 }
@@ -247,7 +245,7 @@ input[type="search"]::placeholder { color: var(--off); }
 }
 .sections label { font-size: 12.5px; line-height: 1.45; color: var(--ink-2); cursor: pointer; }
 .sections label.done { color: var(--muted); text-decoration: line-through; }
-.sections .link { font-size: 11px; font-family: var(--mono); color: var(--muted); white-space: nowrap; }
+.sections .link { font-size: 11px; font-family: var(--sans); color: var(--muted); white-space: nowrap; }
 .sections .link:hover { color: var(--rust); }
 
 /* ------------------------------------------------------------------ content */
@@ -262,7 +260,7 @@ section.block { margin-bottom: 58px; scroll-margin-top: 24px; }
   margin-bottom: 20px;
 }
 .block-head h2 { font: 400 26px/1.1 var(--serif); margin: 0; letter-spacing: -0.01em; }
-.block-head .note { font: 11px var(--mono); color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.block-head .note { font: 11.5px var(--sans); color: var(--muted); letter-spacing: 0.02em; }
 
 /* today */
 .today { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.9fr); gap: 30px; }
@@ -281,7 +279,7 @@ section.block { margin-bottom: 58px; scroll-margin-top: 24px; }
 .today-list .t-min { font: 11px var(--mono); color: var(--muted); white-space: nowrap; }
 .today-empty { border: 1px solid var(--rule); padding: 18px; background: var(--green-soft); }
 .plan-card { border-left: 2px solid var(--rust); padding-left: 18px; }
-.plan-card h3 { font: 600 11px var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+.plan-card h3 { font: 600 11px var(--sans); letter-spacing: 0.02em; color: var(--muted); margin: 0 0 10px; }
 .plan-card dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 14px; font-size: 13px; }
 .plan-card dt { color: var(--muted); }
 .plan-card dd { margin: 0; font-variant-numeric: tabular-nums; }
@@ -315,7 +313,7 @@ section.block { margin-bottom: 58px; scroll-margin-top: 24px; }
 .lab-code .row.active { background: var(--code-row); }
 .lab-code .row.err { background: var(--err-bg); }
 .lab-state { padding: 16px; }
-.lab-state h4 { font: 600 10px var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+.lab-state h4 { font: 600 10.5px var(--sans); letter-spacing: 0.02em; color: var(--muted); margin: 0 0 10px; }
 .vars { list-style: none; margin: 0 0 14px; padding: 0; }
 .vars li { display: flex; justify-content: space-between; gap: 8px; padding: 4px 0; border-bottom: 1px dotted var(--rule); font: 12px var(--mono); }
 .vars .v-name { color: var(--ink); }
@@ -407,17 +405,25 @@ footer.site {
   <header class="masthead">
     <div>
       <div class="mast-top">
-        <span class="kicker">The Rust Book · 111 pages · 89 units</span>
-        <button id="theme-toggle" class="theme-btn" type="button" aria-pressed="false">다크</button>
+        <span class="kicker" data-i18n="ui.kicker">The Rust Book · 111 pages · 89 units</span>
+        <span class="mast-tools">
+          <span class="langs" role="group" aria-label="Language">
+            <button class="lang-btn" type="button" data-lang="ko" aria-pressed="true">KO</button>
+            <button class="lang-btn" type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+            <button class="lang-btn" type="button" data-lang="zh" aria-pressed="false" lang="zh-Hans">中文</button>
+            <button class="lang-btn" type="button" data-lang="ja" aria-pressed="false" lang="ja">日本語</button>
+          </span>
+          <button id="theme-toggle" class="theme-btn" type="button" aria-pressed="false">다크</button>
+        </span>
       </div>
-      <h1>Rust <em>필드 가이드</em></h1>
-      <p class="lede">공식 책을 읽는 순서 그대로, 89개 단위로 나눠 진도를 남기고,
+      <h1 data-i18n-html="ui.h1">Rust <em>필드 가이드</em></h1>
+      <p class="lede" data-i18n="ui.lede">공식 책을 읽는 순서 그대로, 89개 단위로 나눠 진도를 남기고,
         소유권 규칙은 한 줄씩 실행해 보며 익히는 개인 학습 도구입니다.</p>
     </div>
     <div class="gauges">
-      <div class="gauge"><span>진행률</span><b id="g-progress">0%</b><small id="g-progress-sub">0 / 89 단위</small></div>
-      <div class="gauge"><span>남은 시간</span><b id="g-left">44.6h</b><small id="g-left-sub">2678분 남음</small></div>
-      <div class="gauge"><span>완료 예상</span><b id="g-eta">—</b><small id="g-eta-sub">하루 30분 기준</small></div>
+      <div class="gauge"><span data-i18n="ui.gauge.progress">진행률</span><b id="g-progress">0%</b><small id="g-progress-sub">0 / 89 단위</small></div>
+      <div class="gauge"><span data-i18n="ui.gauge.left">남은 시간</span><b id="g-left">44.6h</b><small id="g-left-sub">2678분 남음</small></div>
+      <div class="gauge"><span data-i18n="ui.gauge.eta">완료 예상</span><b id="g-eta">—</b><small id="g-eta-sub">하루 30분 기준</small></div>
     </div>
   </header>
   <div class="progress-strip" aria-hidden="true"><i></i></div>
@@ -426,23 +432,23 @@ footer.site {
 
     <aside class="rail">
       <div class="panel">
-        <h2>학습 페이스</h2>
+        <h2 data-i18n="ui.pace.title">학습 페이스</h2>
         <div class="field">
-          <label for="pace">하루 읽을 양</label>
+          <label for="pace" data-i18n="ui.pace.label">하루 읽을 양</label>
           <output id="pace-out">30분</output>
         </div>
-        <input type="range" id="pace" min="10" max="120" step="5" value="30" aria-label="하루 학습 분량(분)">
-        <p class="rail-note">책 전체는 약 44.6시간 분량입니다. 페이스를 바꾸면 오늘의 분량과 완료 예상일이 다시 계산됩니다.</p>
+        <input type="range" id="pace" min="10" max="120" step="5" value="30" aria-label="하루 학습 분량(분)" data-i18n-aria="ui.pace.aria">
+        <p class="rail-note" data-i18n="ui.pace.note">책 전체는 약 44.6시간 분량입니다. 페이스를 바꾸면 오늘의 분량과 완료 예상일이 다시 계산됩니다.</p>
       </div>
 
       <div class="panel">
-        <h2>찾기</h2>
-        <input type="search" id="search" placeholder="장·절 제목 검색   ( / )" aria-label="목차 검색">
-        <p class="rail-note">체크 상태는 이 브라우저(localStorage)에만 저장됩니다. 서버로 보내지 않습니다.</p>
+        <h2 data-i18n="ui.search.title">찾기</h2>
+        <input type="search" id="search" placeholder="장·절 제목 검색   ( / )" aria-label="목차 검색" data-i18n-placeholder="ui.search.placeholder" data-i18n-aria="ui.search.aria">
+        <p class="rail-note" data-i18n="ui.search.note">체크 상태는 이 브라우저(localStorage)에만 저장됩니다. 서버로 보내지 않습니다.</p>
       </div>
 
       <div class="panel">
-        <h2>목차 · 22장 / 89단위</h2>
+        <h2 data-i18n="ui.toc.title">목차 · 22장 / 89단위</h2>
         <div class="chapters" id="chapters"></div>
       </div>
     </aside>
@@ -451,74 +457,74 @@ footer.site {
 
       <section class="block" id="today">
         <div class="block-head">
-          <h2>오늘의 학습</h2>
-          <span class="note">pace에 맞춰 자동 계산</span>
+          <h2 data-i18n="ui.today.title">오늘의 학습</h2>
+          <span class="note" data-i18n="ui.today.note">pace에 맞춰 자동 계산</span>
         </div>
         <div class="today">
           <ul class="today-list" id="today-list"></ul>
           <div class="plan-card">
-            <h3>계획</h3>
+            <h3 data-i18n="ui.plan.title">계획</h3>
             <dl>
-              <dt>읽을 분량</dt><dd>111페이지 · 162,417단어</dd>
-              <dt>단위</dt><dd>89개 (장·부록 22개)</dd>
-              <dt>총 분량</dt><dd>44.6시간</dd>
-              <dt>하루</dt><dd id="plan-pace">30분</dd>
+              <dt data-i18n="ui.plan.volume">읽을 분량</dt><dd data-i18n="ui.plan.volumeValue">111페이지 · 162,417단어</dd>
+              <dt data-i18n="ui.plan.units">단위</dt><dd data-i18n="ui.plan.unitsValue">89개 (장·부록 22개)</dd>
+              <dt data-i18n="ui.plan.total">총 분량</dt><dd data-i18n="ui.plan.totalValue">44.6시간</dd>
+              <dt data-i18n="ui.plan.pace">하루</dt><dd id="plan-pace">30분</dd>
             </dl>
-            <p>체크는 읽은 단위에만. 남은 단위는 순서대로 다음 날로 넘어갑니다.
+            <p data-i18n="ui.plan.note">체크는 읽은 단위에만. 남은 단위는 순서대로 다음 날로 넘어갑니다.
               진행률은 목차의 장별 막대로도 표시됩니다.</p>
-            <button class="reset" id="reset" type="button">진행률 초기화</button>
+            <button class="reset" id="reset" type="button" data-i18n="ui.plan.reset">진행률 초기화</button>
           </div>
         </div>
       </section>
 
       <section class="block" id="lab">
         <div class="block-head">
-          <h2>소유권 랩</h2>
-          <span class="note">8 시나리오 · 단계별 상태</span>
+          <h2 data-i18n="ui.lab.title">소유권 랩</h2>
+          <span class="note" data-i18n="ui.lab.note">8 시나리오 · 단계별 상태</span>
         </div>
         <div class="lab">
-          <div class="lab-tabs" id="lab-tabs" role="tablist" aria-label="소유권 시나리오"></div>
+          <div class="lab-tabs" id="lab-tabs" role="tablist" aria-label="소유권 시나리오" data-i18n-aria="ui.lab.tabsAria"></div>
           <div class="lab-body">
-            <div class="lab-code" id="lab-code" aria-label="예제 코드"></div>
+            <div class="lab-code" id="lab-code" aria-label="예제 코드" data-i18n-aria="ui.lab.codeAria"></div>
             <div class="lab-state">
-              <h4 id="lab-title">시나리오</h4>
-              <h4>변수 상태</h4>
+              <h4 id="lab-title" data-i18n="ui.lab.scenario">시나리오</h4>
+              <h4 data-i18n="ui.lab.vars">변수 상태</h4>
               <ul class="vars" id="lab-vars"></ul>
               <p class="lab-note" id="lab-note"></p>
               <pre class="lab-error" id="lab-error"></pre>
               <div class="lab-controls">
-                <button type="button" id="lab-prev">이전</button>
-                <button type="button" id="lab-next">다음 단계</button>
+                <button type="button" id="lab-prev" data-i18n="ui.lab.prev">이전</button>
+                <button type="button" id="lab-next" data-i18n="ui.lab.next">다음 단계</button>
                 <span class="lab-step" id="lab-step">1 / 1</span>
               </div>
             </div>
           </div>
         </div>
-        <p class="rail-note" style="margin-top:10px">컴파일러 오류 문구는 실제 rustc 형식을 참고해 재구성했습니다.
+        <p class="rail-note" style="margin-top:10px" data-i18n="ui.lab.footnote">컴파일러 오류 문구는 실제 rustc 형식을 참고해 재구성했습니다.
           책의 설명을 대체하지 않고, 손으로 따라가기 위한 보조입니다.</p>
       </section>
 
       <section class="block" id="quiz">
         <div class="block-head">
-          <h2>자가 점검</h2>
+          <h2 data-i18n="ui.quiz.title">자가 점검</h2>
           <span class="quiz-score" id="quiz-score">0 / 12 정답</span>
         </div>
         <div class="quiz-list" id="quiz-list"></div>
-        <p class="rail-note" style="margin-top:12px">문항은 책의 장을 읽은 뒤 스스로 확인하도록 만든 것입니다.
+        <p class="rail-note" style="margin-top:12px" data-i18n="ui.quiz.note">문항은 책의 장을 읽은 뒤 스스로 확인하도록 만든 것입니다.
           틀려도 기록만 남고, 다시 풀려면 진행률을 초기화하세요.</p>
       </section>
 
       <section class="block" id="about">
         <div class="block-head">
-          <h2>이 프로젝트에 대하여</h2>
-          <span class="note">not a replacement</span>
+          <h2 data-i18n="ui.about.title">이 프로젝트에 대하여</h2>
+          <span class="note" data-i18n="ui.about.note">not a replacement</span>
         </div>
         <div class="about">
           <div>
-            <p><b>Rust 필드 가이드</b>는 <a href="https://doc.rust-lang.org/book/" target="_blank" rel="noopener">The Rust
+            <p data-i18n-html="ui.about.body"><b>Rust 필드 가이드</b>는 <a href="https://doc.rust-lang.org/book/" target="_blank" rel="noopener">The Rust
               Programming Language</a>를 읽는 사람을 위한 개인용 진도 관리 도구입니다. 책의 본문을 복제하지
               않습니다. 목차·페이지 수·분량만 측정해 계획을 세우고, 각 단위는 공식 페이지로 연결합니다.</p>
-            <ul>
+            <ul data-i18n-html="ui.about.list">
               <li><b>89단위</b> — toc.html의 실제 목차를 그대로 사용합니다(장·부록 22개, 앞부분 포함).</li>
               <li><b>분량 추정</b> — 페이지별 산문 단어 수와 코드 줄 수로 계산합니다(산문 220wpm, 코드 분당 6줄).</li>
               <li><b>소유권 랩</b> — 이동·clone·Copy·공유/가변 대여·NLL·슬라이스·함수 인자를 8개 시나리오로 추적합니다.</li>
@@ -529,8 +535,8 @@ footer.site {
           <div class="colophon">
             <p><b>data</b> book.json · <span id="stamp">—</span><br>
                <b>source</b> doc.rust-lang.org/book<br>
-               <b>license</b> MIT OR Apache-2.0 (책)<br>
-               <b>build</b> tools/build.py · 단일 HTML<br>
+               <b>license</b> MIT OR Apache-2.0 (book)<br>
+               <b>build</b> tools/build.py · single HTML<br>
                <b>repo</b> <a href="https://github.com/dogebi/rust-field-guide">dogebi/rust-field-guide</a></p>
           </div>
         </div>
@@ -540,17 +546,18 @@ footer.site {
   </main>
 
   <footer class="site">
-    <span>Rust 필드 가이드 · © <span id="year">2026</span> dogebi · 학습용 비공식 도구</span>
-    <span>책 본문은 <a href="https://doc.rust-lang.org/book/" target="_blank" rel="noopener">doc.rust-lang.org</a>에서 읽으세요.</span>
+    <span data-i18n="ui.foot.left">Rust 필드 가이드 · © 2026 dogebi · 학습용 비공식 도구</span>
+    <span data-i18n-html="ui.foot.right">책 본문은 <a href="https://doc.rust-lang.org/book/" target="_blank" rel="noopener">doc.rust-lang.org</a>에서 읽으세요.</span>
   </footer>
 </div>
 
 <noscript>
-  <p style="padding:20px">이 도구는 진행률 계산에 JavaScript를 사용합니다. 목차는
+  <p style="padding:20px" data-i18n-html="ui.noscript">이 도구는 진행률 계산에 JavaScript를 사용합니다. 목차는
     <a href="https://doc.rust-lang.org/book/">공식 책</a>에서 확인할 수 있습니다.</p>
 </noscript>
 
 <script>window.__BOOK__ = {"source":{"title":"The Rust Programming Language","url":"https://doc.rust-lang.org/book/","license":"MIT OR Apache-2.0","fetched":"2026-11-25"},"chapters":[{"num":"","title":"Foreword","href":"foreword.html","units":[{"num":"","title":"Foreword","href":"foreword.html","minutes":2,"words":445}]},{"num":"","title":"Introduction","href":"ch00-00-introduction.html","units":[{"num":"","title":"Introduction","href":"ch00-00-introduction.html","minutes":7,"words":1547}]},{"num":"1","title":"Getting Started","href":"ch01-00-getting-started.html","units":[{"num":"1.1","title":"Installation","href":"ch01-01-installation.html","minutes":6,"words":865},{"num":"1.2","title":"Hello, World!","href":"ch01-02-hello-world.html","minutes":10,"words":1067},{"num":"1.3","title":"Hello, Cargo!","href":"ch01-03-hello-cargo.html","minutes":12,"words":1587}]},{"num":"2","title":"Programming a Guessing Game","href":"ch02-00-guessing-game-tutorial.html","units":[{"num":"2","title":"Programming a Guessing Game","href":"ch02-00-guessing-game-tutorial.html","minutes":92,"words":5252}]},{"num":"3","title":"Common Programming Concepts","href":"ch03-00-common-programming-concepts.html","units":[{"num":"3.1","title":"Variables and Mutability","href":"ch03-01-variables-and-mutability.html","minutes":18,"words":1308},{"num":"3.2","title":"Data Types","href":"ch03-02-data-types.html","minutes":27,"words":2351},{"num":"3.3","title":"Functions","href":"ch03-03-how-functions-work.html","minutes":26,"words":1418},{"num":"3.4","title":"Comments","href":"ch03-04-comments.html","minutes":4,"words":148},{"num":"3.5","title":"Control Flow","href":"ch03-05-control-flow.html","minutes":41,"words":2345}]},{"num":"4","title":"Understanding Ownership","href":"ch04-00-understanding-ownership.html","units":[{"num":"4.1","title":"What is Ownership?","href":"ch04-01-what-is-ownership.html","minutes":38,"words":3792},{"num":"4.2","title":"References and Borrowing","href":"ch04-02-references-and-borrowing.html","minutes":32,"words":1359},{"num":"4.3","title":"The Slice Type","href":"ch04-03-slices.html","minutes":40,"words":1806}]},{"num":"5","title":"Using Structs to Structure Related Data","href":"ch05-00-structs.html","units":[{"num":"5.1","title":"Defining and Instantiating Structs","href":"ch05-01-defining-structs.html","minutes":36,"words":1715},{"num":"5.2","title":"An Example Program Using Structs","href":"ch05-02-example-structs.html","minutes":27,"words":1556},{"num":"5.3","title":"Methods","href":"ch05-03-method-syntax.html","minutes":33,"words":1727}]},{"num":"6","title":"Enums and Pattern Matching","href":"ch06-00-enums.html","units":[{"num":"6.1","title":"Defining an Enum","href":"ch06-01-defining-an-enum.html","minutes":39,"words":2389},{"num":"6.2","title":"The match Control Flow Construct","href":"ch06-02-match.html","minutes":38,"words":1887},{"num":"6.3","title":"Concise Control Flow with if let and let...else","href":"ch06-03-if-let.html","minutes":38,"words":1018}]},{"num":"7","title":"Packages, Crates, and Modules","href":"ch07-00-managing-growing-projects-with-packages-crates-and-modules.html","units":[{"num":"7.1","title":"Packages and Crates","href":"ch07-01-packages-and-crates.html","minutes":4,"words":585},{"num":"7.2","title":"Control Scope and Privacy with Modules","href":"ch07-02-defining-modules-to-control-scope-and-privacy.html","minutes":11,"words":1122},{"num":"7.3","title":"Paths for Referring to an Item in the Module Tree","href":"ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html","minutes":33,"words":2303},{"num":"7.4","title":"Bringing Paths Into Scope with the use Keyword","href":"ch07-04-bringing-paths-into-scope-with-the-use-keyword.html","minutes":34,"words":1783},{"num":"7.5","title":"Separating Modules into Different Files","href":"ch07-05-separating-modules-into-different-files.html","minutes":6,"words":857}]},{"num":"8","title":"Common Collections","href":"ch08-00-common-collections.html","units":[{"num":"8.1","title":"Storing Lists of Values with Vectors","href":"ch08-01-vectors.html","minutes":21,"words":1796},{"num":"8.2","title":"Storing UTF-8 Encoded Text with Strings","href":"ch08-02-strings.html","minutes":35,"words":2483},{"num":"8.3","title":"Storing Keys with Associated Values in Hash Maps","href":"ch08-03-hash-maps.html","minutes":18,"words":1819}]},{"num":"9","title":"Error Handling","href":"ch09-00-error-handling.html","units":[{"num":"9.1","title":"Unrecoverable Errors with panic!","href":"ch09-01-unrecoverable-errors-with-panic.html","minutes":12,"words":1091},{"num":"9.2","title":"Recoverable Errors with Result","href":"ch09-02-recoverable-errors-with-result.html","minutes":43,"words":3757},{"num":"9.3","title":"To panic! or Not to panic!","href":"ch09-03-to-panic-or-not-to-panic.html","minutes":19,"words":2184}]},{"num":"10","title":"Generic Types, Traits, and Lifetimes","href":"ch10-00-generics.html","units":[{"num":"10.1","title":"Generic Data Types","href":"ch10-01-syntax.html","minutes":39,"words":2202},{"num":"10.2","title":"Defining Shared Behavior with Traits","href":"ch10-02-traits.html","minutes":57,"words":2516},{"num":"10.3","title":"Validating References with Lifetimes","href":"ch10-03-lifetime-syntax.html","minutes":63,"words":4409}]},{"num":"11","title":"Writing Automated Tests","href":"ch11-00-testing.html","units":[{"num":"11.1","title":"How to Write Tests","href":"ch11-01-writing-tests.html","minutes":99,"words":3391},{"num":"11.2","title":"Controlling How Tests Are Run","href":"ch11-02-running-tests.html","minutes":30,"words":1192},{"num":"11.3","title":"Test Organization","href":"ch11-03-test-organization.html","minutes":24,"words":1785}]},{"num":"12","title":"An I/O Project: Building a Command Line Program","href":"ch12-00-an-io-project.html","units":[{"num":"12.1","title":"Accepting Command Line Arguments","href":"ch12-01-accepting-command-line-arguments.html","minutes":11,"words":903},{"num":"12.2","title":"Reading a File","href":"ch12-02-reading-a-file.html","minutes":8,"words":347},{"num":"12.3","title":"Refactoring to Improve Modularity and Error Handling","href":"ch12-03-improving-error-handling-and-modularity.html","minutes":73,"words":3701},{"num":"12.4","title":"Adding Functionality with Test Driven Development","href":"ch12-04-testing-the-librarys-functionality.html","minutes":29,"words":1334},{"num":"12.5","title":"Working with Environment Variables","href":"ch12-05-working-with-environment-variables.html","minutes":47,"words":1290},{"num":"12.6","title":"Redirecting Errors to Standard Error","href":"ch12-06-writing-to-stderr-instead-of-stdout.html","minutes":12,"words":630}]},{"num":"13","title":"Functional Language Features: Iterators and Closures","href":"ch13-00-functional-features.html","units":[{"num":"13.1","title":"Closures","href":"ch13-01-closures.html","minutes":56,"words":2935},{"num":"13.2","title":"Processing a Series of Items with Iterators","href":"ch13-02-iterators.html","minutes":25,"words":1481},{"num":"13.3","title":"Improving Our I/O Project","href":"ch13-03-improving-our-io-project.html","minutes":58,"words":1238},{"num":"13.4","title":"Performance in Loops vs. Iterators","href":"ch13-04-performance.html","minutes":2,"words":415}]},{"num":"14","title":"More about Cargo and Crates.io","href":"ch14-00-more-about-cargo.html","units":[{"num":"14.1","title":"Customizing Builds with Release Profiles","href":"ch14-01-release-profiles.html","minutes":4,"words":406},{"num":"14.2","title":"Publishing a Crate to Crates.io","href":"ch14-02-publishing-to-crates-io.html","minutes":37,"words":2718},{"num":"14.3","title":"Cargo Workspaces","href":"ch14-03-cargo-workspaces.html","minutes":24,"words":1276},{"num":"14.4","title":"Installing Binaries with cargo install","href":"ch14-04-installing-binaries.html","minutes":3,"words":263},{"num":"14.5","title":"Extending Cargo with Custom Commands","href":"ch14-05-extending-cargo.html","minutes":1,"words":162}]},{"num":"15","title":"Smart Pointers","href":"ch15-00-smart-pointers.html","units":[{"num":"15.1","title":"Using Box to Point to Data on the Heap","href":"ch15-01-box.html","minutes":18,"words":1920},{"num":"15.2","title":"Treating Smart Pointers Like Regular References","href":"ch15-02-deref.html","minutes":30,"words":2050},{"num":"15.3","title":"Running Code on Cleanup with the Drop Trait","href":"ch15-03-drop.html","minutes":18,"words":1078},{"num":"15.4","title":"Rc, the Reference Counted Smart Pointer","href":"ch15-04-rc.html","minutes":17,"words":1288},{"num":"15.5","title":"RefCell and the Interior Mutability Pattern","href":"ch15-05-interior-mutability.html","minutes":61,"words":2772},{"num":"15.6","title":"Reference Cycles Can Leak Memory","href":"ch15-06-reference-cycles.html","minutes":43,"words":2455}]},{"num":"16","title":"Fearless Concurrency","href":"ch16-00-concurrency.html","units":[{"num":"16.1","title":"Using Threads to Run Code Simultaneously","href":"ch16-01-threads.html","minutes":33,"words":1544},{"num":"16.2","title":"Transfer Data Between Threads with Message Passing","href":"ch16-02-message-passing.html","minutes":27,"words":1620},{"num":"16.3","title":"Shared-State Concurrency","href":"ch16-03-shared-state.html","minutes":27,"words":1891},{"num":"16.4","title":"Extensible Concurrency with Send and Sync","href":"ch16-04-extensible-concurrency-sync-and-send.html","minutes":3,"words":724}]},{"num":"17","title":"Fundamentals of Asynchronous Programming: Async, Await, Futures, and Streams","href":"ch17-00-async-await.html","units":[{"num":"17.1","title":"Futures and the Async Syntax","href":"ch17-01-futures-and-syntax.html","minutes":34,"words":2874},{"num":"17.2","title":"Applying Concurrency with Async","href":"ch17-02-concurrency-with-async.html","minutes":47,"words":2602},{"num":"17.3","title":"Working With Any Number of Futures","href":"ch17-03-more-futures.html","minutes":38,"words":1446},{"num":"17.4","title":"Streams: Futures in Sequence","href":"ch17-04-streams.html","minutes":10,"words":607},{"num":"17.5","title":"A Closer Look at the Traits for Async","href":"ch17-05-traits-for-async.html","minutes":46,"words":3522},{"num":"17.6","title":"Futures, Tasks, and Threads","href":"ch17-06-futures-tasks-threads.html","minutes":7,"words":862}]},{"num":"18","title":"Object Oriented Programming Features","href":"ch18-00-oop.html","units":[{"num":"18.1","title":"Characteristics of Object-Oriented Languages","href":"ch18-01-what-is-oo.html","minutes":11,"words":1253},{"num":"18.2","title":"Using Trait Objects to Abstract over Shared Behavior","href":"ch18-02-trait-objects.html","minutes":30,"words":1943},{"num":"18.3","title":"Implementing an Object-Oriented Design Pattern","href":"ch18-03-oo-design-patterns.html","minutes":81,"words":4217}]},{"num":"19","title":"Patterns and Matching","href":"ch19-00-patterns.html","units":[{"num":"19.1","title":"All the Places Patterns Can Be Used","href":"ch19-01-all-the-places-for-patterns.html","minutes":22,"words":1614},{"num":"19.2","title":"Refutability: Whether a Pattern Might Fail to Match","href":"ch19-02-refutability.html","minutes":11,"words":625},{"num":"19.3","title":"Pattern Syntax","href":"ch19-03-pattern-syntax.html","minutes":61,"words":4190}]},{"num":"20","title":"Advanced Features","href":"ch20-00-advanced-features.html","units":[{"num":"20.1","title":"Unsafe Rust","href":"ch20-01-unsafe-rust.html","minutes":46,"words":4230},{"num":"20.2","title":"Advanced Traits","href":"ch20-02-advanced-traits.html","minutes":70,"words":2941},{"num":"20.3","title":"Advanced Types","href":"ch20-03-advanced-types.html","minutes":31,"words":2008},{"num":"20.4","title":"Advanced Functions and Closures","href":"ch20-04-advanced-functions-and-closures.html","minutes":18,"words":1153},{"num":"20.5","title":"Macros","href":"ch20-05-macros.html","minutes":35,"words":3547}]},{"num":"21","title":"Final Project: Building a Multithreaded Web Server","href":"ch21-00-final-project-a-web-server.html","units":[{"num":"21.1","title":"Building a Single-Threaded Web Server","href":"ch21-01-single-threaded.html","minutes":52,"words":3255},{"num":"21.2","title":"From Single-Threaded to Multithreaded Server","href":"ch21-02-multithreaded.html","minutes":125,"words":4754},{"num":"21.3","title":"Graceful Shutdown and Cleanup","href":"ch21-03-graceful-shutdown-and-cleanup.html","minutes":79,"words":1474}]},{"num":"22","title":"Appendix","href":"appendix-00.html","units":[{"num":"22.1","title":"A - Keywords","href":"appendix-01-keywords.html","minutes":6,"words":713},{"num":"22.2","title":"B - Operators and Symbols","href":"appendix-02-operators.html","minutes":6,"words":1272},{"num":"22.3","title":"C - Derivable Traits","href":"appendix-03-derivable-traits.html","minutes":7,"words":1525},{"num":"22.4","title":"D - Useful Development Tools","href":"appendix-04-useful-development-tools.html","minutes":10,"words":547},{"num":"22.5","title":"E - Editions","href":"appendix-05-editions.html","minutes":2,"words":495},{"num":"22.6","title":"F - Translations of the Book","href":"appendix-06-translation.html","minutes":1,"words":78},{"num":"22.7","title":"G - How Rust is Made and “Nightly Rust”","href":"appendix-07-nightly-rust.html","minutes":11,"words":1372}]}]};</script>
+<script>window.__RFG_I18N__ = /*I18N_START*/{"ko":{"meta":{"title":"Rust 필드 가이드 — the book을 읽는 나만의 루프","description":"The Rust Programming Language(111페이지, 89단위)를 하루 페이스로 읽고, 소유권을 단계별로 실험하고, 퀴즈로 확인하는 개인 학습 도구.","ogTitle":"Rust 필드 가이드","ogDescription":"the book 111페이지를 89단위로 쪼개 진행률·오늘의 분량·소유권 랩·퀴즈로 읽는 학습 도구."},"ui":{"theme.toDark":"다크","theme.toLight":"라이트","theme.toDarkAria":"다크 모드로 전환","theme.toLightAria":"라이트 모드로 전환","kicker":"The Rust Book · 111 pages · 89 units","h1":"Rust <em>필드 가이드<\/em>","lede":"공식 책을 읽는 순서 그대로, 89개 단위로 나눠 진도를 남기고, 소유권 규칙은 한 줄씩 실행해 보며 익히는 개인 학습 도구입니다.","gauge.progress":"진행률","gauge.left":"남은 시간","gauge.eta":"완료 예상","gauge.progressSub":"{0} / {1} 단위","gauge.leftSub":"{0}분 남음","gauge.etaSub":"하루 {0}분 기준","pace.title":"학습 페이스","pace.label":"하루 읽을 양","pace.value":"{0}분","pace.aria":"하루 학습 분량(분)","pace.note":"책 전체는 약 44.6시간 분량입니다. 페이스를 바꾸면 오늘의 분량과 완료 예상일이 다시 계산됩니다.","search.title":"찾기","search.placeholder":"장·절 제목 검색   ( / )","search.aria":"목차 검색","search.note":"체크 상태는 이 브라우저(localStorage)에만 저장됩니다. 서버로 보내지 않습니다.","toc.title":"목차 · 22장 / 89단위","today.title":"오늘의 학습","today.note":"pace에 맞춰 자동 계산","today.empty":"<b>모든 단위를 읽었습니다.<\/b> 복습은 각 장의 링크로 돌아가세요.","today.whole":"본문 전체","rail.read":"본문 읽기","rail.openTitle":"책에서 열기","rail.minutes":"{0}m ↗","plan.title":"계획","plan.volume":"읽을 분량","plan.volumeValue":"111페이지 · 162,417단어","plan.units":"단위","plan.unitsValue":"89개 (장·부록 22개)","plan.total":"총 분량","plan.totalValue":"44.6시간","plan.pace":"하루","plan.note":"체크는 읽은 단위에만. 남은 단위는 순서대로 다음 날로 넘어갑니다. 진행률은 목차의 장별 막대로도 표시됩니다.","plan.reset":"진행률 초기화","lab.title":"소유권 랩","lab.note":"8 시나리오 · 단계별 상태","lab.codeAria":"예제 코드","lab.tabsAria":"소유권 시나리오","lab.scenario":"시나리오","lab.vars":"변수 상태","lab.prev":"이전","lab.next":"다음 단계","lab.footnote":"컴파일러 오류 문구는 실제 rustc 형식을 참고해 재구성했습니다. 책의 설명을 대체하지 않고, 손으로 따라가기 위한 보조입니다.","quiz.title":"자가 점검","quiz.score":"{0} / {1} 정답","quiz.scorePartial":"{0} / {1} 정답 · {2}문항 응답","quiz.right":"정답.","quiz.wrong":"오답.","quiz.note":"문항은 책의 장을 읽은 뒤 스스로 확인하도록 만든 것입니다. 틀려도 기록만 남고, 다시 풀려면 진행률을 초기화하세요.","about.title":"이 프로젝트에 대하여","about.note":"not a replacement","about.body":"<b>Rust 필드 가이드<\/b>는 <a href=\"https://doc.rust-lang.org/book/\" target=\"_blank\" rel=\"noopener\">The Rust Programming Language<\/a>를 읽는 사람을 위한 개인용 진도 관리 도구입니다. 책의 본문을 복제하지 않습니다. 목차·페이지 수·분량만 측정해 계획을 세우고, 각 단위는 공식 페이지로 연결합니다.","about.list":"<li><b>89단위<\/b> — toc.html의 실제 목차를 그대로 사용합니다(장·부록 22개, 앞부분 포함).<\/li><li><b>분량 추정<\/b> — 페이지별 산문 단어 수와 코드 줄 수로 계산합니다(산문 220wpm, 코드 분당 6줄).<\/li><li><b>소유권 랩<\/b> — 이동·clone·Copy·공유/가변 대여·NLL·슬라이스·함수 인자를 8개 시나리오로 추적합니다.<\/li><li><b>자가 점검<\/b> — 12문항. 정답과 해설은 그 자리에서 표시됩니다.<\/li><li><b>오프라인<\/b> — 런타임에 네트워크 요청이 없습니다. 진행률은 브라우저에만 저장됩니다.<\/li>","foot.left":"Rust 필드 가이드 · © {0} dogebi · 학습용 비공식 도구","foot.right":"책 본문은 <a href=\"https://doc.rust-lang.org/book/\" target=\"_blank\" rel=\"noopener\">doc.rust-lang.org<\/a>에서 읽으세요.","noscript":"이 도구는 진행률 계산에 JavaScript를 사용합니다. 목차는 <a href=\"https://doc.rust-lang.org/book/\">공식 책<\/a>에서 확인할 수 있습니다.","confirmReset":"진행률과 퀴즈 기록을 모두 지웁니다. 계속할까요?"},"lab":[{"id":"move","tab":"이동","title":"대입은 복사가 아니라 이동","code":["fn main() {","    let s1 = String::from(\"ferris\");","    let s2 = s1;","    println!(\"{}\", s1);","}"],"steps":[{"note":"s1이 힙의 \"ferris\"를 소유합니다. 스택에는 포인터·길이·용량만 있고, 실제 바이트는 힙에 있습니다.","vars":[{"name":"s1","tag":"소유"}]},{"note":"let s2 = s1; 은 이동입니다. 소유권이 s2로 넘어가고 s1은 무효가 됩니다. 힙 데이터는 복사되지 않습니다.","vars":[{"name":"s1","tag":"이동됨"},{"name":"s2","tag":"소유"}]},{"note":"무효가 된 s1을 읽으려 했습니다. 컴파일러가 이 시점에 막습니다.","vars":[{"name":"s1","tag":"이동됨"},{"name":"s2","tag":"소유"}],"error":"error[E0382]: borrow of moved value: `s1`\n  --> src/main.rs:4:20\n   |\n2  |     let s1 = String::from(\"ferris\");\n   |         -- move occurs because `s1` has type `String`\n3  |     let s2 = s1;\n   |              -- value moved here\n4  |     println!(\"{}\", s1);\n   |                    ^^ value borrowed here after move"},{"note":"해결책 두 가지: s1.clone()으로 힙까지 복사하거나, s2에 &s1을 넘겨 빌리게 합니다.","vars":[{"name":"s1","tag":"이동됨"},{"name":"s2","tag":"소유"}]}]},{"id":"clone","tab":"clone","title":"명시적 깊은 복사","code":["fn main() {","    let s1 = String::from(\"ferris\");","    let s2 = s1.clone();","    println!(\"{} {}\", s1, s2);","}"],"steps":[{"note":"s1이 힙 버퍼를 소유합니다.","vars":[{"name":"s1","tag":"소유"}]},{"note":"clone()은 힙 데이터를 새로 할당해 복사합니다. 이제 소유자가 둘이고, 비용도 둘입니다.","vars":[{"name":"s1","tag":"소유"},{"name":"s2","tag":"소유"}]},{"note":"둘 다 유효하므로 둘 다 읽을 수 있습니다. 복사 비용을 지불했기 때문에 가능한 일입니다.","vars":[]}]},{"id":"copy","tab":"Copy","title":"스택 값은 복사된다","code":["fn main() {","    let x = 5;","    let y = x;","    println!(\"{} {}\", x, y);","}"],"steps":[{"note":"i32는 Copy 트레이트를 구현합니다. 힙 자원이 없으므로 비트 단위 복사로 충분합니다.","vars":[{"name":"x","tag":"복사 가능"}]},{"note":"대입 후에도 x는 유효합니다. 이동이 아니라 복사이기 때문입니다.","vars":[{"name":"x","tag":"복사 가능"},{"name":"y","tag":"복사 가능"}]},{"note":"String에 같은 코드를 쓰면 이동이 되어 x를 못 씁니다. 차이는 힙 소유 여부입니다.","vars":[]}]},{"id":"shared","tab":"공유 대여","title":"읽기 참조는 여러 개","code":["fn main() {","    let s = String::from(\"ferris\");","    let a = &s;","    let b = &s;","    println!(\"{} {}\", a, b);","}"],"steps":[{"note":"s가 소유합니다.","vars":[{"name":"s","tag":"소유"}]},{"note":"&s는 소유권을 넘기지 않고 빌립니다. 읽기 전용 참조입니다.","vars":[{"name":"s","tag":"소유"},{"name":"a","tag":"공유 &"}]},{"note":"공유 참조는 동시에 여러 개 있어도 안전합니다. 아무도 값을 바꾸지 않기 때문입니다.","vars":[{"name":"s","tag":"소유"},{"name":"a","tag":"공유 &"},{"name":"b","tag":"공유 &"}]}]},{"id":"conflict","tab":"충돌","title":"가변 참조와 공유 참조의 공존 금지","code":["fn main() {","    let mut s = String::from(\"ferris\");","    let r1 = &mut s;","    let r2 = &s;","    println!(\"{} {}\", r1, r2);","}"],"steps":[{"note":"가변으로 선언했으므로 &mut s가 가능합니다.","vars":[{"name":"s","tag":"소유 (mut)"}]},{"note":"r1이 s를 가변으로 빌립니다. 이 동안 s는 아무도 읽을 수 없습니다.","vars":[{"name":"s","tag":"대여 중"},{"name":"r1","tag":"가변 &mut"}]},{"note":"가변 대여가 살아 있는데 공유 대여를 시도했습니다.","vars":[{"name":"s","tag":"대여 중"},{"name":"r1","tag":"가변 &mut"},{"name":"r2","tag":"공유 &"}],"error":"error[E0502]: cannot borrow `s` as immutable because it is also borrowed as mutable\n  --> src/main.rs:4:14\n   |\n3  |     let r1 = &mut s;\n   |              ------ mutable borrow occurs here\n4  |     let r2 = &s;\n   |              ^^ immutable borrow occurs here\n5  |     println!(\"{} {}\", r1, r2);\n   |                       -- mutable borrow later used here"},{"note":"해결: r1을 마지막으로 쓴 뒤에 r2를 만들거나, 두 참조를 동시에 살리지 않게 순서를 바꿉니다.","vars":[]}]},{"id":"nll","tab":"NLL","title":"대여는 마지막 사용에서 끝난다","code":["fn main() {","    let mut s = String::from(\"ferris\");","    let r = &s;","    println!(\"{}\", r);","    s.push_str(\"!\");","}"],"steps":[{"note":"r이 s를 공유 대여합니다.","vars":[{"name":"s","tag":"소유 (mut)"},{"name":"r","tag":"공유 &"}]},{"note":"r의 마지막 사용입니다. 이 줄 뒤로 대여는 끝난 것으로 컴파일러가 봅니다(non-lexical lifetimes).","vars":[{"name":"s","tag":"소유 (mut)"},{"name":"r","tag":"공유 &"}]},{"note":"대여가 끝났으므로 가변 변경이 허용됩니다. 예전 렉시컬 수명 규칙에서는 이 코드가 거부됐습니다.","vars":[{"name":"s","tag":"소유 (mut)"}]}]},{"id":"slice","tab":"슬라이스","title":"슬라이스는 원본을 빌린다","code":["fn main() {","    let mut s = String::from(\"hello world\");","    let w = &s[0..5];","    s.clear();","    println!(\"{}\", w);","}"],"steps":[{"note":"w는 &str 슬라이스로, s의 바이트를 빌립니다.","vars":[{"name":"s","tag":"소유 (mut)"},{"name":"w","tag":"공유 &str"}]},{"note":"clear()는 s를 가변으로 빌려야 합니다. w가 아직 살아 있으므로 충돌합니다.","vars":[{"name":"s","tag":"대여 중"},{"name":"w","tag":"공유 &str"}],"error":"error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immutable\n  --> src/main.rs:4:5\n   |\n3  |     let w = &s[0..5];\n   |              - immutable borrow occurs here\n4  |     s.clear();\n   |     ^^^^^^^ mutable borrow occurs here\n5  |     println!(\"{}\", w);\n   |                    - immutable borrow later used here"},{"note":"해결: w를 먼저 사용해 출력한 뒤 clear()를 호출하거나, w를 String으로 복사합니다(w.to_string()).","vars":[]}]},{"id":"fnmove","tab":"함수 인자","title":"함수에 넘기면 소유권이 이동한다","code":["fn takes(s: String) {","    println!(\"{}\", s);","}","","fn main() {","    let s = String::from(\"ferris\");","    takes(s);","    println!(\"{}\", s);","}"],"steps":[{"note":"takes(s)에 값을 넘기면 소유권이 함수로 이동합니다.","vars":[{"name":"s","tag":"소유"}]},{"note":"함수가 끝나며 s를 drop했으므로 원래 변수는 무효입니다.","vars":[{"name":"s","tag":"이동됨"}],"error":"error[E0382]: borrow of moved value: `s`\n  --> src/main.rs:8:20"},{"note":"해결: fn takes(s: &str)로 받고 takes(&s)로 호출하면 빌리기만 합니다.","vars":[]}]}],"quiz":[{"q":"String 값을 다른 변수에 그냥 대입하면 무슨 일이 일어나나요?","opts":["힙 데이터가 깊은 복사된다","소유권이 이동하고 원래 변수는 무효가 된다","두 변수가 같은 힙을 공유한다","컴파일 오류가 나서 대입 자체가 불가능하다"],"a":1,"why":"String은 힙을 소유하므로 이동(move)입니다. 이동 후 원래 변수를 쓰면 E0382가 납니다."},{"q":"공유 참조(&T)와 가변 참조(&mut T)에 대한 규칙으로 맞는 것은?","opts":["공유 참조는 하나만, 가변 참조는 여러 개 가능","공유 참조는 여러 개, 가변 참조는 동시에 하나만","둘 다 여러 개 가능하다","둘 다 동시에 하나만 가능하다"],"a":1,"why":"여러 읽기 또는 단 하나의 쓰기. 이 규칙이 데이터 경쟁을 컴파일 시점에 제거합니다."},{"q":"borrow checker가 런타임 비용 없이 동작할 수 있는 이유는?","opts":["가비지 컬렉터가 백그라운드에서 돌기 때문","참조 규칙을 컴파일 시점에 검사하기 때문","힙 대신 스택만 쓰기 때문","unsafe 블록이 자동 삽입되기 때문"],"a":1,"why":"수명과 대여 규칙은 정적으로 검사됩니다. 런타임에는 아무 검사도 남지 않습니다."},{"q":"let w = &s[0..5]; 에서 w의 타입은?","opts":["String","&String","&str","[u8; 5]"],"a":2,"why":"문자열 슬라이스는 &str입니다. 원본 String의 바이트를 빌립니다."},{"q":"Copy와 Clone의 차이로 가장 정확한 것은?","opts":["둘 다 같은 동작이다","Copy는 암묵적 비트 복사, Clone은 명시적 호출이며 힙 복사가 가능하다","Copy는 힙을 복사하고 Clone은 스택만 복사한다","Clone은 unsafe에서만 쓸 수 있다"],"a":1,"why":"i32 같은 타입은 Copy라 대입만으로 복사됩니다. String은 Clone을 명시적으로 호출해야 합니다."},{"q":"Option<T>가 null보다 나은 이유는?","opts":["메모리를 덜 쓴다","없을 수 있음을 타입으로 표현해 처리를 강제한다","자동으로 0이 된다","panic을 막아준다"],"a":1,"why":"Option은 Some/None을 타입에 담습니다. match나 ?로 처리하지 않으면 컴파일이 막습니다."},{"q":"? 연산자는 무엇을 하나요?","opts":["에러를 무시하고 계속 진행","Ok면 값을 꺼내고 Err면 호출자에게 조기 반환","panic!을 발생시킨다","Result를 Option으로 바꾼다"],"a":1,"why":"?는 From을 이용해 에러 타입을 변환하면서 조기 반환합니다."},{"q":"iter()와 into_iter()의 차이는?","opts":["iter()는 소유권을 가져가고 into_iter()는 빌린다","iter()는 &T를, into_iter()는 T를 순회한다","둘은 완전히 같다","into_iter()는 배열에서만 동작한다"],"a":1,"why":"iter()는 참조를 순회하고, into_iter()는 컬렉션을 소비해 원소를 이동합니다."},{"q":"Rc<T>를 쓰는 상황은?","opts":["여러 스레드가 동시에 소유할 때","한 스레드 안에서 여러 소유자가 필요할 때","힙 할당을 피하고 싶을 때","컴파일 타임에 크기를 정할 때"],"a":1,"why":"Rc는 참조 카운팅이 스레드 안전하지 않습니다. 스레드 간에는 Arc를 씁니다."},{"q":"Arc<Mutex<T>> 조합의 목적은?","opts":["읽기 전용 공유","스레드 간 공유 소유와 상호 배제","컴파일 속도 향상","메모리 누수 방지"],"a":1,"why":"Arc가 소유권을 공유하고 Mutex가 한 번에 하나만 접근하게 합니다."},{"q":"fn f<'a>(x: &'a str) -> &'a str 에서 'a의 역할은?","opts":["문자열을 복사한다","반환 참조가 입력만큼 유효함을 컴파일러에 알린다","런타임에 수명을 검사한다","힙에 할당한다"],"a":1,"why":"라이프타임은 런타임 값이 아니라 컴파일러가 참조 관계를 검증하는 표식입니다."},{"q":"async fn이 호출되면 즉시 하는 일은?","opts":["끝까지 실행한다","Future를 반환하고, 폴링되어야 진행한다","스레드를 새로 만든다","에러를 반환한다"],"a":1,"why":"async fn은 상태 기계를 감싼 Future를 만듭니다. .await나 실행기가 폴링해야 진행됩니다."}]},"en":{"meta":{"title":"Rust Field Guide — your own loop for reading the book","description":"A personal study tool for reading The Rust Programming Language (111 pages, 89 units) at a daily pace, experimenting with ownership step by step, and checking yourself with a quiz.","ogTitle":"Rust Field Guide","ogDescription":"A study tool that splits the book's 111 pages into 89 units and tracks them with progress, today's portion, an ownership lab, and a quiz."},"ui":{"theme.toDark":"Dark","theme.toLight":"Light","theme.toDarkAria":"Switch to dark mode","theme.toLightAria":"Switch to light mode","kicker":"The Rust Book · 111 pages · 89 units","h1":"Rust <em>Field Guide<\/em>","lede":"A personal study tool that follows the official book in reading order, splits it into 89 units so you can track progress, and lets you learn the ownership rules by running them line by line.","gauge.progress":"Progress","gauge.left":"Time left","gauge.eta":"Projected finish","gauge.progressSub":"{0} / {1} units","gauge.leftSub":"{0} min left","gauge.etaSub":"At {0} min per day","pace.title":"Study pace","pace.label":"Daily reading time","pace.value":"{0} min","pace.aria":"Daily study time in minutes","pace.note":"The whole book is about 44.6 hours of material. Change the pace and today's portion and the projected finish date are recalculated.","search.title":"Search","search.placeholder":"Search chapter and section titles   ( / )","search.aria":"Search table of contents","search.note":"Check state is stored only in this browser (localStorage). Nothing is sent to a server.","toc.title":"Contents · 22 chapters / 89 units","today.title":"Today's reading","today.note":"Calculated automatically from pace","today.empty":"<b>You have read every unit.<\/b> Use the links on each chapter to review.","today.whole":"Entire text","rail.read":"Read the section","rail.openTitle":"Open in the book","rail.minutes":"{0}m ↗","plan.title":"Plan","plan.volume":"Reading volume","plan.volumeValue":"111 pages · 162,417 words","plan.units":"Units","plan.unitsValue":"89 (22 chapters and appendices)","plan.total":"Total length","plan.totalValue":"44.6 hours","plan.pace":"Per day","plan.note":"Check only the units you have read. Remaining units roll over to the next day in order. Progress also shows as per-chapter bars in the contents.","plan.reset":"Reset progress","lab.title":"Ownership lab","lab.note":"8 scenarios · state at each step","lab.codeAria":"Example code","lab.tabsAria":"Ownership scenarios","lab.scenario":"Scenario","lab.vars":"Variable state","lab.prev":"Previous","lab.next":"Next step","lab.footnote":"The compiler error text is reconstructed from real rustc output. It does not replace the book's explanation; it is an aid for tracing by hand.","quiz.title":"Self-check","quiz.score":"{0} / {1} correct","quiz.scorePartial":"{0} / {1} correct · {2} answered","quiz.right":"Correct.","quiz.wrong":"Incorrect.","quiz.note":"The questions are for checking yourself after reading a chapter. Wrong answers are only recorded; to try again, reset your progress.","about.title":"About this project","about.note":"not a replacement","about.body":"<b>Rust Field Guide<\/b> is a personal progress tracker for people reading <a href=\"https://doc.rust-lang.org/book/\" target=\"_blank\" rel=\"noopener\">The Rust Programming Language<\/a>. It does not reproduce the book's text. It measures only the table of contents, page counts, and length to help you plan, and links each unit to the official page.","about.list":"<li><b>89 units<\/b> — taken straight from the real table of contents in toc.html (22 chapters and appendices, front matter included).<\/li><li><b>Length estimate<\/b> — computed from prose word count and code lines per page (prose at 220wpm, code at 6 lines per minute).<\/li><li><b>Ownership lab<\/b> — traces move, clone, Copy, shared and mutable borrows, NLL, slices, and function arguments across 8 scenarios.<\/li><li><b>Self-check<\/b> — 12 questions. The answer and explanation appear right there.<\/li><li><b>Offline<\/b> — no network requests at runtime. Progress is stored only in your browser.<\/li>","foot.left":"Rust Field Guide · © {0} dogebi · unofficial tool for study","foot.right":"Read the book text at <a href=\"https://doc.rust-lang.org/book/\" target=\"_blank\" rel=\"noopener\">doc.rust-lang.org<\/a>.","noscript":"This tool uses JavaScript to compute progress. You can find the table of contents in the <a href=\"https://doc.rust-lang.org/book/\">official book<\/a>.","confirmReset":"This clears all progress and quiz records. Continue?"},"lab":[{"id":"move","tab":"Move","title":"Assignment moves, it does not copy","code":["fn main() {","    let s1 = String::from(\"ferris\");","    let s2 = s1;","    println!(\"{}\", s1);","}"],"steps":[{"note":"s1 owns \"ferris\" on the heap. The stack holds only the pointer, length, and capacity; the actual bytes live on the heap.","vars":[{"name":"s1","tag":"owns"}]},{"note":"let s2 = s1; is a move. Ownership passes to s2 and s1 becomes invalid. The heap data is not copied.","vars":[{"name":"s1","tag":"moved"},{"name":"s2","tag":"owns"}]},{"note":"We tried to read s1 after it became invalid. The compiler stops this at that point.","vars":[{"name":"s1","tag":"moved"},{"name":"s2","tag":"owns"}],"error":"error[E0382]: borrow of moved value: `s1`\n  --> src/main.rs:4:20\n   |\n2  |     let s1 = String::from(\"ferris\");\n   |         -- move occurs because `s1` has type `String`\n3  |     let s2 = s1;\n   |              -- value moved here\n4  |     println!(\"{}\", s1);\n   |                    ^^ value borrowed here after move"},{"note":"Two fixes: copy the heap too with s1.clone(), or assign &s1 to s2 so it only borrows.","vars":[{"name":"s1","tag":"moved"},{"name":"s2","tag":"owns"}]}]},{"id":"clone","tab":"clone","title":"Explicit deep copy","code":["fn main() {","    let s1 = String::from(\"ferris\");","    let s2 = s1.clone();","    println!(\"{} {}\", s1, s2);","}"],"steps":[{"note":"s1 owns the heap buffer.","vars":[{"name":"s1","tag":"owns"}]},{"note":"clone() allocates new heap data and copies into it. Now there are two owners, and two costs.","vars":[{"name":"s1","tag":"owns"},{"name":"s2","tag":"owns"}]},{"note":"Both are valid, so both can be read. That is possible because we paid the copy cost.","vars":[]}]},{"id":"copy","tab":"Copy","title":"Stack values are copied","code":["fn main() {","    let x = 5;","    let y = x;","    println!(\"{} {}\", x, y);","}"],"steps":[{"note":"i32 implements the Copy trait. With no heap resource, a bitwise copy is enough.","vars":[{"name":"x","tag":"Copy"}]},{"note":"x is still valid after the assignment, because this is a copy, not a move.","vars":[{"name":"x","tag":"Copy"},{"name":"y","tag":"Copy"}]},{"note":"The same code with a String would be a move, and x would be unusable. The difference is heap ownership.","vars":[]}]},{"id":"shared","tab":"Shared borrow","title":"Read references can be many","code":["fn main() {","    let s = String::from(\"ferris\");","    let a = &s;","    let b = &s;","    println!(\"{} {}\", a, b);","}"],"steps":[{"note":"s owns the value.","vars":[{"name":"s","tag":"owns"}]},{"note":"&s borrows without giving up ownership. It is a read-only reference.","vars":[{"name":"s","tag":"owns"},{"name":"a","tag":"shared &"}]},{"note":"Shared references are safe even when there are several at once, because nobody changes the value.","vars":[{"name":"s","tag":"owns"},{"name":"a","tag":"shared &"},{"name":"b","tag":"shared &"}]}]},{"id":"conflict","tab":"Conflict","title":"Mutable and shared references cannot coexist","code":["fn main() {","    let mut s = String::from(\"ferris\");","    let r1 = &mut s;","    let r2 = &s;","    println!(\"{} {}\", r1, r2);","}"],"steps":[{"note":"We declared it mutable, so &mut s is allowed.","vars":[{"name":"s","tag":"owns (mut)"}]},{"note":"r1 borrows s mutably. While it lives, nobody can read s.","vars":[{"name":"s","tag":"borrowed"},{"name":"r1","tag":"mutable &mut"}]},{"note":"We tried a shared borrow while the mutable borrow was still alive.","vars":[{"name":"s","tag":"borrowed"},{"name":"r1","tag":"mutable &mut"},{"name":"r2","tag":"shared &"}],"error":"error[E0502]: cannot borrow `s` as immutable because it is also borrowed as mutable\n  --> src/main.rs:4:14\n   |\n3  |     let r1 = &mut s;\n   |              ------ mutable borrow occurs here\n4  |     let r2 = &s;\n   |              ^^ immutable borrow occurs here\n5  |     println!(\"{} {}\", r1, r2);\n   |                       -- mutable borrow later used here"},{"note":"Fix: create r2 after the last use of r1, or reorder so the two references are never alive at the same time.","vars":[]}]},{"id":"nll","tab":"NLL","title":"A borrow ends at its last use","code":["fn main() {","    let mut s = String::from(\"ferris\");","    let r = &s;","    println!(\"{}\", r);","    s.push_str(\"!\");","}"],"steps":[{"note":"r borrows s as shared.","vars":[{"name":"s","tag":"owns (mut)"},{"name":"r","tag":"shared &"}]},{"note":"This is the last use of r. After this line the compiler treats the borrow as finished (non-lexical lifetimes).","vars":[{"name":"s","tag":"owns (mut)"},{"name":"r","tag":"shared &"}]},{"note":"The borrow is over, so a mutable change is allowed. Under the old lexical lifetime rules this code was rejected.","vars":[{"name":"s","tag":"owns (mut)"}]}]},{"id":"slice","tab":"Slice","title":"A slice borrows its source","code":["fn main() {","    let mut s = String::from(\"hello world\");","    let w = &s[0..5];","    s.clear();","    println!(\"{}\", w);","}"],"steps":[{"note":"w is a &str slice that borrows the bytes of s.","vars":[{"name":"s","tag":"owns (mut)"},{"name":"w","tag":"shared &str"}]},{"note":"clear() needs a mutable borrow of s. w is still alive, so they conflict.","vars":[{"name":"s","tag":"borrowed"},{"name":"w","tag":"shared &str"}],"error":"error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immutable\n  --> src/main.rs:4:5\n   |\n3  |     let w = &s[0..5];\n   |              - immutable borrow occurs here\n4  |     s.clear();\n   |     ^^^^^^^ mutable borrow occurs here\n5  |     println!(\"{}\", w);\n   |                    - immutable borrow later used here"},{"note":"Fix: use and print w first, then call clear(), or copy w into a String (w.to_string()).","vars":[]}]},{"id":"fnmove","tab":"Function args","title":"Passing to a function moves ownership","code":["fn takes(s: String) {","    println!(\"{}\", s);","}","","fn main() {","    let s = String::from(\"ferris\");","    takes(s);","    println!(\"{}\", s);","}"],"steps":[{"note":"Passing the value to takes(s) moves ownership into the function.","vars":[{"name":"s","tag":"owns"}]},{"note":"The function ended and dropped s, so the original variable is invalid.","vars":[{"name":"s","tag":"moved"}],"error":"error[E0382]: borrow of moved value: `s`\n  --> src/main.rs:8:20"},{"note":"Fix: declare fn takes(s: &str) and call takes(&s) so the function only borrows.","vars":[]}]}],"quiz":[{"q":"What happens when you assign a String value to another variable with a plain assignment?","opts":["The heap data is deep-copied","Ownership moves and the original variable becomes invalid","Both variables share the same heap allocation","A compile error makes the assignment impossible"],"a":1,"why":"A String owns heap data, so this is a move. Using the original variable afterward raises E0382."},{"q":"Which rule is correct for shared references (&T) and mutable references (&mut T)?","opts":["Only one shared reference, but many mutable ones","Many shared references, but only one mutable reference at a time","Both allow many at the same time","Both allow only one at a time"],"a":1,"why":"Many readers or exactly one writer. This rule removes data races at compile time."},{"q":"Why can the borrow checker work with no runtime cost?","opts":["A garbage collector runs in the background","It checks the reference rules at compile time","It uses only the stack instead of the heap","It inserts unsafe blocks automatically"],"a":1,"why":"Lifetimes and borrow rules are checked statically. No check remains at runtime."},{"q":"What is the type of w in let w = &s[0..5];?","opts":["String","&String","&str","[u8; 5]"],"a":2,"why":"A string slice is &str. It borrows the bytes of the original String."},{"q":"Which best describes the difference between Copy and Clone?","opts":["They behave the same","Copy is an implicit bit copy; Clone is an explicit call that can copy the heap","Copy copies the heap and Clone copies only the stack","Clone can be used only in unsafe code"],"a":1,"why":"Types like i32 are Copy, so assignment alone copies them. A String needs an explicit Clone call."},{"q":"Why is Option<T> better than null?","opts":["It uses less memory","It encodes absence in the type and forces you to handle it","It automatically becomes 0","It prevents panics"],"a":1,"why":"Option puts Some/None in the type. If you do not handle it with match or ?, the code will not compile."},{"q":"What does the ? operator do?","opts":["Ignores the error and keeps going","Unwraps Ok and returns early to the caller on Err","Raises a panic!","Turns a Result into an Option"],"a":1,"why":"? returns early, converting the error type with From."},{"q":"What is the difference between iter() and into_iter()?","opts":["iter() takes ownership and into_iter() borrows","iter() iterates over &T, into_iter() over T","They are exactly the same","into_iter() works only on arrays"],"a":1,"why":"iter() iterates over references; into_iter() consumes the collection and moves its elements."},{"q":"When would you use Rc<T>?","opts":["When several threads own the value at once","When one thread needs several owners","When you want to avoid heap allocation","When you set the size at compile time"],"a":1,"why":"Rc's reference counting is not thread-safe. Between threads, use Arc."},{"q":"What is the purpose of the Arc<Mutex<T>> combination?","opts":["Read-only sharing","Shared ownership across threads plus mutual exclusion","Faster compilation","Preventing memory leaks"],"a":1,"why":"Arc shares ownership and Mutex lets only one thread access the value at a time."},{"q":"What is the role of 'a in fn f<'a>(x: &'a str) -> &'a str?","opts":["It copies the string","It tells the compiler that the returned reference lives as long as the input","It checks lifetimes at runtime","It allocates on the heap"],"a":1,"why":"A lifetime is not a runtime value; it is a marker the compiler uses to verify reference relationships."},{"q":"What does an async fn do immediately when it is called?","opts":["Runs to completion","Returns a Future that must be polled to make progress","Spawns a new thread","Returns an error"],"a":1,"why":"An async fn builds a Future wrapping a state machine. It makes progress only when .await or an executor polls it."}]},"zh":{"meta":{"title":"Rust 实战指南 — 读 the book 的个人循环","description":"按每日节奏阅读 The Rust Programming Language（111 页、89 个单元），逐级实验所有权，再用测验自检的个人学习工具。","ogTitle":"Rust 实战指南","ogDescription":"把 the book 的 111 页拆成 89 个单元，用进度、今日份量、所有权实验室和测验来阅读的学习工具。"},"ui":{"theme.toDark":"深色","theme.toLight":"浅色","theme.toDarkAria":"切换到深色模式","theme.toLightAria":"切换到浅色模式","kicker":"The Rust Book · 111 页 · 89 单元","h1":"Rust <em>实战指南<\/em>","lede":"按照官方书目的阅读顺序，把全书拆成 89 个单元记录进度，并把所有权规则逐行跑一遍来掌握的个人学习工具。","gauge.progress":"进度","gauge.left":"剩余时间","gauge.eta":"预计完成","gauge.progressSub":"{0} / {1} 单元","gauge.leftSub":"还剩 {0} 分钟","gauge.etaSub":"按每天 {0} 分钟","pace.title":"学习节奏","pace.label":"每天阅读量","pace.value":"{0}分钟","pace.aria":"每日学习时长（分钟）","pace.note":"全书大约 44.6 小时。改变节奏后，今日份量和预计完成日期会重新计算。","search.title":"搜索","search.placeholder":"搜索章·节标题   ( / )","search.aria":"搜索目录","search.note":"勾选状态只保存在此浏览器（localStorage），不会发送到服务器。","toc.title":"目录 · 22 章 / 89 单元","today.title":"今日学习","today.note":"根据 pace 自动计算","today.empty":"<b>所有单元都已读完。<\/b>复习时请通过各章的链接回到书中。","today.whole":"正文全部","rail.read":"阅读正文","rail.openTitle":"在书中打开","rail.minutes":"{0}m ↗","plan.title":"计划","plan.volume":"阅读量","plan.volumeValue":"111 页 · 162,417 词","plan.units":"单元","plan.unitsValue":"89 个（章·附录 22 个）","plan.total":"总时长","plan.totalValue":"44.6 小时","plan.pace":"每天","plan.note":"只用勾选已读的单元。剩下的单元会按顺序顺延到第二天。进度也会以目录中各章的条形显示。","plan.reset":"重置进度","lab.title":"所有权实验室","lab.note":"8 个场景 · 分步状态","lab.codeAria":"示例代码","lab.tabsAria":"所有权场景","lab.scenario":"场景","lab.vars":"变量状态","lab.prev":"上一步","lab.next":"下一步","lab.footnote":"编译器报错文字参照真实 rustc 输出格式重构。它不替代书中的讲解，只是动手跟随的辅助。","quiz.title":"自测","quiz.score":"{0} / {1} 答对","quiz.scorePartial":"{0} / {1} 答对 · 已答 {2} 题","quiz.right":"正确。","quiz.wrong":"错误。","quiz.note":"这些题目是为了读完书中相应章节后自我确认而设计的。答错只会留下记录；想重做请重置进度。","about.title":"关于这个项目","about.note":"not a replacement","about.body":"<b>Rust 实战指南<\/b>是给阅读 <a href=\"https://doc.rust-lang.org/book/\" target=\"_blank\" rel=\"noopener\">The Rust Programming Language<\/a> 的人使用的个人进度管理工具。它不复制书的正文，只测量目录、页数和篇幅来制定计划，每个单元都链接到官方页面。","about.list":"<li><b>89 个单元<\/b> — 直接使用 toc.html 中的真实目录（章·附录 22 个，含前置部分）。<\/li><li><b>篇幅估算<\/b> — 按每页的散文词数和代码行数计算（散文 220wpm，代码每分钟 6 行）。<\/li><li><b>所有权实验室<\/b> — 用 8 个场景追踪移动、clone、Copy、共享/可变借用、NLL、切片和函数参数。<\/li><li><b>自测<\/b> — 12 道题。答案和解析就地显示。<\/li><li><b>离线<\/b> — 运行时不会发起网络请求。进度只保存在浏览器中。<\/li>","foot.left":"Rust 实战指南 · © {0} dogebi · 非官方学习工具","foot.right":"书正文请在 <a href=\"https://doc.rust-lang.org/book/\" target=\"_blank\" rel=\"noopener\">doc.rust-lang.org<\/a> 阅读。","noscript":"本工具使用 JavaScript 计算进度。目录可在<a href=\"https://doc.rust-lang.org/book/\">官方书<\/a>中查看。","confirmReset":"将清除所有进度和测验记录。要继续吗？"},"lab":[{"id":"move","tab":"移动","title":"赋值是移动，不是复制","code":["fn main() {","    let s1 = String::from(\"ferris\");","    let s2 = s1;","    println!(\"{}\", s1);","}"],"steps":[{"note":"s1 拥有堆上的 \"ferris\"。栈上只有指针、长度和容量，真正的字节在堆里。","vars":[{"name":"s1","tag":"持有"}]},{"note":"let s2 = s1; 是移动。所有权转移到 s2，s1 随之失效。堆数据不会被复制。","vars":[{"name":"s1","tag":"已移动"},{"name":"s2","tag":"持有"}]},{"note":"这里试图读取已失效的 s1。编译器会在这一点拦下。","vars":[{"name":"s1","tag":"已移动"},{"name":"s2","tag":"持有"}],"error":"error[E0382]: borrow of moved value: `s1`\n  --> src/main.rs:4:20\n   |\n2  |     let s1 = String::from(\"ferris\");\n   |         -- move occurs because `s1` has type `String`\n3  |     let s2 = s1;\n   |              -- value moved here\n4  |     println!(\"{}\", s1);\n   |                    ^^ value borrowed here after move"},{"note":"两种解法：用 s1.clone() 连堆一起复制，或者把 &s1 传给 s2 让它借用。","vars":[{"name":"s1","tag":"已移动"},{"name":"s2","tag":"持有"}]}]},{"id":"clone","tab":"clone","title":"显式的深拷贝","code":["fn main() {","    let s1 = String::from(\"ferris\");","    let s2 = s1.clone();","    println!(\"{} {}\", s1, s2);","}"],"steps":[{"note":"s1 拥有堆缓冲区。","vars":[{"name":"s1","tag":"持有"}]},{"note":"clone() 会重新分配并复制堆数据。现在有两个所有者，也就是两份开销。","vars":[{"name":"s1","tag":"持有"},{"name":"s2","tag":"持有"}]},{"note":"两个都有效，所以两个都能读。这是付出了复制代价换来的。","vars":[]}]},{"id":"copy","tab":"Copy","title":"栈上的值会被复制","code":["fn main() {","    let x = 5;","    let y = x;","    println!(\"{} {}\", x, y);","}"],"steps":[{"note":"i32 实现了 Copy 特型。没有堆资源，所以按位复制就够了。","vars":[{"name":"x","tag":"可复制"}]},{"note":"赋值之后 x 依然有效，因为这是复制而不是移动。","vars":[{"name":"x","tag":"可复制"},{"name":"y","tag":"可复制"}]},{"note":"把同样的代码用在 String 上就会变成移动，x 就不能用了。差别在于是否拥有堆。","vars":[]}]},{"id":"shared","tab":"共享借用","title":"只读引用可以有多个","code":["fn main() {","    let s = String::from(\"ferris\");","    let a = &s;","    let b = &s;","    println!(\"{} {}\", a, b);","}"],"steps":[{"note":"s 持有所有权。","vars":[{"name":"s","tag":"持有"}]},{"note":"&s 不交出所有权，只是借用。这是只读引用。","vars":[{"name":"s","tag":"持有"},{"name":"a","tag":"共享 &"}]},{"note":"共享引用同时存在多个也是安全的，因为没有人会修改这个值。","vars":[{"name":"s","tag":"持有"},{"name":"a","tag":"共享 &"},{"name":"b","tag":"共享 &"}]}]},{"id":"conflict","tab":"冲突","title":"可变引用与共享引用不能共存","code":["fn main() {","    let mut s = String::from(\"ferris\");","    let r1 = &mut s;","    let r2 = &s;","    println!(\"{} {}\", r1, r2);","}"],"steps":[{"note":"声明为可变，所以可以 &mut s。","vars":[{"name":"s","tag":"持有 (mut)"}]},{"note":"r1 以可变方式借用 s。在此期间，谁都不能读 s。","vars":[{"name":"s","tag":"借用中"},{"name":"r1","tag":"可变 &mut"}]},{"note":"可变借用还活着时，又尝试了共享借用。","vars":[{"name":"s","tag":"借用中"},{"name":"r1","tag":"可变 &mut"},{"name":"r2","tag":"共享 &"}],"error":"error[E0502]: cannot borrow `s` as immutable because it is also borrowed as mutable\n  --> src/main.rs:4:14\n   |\n3  |     let r1 = &mut s;\n   |              ------ mutable borrow occurs here\n4  |     let r2 = &s;\n   |              ^^ immutable borrow occurs here\n5  |     println!(\"{} {}\", r1, r2);\n   |                       -- mutable borrow later used here"},{"note":"解法：在最后一次使用 r1 之后再创建 r2，或者调整顺序，不让两个引用同时存活。","vars":[]}]},{"id":"nll","tab":"NLL","title":"借用在最后一次使用处结束","code":["fn main() {","    let mut s = String::from(\"ferris\");","    let r = &s;","    println!(\"{}\", r);","    s.push_str(\"!\");","}"],"steps":[{"note":"r 以共享方式借用 s。","vars":[{"name":"s","tag":"持有 (mut)"},{"name":"r","tag":"共享 &"}]},{"note":"这是 r 的最后一次使用。编译器认为借用在这行之后结束（non-lexical lifetimes）。","vars":[{"name":"s","tag":"持有 (mut)"},{"name":"r","tag":"共享 &"}]},{"note":"借用已经结束，因此允许可变修改。在旧的词法生命周期规则下，这段代码会被拒绝。","vars":[{"name":"s","tag":"持有 (mut)"}]}]},{"id":"slice","tab":"切片","title":"切片借用原始数据","code":["fn main() {","    let mut s = String::from(\"hello world\");","    let w = &s[0..5];","    s.clear();","    println!(\"{}\", w);","}"],"steps":[{"note":"w 是 &str 切片，借用 s 的字节。","vars":[{"name":"s","tag":"持有 (mut)"},{"name":"w","tag":"共享 &str"}]},{"note":"clear() 需要以可变方式借用 s。w 还活着，所以发生冲突。","vars":[{"name":"s","tag":"借用中"},{"name":"w","tag":"共享 &str"}],"error":"error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immutable\n  --> src/main.rs:4:5\n   |\n3  |     let w = &s[0..5];\n   |              - immutable borrow occurs here\n4  |     s.clear();\n   |     ^^^^^^^ mutable borrow occurs here\n5  |     println!(\"{}\", w);\n   |                    - immutable borrow later used here"},{"note":"解法：先用 w 输出，再调用 clear()；或者把 w 复制成 String（w.to_string()）。","vars":[]}]},{"id":"fnmove","tab":"函数参数","title":"传给函数时所有权会移动","code":["fn takes(s: String) {","    println!(\"{}\", s);","}","","fn main() {","    let s = String::from(\"ferris\");","    takes(s);","    println!(\"{}\", s);","}"],"steps":[{"note":"把值传给 takes(s)，所有权就移动到函数里。","vars":[{"name":"s","tag":"持有"}]},{"note":"函数结束时 s 已被 drop，原来的变量因此失效。","vars":[{"name":"s","tag":"已移动"}],"error":"error[E0382]: borrow of moved value: `s`\n  --> src/main.rs:8:20"},{"note":"解法：改成 fn takes(s: &str) 并用 takes(&s) 调用，就只是借用。","vars":[]}]}],"quiz":[{"q":"把 String 值直接赋给另一个变量会发生什么？","opts":["堆数据被深拷贝","所有权发生移动，原变量随之失效","两个变量共享同一块堆内存","会报编译错误，赋值本身不可行"],"a":1,"why":"String 拥有堆内存，所以这里是移动（move）。移动之后再使用原变量会报 E0382。"},{"q":"关于共享引用（&T）和可变引用（&mut T）的规则，正确的是？","opts":["共享引用只能一个，可变引用可以多个","共享引用可以多个，可变引用同时只能一个","两者都可以有多个","两者同时都只能有一个"],"a":1,"why":"要么多个读，要么只有一个写。这条规则在编译期就消除了数据竞争。"},{"q":"borrow checker 为什么能在没有运行时开销的情况下工作？","opts":["因为后台有垃圾回收器在运行","因为它在编译期检查引用规则","因为只使用栈而不使用堆","因为会自动插入 unsafe 块"],"a":1,"why":"生命周期和借用规则是静态检查的，运行时不会留下任何检查。"},{"q":"let w = &s[0..5]; 中 w 的类型是？","opts":["String","&String","&str","[u8; 5]"],"a":2,"why":"字符串切片是 &str，它借用原 String 的字节。"},{"q":"关于 Copy 和 Clone 的差别，最准确的是？","opts":["两者行为相同","Copy 是隐式的按位复制，Clone 需要显式调用，并且可以复制堆","Copy 复制堆，Clone 只复制栈","Clone 只能在 unsafe 中使用"],"a":1,"why":"像 i32 这样的类型实现了 Copy，赋值时自动复制。String 则必须显式调用 Clone。"},{"q":"Option<T> 比 null 好在哪里？","opts":["占用更少内存","用类型表达“可能没有”，强制你处理这种情况","会自动变成 0","能阻止 panic"],"a":1,"why":"Option 把 Some/None 放进类型里。如果不通过 match 或 ? 处理，编译就无法通过。"},{"q":"? 运算符做什么？","opts":["忽略错误继续执行","Ok 时取出值，Err 时向调用者提前返回","触发 panic!","把 Result 转换成 Option"],"a":1,"why":"? 会借助 From 转换错误类型，同时提前返回。"},{"q":"iter() 和 into_iter() 有什么区别？","opts":["iter() 取得所有权，into_iter() 借用","iter() 迭代 &T，into_iter() 迭代 T","两者完全相同","into_iter() 只能用于数组"],"a":1,"why":"iter() 迭代引用，into_iter() 消费集合并移动其中的元素。"},{"q":"什么情况下使用 Rc<T>？","opts":["多个线程同时持有时","同一个线程内需要多个所有者时","想避免堆分配时","想在编译期确定大小时"],"a":1,"why":"Rc 的引用计数不是线程安全的。跨线程要用 Arc。"},{"q":"Arc<Mutex<T>> 组合的目的是？","opts":["只读共享","跨线程共享所有权与互斥","提升编译速度","防止内存泄漏"],"a":1,"why":"Arc 共享所有权，Mutex 保证同一时刻只有一个访问者。"},{"q":"fn f<'a>(x: &'a str) -> &'a str 中，'a 的作用是？","opts":["复制字符串","告诉编译器返回的引用与输入同样有效","在运行时检查生命周期","在堆上分配"],"a":1,"why":"生命周期不是运行时的值，而是编译器用来验证引用关系的标记。"},{"q":"async fn 被调用时立刻做什么？","opts":["一直执行到结束","返回一个 Future，必须被轮询才会推进","新建一个线程","返回错误"],"a":1,"why":"async fn 会创建一个包裹状态机的 Future。必须通过 .await 或执行器轮询才能推进。"}]},"ja":{"meta":{"title":"Rustフィールドガイド — the bookを読む自分だけのループ","description":"The Rust Programming Language（111ページ、89単元）を1日のペースで読み、所有権を段階ごとに実験し、クイズで確認する個人学習ツール。","ogTitle":"Rustフィールドガイド","ogDescription":"the book の111ページを89単元に分け、進捗・今日の分量・所有権ラボ・クイズで読み進める学習ツール。"},"ui":{"theme.toDark":"ダーク","theme.toLight":"ライト","theme.toDarkAria":"ダークモードに切り替え","theme.toLightAria":"ライトモードに切り替え","kicker":"The Rust Book · 111 ページ · 89 単元","h1":"Rust <em>フィールドガイド<\/em>","lede":"公式の本を読む順序そのままに、89個の単元に分けて進捗を残し、所有権の規則は一行ずつ実行しながら身につける個人学習ツールです。","gauge.progress":"進捗","gauge.left":"残り時間","gauge.eta":"完了予想","gauge.progressSub":"{0} / {1} 単元","gauge.leftSub":"残り {0} 分","gauge.etaSub":"1日 {0} 分基準","pace.title":"学習ペース","pace.label":"1日に読む量","pace.value":"{0} 分","pace.aria":"1日の学習量（分）","pace.note":"本全体は約 44.6 時間分です。ペースを変えると今日の分量と完了予想日が再計算されます。","search.title":"検索","search.placeholder":"章・節のタイトルを検索   ( / )","search.aria":"目次検索","search.note":"チェック状態はこのブラウザ（localStorage）にのみ保存されます。サーバーには送信しません。","toc.title":"目次 · 22 章 / 89 単元","today.title":"今日の学習","today.note":"ペースに合わせて自動計算","today.empty":"<b>すべての単元を読み終えました。<\/b>復習は各章のリンクから戻ってください。","today.whole":"本文全体","rail.read":"本文を読む","rail.openTitle":"本で開く","rail.minutes":"{0}m ↗","plan.title":"計画","plan.volume":"読む分量","plan.volumeValue":"111 ページ · 162,417 語","plan.units":"単元","plan.unitsValue":"89個（章・付録 22個）","plan.total":"総分量","plan.totalValue":"44.6 時間","plan.pace":"1日","plan.note":"チェックは読んだ単元にのみ。残りの単元は順番に翌日へ繰り越されます。進捗は目次の章別バーでも表示されます。","plan.reset":"進捗をリセット","lab.title":"所有権ラボ","lab.note":"8シナリオ · 段階ごとの状態","lab.codeAria":"サンプルコード","lab.tabsAria":"所有権シナリオ","lab.scenario":"シナリオ","lab.vars":"変数の状態","lab.prev":"前へ","lab.next":"次の段階","lab.footnote":"コンパイラのエラー文言は実際の rustc の形式を参考に再構成しました。本の説明を置き換えるものではなく、手で追いかけるための補助です。","quiz.title":"セルフチェック","quiz.score":"{0} / {1} 正解","quiz.scorePartial":"{0} / {1} 正解 · {2}問回答","quiz.right":"正解。","quiz.wrong":"不正解。","quiz.note":"問題は本の章を読んだ後に自分で確認できるよう作りました。間違えても記録が残るだけで、もう一度解くには進捗をリセットしてください。","about.title":"このプロジェクトについて","about.note":"not a replacement","about.body":"<b>Rust フィールドガイド<\/b>は<a href=\"https://doc.rust-lang.org/book/\" target=\"_blank\" rel=\"noopener\">The Rust Programming Language<\/a>を読む人のための個人用進捗管理ツールです。本の本文は複製しません。目次・ページ数・分量だけを計測して計画を立て、各単元は公式ページにリンクします。","about.list":"<li><b>89単元<\/b> — toc.html の実際の目次をそのまま使います（章・付録 22個、前書き部分を含む）。<\/li><li><b>分量の推定<\/b> — ページごとの散文の単語数とコード行数で計算します（散文 220wpm、コード 1分6行）。<\/li><li><b>所有権ラボ<\/b> — 移動・clone・Copy・共有/可変借用・NLL・スライス・関数引数を8つのシナリオで追跡します。<\/li><li><b>セルフチェック<\/b> — 12問。正解と解説はその場で表示されます。<\/li><li><b>オフライン<\/b> — 実行時にネットワーク要求はありません。進捗はブラウザにのみ保存されます。<\/li>","foot.left":"Rust フィールドガイド · © {0} dogebi · 学習用非公式ツール","foot.right":"本の本文は<a href=\"https://doc.rust-lang.org/book/\" target=\"_blank\" rel=\"noopener\">doc.rust-lang.org<\/a>で読んでください。","noscript":"このツールは進捗計算に JavaScript を使用します。目次は<a href=\"https://doc.rust-lang.org/book/\">公式の本<\/a>で確認できます。","confirmReset":"進捗とクイズの記録をすべて消去します。続けますか？"},"lab":[{"id":"move","tab":"移動","title":"代入はコピーではなく移動","code":["fn main() {","    let s1 = String::from(\"ferris\");","    let s2 = s1;","    println!(\"{}\", s1);","}"],"steps":[{"note":"s1 がヒープ上の \"ferris\" を所有しています。スタックにはポインタ・長さ・容量だけがあり、実際のバイト列はヒープにあります。","vars":[{"name":"s1","tag":"所有"}]},{"note":"let s2 = s1; は移動です。所有権が s2 に移り、s1 は無効になります。ヒープのデータはコピーされません。","vars":[{"name":"s1","tag":"移動済み"},{"name":"s2","tag":"所有"}]},{"note":"無効になった s1 を読もうとしました。コンパイラはこの時点で止めます。","vars":[{"name":"s1","tag":"移動済み"},{"name":"s2","tag":"所有"}],"error":"error[E0382]: borrow of moved value: `s1`\n  --> src/main.rs:4:20\n   |\n2  |     let s1 = String::from(\"ferris\");\n   |         -- move occurs because `s1` has type `String`\n3  |     let s2 = s1;\n   |              -- value moved here\n4  |     println!(\"{}\", s1);\n   |                    ^^ value borrowed here after move"},{"note":"解決策は2つ：s1.clone() でヒープまでコピーするか、s2 に &s1 を渡して借用させます。","vars":[{"name":"s1","tag":"移動済み"},{"name":"s2","tag":"所有"}]}]},{"id":"clone","tab":"clone","title":"明示的なディープコピー","code":["fn main() {","    let s1 = String::from(\"ferris\");","    let s2 = s1.clone();","    println!(\"{} {}\", s1, s2);","}"],"steps":[{"note":"s1 がヒープのバッファを所有しています。","vars":[{"name":"s1","tag":"所有"}]},{"note":"clone() はヒープのデータを新しく確保してコピーします。これで所有者が2つ、コストも2つです。","vars":[{"name":"s1","tag":"所有"},{"name":"s2","tag":"所有"}]},{"note":"どちらも有効なので両方読めます。コピーのコストを支払ったからこそできることです。","vars":[]}]},{"id":"copy","tab":"Copy","title":"スタックの値はコピーされる","code":["fn main() {","    let x = 5;","    let y = x;","    println!(\"{} {}\", x, y);","}"],"steps":[{"note":"i32 は Copy トレイトを実装しています。ヒープ資源がないため、ビット単位のコピーで十分です。","vars":[{"name":"x","tag":"コピー可"}]},{"note":"代入後も x は有効です。移動ではなくコピーだからです。","vars":[{"name":"x","tag":"コピー可"},{"name":"y","tag":"コピー可"}]},{"note":"String で同じコードを書くと移動になり、x は使えません。違いはヒープを所有するかどうかです。","vars":[]}]},{"id":"shared","tab":"共有借用","title":"読み取り参照は複数可","code":["fn main() {","    let s = String::from(\"ferris\");","    let a = &s;","    let b = &s;","    println!(\"{} {}\", a, b);","}"],"steps":[{"note":"s が所有しています。","vars":[{"name":"s","tag":"所有"}]},{"note":"&s は所有権を渡さずに借用します。読み取り専用の参照です。","vars":[{"name":"s","tag":"所有"},{"name":"a","tag":"共有 &"}]},{"note":"共有参照は同時に複数あっても安全です。誰も値を変更しないからです。","vars":[{"name":"s","tag":"所有"},{"name":"a","tag":"共有 &"},{"name":"b","tag":"共有 &"}]}]},{"id":"conflict","tab":"衝突","title":"可変参照と共有参照の共存は禁止","code":["fn main() {","    let mut s = String::from(\"ferris\");","    let r1 = &mut s;","    let r2 = &s;","    println!(\"{} {}\", r1, r2);","}"],"steps":[{"note":"可変で宣言したので &mut s が可能です。","vars":[{"name":"s","tag":"所有 (mut)"}]},{"note":"r1 が s を可変で借用します。その間、s は誰も読めません。","vars":[{"name":"s","tag":"借用中"},{"name":"r1","tag":"可変 &mut"}]},{"note":"可変借用が生きているのに共有借用を試みました。","vars":[{"name":"s","tag":"借用中"},{"name":"r1","tag":"可変 &mut"},{"name":"r2","tag":"共有 &"}],"error":"error[E0502]: cannot borrow `s` as immutable because it is also borrowed as mutable\n  --> src/main.rs:4:14\n   |\n3  |     let r1 = &mut s;\n   |              ------ mutable borrow occurs here\n4  |     let r2 = &s;\n   |              ^^ immutable borrow occurs here\n5  |     println!(\"{} {}\", r1, r2);\n   |                       -- mutable borrow later used here"},{"note":"解決：r1 を最後に使った後に r2 を作るか、2つの参照を同時に生かさないよう順序を変えます。","vars":[]}]},{"id":"nll","tab":"NLL","title":"借用は最後の使用で終わる","code":["fn main() {","    let mut s = String::from(\"ferris\");","    let r = &s;","    println!(\"{}\", r);","    s.push_str(\"!\");","}"],"steps":[{"note":"r が s を共有借用します。","vars":[{"name":"s","tag":"所有 (mut)"},{"name":"r","tag":"共有 &"}]},{"note":"r の最後の使用です。この行以降、借用は終わったとコンパイラは見なします（non-lexical lifetimes）。","vars":[{"name":"s","tag":"所有 (mut)"},{"name":"r","tag":"共有 &"}]},{"note":"借用が終わったので可変変更が許されます。以前のレキシカルな寿命規則ではこのコードは拒否されました。","vars":[{"name":"s","tag":"所有 (mut)"}]}]},{"id":"slice","tab":"スライス","title":"スライスは元を借用する","code":["fn main() {","    let mut s = String::from(\"hello world\");","    let w = &s[0..5];","    s.clear();","    println!(\"{}\", w);","}"],"steps":[{"note":"w は &str スライスで、s のバイト列を借用します。","vars":[{"name":"s","tag":"所有 (mut)"},{"name":"w","tag":"共有 &str"}]},{"note":"clear() は s を可変で借用する必要があります。w がまだ生きているため衝突します。","vars":[{"name":"s","tag":"借用中"},{"name":"w","tag":"共有 &str"}],"error":"error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immutable\n  --> src/main.rs:4:5\n   |\n3  |     let w = &s[0..5];\n   |              - immutable borrow occurs here\n4  |     s.clear();\n   |     ^^^^^^^ mutable borrow occurs here\n5  |     println!(\"{}\", w);\n   |                    - immutable borrow later used here"},{"note":"解決：w を先に使って出力してから clear() を呼ぶか、w を String にコピーします（w.to_string()）。","vars":[]}]},{"id":"fnmove","tab":"関数引数","title":"関数に渡すと所有権が移動する","code":["fn takes(s: String) {","    println!(\"{}\", s);","}","","fn main() {","    let s = String::from(\"ferris\");","    takes(s);","    println!(\"{}\", s);","}"],"steps":[{"note":"takes(s) に値を渡すと所有権が関数へ移動します。","vars":[{"name":"s","tag":"所有"}]},{"note":"関数が終わって s を drop したため、元の変数は無効です。","vars":[{"name":"s","tag":"移動済み"}],"error":"error[E0382]: borrow of moved value: `s`\n  --> src/main.rs:8:20"},{"note":"解決：fn takes(s: &str) で受け取り、takes(&s) で呼べば借用するだけです。","vars":[]}]}],"quiz":[{"q":"String の値を別の変数にそのまま代入すると何が起きますか？","opts":["ヒープのデータがディープコピーされる","所有権が移動し、元の変数は無効になる","2つの変数が同じヒープを共有する","コンパイルエラーになり、代入自体ができない"],"a":1,"why":"String はヒープを所有するため移動（move）です。移動後に元の変数を使うと E0382 が発生します。"},{"q":"共有参照（&T）と可変参照（&mut T）の規則として正しいものは？","opts":["共有参照は1つだけ、可変参照は複数可能","共有参照は複数、可変参照は同時に1つだけ","どちらも複数可能","どちらも同時に1つだけ可能"],"a":1,"why":"複数の読み取り、またはたった1つの書き込み。この規則がデータ競合をコンパイル時に排除します。"},{"q":"borrow checker が実行時コストなしで動作できる理由は？","opts":["ガベージコレクタがバックグラウンドで動くから","参照の規則をコンパイル時に検査するから","ヒープではなくスタックだけを使うから","unsafe ブロックが自動挿入されるから"],"a":1,"why":"寿命と借用の規則は静的に検査されます。実行時には何の検査も残りません。"},{"q":"let w = &s[0..5]; で w の型は？","opts":["String","&String","&str","[u8; 5]"],"a":2,"why":"文字列スライスは &str です。元の String のバイト列を借用します。"},{"q":"Copy と Clone の違いとして最も正確なものは？","opts":["どちらも同じ動作だ","Copy は暗黙のビットコピー、Clone は明示的な呼び出しでヒープのコピーも可能","Copy はヒープをコピーし、Clone はスタックだけをコピーする","Clone は unsafe でしか使えない"],"a":1,"why":"i32 のような型は Copy なので代入だけでコピーされます。String は Clone を明示的に呼ぶ必要があります。"},{"q":"Option<T> が null より優れている理由は？","opts":["メモリをあまり使わない","存在しない可能性を型で表し、処理を強制する","自動的に 0 になる","panic を防いでくれる"],"a":1,"why":"Option は Some/None を型に含みます。match や ? で処理しないとコンパイルが止めます。"},{"q":"? 演算子は何をしますか？","opts":["エラーを無視して処理を続ける","Ok なら値を取り出し、Err なら呼び出し元へ早期リターンする","panic! を発生させる","Result を Option に変える"],"a":1,"why":"? は From を使ってエラー型を変換しながら早期リターンします。"},{"q":"iter() と into_iter() の違いは？","opts":["iter() は所有権を奪い、into_iter() は借用する","iter() は &T を、into_iter() は T を走査する","両者は完全に同じだ","into_iter() は配列でしか動かない"],"a":1,"why":"iter() は参照を走査し、into_iter() はコレクションを消費して要素を移動します。"},{"q":"Rc<T> を使うのはどんな状況ですか？","opts":["複数のスレッドが同時に所有するとき","1つのスレッド内で複数の所有者が必要なとき","ヒープ割り当てを避けたいとき","コンパイル時にサイズを決めたいとき"],"a":1,"why":"Rc の参照カウントはスレッド安全ではありません。スレッド間では Arc を使います。"},{"q":"Arc<Mutex<T>> の組み合わせの目的は？","opts":["読み取り専用の共有","スレッド間の共有所有と相互排他","コンパイル速度の向上","メモリリークの防止"],"a":1,"why":"Arc が所有権を共有し、Mutex が一度に1つだけアクセスさせます。"},{"q":"fn f<'a>(x: &'a str) -> &'a str で 'a の役割は？","opts":["文字列をコピーする","返り値の参照が入力と同じだけ有効であることをコンパイラに伝える","実行時に寿命を検査する","ヒープに割り当てる"],"a":1,"why":"ライフタイムは実行時の値ではなく、コンパイラが参照関係を検証するための目印です。"},{"q":"async fn が呼ばれたとき、直ちに行うことは？","opts":["最後まで実行する","Future を返し、ポーリングされて初めて進む","スレッドを新しく作る","エラーを返す"],"a":1,"why":"async fn は状態機械を包んだ Future を作ります。.await か実行器がポーリングして初めて進みます。"}]}}/*I18N_END*/;</script>
 <script>/* Rust Field Guide - study companion for the Rust Book.
    No dependencies, no network calls at runtime. Progress lives in localStorage. */
 (() => {
@@ -559,6 +566,25 @@ footer.site {
   const BOOK = window.__BOOK__;
   const BOOK_BASE = 'https://doc.rust-lang.org/book/';
   const STORE_KEY = 'rfg.v1';
+
+  /* ------------------------------------------------------------------ i18n */
+  const I18N = window.__RFG_I18N__ || {};
+  const LANGS = ['ko', 'en', 'zh', 'ja'];
+  const HTML_LANG = { ko: 'ko', en: 'en', zh: 'zh-Hans', ja: 'ja' };
+  const LANG_KEY = 'rfg.lang';
+  const NUM_LOCALE = { ko: 'ko-KR', en: 'en-US', zh: 'zh-CN', ja: 'ja-JP' };
+  let lang = 'ko';
+
+  const pack = (code) => I18N[code] || I18N.ko || {};
+  const t = (key, ...args) => {
+    const name = key.indexOf('ui.') === 0 ? key.slice(3) : key;
+    const dict = (pack(lang).ui || {})[name];
+    const raw = dict != null ? dict : ((pack('ko').ui || {})[name]);
+    if (raw == null) return '';
+    return args.reduce((out, value, i) => out.split('{' + i + '}').join(String(value)), raw);
+  };
+  let LAB = pack(lang).lab || [];
+  let QUIZ = pack(lang).quiz || [];
 
   /* ------------------------------------------------------------- storage */
   const store = (() => {
@@ -585,8 +611,8 @@ footer.site {
     root.dataset.theme = dark ? 'dark' : 'light';
     if (!themeBtn) return;
     themeBtn.setAttribute('aria-pressed', String(dark));
-    themeBtn.textContent = dark ? '라이트' : '다크';
-    themeBtn.setAttribute('aria-label', dark ? '라이트 모드로 전환' : '다크 모드로 전환');
+    themeBtn.textContent = t(dark ? 'theme.toLight' : 'theme.toDark');
+    themeBtn.setAttribute('aria-label', t(dark ? 'theme.toLightAria' : 'theme.toDarkAria'));
   };
   paintTheme(root.dataset.theme === 'dark' ? 'dark' : 'light');
   if (themeBtn) {
@@ -656,14 +682,14 @@ footer.site {
   function finishDate(daysAhead) {
     const d = new Date();
     d.setDate(d.getDate() + daysAhead);
-    return d.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
+    return d.toLocaleDateString(NUM_LOCALE[lang] || 'ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
   /* -------------------------------------------------------------- helpers */
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => (
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
   ));
-  const fmt = (n) => n.toLocaleString('ko-KR');
+  const fmt = (n) => n.toLocaleString(NUM_LOCALE[lang] || 'ko-KR');
   const hours = (min) => (min / 60).toFixed(1);
 
   function unitLabel(unit) {
@@ -682,14 +708,14 @@ footer.site {
       node.dataset.key = chapter.key;
       const single = chapter.units.length === 1 && chapter.units[0].title === chapter.title;
       const unitsHtml = chapter.units.map((unit) => {
-        const label = single ? '본문 읽기' : `${unit.num ? `<b>${esc(unit.num)}</b> ` : ''}${esc(unit.title)}`;
+        const label = single ? t('rail.read') : `${unit.num ? `<b>${esc(unit.num)}</b> ` : ''}${esc(unit.title)}`;
         return `
         <li>
           <input type="checkbox" id="u-${esc(unit.id)}" data-unit="${esc(unit.id)}"
                  ${isDone(unit) ? 'checked' : ''}>
           <label for="u-${esc(unit.id)}" class="${isDone(unit) ? 'done' : ''}">${label}</label>
           <a class="link" href="${BOOK_BASE}${esc(unit.href)}" target="_blank"
-             rel="noopener" title="책에서 열기">${unit.minutes}m ↗</a>
+             rel="noopener" title="${t('rail.openTitle')}">${t('rail.minutes', unit.minutes)}</a>
         </li>`;
       }).join('');
       node.innerHTML = `
@@ -727,13 +753,13 @@ footer.site {
     const done = doneCount();
     const pct = units.length ? (done / units.length) * 100 : 0;
     document.getElementById('g-progress').textContent = `${pct.toFixed(0)}%`;
-    document.getElementById('g-progress-sub').textContent = `${done} / ${units.length} 단위`;
+    document.getElementById('g-progress-sub').textContent = t('gauge.progressSub', done, units.length);
     document.getElementById('g-left').textContent = `${hours(TOTAL_MIN - doneMinutes())}h`;
     document.getElementById('g-left-sub').textContent =
-      `${TOTAL_MIN - doneMinutes()}분 남음`;
+      t('gauge.leftSub', TOTAL_MIN - doneMinutes());
     document.querySelector('.progress-strip i').style.width = `${pct}%`;
     document.getElementById('g-eta').textContent = finishDate(Math.max(1, Math.ceil((TOTAL_MIN - doneMinutes()) / state.pace)));
-    document.getElementById('g-eta-sub').textContent = `하루 ${state.pace}분 기준`;
+    document.getElementById('g-eta-sub').textContent = t('gauge.etaSub', state.pace);
     for (const chapter of BOOK.chapters) updateChapterNode(chapter);
     renderToday();
   }
@@ -756,14 +782,13 @@ footer.site {
     const list = document.getElementById('today-list');
     const queue = todaysQueue();
     if (!queue.length) {
-      list.innerHTML = `<li class="today-empty" style="display:block">
-        <b>모든 단위를 읽었습니다.</b> 복습은 각 장의 링크로 돌아가세요.</li>`;
+      list.innerHTML = `<li class="today-empty" style="display:block">${t('today.empty')}</li>`;
       return;
     }
     list.innerHTML = queue.map((unit) => {
       const single = unit.title === unit.chapter.title;
       const title = single ? unit.chapter.title : unitLabel(unit);
-      const sub = single ? '본문 전체' : unit.chapter.title;
+      const sub = single ? t('today.whole') : unit.chapter.title;
       return `
       <li>
         <input type="checkbox" id="t-${esc(unit.id)}" data-unit="${esc(unit.id)}" ${isDone(unit) ? 'checked' : ''}>
@@ -833,18 +858,18 @@ footer.site {
   /* ------------------------------------------------------------------ pace */
   const pace = document.getElementById('pace');
   pace.value = state.pace;
-  document.getElementById('pace-out').textContent = `${state.pace}분`;
-  document.getElementById('plan-pace').textContent = `${state.pace}분`;
+  document.getElementById('pace-out').textContent = t('pace.value', state.pace);
+  document.getElementById('plan-pace').textContent = t('pace.value', state.pace);
   pace.addEventListener('input', () => {
     state.pace = Number(pace.value);
-    document.getElementById('pace-out').textContent = `${state.pace}분`;
-    document.getElementById('plan-pace').textContent = `${state.pace}분`;
+    document.getElementById('pace-out').textContent = t('pace.value', state.pace);
+    document.getElementById('plan-pace').textContent = t('pace.value', state.pace);
     save();
     updateAll();
   });
 
   document.getElementById('reset').addEventListener('click', () => {
-    if (!confirm('진행률과 퀴즈 기록을 모두 지웁니다. 계속할까요?')) return;
+    if (!confirm(t('confirmReset'))) return;
     state.done = {};
     state.quiz = {};
     state.start = todayISO();
@@ -854,180 +879,6 @@ footer.site {
   });
 
   /* ------------------------------------------------------------------- lab */
-  const LAB = [
-    {
-      id: 'move',
-      tab: '이동',
-      title: '대입은 복사가 아니라 이동',
-      code: [
-        'fn main() {',
-        '    let s1 = String::from("ferris");',
-        '    let s2 = s1;',
-        '    println!("{}", s1);',
-        '}'
-      ],
-      steps: [
-        { line: 2, note: 's1이 힙의 "ferris"를 소유합니다. 스택에는 포인터·길이·용량만 있고, 실제 바이트는 힙에 있습니다.',
-          vars: [{ name: 's1', tag: '소유', cls: 'own' }] },
-        { line: 3, note: 'let s2 = s1; 은 이동입니다. 소유권이 s2로 넘어가고 s1은 무효가 됩니다. 힙 데이터는 복사되지 않습니다.',
-          vars: [{ name: 's1', tag: '이동됨', cls: 'dead' }, { name: 's2', tag: '소유', cls: 'own' }] },
-        { line: 4, note: '무효가 된 s1을 읽으려 했습니다. 컴파일러가 이 시점에 막습니다.',
-          vars: [{ name: 's1', tag: '이동됨', cls: 'dead' }, { name: 's2', tag: '소유', cls: 'own' }],
-          error: 'error[E0382]: borrow of moved value: `s1`\n  --> src/main.rs:4:20\n   |\n2  |     let s1 = String::from("ferris");\n   |         -- move occurs because `s1` has type `String`\n3  |     let s2 = s1;\n   |              -- value moved here\n4  |     println!("{}", s1);\n   |                    ^^ value borrowed here after move' },
-        { line: 5, note: '해결책 두 가지: s1.clone()으로 힙까지 복사하거나, s2에 &s1을 넘겨 빌리게 합니다.',
-          vars: [{ name: 's1', tag: '이동됨', cls: 'dead' }, { name: 's2', tag: '소유', cls: 'own' }] }
-      ]
-    },
-    {
-      id: 'clone',
-      tab: 'clone',
-      title: '명시적 깊은 복사',
-      code: [
-        'fn main() {',
-        '    let s1 = String::from("ferris");',
-        '    let s2 = s1.clone();',
-        '    println!("{} {}", s1, s2);',
-        '}'
-      ],
-      steps: [
-        { line: 2, note: 's1이 힙 버퍼를 소유합니다.',
-          vars: [{ name: 's1', tag: '소유', cls: 'own' }] },
-        { line: 3, note: 'clone()은 힙 데이터를 새로 할당해 복사합니다. 이제 소유자가 둘이고, 비용도 둘입니다.',
-          vars: [{ name: 's1', tag: '소유', cls: 'own' }, { name: 's2', tag: '소유', cls: 'own' }] },
-        { line: 4, note: '둘 다 유효하므로 둘 다 읽을 수 있습니다. 복사 비용을 지불했기 때문에 가능한 일입니다.' }
-      ]
-    },
-    {
-      id: 'copy',
-      tab: 'Copy',
-      title: '스택 값은 복사된다',
-      code: [
-        'fn main() {',
-        '    let x = 5;',
-        '    let y = x;',
-        '    println!("{} {}", x, y);',
-        '}'
-      ],
-      steps: [
-        { line: 2, note: 'i32는 Copy 트레이트를 구현합니다. 힙 자원이 없으므로 비트 단위 복사로 충분합니다.',
-          vars: [{ name: 'x', tag: '복사 가능', cls: 'own' }] },
-        { line: 3, note: '대입 후에도 x는 유효합니다. 이동이 아니라 복사이기 때문입니다.',
-          vars: [{ name: 'x', tag: '복사 가능', cls: 'own' }, { name: 'y', tag: '복사 가능', cls: 'own' }] },
-        { line: 4, note: 'String에 같은 코드를 쓰면 이동이 되어 x를 못 씁니다. 차이는 힙 소유 여부입니다.' }
-      ]
-    },
-    {
-      id: 'shared',
-      tab: '공유 대여',
-      title: '읽기 참조는 여러 개',
-      code: [
-        'fn main() {',
-        '    let s = String::from("ferris");',
-        '    let a = &s;',
-        '    let b = &s;',
-        '    println!("{} {}", a, b);',
-        '}'
-      ],
-      steps: [
-        { line: 2, note: 's가 소유합니다.',
-          vars: [{ name: 's', tag: '소유', cls: 'own' }] },
-        { line: 3, note: '&s는 소유권을 넘기지 않고 빌립니다. 읽기 전용 참조입니다.',
-          vars: [{ name: 's', tag: '소유', cls: 'own' }, { name: 'a', tag: '공유 &', cls: 'shared' }] },
-        { line: 4, note: '공유 참조는 동시에 여러 개 있어도 안전합니다. 아무도 값을 바꾸지 않기 때문입니다.',
-          vars: [{ name: 's', tag: '소유', cls: 'own' }, { name: 'a', tag: '공유 &', cls: 'shared' }, { name: 'b', tag: '공유 &', cls: 'shared' }] }
-      ]
-    },
-    {
-      id: 'conflict',
-      tab: '충돌',
-      title: '가변 참조와 공유 참조의 공존 금지',
-      code: [
-        'fn main() {',
-        '    let mut s = String::from("ferris");',
-        '    let r1 = &mut s;',
-        '    let r2 = &s;',
-        '    println!("{} {}", r1, r2);',
-        '}'
-      ],
-      steps: [
-        { line: 2, note: '가변으로 선언했으므로 &mut s가 가능합니다.',
-          vars: [{ name: 's', tag: '소유 (mut)', cls: 'own' }] },
-        { line: 3, note: 'r1이 s를 가변으로 빌립니다. 이 동안 s는 아무도 읽을 수 없습니다.',
-          vars: [{ name: 's', tag: '대여 중', cls: 'shared' }, { name: 'r1', tag: '가변 &mut', cls: 'mut' }] },
-        { line: 4, note: '가변 대여가 살아 있는데 공유 대여를 시도했습니다.',
-          vars: [{ name: 's', tag: '대여 중', cls: 'shared' }, { name: 'r1', tag: '가변 &mut', cls: 'mut' }, { name: 'r2', tag: '공유 &', cls: 'shared' }],
-          error: 'error[E0502]: cannot borrow `s` as immutable because it is also borrowed as mutable\n  --> src/main.rs:4:14\n   |\n3  |     let r1 = &mut s;\n   |              ------ mutable borrow occurs here\n4  |     let r2 = &s;\n   |              ^^ immutable borrow occurs here\n5  |     println!("{} {}", r1, r2);\n   |                       -- mutable borrow later used here' },
-        { line: 5, note: '해결: r1을 마지막으로 쓴 뒤에 r2를 만들거나, 두 참조를 동시에 살리지 않게 순서를 바꿉니다.' }
-      ]
-    },
-    {
-      id: 'nll',
-      tab: 'NLL',
-      title: '대여는 마지막 사용에서 끝난다',
-      code: [
-        'fn main() {',
-        '    let mut s = String::from("ferris");',
-        '    let r = &s;',
-        '    println!("{}", r);',
-        '    s.push_str("!");',
-        '}'
-      ],
-      steps: [
-        { line: 3, note: 'r이 s를 공유 대여합니다.',
-          vars: [{ name: 's', tag: '소유 (mut)', cls: 'own' }, { name: 'r', tag: '공유 &', cls: 'shared' }] },
-        { line: 4, note: 'r의 마지막 사용입니다. 이 줄 뒤로 대여는 끝난 것으로 컴파일러가 봅니다(non-lexical lifetimes).',
-          vars: [{ name: 's', tag: '소유 (mut)', cls: 'own' }, { name: 'r', tag: '공유 &', cls: 'shared' }] },
-        { line: 5, note: '대여가 끝났으므로 가변 변경이 허용됩니다. 예전 렉시컬 수명 규칙에서는 이 코드가 거부됐습니다.',
-          vars: [{ name: 's', tag: '소유 (mut)', cls: 'own' }] }
-      ]
-    },
-    {
-      id: 'slice',
-      tab: '슬라이스',
-      title: '슬라이스는 원본을 빌린다',
-      code: [
-        'fn main() {',
-        '    let mut s = String::from("hello world");',
-        '    let w = &s[0..5];',
-        '    s.clear();',
-        '    println!("{}", w);',
-        '}'
-      ],
-      steps: [
-        { line: 3, note: 'w는 &str 슬라이스로, s의 바이트를 빌립니다.',
-          vars: [{ name: 's', tag: '소유 (mut)', cls: 'own' }, { name: 'w', tag: '공유 &str', cls: 'shared' }] },
-        { line: 4, note: 'clear()는 s를 가변으로 빌려야 합니다. w가 아직 살아 있으므로 충돌합니다.',
-          vars: [{ name: 's', tag: '대여 중', cls: 'shared' }, { name: 'w', tag: '공유 &str', cls: 'shared' }],
-          error: 'error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immutable\n  --> src/main.rs:4:5\n   |\n3  |     let w = &s[0..5];\n   |              - immutable borrow occurs here\n4  |     s.clear();\n   |     ^^^^^^^ mutable borrow occurs here\n5  |     println!("{}", w);\n   |                    - immutable borrow later used here' },
-        { line: 5, note: '해결: w를 먼저 사용해 출력한 뒤 clear()를 호출하거나, w를 String으로 복사합니다(w.to_string()).' }
-      ]
-    },
-    {
-      id: 'fnmove',
-      tab: '함수 인자',
-      title: '함수에 넘기면 소유권이 이동한다',
-      code: [
-        'fn takes(s: String) {',
-        '    println!("{}", s);',
-        '}',
-        '',
-        'fn main() {',
-        '    let s = String::from("ferris");',
-        '    takes(s);',
-        '    println!("{}", s);',
-        '}'
-      ],
-      steps: [
-        { line: 7, note: 'takes(s)에 값을 넘기면 소유권이 함수로 이동합니다.',
-          vars: [{ name: 's', tag: '소유', cls: 'own' }] },
-        { line: 8, note: '함수가 끝나며 s를 drop했으므로 원래 변수는 무효입니다.',
-          vars: [{ name: 's', tag: '이동됨', cls: 'dead' }],
-          error: 'error[E0382]: borrow of moved value: `s`\n  --> src/main.rs:8:20' },
-        { line: 8, note: '해결: fn takes(s: &str)로 받고 takes(&s)로 호출하면 빌리기만 합니다.' }
-      ]
-    }
-  ];
-
   const labCode = document.getElementById('lab-code');
   const labVars = document.getElementById('lab-vars');
   const labNote = document.getElementById('lab-note');
@@ -1090,81 +941,6 @@ footer.site {
   });
 
   /* ------------------------------------------------------------------ quiz */
-  const QUIZ = [
-    {
-      q: 'String 값을 다른 변수에 그냥 대입하면 무슨 일이 일어나나요?',
-      opts: ['힙 데이터가 깊은 복사된다', '소유권이 이동하고 원래 변수는 무효가 된다', '두 변수가 같은 힙을 공유한다', '컴파일 오류가 나서 대입 자체가 불가능하다'],
-      a: 1,
-      why: 'String은 힙을 소유하므로 이동(move)입니다. 이동 후 원래 변수를 쓰면 E0382가 납니다.'
-    },
-    {
-      q: '공유 참조(&T)와 가변 참조(&mut T)에 대한 규칙으로 맞는 것은?',
-      opts: ['공유 참조는 하나만, 가변 참조는 여러 개 가능', '공유 참조는 여러 개, 가변 참조는 동시에 하나만', '둘 다 여러 개 가능하다', '둘 다 동시에 하나만 가능하다'],
-      a: 1,
-      why: '여러 읽기 또는 단 하나의 쓰기. 이 규칙이 데이터 경쟁을 컴파일 시점에 제거합니다.'
-    },
-    {
-      q: 'borrow checker가 런타임 비용 없이 동작할 수 있는 이유는?',
-      opts: ['가비지 컬렉터가 백그라운드에서 돌기 때문', '참조 규칙을 컴파일 시점에 검사하기 때문', '힙 대신 스택만 쓰기 때문', 'unsafe 블록이 자동 삽입되기 때문'],
-      a: 1,
-      why: '수명과 대여 규칙은 정적으로 검사됩니다. 런타임에는 아무 검사도 남지 않습니다.'
-    },
-    {
-      q: 'let w = &s[0..5]; 에서 w의 타입은?',
-      opts: ['String', '&String', '&str', '[u8; 5]'],
-      a: 2,
-      why: '문자열 슬라이스는 &str입니다. 원본 String의 바이트를 빌립니다.'
-    },
-    {
-      q: 'Copy와 Clone의 차이로 가장 정확한 것은?',
-      opts: ['둘 다 같은 동작이다', 'Copy는 암묵적 비트 복사, Clone은 명시적 호출이며 힙 복사가 가능하다', 'Copy는 힙을 복사하고 Clone은 스택만 복사한다', 'Clone은 unsafe에서만 쓸 수 있다'],
-      a: 1,
-      why: 'i32 같은 타입은 Copy라 대입만으로 복사됩니다. String은 Clone을 명시적으로 호출해야 합니다.'
-    },
-    {
-      q: 'Option<T>가 null보다 나은 이유는?',
-      opts: ['메모리를 덜 쓴다', '없을 수 있음을 타입으로 표현해 처리를 강제한다', '자동으로 0이 된다', 'panic을 막아준다'],
-      a: 1,
-      why: 'Option은 Some/None을 타입에 담습니다. match나 ?로 처리하지 않으면 컴파일이 막습니다.'
-    },
-    {
-      q: '? 연산자는 무엇을 하나요?',
-      opts: ['에러를 무시하고 계속 진행', 'Ok면 값을 꺼내고 Err면 호출자에게 조기 반환', 'panic!을 발생시킨다', 'Result를 Option으로 바꾼다'],
-      a: 1,
-      why: '?는 From을 이용해 에러 타입을 변환하면서 조기 반환합니다.'
-    },
-    {
-      q: 'iter()와 into_iter()의 차이는?',
-      opts: ['iter()는 소유권을 가져가고 into_iter()는 빌린다', 'iter()는 &T를, into_iter()는 T를 순회한다', '둘은 완전히 같다', 'into_iter()는 배열에서만 동작한다'],
-      a: 1,
-      why: 'iter()는 참조를 순회하고, into_iter()는 컬렉션을 소비해 원소를 이동합니다.'
-    },
-    {
-      q: 'Rc<T>를 쓰는 상황은?',
-      opts: ['여러 스레드가 동시에 소유할 때', '한 스레드 안에서 여러 소유자가 필요할 때', '힙 할당을 피하고 싶을 때', '컴파일 타임에 크기를 정할 때'],
-      a: 1,
-      why: 'Rc는 참조 카운팅이 스레드 안전하지 않습니다. 스레드 간에는 Arc를 씁니다.'
-    },
-    {
-      q: 'Arc<Mutex<T>> 조합의 목적은?',
-      opts: ['읽기 전용 공유', '스레드 간 공유 소유와 상호 배제', '컴파일 속도 향상', '메모리 누수 방지'],
-      a: 1,
-      why: 'Arc가 소유권을 공유하고 Mutex가 한 번에 하나만 접근하게 합니다.'
-    },
-    {
-      q: "fn f<'a>(x: &'a str) -> &'a str 에서 'a의 역할은?",
-      opts: ['문자열을 복사한다', '반환 참조가 입력만큼 유효함을 컴파일러에 알린다', '런타임에 수명을 검사한다', '힙에 할당한다'],
-      a: 1,
-      why: '라이프타임은 런타임 값이 아니라 컴파일러가 참조 관계를 검증하는 표식입니다.'
-    },
-    {
-      q: 'async fn이 호출되면 즉시 하는 일은?',
-      opts: ['끝까지 실행한다', 'Future를 반환하고, 폴링되어야 진행한다', '스레드를 새로 만든다', '에러를 반환한다'],
-      a: 1,
-      why: 'async fn은 상태 기계를 감싼 Future를 만듭니다. .await나 실행기가 폴링해야 진행됩니다.'
-    }
-  ];
-
   function renderQuestion(node) {
     const i = Number(node.dataset.i);
     const item = QUIZ[i];
@@ -1181,7 +957,7 @@ footer.site {
           data-state="${st}">${esc(opt)}</button></li>`;
       }).join('')}</ul>
       ${answered ? `<p class="why ${chosen === item.a ? '' : 'bad'}">
-        ${chosen === item.a ? '정답.' : '오답.'} ${esc(item.why)}</p>` : ''}`;
+        ${chosen === item.a ? t('quiz.right') : t('quiz.wrong')} ${esc(item.why)}</p>` : ''}`;
   }
 
   const quizList = document.getElementById('quiz-list');
@@ -1195,8 +971,8 @@ footer.site {
     const answered = Object.keys(state.quiz).length;
     const right = Object.entries(state.quiz).filter(([i, v]) => QUIZ[i] && v === QUIZ[i].a).length;
     document.getElementById('quiz-score').textContent = answered
-      ? `${right} / ${QUIZ.length} 정답 · ${answered}문항 응답`
-      : `0 / ${QUIZ.length} 정답`;
+      ? t('quiz.scorePartial', right, QUIZ.length, answered)
+      : t('quiz.score', 0, QUIZ.length);
   }
 
   quizList.addEventListener('click', (ev) => {
@@ -1211,13 +987,78 @@ footer.site {
     updateScore();
   });
 
+  /* --------------------------------------------------------------- language */
+  const langBtns = [...document.querySelectorAll('.lang-btn')];
+
+  function applyStatic() {
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const value = t(el.getAttribute('data-i18n'));
+      if (value) el.textContent = value;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+      const value = t(el.getAttribute('data-i18n-html'));
+      if (value) el.innerHTML = value;
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+      const value = t(el.getAttribute('data-i18n-aria'));
+      if (value) el.setAttribute('aria-label', value);
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+      const value = t(el.getAttribute('data-i18n-placeholder'));
+      if (value) el.setAttribute('placeholder', value);
+    });
+    const meta = pack(lang).meta || {};
+    if (meta.title) document.title = meta.title;
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc && meta.description) desc.content = meta.description;
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle && meta.ogTitle) ogTitle.content = meta.ogTitle;
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc && meta.ogDescription) ogDesc.content = meta.ogDescription;
+    const paceOut = document.getElementById('pace-out');
+    if (paceOut) paceOut.textContent = t('pace.value', state.pace);
+    const planPace = document.getElementById('plan-pace');
+    if (planPace) planPace.textContent = t('pace.value', state.pace);
+    const foot = document.querySelector('[data-i18n="ui.foot.left"]');
+    if (foot) foot.textContent = t('ui.foot.left', new Date().getFullYear());
+    langBtns.forEach((btn) => btn.setAttribute('aria-pressed', String(btn.getAttribute('data-lang') === lang)));
+  }
+
+  function applyLang(code, persist) {
+    lang = LANGS.includes(code) ? code : 'ko';
+    root.lang = HTML_LANG[lang];
+    LAB = pack(lang).lab || pack('ko').lab || [];
+    QUIZ = pack(lang).quiz || pack('ko').quiz || [];
+    applyStatic();
+    paintTheme(root.dataset.theme === 'dark' ? 'dark' : 'light');
+    railChapters.innerHTML = '';
+    chapterNodes.clear();
+    buildRail();
+    buildQuiz();
+    buildLabTabs();
+    renderLab();
+    updateAll();
+    const stamp = document.getElementById('stamp');
+    if (stamp && BOOK.source) stamp.textContent = BOOK.source.fetched;
+    if (persist) { try { store.setItem(LANG_KEY, lang); } catch (e) {} }
+  }
+
+  langBtns.forEach((btn) => btn.addEventListener('click', () => {
+    labIndex = 0;
+    stepIndex = 0;
+    applyLang(btn.getAttribute('data-lang'), true);
+  }));
+
   /* ------------------------------------------------------------------ boot */
   try {
-  buildRail();
-  buildQuiz();
-  buildLabTabs();
-  renderLab();
-  updateAll();
+  const savedLang = (() => { try { return store.getItem(LANG_KEY); } catch (e) { return null; } })();
+  const navLang = (navigator.language || 'ko').toLowerCase();
+  const initialLang = LANGS.includes(savedLang) ? savedLang
+    : navLang.startsWith('zh') ? 'zh'
+    : navLang.startsWith('ja') ? 'ja'
+    : navLang.startsWith('en') ? 'en'
+    : 'ko';
+  applyLang(initialLang, false);
 
   // Open the chapter that holds the next unread unit.
   const next = units.find((u) => !isDone(u));
@@ -1229,7 +1070,6 @@ footer.site {
     }
   }
 
-  document.getElementById('year').textContent = new Date().getFullYear();
   document.getElementById('stamp').textContent = BOOK.source.fetched;
   } catch (e) {
     window.__err = String(e) + '\n' + (e && e.stack);
