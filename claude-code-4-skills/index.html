@@ -68,6 +68,12 @@ body {
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
 pre, code, .mono { word-break: break-word; }
+/* Korean keeps words whole; Chinese and Japanese must break between characters,
+   otherwise word-break: keep-all turns a whole sentence into one unbreakable run. */
+html[lang="zh-Hans"] body, html[lang="ja"] body { word-break: normal; line-break: strict; }
+/* Japanese breaks between characters, but phrase-aware breaking keeps words such
+   as 画面 from splitting across lines in display type (Chromium honors auto-phrase). */
+html[lang="ja"] .masthead h1, html[lang="ja"] .sec-head h2, html[lang="ja"] .marker h3 { word-break: auto-phrase; }
 a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--oxide); }
 a:hover { color: var(--oxide); }
 :focus-visible { outline: 2px solid var(--oxide); outline-offset: 3px; }
@@ -95,6 +101,13 @@ a:hover { color: var(--oxide); }
 }
 .theme-btn:hover { border-color: var(--ink); color: var(--ink); }
 .theme-btn[aria-pressed="true"] { color: var(--oxide); border-color: var(--oxide); }
+.langs { display: flex; gap: 2px; }
+.lang-btn {
+  font: 11px var(--sans); white-space: nowrap; background: none; cursor: pointer;
+  border: 1px solid var(--rule); color: var(--ink-2); padding: 5px 7px; min-height: 28px;
+}
+.lang-btn:hover { border-color: var(--ink); color: var(--ink); }
+.lang-btn[aria-pressed="true"] { color: var(--oxide); border-color: var(--oxide); }
 .masthead h1 {
   font: 400 clamp(34px, 5.2vw, 58px)/1.06 var(--serif);
   letter-spacing: -.025em; margin: 26px 0 22px; max-width: 16ch;
@@ -313,14 +326,14 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
 
   <header class="masthead">
     <div class="mast-kicker">
-      <span>Claude Code · Community skills · <b><span style="white-space:nowrap">2026-11-24</span> 확인</b></span>
-      <span class="mast-tools"><span>약 7분</span><button id="theme-toggle" class="theme-btn" type="button" aria-pressed="false">다크</button></span>
+      <span data-i18n="mast.kicker">Claude Code · Community skills · <b><span style="white-space:nowrap">2026-11-24</span> 확인</b></span>
+      <span class="mast-tools"><span data-i18n="mast.time">약 7분</span><span class="langs" role="group" aria-label="Language"><button class="lang-btn" type="button" data-lang="ko" aria-pressed="true">KO</button><button class="lang-btn" type="button" data-lang="zh" aria-pressed="false" lang="zh-Hans">中文</button><button class="lang-btn" type="button" data-lang="ja" aria-pressed="false" lang="ja">日本語</button></span><button id="theme-toggle" class="theme-btn" type="button" aria-pressed="false">다크</button></span>
     </div>
-    <h1>AI 티 나는 화면을 <em>네 번</em> 고친다</h1>
+    <h1 data-i18n-html="mast.h1">AI 티 나는 화면을 <em>네 번</em> 고친다</h1>
     <div class="mast-foot">
-      <p class="lede">화면이 어디서 본 듯하다면, 원인은 대개 <b>방향</b>·<b>구조</b>·<b>문장</b>·<b>간격</b> 중 하나입니다.
+      <p class="lede" data-i18n-html="mast.lede">화면이 어디서 본 듯하다면, 원인은 대개 <b>방향</b>·<b>구조</b>·<b>문장</b>·<b>간격</b> 중 하나입니다.
         네 개의 커뮤니티 스킬이 하나씩 맡습니다. 설치 명령과 프롬프트, 각 스킬이 하지 않는 일까지 적었습니다.</p>
-      <ul class="roles">
+      <ul class="roles" data-i18n-html="mast.roles">
         <li><b>Unslop</b>화면 점검</li>
         <li><b>UI UX Pro Max</b>디자인 방향</li>
         <li><b>Diagram Design</b>구조 시각화</li>
@@ -332,8 +345,8 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
   <div class="layout">
 
     <aside class="rail">
-      <h2>목차</h2>
-      <ol>
+      <h2 data-i18n="rail.head">목차</h2>
+      <ol data-i18n-html="rail.list">
         <li><a href="#glance">한눈에</a></li>
         <li><a href="#order">작업 순서</a></li>
         <li><a href="#unslop">Unslop</a></li>
@@ -344,15 +357,15 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
         <li><a href="#applied">이 페이지에 적용</a></li>
         <li><a href="#faq">질문</a></li>
       </ol>
-      <p class="rail-note">설치 명령은 <span style="white-space:nowrap">2026-11-24</span> 기준입니다.
+      <p class="rail-note" data-i18n-html="rail.note">설치 명령은 <span style="white-space:nowrap">2026-11-24</span> 기준입니다.
         저장소의 최신 릴리스와 권한 요청을 직접 확인한 뒤 설치하세요.</p>
     </aside>
 
     <main>
 
       <section class="block" id="glance">
-        <div class="sec-head"><h2>한눈에</h2><p>역할이 겹치지 않는다</p></div>
-        <div class="tldr">
+        <div class="sec-head"><h2 data-i18n="glance.head">한눈에</h2><p data-i18n="glance.sub">역할이 겹치지 않는다</p></div>
+        <div class="tldr" data-i18n-html="glance.rows">
           <div class="tldr-row">
             <div class="k">Unslop<small>화면 점검</small></div>
             <div class="d">보라 그라데이션, 글로우, 이모지 라벨, 과장 문구, 들쭉날쭉한 간격을 위치와 함께 짚고 고친 HTML을 만든다.</div>
@@ -374,17 +387,17 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
             <div class="w">공개 문구 마무리</div>
           </div>
         </div>
-        <p class="callout"><b>공식 기능이 아닙니다.</b> 네 가지 모두 커뮤니티 제작 스킬/플러그인이며 Claude Code의 스킬 기능으로 실행됩니다.
+        <p class="callout" data-i18n-html="glance.callout"><b>공식 기능이 아닙니다.</b> 네 가지 모두 커뮤니티 제작 스킬/플러그인이며 Claude Code의 스킬 기능으로 실행됩니다.
           설치 전에 저장소 코드와 요청 권한을 읽고, 결과물의 브랜드·사실·동작은 사람이 마지막에 확인하세요.</p>
       </section>
 
       <section class="block" id="order">
-        <div class="sec-head"><h2>작업 순서</h2><p>전부 설치할 필요는 없다</p></div>
+        <div class="sec-head"><h2 data-i18n="order.head">작업 순서</h2><p data-i18n="order.sub">전부 설치할 필요는 없다</p></div>
 
         <figure class="plate">
           <svg viewBox="0 0 1080 272" role="img" aria-labelledby="pipe-title pipe-desc">
-            <title id="pipe-title">네 스킬을 쓰는 순서</title>
-            <desc id="pipe-desc">01 UI UX Pro Max로 디자인 방향을 정하고, 02 직접 구현한 뒤, 03 Unslop으로 렌더링 화면을 점검한다. 04 Diagram Design과 05 Humanizer는 점선 구간 안에서 필요할 때만 끼워 넣고, 06 사람이 검수한 뒤 07 배포한다.</desc>
+            <title id="pipe-title" data-i18n="svg.title">네 스킬을 쓰는 순서</title>
+            <desc id="pipe-desc" data-i18n="svg.desc">01 UI UX Pro Max로 디자인 방향을 정하고, 02 직접 구현한 뒤, 03 Unslop으로 렌더링 화면을 점검한다. 04 Diagram Design과 05 Humanizer는 점선 구간 안에서 필요할 때만 끼워 넣고, 06 사람이 검수한 뒤 07 배포한다.</desc>
             <line class="pl-rule" x1="40" y1="152" x2="1040" y2="152" stroke-width="1"/>
             <line class="pl-opt" x1="360" y1="152" x2="840" y2="152" stroke-width="1" stroke-dasharray="4 4"/>
             <g class="pl-rule" stroke-width="1">
@@ -416,46 +429,46 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
             </g>
             <g class="pl-label" font-family="-apple-system, 'Segoe UI', 'Noto Sans KR', sans-serif" font-size="13" font-weight="600">
               <text x="40" y="196">UI UX Pro Max</text>
-              <text x="200" y="196" text-anchor="middle">구현</text>
+              <text x="200" y="196" text-anchor="middle" data-i18n="svg.l2">구현</text>
               <text x="360" y="196" text-anchor="middle">Unslop</text>
               <text x="520" y="196" text-anchor="middle">Diagram Design</text>
               <text x="680" y="196" text-anchor="middle">Humanizer</text>
-              <text x="840" y="196" text-anchor="middle">사람 검수</text>
-              <text x="1000" y="196" text-anchor="end">배포</text>
+              <text x="840" y="196" text-anchor="middle" data-i18n="svg.l6">사람 검수</text>
+              <text x="1000" y="196" text-anchor="end" data-i18n="svg.l7">배포</text>
             </g>
             <g class="pl-num" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" text-anchor="middle">
-              <text x="40" y="216" text-anchor="start">방향·팔레트·피할 패턴</text>
+              <text x="40" y="216" text-anchor="start" data-i18n="svg.s1">방향·팔레트·피할 패턴</text>
               <text x="200" y="216">Claude Code</text>
-              <text x="360" y="216">AI 티 진단</text>
-              <text x="520" y="216">구조·흐름</text>
-              <text x="680" y="216">문장 리듬</text>
-              <text x="840" y="216">모바일·포커스·대비</text>
+              <text x="360" y="216" data-i18n="svg.s3">AI 티 진단</text>
+              <text x="520" y="216" data-i18n="svg.s4">구조·흐름</text>
+              <text x="680" y="216" data-i18n="svg.s5">문장 리듬</text>
+              <text x="840" y="216" data-i18n="svg.s6">모바일·포커스·대비</text>
               <text x="1000" y="216" text-anchor="end"> </text>
             </g>
             <path class="pl-opt" d="M440 240 L440 248 L760 248 L760 240" fill="none" stroke-width="1"/>
-            <text class="pl-opt-text" x="600" y="264" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10">04·05는 필요할 때만</text>
+            <text class="pl-opt-text" data-i18n="svg.opt" x="600" y="264" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10">04·05는 필요할 때만</text>
           </svg>
-          <figcaption>실선은 매번 하는 일, 점선 구간과 붉은 원은 필요할 때 끼우는 작업입니다.</figcaption>
-          <p class="plate-hint">작은 화면에서는 옆으로 넘겨 보세요.</p>
+          <figcaption data-i18n-html="order.caption">실선은 매번 하는 일, 점선 구간과 붉은 원은 필요할 때 끼우는 작업입니다.</figcaption>
+          <p class="plate-hint" data-i18n="order.hint">작은 화면에서는 옆으로 넘겨 보세요.</p>
         </figure>
 
-        <p style="margin:24px 0 0;font-size:14.5px;color:var(--ink-2)">
+        <p style="margin:24px 0 0;font-size:14.5px;color:var(--ink-2)" data-i18n-html="order.body">
           이미 만든 사이트를 손본다면 Unslop부터 시작하면 됩니다. 다이어그램이나 글만 필요하면 해당 스킬 하나만 써도 됩니다.
           앞 단계를 끝내야 다음으로 넘어가는 구조는 아닙니다.</p>
       </section>
 
       <section class="block" id="skills" style="margin-bottom:0">
-        <div class="sec-head"><h2>스킬별로</h2><p>설치 · 프롬프트 · 한계</p></div>
+        <div class="sec-head"><h2 data-i18n="skills.head">스킬별로</h2><p data-i18n="skills.sub">설치 · 프롬프트 · 한계</p></div>
       </section>
 
       <article class="skill" id="unslop">
         <div class="marker">
           <span class="idx">01</span>
           <h3>Unslop</h3>
-          <p>이미 만든 화면 점검</p>
+          <p data-i18n="unslop.role">이미 만든 화면 점검</p>
           <div class="tags"><span>audit</span><span>html</span></div>
         </div>
-        <div class="prose">
+        <div class="prose" data-i18n-html="unslop.prose">
           <p>제품과 고객층을 먼저 본 뒤, <strong>간격 → 색 → 아이콘 → 문구 → 타이포그래피</strong> 순서로
             개선안을 냅니다. 코드 없이 URL만 있어도 페이지 저장본으로 수정 HTML을 만듭니다.</p>
           <h4>무엇을 짚나</h4>
@@ -473,16 +486,16 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
           </ul>
         </div>
         <div class="cmds">
-          <h4>설치</h4>
+          <h4 data-i18n="ui.install">설치</h4>
           <div class="cmd" data-kind="install">
-            <div class="cmd-head"><span>터미널</span><button class="copy" type="button">복사</button></div>
+            <div class="cmd-head"><span data-i18n="ui.terminal">터미널</span><button class="copy" type="button" data-i18n="ui.copy">복사</button></div>
             <pre>claude plugin install unslop --marketplace heydamir/unslop</pre>
           </div>
-          <p class="hint">설치 후 새 세션을 열거나 <code>/reload-plugins</code>를 실행합니다.</p>
-          <h4>실전 프롬프트</h4>
+          <p class="hint" data-i18n-html="unslop.hint">설치 후 새 세션을 열거나 <code>/reload-plugins</code>를 실행합니다.</p>
+          <h4 data-i18n="ui.realPrompt">실전 프롬프트</h4>
           <div class="cmd" data-kind="prompt">
-            <div class="cmd-head"><span>프롬프트</span><button class="copy" type="button">복사</button></div>
-            <pre>/unslop https://example.com
+            <div class="cmd-head"><span data-i18n="ui.prompt">프롬프트</span><button class="copy" type="button" data-i18n="ui.copy">복사</button></div>
+            <pre data-i18n="unslop.prompt">/unslop https://example.com
 이 사이트를 저장해서 원본 화면을 먼저 살펴봐 줘.
 제품의 브랜드와 고객층에 맞는 방향을 제안하고, AI 템플릿처럼 보이는 요소를 위치와 함께 진단해.
 간격, 색, 아이콘, 문구, 타이포그래피 순서로 개선하고 별도의 HTML/CSS 결과물을 만들어 줘.
@@ -495,10 +508,10 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
         <div class="marker">
           <span class="idx">02</span>
           <h3>UI UX Pro Max</h3>
-          <p>제품에 맞는 디자인 기준</p>
+          <p data-i18n="uiux.role">제품에 맞는 디자인 기준</p>
           <div class="tags"><span>direction</span><span>tokens</span></div>
         </div>
-        <div class="prose">
+        <div class="prose" data-i18n-html="uiux.prose">
           <p>“고급스럽게” 대신 업종과 고객층을 말하면, 그에 맞는 첫 화면 구조·색·글꼴 조합과
             <strong>피할 패턴</strong>을 제안합니다. 기존 프로젝트에서는 토큰과 컴포넌트 구조를 먼저 읽습니다.</p>
           <h4>숫자는 저장소마다 다르다</h4>
@@ -515,20 +528,20 @@ footer.site a:hover { border-bottom-color: var(--oxide); }
           </ul>
         </div>
         <div class="cmds">
-          <h4>설치 · 업데이트</h4>
+          <h4 data-i18n="ui.installUpdate">설치 · 업데이트</h4>
           <div class="cmd" data-kind="install">
-            <div class="cmd-head"><span>터미널</span><button class="copy" type="button">복사</button></div>
+            <div class="cmd-head"><span data-i18n="ui.terminal">터미널</span><button class="copy" type="button" data-i18n="ui.copy">복사</button></div>
             <pre>python3 --version
 npx ui-ux-pro-max-cli init --ai claude
 
-# 업데이트
+<span data-i18n="ui.updateComment"># 업데이트</span>
 npm install -g ui-ux-pro-max-cli@latest
 uipro update</pre>
           </div>
-          <h4>실전 프롬프트</h4>
+          <h4 data-i18n="ui.realPrompt">실전 프롬프트</h4>
           <div class="cmd" data-kind="prompt">
-            <div class="cmd-head"><span>프롬프트</span><button class="copy" type="button">복사</button></div>
-            <pre>Use the ui-ux-pro-max skill to design a Korean banking landing page.
+            <div class="cmd-head"><span data-i18n="ui.prompt">프롬프트</span><button class="copy" type="button" data-i18n="ui.copy">복사</button></div>
+            <pre data-i18n="uiux.prompt">Use the ui-ux-pro-max skill to design a Korean banking landing page.
 먼저 기존 프로젝트의 프레임워크와 버전, 라우트, 컴포넌트, 스타일 파일, 디자인 토큰을 살펴봐.
 대상 고객은 모바일을 주로 쓰는 30~50대 개인 고객이야.
 기존 컴포넌트 구조, 동작, 로그인 흐름과 비즈니스 로직은 유지해.
@@ -542,10 +555,10 @@ uipro update</pre>
         <div class="marker">
           <span class="idx">03</span>
           <h3>Diagram Design</h3>
-          <p>구조와 흐름 시각화</p>
+          <p data-i18n="diagram.role">구조와 흐름 시각화</p>
           <div class="tags"><span>svg</span><span>single html</span></div>
         </div>
-        <div class="prose">
+        <div class="prose" data-i18n-html="diagram.prose">
           <p>아키텍처, 데이터 흐름, 시퀀스, 일정 비교를 인라인 SVG가 든 HTML 한 장으로 그립니다.
             지침은 <strong>강조색 하나, 그림자 없음, 4px 그리드</strong>입니다.</p>
           <h4>알아둘 것</h4>
@@ -558,17 +571,17 @@ uipro update</pre>
           </ul>
         </div>
         <div class="cmds">
-          <h4>설치</h4>
+          <h4 data-i18n="ui.install">설치</h4>
           <div class="cmd" data-kind="install">
-            <div class="cmd-head"><span>터미널</span><button class="copy" type="button">복사</button></div>
+            <div class="cmd-head"><span data-i18n="ui.terminal">터미널</span><button class="copy" type="button" data-i18n="ui.copy">복사</button></div>
             <pre>/plugin marketplace add cathrynlavery/diagram-design
 /plugin install diagram-design@diagram-design</pre>
           </div>
-          <p class="hint">다른 호스트: <code>npx skills add cathrynlavery/diagram-design</code></p>
-          <h4>실전 프롬프트</h4>
+          <p class="hint" data-i18n-html="diagram.hint">다른 호스트: <code>npx skills add cathrynlavery/diagram-design</code></p>
+          <h4 data-i18n="ui.realPrompt">실전 프롬프트</h4>
           <div class="cmd" data-kind="prompt">
-            <div class="cmd-head"><span>프롬프트</span><button class="copy" type="button">복사</button></div>
-            <pre>우리 서비스 구조를 다이어그램으로 만들어 줘.
+            <div class="cmd-head"><span data-i18n="ui.prompt">프롬프트</span><button class="copy" type="button" data-i18n="ui.copy">복사</button></div>
+            <pre data-i18n="diagram.prompt">우리 서비스 구조를 다이어그램으로 만들어 줘.
 구성 요소는 React 프론트엔드, Firebase Authentication, Firestore, Cloud Functions야.
 사용자가 로그인하고 데이터를 저장한 뒤 다시 조회하는 흐름을 보여 줘.
 가장 알맞은 다이어그램 유형을 고르고, 브라우저에서 열 수 있는 HTML 파일 하나로 저장해 줘.
@@ -581,10 +594,10 @@ uipro update</pre>
         <div class="marker">
           <span class="idx">04</span>
           <h3>Humanizer</h3>
-          <p>AI 문장 패턴 교정</p>
+          <p data-i18n="humanizer.role">AI 문장 패턴 교정</p>
           <div class="tags"><span>prose</span><span>diff-safe</span></div>
         </div>
-        <div class="prose">
+        <div class="prose" data-i18n-html="humanizer.prose">
           <p>패턴은 26개지만 전부를 기계적으로 고치지 않습니다. 강한 5개는 한 번만 보여도 고치고,
             약한 패턴은 다른 신호가 함께 있을 때만 적용합니다. 26번째는 대화 답변에 해당하는
             “이미 아는 맥락 다시 설명” 문제입니다.</p>
@@ -604,17 +617,17 @@ uipro update</pre>
           </ul>
         </div>
         <div class="cmds">
-          <h4>설치</h4>
+          <h4 data-i18n="ui.install">설치</h4>
           <div class="cmd" data-kind="install">
-            <div class="cmd-head"><span>터미널</span><button class="copy" type="button">복사</button></div>
+            <div class="cmd-head"><span data-i18n="ui.terminal">터미널</span><button class="copy" type="button" data-i18n="ui.copy">복사</button></div>
             <pre>/plugin marketplace add blader/humanizer
 /plugin install humanizer@humanizer</pre>
           </div>
-          <p class="hint">Claude Code 2.1.142+ 필요. 이전 버전은 <code>npx skills add blader/humanizer --global --agent claude-code</code></p>
-          <h4>실전 프롬프트</h4>
+          <p class="hint" data-i18n-html="humanizer.hint">Claude Code 2.1.142+ 필요. 이전 버전은 <code>npx skills add blader/humanizer --global --agent claude-code</code></p>
+          <h4 data-i18n="ui.realPrompt">실전 프롬프트</h4>
           <div class="cmd" data-kind="prompt">
-            <div class="cmd-head"><span>프롬프트</span><button class="copy" type="button">복사</button></div>
-            <pre>/humanizer
+            <div class="cmd-head"><span data-i18n="ui.prompt">프롬프트</span><button class="copy" type="button" data-i18n="ui.copy">복사</button></div>
+            <pre data-i18n="humanizer.prompt">/humanizer
 
 아래는 내가 직접 쓴 글 샘플이야. 문장 리듬과 말투를 참고해 줘.
 [내가 직접 쓴 글 2~3문단]
@@ -629,14 +642,14 @@ uipro update</pre>
       </article>
 
       <section class="block" id="safe" style="margin-top:76px">
-        <div class="sec-head"><h2>안전하게 고치기</h2><p>진단 → 승인 → 작은 단위</p></div>
+        <div class="sec-head"><h2 data-i18n="safe.head">안전하게 고치기</h2><p data-i18n="safe.sub">진단 → 승인 → 작은 단위</p></div>
         <div class="gate">
           <div>
-            <p>전체를 한 번에 다시 그리게 하면 검토할 수 없는 diff가 나옵니다. 아래 프롬프트는 진단과 계획만 먼저 받고,
+            <p data-i18n-html="safe.body">전체를 한 번에 다시 그리게 하면 검토할 수 없는 diff가 나옵니다. 아래 프롬프트는 진단과 계획만 먼저 받고,
               승인 뒤 1~2개 컴포넌트씩 고치도록 제한합니다.</p>
             <div class="cmd" data-kind="prompt">
-              <div class="cmd-head"><span>프롬프트</span><button class="copy" type="button">복사</button></div>
-              <pre>현재 프로젝트를 먼저 읽고 사용 중인 프레임워크·버전, 라우트, 공통 컴포넌트, 디자인 토큰을 요약해.
+              <div class="cmd-head"><span data-i18n="ui.prompt">프롬프트</span><button class="copy" type="button" data-i18n="ui.copy">복사</button></div>
+              <pre data-i18n="safe.prompt">현재 프로젝트를 먼저 읽고 사용 중인 프레임워크·버전, 라우트, 공통 컴포넌트, 디자인 토큰을 요약해.
 운영 동작과 비즈니스 로직, 접근성 이름, 기존 브랜드 색상은 유지해.
 화면에서 AI 템플릿처럼 보이는 구체적 요소를 파일명과 위치별로 진단하고, 개선 우선순위를 제안해.
 아직 파일은 수정하지 말고, 각 변경의 목적과 영향 범위를 먼저 보여 줘.
@@ -645,20 +658,20 @@ uipro update</pre>
             </div>
           </div>
           <div>
-            <p><b>배포 전 확인</b> — 체크 상태는 이 브라우저에만 저장됩니다.</p>
+            <p data-i18n-html="safe.checkLabel"><b>배포 전 확인</b> — 체크 상태는 이 브라우저에만 저장됩니다.</p>
             <ul class="checkbox-list" id="checklist"></ul>
             <div class="gate-foot">
               <div class="gate-bar"><i id="gate-bar"></i></div>
               <span class="gate-score" id="gate-score">0 / 8</span>
-              <button class="reset" id="gate-reset" type="button">초기화</button>
+              <button class="reset" id="gate-reset" type="button" data-i18n="safe.reset">초기화</button>
             </div>
           </div>
         </div>
       </section>
 
       <section class="block" id="applied">
-        <div class="sec-head"><h2>이 페이지에 적용한 것</h2><p>네 스킬을 이 문서에 돌렸다</p></div>
-        <div class="applied">
+        <div class="sec-head"><h2 data-i18n="applied.head">이 페이지에 적용한 것</h2><p data-i18n="applied.sub">네 스킬을 이 문서에 돌렸다</p></div>
+        <div class="applied" data-i18n-html="applied.blocks">
           <div>
             <h3>Unslop — 걷어낸 것</h3>
             <p>섹션마다 붙던 01–09 번호를 지웠습니다. 목차·본문 머리·스킬 카드가 같은 섹션을 서로 다른 세 체계로
@@ -688,36 +701,36 @@ uipro update</pre>
       </section>
 
       <section class="block" id="faq">
-        <div class="sec-head"><h2>질문</h2><p>원문 FAQ 요약</p></div>
+        <div class="sec-head"><h2 data-i18n="faq.head">질문</h2><p data-i18n="faq.sub">원문 FAQ 요약</p></div>
 
         <details>
-          <summary>Anthropic 공식 스킬인가요?</summary>
-          <p>커뮤니티 제작자가 공개한 스킬·플러그인이고 Claude Code의 스킬 기능으로 실행됩니다.
+          <summary data-i18n="faq.q1">Anthropic 공식 스킬인가요?</summary>
+          <p data-i18n-html="faq.a1">커뮤니티 제작자가 공개한 스킬·플러그인이고 Claude Code의 스킬 기능으로 실행됩니다.
             설치 전에 저장소와 권한 요청을 직접 확인하세요.</p>
         </details>
         <details>
-          <summary>다른 AI 도구에서도 쓸 수 있나요?</summary>
-          <p>일부는 됩니다. Diagram Design과 Humanizer는 저장소가 안내하는 <code>npx skills add</code> 방식으로
+          <summary data-i18n="faq.q2">다른 AI 도구에서도 쓸 수 있나요?</summary>
+          <p data-i18n-html="faq.a2">일부는 됩니다. Diagram Design과 Humanizer는 저장소가 안내하는 <code>npx skills add</code> 방식으로
             다른 Agent Skills 호스트에 설치할 수 있습니다. 호스트마다 지원 범위가 다릅니다.</p>
         </details>
         <details>
-          <summary>Unslop이 운영 사이트를 직접 고치나요?</summary>
-          <p>직접 고치지 않습니다. 페이지를 저장해 사본으로 수정 HTML을 만들 뿐입니다. 자동 배포는 없고,
+          <summary data-i18n="faq.q3">Unslop이 운영 사이트를 직접 고치나요?</summary>
+          <p data-i18n-html="faq.a3">직접 고치지 않습니다. 페이지를 저장해 사본으로 수정 HTML을 만들 뿐입니다. 자동 배포는 없고,
             동적 요소는 저장본에서 빠질 수 있습니다.</p>
         </details>
         <details>
-          <summary>Humanizer로 AI 감지기를 피할 수 있나요?</summary>
-          <p>그 목적으로 만들지 않았고, 제작자도 결과가 감지기에 표시될 수 있다고 밝힙니다.
+          <summary data-i18n="faq.q4">Humanizer로 AI 감지기를 피할 수 있나요?</summary>
+          <p data-i18n-html="faq.a4">그 목적으로 만들지 않았고, 제작자도 결과가 감지기에 표시될 수 있다고 밝힙니다.
             목적은 탐지 회피가 아니라 읽기 좋은 문장입니다.</p>
         </details>
         <details>
-          <summary>네 개를 모두 설치해야 하나요?</summary>
-          <p>필요한 작업부터 하나씩 쓰면 됩니다. 이미 만든 사이트는 Unslop부터,
+          <summary data-i18n="faq.q5">네 개를 모두 설치해야 하나요?</summary>
+          <p data-i18n-html="faq.a5">필요한 작업부터 하나씩 쓰면 됩니다. 이미 만든 사이트는 Unslop부터,
             구조나 문장만 필요하면 해당 스킬만 설치하세요.</p>
         </details>
         <details>
-          <summary>결과를 그대로 공개해도 되나요?</summary>
-          <p>결과물의 라이선스와 폰트·이미지 출처를 확인해야 합니다. Diagram Design은 기본 글꼴을
+          <summary data-i18n="faq.q6">결과를 그대로 공개해도 되나요?</summary>
+          <p data-i18n-html="faq.a6">결과물의 라이선스와 폰트·이미지 출처를 확인해야 합니다. Diagram Design은 기본 글꼴을
             외부에서 불러오므로, 오프라인·자체 호스팅이 필요하면 system font로 바꿔 달라고 요청하세요.</p>
         </details>
       </section>
@@ -726,12 +739,13 @@ uipro update</pre>
   </div>
 
   <footer class="site">
-    <span>정리 · dogebi · <span style="white-space:nowrap">2026-11-24</span> 기준</span>
-    <span>요약·해설이며 원문 전체를 복제하지 않습니다. 설치 명령과 버전은 바뀔 수 있으니 각 저장소에서 확인하세요.<br>
+    <span data-i18n-html="foot.left">정리 · dogebi · <span style="white-space:nowrap">2026-11-24</span> 기준</span>
+    <span data-i18n-html="foot.right">요약·해설이며 원문 전체를 복제하지 않습니다. 설치 명령과 버전은 바뀔 수 있으니 각 저장소에서 확인하세요.<br>
       이 페이지 코드 MIT · <a href="https://github.com/dogebi/claude-code-4-skills" target="_blank" rel="noopener">소스</a></span>
   </footer>
 </div>
 
+<script>window.__CC4_I18N__ = /*I18N_START*/{"ko":{"applied.head":"이 페이지에 적용한 것","applied.sub":"네 스킬을 이 문서에 돌렸다","diagram.prompt":"우리 서비스 구조를 다이어그램으로 만들어 줘. 구성 요소는 React 프론트엔드, Firebase Authentication, Firestore, Cloud Functions야. 사용자가 로그인하고 데이터를 저장한 뒤 다시 조회하는 흐름을 보여 줘. 가장 알맞은 다이어그램 유형을 고르고, 브라우저에서 열 수 있는 HTML 파일 하나로 저장해 줘. 화살표와 라벨이 겹치지 않는지 확인해 줘.","diagram.role":"구조와 흐름 시각화","faq.head":"질문","faq.q1":"Anthropic 공식 스킬인가요?","faq.q2":"다른 AI 도구에서도 쓸 수 있나요?","faq.q3":"Unslop이 운영 사이트를 직접 고치나요?","faq.q4":"Humanizer로 AI 감지기를 피할 수 있나요?","faq.q5":"네 개를 모두 설치해야 하나요?","faq.q6":"결과를 그대로 공개해도 되나요?","faq.sub":"원문 FAQ 요약","glance.head":"한눈에","glance.sub":"역할이 겹치지 않는다","humanizer.prompt":"/humanizer 아래는 내가 직접 쓴 글 샘플이야. 문장 리듬과 말투를 참고해 줘. [내가 직접 쓴 글 2~3문단] 이제 아래 글을 다듬어 줘. 새로운 사실이나 주장을 추가하지 말고, 원문에 있던 사실과 주장을 보존해. 먼저 고친 패턴과 판단 근거를 간단히 알려 줘. 제품명, 숫자, 링크, 핵심 의미가 바뀌지 않았는지 확인해. [다듬을 글]","humanizer.role":"AI 문장 패턴 교정","mast.kicker":"Claude Code · Community skills · 2026-11-24 확인","mast.time":"약 7분","order.head":"작업 순서","order.hint":"작은 화면에서는 옆으로 넘겨 보세요.","order.sub":"전부 설치할 필요는 없다","rail.head":"목차","safe.head":"안전하게 고치기","safe.prompt":"현재 프로젝트를 먼저 읽고 사용 중인 프레임워크·버전, 라우트, 공통 컴포넌트, 디자인 토큰을 요약해. 운영 동작과 비즈니스 로직, 접근성 이름, 기존 브랜드 색상은 유지해. 화면에서 AI 템플릿처럼 보이는 구체적 요소를 파일명과 위치별로 진단하고, 개선 우선순위를 제안해. 아직 파일은 수정하지 말고, 각 변경의 목적과 영향 범위를 먼저 보여 줘. 내가 승인하면 한 번에 1~2개 컴포넌트씩 수정하고, 매 단계마다 변경 파일과 남은 작업을 알려 줘. 수정 후 모바일 폭, 키보드 포커스, 색상 대비, 링크와 폼 동작을 확인하고 검증하지 못한 항목은 명시해.","safe.reset":"초기화","safe.sub":"진단 → 승인 → 작은 단위","skills.head":"스킬별로","skills.sub":"설치 · 프롬프트 · 한계","svg.desc":"01 UI UX Pro Max로 디자인 방향을 정하고, 02 직접 구현한 뒤, 03 Unslop으로 렌더링 화면을 점검한다. 04 Diagram Design과 05 Humanizer는 점선 구간 안에서 필요할 때만 끼워 넣고, 06 사람이 검수한 뒤 07 배포한다.","svg.l2":"구현","svg.l6":"사람 검수","svg.l7":"배포","svg.opt":"04·05는 필요할 때만","svg.s1":"방향·팔레트·피할 패턴","svg.s3":"AI 티 진단","svg.s4":"구조·흐름","svg.s5":"문장 리듬","svg.s6":"모바일·포커스·대비","svg.title":"네 스킬을 쓰는 순서","ui.copy":"복사","ui.install":"설치","ui.installUpdate":"설치 · 업데이트","ui.prompt":"프롬프트","ui.realPrompt":"실전 프롬프트","ui.terminal":"터미널","uiux.prompt":"Use the ui-ux-pro-max skill to design a Korean banking landing page. 먼저 기존 프로젝트의 프레임워크와 버전, 라우트, 컴포넌트, 스타일 파일, 디자인 토큰을 살펴봐. 대상 고객은 모바일을 주로 쓰는 30~50대 개인 고객이야. 기존 컴포넌트 구조, 동작, 로그인 흐름과 비즈니스 로직은 유지해. 신뢰감 있고 읽기 쉬운 색상과 글꼴, 첫 화면 구조를 제안하고 선택 이유와 피할 패턴을 알려 줘. 제안만 먼저 보여 주고, 승인 전에는 파일을 수정하지 마.","uiux.role":"제품에 맞는 디자인 기준","unslop.prompt":"/unslop https://example.com 이 사이트를 저장해서 원본 화면을 먼저 살펴봐 줘. 제품의 브랜드와 고객층에 맞는 방향을 제안하고, AI 템플릿처럼 보이는 요소를 위치와 함께 진단해. 간격, 색, 아이콘, 문구, 타이포그래피 순서로 개선하고 별도의 HTML/CSS 결과물을 만들어 줘. 운영 사이트에는 배포하지 말고, 변경점과 저장본에서 보존되지 않을 수 있는 요소를 알려 줘.","unslop.role":"이미 만든 화면 점검","applied.blocks":"<div> <h3>Unslop — 걷어낸 것</h3> <p>섹션마다 붙던 01–09 번호를 지웠습니다. 목차·본문 머리·스킬 카드가 같은 섹션을 서로 다른 세 체계로 세고 있었고, 목차 번호 색(#a29a86)은 종이색 대비 2.55:1로 읽히지 않았습니다. 한글 소제목에 걸려 있던 대문자 변환과 0.12em 자간도 0.04em로 줄였습니다.</p> </div> <div> <h3>UI UX Pro Max — 정한 것</h3> <p>본문 크기를 14.5 / 13.5 / 11 세 단으로 토큰화했습니다(<code>--t-body</code> · <code>--t-dense</code> · <code>--t-label</code>). 13.5~15px 사이에 흩어져 있던 다섯 단계를 정리했고, 부드러운 스크롤과 진행 막대 애니메이션은 <code>prefers-reduced-motion</code>에서 끕니다. 액센트는 산화철 주황 하나, 카드·그림자· 그라데이션은 쓰지 않습니다.</p> </div> <div> <h3>Diagram Design — 그린 것</h3> <p>눈금이 없던 04·05 노드에 눈금을 채우고, 점선 구간을 03~06 사이로 맞췄습니다. “필요할 때만” 브래킷이 05를 덮지 않던 좌표(440–600)도 440–760으로 고쳤습니다. y좌표는 전부 4px 배수로 맞췄고, 읽어주기용 설명에는 단계 번호를 넣었습니다.</p> </div> <div> <h3>Humanizer — 고친 것</h3> <p>리드의 “없거나·안 보이거나·늘어지거나·흐트러져” 네 갈래 병렬을 걷어내고 원인을 명사로 나열했습니다. “순서는 편의일 뿐, ~구조가 아닙니다” 대비 강조문과 FAQ에 세 번 반복된 “아니요.”도 지웠습니다. 읽는 시간은 본문 3,196자로 다시 계산해 12분에서 7분으로 고쳤습니다.</p> </div>","diagram.hint":"다른 호스트: <code>npx skills add cathrynlavery/diagram-design</code>","diagram.prose":"<p>아키텍처, 데이터 흐름, 시퀀스, 일정 비교를 인라인 SVG가 든 HTML 한 장으로 그립니다. 지침은 <strong>강조색 하나, 그림자 없음, 4px 그리드</strong>입니다.</p> <h4>알아둘 것</h4> <ul class=\"limits\"> <li>4px만 맞춘다고 사람이 그린 것처럼 되지는 않음. 결과는 모델에 따라 달라짐</li> <li>편집 캔버스 파일이 아님 — 수정은 Claude 요청이나 SVG 직접 편집</li> <li>Git으로 계속 고칠 문서라면 Mermaid가 diff에 유리</li> <li>기본 HTML은 Google Fonts를 불러옴 → 오프라인은 system font로 요청</li> <li>서드파티 마켓플레이스 자동 업데이트는 기본 꺼짐</li> </ul>","faq.a1":"커뮤니티 제작자가 공개한 스킬·플러그인이고 Claude Code의 스킬 기능으로 실행됩니다. 설치 전에 저장소와 권한 요청을 직접 확인하세요.","faq.a2":"일부는 됩니다. Diagram Design과 Humanizer는 저장소가 안내하는 <code>npx skills add</code> 방식으로 다른 Agent Skills 호스트에 설치할 수 있습니다. 호스트마다 지원 범위가 다릅니다.","faq.a3":"직접 고치지 않습니다. 페이지를 저장해 사본으로 수정 HTML을 만들 뿐입니다. 자동 배포는 없고, 동적 요소는 저장본에서 빠질 수 있습니다.","faq.a4":"그 목적으로 만들지 않았고, 제작자도 결과가 감지기에 표시될 수 있다고 밝힙니다. 목적은 탐지 회피가 아니라 읽기 좋은 문장입니다.","faq.a5":"필요한 작업부터 하나씩 쓰면 됩니다. 이미 만든 사이트는 Unslop부터, 구조나 문장만 필요하면 해당 스킬만 설치하세요.","faq.a6":"결과물의 라이선스와 폰트·이미지 출처를 확인해야 합니다. Diagram Design은 기본 글꼴을 외부에서 불러오므로, 오프라인·자체 호스팅이 필요하면 system font로 바꿔 달라고 요청하세요.","foot.left":"정리 · dogebi · <span style=\"white-space:nowrap\">2026-11-24</span> 기준","foot.right":"요약·해설이며 원문 전체를 복제하지 않습니다. 설치 명령과 버전은 바뀔 수 있으니 각 저장소에서 확인하세요.<br> 이 페이지 코드 MIT · <a href=\"https://github.com/dogebi/claude-code-4-skills\" target=\"_blank\" rel=\"noopener\">소스</a>","glance.callout":"<b>공식 기능이 아닙니다.</b> 네 가지 모두 커뮤니티 제작 스킬/플러그인이며 Claude Code의 스킬 기능으로 실행됩니다. 설치 전에 저장소 코드와 요청 권한을 읽고, 결과물의 브랜드·사실·동작은 사람이 마지막에 확인하세요.","glance.rows":"<div class=\"tldr-row\"> <div class=\"k\">Unslop<small>화면 점검</small></div> <div class=\"d\">보라 그라데이션, 글로우, 이모지 라벨, 과장 문구, 들쭉날쭉한 간격을 위치와 함께 짚고 고친 HTML을 만든다.</div> <div class=\"w\">이미 화면이 있을 때</div> </div> <div class=\"tldr-row\"> <div class=\"k\">UI UX Pro Max<small>디자인 방향</small></div> <div class=\"d\">제품 유형과 업종에 맞는 레이아웃·팔레트·글꼴 조합을 고르고, 피해야 할 패턴을 먼저 정한다.</div> <div class=\"w\">구현 전</div> </div> <div class=\"tldr-row\"> <div class=\"k\">Diagram Design<small>구조 시각화</small></div> <div class=\"d\">아키텍처, 데이터 흐름, 시퀀스를 인라인 SVG가 든 HTML 한 장으로 그린다. 화살표와 라벨이 겹치지 않게.</div> <div class=\"w\">구조를 설명할 때</div> </div> <div class=\"tldr-row\"> <div class=\"k\">Humanizer<small>문장 교정</small></div> <div class=\"d\">대비 강조, 극적 결론, 의미 부풀리기를 걷어낸다. 사실과 숫자는 건드리지 않고.</div> <div class=\"w\">공개 문구 마무리</div> </div>","humanizer.hint":"Claude Code 2.1.142+ 필요. 이전 버전은 <code>npx skills add blader/humanizer --global --agent claude-code</code>","humanizer.prose":"<p>패턴은 26개지만 전부를 기계적으로 고치지 않습니다. 강한 5개는 한 번만 보여도 고치고, 약한 패턴은 다른 신호가 함께 있을 때만 적용합니다. 26번째는 대화 답변에 해당하는 “이미 아는 맥락 다시 설명” 문제입니다.</p> <h4>무엇을 걷어내나</h4> <ul> <li>“단순한 기능이 아니라 새로운 방식” 같은 대비 강조</li> <li>짧은 극적 결론, 의미 부풀리기</li> <li>독자가 꺼내지 않은 반론을 먼저 다루는 화법</li> <li>반복되는 문장 리듬과 부호</li> </ul> <h4>한계</h4> <ul class=\"limits\"> <li>AI 감지기 통과용이 아님 — 결과도 감지기에 표시될 수 있음</li> <li>말투를 완벽히 재현하지 않음 → 마지막은 직접 읽고 고침</li> <li>코드·데이터·frontmatter·링크 대상은 건드리지 않음</li> <li>제품명·숫자·사실이 그대로인지 diff 확인</li> </ul>","mast.h1":"AI 티 나는 화면을 <em>네 번</em> 고친다","mast.lede":"화면이 어디서 본 듯하다면, 원인은 대개 <b>방향</b>·<b>구조</b>·<b>문장</b>·<b>간격</b> 중 하나입니다. 네 개의 커뮤니티 스킬이 하나씩 맡습니다. 설치 명령과 프롬프트, 각 스킬이 하지 않는 일까지 적었습니다.","mast.roles":"<li><b>Unslop</b>화면 점검</li> <li><b>UI UX Pro Max</b>디자인 방향</li> <li><b>Diagram Design</b>구조 시각화</li> <li><b>Humanizer</b>문장 교정</li>","order.body":"이미 만든 사이트를 손본다면 Unslop부터 시작하면 됩니다. 다이어그램이나 글만 필요하면 해당 스킬 하나만 써도 됩니다. 앞 단계를 끝내야 다음으로 넘어가는 구조는 아닙니다.","order.caption":"실선은 매번 하는 일, 점선 구간과 붉은 원은 필요할 때 끼우는 작업입니다.","rail.list":"<li><a href=\"#glance\">한눈에</a></li> <li><a href=\"#order\">작업 순서</a></li> <li><a href=\"#unslop\">Unslop</a></li> <li><a href=\"#uiux\">UI UX Pro Max</a></li> <li><a href=\"#diagram\">Diagram Design</a></li> <li><a href=\"#humanizer\">Humanizer</a></li> <li><a href=\"#safe\">안전하게 고치기</a></li> <li><a href=\"#applied\">이 페이지에 적용</a></li> <li><a href=\"#faq\">질문</a></li>","rail.note":"설치 명령은 <span style=\"white-space:nowrap\">2026-11-24</span> 기준입니다. 저장소의 최신 릴리스와 권한 요청을 직접 확인한 뒤 설치하세요.","safe.body":"전체를 한 번에 다시 그리게 하면 검토할 수 없는 diff가 나옵니다. 아래 프롬프트는 진단과 계획만 먼저 받고, 승인 뒤 1~2개 컴포넌트씩 고치도록 제한합니다.","safe.checkLabel":"<b>배포 전 확인</b> — 체크 상태는 이 브라우저에만 저장됩니다.","uiux.prose":"<p>“고급스럽게” 대신 업종과 고객층을 말하면, 그에 맞는 첫 화면 구조·색·글꼴 조합과 <strong>피할 패턴</strong>을 제안합니다. 기존 프로젝트에서는 토큰과 컴포넌트 구조를 먼저 읽습니다.</p> <h4>숫자는 저장소마다 다르다</h4> <ul class=\"limits\"> <li>README: 제품 유형 194 · 팔레트 194 · 글꼴 조합 74</li> <li>릴리스 v2.15.0 노트: 제품 유형 192</li> <li>기본 브랜치와 배포본이 어긋남 — 숫자 대신 설치본의 실제 규칙 확인</li> </ul> <h4>한계</h4> <ul class=\"limits\"> <li>제안은 출발점. 브랜드 가이드와 접근성 기준이 우선</li> <li>명시적으로 요청하기 전에는 파일을 고치지 않음 → 진단만 먼저 받기</li> <li>검색 스크립트 실행에 Python 3 필요</li> </ul>","unslop.hint":"설치 후 새 세션을 열거나 <code>/reload-plugins</code>를 실행합니다.","unslop.prose":"<p>제품과 고객층을 먼저 본 뒤, <strong>간격 → 색 → 아이콘 → 문구 → 타이포그래피</strong> 순서로 개선안을 냅니다. 코드 없이 URL만 있어도 페이지 저장본으로 수정 HTML을 만듭니다.</p> <h4>무엇을 짚나</h4> <ul> <li>보라 그라데이션, 과한 광택, 이모지 라벨</li> <li>근거 없는 최상급과 과장 문구</li> <li>들쭉날쭉한 간격, 제각각인 아이콘과 글꼴</li> <li>제품 성격과 무관한 레이아웃</li> </ul> <h4>한계</h4> <ul class=\"limits\"> <li>운영 사이트를 직접 고치거나 배포하지 않음 — 결과 HTML을 원본과 비교해 반영</li> <li>저장본에서 동적 요소가 빠질 수 있음</li> <li>스토리 영상은 선택 기능이고 Playwright·Chromium(+ffmpeg)이 필요</li> </ul>","meta.title":"AI 티 나는 화면을 네 번 고친다 — Claude Code 스킬 4가지","meta.description":"Unslop, UI UX Pro Max, Diagram Design, Humanizer. 화면 점검·디자인 방향·구조 시각화·문장 교정을 작업별로 나눈 필드 노트. 설치 명령, 프롬프트, 한계까지.","meta.ogTitle":"AI 티 나는 화면을 네 번 고친다","meta.ogDescription":"화면을 고치고, 방향을 잡고, 구조를 그리고, 문장을 다듬는 네 가지 커뮤니티 스킬.","ui.copied":"복사됨","ui.copyFail":"Ctrl+C","ui.theme.toDark":"다크","ui.theme.toLight":"라이트","ui.theme.toDarkAria":"다크 모드로 전환","ui.theme.toLightAria":"라이트 모드로 전환","check":[["진단만 먼저","변경 계획과 영향 범위를 승인 전에 확인했다","AI"],["브랜드","기존 브랜드 색·로고·접근성 이름이 유지됐다","디자인"],["토큰","색과 간격이 컴포넌트에 흩어지지 않고 토큰에 연결됐다","CSS"],["모바일","390px에서 가로 스크롤이 없고 터치 타깃이 충분하다","검수"],["키보드","포커스 링이 보이고 탭 순서가 자연스럽다","a11y"],["대비","본문·버튼 텍스트 대비를 확인했다","a11y"],["문구","과장과 대비 강조를 걷어내고 사실을 보존했다","글"],["원복","변경 diff와 롤백 지점을 남겼다","배포"]],"ui.updateComment":"# 업데이트"},"zh":{"applied.head":"本页应用的改动","applied.sub":"把四个技能跑在这份文档上","diagram.prompt":"把我们的服务结构画成一张图。组成部分是 React 前端、Firebase Authentication、Firestore、Cloud Functions。要展示用户登录、保存数据、再查询回来的流程。选最合适的图类型，存成一个能在浏览器里打开的 HTML 文件。确认箭头和标签没有重叠。","diagram.role":"结构与流程可视化","faq.head":"问题","faq.q1":"这些是 Anthropic 官方技能吗？","faq.q2":"能在其他 AI 工具里用吗？","faq.q3":"Unslop 会直接修改线上站点吗？","faq.q4":"用 Humanizer 能绕过 AI 检测器吗？","faq.q5":"四个都要安装吗？","faq.q6":"结果可以照原样公开吗？","faq.sub":"原文 FAQ 摘要","glance.head":"速览","glance.sub":"职责不重叠","humanizer.prompt":"/humanizer 下面是我自己写的文章样本，请参考它的句子节奏和语气。[我自己写的文章 2~3 段] 现在请润色下面的文章。不要添加新的事实或主张，保留原文里的事实和主张。先简单说明改了哪些模式、判断依据是什么。确认产品名、数字、链接和核心含义没有变化。[待润色的文章]","humanizer.role":"AI 句式模式校正","mast.kicker":"Claude Code · Community skills · 2026-11-24 核对","mast.time":"约 7 分钟","order.head":"工作顺序","order.hint":"在小屏幕上左右滑动查看。","order.sub":"不必全部安装","rail.head":"目录","safe.head":"安全地修改","safe.prompt":"先读一遍当前项目，总结所用的框架和版本、路由、公共组件、设计令牌。保留运行行为、业务逻辑、无障碍名称和已有的品牌色。按文件名和位置，逐条诊断界面上看起来像 AI 模板的具体元素，并给出改进优先级。先不要修改文件，先说明每处改动的目的和影响范围。我批准后，一次改 1~2 个组件，每一步都告诉我改了哪些文件、还剩什么工作。修改后检查移动端宽度、键盘焦点、颜色对比、链接和表单行为，没能验证的项目要明确说明。","safe.reset":"重置","safe.sub":"诊断 → 批准 → 小步改","skills.head":"逐个技能","skills.sub":"安装 · 提示词 · 局限","svg.desc":"01 用 UI UX Pro Max 定设计方向，02 自己实现，03 用 Unslop 检查渲染出的界面。04 Diagram Design 和 05 Humanizer 只在需要时插进虚线区间，06 由人复核后 07 部署。","svg.l2":"实现","svg.l6":"人工复核","svg.l7":"部署","svg.opt":"04·05 仅按需插入","svg.s1":"方向·色板·忌用","svg.s3":"AI 味诊断","svg.s4":"结构·流程","svg.s5":"句子节奏","svg.s6":"移动·焦点·对比","svg.title":"四个技能的使用顺序","ui.copy":"复制","ui.install":"安装","ui.installUpdate":"安装 · 更新","ui.prompt":"提示词","ui.realPrompt":"实战提示词","ui.terminal":"终端","uiux.prompt":"Use the ui-ux-pro-max skill to design a Korean banking landing page. 先看看现有项目的框架和版本、路由、组件、样式文件、设计令牌。目标客户是主要用手机的 30~50 岁个人客户。保留现有组件结构、行为、登录流程和业务逻辑。提出有信任感、易读的配色和字体，以及首屏结构，说明选择理由和要避开的模式。先只给方案，批准之前不要改文件。","uiux.role":"贴合产品的设计基准","unslop.prompt":"/unslop https://example.com 把这个站点保存下来，先看看原始界面。结合产品品牌和客户层提出方向，连位置一起诊断看起来像 AI 模板的元素。按间距、颜色、图标、文案、排版的顺序改进，产出单独的 HTML/CSS 结果。不要部署到线上站点，告诉我改了哪里，以及在保存本里可能缺失的元素。","unslop.role":"检查已经做好的界面","applied.blocks":"<div> <h3>Unslop — 去掉的东西</h3> <p>删掉了每个区块上挂着的 01–09 编号。目录、正文小标题和技能卡片在用三套不同的体系数同一个区块，目录编号的颜色（#a29a86）与纸色的对比只有 2.55:1，读不清。加在韩文小标题上的转大写和 0.12em 字距也减到了 0.04em。</p> </div> <div> <h3>UI UX Pro Max — 定下的东西</h3> <p>把正文尺寸做成 14.5 / 13.5 / 11 三档令牌(<code>--t-body</code> · <code>--t-dense</code> · <code>--t-label</code>)。收拢了散在 13.5~15px 之间的五个档位，平滑滚动和进度条动画在 <code>prefers-reduced-motion</code>下关闭。强调色只用一种氧化铁橙，不用卡片、阴影和渐变。</p> </div> <div> <h3>Diagram Design — 画出来的东西</h3> <p>给原本没有刻度的 04·05 节点补上刻度，把虚线区间对齐到 03~06 之间。修掉了“仅在需要时”括号盖不到 05 的坐标(440–600)，改成 440–760。y 坐标全部对齐到 4px 的倍数，读屏用的说明里加了步骤编号。</p> </div> <div> <h3>Humanizer — 改掉的东西</h3> <p>删掉了导语里“没有·看不见·拖长·散乱”的四路排比，改成用名词列出原因。也删掉了“顺序只是便利，不是~结构”这种对比强调句，以及 FAQ 里重复三次的“不。”。阅读时间按正文 3,196 字重算，从 12 分钟改成 7 分钟。</p> </div>","diagram.hint":"其他宿主：<code>npx skills add cathrynlavery/diagram-design</code>","diagram.prose":"<p>把架构、数据流、时序、时间表对比画成一张内联 SVG 的 HTML。准则是<strong>一个强调色、不用阴影、4px 网格</strong>。</p> <h4>需要知道的</h4> <ul class=\"limits\"> <li>只对齐 4px 并不等于像人画的。结果随模型而变</li> <li>不是可编辑的画布文件 — 修改靠向 Claude 提要求或直接改 SVG</li> <li>要用 Git 长期维护的文档，Mermaid 在 diff 上更有利</li> <li>默认 HTML 会加载 Google Fonts → 离线环境要要求换成 system font</li> <li>第三方插件市场的自动更新默认关闭</li> </ul>","faq.a1":"是社区作者公开的技能和插件，通过 Claude Code 的技能功能运行。安装前请自己查看仓库和权限请求。","faq.a2":"有一部分可以。Diagram Design 和 Humanizer 可以按仓库给出的 <code>npx skills add</code> 方式装到其他 Agent Skills 宿主上。各宿主的支持范围不同。","faq.a3":"不会直接改。它只是把页面存下来，在副本上做出修改后的 HTML。没有自动部署，动态元素可能在保存本里丢失。","faq.a4":"不是为此而做的，作者也说明结果仍可能被检测器标记。目的是写出好读的句子，不是绕过检测。","faq.a5":"从需要的活儿开始一个一个用就行。已经有站点就从 Unslop 开始；只缺结构或句子，就只装对应的技能。","faq.a6":"要确认成果的许可证以及字体、图片的来源。Diagram Design 默认从外部加载字体，需要离线或自托管就要求它改用 system font。","foot.left":"整理 · dogebi · <span style=\"white-space:nowrap\">2026-11-24</span> 为准","foot.right":"是摘要和解读，不复制原文全文。安装命令和版本可能变化，请在各仓库确认。<br> 本页代码 MIT · <a href=\"https://github.com/dogebi/claude-code-4-skills\" target=\"_blank\" rel=\"noopener\">源码</a>","glance.callout":"<b>不是官方功能。</b>四种都是社区制作的技能/插件，通过 Claude Code 的技能功能运行。安装前请读仓库代码和请求的权限，成果里的品牌、事实、行为要由人在最后确认。","glance.rows":"<div class=\"tldr-row\"> <div class=\"k\">Unslop<small>界面检查</small></div> <div class=\"d\">把紫色渐变、发光、emoji 标签、夸张文案、参差的间距连位置一起指出来，并做出修好的 HTML。</div> <div class=\"w\">已经有界面时</div> </div> <div class=\"tldr-row\"> <div class=\"k\">UI UX Pro Max<small>设计方向</small></div> <div class=\"d\">按产品类型和行业挑布局、配色、字体组合，先把要避开的模式定下来。</div> <div class=\"w\">实现之前</div> </div> <div class=\"tldr-row\"> <div class=\"k\">Diagram Design<small>结构可视化</small></div> <div class=\"d\">把架构、数据流、时序画成一张内联 SVG 的 HTML。保证箭头和标签不重叠。</div> <div class=\"w\">要说明结构时</div> </div> <div class=\"tldr-row\"> <div class=\"k\">Humanizer<small>句子校正</small></div> <div class=\"d\">去掉对比强调、戏剧性结论、把话说满。不动事实和数字。</div> <div class=\"w\">收尾对外文案</div> </div>","humanizer.hint":"需要 Claude Code 2.1.142+。更早的版本用 <code>npx skills add blader/humanizer --global --agent claude-code</code>","humanizer.prose":"<p>模式有 26 个，但不是全部机械地改。强的 5 个只出现一次也改，弱的模式要和其他信号一起出现才处理。第 26 个是对话回答里的“重复解释已知语境”问题。</p> <h4>去掉什么</h4> <ul> <li>“不是简单的功能，而是新的方式”这类对比强调</li> <li>简短的戏剧性结论、把话说满</li> <li>先把读者没提的反驳摆出来的说法</li> <li>重复的句子节奏和标点</li> </ul> <h4>局限</h4> <ul class=\"limits\"> <li>不是为了通过 AI 检测器 — 结果也可能被检测器标记</li> <li>不能完全复现语气 → 最后要自己读一遍再改</li> <li>不动代码、数据、frontmatter、链接目标</li> <li>用 diff 确认产品名、数字、事实是否照旧</li> </ul>","mast.h1":"把带 AI 味的界面改<em>四遍</em>","mast.lede":"如果界面看着眼熟，原因多半在<b>方向</b>、<b>结构</b>、<b>句子</b>、<b>间距</b>其中之一。四个社区技能各管一样。安装命令、提示词，以及每个技能不做什么，都写在下面。","mast.roles":"<li><b>Unslop</b>界面检查</li> <li><b>UI UX Pro Max</b>设计方向</li> <li><b>Diagram Design</b>结构可视化</li> <li><b>Humanizer</b>句子校正</li>","order.body":"要收拾已经做好的站点，从 Unslop 开始就行。只需要图或者只需要改文章，单用那一个技能也可以。这不是做完上一步才能进下一步的流程。","order.caption":"实线是每次都要做的事，虚线区间和红圈是按需插入的工作。","rail.list":"<li><a href=\"#glance\">速览</a></li> <li><a href=\"#order\">工作顺序</a></li> <li><a href=\"#unslop\">Unslop</a></li> <li><a href=\"#uiux\">UI UX Pro Max</a></li> <li><a href=\"#diagram\">Diagram Design</a></li> <li><a href=\"#humanizer\">Humanizer</a></li> <li><a href=\"#safe\">安全地修改</a></li> <li><a href=\"#applied\">本页应用</a></li> <li><a href=\"#faq\">问题</a></li>","rail.note":"安装命令以 <span style=\"white-space:nowrap\">2026-11-24</span> 为准。安装前请自己确认仓库的最新发布和权限请求。","safe.body":"让它一次性整页重画，出来的 diff 根本没法审。下面的提示词先只拿诊断和计划，批准之后再限定每次改 1~2 个组件。","safe.checkLabel":"<b>部署前检查</b> — 勾选状态只存在这个浏览器里。","uiux.prose":"<p>别说“做得高级点”，而是说清行业和客户层，它就会给出对应的首屏结构、配色和字体组合，以及<strong>要避开的模式</strong>。在已有项目里，它会先读令牌和组件结构。</p> <h4>数字各仓库对不上</h4> <ul class=\"limits\"> <li>README：产品类型 194 · 配色 194 · 字体组合 74</li> <li>发布说明 v2.15.0：产品类型 192</li> <li>默认分支和发布版不一致 — 别只看数字，看装好之后的实际规则</li> </ul> <h4>局限</h4> <ul class=\"limits\"> <li>建议只是起点。品牌指南和无障碍标准优先</li> <li>没有明确要求就不改文件 → 先只拿诊断</li> <li>跑检索脚本需要 Python 3</li> </ul>","unslop.hint":"装完后开一个新会话，或者执行 <code>/reload-plugins</code>。","unslop.prose":"<p>先看产品和客户层，再按<strong>间距 → 颜色 → 图标 → 文案 → 排版</strong>的顺序给改进方案。没有代码、只给 URL 也行，它会用页面保存本做出修改后的 HTML。</p> <h4>会指出什么</h4> <ul> <li>紫色渐变、过度的光泽、emoji 标签</li> <li>没有依据的最高级说法和夸张文案</li> <li>参差的间距、各自为政的图标和字体</li> <li>与产品性格无关的布局</li> </ul> <h4>局限</h4> <ul class=\"limits\"> <li>不直接改也不部署线上站点 — 拿结果 HTML 和原版对比后自己落地</li> <li>保存本里可能丢动态元素</li> <li>故事视频是可选功能，需要 Playwright、Chromium(+ffmpeg)</li> </ul>","meta.title":"把带 AI 味的界面改四遍 — Claude Code 技能 4 个","meta.description":"Unslop、UI UX Pro Max、Diagram Design、Humanizer。按活儿分工的现场笔记：界面检查、设计方向、结构可视化、句子校正。含安装命令、提示词和局限。","meta.ogTitle":"把带 AI 味的界面改四遍","meta.ogDescription":"四个社区技能：修界面、定方向、画结构、润句子。","ui.copied":"已复制","ui.copyFail":"Ctrl+C","ui.theme.toDark":"深色","ui.theme.toLight":"浅色","ui.theme.toDarkAria":"切换到深色模式","ui.theme.toLightAria":"切换到浅色模式","check":[["先只诊断","批准前已经看过改动计划和影响范围","AI"],["品牌","原有品牌色、标志、无障碍名称都保留了","设计"],["令牌","颜色和间距没有散落在组件里，都挂到了令牌上","CSS"],["移动端","390px 下没有横向滚动，触控目标够大","验收"],["键盘","焦点环可见，Tab 顺序自然","a11y"],["对比","正文和按钮文字的对比度检查过","a11y"],["文案","去掉了夸张和对比强调，事实保留","文案"],["回滚","留下了改动 diff 和回滚点","部署"]],"ui.updateComment":"# 更新"},"ja":{"applied.head":"このページに適用したこと","applied.sub":"4つのスキルをこの文書に適用した","diagram.prompt":"私たちのサービスの構成を図にしてください。構成要素は React フロントエンド、Firebase Authentication、Firestore、Cloud Functions です。ユーザーがログインし、データを保存してから再び参照する流れを示してください。最も適した図の種類を選び、ブラウザで開ける HTML ファイル1つとして保存してください。矢印とラベルが重なっていないか確認してください。","diagram.role":"構造と流れの可視化","faq.head":"質問","faq.q1":"Anthropic 公式のスキルですか？","faq.q2":"他の AI ツールでも使えますか？","faq.q3":"Unslop は本番サイトを直接直しますか？","faq.q4":"Humanizer で AI 検出器を避けられますか？","faq.q5":"4つともインストールする必要がありますか？","faq.q6":"結果をそのまま公開してもよいですか？","faq.sub":"原文 FAQ の要約","glance.head":"ひと目で","glance.sub":"役割は重ならない","humanizer.prompt":"/humanizer 以下は私が自分で書いた文章のサンプルです。文のリズムと語り口を参考にしてください。[私が自分で書いた文章 2〜3段落] では、以下の文章を整えてください。新しい事実や主張は加えず、原文にあった事実と主張は保持してください。まず直したパターンと判断の根拠を簡単に示してください。製品名、数字、リンク、核心の意味が変わっていないか確認してください。[整える文章]","humanizer.role":"AI 文のパターン校正","mast.kicker":"Claude Code · Community skills · 2026-11-24 確認","mast.time":"約 7 分","order.head":"作業の順序","order.hint":"小さい画面では横にスクロールして見てください。","order.sub":"すべてを入れる必要はない","rail.head":"目次","safe.head":"安全に直す","safe.prompt":"まず現在のプロジェクトを読み、使用中のフレームワークとバージョン、ルート、共通コンポーネント、デザイントークンを要約してください。本番の動作とビジネスロジック、アクセシビリティ名、既存のブランド色は維持してください。画面で AI テンプレートのように見える具体的な要素をファイル名と位置ごとに診断し、改善の優先順位を提案してください。まだファイルは編集せず、各変更の目的と影響範囲を先に示してください。私が承認したら一度に1〜2コンポーネントずつ修正し、各段階で変更したファイルと残りの作業を伝えてください。修正後にモバイル幅、キーボードフォーカス、色のコントラスト、リンクとフォームの動作を確認し、検証できなかった項目は明記してください。","safe.reset":"リセット","safe.sub":"診断 → 承認 → 小さな単位","skills.head":"スキルごとに","skills.sub":"インストール · プロンプト · 限界","svg.desc":"01 UI UX Pro Max でデザインの方向を決め、02 自分で実装したあと、03 Unslop でレンダリングした画面を点検します。04 Diagram Design と 05 Humanizer は点線の区間の中に必要なときだけ挟み、06 人が検収したうえで 07 デプロイします。","svg.l2":"実装","svg.l6":"人が検収","svg.l7":"デプロイ","svg.opt":"04·05 は必要時のみ","svg.s1":"方向·配色·回避","svg.s3":"AI っぽさ診断","svg.s4":"構造·流れ","svg.s5":"文のリズム","svg.s6":"モバイル·a11y","svg.title":"4つのスキルを使う順序","ui.copy":"コピー","ui.install":"インストール","ui.installUpdate":"インストール · 更新","ui.prompt":"プロンプト","ui.realPrompt":"実践プロンプト","ui.terminal":"ターミナル","uiux.prompt":"Use the ui-ux-pro-max skill to design a Korean banking landing page. まず既存プロジェクトのフレームワークとバージョン、ルート、コンポーネント、スタイルファイル、デザイントークンを確認してください。対象顧客はモバイルを主に使う30〜50代の個人顧客です。既存のコンポーネント構造と動作、ログインの流れ、ビジネスロジックは維持してください。信頼感があり読みやすい色とフォント、最初の画面の構造を提案し、選んだ理由と避けるべきパターンを示してください。提案だけを先に見せ、承認前はファイルを編集しないでください。","uiux.role":"製品に合ったデザイン基準","unslop.prompt":"/unslop https://example.com このサイトを保存して、元の画面を先に確認してください。製品のブランドと顧客層に合う方向を提案し、AI テンプレートのように見える要素を位置とともに診断してください。余白、色、アイコン、文言、タイポグラフィの順に改善し、別の HTML/CSS 成果物を作ってください。本番サイトにはデプロイせず、変更点と、保存版では保持されない可能性がある要素を教えてください。","unslop.role":"すでにある画面の点検","applied.blocks":"<div> <h3>Unslop — 外したもの</h3> <p>セクションごとに付いていた 01–09 の番号を消しました。目次・本文の見出し・スキルカードが同じセクションを三つの異なる体系で数えており、目次番号の色(#a29a86)は紙色とのコントラストが 2.55:1 で読めませんでした。小見出しに掛かっていた大文字変換と 0.12em の字間も 0.04em に縮めました。</p> </div> <div> <h3>UI UX Pro Max — 決めたこと</h3> <p>本文サイズを 14.5 / 13.5 / 11 の三段にトークン化しました(<code>--t-body</code> · <code>--t-dense</code> · <code>--t-label</code>)。13.5〜15px の間に散らばっていた五段階を整理し、スムーズスクロールと進行バーのアニメーションは <code>prefers-reduced-motion</code> で切ります。アクセントは酸化鉄のオレンジ一つだけで、カード・影・グラデーションは使いません。</p> </div> <div> <h3>Diagram Design — 描いたもの</h3> <p>目盛りがなかった 04·05 ノードに目盛りを入れ、点線の区間を 03〜06 の間に合わせました。「必要なときだけ」のブラケットが 05 を覆っていなかった座標(440–600)も 440–760 に直しました。y 座標はすべて 4px の倍数に揃え、読み上げ用の説明には段階番号を入れました。</p> </div> <div> <h3>Humanizer — 直したもの</h3> <p>リードの「ない・見えない・伸びる・乱れる」という四つの並列を外し、原因を名詞で並べました。「順序は便宜にすぎず、〜構造ではありません」という対比の強調文と、FAQ で三回繰り返された「いいえ。」も消しました。読了時間は本文 3,196 字で計算し直し、12 分から 7 分に直しました。</p> </div>","diagram.hint":"他のホスト: <code>npx skills add cathrynlavery/diagram-design</code>","diagram.prose":"<p>アーキテクチャ、データフロー、シーケンス、日程の比較を、インライン SVG を埋め込んだ HTML 一枚に描きます。指針は<strong>強調色は一つ、影なし、4px グリッド</strong>です。</p> <h4>知っておくこと</h4> <ul class=\"limits\"> <li>4px を合わせただけで人が描いたようにはならない。結果はモデルによって変わる</li> <li>編集用キャンバスのファイルではない — 修正は Claude への依頼か SVG の直接編集</li> <li>Git で直し続ける文書なら Mermaid が diff に有利</li> <li>既定の HTML は Google Fonts を読み込む → オフラインなら system font を指定</li> <li>サードパーティ製マーケットプレイスの自動更新は既定でオフ</li> </ul>","faq.a1":"コミュニティの制作者が公開したスキル・プラグインで、Claude Code のスキル機能で動作します。インストール前にリポジトリと要求される権限を自分で確認してください。","faq.a2":"一部は可能です。Diagram Design と Humanizer は、リポジトリが案内する <code>npx skills add</code> の方法で他の Agent Skills ホストにもインストールできます。対応する範囲はホストごとに異なります。","faq.a3":"直接は直しません。ページを保存し、そのコピーで修正版の HTML を作るだけです。自動デプロイはなく、動的な要素は保存版から欠けることがあります。","faq.a4":"その目的で作られたものではなく、制作者も結果が検出器に表示され得ると明言しています。目的は検出の回避ではなく、読みやすい文です。","faq.a5":"必要な作業から一つずつ使えば十分です。すでにあるサイトなら Unslop から、構造や文章だけが必要ならそのスキルだけをインストールしてください。","faq.a6":"成果物のライセンスと、フォント・画像の出所を確認する必要があります。Diagram Design は既定の書体を外部から読み込むため、オフラインや自前のホスティングが必要なら system font に変えてほしいと依頼してください。","foot.left":"まとめ · dogebi · <span style=\"white-space:nowrap\">2026-11-24</span> 時点","foot.right":"要約・解説であり、原文の全体を複製したものではありません。インストールコマンドとバージョンは変わり得るので、各リポジトリで確認してください。<br> このページのコードは MIT · <a href=\"https://github.com/dogebi/claude-code-4-skills\" target=\"_blank\" rel=\"noopener\">ソース</a>","glance.callout":"<b>公式の機能ではありません。</b>四つともコミュニティ製のスキル/プラグインで、Claude Code のスキル機能で動作します。インストール前にリポジトリのコードと要求される権限を読み、成果物のブランド・事実・動作は最後に人が確認してください。","glance.rows":"<div class=\"tldr-row\"> <div class=\"k\">Unslop<small>画面点検</small></div> <div class=\"d\">紫のグラデーション、グロー、絵文字ラベル、誇張した文言、不揃いな余白を位置とともに指摘し、直した HTML を作ります。</div> <div class=\"w\">すでに画面があるとき</div> </div> <div class=\"tldr-row\"> <div class=\"k\">UI UX Pro Max<small>デザインの方向</small></div> <div class=\"d\">製品の種類と業種に合うレイアウト・配色・フォントの組み合わせを選び、避けるべきパターンを先に決めます。</div> <div class=\"w\">実装の前</div> </div> <div class=\"tldr-row\"> <div class=\"k\">Diagram Design<small>構造の可視化</small></div> <div class=\"d\">アーキテクチャ、データフロー、シーケンスをインライン SVG 入りの HTML 一枚に描く。矢印とラベルが重ならないようにします。</div> <div class=\"w\">構造を説明するとき</div> </div> <div class=\"tldr-row\"> <div class=\"k\">Humanizer<small>文章の校正</small></div> <div class=\"d\">対比の強調、劇的な結末、意味の膨張を外す。事実と数字には触れません。</div> <div class=\"w\">公開文の仕上げ</div> </div>","humanizer.hint":"Claude Code 2.1.142+ が必要です。以前のバージョンでは <code>npx skills add blader/humanizer --global --agent claude-code</code>","humanizer.prose":"<p>パターンは 26 個ありますが、すべてを機械的に直すわけではありません。強い 5 つは一度出ただけでも直し、弱いパターンは他の信号が重なったときだけ適用します。26 番目は会話の返答に当たる「すでに知っている文脈の説明し直し」の問題です。</p> <h4>何を外すか</h4> <ul> <li>「単なる機能ではなく新しいやり方」のような対比の強調</li> <li>短い劇的な結末、意味の膨張</li> <li>読者が出していない反論を先に扱う話法</li> <li>繰り返される文のリズムと記号</li> </ul> <h4>限界</h4> <ul class=\"limits\"> <li>AI 検出器を通すためのものではない — 結果も検出器に表示され得る</li> <li>語り口を完全には再現しない → 最後は自分で読んで直す</li> <li>コード・データ・frontmatter・リンク先には触れない</li> <li>製品名・数字・事実がそのままか diff で確認</li> </ul>","mast.h1":"AI っぽい画面を<em>四回</em>直す","mast.lede":"画面がどこかで見たようだとしたら、原因はたいてい<b>方向</b>・<b>構造</b>・<b>文章</b>・<b>余白</b>のどれかです。四つのコミュニティスキルが一つずつ担当します。インストールコマンドとプロンプト、各スキルがやらないことまで書きました。","mast.roles":"<li><b>Unslop</b>画面点検</li> <li><b>UI UX Pro Max</b>デザインの方向</li> <li><b>Diagram Design</b>構造の可視化</li> <li><b>Humanizer</b>文章の校正</li>","order.body":"すでにあるサイトを直すなら、Unslop から始めれば十分です。図や文章だけが必要なら、そのスキル一つだけを使ってもかまいません。前の段階を終えないと次に進めない構造ではありません。","order.caption":"実線は毎回行う作業、点線の区間と赤い丸は必要なときに挟む作業です。","rail.list":"<li><a href=\"#glance\">ひと目で</a></li> <li><a href=\"#order\">作業の順序</a></li> <li><a href=\"#unslop\">Unslop</a></li> <li><a href=\"#uiux\">UI UX Pro Max</a></li> <li><a href=\"#diagram\">Diagram Design</a></li> <li><a href=\"#humanizer\">Humanizer</a></li> <li><a href=\"#safe\">安全に直す</a></li> <li><a href=\"#applied\">このページへの適用</a></li> <li><a href=\"#faq\">質問</a></li>","rail.note":"インストールコマンドは <span style=\"white-space:nowrap\">2026-11-24</span> 時点のものです。リポジトリの最新リリースと要求される権限を自分で確認してからインストールしてください。","safe.body":"全体を一度に描き直させると、見きれない diff が出ます。以下のプロンプトは診断と計画だけを先に受け取り、承認後に 1〜2 コンポーネントずつ直すよう制限します。","safe.checkLabel":"<b>デプロイ前の確認</b> — チェックの状態はこのブラウザにのみ保存されます。","uiux.prose":"<p>「高級感を出して」の代わりに業種と顧客層を伝えると、それに合う最初の画面の構造・色・フォントの組み合わせと<strong>避けるべきパターン</strong>を提案します。既存プロジェクトではトークンとコンポーネント構造を先に読みます。</p> <h4>数字はリポジトリごとに違う</h4> <ul class=\"limits\"> <li>README: 製品タイプ 194 · パレット 194 · フォントの組み合わせ 74</li> <li>リリース v2.15.0 のノート: 製品タイプ 192</li> <li>既定ブランチと配布版がずれている — 数字ではなくインストールした版の実際のルールを確認</li> </ul> <h4>限界</h4> <ul class=\"limits\"> <li>提案は出発点。ブランドガイドとアクセシビリティ基準が優先</li> <li>明示的に依頼するまではファイルを直さない → まず診断だけを受ける</li> <li>検索スクリプトの実行に Python 3 が必要</li> </ul>","unslop.hint":"インストール後に新しいセッションを開くか、<code>/reload-plugins</code> を実行します。","unslop.prose":"<p>製品と顧客層を先に見たうえで、<strong>余白 → 色 → アイコン → 文言 → タイポグラフィ</strong>の順に改善案を出します。コードがなく URL だけでも、ページの保存版から修正版 HTML を作ります。</p> <h4>何を指摘するか</h4> <ul> <li>紫のグラデーション、過剰な光沢、絵文字ラベル</li> <li>根拠のない最上級と誇張した文言</li> <li>不揃いな余白、ばらばらなアイコンとフォント</li> <li>製品の性格と無関係なレイアウト</li> </ul> <h4>限界</h4> <ul class=\"limits\"> <li>本番サイトを直接直したりデプロイしたりしない — 結果の HTML を原本と比較して反映</li> <li>保存版では動的な要素が欠けることがある</li> <li>ストーリー動画は任意の機能で、Playwright・Chromium(+ffmpeg)が必要</li> </ul>","meta.title":"AI っぽい画面を四回直す — Claude Code スキル4種","meta.description":"Unslop、UI UX Pro Max、Diagram Design、Humanizer。画面点検・デザインの方向・構造の可視化・文章の校正を作業ごとに分けたフィールドノート。インストールコマンド、プロンプト、限界まで。","meta.ogTitle":"AI っぽい画面を四回直す","meta.ogDescription":"画面を直し、方向を決め、構造を描き、文章を整える四つのコミュニティスキル。","ui.copied":"コピー済み","ui.copyFail":"Ctrl+C","ui.theme.toDark":"ダーク","ui.theme.toLight":"ライト","ui.theme.toDarkAria":"ダークモードに切り替え","ui.theme.toLightAria":"ライトモードに切り替え","check":[["まず診断だけ","承認前に変更計画と影響範囲を確認しました","AI"],["ブランド","既存のブランド色・ロゴ・アクセシビリティ名が維持されています","デザイン"],["トークン","色と余白がコンポーネントに散らばらず、トークンに接続されています","CSS"],["モバイル","390px で横スクロールがなく、タッチターゲットも十分です","検収"],["キーボード","フォーカスリングが見え、タブ順も自然です","a11y"],["コントラスト","本文・ボタンのテキストのコントラストを確認しました","a11y"],["文言","誇張と対比の強調を外し、事実を保持しています","文章"],["差し戻し","変更 diff とロールバック地点を残しました","デプロイ"]],"ui.updateComment":"# アップデート"}}/*I18N_END*/;</script>
 <script>
 (() => {
   'use strict';
@@ -754,6 +768,33 @@ uipro update</pre>
   if (!state.checks || typeof state.checks !== 'object') state.checks = {};
   const save = () => { try { store.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
 
+  /* ---------------------------------------------------------------- i18n */
+  const DICT = window.__CC4_I18N__ || {};
+  const LANGS = ['ko', 'zh', 'ja'];
+  const HTML_LANG = { ko: 'ko', zh: 'zh-Hans', ja: 'ja' };
+  const LANG_KEY = 'cc4.lang';
+
+  /* Snapshot the Korean source markup once: it is both the ko bundle and the
+     fallback when a locale is missing a key. */
+  const SNAP = { text: {}, html: {} };
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (!(k in SNAP.text)) SNAP.text[k] = el.textContent;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const k = el.getAttribute('data-i18n-html');
+    if (!(k in SNAP.html)) SNAP.html[k] = el.innerHTML;
+  });
+
+  let lang = 'ko';
+  const t = (key) => {
+    const d = DICT[lang];
+    if (d && d[key] != null) return d[key];
+    if (SNAP.text[key] != null) return SNAP.text[key];
+    if (SNAP.html[key] != null) return SNAP.html[key];
+    return '';
+  };
+
   /* --------------------------------------------------------------- theme */
   const root = document.documentElement;
   const themeBtn = document.getElementById('theme-toggle');
@@ -764,8 +805,9 @@ uipro update</pre>
     root.dataset.theme = dark ? 'dark' : 'light';
     if (!themeBtn) return;
     themeBtn.setAttribute('aria-pressed', String(dark));
-    themeBtn.textContent = dark ? '라이트' : '다크';
-    themeBtn.setAttribute('aria-label', dark ? '라이트 모드로 전환' : '다크 모드로 전환');
+    themeBtn.textContent = t(dark ? 'ui.theme.toLight' : 'ui.theme.toDark');
+    themeBtn.setAttribute('aria-label', t(dark ? 'ui.theme.toLightAria' : 'ui.theme.toDarkAria'));
+    themeBtn.setAttribute('aria-pressed', String(dark));
   };
 
   paintTheme(root.dataset.theme === 'dark' ? 'dark' : 'light');
@@ -801,8 +843,8 @@ uipro update</pre>
         }
       }
       btn.dataset.done = ok ? '1' : '0';
-      btn.textContent = ok ? '복사됨' : 'Ctrl+C';
-      setTimeout(() => { btn.textContent = '복사'; btn.dataset.done = '0'; }, 1800);
+      btn.textContent = ok ? t('ui.copied') : t('ui.copyFail');
+      setTimeout(() => { btn.textContent = t('ui.copy'); btn.dataset.done = '0'; }, 1800);
     });
   });
 
@@ -819,12 +861,19 @@ uipro update</pre>
   ];
 
   const list = document.getElementById('checklist');
-  list.innerHTML = ITEMS.map(([title, desc, tag], i) => `
+  const checkItems = () => {
+    const d = DICT[lang];
+    return (d && Array.isArray(d.check) && d.check.length === ITEMS.length) ? d.check : ITEMS;
+  };
+  const renderChecklist = () => {
+    list.innerHTML = checkItems().map(([title, desc, tag], i) => `
     <li class="check-item">
       <input type="checkbox" id="c${i}" data-i="${i}" ${state.checks[i] ? 'checked' : ''}>
       <label for="c${i}"><span class="c-title">${title}</span><small>${desc}</small></label>
       <span class="tag">${tag}</span>
     </li>`).join('');
+  };
+  renderChecklist();
 
   const scoreEl = document.getElementById('gate-score');
   const barEl = document.getElementById('gate-bar');
@@ -848,6 +897,50 @@ uipro update</pre>
     updateScore();
   });
   updateScore();
+
+  /* ------------------------------------------------------------ apply lang */
+  const themeBtnEl = document.getElementById('theme-toggle');
+  const langBtns = [...document.querySelectorAll('.lang-btn')];
+
+  function applyLang(next, persist) {
+    lang = LANGS.indexOf(next) >= 0 ? next : 'ko';
+    document.documentElement.lang = HTML_LANG[lang];
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const v = t(el.getAttribute('data-i18n'));
+      if (v) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const v = t(el.getAttribute('data-i18n-html'));
+      if (v) el.innerHTML = v;
+    });
+
+    const title = t('meta.title');
+    if (title) document.title = title;
+    [['name', 'description', 'meta.description'],
+     ['property', 'og:title', 'meta.ogTitle'],
+     ['property', 'og:description', 'meta.ogDescription']].forEach(([attr, name, key]) => {
+      const el = document.querySelector(`meta[${attr}="${name}"]`);
+      const v = t(key);
+      if (el && v) el.setAttribute('content', v);
+    });
+
+    /* the theme button label is also locale text */
+    if (themeBtnEl) paintTheme(root.dataset.theme === 'dark' ? 'dark' : 'light');
+    document.querySelectorAll('.copy').forEach(btn => { btn.textContent = t('ui.copy'); btn.dataset.done = '0'; });
+    renderChecklist();
+    langBtns.forEach(b => b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang)));
+
+    if (persist) { try { store.setItem(LANG_KEY, lang); } catch (e) {} }
+  }
+
+  langBtns.forEach(btn => btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang'), true)));
+
+  const savedLang = (() => { try { return store.getItem(LANG_KEY); } catch (e) { return null; } })();
+  const navLang = (navigator.language || 'ko').toLowerCase();
+  const initialLang = LANGS.indexOf(savedLang) >= 0 ? savedLang
+    : (navLang.startsWith('zh') ? 'zh' : (navLang.startsWith('ja') ? 'ja' : 'ko'));
+  applyLang(initialLang, false);
 
   /* ------------------------------------------------------- rail highlight */
   const links = [...document.querySelectorAll('.rail a')];
