@@ -1,15 +1,42 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="大连市行政区划内的消防改造招标情报与竞标方案：四条发布链、公告清单、资格与报价策略、SK 海力士通道的实测与时间窗。" name="description"/>
+<meta content="大连 · 消防改造招标情报与竞标方案" property="og:title"/>
+<meta content="12 条可核对公告、四条发布链、SK 海力士通道实测（2026-11-25）。" property="og:description"/>
 <title>大连 · 消防改造招标情报与竞标方案（2026-11-25）</title>
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('kfb.theme');
+      var mode = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.theme = mode;
+    } catch (e) {}
+  })();
+</script>
 <style>
   :root{
-    --ink:#16181d; --ink-2:#4a4f57; --ink-3:#767c86;
+    --ink:#16181d; --ink-2:#474c54; --ink-3:#6b717b;
     --line:#d9d5cc; --line-2:#ebe7de;
     --paper:#faf9f6; --paper-2:#f2efe8; --card:#ffffff;
     --red:#8c2f2f; --green:#1f5c4a; --amber:#8a6a1f;
+    --hl:#fdf8f2; --warn-bd:#d8c9a4; --warn-bg:#fdfaf1;
+    --crit-bd:#c9a9a9; --crit-bg:#fdf6f6;
+    --tag-kr:#cbb6b6; --tag-on:#b8c9bf; --tag-warn:#d8c9a4;
+    --fs-xs:12.2px; --fs-sm:12.8px; --fs-body:15px; --fs-h3:15.5px;
+    --fs-h2:19px; --fs-h1:28px; --fs-kpi:21px;
+  }
+  :root[data-theme="dark"]{
+    --ink:#eceae4; --ink-2:#bdb8ac; --ink-3:#948e81;
+    --line:#3b3933; --line-2:#2b2925;
+    --paper:#16150f; --paper-2:#201e19; --card:#1b1a15;
+    --red:#e09b8e; --green:#89c4ab; --amber:#cfae6b;
+    --hl:#231f18; --warn-bd:#4b4231; --warn-bg:#221f18;
+    --crit-bd:#4d3333; --crit-bg:#241b1b;
+    --tag-kr:#5d4444; --tag-on:#3d5348; --tag-warn:#4b4231;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--paper);color:var(--ink);
@@ -19,7 +46,17 @@
   .wrap{max-width:1180px;margin:0 auto;padding:0 28px 72px}
   header.top{border-bottom:1px solid var(--line);background:var(--card)}
   header.top .wrap{padding-top:30px;padding-bottom:22px}
+  .headrow{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap}
   .kicker{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+  .tools{display:flex;align-items:center;gap:10px;font-size:12.5px}
+  .langs{display:inline-flex;border:1px solid var(--line);background:var(--paper)}
+  .langs .lang{border:0;border-left:1px solid var(--line);background:transparent;color:var(--ink-2);
+    font:inherit;font-size:12.2px;padding:4px 9px;cursor:pointer}
+  .langs .lang:first-child{border-left:0}
+  .langs .lang[aria-pressed="true"]{color:var(--red);background:var(--paper-2);font-weight:600}
+  .theme{border:1px solid var(--line);background:var(--paper);color:var(--ink-2);
+    font:inherit;font-size:12.2px;padding:4px 10px;cursor:pointer}
+  .theme:hover,.langs .lang:hover{color:var(--ink)}
   h1{font-size:28px;line-height:1.28;margin:8px 0 10px;font-weight:650;letter-spacing:-.01em}
   .sub{color:var(--ink-2);font-size:14px;max-width:830px}
   .meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px 10px;font-size:12.5px;color:var(--ink-3)}
@@ -38,6 +75,14 @@
   table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;background:var(--card)}
   th,td{border:1px solid var(--line-2);padding:7px 9px;text-align:left;vertical-align:top}
   th{background:var(--paper-2);font-weight:600;font-size:12.5px;white-space:nowrap}
+  table.list th{white-space:normal}
+  table.list th,table.list td{overflow-wrap:anywhere}
+  @media(max-width:820px){table.list{font-size:11.8px}table.list td{padding:6px 6px}}
+  .grid > *{min-width:0}
+  main{min-width:0}
+  .tbl{overflow-x:auto;margin:12px 0;max-width:100%}
+  .tbl table{margin:0}
+  @media(max-width:820px){.tbl table.list{min-width:560px}}
   td.num{white-space:nowrap;font-variant-numeric:tabular-nums}
   table.list{table-layout:fixed}
   table.list col.c1{width:20%} table.list col.c2{width:8%} table.list col.c3{width:13%}
@@ -45,12 +90,12 @@
   table.list td{padding:6px 8px}
   table.list{font-size:12.4px}
   table.list td:nth-child(2),table.list td:nth-child(5){font-size:12.3px;line-height:1.5}
-  tr.hl td{background:#fdf8f2}
+  tr.hl td{background:var(--hl)}
   .tag{display:inline-block;font-size:11.5px;line-height:1.6;padding:1px 7px;border:1px solid var(--line);color:var(--ink-2);background:var(--paper);white-space:nowrap}
-  .tag.kr{border-color:#cbb6b6;color:var(--red)}
-  .tag.on{border-color:#b8c9bf;color:var(--green)}
+  .tag.kr{border-color:var(--tag-kr);color:var(--red)}
+  .tag.on{border-color:var(--tag-on);color:var(--green)}
   .tag.done{border-color:var(--line);color:var(--ink-3)}
-  .tag.warn{border-color:#d8c9a4;color:var(--amber)}
+  .tag.warn{border-color:var(--tag-warn);color:var(--amber)}
   .box{border:1px solid var(--line);background:var(--card);padding:16px 18px;margin:16px 0}
   .box.tight{padding:12px 15px}
   .box h3{margin-top:0}
@@ -60,437 +105,549 @@
   .kpi span{font-size:12px;color:var(--ink-3)}
   aside{position:sticky;top:18px}
   aside .box{margin-top:0}
-  aside h4{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  aside h4{font-size:var(--fs-sm);letter-spacing:.02em;color:var(--ink-3);margin:0 0 8px;font-weight:600}
   aside ol{margin-left:17px;font-size:12.8px}
   .check{list-style:none;margin-left:0}
   .check li{padding-left:22px;position:relative;margin:5px 0}
   .check li:before{content:"";position:absolute;left:0;top:6px;width:11px;height:11px;border:1px solid var(--ink-3)}
-  .flow{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);margin:14px 0;background:var(--card)}
-  .flow div{padding:10px 11px;border-right:1px solid var(--line-2);font-size:12.5px}
-  .flow div:last-child{border-right:0}
-  .flow b{display:block;font-size:12px;color:var(--red);letter-spacing:.06em}
-  @media(max-width:760px){.flow{grid-template-columns:1fr}.flow div{border-right:0;border-bottom:1px solid var(--line-2)}}
   footer{margin-top:46px;border-top:1px solid var(--line);padding-top:16px;font-size:12.5px;color:var(--ink-3)}
-  .warnline{border:1px solid #d8c9a4;background:#fdfaf1;padding:12px 15px;font-size:13px;margin:14px 0}
+  .warnline{border:1px solid var(--warn-bd);background:var(--warn-bg);padding:12px 15px;font-size:13px;margin:14px 0}
+  .warnline.crit{border-width:2px;border-color:var(--crit-bd);background:var(--crit-bg);padding:16px 18px}
+  .diagram{display:block;width:100%;height:auto;margin:16px 0 6px;border:1px solid var(--line);background:var(--card)}
+  .diagram text{font-family:inherit;fill:var(--ink)}
   @media print{aside{position:static}body{background:#fff}}
 </style>
 </head>
 <body>
-
 <header class="top">
-  <div class="wrap">
-    <div class="kicker">Dalian · Fire Protection Retrofit · 2026</div>
-    <h1>大连 · 消防改造招标情报与竞标方案</h1>
-    <p class="sub">把范围从「韩国系列 · 全国」收窄到<b>大连市行政区划内</b>（中山、西岗、沙河口、甘井子、旅顺口、金州、普兰店、瓦房店、庄河、长海、高新区、金普新区、保税区）。含消防站改造、敬老院与医院消防提升、院校维保、老旧小区 EPCO，以及韩资（SK 海力士等）厂务通道。</p>
-    <div class="meta">
-      <span>范围 大连全域</span>
-      <span>数据窗口 2026-01-01 → 2026-11-25</span>
-      <span>公告样本 12 条</span>
-      <span>SK 通道已实测 11-25</span>
-      <span>单页版 · 仅大连</span>
-    </div>
-  </div>
+<div class="wrap">
+<div class="headrow">
+<div class="kicker"><span data-i18n="s06-395">Dalian · Fire Protection Retrofit · 2026</span></div>
+<div class="tools">
+<span aria-label="Language" class="langs" role="group">
+<button aria-pressed="true" class="lang" data-lang="zh" lang="zh-Hans" type="button">中文</button>
+<button aria-pressed="false" class="lang" data-lang="ko" lang="ko" type="button">KO</button>
+<button aria-pressed="false" class="lang" data-lang="en" lang="en" type="button">EN</button>
+<button aria-pressed="false" class="lang" data-lang="ja" lang="ja" type="button">日本語</button>
+</span>
+<button aria-pressed="false" class="theme" id="theme-toggle" type="button">深色</button>
+</div>
+</div>
+<h1 data-i18n="head-001">大连 · 消防改造招标情报与竞标方案</h1>
+<p class="sub" data-i18n-html="head-002">把范围从「韩国系列 · 全国」收窄到<b>大连市行政区划内</b>（中山、西岗、沙河口、甘井子、旅顺口、金州、普兰店、瓦房店、庄河、长海、高新区、金普新区、保税区）。含消防站改造、敬老院与医院消防提升、院校维保、老旧小区 EPCO，以及韩资（SK 海力士等）厂务通道。</p>
+<div class="meta">
+<span data-i18n="head-003">范围 大连全域</span>
+<span data-i18n="head-004">数据窗口 2026-01-01 → 2026-11-25</span>
+<span data-i18n="head-005">公告样本 12 条</span>
+<span data-i18n="head-006">SK 通道已实测 11-25</span>
+<span data-i18n="head-007">单页版 · 仅大连</span>
+</div>
+</div>
 </header>
-
 <div class="wrap">
 <div class="grid">
 <main>
-
-  <div class="warnline" style="border-width:2px;border-color:#c9a9a9;background:#fdf6f6;padding:16px 18px">
-    <b style="color:var(--red);font-size:15.5px">SK 海力士 · 查询结果摘要（2026-11-25 实测，12 条原始返回见 5.0）</b>
-    <ul style="margin:9px 0 0 18px">
-      <li><b>公开招标公告：0 条。</b>中国招标投标公共服务平台检索「海力士」为空；不存在公开 SRM 前端（srm·supplier·ep·partner 子域全部 000）。</li>
-      <li><b>唯一官方入口：</b><a href="https://bizpartner.skhynix.com/" target="_blank" rel="noopener">bizpartner.skhynix.com</a>「파트너 협업 포털」——只有<b>供应商登记与登录</b>，没有公告板。</li>
-      <li><b>「什么时候招标」没有公开日程：</b>只能反推——<b>2027-05~06 年度维保招标是新供应商唯一现实窗口</b>；龙仁 Y1 消防包（2026-10-26 已在施工）与大连主包均已关闭，大连只剩收尾/维保。</li>
-      <li><b>现在出申请：</b>对 2027-05 来得及（缓冲约 2 个月），对 2026-12~2027-02 <b>来不及</b> → 判断见 <a href="#sk">第 05 节 5.4 判断矩阵</a>。</li>
-    </ul>
+<div class="warnline crit">
+<b data-i18n="head-008" style="color:var(--red);font-size:15.5px">SK 海力士 · 查询结果摘要（2026-11-25 实测，12 条原始返回见 5.0）</b>
+<ul style="margin:9px 0 0 18px">
+<li data-i18n-html="head-009"><b>公开招标公告：0 条。</b>中国招标投标公共服务平台检索「海力士」为空；不存在公开 SRM 前端（srm·supplier·ep·partner 子域全部 000）。</li>
+<li data-i18n-html="head-010"><b>唯一官方入口：</b><a href="https://bizpartner.skhynix.com/" rel="noopener" target="_blank">bizpartner.skhynix.com</a>「파트너 협업 포털」——只有<b>供应商登记与登录</b>，没有公告板。</li>
+<li data-i18n-html="head-011"><b>「什么时候招标」没有公开日程：</b>只能反推——<b>2027-05~06 年度维保招标是新供应商唯一现实窗口</b>；龙仁 Y1 消防包（2026-10-26 已在施工）与大连主包均已关闭，大连只剩收尾/维保。</li>
+<li data-i18n-html="head-012"><b>现在出申请：</b>对 2027-05 来得及（缓冲约 2 个月），对 2026-12~2027-02 <b>来不及</b> → 判断见 <a href="#sk">第 05 节 5.4 判断矩阵</a>。</li>
+</ul>
+</div>
+<div class="lead" data-i18n-html="head-013">
+<strong>大连这一层的结论：</strong>消防改造在大连不是「一个公告池」，而是<b>四条互不相通的发布链</b>——①消防站/政府类走辽宁政府采购网与市交易平台；②国企与平台公司（如大连中山发展投资）走<b>大连国企阳光采购服务平台</b>；③医院与高校<b>自己在官网发</b>（三院、友谊/老年病医院、东财、医科大、海事大）；④韩资厂务走 SRM 或邀标。只盯全国平台，会漏掉 3/4。
   </div>
-
-  <div class="lead">
-    <strong>大连这一层的结论：</strong>消防改造在大连不是「一个公告池」，而是<b>四条互不相通的发布链</b>——①消防站/政府类走辽宁政府采购网与市交易平台；②国企与平台公司（如大连中山发展投资）走<b>大连国企阳光采购服务平台</b>；③医院与高校<b>自己在官网发</b>（三院、友谊/老年病医院、东财、医科大、海事大）；④韩资厂务走 SRM 或邀标。只盯全国平台，会漏掉 3/4。
-  </div>
-
-  <h2><span class="no">01</span>大连结论与关键数字</h2>
-  <div class="kpis">
-    <div class="kpi"><b>12</b><span>大连域内可核对公告（2026 窗口）</span></div>
-    <div class="kpi"><b>6.5<span style="font-size:13px">万</span></b><span>单笔评估类最小额（三院，限小微企业）</span></div>
-    <div class="kpi"><b>45<span style="font-size:13px">万/年</span></b><span>高校消防维保年度标（东财口径）</span></div>
-    <div class="kpi"><b>4</b><span>发布链（政府/国企/院校医院自采/韩资）</span></div>
-    <div class="kpi"><b>0</b><span>SK 海力士公开招标公告（11-25 实测）</span></div>
-  </div>
-  <ul>
-    <li><b>大连的「小标」占比高。</b>评估 6.5 万、维保 45 万/年、消防站装修改造这类 10~200 万区间的项目，比拼的不是资质厚度，而是<b>响应速度与属地资源</b>；大标（老旧小区 EPCO、园区配套）才吃资质与业绩。</li>
-    <li><b>「小微企业专项」是硬门槛，不是加分项。</b>三院评估项目明确「专门面向小微企业」，大中型企业连报名资格都没有——大连这类小额消防服务标大量采用该条款，必须准备一个<b>小微主体或联合体</b>。</li>
-    <li><b>消防技术服务要备案，施工要资质，两者别混。</b>评估/维保看「社会消防技术服务信息系统」备案（含消防安全评估），施工看「消防设施工程专业承包」；医院评估标只查前者。</li>
-    <li><b>韩资在大连的落点是厂务，不是招标公告。</b>SK 海力士大连（原 Intel 厂）+ 金普新区韩资配套厂，消防改造走厂务 EHS 与 SRM 询价。11-25 实测：官方只有供应商登记门户 <a href="https://bizpartner.skhynix.com/" target="_blank" rel="noopener">bizpartner.skhynix.com</a>，<b>没有任何公开招标公告板</b>；公开平台检索「海力士」为 0 条，只能在总包痕迹里定位（如「大连海力士 MSB3 新建机房」由中国电子系统工程第四建设承接）。→ <a href="#sk">判断与时间窗见第 05 节</a></li>
-  </ul>
-
-  <h2><span class="no">02</span>大连的四条发布链</h2>
-  <table>
-    <thead><tr><th>链</th><th>平台 / 入口</th><th>典型标的</th><th>为什么必须单独盯</th></tr></thead>
-    <tbody>
-      <tr class="hl"><td><span class="tag">① 政府</span></td>
-        <td>辽宁政府采购网 ccgp-liaoning.gov.cn · 辽宁省公共资源交易网 ggzy.ln.gov.cn · 全国平台大连条目</td>
-        <td>消防救援站改造、敬老院消防提升、学校消防改造</td>
-        <td>公告短（3~5 个工作日）、多为竞争性磋商，错过即无</td></tr>
-      <tr><td><span class="tag">② 国企</span></td>
-        <td><a href="https://www.dlygcg.com/" target="_blank" rel="noopener">大连国企阳光采购服务平台</a>（另见 120.46.142.208 镜像）</td>
-        <td>老旧小区改造 EPCO、平台公司持有的厂房与物业</td>
-        <td>不进市级公开平台，只在自有平台发；金额大、按综合评估法定标</td></tr>
-      <tr><td><span class="tag">③ 院校医院自采</span></td>
-        <td>大连市第三人民医院 dl3y.com · 友谊/老年病医院 dlyyyy.com · 东北财经大学 czb.dufe.edu.cn · 大连医科大学 zbcgzx.dmu.edu.cn · 大连海事大学 cgzx.dlmu.edu.cn</td>
-        <td>消防评估、消防维保、楼宇局部改造</td>
-        <td>官网「招标公告」栏目才发，聚合平台往往抓不到正文与预算</td></tr>
-      <tr><td><span class="tag kr">④ 韩资厂务</span></td>
-        <td>SK 海力士 SRM / 韩资厂自有供应商系统；总包（中电四等）分包库</td>
-        <td>洁净厂房消防、机房气体灭火、EHS 整改</td>
-        <td>不公开；进入方式是供应商注册 + 总包分包入库，周期 4~8 周</td></tr>
-    </tbody>
-  </table>
-  <div class="warnline"><b>检索陷阱：</b>在大连，「消防改造」四个字在公开平台命中很少，因为大量项目叫<b>「消防和设施设备改造提升」「装修改造」「既有建筑改造消防安全评估」「消防维保服务」</b>。关键词必须按这四种叫法分别设，否则每天都会漏。</div>
-
-  <h2><span class="no">03</span>大连域内公告清单（2026）</h2>
-  <p class="small">每行均对应一次实际打开的页面；聚合平台正文收费的，金额栏标 <b>—</b> 而不是猜。<span class="tag done">已结标</span> 的公告保留作为<b>报价与资格口径的参照</b>。</p>
-  <table class="list">
-    <colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"><col class="c5"><col class="c6"></colgroup>
-    <thead><tr><th>项目</th><th>区域</th><th>类型 / 采购方式</th><th>金额 · 期限</th><th>节点</th><th>资格与要点</th></tr></thead>
-    <tbody>
-      <tr class="hl">
-        <td><a href="https://www.dl3y.com/index.php?p=news_ex&id=2527&c_id=23&i=4&lanmu=1" target="_blank" rel="noopener">大连市第三人民医院 · 既有建筑改造消防安全评估</a><br><span class="tag done">已结标</span></td>
-        <td>甘井子<br>千山路40号</td><td>医院 / 竞争性谈判<br><span class="small">代理：大连成安</span></td>
-        <td><b>6.5 万</b><br>最高限价同额<br>45 日历天</td>
-        <td>公告 06-30<br>报名 06-30~07-03<br>开标 07-08 09:00</td>
-        <td>限<b>小微企业</b>；须在「社会消防技术服务信息系统」备案且含消防安全评估；文件 300 元；查信用中国/辽宁/大连三重失信记录</td></tr>
-      <tr>
-        <td><a href="https://m.chinabidding.cn/zbgg/U-vzNyH2E.html" target="_blank" rel="noopener">中山区桃源消防救援站改造项目</a><br><span class="tag">招标公告</span></td>
-        <td>中山区</td><td>消防救援站 / 招标<br><span class="small">正文需会员</span></td>
-        <td>—</td><td>公告 09-04</td>
-        <td>消防站功能改造：营房、车库、训练设施；同类项目对「不停勤施工」有隐性要求</td></tr>
-      <tr>
-        <td><a href="https://m.chinabidding.cn/zbgg/U-vzMwGjz.html" target="_blank" rel="noopener">金州区消防救援大队 · 华家、杏树、迎金路消防站装修改造</a><br><span class="tag">竞争性磋商</span></td>
-        <td>金州区</td><td>消防站 / 竞争性磋商</td>
-        <td>—</td><td>公告 10-16</td>
-        <td>三站打包：多点位同步施工的组织能力；装修改造含消防设施联动调试</td></tr>
-      <tr>
-        <td><a href="https://m.chinabidding.cn/zbgs/U-vzMhLU0.html" target="_blank" rel="noopener">普兰店区安波中心敬老院 · 消防和设施设备改造提升</a><br><span class="tag done">已结标</span></td>
-        <td>普兰店</td><td>养老机构 / 竞争性磋商</td>
-        <td>—<br><span class="small">中标：项目经理 刘杰（辽）</span></td>
-        <td>中标 10-19</td>
-        <td>磋商含资格后审 6 家、按总分排名；敬老院改造要「老人不离院」施工，夜间与分区作业为常态</td></tr>
-      <tr>
-        <td>保税区消防救援大队 · 二十里堡政府专职消防站<br><span class="small"><a href="https://www.chinabidding.cn/zbgs/U-vzlLO53.html" target="_blank" rel="noopener">中标公示</a></span></td>
-        <td>保税区</td><td>消防站 / 中标公示</td>
-        <td>—</td><td>—</td>
-        <td>专职站建设与装修包：可反查当地中标企业，作为属地竞争格局样本</td></tr>
-      <tr>
-        <td>大连市第三人民医院 · 消防系统维护保养服务及报警服务<br><span class="small"><a href="https://www.dl3y.com/index.php?p=news_ex&id=2569&c_id=23&i=4&lanmu=1" target="_blank" rel="noopener">中标公告</a></span></td>
-        <td>甘井子</td><td>医院 / 维保服务</td>
-        <td>—</td><td>—</td>
-        <td>维保标=年度现金流型项目，与评估标同一采购体系，先做一次即进池</td></tr>
-      <tr>
-        <td><a href="https://czb.dufe.edu.cn/content_85391.html" target="_blank" rel="noopener">东北财经大学 · 消防维保服务</a><br><span class="tag done">口径参照</span></td>
-        <td>沙河口</td><td>高校 / 竞争性磋商</td>
-        <td><b>45 万/年</b><br>可续签 2 次（总≤3 年）</td>
-        <td>2024 年公告<br><span class="small">作价格标尺</span></td>
-        <td>面向中小企业；不接受联合体；报价含全年维保 + 应急维修响应</td></tr>
-      <tr>
-        <td><a href="https://www.ggzy.gov.cn/information/deal/html/a/210000/0101/20260407/00218dc24bfb25b449e296a2f33f38a74555.html" target="_blank" rel="noopener">中山区华山街小区等老旧小区改造工程 EPCO</a><br><span class="tag done">已开标</span></td>
-        <td>中山区</td><td>国企 / EPCO 总承包<br><span class="small">招标人：大连中山发展投资</span></td>
-        <td>—</td><td>公告 04-07<br>开标 05-11</td>
-        <td>综合评估法；消防为改造子项（楼内消火栓、报警、疏散）；监督：中山区财政局</td></tr>
-      <tr>
-        <td>大连湾海底隧道工程 · 大港区迁建 41 库局部消防改造<br><span class="small"><a href="https://ln.bidcenter.com.cn/diqucontent-402952491-1.html" target="_blank" rel="noopener">补遗公告</a></span></td>
-        <td>大连湾</td><td>交通基建 / 专项改造</td>
-        <td>—</td><td>补遗</td>
-        <td>码头/隧道附属库房的消防改造：小体量、高规范要求，适合作为技术标背书</td></tr>
-      <tr>
-        <td>西岗区老旧小区改造工程三期 · 检测服务<br><span class="small"><a href="http://www.dalianzhaobiao.com/gongcheng/297.html" target="_blank" rel="noopener">原文</a></span></td>
-        <td>西岗区</td><td>政府 / 检测服务</td>
-        <td>—</td><td>—</td>
-        <td>检测标是「前置情报」：做完检测的楼栋，半年内几乎必然出改造标</td></tr>
-      <tr class="hl">
-        <td>大连海力士 MSB3 新建机房（机电总包：中国电子系统工程第四建设）<br><span class="tag kr">韩资相关</span></td>
-        <td>金普新区</td><td>韩资厂务 / 总包分包</td>
-        <td>—</td><td>—</td>
-        <td>SK 海力士大连的厂务扩建包：消防（气体灭火/预作用/洁净区）通常由总包分包，切入口是总包分包库而非公告</td></tr>
-      <tr>
-        <td>大连地铁 3 号线 · 关键系统设备安全提升改造<br><span class="small">（2026-08 报道，项目类情报）</span></td>
-        <td>全线</td><td>轨道交通 / 系统改造</td>
-        <td>—</td><td>2026-08</td>
-        <td>轨交消防（隧道排烟、站厅报警）属高门槛细分，可提前接触总包</td></tr>
-    </tbody>
-  </table>
-
-  <h2><span class="no">04</span>大连竞标方案</h2>
-
-  <h3>4.1 先分类：大连的标按「谁定标」分四种打法</h3>
-  <table>
-    <thead><tr><th>标型</th><th>典型金额</th><th>定标方式</th><th>打法</th></tr></thead>
-    <tbody>
-      <tr><td>消防站 / 政府小额改造</td><td class="num">30–200 万</td><td>竞争性磋商、限小微企业</td><td>快响应 + 属地队伍；备一个小微主体接标</td></tr>
-      <tr><td>院校 / 医院评估与维保</td><td class="num">6.5–60 万</td><td>谈判 / 磋商、看备案与响应</td><td>先做评估、再吃维保，形成年度现金流</td></tr>
-      <tr><td>国企 EPCO / 老旧小区</td><td class="num">1000 万+</td><td>综合评估法</td><td>联合体（设计+施工+运维），技术分靠运维方案</td></tr>
-      <tr><td>韩资厂务</td><td class="num">50–500 万</td><td>SRM 询价 / 邀标</td><td>供应商注册 + 总包分包入库 + EHS 审核三件套</td></tr>
-    </tbody>
-  </table>
-
-  <h3>4.2 资格与备案清单（大连版）</h3>
-  <div class="box tight">
-    <ul class="check">
-      <li>消防设施工程专业承包资质（施工标）；建筑工程总承包资质（厂房整体改造）</li>
-      <li>安全生产许可证（覆盖投标日 + 工期）</li>
-      <li><b>社会消防技术服务信息系统</b>备案：消防安全评估 / 消防设施维护保养检测（服务类标必备，缺备案直接废）</li>
-      <li>注册消防工程师（评估与维保项目的人员门槛，按标的要求配 1~2 名）</li>
-      <li>小微企业身份证明（中小企业声明函）——大连小额项目高频要求</li>
-      <li>信用查询三连：信用中国、信用中国（辽宁）、信用中国（大连）+ 中国政府采购网失信名单</li>
-      <li>属地化能力证明：大连本地项目部/仓库/24 小时响应承诺（评标常作主观分项）</li>
-      <li>电子标：辽宁政府采购网 CA、投标文件加密上传演练（开标后 5 分钟内须完成解密确认）</li>
-      <li>韩资线另备：中韩双语 EHS 手册、作业许可（PTW）模板、体检与安全教育记录</li>
-    </ul>
-  </div>
-
-  <h3>4.3 技术标主线：大连的三个「必答题」</h3>
-  <ul>
-    <li><b>既有建筑改造的合规路径。</b>大连执行地方规程 <b>DB2102/T 0053《既有建筑改造消防设计审查技术规程》</b>——技术标里点名该规程、并给出「按改造范围分类→对应审查口径→验收资料清单」的路径图，比泛泛引用 GB 规范更能拿分。</li>
-    <li><b>不停业/不停勤施工。</b>医院（三院、友谊、老年病）、敬老院（安波）、消防站（桃源、金州三站）都不能停用：分区隔离 + 临时消防（临时消火栓/无线报警）+ 24 小时值守记录，写进方案并配示意图。</li>
-    <li><b>一次验收通过。</b>隐蔽工程三件套（管道试压、线缆绝缘、防火封堵）按点位编号留影像与数据；调试期预留 10 天整改余量；提前与属地住建/消防确认备案或验收路径。</li>
-  </ul>
-
-  <h3>4.4 报价策略（按定标方式，不是按行业）</h3>
-  <table>
-    <thead><tr><th>定标方式</th><th>建议报价</th><th>说明</th></tr></thead>
-    <tbody>
-      <tr><td>竞争性谈判 / 磋商（评估、维保、小额改造）</td><td>首轮控制在最高限价 <b>-3%~-6%</b></td><td>三院评估为「限价即预算」，超限价直接无效；报价空间来自服务范围而非降价</td></tr>
-      <tr><td>综合评估法（EPCO、国企）</td><td>下浮 <b>4%~8%</b>，技术分每 +2 分≈报价可上浮 1.2%</td><td>运维期方案与本地响应能力是拉分点</td></tr>
-      <tr><td>经评审最低价（部分施工标）</td><td>下浮 <b>8%~12%</b>，不低于成本警戒（约控制价 85%）</td><td>低于成本被否决的代价远大于让价</td></tr>
-      <tr><td>维保续签（东财模式）</td><td>首年让 3%~5%，锁定「可续签 2 次」条款</td><td>3 年现金流＞单年高价</td></tr>
-    </tbody>
-  </table>
-  <p class="small">以上为经验区间，正式报价前必须回到招标文件的评标办法核对是否设下浮下限或基准价算术平均。</p>
-
-  <h3>4.5 90 天大连动作表</h3>
-  <table>
-    <thead><tr><th>阶段</th><th>动作</th><th>验收标准</th></tr></thead>
-    <tbody>
-      <tr><td class="num">D1–D14</td><td>四个发布链全部订阅：辽宁采购网、市交易平台、国企阳光采购平台、6 家院校医院官网栏目</td><td>关键词（消防改造/消防和设施设备改造提升/既有建筑改造消防安全评估/消防维保）命中推送可查</td></tr>
-      <tr><td class="num">D1–D21</td><td>补两件事：小微主体（或联合体）就位；社会消防技术服务信息系统备案（评估 + 维保两项）</td><td>备案截图 + 小微声明函模板可复用</td></tr>
-      <tr><td class="num">D15–D45</td><td>投 3 个服务类标（评估/维保优先），目标 1 个中标进入医院或高校池</td><td>中标或进前三；拿到对手报价样本</td></tr>
-      <tr><td class="num">D30–D60</td><td>韩资线：向 SK 海力士大连与金普新区韩资厂提交供应商注册 + EHS 包；同时登记中电四等总包分包库</td><td>1 个 SRM 账号 + 2 家总包入库</td></tr>
-      <tr><td class="num">D60–D90</td><td>用已结标项目建「大连报价标尺表」（评估/维保/小额改造/EPCO 四类）</td><td>下浮率模型 v1 + 弃标红线（65 分以下不投）</td></tr>
-    </tbody>
-  </table>
-
-  <h3>4.6 风险（大连特有）</h3>
-  <table>
-    <thead><tr><th>风险</th><th>信号</th><th>应对</th></tr></thead>
-    <tbody>
-      <tr><td>小微专属条款把你挡在门外</td><td>公告出现「专门面向小微企业」</td><td>备小微主体接标、主体公司做分包；不要临时改股权</td></tr>
-      <tr><td>服务类备案缺失</td><td>公告要求「社会消防技术服务信息系统备案」</td><td>评估、维保两类分别备案，别只备一类</td></tr>
-      <tr><td>磋商窗口只有 3~5 个工作日</td><td>公告期短、文件需现场购买</td><td>常驻大连的人负责跑件；文件费与保证金预留</td></tr>
-      <tr><td>属地队伍价格战</td><td>历史中标价明显低于成本</td><td>不跟价；转做技术分高的标（EPCO、医院、厂务）</td></tr>
-      <tr><td>韩资 EHS 审核不过</td><td>注册后要求现场审核</td><td>提前做 EHS 文件包与演练记录，先接小额维修建立交易记录</td></tr>
-    </tbody>
-  </table>
-
-  <h2 id="sk"><span class="no">05</span>SK 海力士：通道 · 时间窗 · 现在申请来不来得及</h2>
-  <p class="small">本节是判断材料，不是情报堆叠——每个结论后面跟着「依据」和「所以我方怎么办」。核实日 <b>2026-11-25</b>。</p>
-
-  <h3>5.0 查询记录（原始返回，2026-11-25 逐条实测）</h3>
-  <table class="list">
-    <colgroup><col style="width:30%"><col style="width:46%"><col style="width:24%"></colgroup>
-    <thead><tr><th>查询 / 入口</th><th>实际返回</th><th>判定</th></tr></thead>
-    <tbody>
-      <tr><td>https://www.skhynix.com/ 首页源码</td>
-        <td>200；从站内链接解析出唯一供应商入口 bizpartner.skhynix.com</td>
-        <td>找到官方线索</td></tr>
-      <tr class="hl"><td><a href="https://bizpartner.skhynix.com/" target="_blank" rel="noopener">bizpartner.skhynix.com</a>「파트너 협업 포털」</td>
-        <td>200；菜单 구매정책 및 규정 / 상생협력정책 / 상생협력 지원프로그램 / 고객지원；操作 협력사 신규등록·협력사 등록 방법·아이디추가·로그인；客服 1588-8883；새소식 最新＝2026-10-14（金融支援说明）</td>
-        <td><b>只有登记门户，无公告板</b></td></tr>
-      <tr><td>srm / supplier / ep / partner.skhynix.com</td>
-        <td>四个子域全部无法解析（HTTP 000）</td>
-        <td>不存在公开 SRM 前端</td></tr>
-      <tr><td>检索「SK hynix supplier registration」「SK하이닉스 협력사 등록 SRM」「SK hynix e-procurement」</td>
-        <td>无官方招标页；返回结果以报道、招聘、第三方转述为主</td>
-        <td>无公开公告源</td></tr>
-      <tr><td>中国招标投标公共服务平台（cebpubservice）检索「海力士」</td>
-        <td><b>0 条</b></td>
-        <td>中国法人不发公开公告</td></tr>
-      <tr><td>全国公共资源交易平台 / 采购与招标网检索「海力士」</td>
-        <td>仅见总包痕迹：「大连海力士 MSB3 新建机房」——中国电子系统工程第四建设；正文需会员，金额不可见</td>
-        <td>包在总包层流动</td></tr>
-      <tr><td>检索「SK하이닉스 용인 클린룸 일정 / Y1」</td>
-        <td>首个洁净室 2027-02 开放、Trinity 洁净室 2027-05、2027 量产；先开工区进度 89%</td>
-        <td>给出时间锚点</td></tr>
-      <tr class="hl"><td>招聘站检索「SK하이닉스 용인 소방전기공사 현장」</td>
-        <td>잡코리아 2026-10-26：오에스엘이엔지 招现场管理，工作内容＝半导体厂内<b>空气吸入式火灾探测器</b>施工管理</td>
-        <td><b>消防包已发标并施工 → 窗口关闭</b></td></tr>
-      <tr><td>检索「청주 M15 배관 유지보수 입찰」</td>
-        <td>2026-06 招标、07-01 起 1 年合约；受邀范围限于「1군 협력사」</td>
-        <td>年度维保节拍＝5~6 月发标</td></tr>
-      <tr><td>检索「SK hynix Dalian expansion」</td>
-        <td>2 工厂建筑 2026 上半年完工、2026-11 起搬入设备</td>
-        <td>只剩收尾/维保残值</td></tr>
-      <tr><td>检索「SK hynix China US export license」</td>
-        <td>大连厂设备出口许可 2026 年底到期，2027 年需新安排</td>
-        <td>顺延风险</td></tr>
-      <tr><td>检索「SK hynix Indiana packaging plant」</td>
-        <td>2026-08-27 动工，投资 40 亿美元+</td>
-        <td>2027 观察项</td></tr>
-    </tbody>
-  </table>
-  <p class="small">以上 12 条为当次实跑的查询与返回，聚合平台正文收费的只记标题级；发标日历由这些返回反推，非 SK 官方日程。</p>
-
-  <h3>5.1 通道汇总：有登记门户，没有招标公告板</h3>
-  <table class="list">
-    <colgroup><col style="width:22%"><col style="width:44%"><col style="width:34%"></colgroup>
-    <thead><tr><th>入口（已逐个实测）</th><th>实测结果</th><th>对我方的含义</th></tr></thead>
-    <tbody>
-      <tr class="hl">
-        <td><a href="https://bizpartner.skhynix.com/" target="_blank" rel="noopener">bizpartner.skhynix.com</a><br><span class="small">「파트너 협업 포털」</span></td>
-        <td>200，公开落地页。菜单：구매정책 및 규정 / 상생협력정책 / 상생협력 지원프로그램 / 고객지원；可操作：<b>협력사 신규등록</b>·협력사 등록 방법·아이디추가·로그인；客服 1588-8883；最新公告仅 2026-10-14 金融支援说明</td>
-        <td>唯一官方入口，注册可自助提交；<b>询价与邀标在登录后的协作区</b>，外部不可见</td></tr>
-      <tr><td>srm / supplier / ep / partner.skhynix.com</td>
-        <td>全部无法解析（000）</td>
-        <td>不存在公开的 SRM 前端，网上流传的"投标网址"多为猜测</td></tr>
-      <tr><td>中国招标投标公共服务平台 · 全国公共资源交易平台（检索「海力士」）</td>
-        <td>0 条招标公告</td>
-        <td>中国法人不发公开公告，公开平台不会有"SK 海力士消防标"</td></tr>
-      <tr><td>采购与招标网</td>
-        <td>只见总包痕迹（「大连海力士 MSB3 新建机房」——中国电子系统工程第四建设，标题级，正文会员）</td>
-        <td>厂务包在<b>总包层</b>流动，切入点是中国电子系统工程第四建设等总包的分包库</td></tr>
-    </tbody>
-  </table>
-  <div class="warnline"><b>判断含义：</b>等公告＝永远不会发生。「进入名单」是唯一的时间点，而这件事本身没有公告。所以下面所有"什么时候"，都是从可观测的合同周期与工程节点反推的，不是官方日程。</div>
-
-  <h3>5.2 时间窗：把「已关闭」和「仍有效」分开看</h3>
-  <table class="list">
-    <colgroup><col style="width:22%"><col style="width:15%"><col style="width:10%"><col style="width:53%"></colgroup>
-    <thead><tr><th>窗口</th><th>期间</th><th>状态</th><th>依据 · 对我方</th></tr></thead>
-    <tbody>
-      <tr><td>年度设施 / 维保招标</td><td>2026-05~06 发标<br>07-01 起 1 年</td><td><span class="tag done">已关闭</span></td>
-        <td>清州 M15 配管设备维护：2026-06 招标、7-01 起算 → <b>今年这一轮已无法参与</b></td></tr>
-      <tr><td>龙仁 Y1 消防包（空气吸入式探测器）</td><td>已发标并施工</td><td><span class="tag done">已关闭</span></td>
-        <td>现场施工管理招聘 2026-10-26（오에스엘이엔지「SK하이닉스 용인클러스터 소방전기공사」）→ <b>主包已定，只剩整改/调试/维保</b></td></tr>
-      <tr><td>大连 2 工厂</td><td>2026-11 设备搬入<br>~ 2027-01 收尾</td><td><span class="tag warn">只剩残值</span></td>
-        <td>建筑 2026 上半年完工、11 月起搬入设备 → 争试运行/整改/维保，不是主包</td></tr>
-      <tr class="hl"><td>Trinity 洁净室（龙仁）</td><td>2027-05 开放<br>准备期 2027-01~04</td><td><span class="tag on">仍有效</span></td>
-        <td>首个洁净室 2027-02、Trinity 2027-05 → 2027 上半年的新建窗口</td></tr>
-      <tr class="hl"><td><b>2027 年度设施 / 维保招标</b></td><td>2027-05~06</td><td><span class="tag on">主目标</span></td>
-        <td>按 2026 年节拍推 → <b>新供应商唯一现实入口</b></td></tr>
-      <tr><td>印第安纳封装厂</td><td>2027 上半年</td><td><span class="tag">观察</span></td>
-        <td>2026-08-27 动工，设备与配套包顺次释放</td></tr>
-      <tr><td><b>变数：</b>大连美国设备出口许可</td><td>2026-12 到期</td><td><span class="tag warn">风险</span></td>
-        <td>2027 年若无新安排，大连配套发标整体顺延 → 残值窗口可能消失</td></tr>
-    </tbody>
-  </table>
-  <p class="small">本文早前版本写的「5~6 月窗口」指 <b>2026 年</b>周期，已过期。上表把过期与有效分开列，避免再把它当成"现在可以投"。</p>
-
-  <h3>5.3 现在出申请，来不来得及</h3>
-  <div class="box">
-    <table style="margin:0">
-      <tbody>
-        <tr><td style="width:62%">对 <b>2027-05~06</b> 年度维保窗口</td><td><b style="color:var(--green)">来得及</b>：今天提交 → 2027-02 前完成文件审 → 03 进名单，仍有约 2 个月缓冲</td></tr>
-        <tr><td>对 2026-12~2027-02 窗口（大连收尾、Y1 收尾）</td><td><b style="color:var(--red)">来不及</b>：主包已定，只剩维保/整改，且维保也要先入库</td></tr>
-        <tr><td>对 2027-01~04 的 Trinity 前期</td><td><b style="color:var(--amber)">部分赶得上</b>：取决于一次审核是否一次通过，无退回余地</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <table>
-    <thead><tr><th>节点</th><th>日期</th><th>卡点</th></tr></thead>
-    <tbody>
-      <tr><td>提交「협력사 신규등록」</td><td class="num">2026-11-25</td><td>资料齐全度决定一切</td></tr>
-      <tr><td>一次文件审</td><td class="num">2026-12 中</td><td>缺件退回 → 重排 +4~8 周</td></tr>
-      <tr><td>翻译 / 公证</td><td class="num">2026-12 下</td><td>中韩双语、公证件最耗时</td></tr>
-      <tr><td>EHS / 现场审核</td><td class="num">2027-01~02</td><td>现场条件与安全记录</td></tr>
-      <tr><td>名单 / 等级确定</td><td class="num">2027-02 末~03</td><td>分级决定是否受邀</td></tr>
-      <tr class="hl"><td>邀标窗口</td><td class="num">2027-05~06</td><td>目标</td></tr>
-    </tbody>
-  </table>
-  <p class="small"><b>两条必须说清的不确定性：</b>①SK 没有公开处理时长，"1~3 个月"是行业通例而非承诺；②注册 ≠ 被邀——注册后分级，等级不够仍可能不进邀标名单。所以 2027-05 的目标应是<b>「注册完成 + 至少 1 个同类实绩」</b>，而不是只交表。</p>
-
-  <h3>5.4 判断矩阵：这笔注册成本该不该投</h3>
-  <table>
-    <thead><tr><th>判定项</th><th>若「是」</th><th>若「否」</th></tr></thead>
-    <tbody>
-      <tr><td>① 能在 2027-01 前完成文件审（资料已齐）</td><td>继续推进</td><td>目标改为 2027 下半年窗口</td></tr>
-      <tr><td>② 有 3 年内同类消防实绩（含验收文件）</td><td>有资格争邀标</td><td>先补业绩：总包分包 / 本地小标</td></tr>
-      <tr><td>③ 主体经营范围覆盖消防施工（中国法人）或已有韩国消防设施工事业登录</td><td>可直投</td><td>先补资质或更换主体，注册会白做</td></tr>
-      <tr><td>④ 能承受一次退回（再排 4~8 周）</td><td>继续推进</td><td>不要单押 SK，重心放 B 线</td></tr>
-    </tbody>
-  </table>
-  <div class="warnline"><b>判定规则：</b>四项中 <b>3 项以上「是」→ 今天就提交</b>；<b>2 项及以下 → 先走 B 线补业绩与资质</b>，SK 放到 2027 下半年，不要为了"不错过"而交一份会被退回的表。</div>
-
-  <h3>5.5 两线并行（建议，不是选项堆叠）</h3>
-  <table>
-    <thead><tr><th>线</th><th>今天/本周动作</th><th>产出</th></tr></thead>
-    <tbody>
-      <tr><td><b>A 线</b> 韩资</td><td>今天提交 SK 注册；同步向大连厂务与总包（中国电子系统工程第四建设等）登记分包库</td><td>SRM 账号 + 2 家总包入库；12 月内可能出小额维保单</td></tr>
-      <tr><td><b>B 线</b> 大连本地</td><td>本周投在招小标（敬老院、消防站、医院评估）；锁定 2027 年度维保轮次</td><td>中标记录 / 前三名 → 成为 A 线资格证据</td></tr>
-      <tr><td><b>交汇</b></td><td>2027-05 用 B 线实绩支撑 A 线邀标资格</td><td>没有 B 线实绩，A 线注册只是账号</td></tr>
-    </tbody>
-  </table>
-
-  <h2><span class="no">06</span>每天扫什么（关键词与站点）</h2>
-  <table>
-    <thead><tr><th>站点</th><th>关键词</th><th>频率</th></tr></thead>
-    <tbody>
-      <tr><td>辽宁政府采购网 · 大连</td><td>消防改造 / 消防和设施设备改造提升 / 消防维保 / 消防安全评估</td><td>每日 09:00</td></tr>
-      <tr><td>大连国企阳光采购服务平台</td><td>消防 / 改造 / 老旧小区 / EPCO</td><td>每日 09:00</td></tr>
-      <tr><td>院校医院官网招标栏目（6 家）</td><td>消防、维保、评估、改造</td><td>每周一、周四</td></tr>
-      <tr><td>总包分包库（中电四等）</td><td>洁净厂房 / 机房 / 气体灭火</td><td>每月</td></tr>
-      <tr><td>检测与评估结果公告</td><td>检测、评估、整改通知</td><td>每月（前瞻 3~6 个月）</td></tr>
-    </tbody>
-  </table>
-
-  <footer>
-    <p><b>数据说明：</b>12 条均对应 2026-01-01 至 2026-11-25 期间实际打开的页面；聚合平台（采购与招标网、采招网等）正文收费的项目，金额与联系方式标 <b>—</b>，未做推测。三院评估项目、东财维保项目为同一采购体系的历史公告，作为预算与资格口径参照，不代表当前在招。报价区间为经验值，须以招标文件评标办法为准。</p>
-    <p><b>SK 海力士部分（第 05 节）的核实边界：</b>bizpartner.skhynix.com 于 2026-11-25 实测可达并逐项列出菜单与操作入口；srm / supplier / ep / partner 子域实测不可达（000）；中国招标投标公共服务平台与全国平台检索「海力士」为 0 条；「大连海力士 MSB3 新建机房」仅确认到采购与招标网的标题级信息，正文需会员，<b>金额未核实</b>。发标日历与「来得及/来不及」为依合同周期与工程节点反推，<b>不是 SK 官方日程</b>；注册处理时长（1~3 个月）为行业通例，SK 未公开承诺。</p>
-    <p>整理：Hermes · 2026-11-25 · 单页版（仅大连）</p>
-  </footer>
+<svg aria-label="四条发布链与巡检频率" class="diagram" data-i18n-aria="diagram.aria" role="img" viewbox="0 0 720 140">
+<g>
+<rect fill="var(--card)" height="72" stroke="var(--line)" width="168" x="0" y="10"></rect>
+<text data-i18n="diagram.c1.name" font-size="12.5" font-weight="600" x="12" y="28">① 政府</text>
+<text data-i18n="diagram.c1.p1" fill="var(--ink-2)" font-size="11" x="12" y="42">辽宁政府采购网</text>
+<text data-i18n="diagram.c1.p2" fill="var(--ink-2)" font-size="11" x="12" y="57">市交易平台</text>
+<path d="M84 82 L84 104" fill="none" stroke="var(--line)" stroke-width="1"></path>
+<path d="M80 100 L84 105 L88 100" fill="none" stroke="var(--line)" stroke-width="1"></path>
+<text data-i18n="diagram.c1.cad" fill="var(--red)" font-size="11.5" x="12" y="124">每日 09:00</text>
+</g>
+<g>
+<rect fill="var(--card)" height="72" stroke="var(--line)" width="168" x="184" y="10"></rect>
+<text data-i18n="diagram.c2.name" font-size="12.5" font-weight="600" x="196" y="28">② 国企</text>
+<text data-i18n="diagram.c2.p1" fill="var(--ink-2)" font-size="11" x="196" y="42">大连国企阳光采购</text>
+<text data-i18n="diagram.c2.p2" fill="var(--ink-2)" font-size="11" x="196" y="57">服务平台</text>
+<path d="M268 82 L268 104" fill="none" stroke="var(--line)" stroke-width="1"></path>
+<path d="M264 100 L268 105 L272 100" fill="none" stroke="var(--line)" stroke-width="1"></path>
+<text data-i18n="diagram.c2.cad" fill="var(--red)" font-size="11.5" x="196" y="124">每日 09:00</text>
+</g>
+<g>
+<rect fill="var(--card)" height="72" stroke="var(--line)" width="168" x="368" y="10"></rect>
+<text data-i18n="diagram.c3.name" font-size="12.5" font-weight="600" x="380" y="28">③ 院校医院</text>
+<text data-i18n="diagram.c3.p1" fill="var(--ink-2)" font-size="11" x="380" y="42">6 家官网招标栏目</text>
+<path d="M452 82 L452 104" fill="none" stroke="var(--line)" stroke-width="1"></path>
+<path d="M448 100 L452 105 L456 100" fill="none" stroke="var(--line)" stroke-width="1"></path>
+<text data-i18n="diagram.c3.cad" fill="var(--red)" font-size="11.5" x="380" y="124">周一 · 周四</text>
+</g>
+<g>
+<rect fill="var(--card)" height="72" stroke="var(--line)" width="168" x="552" y="10"></rect>
+<text data-i18n="diagram.c4.name" font-size="12.5" font-weight="600" x="564" y="28">④ 韩资</text>
+<text data-i18n="diagram.c4.p1" fill="var(--ink-2)" font-size="11" x="564" y="42">SRM · 邀标</text>
+<text data-i18n="diagram.c4.p2" fill="var(--ink-2)" font-size="11" x="564" y="57">bizpartner</text>
+<path d="M636 82 L636 104" fill="none" stroke="var(--line)" stroke-width="1"></path>
+<path d="M632 100 L636 105 L640 100" fill="none" stroke="var(--line)" stroke-width="1"></path>
+<text data-i18n="diagram.c4.cad" fill="var(--red)" font-size="11.5" x="564" y="124">每月</text>
+</g>
+</svg>
+<h2 data-i18n-html="s01-014"><span class="no">01</span>大连结论与关键数字</h2>
+<div class="kpis">
+<div class="kpi"><b>12</b><span data-i18n="s01-015">大连域内可核对公告（2026 窗口）</span></div>
+<div class="kpi"><b data-i18n-html="s01-016">6.5<span style="font-size:13px">万</span></b><span data-i18n="s01-017">单笔评估类最小额（三院，限小微企业）</span></div>
+<div class="kpi"><b data-i18n-html="s01-018">45<span style="font-size:13px">万/年</span></b><span data-i18n="s01-019">高校消防维保年度标（东财口径）</span></div>
+<div class="kpi"><b>4</b><span data-i18n="s01-020">发布链（政府/国企/院校医院自采/韩资）</span></div>
+<div class="kpi"><b>0</b><span data-i18n="s01-021">SK 海力士公开招标公告（11-25 实测）</span></div>
+</div>
+<ul>
+<li data-i18n-html="s01-022"><b>大连的「小标」占比高。</b>评估 6.5 万、维保 45 万/年、消防站装修改造这类 10~200 万区间的项目，比拼的不是资质厚度，而是<b>响应速度与属地资源</b>；大标（老旧小区 EPCO、园区配套）才吃资质与业绩。</li>
+<li data-i18n-html="s01-023"><b>「小微企业专项」是硬门槛，不是加分项。</b>三院评估项目明确「专门面向小微企业」，大中型企业连报名资格都没有——大连这类小额消防服务标大量采用该条款，必须准备一个<b>小微主体或联合体</b>。</li>
+<li data-i18n-html="s01-024"><b>消防技术服务要备案，施工要资质，两者别混。</b>评估/维保看「社会消防技术服务信息系统」备案（含消防安全评估），施工看「消防设施工程专业承包」；医院评估标只查前者。</li>
+<li data-i18n-html="s01-025"><b>韩资在大连的落点是厂务，不是招标公告。</b>SK 海力士大连（原 Intel 厂）+ 金普新区韩资配套厂，消防改造走厂务 EHS 与 SRM 询价。11-25 实测：官方只有供应商登记门户 <a href="https://bizpartner.skhynix.com/" rel="noopener" target="_blank">bizpartner.skhynix.com</a>，<b>没有任何公开招标公告板</b>；公开平台检索「海力士」为 0 条，只能在总包痕迹里定位（如「大连海力士 MSB3 新建机房」由中国电子系统工程第四建设承接）。→ <a href="#sk">判断与时间窗见第 05 节</a></li>
+</ul>
+<h2 data-i18n-html="s02-026"><span class="no">02</span>大连的四条发布链</h2>
+<div class="tbl"><table>
+<thead><tr><th data-i18n="s02-027">链</th><th data-i18n="s02-028">平台 / 入口</th><th data-i18n="s02-029">典型标的</th><th data-i18n="s02-030">为什么必须单独盯</th></tr></thead>
+<tbody>
+<tr class="hl"><td data-i18n-html="s02-031"><span class="tag">① 政府</span></td>
+<td data-i18n="s02-032">辽宁政府采购网 ccgp-liaoning.gov.cn · 辽宁省公共资源交易网 ggzy.ln.gov.cn · 全国平台大连条目</td>
+<td data-i18n="s02-033">消防救援站改造、敬老院消防提升、学校消防改造</td>
+<td data-i18n="s02-034">公告短（3~5 个工作日）、多为竞争性磋商，错过即无</td></tr>
+<tr><td data-i18n-html="s02-035"><span class="tag">② 国企</span></td>
+<td data-i18n-html="s02-036"><a href="https://www.dlygcg.com/" rel="noopener" target="_blank">大连国企阳光采购服务平台</a>（另见 120.46.142.208 镜像）</td>
+<td data-i18n="s02-037">老旧小区改造 EPCO、平台公司持有的厂房与物业</td>
+<td data-i18n="s02-038">不进市级公开平台，只在自有平台发；金额大、按综合评估法定标</td></tr>
+<tr><td data-i18n-html="s02-039"><span class="tag">③ 院校医院自采</span></td>
+<td data-i18n="s02-040">大连市第三人民医院 dl3y.com · 友谊/老年病医院 dlyyyy.com · 东北财经大学 czb.dufe.edu.cn · 大连医科大学 zbcgzx.dmu.edu.cn · 大连海事大学 cgzx.dlmu.edu.cn</td>
+<td data-i18n="s02-041">消防评估、消防维保、楼宇局部改造</td>
+<td data-i18n="s02-042">官网「招标公告」栏目才发，聚合平台往往抓不到正文与预算</td></tr>
+<tr><td data-i18n-html="s02-043"><span class="tag kr">④ 韩资厂务</span></td>
+<td data-i18n="s02-044">SK 海力士 SRM / 韩资厂自有供应商系统；总包（中电四等）分包库</td>
+<td data-i18n="s02-045">洁净厂房消防、机房气体灭火、EHS 整改</td>
+<td data-i18n="s02-046">不公开；进入方式是供应商注册 + 总包分包入库，周期 4~8 周</td></tr>
+</tbody>
+</table></div>
+<div class="warnline" data-i18n-html="s02-047"><b>检索陷阱：</b>在大连，「消防改造」四个字在公开平台命中很少，因为大量项目叫<b>「消防和设施设备改造提升」「装修改造」「既有建筑改造消防安全评估」「消防维保服务」</b>。关键词必须按这四种叫法分别设，否则每天都会漏。</div>
+<h2 data-i18n-html="s03-048"><span class="no">03</span>大连域内公告清单（2026）</h2>
+<p class="small" data-i18n-html="s03-049">每行均对应一次实际打开的页面；聚合平台正文收费的，金额栏标 <b>—</b> 而不是猜。<span class="tag done">已结标</span> 的公告保留作为<b>报价与资格口径的参照</b>。</p>
+<div class="tbl"><table class="list">
+<colgroup><col class="c1"/><col class="c2"/><col class="c3"/><col class="c4"/><col class="c5"/><col class="c6"/></colgroup>
+<thead><tr><th data-i18n="s03-050">项目</th><th data-i18n="s03-051">区域</th><th data-i18n="s03-052">类型 / 采购方式</th><th data-i18n="s03-053">金额 · 期限</th><th data-i18n="s03-054">节点</th><th data-i18n="s03-055">资格与要点</th></tr></thead>
+<tbody>
+<tr class="hl">
+<td data-i18n-html="s03-056"><a href="https://www.dl3y.com/index.php?p=news_ex&amp;id=2527&amp;c_id=23&amp;i=4&amp;lanmu=1" rel="noopener" target="_blank">大连市第三人民医院 · 既有建筑改造消防安全评估</a><br/><span class="tag done">已结标</span></td>
+<td data-i18n-html="s03-057">甘井子<br/>千山路40号</td><td data-i18n-html="s03-058">医院 / 竞争性谈判<br/><span class="small">代理：大连成安</span></td>
+<td data-i18n-html="s03-059"><b>6.5 万</b><br/>最高限价同额<br/>45 日历天</td>
+<td data-i18n-html="s03-060">公告 06-30<br/>报名 06-30~07-03<br/>开标 07-08 09:00</td>
+<td data-i18n-html="s03-061">限<b>小微企业</b>；须在「社会消防技术服务信息系统」备案且含消防安全评估；文件 300 元；查信用中国/辽宁/大连三重失信记录</td></tr>
+<tr>
+<td data-i18n-html="s03-062"><a href="https://m.chinabidding.cn/zbgg/U-vzNyH2E.html" rel="noopener" target="_blank">中山区桃源消防救援站改造项目</a><br/><span class="tag">招标公告</span></td>
+<td data-i18n="s03-063">中山区</td><td data-i18n-html="s03-064">消防救援站 / 招标<br/><span class="small">正文需会员</span></td>
+<td>—</td><td data-i18n="s03-065">公告 09-04</td>
+<td data-i18n="s03-066">消防站功能改造：营房、车库、训练设施；同类项目对「不停勤施工」有隐性要求</td></tr>
+<tr>
+<td data-i18n-html="s03-067"><a href="https://m.chinabidding.cn/zbgg/U-vzMwGjz.html" rel="noopener" target="_blank">金州区消防救援大队 · 华家、杏树、迎金路消防站装修改造</a><br/><span class="tag">竞争性磋商</span></td>
+<td data-i18n="s03-068">金州区</td><td data-i18n="s03-069">消防站 / 竞争性磋商</td>
+<td>—</td><td data-i18n="s03-070">公告 10-16</td>
+<td data-i18n="s03-071">三站打包：多点位同步施工的组织能力；装修改造含消防设施联动调试</td></tr>
+<tr>
+<td data-i18n-html="s03-072"><a href="https://m.chinabidding.cn/zbgs/U-vzMhLU0.html" rel="noopener" target="_blank">普兰店区安波中心敬老院 · 消防和设施设备改造提升</a><br/><span class="tag done">已结标</span></td>
+<td data-i18n="s03-073">普兰店</td><td data-i18n="s03-074">养老机构 / 竞争性磋商</td>
+<td data-i18n-html="s03-075">—<br/><span class="small">中标：项目经理 刘杰（辽）</span></td>
+<td data-i18n="s03-076">中标 10-19</td>
+<td data-i18n="s03-077">磋商含资格后审 6 家、按总分排名；敬老院改造要「老人不离院」施工，夜间与分区作业为常态</td></tr>
+<tr>
+<td data-i18n-html="s03-078">保税区消防救援大队 · 二十里堡政府专职消防站<br/><span class="small"><a href="https://www.chinabidding.cn/zbgs/U-vzlLO53.html" rel="noopener" target="_blank">中标公示</a></span></td>
+<td data-i18n="s03-079">保税区</td><td data-i18n="s03-080">消防站 / 中标公示</td>
+<td>—</td><td>—</td>
+<td data-i18n="s03-081">专职站建设与装修包：可反查当地中标企业，作为属地竞争格局样本</td></tr>
+<tr>
+<td data-i18n-html="s03-082">大连市第三人民医院 · 消防系统维护保养服务及报警服务<br/><span class="small"><a href="https://www.dl3y.com/index.php?p=news_ex&amp;id=2569&amp;c_id=23&amp;i=4&amp;lanmu=1" rel="noopener" target="_blank">中标公告</a></span></td>
+<td data-i18n="s03-083">甘井子</td><td data-i18n="s03-084">医院 / 维保服务</td>
+<td>—</td><td>—</td>
+<td data-i18n="s03-085">维保标=年度现金流型项目，与评估标同一采购体系，先做一次即进池</td></tr>
+<tr>
+<td data-i18n-html="s03-086"><a href="https://czb.dufe.edu.cn/content_85391.html" rel="noopener" target="_blank">东北财经大学 · 消防维保服务</a><br/><span class="tag done">口径参照</span></td>
+<td data-i18n="s03-087">沙河口</td><td data-i18n="s03-088">高校 / 竞争性磋商</td>
+<td data-i18n-html="s03-089"><b>45 万/年</b><br/>可续签 2 次（总≤3 年）</td>
+<td data-i18n-html="s03-090">2024 年公告<br/><span class="small">作价格标尺</span></td>
+<td data-i18n="s03-091">面向中小企业；不接受联合体；报价含全年维保 + 应急维修响应</td></tr>
+<tr>
+<td data-i18n-html="s03-092"><a href="https://www.ggzy.gov.cn/information/deal/html/a/210000/0101/20260407/00218dc24bfb25b449e296a2f33f38a74555.html" rel="noopener" target="_blank">中山区华山街小区等老旧小区改造工程 EPCO</a><br/><span class="tag done">已开标</span></td>
+<td data-i18n="s03-093">中山区</td><td data-i18n-html="s03-094">国企 / EPCO 总承包<br/><span class="small">招标人：大连中山发展投资</span></td>
+<td>—</td><td data-i18n-html="s03-095">公告 04-07<br/>开标 05-11</td>
+<td data-i18n="s03-096">综合评估法；消防为改造子项（楼内消火栓、报警、疏散）；监督：中山区财政局</td></tr>
+<tr>
+<td data-i18n-html="s03-097">大连湾海底隧道工程 · 大港区迁建 41 库局部消防改造<br/><span class="small"><a href="https://ln.bidcenter.com.cn/diqucontent-402952491-1.html" rel="noopener" target="_blank">补遗公告</a></span></td>
+<td data-i18n="s03-098">大连湾</td><td data-i18n="s03-099">交通基建 / 专项改造</td>
+<td>—</td><td data-i18n="s03-100">补遗</td>
+<td data-i18n="s03-101">码头/隧道附属库房的消防改造：小体量、高规范要求，适合作为技术标背书</td></tr>
+<tr>
+<td data-i18n-html="s03-102">西岗区老旧小区改造工程三期 · 检测服务<br/><span class="small"><a href="http://www.dalianzhaobiao.com/gongcheng/297.html" rel="noopener" target="_blank">原文</a></span></td>
+<td data-i18n="s03-103">西岗区</td><td data-i18n="s03-104">政府 / 检测服务</td>
+<td>—</td><td>—</td>
+<td data-i18n="s03-105">检测标是「前置情报」：做完检测的楼栋，半年内几乎必然出改造标</td></tr>
+<tr class="hl">
+<td data-i18n-html="s03-106">大连海力士 MSB3 新建机房（机电总包：中国电子系统工程第四建设）<br/><span class="tag kr">韩资相关</span></td>
+<td data-i18n="s03-107">金普新区</td><td data-i18n="s03-108">韩资厂务 / 总包分包</td>
+<td>—</td><td>—</td>
+<td data-i18n="s03-109">SK 海力士大连的厂务扩建包：消防（气体灭火/预作用/洁净区）通常由总包分包，切入口是总包分包库而非公告</td></tr>
+<tr>
+<td data-i18n-html="s03-110">大连地铁 3 号线 · 关键系统设备安全提升改造<br/><span class="small">（2026-08 报道，项目类情报）</span></td>
+<td data-i18n="s03-111">全线</td><td data-i18n="s03-112">轨道交通 / 系统改造</td>
+<td>—</td><td>2026-08</td>
+<td data-i18n="s03-113">轨交消防（隧道排烟、站厅报警）属高门槛细分，可提前接触总包</td></tr>
+</tbody>
+</table></div>
+<h2 data-i18n-html="s04-114"><span class="no">04</span>大连竞标方案</h2>
+<h3 data-i18n="s04-115">4.1 先分类：大连的标按「谁定标」分四种打法</h3>
+<div class="tbl"><table>
+<thead><tr><th data-i18n="s04-116">标型</th><th data-i18n="s04-117">典型金额</th><th data-i18n="s04-118">定标方式</th><th data-i18n="s04-119">打法</th></tr></thead>
+<tbody>
+<tr><td data-i18n="s04-120">消防站 / 政府小额改造</td><td class="num" data-i18n="s04-121">30–200 万</td><td data-i18n="s04-122">竞争性磋商、限小微企业</td><td data-i18n="s04-123">快响应 + 属地队伍；备一个小微主体接标</td></tr>
+<tr><td data-i18n="s04-124">院校 / 医院评估与维保</td><td class="num" data-i18n="s04-125">6.5–60 万</td><td data-i18n="s04-126">谈判 / 磋商、看备案与响应</td><td data-i18n="s04-127">先做评估、再吃维保，形成年度现金流</td></tr>
+<tr><td data-i18n="s04-128">国企 EPCO / 老旧小区</td><td class="num" data-i18n="s04-129">1000 万+</td><td data-i18n="s04-130">综合评估法</td><td data-i18n="s04-131">联合体（设计+施工+运维），技术分靠运维方案</td></tr>
+<tr><td data-i18n="s04-132">韩资厂务</td><td class="num" data-i18n="s04-133">50–500 万</td><td data-i18n="s04-134">SRM 询价 / 邀标</td><td data-i18n="s04-135">供应商注册 + 总包分包入库 + EHS 审核三件套</td></tr>
+</tbody>
+</table></div>
+<h3 data-i18n="s04-136">4.2 资格与备案清单（大连版）</h3>
+<div class="box tight">
+<ul class="check">
+<li data-i18n="s04-137">消防设施工程专业承包资质（施工标）；建筑工程总承包资质（厂房整体改造）</li>
+<li data-i18n="s04-138">安全生产许可证（覆盖投标日 + 工期）</li>
+<li data-i18n-html="s04-139"><b>社会消防技术服务信息系统</b>备案：消防安全评估 / 消防设施维护保养检测（服务类标必备，缺备案直接废）</li>
+<li data-i18n="s04-140">注册消防工程师（评估与维保项目的人员门槛，按标的要求配 1~2 名）</li>
+<li data-i18n="s04-141">小微企业身份证明（中小企业声明函）——大连小额项目高频要求</li>
+<li data-i18n="s04-142">信用查询三连：信用中国、信用中国（辽宁）、信用中国（大连）+ 中国政府采购网失信名单</li>
+<li data-i18n="s04-143">属地化能力证明：大连本地项目部/仓库/24 小时响应承诺（评标常作主观分项）</li>
+<li data-i18n="s04-144">电子标：辽宁政府采购网 CA、投标文件加密上传演练（开标后 5 分钟内须完成解密确认）</li>
+<li data-i18n="s04-145">韩资线另备：中韩双语 EHS 手册、作业许可（PTW）模板、体检与安全教育记录</li>
+</ul>
+</div>
+<h3 data-i18n="s04-146">4.3 技术标主线：大连的三个「必答题」</h3>
+<ul>
+<li data-i18n-html="s04-147"><b>既有建筑改造的合规路径。</b>大连执行地方规程 <b>DB2102/T 0053《既有建筑改造消防设计审查技术规程》</b>——技术标里点名该规程、并给出「按改造范围分类→对应审查口径→验收资料清单」的路径图，比泛泛引用 GB 规范更能拿分。</li>
+<li data-i18n-html="s04-148"><b>不停业/不停勤施工。</b>医院（三院、友谊、老年病）、敬老院（安波）、消防站（桃源、金州三站）都不能停用：分区隔离 + 临时消防（临时消火栓/无线报警）+ 24 小时值守记录，写进方案并配示意图。</li>
+<li data-i18n-html="s04-149"><b>一次验收通过。</b>隐蔽工程三件套（管道试压、线缆绝缘、防火封堵）按点位编号留影像与数据；调试期预留 10 天整改余量；提前与属地住建/消防确认备案或验收路径。</li>
+</ul>
+<h3 data-i18n="s04-150">4.4 报价策略（按定标方式，不是按行业）</h3>
+<div class="tbl"><table>
+<thead><tr><th data-i18n="s04-151">定标方式</th><th data-i18n="s04-152">建议报价</th><th data-i18n="s04-153">说明</th></tr></thead>
+<tbody>
+<tr><td data-i18n="s04-154">竞争性谈判 / 磋商（评估、维保、小额改造）</td><td data-i18n-html="s04-155">首轮控制在最高限价 <b>-3%~-6%</b></td><td data-i18n="s04-156">三院评估为「限价即预算」，超限价直接无效；报价空间来自服务范围而非降价</td></tr>
+<tr><td data-i18n="s04-157">综合评估法（EPCO、国企）</td><td data-i18n-html="s04-158">下浮 <b>4%~8%</b>，技术分每 +2 分≈报价可上浮 1.2%</td><td data-i18n="s04-159">运维期方案与本地响应能力是拉分点</td></tr>
+<tr><td data-i18n="s04-160">经评审最低价（部分施工标）</td><td data-i18n-html="s04-161">下浮 <b>8%~12%</b>，不低于成本警戒（约控制价 85%）</td><td data-i18n="s04-162">低于成本被否决的代价远大于让价</td></tr>
+<tr><td data-i18n="s04-163">维保续签（东财模式）</td><td data-i18n="s04-164">首年让 3%~5%，锁定「可续签 2 次」条款</td><td data-i18n="s04-165">3 年现金流＞单年高价</td></tr>
+</tbody>
+</table></div>
+<p class="small" data-i18n="s04-166">以上为经验区间，正式报价前必须回到招标文件的评标办法核对是否设下浮下限或基准价算术平均。</p>
+<h3 data-i18n="s04-167">4.5 90 天大连动作表</h3>
+<div class="tbl"><table>
+<thead><tr><th data-i18n="s04-168">阶段</th><th data-i18n="s04-169">动作</th><th data-i18n="s04-170">验收标准</th></tr></thead>
+<tbody>
+<tr><td class="num">D1–D14</td><td data-i18n="s04-171">四个发布链全部订阅：辽宁采购网、市交易平台、国企阳光采购平台、6 家院校医院官网栏目</td><td data-i18n="s04-172">关键词（消防改造/消防和设施设备改造提升/既有建筑改造消防安全评估/消防维保）命中推送可查</td></tr>
+<tr><td class="num">D1–D21</td><td data-i18n="s04-173">补两件事：小微主体（或联合体）就位；社会消防技术服务信息系统备案（评估 + 维保两项）</td><td data-i18n="s04-174">备案截图 + 小微声明函模板可复用</td></tr>
+<tr><td class="num">D15–D45</td><td data-i18n="s04-175">投 3 个服务类标（评估/维保优先），目标 1 个中标进入医院或高校池</td><td data-i18n="s04-176">中标或进前三；拿到对手报价样本</td></tr>
+<tr><td class="num">D30–D60</td><td data-i18n="s04-177">韩资线：向 SK 海力士大连与金普新区韩资厂提交供应商注册 + EHS 包；同时登记中电四等总包分包库</td><td data-i18n="s04-178">1 个 SRM 账号 + 2 家总包入库</td></tr>
+<tr><td class="num">D60–D90</td><td data-i18n="s04-179">用已结标项目建「大连报价标尺表」（评估/维保/小额改造/EPCO 四类）</td><td data-i18n="s04-180">下浮率模型 v1 + 弃标红线（65 分以下不投）</td></tr>
+</tbody>
+</table></div>
+<h3 data-i18n="s04-181">4.6 风险（大连特有）</h3>
+<div class="tbl"><table>
+<thead><tr><th data-i18n="s04-182">风险</th><th data-i18n="s04-183">信号</th><th data-i18n="s04-184">应对</th></tr></thead>
+<tbody>
+<tr><td data-i18n="s04-185">小微专属条款把你挡在门外</td><td data-i18n="s04-186">公告出现「专门面向小微企业」</td><td data-i18n="s04-187">备小微主体接标、主体公司做分包；不要临时改股权</td></tr>
+<tr><td data-i18n="s04-188">服务类备案缺失</td><td data-i18n="s04-189">公告要求「社会消防技术服务信息系统备案」</td><td data-i18n="s04-190">评估、维保两类分别备案，别只备一类</td></tr>
+<tr><td data-i18n="s04-191">磋商窗口只有 3~5 个工作日</td><td data-i18n="s04-192">公告期短、文件需现场购买</td><td data-i18n="s04-193">常驻大连的人负责跑件；文件费与保证金预留</td></tr>
+<tr><td data-i18n="s04-194">属地队伍价格战</td><td data-i18n="s04-195">历史中标价明显低于成本</td><td data-i18n="s04-196">不跟价；转做技术分高的标（EPCO、医院、厂务）</td></tr>
+<tr><td data-i18n="s04-197">韩资 EHS 审核不过</td><td data-i18n="s04-198">注册后要求现场审核</td><td data-i18n="s04-199">提前做 EHS 文件包与演练记录，先接小额维修建立交易记录</td></tr>
+</tbody>
+</table></div>
+<h2 data-i18n-html="s05-200" id="sk"><span class="no">05</span>SK 海力士：通道 · 时间窗 · 现在申请来不来得及</h2>
+<p class="small" data-i18n-html="s05-201">本节是判断材料，不是情报堆叠——每个结论后面跟着「依据」和「所以我方怎么办」。核实日 <b>2026-11-25</b>。</p>
+<h3 data-i18n="s05-202">5.0 查询记录（原始返回，2026-11-25 逐条实测）</h3>
+<div class="tbl"><table class="list">
+<colgroup><col style="width:30%"/><col style="width:46%"/><col style="width:24%"/></colgroup>
+<thead><tr><th data-i18n="s05-203">查询 / 入口</th><th data-i18n="s05-204">实际返回</th><th data-i18n="s05-205">判定</th></tr></thead>
+<tbody>
+<tr><td data-i18n="s05-206">https://www.skhynix.com/ 首页源码</td>
+<td data-i18n="s05-207">200；从站内链接解析出唯一供应商入口 bizpartner.skhynix.com</td>
+<td data-i18n="s05-208">找到官方线索</td></tr>
+<tr class="hl"><td data-i18n-html="s05-209"><a href="https://bizpartner.skhynix.com/" rel="noopener" target="_blank">bizpartner.skhynix.com</a>「파트너 협업 포털」</td>
+<td data-i18n="s05-210">200；菜单 구매정책 및 규정 / 상생협력정책 / 상생협력 지원프로그램 / 고객지원；操作 협력사 신규등록·협력사 등록 방법·아이디추가·로그인；客服 1588-8883；새소식 最新＝2026-10-14（金融支援说明）</td>
+<td data-i18n-html="s05-211"><b>只有登记门户，无公告板</b></td></tr>
+<tr><td data-i18n="s05-212">srm / supplier / ep / partner.skhynix.com</td>
+<td data-i18n="s05-213">四个子域全部无法解析（HTTP 000）</td>
+<td data-i18n="s05-214">不存在公开 SRM 前端</td></tr>
+<tr><td data-i18n="s05-215">检索「SK hynix supplier registration」「SK하이닉스 협력사 등록 SRM」「SK hynix e-procurement」</td>
+<td data-i18n="s05-216">无官方招标页；返回结果以报道、招聘、第三方转述为主</td>
+<td data-i18n="s05-217">无公开公告源</td></tr>
+<tr><td data-i18n="s05-218">中国招标投标公共服务平台（cebpubservice）检索「海力士」</td>
+<td data-i18n-html="s05-219"><b>0 条</b></td>
+<td data-i18n="s05-220">中国法人不发公开公告</td></tr>
+<tr><td data-i18n="s05-221">全国公共资源交易平台 / 采购与招标网检索「海力士」</td>
+<td data-i18n="s05-222">仅见总包痕迹：「大连海力士 MSB3 新建机房」——中国电子系统工程第四建设；正文需会员，金额不可见</td>
+<td data-i18n="s05-223">包在总包层流动</td></tr>
+<tr><td data-i18n="s05-224">检索「SK하이닉스 용인 클린룸 일정 / Y1」</td>
+<td data-i18n="s05-225">首个洁净室 2027-02 开放、Trinity 洁净室 2027-05、2027 量产；先开工区进度 89%</td>
+<td data-i18n="s05-226">给出时间锚点</td></tr>
+<tr class="hl"><td data-i18n="s05-227">招聘站检索「SK하이닉스 용인 소방전기공사 현장」</td>
+<td data-i18n-html="s05-228">잡코리아 2026-10-26：오에스엘이엔지 招现场管理，工作内容＝半导体厂内<b>空气吸入式火灾探测器</b>施工管理</td>
+<td data-i18n-html="s05-229"><b>消防包已发标并施工 → 窗口关闭</b></td></tr>
+<tr><td data-i18n="s05-230">检索「청주 M15 배관 유지보수 입찰」</td>
+<td data-i18n="s05-231">2026-06 招标、07-01 起 1 年合约；受邀范围限于「1군 협력사」</td>
+<td data-i18n="s05-232">年度维保节拍＝5~6 月发标</td></tr>
+<tr><td data-i18n="s05-233">检索「SK hynix Dalian expansion」</td>
+<td data-i18n="s05-234">2 工厂建筑 2026 上半年完工、2026-11 起搬入设备</td>
+<td data-i18n="s05-235">只剩收尾/维保残值</td></tr>
+<tr><td data-i18n="s05-236">检索「SK hynix China US export license」</td>
+<td data-i18n="s05-237">大连厂设备出口许可 2026 年底到期，2027 年需新安排</td>
+<td data-i18n="s05-238">顺延风险</td></tr>
+<tr><td data-i18n="s05-239">检索「SK hynix Indiana packaging plant」</td>
+<td data-i18n="s05-240">2026-08-27 动工，投资 40 亿美元+</td>
+<td data-i18n="s05-241">2027 观察项</td></tr>
+</tbody>
+</table></div>
+<p class="small" data-i18n="s05-242">以上 12 条为当次实跑的查询与返回，聚合平台正文收费的只记标题级；发标日历由这些返回反推，非 SK 官方日程。</p>
+<h3 data-i18n="s05-243">5.1 通道汇总：有登记门户，没有招标公告板</h3>
+<div class="tbl"><table class="list">
+<colgroup><col style="width:22%"/><col style="width:44%"/><col style="width:34%"/></colgroup>
+<thead><tr><th data-i18n="s05-244">入口（已逐个实测）</th><th data-i18n="s05-245">实测结果</th><th data-i18n="s05-246">对我方的含义</th></tr></thead>
+<tbody>
+<tr class="hl">
+<td data-i18n-html="s05-247"><a href="https://bizpartner.skhynix.com/" rel="noopener" target="_blank">bizpartner.skhynix.com</a><br/><span class="small">「파트너 협업 포털」</span></td>
+<td data-i18n-html="s05-248">200，公开落地页。菜单：구매정책 및 규정 / 상생협력정책 / 상생협력 지원프로그램 / 고객지원；可操作：<b>협력사 신규등록</b>·협력사 등록 방법·아이디추가·로그인；客服 1588-8883；最新公告仅 2026-10-14 金融支援说明</td>
+<td data-i18n-html="s05-249">唯一官方入口，注册可自助提交；<b>询价与邀标在登录后的协作区</b>，外部不可见</td></tr>
+<tr><td data-i18n="s05-250">srm / supplier / ep / partner.skhynix.com</td>
+<td data-i18n="s05-251">全部无法解析（000）</td>
+<td data-i18n="s05-252">不存在公开的 SRM 前端，网上流传的"投标网址"多为猜测</td></tr>
+<tr><td data-i18n="s05-253">中国招标投标公共服务平台 · 全国公共资源交易平台（检索「海力士」）</td>
+<td data-i18n="s05-254">0 条招标公告</td>
+<td data-i18n="s05-255">中国法人不发公开公告，公开平台不会有"SK 海力士消防标"</td></tr>
+<tr><td data-i18n="s05-256">采购与招标网</td>
+<td data-i18n="s05-257">只见总包痕迹（「大连海力士 MSB3 新建机房」——中国电子系统工程第四建设，标题级，正文会员）</td>
+<td data-i18n-html="s05-258">厂务包在<b>总包层</b>流动，切入点是中国电子系统工程第四建设等总包的分包库</td></tr>
+</tbody>
+</table></div>
+<div class="warnline" data-i18n-html="s05-259"><b>判断含义：</b>等公告＝永远不会发生。「进入名单」是唯一的时间点，而这件事本身没有公告。所以下面所有"什么时候"，都是从可观测的合同周期与工程节点反推的，不是官方日程。</div>
+<h3 data-i18n="s05-260">5.2 时间窗：把「已关闭」和「仍有效」分开看</h3>
+<div class="tbl"><table class="list">
+<colgroup><col style="width:22%"/><col style="width:15%"/><col style="width:10%"/><col style="width:53%"/></colgroup>
+<thead><tr><th data-i18n="s05-261">窗口</th><th data-i18n="s05-262">期间</th><th data-i18n="s05-263">状态</th><th data-i18n="s05-264">依据 · 对我方</th></tr></thead>
+<tbody>
+<tr><td data-i18n="s05-265">年度设施 / 维保招标</td><td data-i18n-html="s05-266">2026-05~06 发标<br/>07-01 起 1 年</td><td data-i18n-html="s05-267"><span class="tag done">已关闭</span></td>
+<td data-i18n-html="s05-268">清州 M15 配管设备维护：2026-06 招标、7-01 起算 → <b>今年这一轮已无法参与</b></td></tr>
+<tr><td data-i18n="s05-269">龙仁 Y1 消防包（空气吸入式探测器）</td><td data-i18n="s05-270">已发标并施工</td><td data-i18n-html="s05-271"><span class="tag done">已关闭</span></td>
+<td data-i18n-html="s05-272">现场施工管理招聘 2026-10-26（오에스엘이엔지「SK하이닉스 용인클러스터 소방전기공사」）→ <b>主包已定，只剩整改/调试/维保</b></td></tr>
+<tr><td data-i18n="s05-273">大连 2 工厂</td><td data-i18n-html="s05-274">2026-11 设备搬入<br/>~ 2027-01 收尾</td><td data-i18n-html="s05-275"><span class="tag warn">只剩残值</span></td>
+<td data-i18n="s05-276">建筑 2026 上半年完工、11 月起搬入设备 → 争试运行/整改/维保，不是主包</td></tr>
+<tr class="hl"><td data-i18n="s05-277">Trinity 洁净室（龙仁）</td><td data-i18n-html="s05-278">2027-05 开放<br/>准备期 2027-01~04</td><td data-i18n-html="s05-279"><span class="tag on">仍有效</span></td>
+<td data-i18n="s05-280">首个洁净室 2027-02、Trinity 2027-05 → 2027 上半年的新建窗口</td></tr>
+<tr class="hl"><td data-i18n-html="s05-281"><b>2027 年度设施 / 维保招标</b></td><td>2027-05~06</td><td data-i18n-html="s05-282"><span class="tag on">主目标</span></td>
+<td data-i18n-html="s05-283">按 2026 年节拍推 → <b>新供应商唯一现实入口</b></td></tr>
+<tr><td data-i18n="s05-284">印第安纳封装厂</td><td data-i18n="s05-285">2027 上半年</td><td data-i18n-html="s05-286"><span class="tag">观察</span></td>
+<td data-i18n="s05-287">2026-08-27 动工，设备与配套包顺次释放</td></tr>
+<tr><td data-i18n-html="s05-288"><b>变数：</b>大连美国设备出口许可</td><td data-i18n="s05-289">2026-12 到期</td><td data-i18n-html="s05-290"><span class="tag warn">风险</span></td>
+<td data-i18n="s05-291">2027 年若无新安排，大连配套发标整体顺延 → 残值窗口可能消失</td></tr>
+</tbody>
+</table></div>
+<p class="small" data-i18n-html="s05-292">本文早前版本写的「5~6 月窗口」指 <b>2026 年</b>周期，已过期。上表把过期与有效分开列，避免再把它当成"现在可以投"。</p>
+<h3 data-i18n="s05-293">5.3 现在出申请，来不来得及</h3>
+<div class="box">
+<div class="tbl"><table style="margin:0">
+<tbody>
+<tr><td data-i18n-html="s05-294" style="width:62%">对 <b>2027-05~06</b> 年度维保窗口</td><td data-i18n-html="s05-295"><b style="color:var(--green)">来得及</b>：今天提交 → 2027-02 前完成文件审 → 03 进名单，仍有约 2 个月缓冲</td></tr>
+<tr><td data-i18n="s05-296">对 2026-12~2027-02 窗口（大连收尾、Y1 收尾）</td><td data-i18n-html="s05-297"><b style="color:var(--red)">来不及</b>：主包已定，只剩维保/整改，且维保也要先入库</td></tr>
+<tr><td data-i18n="s05-298">对 2027-01~04 的 Trinity 前期</td><td data-i18n-html="s05-299"><b style="color:var(--amber)">部分赶得上</b>：取决于一次审核是否一次通过，无退回余地</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="tbl"><table>
+<thead><tr><th data-i18n="s05-300">节点</th><th data-i18n="s05-301">日期</th><th data-i18n="s05-302">卡点</th></tr></thead>
+<tbody>
+<tr><td data-i18n="s05-303">提交「협력사 신규등록」</td><td class="num">2026-11-25</td><td data-i18n="s05-304">资料齐全度决定一切</td></tr>
+<tr><td data-i18n="s05-305">一次文件审</td><td class="num" data-i18n="s05-306">2026-12 中</td><td data-i18n="s05-307">缺件退回 → 重排 +4~8 周</td></tr>
+<tr><td data-i18n="s05-308">翻译 / 公证</td><td class="num" data-i18n="s05-309">2026-12 下</td><td data-i18n="s05-310">中韩双语、公证件最耗时</td></tr>
+<tr><td data-i18n="s05-311">EHS / 现场审核</td><td class="num">2027-01~02</td><td data-i18n="s05-312">现场条件与安全记录</td></tr>
+<tr><td data-i18n="s05-313">名单 / 等级确定</td><td class="num" data-i18n="s05-314">2027-02 末~03</td><td data-i18n="s05-315">分级决定是否受邀</td></tr>
+<tr class="hl"><td data-i18n="s05-316">邀标窗口</td><td class="num">2027-05~06</td><td data-i18n="s05-317">目标</td></tr>
+</tbody>
+</table></div>
+<p class="small" data-i18n-html="s05-318"><b>两条必须说清的不确定性：</b>①SK 没有公开处理时长，"1~3 个月"是行业通例而非承诺；②注册 ≠ 被邀——注册后分级，等级不够仍可能不进邀标名单。所以 2027-05 的目标应是<b>「注册完成 + 至少 1 个同类实绩」</b>，而不是只交表。</p>
+<h3 data-i18n="s05-319">5.4 判断矩阵：这笔注册成本该不该投</h3>
+<div class="tbl"><table>
+<thead><tr><th data-i18n="s05-320">判定项</th><th data-i18n="s05-321">若「是」</th><th data-i18n="s05-322">若「否」</th></tr></thead>
+<tbody>
+<tr><td data-i18n="s05-323">① 能在 2027-01 前完成文件审（资料已齐）</td><td data-i18n="s05-324">继续推进</td><td data-i18n="s05-325">目标改为 2027 下半年窗口</td></tr>
+<tr><td data-i18n="s05-326">② 有 3 年内同类消防实绩（含验收文件）</td><td data-i18n="s05-327">有资格争邀标</td><td data-i18n="s05-328">先补业绩：总包分包 / 本地小标</td></tr>
+<tr><td data-i18n="s05-329">③ 主体经营范围覆盖消防施工（中国法人）或已有韩国消防设施工事业登录</td><td data-i18n="s05-330">可直投</td><td data-i18n="s05-331">先补资质或更换主体，注册会白做</td></tr>
+<tr><td data-i18n="s05-332">④ 能承受一次退回（再排 4~8 周）</td><td data-i18n="s05-333">继续推进</td><td data-i18n="s05-334">不要单押 SK，重心放 B 线</td></tr>
+</tbody>
+</table></div>
+<div class="warnline" data-i18n-html="s05-335"><b>判定规则：</b>四项中 <b>3 项以上「是」→ 今天就提交</b>；<b>2 项及以下 → 先走 B 线补业绩与资质</b>，SK 放到 2027 下半年，不要为了"不错过"而交一份会被退回的表。</div>
+<h3 data-i18n="s05-336">5.5 两线并行（建议，不是选项堆叠）</h3>
+<div class="tbl"><table>
+<thead><tr><th data-i18n="s05-337">线</th><th data-i18n="s05-338">今天/本周动作</th><th data-i18n="s05-339">产出</th></tr></thead>
+<tbody>
+<tr><td data-i18n-html="s05-340"><b>A 线</b> 韩资</td><td data-i18n="s05-341">今天提交 SK 注册；同步向大连厂务与总包（中国电子系统工程第四建设等）登记分包库</td><td data-i18n="s05-342">SRM 账号 + 2 家总包入库；12 月内可能出小额维保单</td></tr>
+<tr><td data-i18n-html="s05-343"><b>B 线</b> 大连本地</td><td data-i18n="s05-344">本周投在招小标（敬老院、消防站、医院评估）；锁定 2027 年度维保轮次</td><td data-i18n="s05-345">中标记录 / 前三名 → 成为 A 线资格证据</td></tr>
+<tr><td data-i18n-html="s05-346"><b>交汇</b></td><td data-i18n="s05-347">2027-05 用 B 线实绩支撑 A 线邀标资格</td><td data-i18n="s05-348">没有 B 线实绩，A 线注册只是账号</td></tr>
+</tbody>
+</table></div>
+<h2 data-i18n-html="s06-349"><span class="no">06</span>每天扫什么（关键词与站点）</h2>
+<div class="tbl"><table>
+<thead><tr><th data-i18n="s06-350">站点</th><th data-i18n="s06-351">关键词</th><th data-i18n="s06-352">频率</th></tr></thead>
+<tbody>
+<tr><td data-i18n="s06-353">辽宁政府采购网 · 大连</td><td data-i18n="s06-354">消防改造 / 消防和设施设备改造提升 / 消防维保 / 消防安全评估</td><td data-i18n="s06-355">每日 09:00</td></tr>
+<tr><td data-i18n="s06-356">大连国企阳光采购服务平台</td><td data-i18n="s06-357">消防 / 改造 / 老旧小区 / EPCO</td><td data-i18n="s06-358">每日 09:00</td></tr>
+<tr><td data-i18n="s06-359">院校医院官网招标栏目（6 家）</td><td data-i18n="s06-360">消防、维保、评估、改造</td><td data-i18n="s06-361">每周一、周四</td></tr>
+<tr><td data-i18n="s06-362">总包分包库（中电四等）</td><td data-i18n="s06-363">洁净厂房 / 机房 / 气体灭火</td><td data-i18n="s06-364">每月</td></tr>
+<tr><td data-i18n="s06-365">检测与评估结果公告</td><td data-i18n="s06-366">检测、评估、整改通知</td><td data-i18n="s06-367">每月（前瞻 3~6 个月）</td></tr>
+</tbody>
+</table></div>
+<footer>
+<p data-i18n-html="s06-368"><b>数据说明：</b>12 条均对应 2026-01-01 至 2026-11-25 期间实际打开的页面；聚合平台（采购与招标网、采招网等）正文收费的项目，金额与联系方式标 <b>—</b>，未做推测。三院评估项目、东财维保项目为同一采购体系的历史公告，作为预算与资格口径参照，不代表当前在招。报价区间为经验值，须以招标文件评标办法为准。</p>
+<p data-i18n-html="s06-369"><b>SK 海力士部分（第 05 节）的核实边界：</b>bizpartner.skhynix.com 于 2026-11-25 实测可达并逐项列出菜单与操作入口；srm / supplier / ep / partner 子域实测不可达（000）；中国招标投标公共服务平台与全国平台检索「海力士」为 0 条；「大连海力士 MSB3 新建机房」仅确认到采购与招标网的标题级信息，正文需会员，<b>金额未核实</b>。发标日历与「来得及/来不及」为依合同周期与工程节点反推，<b>不是 SK 官方日程</b>；注册处理时长（1~3 个月）为行业通例，SK 未公开承诺。</p>
+<p data-i18n="s06-370">整理：Hermes · 2026-11-25 · 单页版（仅大连）</p>
+</footer>
 </main>
-
 <aside>
-  <div class="box">
-    <h4>SK 判断：三问定去留</h4>
-    <ol>
-      <li><b>资料 2027-01 前能齐吗？</b><br>能 → 今天提交；不能 → 目标改 2027 下半年</li>
-      <li><b>有 3 年内同类消防实绩（含验收）吗？</b><br>有 → 注册才有意义；没有 → 先做总包分包 / 本地小标</li>
-      <li><b>主体资质覆盖消防施工吗？</b><br>没有 → 注册会白做，先换主体或补资质</li>
-    </ol>
-    <p class="small" style="margin:8px 0 0"><b>3 项「是」→ 今天提交；2 项及以下 → 走本地线补业绩</b>，SK 放到 2027 下半年。</p>
-  </div>
-
-  <div class="box">
-    <h4>现在最该做的三件</h4>
-    <ol>
-      <li><b>备案两件事</b><br>社会消防技术服务信息系统（评估+维保）+ 小微主体，缺一件就投不了大连一半的标</li>
-      <li><b>订阅四条链</b><br>辽宁采购网 / 国企阳光平台 / 6 家院校医院官网</li>
-      <li><b>韩资三件套</b><br>SK 海力士与金普韩资厂：供应商注册 + EHS 包 + 总包分包入库</li>
-    </ol>
-  </div>
-
-  <div class="box">
-    <h4>大连标型速查</h4>
-    <table style="margin:0;font-size:12.4px">
-      <tr><td>消防站改造</td><td class="num">30–200万</td></tr>
-      <tr><td>敬老院/医院评估</td><td class="num">6.5–20万</td></tr>
-      <tr><td>高校消防维保</td><td class="num">45万/年</td></tr>
-      <tr><td>老旧小区 EPCO</td><td class="num">1000万+</td></tr>
-      <tr><td>韩资厂务改造</td><td class="num">50–500万</td></tr>
-    </table>
-  </div>
-
-  <div class="box">
-    <h4>别漏的四种叫法</h4>
-    <p class="small" style="margin:0">消防改造 → 也叫<b>消防和设施设备改造提升</b>、<b>装修改造</b>、<b>既有建筑改造消防安全评估</b>、<b>消防维保服务</b>。只搜第一种，会漏掉大连大部分实际标的。</p>
-  </div>
-
-  <div class="box">
-    <h4>一句话打法</h4>
-    <p class="small" style="margin:0">用服务类小标（评估/维保）进医院与高校池，用 EPCO 与厂房改造抬资质和业绩，用这两样换韩资 SRM 的准入。三条线互为凭证。</p>
-  </div>
+<div class="box">
+<h4 data-i18n="s06-371">SK 判断：三问定去留</h4>
+<ol>
+<li data-i18n-html="s06-372"><b>资料 2027-01 前能齐吗？</b><br/>能 → 今天提交；不能 → 目标改 2027 下半年</li>
+<li data-i18n-html="s06-373"><b>有 3 年内同类消防实绩（含验收）吗？</b><br/>有 → 注册才有意义；没有 → 先做总包分包 / 本地小标</li>
+<li data-i18n-html="s06-374"><b>主体资质覆盖消防施工吗？</b><br/>没有 → 注册会白做，先换主体或补资质</li>
+</ol>
+<p class="small" data-i18n-html="s06-375" style="margin:8px 0 0"><b>3 项「是」→ 今天提交；2 项及以下 → 走本地线补业绩</b>，SK 放到 2027 下半年。</p>
+</div>
+<div class="box">
+<h4 data-i18n="s06-376">现在最该做的三件</h4>
+<ol>
+<li data-i18n-html="s06-377"><b>备案两件事</b><br/>社会消防技术服务信息系统（评估+维保）+ 小微主体，缺一件就投不了大连一半的标</li>
+<li data-i18n-html="s06-378"><b>订阅四条链</b><br/>辽宁采购网 / 国企阳光平台 / 6 家院校医院官网</li>
+<li data-i18n-html="s06-379"><b>韩资三件套</b><br/>SK 海力士与金普韩资厂：供应商注册 + EHS 包 + 总包分包入库</li>
+</ol>
+</div>
+<div class="box">
+<h4 data-i18n="s06-380">大连标型速查</h4>
+<div class="tbl"><table style="margin:0;font-size:12.4px">
+<tr><td data-i18n="s06-381">消防站改造</td><td class="num" data-i18n="s06-382">30–200万</td></tr>
+<tr><td data-i18n="s06-383">敬老院/医院评估</td><td class="num" data-i18n="s06-384">6.5–20万</td></tr>
+<tr><td data-i18n="s06-385">高校消防维保</td><td class="num" data-i18n="s06-386">45万/年</td></tr>
+<tr><td data-i18n="s06-387">老旧小区 EPCO</td><td class="num" data-i18n="s06-388">1000万+</td></tr>
+<tr><td data-i18n="s06-389">韩资厂务改造</td><td class="num" data-i18n="s06-390">50–500万</td></tr>
+</table></div>
+</div>
+<div class="box">
+<h4 data-i18n="s06-391">别漏的四种叫法</h4>
+<p class="small" data-i18n-html="s06-392" style="margin:0">消防改造 → 也叫<b>消防和设施设备改造提升</b>、<b>装修改造</b>、<b>既有建筑改造消防安全评估</b>、<b>消防维保服务</b>。只搜第一种，会漏掉大连大部分实际标的。</p>
+</div>
+<div class="box">
+<h4 data-i18n="s06-393">一句话打法</h4>
+<p class="small" data-i18n="s06-394" style="margin:0">用服务类小标（评估/维保）进医院与高校池，用 EPCO 与厂房改造抬资质和业绩，用这两样换韩资 SRM 的准入。三条线互为凭证。</p>
+</div>
 </aside>
 </div>
 </div>
+<script>
+/*I18N_START*/window.__KFB_I18N__ = {"ko":{"meta":{"title":"다롄 · 소방 개조 입찰 정보와 입찰 방안(2026-11-25)","desc":"다롄시 행정구역 내 소방 개조 입찰 정보와 입찰 방안: 네 개 공고 채널, 공고 목록, 자격과 견적 전략, SK하이닉스 채널의 실측과 시간창.","ogTitle":"다롄 · 소방 개조 입찰 정보와 입찰 방안","ogDesc":"검증 가능한 공고 12건, 네 개 공고 채널, SK하이닉스 채널 실측(2026-11-25)."},"ui":{"themeDark":"다크","themeLight":"라이트","themeToDark":"다크로 전환","themeToLight":"라이트로 전환"},"s":{"diagram.aria":"네 개의 공고 채널과 점검 주기","diagram.c1.cad":"매일 09:00","diagram.c1.name":"① 정부","diagram.c1.p1":"랴오닝 정부조달망","diagram.c1.p2":"시 거래 플랫폼","diagram.c2.cad":"매일 09:00","diagram.c2.name":"② 국유기업","diagram.c2.p1":"다롄 국유기업","diagram.c2.p2":"공개조달망","diagram.c3.cad":"월 · 목","diagram.c3.name":"③ 대학·병원","diagram.c3.p1":"6곳 홈페이지 입찰","diagram.c4.cad":"매월","diagram.c4.name":"④ 한국계","diagram.c4.p1":"SRM · 초청입찰","diagram.c4.p2":"bizpartner","head-001":"다롄(大连) · 소방 개조 입찰 정보와 입찰 방안","head-002":"범위를 「한국 시리즈 · 전국」에서 <b>다롄(大连)시 행정구역 내<\/b>로 좁힌다(중산(中山), 시강(西岗), 사허커우(沙河口), 간징쯔(甘井子), 뤼순커우(旅顺口), 진저우(金州), 푸란뎬(普兰店), 와팡뎬(瓦房店), 좡허(庄河), 창하이(长海), 고신구(高新区), 진푸신구(金普新区), 보세구(保税区)). 소방서 개조, 양로원과 병원의 소방 성능 향상, 대학·병원 유지보수, 노후 주거단지 EPCO, 그리고 한국계 기업(SK하이닉스 등)의 사내설비(厂务) 채널을 포함한다.","head-003":"범위 다롄 전역","head-004":"데이터 구간 2026-01-01 → 2026-11-25","head-005":"공고 표본 12건","head-006":"SK 채널 11-25 실측 완료","head-007":"단일 페이지판 · 다롄 한정","head-008":"SK하이닉스 · 조회 결과 요약(2026-11-25 실측, 원본 반환 12건은 5.0 참조)","head-009":"<b>공개 입찰 공고: 0건.<\/b>중국 입찰투표 공공서비스 플랫폼(中国招标投标公共服务平台)에서 「하이닉스」를 검색하면 결과가 없다. 공개 SRM 프런트엔드도 없다(srm·supplier·ep·partner 서브도메인 모두 000).","head-010":"<b>유일한 공식 입구:<\/b><a href=\"https://bizpartner.skhynix.com/\" rel=\"noopener\" target=\"_blank\">bizpartner.skhynix.com<\/a>「파트너 협업 포털」 — <b>공급사 등록과 로그인<\/b>만 있고 공고판은 없다.","head-011":"<b>「언제 입찰하나」에 공개 일정은 없다:<\/b>역산할 수밖에 없다. <b>2027-05~06 연간 유지보수 입찰이 신규 공급사에게 유일하게 현실적인 창구<\/b>다. 용인(龙仁) Y1 소방 패키지(2026-10-26 이미 시공 중)와 다롄 메인 패키지는 모두 닫혔고, 다롄에는 마무리와 유지보수만 남았다.","head-012":"<b>지금 신청하면:<\/b> 2027-05에는 늦지 않다(완충 약 2개월). 2026-12~2027-02에는 <b>늦다<\/b> → 판단은 <a href=\"#sk\">제05절 5.4 판단 매트릭스<\/a> 참조.","head-013":"\n<strong>다롄 단계의 결론:<\/strong>소방 개조는 다롄에서 「하나의 공고 풀」이 아니라 <b>서로 통하지 않는 네 개의 공고 채널<\/b>이다. ① 소방서·정부 유형은 랴오닝(辽宁) 정부조달망과 시 거래 플랫폼, ② 국유기업과 플랫폼 회사(예: 다롄 중산발전투자)는 <b>다롄 국유기업 공개조달 서비스 플랫폼<\/b>, ③ 병원과 대학은 <b>자체 홈페이지에 직접 게시<\/b>(제3병원, 우의·노인병원, 둥베이재경대, 의과대, 해사대), ④ 한국계 사내설비는 SRM이나 초청 입찰로 흐른다. 전국 플랫폼만 보면 3/4을 놓친다.\n  ","s01-014":"<span class=\"no\">01<\/span>다롄 결론과 핵심 숫자","s01-015":"다롄 역내 검증 가능 공고(2026 구간)","s01-016":"6.5<span style=\"font-size:13px\">만<\/span>","s01-017":"평가 유형 단건 최소액(제3병원, 소기업 한정)","s01-018":"45<span style=\"font-size:13px\">만/년<\/span>","s01-019":"대학 소방 유지보수 연간 입찰(둥베이재경대 기준)","s01-020":"공고 채널(정부/국유기업/대학·병원 자체 발주/한국계)","s01-021":"SK하이닉스 공개 입찰 공고(11-25 실측)","s01-022":"<b>다롄은 소액 입찰 비중이 높다.<\/b>평가 6.5만, 유지보수 45만/년, 소방서 인테리어 개조처럼 10~200만 구간의 사업은 자격의 두께가 아니라 <b>대응 속도와 지역 자원<\/b>으로 겨룬다. 대형 입찰(노후 주거단지 EPCO, 산업단지 부대시설)이라야 자격과 실적이 중요해진다.","s01-023":"<b>「소기업 전용」은 가산점이 아니라 강제 요건이다.<\/b>제3병원 평가 사업은 「소기업 전용」을 명시해 중견·대기업은 응찰 자격조차 없다. 다롄의 소액 소방 서비스 입찰은 이 조항을 대량으로 채택하므로 <b>소기업 주체나 컨소시엄<\/b>을 반드시 준비해야 한다.","s01-024":"<b>소방 기술서비스는 등록이, 시공은 자격이 필요하다. 둘을 섞지 않는다.<\/b>평가·유지보수는 「사회 소방 기술서비스 정보시스템」 등록(소방 안전성 평가 포함)을, 시공은 「소방시설공사 전문도급」 자격을 본다. 병원 평가 입찰은 전자만 확인한다.","s01-025":"<b>다롄에서 한국계의 접점은 사내설비(厂务)이지 입찰 공고가 아니다.<\/b>SK하이닉스 다롄(옛 Intel 공장)과 진푸신구(金普新区)의 한국계 협력공장은 소방 개조를 사내설비 EHS와 SRM(공급사 관리 시스템) 견적으로 처리한다. 11-25 실측 결과 공식 채널은 공급사 등록 포털 <a href=\"https://bizpartner.skhynix.com/\" rel=\"noopener\" target=\"_blank\">bizpartner.skhynix.com<\/a>뿐이며 <b>공개 입찰 공고판은 전혀 없다.<\/b> 공개 플랫폼에서 「하이닉스」 검색 결과는 0건이고, 총도급 흔적으로만 위치를 잡을 수 있다(예: 「다롄 하이닉스 MSB3 신설 전산실」은 중국전자시스템공정 제4건설이 수주). → <a href=\"#sk\">판단과 시간창은 제05절 참조<\/a>","s02-026":"<span class=\"no\">02<\/span>다롄의 네 개 공고 채널","s02-027":"채널","s02-028":"플랫폼 / 입구","s02-029":"대표 사업","s02-030":"왜 따로 봐야 하는가","s02-031":"<span class=\"tag\">① 정부<\/span>","s02-032":"랴오닝(辽宁) 정부조달망 ccgp-liaoning.gov.cn · 랴오닝성 공공자원거래망 ggzy.ln.gov.cn · 전국 플랫폼의 다롄 항목","s02-033":"소방구조대 개조, 양로원 소방 성능 향상, 학교 소방 개조","s02-034":"공고 기간이 짧고(3~5 영업일) 대부분 경쟁적 협의라 놓치면 끝이다","s02-035":"<span class=\"tag\">② 국유기업<\/span>","s02-036":"<a href=\"https://www.dlygcg.com/\" rel=\"noopener\" target=\"_blank\">다롄 국유기업 공개조달 서비스 플랫폼<\/a>(120.46.142.208 미러 별도 존재)","s02-037":"노후 주거단지 개조 EPCO, 플랫폼 회사가 보유한 공장과 부동산","s02-038":"시급 공개 플랫폼에 올리지 않고 자체 플랫폼에만 게시한다. 금액이 크고 종합평가법으로 낙찰자를 정한다.","s02-039":"<span class=\"tag\">③ 대학·병원 자체 발주<\/span>","s02-040":"다롄시 제3인민병원 dl3y.com · 우의·노인병원 dlyyyy.com · 둥베이재경대학 czb.dufe.edu.cn · 다롄의과대학 zbcgzx.dmu.edu.cn · 다롄해사대학 cgzx.dlmu.edu.cn","s02-041":"소방 평가, 소방 유지보수, 건물 부분 개조","s02-042":"홈페이지 「입찰 공고」 게시판에만 올라가고, 집계 플랫폼은 본문과 예산을 대개 수집하지 못한다","s02-043":"<span class=\"tag kr\">④ 한국계 사내설비<\/span>","s02-044":"SK하이닉스 SRM / 한국계 공장 자체 공급사 시스템. 총도급사(중국전자시스템공정 제4건설 등)의 하도급 풀","s02-045":"클린룸 소방, 전산실 가스 소화, EHS 개선","s02-046":"비공개. 진입 방식은 공급사 등록과 총도급 하도급 풀 등재이며 4~8주 걸린다","s02-047":"<b>검색 함정:<\/b> 다롄에서 「소방 개조」라는 표현은 공개 플랫폼에서 거의 걸리지 않는다. 대다수 사업이 <b>「소방 및 시설설비 개조 향상」「인테리어 개조」「기존 건축물 개조 소방 안전성 평가」「소방 유지보수 서비스」<\/b>로 불리기 때문이다. 키워드를 이 네 가지 명칭으로 각각 걸어야 하며, 그러지 않으면 매일 놓친다.","s03-048":"<span class=\"no\">03<\/span>다롄 역내 공고 목록(2026)","s03-049":"각 행은 실제로 열어 확인한 페이지 하나에 대응한다. 집계 플랫폼 본문이 유료인 경우 금액란에 추측값을 넣지 않고 <b>—<\/b>로 표시했다.<span class=\"tag done\">종료<\/span>된 공고는 <b>견적과 자격 기준의 참조<\/b>로 남긴다.","s03-050":"사업","s03-051":"구역","s03-052":"유형 / 조달 방식","s03-053":"금액 · 기간","s03-054":"일정","s03-055":"자격과 요점","s03-056":"<a href=\"https://www.dl3y.com/index.php?p=news_ex&amp;id=2527&amp;c_id=23&amp;i=4&amp;lanmu=1\" rel=\"noopener\" target=\"_blank\">다롄시 제3인민병원 · 기존 건축물 개조 소방 안전성 평가<\/a><br/><span class=\"tag done\">종료<\/span>","s03-057":"간징쯔(甘井子)<br/>첸산로 40호","s03-058":"병원 / 경쟁적 협상<br/><span class=\"small\">대행: 다롄 청안(成安)<\/span>","s03-059":"<b>6.5만<\/b><br/>최고한도액과 동일<br/>역일 45일","s03-060":"공고 06-30<br/>접수 06-30~07-03<br/>개찰 07-08 09:00","s03-061":"<b>소기업<\/b> 한정. 「사회 소방 기술서비스 정보시스템」에 소방 안전성 평가를 포함해 등록해야 한다. 문서비 300위안. 신용중국·랴오닝·다롄 3중 신용불량 기록을 조회한다","s03-062":"<a href=\"https://m.chinabidding.cn/zbgg/U-vzNyH2E.html\" rel=\"noopener\" target=\"_blank\">중산구(中山区) 타오위안 소방구조대 개조 사업<\/a><br/><span class=\"tag\">입찰 공고<\/span>","s03-063":"중산구(中山区)","s03-064":"소방구조대 / 입찰<br/><span class=\"small\">본문은 회원 전용<\/span>","s03-065":"공고 09-04","s03-066":"소방서 기능 개조: 막사, 차고, 훈련시설. 같은 유형의 사업은 「근무 중단 없는 시공」을 암묵적으로 요구한다","s03-067":"<a href=\"https://m.chinabidding.cn/zbgg/U-vzMwGjz.html\" rel=\"noopener\" target=\"_blank\">진저우구(金州区) 소방구조대 · 화자·싱수·잉진로 소방서 인테리어 개조<\/a><br/><span class=\"tag\">경쟁적 협의<\/span>","s03-068":"진저우구(金州区)","s03-069":"소방서 / 경쟁적 협의","s03-070":"공고 10-16","s03-071":"소방서 3개 묶음: 다지점 동시 시공 조직력이 관건이고, 인테리어 개조에 소방설비 연동 시운전이 포함된다","s03-072":"<a href=\"https://m.chinabidding.cn/zbgs/U-vzMhLU0.html\" rel=\"noopener\" target=\"_blank\">푸란뎬구(普兰店区) 안보(安波)중심 양로원 · 소방 및 시설설비 개조 향상<\/a><br/><span class=\"tag done\">종료<\/span>","s03-073":"푸란뎬(普兰店)","s03-074":"요양기관 / 경쟁적 협의","s03-075":"—<br/><span class=\"small\">낙찰: 책임자 류제(刘杰, 랴오닝)<\/span>","s03-076":"낙찰 10-19","s03-077":"협의에 자격 후심사 6개사가 참여해 총점 순위로 결정. 양로원 개조는 「입소자를 내보내지 않는」 시공이 필요해 야간·구역 분할 작업이 일상이다","s03-078":"보세구(保税区) 소방구조대 · 얼스리푸(二十里堡) 정부 전담 소방서<br/><span class=\"small\"><a href=\"https://www.chinabidding.cn/zbgs/U-vzlLO53.html\" rel=\"noopener\" target=\"_blank\">낙찰 공시<\/a><\/span>","s03-079":"보세구(保税区)","s03-080":"소방서 / 낙찰 공시","s03-081":"전담 소방서 건설·인테리어 패키지: 지역 낙찰 기업을 역추적해 지역 경쟁 구도의 표본으로 쓴다","s03-082":"다롄시 제3인민병원 · 소방시스템 유지보수 및 경보 서비스<br/><span class=\"small\"><a href=\"https://www.dl3y.com/index.php?p=news_ex&amp;id=2569&amp;c_id=23&amp;i=4&amp;lanmu=1\" rel=\"noopener\" target=\"_blank\">낙찰 공고<\/a><\/span>","s03-083":"간징쯔(甘井子)","s03-084":"병원 / 유지보수 서비스","s03-085":"유지보수 입찰은 연간 현금흐름형 사업이고 평가 입찰과 같은 조달 체계다. 한 번만 수행하면 풀에 들어간다","s03-086":"<a href=\"https://czb.dufe.edu.cn/content_85391.html\" rel=\"noopener\" target=\"_blank\">둥베이재경대학(东北财经大学) · 소방 유지보수 서비스<\/a><br/><span class=\"tag done\">기준 참조<\/span>","s03-087":"사허커우(沙河口)","s03-088":"대학 / 경쟁적 협의","s03-089":"<b>45만/년<\/b><br/>2회 갱신 가능(총 3년 이내)","s03-090":"2024년 공고<br/><span class=\"small\">가격 기준으로 사용<\/span>","s03-091":"중소기업 대상. 컨소시엄 불가. 견적에 연간 유지보수와 긴급 수리 대응을 포함","s03-092":"<a href=\"https://www.ggzy.gov.cn/information/deal/html/a/210000/0101/20260407/00218dc24bfb25b449e296a2f33f38a74555.html\" rel=\"noopener\" target=\"_blank\">중산구(中山区) 화산제(华山街) 단지 등 노후 주거단지 개조공사 EPCO<\/a><br/><span class=\"tag done\">개찰 완료<\/span>","s03-093":"중산구(中山区)","s03-094":"국유기업 / EPCO 총도급<br/><span class=\"small\">발주자: 다롄 중산발전투자<\/span>","s03-095":"공고 04-07<br/>개찰 05-11","s03-096":"종합평가법. 소방은 개조 하위 항목(건물 내 소화전, 경보, 피난). 감독: 중산구 재정국","s03-097":"다롄완(大连湾) 해저터널 공사 · 다강구 이전 41창고 부분 소방 개조<br/><span class=\"small\"><a href=\"https://ln.bidcenter.com.cn/diqucontent-402952491-1.html\" rel=\"noopener\" target=\"_blank\">보완 공고<\/a><\/span>","s03-098":"다롄완(大连湾)","s03-099":"교통 인프라 / 특수 개조","s03-100":"보완","s03-101":"부두·터널 부속 창고의 소방 개조: 규모는 작지만 규범 요구가 높아 기술 제안서의 실적 근거로 적합하다","s03-102":"시강구(西岗区) 노후 주거단지 개조공사 3기 · 검사 서비스<br/><span class=\"small\"><a href=\"http://www.dalianzhaobiao.com/gongcheng/297.html\" rel=\"noopener\" target=\"_blank\">원문<\/a><\/span>","s03-103":"시강구(西岗区)","s03-104":"정부 / 검사 서비스","s03-105":"검사 입찰은 「선행 정보」다. 검사를 마친 건물은 6개월 안에 거의 반드시 개조 입찰이 나온다","s03-106":"다롄 하이닉스 MSB3 신설 전산실(기전 총도급: 중국전자시스템공정 제4건설)<br/><span class=\"tag kr\">한국계 관련<\/span>","s03-107":"진푸신구(金普新区)","s03-108":"한국계 사내설비 / 총도급 하도급","s03-109":"SK하이닉스 다롄의 사내설비 증설 패키지: 소방(가스 소화/프리액션/클린구역)은 대개 총도급이 하도급하므로 진입점은 공고가 아니라 총도급의 하도급 풀이다","s03-110":"다롄 지하철 3호선 · 핵심 시스템 설비 안전 향상 개조<br/><span class=\"small\">(2026-08 보도, 사업 유형 정보)<\/span>","s03-111":"전 구간","s03-112":"궤도교통 / 시스템 개조","s03-113":"궤도교통 소방(터널 배연, 승강장 경보)은 진입장벽이 높은 세부 분야이므로 총도급과 미리 접촉할 수 있다","s04-114":"<span class=\"no\">04<\/span>다롄 입찰 방안","s04-115":"4.1 먼저 분류한다: 다롄 입찰은 「누가 낙찰자를 정하는가」로 네 가지 공략이 갈린다","s04-116":"입찰 유형","s04-117":"대표 금액","s04-118":"낙찰 방식","s04-119":"공략","s04-120":"소방서 / 정부 소액 개조","s04-121":"30–200만","s04-122":"경쟁적 협의, 소기업 한정","s04-123":"신속 대응 + 지역 시공팀. 소기업 주체를 준비해 수주","s04-124":"대학·병원 평가와 유지보수","s04-125":"6.5–60만","s04-126":"협상·협의, 등록과 대응을 본다","s04-127":"평가를 먼저 하고 유지보수를 이어 받아 연간 현금흐름을 만든다","s04-128":"국유기업 EPCO / 노후 주거단지","s04-129":"1000만+","s04-130":"종합평가법","s04-131":"컨소시엄(설계+시공+운영). 기술점수는 운영 방안에서 나온다","s04-132":"한국계 사내설비","s04-133":"50–500만","s04-134":"SRM 견적 / 초청 입찰","s04-135":"공급사 등록 + 총도급 하도급 등재 + EHS 심사 세 가지","s04-136":"4.2 자격과 등록 목록(다롄판)","s04-137":"소방시설공사 전문도급 자격(시공 입찰), 건축공사 총도급 자격(공장 전체 개조)","s04-138":"안전생산허가증(입찰일과 공기를 모두 포괄)","s04-139":"<b>사회 소방 기술서비스 정보시스템<\/b> 등록: 소방 안전성 평가 / 소방시설 유지보수 검사(서비스 입찰 필수, 등록이 없으면 즉시 무효)","s04-140":"등록 소방기술자(평가·유지보수 사업의 인력 요건, 입찰 요구에 따라 1~2명 배치)","s04-141":"소기업 신분 증명(중소기업 확인서). 다롄 소액 사업에서 자주 요구된다","s04-142":"신용 조회 3종: 신용중국, 신용중국(랴오닝), 신용중국(다롄) + 중국 정부조달망 신용불량 명단","s04-143":"지역 수행 능력 증명: 다롄 현지 프로젝트팀·창고·24시간 대응 약속(평가에서 주관 점수 항목으로 자주 쓰인다)","s04-144":"전자 입찰: 랴오닝 정부조달망 CA, 입찰서 암호화 업로드 리허설(개찰 후 5분 안에 복호 확인을 마쳐야 한다)","s04-145":"한국계 라인용 별도 준비: 중한 이중언어 EHS 매뉴얼, 작업허가(PTW) 서식, 건강검진과 안전교육 기록","s04-146":"4.3 기술 제안서 주선: 다롄의 세 가지 필수 답안","s04-147":"<b>기존 건축물 개조의 적법 경로.<\/b>다롄은 지방 규정 <b>DB2102/T 0053《기존 건축물 개조 소방설계 심사 기술규정》<\/b>을 적용한다. 기술 제안서에 이 규정을 명시하고 「개조 범위별 분류 → 해당 심사 기준 → 준공검사 자료 목록」의 경로도를 제시하면 GB 규범을 두루 인용하는 것보다 점수를 더 얻는다.","s04-148":"<b>영업·근무 중단 없는 시공.<\/b>병원(제3병원, 우의, 노인병), 양로원(안보), 소방서(타오위안, 진저우 3개소)는 모두 사용을 멈출 수 없다. 구역 격리, 임시 소방(임시 소화전·무선 경보), 24시간 근무 기록을 방안에 적고 도면을 붙인다.","s04-149":"<b>1회 준공검사 통과.<\/b>은폐 공사 3종(배관 압력시험, 케이블 절연, 방화 밀봉)은 지점 번호별로 영상과 데이터를 남긴다. 시운전 기간에 10일의 개선 여유를 두고, 사전에 지역 주택건설·소방 당국과 등록·준공검사 경로를 확인한다.","s04-150":"4.4 견적 전략(업종이 아니라 낙찰 방식 기준)","s04-151":"낙찰 방식","s04-152":"권장 견적","s04-153":"설명","s04-154":"경쟁적 협상·협의(평가, 유지보수, 소액 개조)","s04-155":"1차는 최고한도액 대비 <b>-3%~-6%<\/b>로 맞춘다","s04-156":"제3병원 평가는 「한도액이 곧 예산」이어서 초과하면 바로 무효다. 견적 여지는 가격 인하가 아니라 서비스 범위에서 나온다","s04-157":"종합평가법(EPCO, 국유기업)","s04-158":"<b>4%~8%<\/b> 낮춘다. 기술점수 2점 상승마다 견적을 약 1.2% 올릴 수 있다","s04-159":"운영 기간 방안과 현지 대응 능력이 점수를 벌리는 지점이다","s04-160":"심사 최저가(일부 시공 입찰)","s04-161":"<b>8%~12%<\/b> 낮추되 원가 경계(통제가의 약 85%) 아래로는 내리지 않는다","s04-162":"원가 미달로 부적격 처리되는 손실이 가격을 양보하는 것보다 훨씬 크다","s04-163":"유지보수 갱신(둥베이재경대 방식)","s04-164":"첫해 3%~5% 양보하고 「2회 갱신 가능」 조항을 확보한다","s04-165":"3년 현금흐름이 1년 고가보다 낫다","s04-166":"위 수치는 경험 구간이다. 정식 견적 전에 입찰문서의 평가 방법으로 돌아가 하향 하한이나 기준가 산술평균 설정 여부를 확인해야 한다.","s04-167":"4.5 90일 다롄 실행표","s04-168":"단계","s04-169":"실행","s04-170":"완료 기준","s04-171":"네 개 공고 채널 전부 구독: 랴오닝 조달망, 시 거래 플랫폼, 국유기업 공개조달 플랫폼, 6개 대학·병원 홈페이지 게시판","s04-172":"키워드(소방 개조/소방 및 시설설비 개조 향상/기존 건축물 개조 소방 안전성 평가/소방 유지보수) 적중 알림을 조회할 수 있다","s04-173":"두 가지를 보완: 소기업 주체(또는 컨소시엄) 확보, 사회 소방 기술서비스 정보시스템 등록(평가와 유지보수 두 항목)","s04-174":"등록 화면 캡처 + 소기업 확인서 서식 재사용 가능","s04-175":"서비스 입찰 3건에 응찰(평가·유지보수 우선), 1건 낙찰로 병원이나 대학 풀 진입이 목표","s04-176":"낙찰 또는 3위 이내. 경쟁사 견적 표본 확보","s04-177":"한국계 라인: SK하이닉스 다롄과 진푸신구 한국계 공장에 공급사 등록과 EHS 패키지를 제출하고, 동시에 중국전자시스템공정 제4건설 등 총도급의 하도급 풀에 등재","s04-178":"SRM 계정 1개 + 총도급 2곳 등재","s04-179":"종료된 사업으로 「다롄 견적 기준표」를 만든다(평가/유지보수/소액 개조/EPCO 네 유형)","s04-180":"하향률 모델 v1 + 포기 기준선(65점 미만은 응찰하지 않는다)","s04-181":"4.6 리스크(다롄 특유)","s04-182":"리스크","s04-183":"신호","s04-184":"대응","s04-185":"소기업 전용 조항이 진입을 막는다","s04-186":"공고에 「소기업 전용」이 등장","s04-187":"소기업 주체로 수주하고 주체 회사는 하도급을 맡는다. 지분을 임시로 바꾸지 않는다","s04-188":"서비스 등록 누락","s04-189":"공고가 「사회 소방 기술서비스 정보시스템 등록」을 요구","s04-190":"평가와 유지보수 두 유형을 각각 등록하고 한쪽만 하지 않는다","s04-191":"협의 창구가 3~5 영업일뿐","s04-192":"공고 기간이 짧고 문서를 현장에서 사야 한다","s04-193":"다롄 상주 인력이 서류를 직접 처리한다. 문서비와 보증금을 미리 확보","s04-194":"지역 시공팀의 가격 경쟁","s04-195":"과거 낙찰가가 원가보다 뚜렷이 낮다","s04-196":"가격을 따라가지 않고 기술점수 비중이 높은 입찰(EPCO, 병원, 사내설비)로 옮긴다","s04-197":"한국계 EHS 심사 불합격","s04-198":"등록 후 현장 심사를 요구","s04-199":"EHS 문서 패키지와 훈련 기록을 미리 만들고, 소액 수리부터 맡아 거래 기록을 쌓는다","s05-200":"<span class=\"no\">05<\/span>SK하이닉스: 채널 · 시간창 · 지금 신청하면 늦지 않는가","s05-201":"이 절은 정보의 나열이 아니라 판단 자료다. 각 결론 뒤에 「근거」와 「그래서 우리는 어떻게 하는가」가 붙는다. 확인일 <b>2026-11-25<\/b>.","s05-202":"5.0 조회 기록(원본 반환, 2026-11-25 항목별 실측)","s05-203":"조회 / 입구","s05-204":"실제 반환","s05-205":"판정","s05-206":"https://www.skhynix.com/ 홈페이지 소스","s05-207":"200. 사이트 내 링크에서 유일한 공급사 입구 bizpartner.skhynix.com을 추출","s05-208":"공식 단서 확인","s05-209":"<a href=\"https://bizpartner.skhynix.com/\" rel=\"noopener\" target=\"_blank\">bizpartner.skhynix.com<\/a>「파트너 협업 포털」","s05-210":"200. 메뉴 구매정책 및 규정 / 상생협력정책 / 상생협력 지원프로그램 / 고객지원. 조작 협력사 신규등록·협력사 등록 방법·아이디추가·로그인. 고객센터 1588-8883. 새소식 최신＝2026-10-14(금융지원 안내)","s05-211":"<b>등록 포털뿐이고 공고판 없음<\/b>","s05-212":"srm / supplier / ep / partner.skhynix.com","s05-213":"네 서브도메인 모두 해석 불가(HTTP 000)","s05-214":"공개 SRM 프런트엔드 없음","s05-215":"검색 「SK hynix supplier registration」「SK하이닉스 협력사 등록 SRM」「SK hynix e-procurement」","s05-216":"공식 입찰 페이지 없음. 반환 결과는 보도, 채용, 제3자 전언이 대부분","s05-217":"공개 공고 출처 없음","s05-218":"중국 입찰투표 공공서비스 플랫폼(cebpubservice)에서 「하이닉스」 검색","s05-219":"<b>0건<\/b>","s05-220":"중국 법인은 공개 공고를 내지 않는다","s05-221":"전국 공공자원거래 플랫폼 / 조달·입찰망에서 「하이닉스」 검색","s05-222":"총도급 흔적만 확인: 「다롄 하이닉스 MSB3 신설 전산실」— 중국전자시스템공정 제4건설. 본문은 회원 전용이라 금액은 보이지 않는다","s05-223":"패키지는 총도급 층에서 유통된다","s05-224":"검색 「SK하이닉스 용인 클린룸 일정 / Y1」","s05-225":"첫 클린룸 2027-02 개방, Trinity 클린룸 2027-05, 2027 양산. 선행 착공 구역 공정률 89%","s05-226":"시간 기준점 제시","s05-227":"채용 사이트에서 검색 「SK하이닉스 용인 소방전기공사 현장」","s05-228":"잡코리아 2026-10-26: 오에스엘이엔지가 현장관리를 채용, 업무 내용＝반도체 공장 내 <b>공기흡입식 화재감지기<\/b> 시공 관리","s05-229":"<b>소방 패키지 발주·시공 완료 → 창구 닫힘<\/b>","s05-230":"검색 「청주 M15 배관 유지보수 입찰」","s05-231":"2026-06 입찰, 07-01부터 1년 계약. 초청 범위는 「1군 협력사」로 한정","s05-232":"연간 유지보수 주기＝5~6월 발주","s05-233":"검색 「SK hynix Dalian expansion」","s05-234":"2개 공장 건물 2026 상반기 완공, 2026-11부터 설비 반입","s05-235":"마무리·유지보수 잔여분만 남음","s05-236":"검색 「SK hynix China US export license」","s05-237":"다롄 공장 설비 수출 허가가 2026년 말 만료되어 2027년에는 새 조치가 필요","s05-238":"지연 리스크","s05-239":"검색 「SK hynix Indiana packaging plant」","s05-240":"2026-08-27 착공, 투자 40억 달러+","s05-241":"2027 관찰 항목","s05-242":"위 12건은 당시 실제로 수행한 조회와 반환이다. 집계 플랫폼 본문이 유료인 경우 제목 수준만 기록했다. 발주 일정표는 이 반환들에서 역산한 것이며 SK 공식 일정이 아니다.","s05-243":"5.1 채널 정리: 등록 포털은 있고 입찰 공고판은 없다","s05-244":"입구(개별 실측 완료)","s05-245":"실측 결과","s05-246":"우리 쪽에 대한 의미","s05-247":"<a href=\"https://bizpartner.skhynix.com/\" rel=\"noopener\" target=\"_blank\">bizpartner.skhynix.com<\/a><br/><span class=\"small\">「파트너 협업 포털」<\/span>","s05-248":"200, 공개 랜딩 페이지. 메뉴: 구매정책 및 규정 / 상생협력정책 / 상생협력 지원프로그램 / 고객지원. 조작 가능: <b>협력사 신규등록<\/b>·협력사 등록 방법·아이디추가·로그인. 고객센터 1588-8883. 최신 공지는 2026-10-14 금융지원 안내뿐","s05-249":"유일한 공식 입구이며 등록은 직접 제출할 수 있다. <b>견적 요청과 초청 입찰은 로그인 후 협업 구역<\/b>에 있어 외부에서 보이지 않는다","s05-250":"srm / supplier / ep / partner.skhynix.com","s05-251":"전부 해석 불가(000)","s05-252":"공개 SRM 프런트엔드는 없다. 인터넷에 도는 「입찰 주소」는 대부분 추측이다","s05-253":"중국 입찰투표 공공서비스 플랫폼 · 전국 공공자원거래 플랫폼(「하이닉스」 검색)","s05-254":"입찰 공고 0건","s05-255":"중국 법인은 공개 공고를 내지 않으므로 공개 플랫폼에 「SK하이닉스 소방 입찰」은 없다","s05-256":"조달·입찰망","s05-257":"총도급 흔적만 확인(「다롄 하이닉스 MSB3 신설 전산실」— 중국전자시스템공정 제4건설, 제목 수준, 본문 회원 전용)","s05-258":"사내설비 패키지는 <b>총도급 층<\/b>에서 유통되며, 진입점은 중국전자시스템공정 제4건설 등 총도급의 하도급 풀이다","s05-259":"<b>판단의 의미:<\/b> 공고를 기다리는 일은 영원히 일어나지 않는다. 「명단에 드는 것」이 유일한 시점이고, 그 일 자체에는 공고가 없다. 따라서 아래의 모든 「언제」는 관측 가능한 계약 주기와 공사 일정에서 역산한 것이지 공식 일정이 아니다.","s05-260":"5.2 시간창: 「닫힌 것」과 「유효한 것」을 나눠 본다","s05-261":"창구","s05-262":"기간","s05-263":"상태","s05-264":"근거 · 우리 쪽","s05-265":"연간 설비·유지보수 입찰","s05-266":"2026-05~06 발주<br/>07-01부터 1년","s05-267":"<span class=\"tag done\">종료<\/span>","s05-268":"청주(清州) M15 배관설비 유지보수: 2026-06 입찰, 7-01 기산 → <b>올해 이번 차수에는 참여할 수 없다<\/b>","s05-269":"용인(龙仁) Y1 소방 패키지(공기흡입식 감지기)","s05-270":"발주·시공 완료","s05-271":"<span class=\"tag done\">종료<\/span>","s05-272":"현장 시공관리 채용 2026-10-26(오에스엘이엔지 「SK하이닉스 용인클러스터 소방전기공사」) → <b>메인 패키지 확정, 개선·시운전·유지보수만 남음<\/b>","s05-273":"다롄 2개 공장","s05-274":"2026-11 설비 반입<br/>~ 2027-01 마무리","s05-275":"<span class=\"tag warn\">잔여분만<\/span>","s05-276":"건물 2026 상반기 완공, 11월부터 설비 반입 → 시운전·개선·유지보수를 노려야 하며 메인 패키지는 아니다","s05-277":"Trinity 클린룸(용인)","s05-278":"2027-05 개방<br/>준비기 2027-01~04","s05-279":"<span class=\"tag on\">유효<\/span>","s05-280":"첫 클린룸 2027-02, Trinity 2027-05 → 2027 상반기 신설 창구","s05-281":"<b>2027 연간 설비·유지보수 입찰<\/b>","s05-282":"<span class=\"tag on\">주 목표<\/span>","s05-283":"2026년 주기로 역산 → <b>신규 공급사의 유일한 현실적 입구<\/b>","s05-284":"인디애나 패키징 공장","s05-285":"2027 상반기","s05-286":"<span class=\"tag\">관찰<\/span>","s05-287":"2026-08-27 착공, 설비와 부대 패키지가 순차적으로 나온다","s05-288":"<b>변수:<\/b> 다롄의 미국산 설비 수출 허가","s05-289":"2026-12 만료","s05-290":"<span class=\"tag warn\">리스크<\/span>","s05-291":"2027년에 새 조치가 없으면 다롄 부대 발주가 전체 지연 → 잔여 창구가 사라질 수 있다","s05-292":"이 글의 초기 판본에 적힌 「5~6월 창구」는 <b>2026년<\/b> 주기를 뜻하며 이미 지났다. 위 표는 지난 것과 유효한 것을 나눠 두어, 다시 「지금 응찰 가능」으로 오인하지 않게 한다.","s05-293":"5.3 지금 신청하면 늦지 않는가","s05-294":"<b>2027-05~06<\/b> 연간 유지보수 창구에 대하여","s05-295":"<b style=\"color:var(--green)\">늦지 않다<\/b>: 오늘 제출 → 2027-02까지 서류 심사 완료 → 03월 명단 등재, 약 2개월 완충이 남는다","s05-296":"2026-12~2027-02 창구(다롄 마무리, Y1 마무리)에 대하여","s05-297":"<b style=\"color:var(--red)\">늦다<\/b>: 메인 패키지가 확정되어 유지보수·개선만 남았고, 유지보수도 먼저 하도급 풀 등재가 필요하다","s05-298":"2027-01~04 Trinity 초기 단계에 대하여","s05-299":"<b style=\"color:var(--amber)\">부분적으로 가능<\/b>: 1차 심사를 한 번에 통과하는지에 달려 있고 반려 여지가 없다","s05-300":"일정","s05-301":"날짜","s05-302":"걸림 지점","s05-303":"「협력사 신규등록」 제출","s05-304":"자료 완비도가 모든 것을 결정","s05-305":"1차 서류 심사","s05-306":"2026-12 중순","s05-307":"서류 누락 반려 → 재배열 +4~8주","s05-308":"번역 / 공증","s05-309":"2026-12 하순","s05-310":"중한 이중언어, 공증이 가장 오래 걸린다","s05-311":"EHS / 현장 심사","s05-312":"현장 조건과 안전 기록","s05-313":"명단 / 등급 확정","s05-314":"2027-02 말~03","s05-315":"등급이 초청 여부를 결정","s05-316":"초청 입찰 창구","s05-317":"목표","s05-318":"<b>반드시 짚어야 할 두 가지 불확실성:<\/b>① SK은 처리 소요 기간을 공개하지 않았고 「1~3개월」은 업계 통례일 뿐 약속이 아니다. ② 등록 ≠ 초청이다. 등록 후 등급이 매겨지고 등급이 모자라면 초청 명단에 들지 못할 수 있다. 따라서 2027-05의 목표는 서류 제출이 아니라 <b>「등록 완료 + 동종 실적 최소 1건」<\/b>이어야 한다.","s05-319":"5.4 판단 매트릭스: 이 등록 비용을 투자할 것인가","s05-320":"판정 항목","s05-321":"「예」이면","s05-322":"「아니오」이면","s05-323":"① 2027-01 전에 서류 심사를 마칠 수 있다(자료 완비)","s05-324":"계속 추진","s05-325":"목표를 2027 하반기 창구로 변경","s05-326":"② 3년 내 동종 소방 실적이 있다(준공검사 서류 포함)","s05-327":"초청 입찰을 겨룰 자격 있음","s05-328":"실적을 먼저 보완: 총도급 하도급 / 지역 소액 입찰","s05-329":"③ 주체의 영업 범위가 소방 시공을 포함한다(중국 법인) 또는 이미 한국 소방시설공사업 등록이 있다","s05-330":"직접 응찰 가능","s05-331":"자격을 보완하거나 주체를 바꿔야 하며, 아니면 등록이 헛된다","s05-332":"④ 1회 반려를 감당할 수 있다(재배열 4~8주)","s05-333":"계속 추진","s05-334":"SK에만 걸지 말고 무게를 B 라인에 둔다","s05-335":"<b>판정 규칙:<\/b>네 항목 중 <b>3개 이상 「예」 → 오늘 제출<\/b>, <b>2개 이하 → B 라인으로 실적과 자격을 먼저 보완<\/b>하고 SK는 2027 하반기로 미룬다. 「놓칠까 봐」 반려될 서류를 내지 않는다.","s05-336":"5.5 두 라인 병행(권고이며 선택지 나열이 아니다)","s05-337":"라인","s05-338":"오늘/이번 주 실행","s05-339":"산출물","s05-340":"<b>A 라인<\/b> 한국계","s05-341":"오늘 SK 등록 제출. 동시에 다롄 사내설비와 총도급(중국전자시스템공정 제4건설 등)에 하도급 풀 등재 신청","s05-342":"SRM 계정 + 총도급 2곳 등재. 12월 안에 소액 유지보수 발주가 나올 수 있다","s05-343":"<b>B 라인<\/b> 다롄 현지","s05-344":"이번 주 공고 중인 소액 입찰(양로원, 소방서, 병원 평가)에 응찰. 2027년도 유지보수 차수를 확보","s05-345":"낙찰 기록·3위 이내 → A 라인 자격 증거가 된다","s05-346":"<b>교차점<\/b>","s05-347":"2027-05에 B 라인 실적으로 A 라인 초청 자격을 뒷받침","s05-348":"B 라인 실적이 없으면 A 라인 등록은 계정 하나에 그친다","s06-349":"<span class=\"no\">06<\/span>매일 무엇을 훑는가(키워드와 사이트)","s06-350":"사이트","s06-351":"키워드","s06-352":"주기","s06-353":"랴오닝(辽宁) 정부조달망 · 다롄","s06-354":"소방 개조 / 소방 및 시설설비 개조 향상 / 소방 유지보수 / 소방 안전성 평가","s06-355":"매일 09:00","s06-356":"다롄 국유기업 공개조달 서비스 플랫폼","s06-357":"소방 / 개조 / 노후 주거단지 / EPCO","s06-358":"매일 09:00","s06-359":"대학·병원 홈페이지 입찰 게시판(6곳)","s06-360":"소방, 유지보수, 평가, 개조","s06-361":"매주 월·목","s06-362":"총도급 하도급 풀(중국전자시스템공정 제4건설 등)","s06-363":"클린룸 / 전산실 / 가스 소화","s06-364":"매월","s06-365":"검사·평가 결과 공고","s06-366":"검사, 평가, 개선 통지","s06-367":"매월(3~6개월 선행)","s06-368":"<b>데이터 설명:<\/b>12건 모두 2026-01-01부터 2026-11-25까지 실제로 연 페이지에 대응한다. 집계 플랫폼(조달·입찰망, 채자오망 등)에서 본문이 유료인 사업은 금액과 연락처를 <b>—<\/b>로 표시했고 추측하지 않았다. 제3병원 평가 사업과 둥베이재경대 유지보수 사업은 같은 조달 체계의 과거 공고로, 예산과 자격 기준의 참조이며 현재 공고 중임을 뜻하지 않는다. 견적 구간은 경험값이므로 입찰문서의 평가 방법을 기준으로 삼아야 한다.","s06-369":"<b>SK하이닉스 부분(제05절)의 확인 범위:<\/b>bizpartner.skhynix.com은 2026-11-25 실측에서 접속 가능했고 메뉴와 조작 입구를 항목별로 확인했다. srm / supplier / ep / partner 서브도메인은 실측에서 접속 불가(000)였다. 중국 입찰투표 공공서비스 플랫폼과 전국 플랫폼에서 「하이닉스」 검색 결과는 0건이다. 「다롄 하이닉스 MSB3 신설 전산실」은 조달·입찰망의 제목 수준 정보만 확인했고 본문은 회원 전용이라 <b>금액은 미확인<\/b>이다. 발주 일정표와 「늦지 않다/늦다」는 계약 주기와 공사 일정에서 역산한 것이며 <b>SK 공식 일정이 아니다<\/b>. 등록 처리 기간(1~3개월)은 업계 통례이고 SK이 공개 약속한 바 없다.","s06-370":"정리: Hermes · 2026-11-25 · 단일 페이지판(다롄 한정)","s06-371":"SK 판단: 세 질문으로 진퇴 결정","s06-372":"<b>자료를 2027-01 전에 갖출 수 있는가?<\/b><br/>가능 → 오늘 제출, 불가 → 목표를 2027 하반기로 변경","s06-373":"<b>3년 내 동종 소방 실적(준공검사 포함)이 있는가?<\/b><br/>있음 → 등록이 의미 있다, 없음 → 총도급 하도급이나 지역 소액 입찰부터","s06-374":"<b>주체 자격이 소방 시공을 포함하는가?<\/b><br/>없음 → 등록이 헛되니 주체를 바꾸거나 자격을 보완","s06-375":"<b>3개 「예」 → 오늘 제출, 2개 이하 → 현지 라인으로 실적 보완<\/b>하고 SK는 2027 하반기로 미룬다.","s06-376":"지금 가장 먼저 할 세 가지","s06-377":"<b>등록 두 가지<\/b><br/>사회 소방 기술서비스 정보시스템(평가+유지보수) + 소기업 주체. 하나라도 없으면 다롄 입찰의 절반에 응찰할 수 없다","s06-378":"<b>네 채널 구독<\/b><br/>랴오닝 조달망 / 국유기업 공개조달 플랫폼 / 6개 대학·병원 홈페이지","s06-379":"<b>한국계 세 가지<\/b><br/>SK하이닉스와 진푸(金普) 한국계 공장: 공급사 등록 + EHS 패키지 + 총도급 하도급 등재","s06-380":"다롄 입찰 유형 속람","s06-381":"소방서 개조","s06-382":"30–200만","s06-383":"양로원/병원 평가","s06-384":"6.5–20만","s06-385":"대학 소방 유지보수","s06-386":"45만/년","s06-387":"노후 주거단지 EPCO","s06-388":"1000만+","s06-389":"한국계 사내설비 개조","s06-390":"50–500만","s06-391":"놓치지 말아야 할 네 가지 명칭","s06-392":"소방 개조 → <b>소방 및 시설설비 개조 향상<\/b>, <b>인테리어 개조<\/b>, <b>기존 건축물 개조 소방 안전성 평가<\/b>, <b>소방 유지보수 서비스<\/b>로도 불린다. 첫 번째만 검색하면 다롄의 실제 입찰 대부분을 놓친다.","s06-393":"한 줄 공략","s06-394":"서비스 소액 입찰(평가·유지보수)로 병원과 대학 풀에 들어가고, EPCO와 공장 개조로 자격과 실적을 올리며, 이 둘로 한국계 SRM의 진입을 얻는다. 세 라인이 서로의 증빙이 된다.","s06-395":"다롄 · 소방 개조 · 2026"}},"en":{"meta":{"title":"Dalian · Fire-Protection Retrofit Tender Intelligence & Bidding Plan","desc":"Fire-protection retrofit tender intelligence and bidding plan for the Dalian municipal area: four publishing channels, a notice list, qualification and pricing strategy, and what the SK hynix channel actually returns and when.","ogTitle":"Dalian · Fire-Protection Retrofit Tender Intelligence & Bidding Plan","ogDesc":"12 checkable notices, four publishing channels, and the SK hynix channel as actually tested (2026-11-25)."},"ui":{"themeDark":"Dark","themeLight":"Light","themeToDark":"Switch to dark","themeToLight":"Switch to light"},"s":{"diagram.aria":"Four publishing channels and inspection frequency","diagram.c1.cad":"Daily 09:00","diagram.c1.name":"① Government","diagram.c1.p1":"Liaoning Government","diagram.c1.p2":"Procurement portal","diagram.c2.cad":"Daily 09:00","diagram.c2.name":"② SOEs","diagram.c2.p1":"Dalian SOE Sunshine","diagram.c2.p2":"Procurement platform","diagram.c3.cad":"Mon · Thu","diagram.c3.name":"③ Univ & Hosp","diagram.c3.p1":"6 official web pages","diagram.c4.cad":"Monthly","diagram.c4.name":"④ Korean FDI","diagram.c4.p1":"SRM · invited bidding","diagram.c4.p2":"bizpartner","head-001":"Dalian · Fire-Protection Retrofit Tender Intelligence and Bidding Plan","head-002":"Scope narrowed from “Korean series · nationwide” to <b>within the Dalian municipal administrative area<\/b> (Zhongshan, Xigang, Shahekou, Ganjingzi, Lüshunkou, Jinzhou, Pulandian, Wafangdian, Zhuanghe, Changhai, Hi-Tech Zone, Jinpu New Area, Bonded Zone). Covers fire station retrofit, care-home and hospital fire upgrades, university and hospital maintenance, ageing-neighbourhood EPCO, and the Korean-owned (SK hynix and others) plant-facilities channel.","head-003":"Scope: all of Dalian","head-004":"Data window 2026-01-01 → 2026-11-25","head-005":"Notice sample: 12 items","head-006":"SK channel tested 11-25","head-007":"Single-page edition · Dalian only","head-008":"SK hynix · query result summary (tested 2026-11-25; the 12 raw responses are in 5.0)","head-009":"<b>Public tender notices: 0.<\/b> A search for “Hynix” (the Chinese brand name of SK hynix) on the China Tendering and Bidding Public Service Platform returns nothing; there is no public SRM front end (the srm, supplier, ep and partner subdomains all return 000).","head-010":"<b>The only official entry:<\/b> <a href=\"https://bizpartner.skhynix.com/\" rel=\"noopener\" target=\"_blank\">bizpartner.skhynix.com<\/a> “파트너 협업 포털” (Partner Collaboration Portal) — <b>supplier registration and login only<\/b>, no notice board.","head-011":"<b>There is no public schedule for “when tenders are issued”:<\/b> it can only be inferred backwards — <b>the 2027-05~06 annual maintenance tender is the only realistic window for a new supplier<\/b>; the Yongin Y1 fire package (already under construction on 2026-10-26) and the Dalian main package are both closed, leaving only close-out and maintenance in Dalian.","head-012":"<b>Apply now:<\/b> in time for 2027-05 (about 2 months of buffer), <b>too late<\/b> for 2026-12~2027-02 → see <a href=\"#sk\">section 05, 5.4 decision matrix<\/a>.","head-013":"\n<strong>The conclusion at Dalian level:<\/strong> in Dalian, fire-protection retrofit is not “one pool of notices” but <b>four publishing channels that do not talk to each other<\/b> — ① fire stations and government work go through the Liaoning Government Procurement Portal and the city trading platform; ② SOEs and platform companies (such as Dalian Zhongshan Development Investment) go through the <b>Dalian SOE Sunshine Procurement Service Platform<\/b>; ③ hospitals and universities <b>post on their own websites<\/b> (Third People's Hospital, Friendship/Geriatric Hospital, DUFE, Dalian Medical University, Dalian Maritime University); ④ Korean-owned plant facilities go through SRM or invited bidding. Watch the national platforms only and you miss 3/4 of it.\n  ","s01-014":"<span class=\"no\">01<\/span>Dalian conclusions and key figures","s01-015":"Checkable notices within Dalian (2026 window)","s01-016":"6.5<span style=\"font-size:13px\">×10k<\/span>","s01-017":"Smallest assessment-type lot (Third People's Hospital, micro and small enterprises only)","s01-018":"45<span style=\"font-size:13px\">×10k/yr<\/span>","s01-019":"University fire-system maintenance annual contract (DUFE basis)","s01-020":"Publishing channels (government / SOEs / university and hospital self-procurement / Korean-owned)","s01-021":"SK hynix public tender notices (tested 11-25)","s01-022":"<b>Dalian is dominated by small lots.<\/b> For projects in the CNY 100k–2M band — a CNY 65k assessment, CNY 450k/yr maintenance, fire-station fit-out — what wins is not depth of qualification but <b>response speed and local resources<\/b>; only the big lots (ageing-neighbourhood EPCO, industrial-park packages) reward qualification and track record.","s01-023":"<b>The “micro and small enterprise set-aside” is a hard gate, not a bonus.<\/b> The Third People's Hospital assessment explicitly says “open only to micro and small enterprises” — medium and large firms are not even eligible to register. Dalian applies this clause to a large share of small fire-service lots, so a <b>micro/small entity or a consortium<\/b> must be in place.","s01-024":"<b>Fire technical services need filing, construction needs a licence — do not mix the two.<\/b> Assessment and maintenance are judged on filing in the “Social Fire Technical Service Information System” (including fire-safety assessment); construction is judged on the “Fire Facilities Engineering Professional Contracting” licence; hospital assessment lots check only the former.","s01-025":"<b>The Korean-owned angle in Dalian is plant facilities, not tender notices.<\/b> SK hynix Dalian (the former Intel plant) plus Korean-owned supplier plants in Jinpu New Area run fire retrofit through plant-facilities EHS and SRM quotations. Tested 11-25: the only official presence is the supplier registration portal <a href=\"https://bizpartner.skhynix.com/\" rel=\"noopener\" target=\"_blank\">bizpartner.skhynix.com<\/a>, <b>with no public tender notice board at all<\/b>; a search for “Hynix” on public platforms returns 0, so it can only be located through main-contractor traces (e.g. the “Dalian Hynix MSB3 new server room” was taken by China Electronics System Engineering No.4 Construction). → <a href=\"#sk\">see section 05 for the judgement and time windows<\/a>","s02-026":"<span class=\"no\">02<\/span>Dalian's four publishing channels","s02-027":"Channel","s02-028":"Platform / entry point","s02-029":"Typical lots","s02-030":"Why it needs separate monitoring","s02-031":"<span class=\"tag\">① Government<\/span>","s02-032":"Liaoning Government Procurement Portal ccgp-liaoning.gov.cn · Liaoning Public Resource Trading Network ggzy.ln.gov.cn · Dalian entries on the national platform","s02-033":"Fire rescue station retrofit, care-home fire upgrade, school fire retrofit","s02-034":"Short notice periods (3–5 working days), mostly competitive consultation — miss it and it is gone","s02-035":"<span class=\"tag\">② SOEs<\/span>","s02-036":"<a href=\"https://www.dlygcg.com/\" rel=\"noopener\" target=\"_blank\">Dalian SOE Sunshine Procurement Service Platform<\/a> (also a mirror at 120.46.142.208)","s02-037":"Ageing-neighbourhood retrofit EPCO, plants and property held by platform companies","s02-038":"Not posted on the city-level public platform, only on their own; large values, awarded by comprehensive evaluation","s02-039":"<span class=\"tag\">③ University and hospital self-procurement<\/span>","s02-040":"Dalian Third People's Hospital dl3y.com · Friendship/Geriatric Hospital dlyyyy.com · Dongbei University of Finance and Economics czb.dufe.edu.cn · Dalian Medical University zbcgzx.dmu.edu.cn · Dalian Maritime University cgzx.dlmu.edu.cn","s02-041":"Fire assessment, fire-system maintenance, partial building retrofit","s02-042":"Posted only in the “tender notices” section of their own sites; aggregators often fail to capture the body text and budget","s02-043":"<span class=\"tag kr\">④ Korean-owned plant facilities<\/span>","s02-044":"SK hynix SRM / Korean-owned plants' own supplier systems; subcontractor pools of main contractors (China Electronics System Engineering No.4 and others)","s02-045":"Cleanroom fire protection, server-room gas suppression, EHS rectification","s02-046":"Not public; the way in is supplier registration plus enrolment in main contractors' subcontractor pools, 4–8 weeks","s02-047":"<b>Search trap:<\/b> in Dalian the phrase “fire retrofit” hits very little on public platforms, because most projects are called <b>“fire and facility equipment retrofit and upgrade”, “fit-out retrofit”, “fire-safety assessment for existing-building retrofit”, “fire-system maintenance service”<\/b>. Keywords must be set separately for all four phrasings, or you will miss items every day.","s03-048":"<span class=\"no\">03<\/span>Notice list within Dalian (2026)","s03-049":"Every row corresponds to a page actually opened; where an aggregator charges for the body text, the amount column shows <b>—<\/b> rather than a guess. Notices marked <span class=\"tag done\">closed<\/span> are kept as <b>reference points for pricing and qualification criteria<\/b>.","s03-050":"Project","s03-051":"Area","s03-052":"Type / procurement method","s03-053":"Amount · term","s03-054":"Milestone","s03-055":"Qualification and key points","s03-056":"<a href=\"https://www.dl3y.com/index.php?p=news_ex&amp;id=2527&amp;c_id=23&amp;i=4&amp;lanmu=1\" rel=\"noopener\" target=\"_blank\">Dalian Third People's Hospital · fire-safety assessment for existing-building retrofit<\/a><br/><span class=\"tag done\">closed<\/span>","s03-057":"Ganjingzi<br/>40 Qianshan Road","s03-058":"Hospital / competitive negotiation<br/><span class=\"small\">Agent: Dalian Cheng'an<\/span>","s03-059":"<b>CNY 65,000<\/b><br/>ceiling price the same<br/>45 calendar days","s03-060":"Notice 06-30<br/>Registration 06-30~07-03<br/>Bid opening 07-08 09:00","s03-061":"Restricted to <b>micro and small enterprises<\/b>; must be filed in the “Social Fire Technical Service Information System” including fire-safety assessment; documents CNY 300; three-way credit check (Credit China / Liaoning / Dalian)","s03-062":"<a href=\"https://m.chinabidding.cn/zbgg/U-vzNyH2E.html\" rel=\"noopener\" target=\"_blank\">Zhongshan District Taoyuan fire rescue station retrofit project<\/a><br/><span class=\"tag\">tender notice<\/span>","s03-063":"Zhongshan District","s03-064":"Fire rescue station / tender<br/><span class=\"small\">body text needs membership<\/span>","s03-065":"Notice 09-04","s03-066":"Fire station functional retrofit: barracks, garage, training facilities; comparable projects carry an implicit requirement to keep the station operating during works","s03-067":"<a href=\"https://m.chinabidding.cn/zbgg/U-vzMwGjz.html\" rel=\"noopener\" target=\"_blank\">Jinzhou District fire rescue brigade · Huajia, Xingshu and Yingjin Road fire station fit-out retrofit<\/a><br/><span class=\"tag\">competitive consultation<\/span>","s03-068":"Jinzhou District","s03-069":"Fire station / competitive consultation","s03-070":"Notice 10-16","s03-071":"Three stations in one package: ability to run works at several sites simultaneously; fit-out includes integrated commissioning of fire systems","s03-072":"<a href=\"https://m.chinabidding.cn/zbgs/U-vzMhLU0.html\" rel=\"noopener\" target=\"_blank\">Pulandian District Anbo central care home · fire and facility equipment retrofit and upgrade<\/a><br/><span class=\"tag done\">closed<\/span>","s03-073":"Pulandian","s03-074":"Elderly care institution / competitive consultation","s03-075":"—<br/><span class=\"small\">Award: project manager Liu Jie (Liaoning)<\/span>","s03-076":"Award 10-19","s03-077":"Consultation with post-qualification review of 6 bidders, ranked on total score; a care-home retrofit must be done with residents staying in place, so night and zone-by-zone work is normal","s03-078":"Bonded Zone fire rescue brigade · Ershilipu government full-time fire station<br/><span class=\"small\"><a href=\"https://www.chinabidding.cn/zbgs/U-vzlLO53.html\" rel=\"noopener\" target=\"_blank\">award announcement<\/a><\/span>","s03-079":"Bonded Zone","s03-080":"Fire station / award announcement","s03-081":"Full-time station construction and fit-out package: lets you trace the local winning firms as a sample of the local competitive landscape","s03-082":"Dalian Third People's Hospital · fire-system maintenance service and alarm service<br/><span class=\"small\"><a href=\"https://www.dl3y.com/index.php?p=news_ex&amp;id=2569&amp;c_id=23&amp;i=4&amp;lanmu=1\" rel=\"noopener\" target=\"_blank\">award notice<\/a><\/span>","s03-083":"Ganjingzi","s03-084":"Hospital / maintenance service","s03-085":"Maintenance lots are annual cash-flow projects in the same procurement system as assessment lots — do one and you are in the pool","s03-086":"<a href=\"https://czb.dufe.edu.cn/content_85391.html\" rel=\"noopener\" target=\"_blank\">Dongbei University of Finance and Economics · fire-system maintenance service<\/a><br/><span class=\"tag done\">criteria reference<\/span>","s03-087":"Shahekou","s03-088":"University / competitive consultation","s03-089":"<b>CNY 450,000/yr<\/b><br/>renewable 2 times (max 3 years)","s03-090":"2024 notice<br/><span class=\"small\">used as a price yardstick<\/span>","s03-091":"Open to SMEs; consortia not accepted; the price covers full-year maintenance plus emergency repair response","s03-092":"<a href=\"https://www.ggzy.gov.cn/information/deal/html/a/210000/0101/20260407/00218dc24bfb25b449e296a2f33f38a74555.html\" rel=\"noopener\" target=\"_blank\">Zhongshan District Huashan Street residential compounds and other ageing-neighbourhood retrofit EPCO<\/a><br/><span class=\"tag done\">bid opened<\/span>","s03-093":"Zhongshan District","s03-094":"SOE / EPCO turnkey<br/><span class=\"small\">Client: Dalian Zhongshan Development Investment<\/span>","s03-095":"Notice 04-07<br/>Bid opening 05-11","s03-096":"Comprehensive evaluation; fire protection is a retrofit sub-item (indoor hydrants, alarm, evacuation); supervised by the Zhongshan District Finance Bureau","s03-097":"Dalian Bay subsea tunnel project · Dagang district relocation, partial fire retrofit of warehouse 41<br/><span class=\"small\"><a href=\"https://ln.bidcenter.com.cn/diqucontent-402952491-1.html\" rel=\"noopener\" target=\"_blank\">addendum notice<\/a><\/span>","s03-098":"Dalian Bay","s03-099":"Transport infrastructure / dedicated retrofit","s03-100":"Addendum","s03-101":"Fire retrofit of wharf/tunnel ancillary warehouses: small volume, high code requirements — good backing for a technical bid","s03-102":"Xigang District ageing-neighbourhood retrofit phase III · inspection services<br/><span class=\"small\"><a href=\"http://www.dalianzhaobiao.com/gongcheng/297.html\" rel=\"noopener\" target=\"_blank\">original text<\/a><\/span>","s03-103":"Xigang District","s03-104":"Government / inspection services","s03-105":"Inspection lots are forward intelligence: a building that has been inspected will almost certainly produce a retrofit tender within six months","s03-106":"Dalian Hynix MSB3 new server room (M&E main contractor: China Electronics System Engineering No.4 Construction)<br/><span class=\"tag kr\">Korean-owned related<\/span>","s03-107":"Jinpu New Area","s03-108":"Korean-owned plant facilities / main-contractor subcontract","s03-109":"Plant-facilities expansion package for SK hynix Dalian: fire protection (gas suppression / pre-action / cleanroom zones) is normally subcontracted by the main contractor, so the entry point is the subcontractor pool, not a notice","s03-110":"Dalian Metro Line 3 · safety upgrade of key system equipment<br/><span class=\"small\">(reported 2026-08, project-type intelligence)<\/span>","s03-111":"Whole line","s03-112":"Rail transit / system retrofit","s03-113":"Rail fire protection (tunnel smoke exhaust, concourse alarm) is a high-barrier niche; approach the main contractor early","s04-114":"<span class=\"no\">04<\/span>Dalian bidding plan","s04-115":"4.1 Classify first: four plays by who awards the lot","s04-116":"Lot type","s04-117":"Typical amount","s04-118":"Award method","s04-119":"Play","s04-120":"Fire station / small government retrofit","s04-121":"CNY 300k–2M","s04-122":"Competitive consultation, micro/small only","s04-123":"Fast response + local crew; keep a micro/small entity ready to take the lot","s04-124":"University / hospital assessment and maintenance","s04-125":"CNY 65k–600k","s04-126":"Negotiation / consultation, judged on filing and responsiveness","s04-127":"Do the assessment first, then take the maintenance — annual cash flow","s04-128":"SOE EPCO / ageing neighbourhoods","s04-129":"CNY 10M+","s04-130":"Comprehensive evaluation","s04-131":"Consortium (design + construction + O&M); technical score comes from the O&M plan","s04-132":"Korean-owned plant facilities","s04-133":"CNY 500k–5M","s04-134":"SRM quotation / invited bidding","s04-135":"The three-piece set: supplier registration + main-contractor subcontractor enrolment + EHS audit","s04-136":"4.2 Qualification and filing checklist (Dalian version)","s04-137":"Fire facilities engineering professional contracting licence (construction lots); general building contracting licence (whole-plant retrofit)","s04-138":"Safety production licence (covering bid date + construction period)","s04-139":"<b>Social Fire Technical Service Information System<\/b> filing: fire-safety assessment / fire facility maintenance and inspection (mandatory for service lots — no filing, automatic rejection)","s04-140":"Registered fire engineer (staff threshold for assessment and maintenance projects; 1–2 per the lot's requirements)","s04-141":"Micro/small enterprise evidence (SME declaration letter) — a high-frequency requirement on small Dalian lots","s04-142":"Three credit checks: Credit China, Credit China (Liaoning), Credit China (Dalian) + the China Government Procurement Portal dishonesty list","s04-143":"Evidence of local capability: Dalian project office / warehouse / 24-hour response commitment (often scored as a subjective item)","s04-144":"Electronic bidding: Liaoning Government Procurement Portal CA, rehearsal of encrypted upload (decryption must be confirmed within 5 minutes of bid opening)","s04-145":"For the Korean line additionally: Chinese-Korean bilingual EHS manual, permit-to-work (PTW) templates, medical check and safety training records","s04-146":"4.3 Technical bid spine: Dalian's three mandatory answers","s04-147":"<b>The compliance path for existing-building retrofit.<\/b> Dalian enforces the local code <b>DB2102/T 0053, Technical specification for fire design review of existing-building retrofit<\/b> — naming that code in the technical bid and giving a route map of “classify by retrofit scope → corresponding review criteria → acceptance document list” scores better than generic GB citations.","s04-148":"<b>Construction without shutting the facility or standing the station down.<\/b> Hospitals (Third People's, Friendship, Geriatric), care homes (Anbo) and fire stations (Taoyuan, the three Jinzhou stations) cannot be taken out of service: zone isolation + temporary fire protection (temporary hydrants / wireless alarm) + 24-hour watch records, written into the plan with diagrams.","s04-149":"<b>Pass acceptance first time.<\/b> For concealed works keep images and data by point number for the three items (pipe pressure test, cable insulation, fire stopping); reserve 10 days of rectification float in the commissioning period; confirm the filing or acceptance path with the local housing-construction and fire authorities in advance.","s04-150":"4.4 Pricing strategy (by award method, not by industry)","s04-151":"Award method","s04-152":"Suggested price","s04-153":"Notes","s04-154":"Competitive negotiation / consultation (assessment, maintenance, small retrofit)","s04-155":"Keep the first round at <b>-3% to -6%<\/b> of the ceiling","s04-156":"The Third People's Hospital assessment treats the ceiling as the budget — anything above it is void; margin comes from service scope, not from cutting price","s04-157":"Comprehensive evaluation (EPCO, SOEs)","s04-158":"Bid <b>4%–8%<\/b> below; each +2 technical points ≈ 1.2% headroom on price","s04-159":"The O&M plan and local response capability are where the points are","s04-160":"Lowest evaluated price (some construction lots)","s04-161":"<b>8%–12%<\/b> below, but not under the cost threshold (about 85% of the control price)","s04-162":"Being rejected for below-cost costs far more than the concession","s04-163":"Maintenance renewal (DUFE model)","s04-164":"Give 3%–5% in year one, lock in the “renewable 2 times” clause","s04-165":"3-year cash flow > one high-priced year","s04-166":"These are experience ranges; before any formal quote, go back to the evaluation method in the tender document and check whether it sets a minimum discount or an arithmetic-mean base price.","s04-167":"4.5 90-day Dalian action table","s04-168":"Phase","s04-169":"Action","s04-170":"Acceptance criteria","s04-171":"Subscribe to all four publishing channels: Liaoning procurement portal, city trading platform, SOE sunshine procurement platform, the tender sections of 6 university and hospital websites","s04-172":"Keyword hits (fire retrofit / fire and facility equipment retrofit and upgrade / fire-safety assessment for existing-building retrofit / fire maintenance) arrive as verifiable alerts","s04-173":"Two more things in place: a micro/small entity (or consortium); filing in the Social Fire Technical Service Information System (both assessment and maintenance)","s04-174":"Filing screenshots + a reusable SME declaration letter template","s04-175":"Bid 3 service lots (assessment and maintenance first), target 1 award to get into a hospital or university pool","s04-176":"Award or top three; competitor price samples in hand","s04-177":"Korean line: submit supplier registration + EHS pack to SK hynix Dalian and Jinpu Korean-owned plants; also register in main-contractor subcontractor pools such as China Electronics System Engineering No.4","s04-178":"1 SRM account + 2 main-contractor enrolments","s04-179":"Build a “Dalian price yardstick table” from closed projects (assessment / maintenance / small retrofit / EPCO)","s04-180":"Discount model v1 + no-bid red line (do not bid below 65 points)","s04-181":"4.6 Risks (specific to Dalian)","s04-182":"Risk","s04-183":"Signal","s04-184":"Response","s04-185":"A micro/small-only clause locks you out","s04-186":"The notice says “open only to micro and small enterprises”","s04-187":"Have a micro/small entity take the lot and the main company subcontract; do not reshuffle equity at short notice","s04-188":"Missing service-category filing","s04-189":"The notice requires “filing in the Social Fire Technical Service Information System”","s04-190":"File separately for assessment and for maintenance; do not file only one","s04-191":"The consultation window is only 3–5 working days","s04-192":"Short notice period, documents must be bought on site","s04-193":"Put a person resident in Dalian on document runs; budget for document fees and bid bonds","s04-194":"A price war from local crews","s04-195":"Historic award prices clearly below cost","s04-196":"Do not follow the price down; switch to lots where technical score dominates (EPCO, hospitals, plant facilities)","s04-197":"Failing the Korean EHS audit","s04-198":"An on-site audit is required after registration","s04-199":"Prepare the EHS document pack and drill records in advance; take small repairs first to build a transaction record","s05-200":"<span class=\"no\">05<\/span>SK hynix: channel · time window · is applying now early enough","s05-201":"This section is decision material, not an intelligence dump — every conclusion is followed by “basis” and “so what do we do”. Verification date <b>2026-11-25<\/b>.","s05-202":"5.0 Query log (raw responses, each tested on 2026-11-25)","s05-203":"Query / entry point","s05-204":"Actual response","s05-205":"Verdict","s05-206":"https://www.skhynix.com/ home page source","s05-207":"200; parsing the on-site links yields a single supplier entry: bizpartner.skhynix.com","s05-208":"Official lead found","s05-209":"<a href=\"https://bizpartner.skhynix.com/\" rel=\"noopener\" target=\"_blank\">bizpartner.skhynix.com<\/a> “파트너 협업 포털” (Partner Collaboration Portal)","s05-210":"200; menu 구매정책 및 규정 / 상생협력정책 / 상생협력 지원프로그램 / 고객지원 (purchasing policy and rules / win-win cooperation policy / support programme / customer support); actions 협력사 신규등록 · 협력사 등록 방법 · 아이디추가 · 로그인 (new partner registration · registration method · add ID · login); support 1588-8883; latest 새소식 = 2026-10-14 (financial support notice)","s05-211":"<b>Registration portal only, no notice board<\/b>","s05-212":"srm / supplier / ep / partner.skhynix.com","s05-213":"All four subdomains fail to resolve (HTTP 000)","s05-214":"No public SRM front end exists","s05-215":"Searches for “SK hynix supplier registration”, “SK하이닉스 협력사 등록 SRM”, “SK hynix e-procurement”","s05-216":"No official tender page; results are mainly press, recruiting and third-party retellings","s05-217":"No public notice source","s05-218":"China Tendering and Bidding Public Service Platform (cebpubservice), search for “Hynix”","s05-219":"<b>0 results<\/b>","s05-220":"The Chinese entity issues no public notices","s05-221":"National Public Resource Trading Platform / Procurement and Tendering Network, search for “Hynix”","s05-222":"Only main-contractor traces: “Dalian Hynix MSB3 new server room” — China Electronics System Engineering No.4 Construction; body text needs membership, amount not visible","s05-223":"The package moves at main-contractor level","s05-224":"Search “SK하이닉스 용인 클린룸 일정 / Y1”","s05-225":"First cleanroom opens 2027-02, Trinity cleanroom 2027-05, mass production 2027; first construction zone 89% complete","s05-226":"Gives a time anchor","s05-227":"Recruitment-site search “SK하이닉스 용인 소방전기공사 현장”","s05-228":"JobKorea 2026-10-26: 오에스엘이엔지 hiring site management; the scope is construction management of <b>air-aspirating fire detectors<\/b> inside the semiconductor plant","s05-229":"<b>Fire package already awarded and under construction → window closed<\/b>","s05-230":"Search “청주 M15 배관 유지보수 입찰”","s05-231":"Tendered 2026-06, 1-year contract from 07-01; invitees limited to “1군 협력사” (tier-1 partners)","s05-232":"Annual maintenance cadence = tender issued in 05~06","s05-233":"Search “SK hynix Dalian expansion”","s05-234":"Fab buildings 2 completed in H1 2026, equipment move-in from 2026-11","s05-235":"Only close-out and maintenance residual value left","s05-236":"Search “SK hynix China US export license”","s05-237":"The Dalian fab's equipment export licence expires end-2026; a new arrangement is needed for 2027","s05-238":"Deferral risk","s05-239":"Search “SK hynix Indiana packaging plant”","s05-240":"Ground broken 2026-08-27, investment USD 4bn+","s05-241":"2027 watch item","s05-242":"The 12 items above are the queries actually run and the responses returned; where an aggregator charges for the body text only the headline level is recorded. The tender calendar is inferred from these responses, not an official SK schedule.","s05-243":"5.1 Channel summary: a registration portal, no tender notice board","s05-244":"Entry point (each tested)","s05-245":"Test result","s05-246":"What it means for us","s05-247":"<a href=\"https://bizpartner.skhynix.com/\" rel=\"noopener\" target=\"_blank\">bizpartner.skhynix.com<\/a><br/><span class=\"small\">“파트너 협업 포털” (Partner Collaboration Portal)<\/span>","s05-248":"200, public landing page. Menu: purchasing policy and rules / win-win cooperation policy / win-win cooperation support programme / customer support; actions: <b>협력사 신규등록<\/b> (new partner registration), registration method, add ID, login; support 1588-8883; latest notice only 2026-10-14, a financial support note","s05-249":"The only official entry, registration can be submitted self-service; <b>quotations and invitations sit in the collaboration area after login<\/b>, invisible from outside","s05-250":"srm / supplier / ep / partner.skhynix.com","s05-251":"All fail to resolve (000)","s05-252":"No public SRM front end exists; the “bidding URLs” circulating online are mostly guesses","s05-253":"China Tendering and Bidding Public Service Platform · National Public Resource Trading Platform (search for “Hynix”)","s05-254":"0 tender notices","s05-255":"The Chinese entity issues no public notices, so no “SK hynix fire tender” will appear on public platforms","s05-256":"Procurement and Tendering Network","s05-257":"Only main-contractor traces (“Dalian Hynix MSB3 new server room” — China Electronics System Engineering No.4 Construction; headline level, body text members-only)","s05-258":"Plant-facilities packages move at <b>main-contractor level<\/b>; the entry point is the subcontractor pool of main contractors such as China Electronics System Engineering No.4 Construction","s05-259":"<b>What that means:<\/b> waiting for a notice means waiting forever. “Getting on the list” is the only moment that matters, and it carries no notice. So every “when” below is inferred from observable contract cycles and construction milestones, not from an official schedule.","s05-260":"5.2 Time windows: keep “closed” and “still live” apart","s05-261":"Window","s05-262":"Period","s05-263":"Status","s05-264":"Basis · for us","s05-265":"Annual facilities / maintenance tender","s05-266":"Issued 2026-05~06<br/>1 year from 07-01","s05-267":"<span class=\"tag done\">closed<\/span>","s05-268":"Cheongju M15 piping equipment maintenance: tendered 2026-06, start 7-01 → <b>this year's round can no longer be joined<\/b>","s05-269":"Yongin Y1 fire package (air-aspirating detectors)","s05-270":"Awarded and under construction","s05-271":"<span class=\"tag done\">closed<\/span>","s05-272":"Site management recruitment 2026-10-26 (오에스엘이엔지, “SK hynix Yongin cluster fire and electrical works”) → <b>main package fixed, only rectification, commissioning and maintenance left<\/b>","s05-273":"Dalian fab 2","s05-274":"Equipment move-in 2026-11<br/>~ close-out 2027-01","s05-275":"<span class=\"tag warn\">residual value only<\/span>","s05-276":"Buildings completed in H1 2026, equipment move-in from November → compete for trial run, rectification and maintenance, not the main package","s05-277":"Trinity cleanroom (Yongin)","s05-278":"Opens 2027-05<br/>preparation 2027-01~04","s05-279":"<span class=\"tag on\">still live<\/span>","s05-280":"First cleanroom 2027-02, Trinity 2027-05 → a new-build window in H1 2027","s05-281":"<b>2027 annual facilities / maintenance tender<\/b>","s05-282":"<span class=\"tag on\">main target<\/span>","s05-283":"Extrapolated from the 2026 cadence → <b>the only realistic entry for a new supplier<\/b>","s05-284":"Indiana packaging plant","s05-285":"H1 2027","s05-286":"<span class=\"tag\">watch<\/span>","s05-287":"Ground broken 2026-08-27; equipment and supporting packages released in sequence","s05-288":"<b>Variable: the US equipment export licence for Dalian<\/b>","s05-289":"Expires 2026-12","s05-290":"<span class=\"tag warn\">risk<\/span>","s05-291":"Without a new arrangement in 2027, Dalian supporting-works tenders slip as a whole → the residual-value window may disappear","s05-292":"The “05~06 window” in an earlier version of this page referred to the <b>2026<\/b> cycle and has expired. The table above lists expired and live windows separately so it is not mistaken again for “biddable now”.","s05-293":"5.3 Applying now: is it early enough","s05-294":"For the <b>2027-05~06<\/b> annual maintenance window","s05-295":"<b style=\"color:var(--green)\">In time<\/b>: submit today → document review done by 2027-02 → on the list in 03, leaving about 2 months of buffer","s05-296":"For the 2026-12~2027-02 window (Dalian close-out, Y1 close-out)","s05-297":"<b style=\"color:var(--red)\">Too late<\/b>: the main package is fixed, only maintenance and rectification remain, and even that needs prior registration","s05-298":"For the Trinity front end, 2027-01~04","s05-299":"<b style=\"color:var(--amber)\">Partly achievable<\/b>: depends on passing the review first time; there is no room for a resubmission","s05-300":"Milestone","s05-301":"Date","s05-302":"Gatekeeper","s05-303":"Submit “협력사 신규등록” (new partner registration)","s05-304":"Completeness of the documents decides everything","s05-305":"First document review","s05-306":"Mid 2026-12","s05-307":"Missing items returned → requeue +4~8 weeks","s05-308":"Translation / notarisation","s05-309":"Late 2026-12","s05-310":"Chinese-Korean bilingual, notarised documents take the longest","s05-311":"EHS / site audit","s05-312":"Site conditions and safety record","s05-313":"List / grade determined","s05-314":"End 2027-02~03","s05-315":"The grade decides whether you are invited","s05-316":"Invitation window","s05-317":"Target","s05-318":"<b>Two uncertainties that must be stated:<\/b> ① SK publishes no processing time, “1~3 months” is industry practice, not a commitment; ② registration ≠ invitation — you are graded after registering, and if the grade is too low you may still miss the invitation list. So the 2027-05 target should be <b>“registration complete + at least 1 comparable track record”<\/b>, not just handing in the form.","s05-319":"5.4 Decision matrix: is this registration cost worth it","s05-320":"Criterion","s05-321":"If “yes”","s05-322":"If “no”","s05-323":"① Document review can be completed before 2027-01 (documents ready)","s05-324":"Proceed","s05-325":"Retarget to the H2 2027 window","s05-326":"② Comparable fire track record within 3 years (with acceptance documents)","s05-327":"Eligible to compete for invitations","s05-328":"Fill the record first: main-contractor subcontracts / small local lots","s05-329":"③ Business scope covers fire construction (Chinese entity) or the Korean fire facility construction business is already registered","s05-330":"Can bid directly","s05-331":"Fix the qualification or change the entity first; registration would be wasted","s05-332":"④ Can absorb one return (another 4~8 weeks)","s05-333":"Proceed","s05-334":"Do not bet on SK alone; move the weight to line B","s05-335":"<b>Decision rule:<\/b> <b>3 or more “yes” → submit today<\/b>; <b>2 or fewer → work line B first to build record and qualification<\/b>, park SK until H2 2027, and do not hand in a form that will be returned just to avoid “missing out”.","s05-336":"5.5 Two lines in parallel (a recommendation, not a pile of options)","s05-337":"Line","s05-338":"Action today / this week","s05-339":"Output","s05-340":"<b>Line A<\/b> Korean-owned","s05-341":"Submit the SK registration today; in parallel register in the subcontractor pools of the Dalian plant-facilities team and of main contractors (China Electronics System Engineering No.4 Construction and others)","s05-342":"SRM account + 2 main-contractor enrolments; a small maintenance order may come out in December","s05-343":"<b>Line B<\/b> Dalian local","s05-344":"This week bid the small lots on offer (care home, fire station, hospital assessment); lock in the 2027 annual maintenance round","s05-345":"Award records / top-three placings → become the eligibility evidence for line A","s05-346":"<b>Intersection<\/b>","s05-347":"In 2027-05, use line B's record to support line A's invitation eligibility","s05-348":"Without line B's record, line A's registration is just an account","s06-349":"<span class=\"no\">06<\/span>What to scan every day (keywords and sites)","s06-350":"Site","s06-351":"Keywords","s06-352":"Frequency","s06-353":"Liaoning Government Procurement Portal · Dalian","s06-354":"fire retrofit / fire and facility equipment retrofit and upgrade / fire maintenance / fire-safety assessment","s06-355":"Daily 09:00","s06-356":"Dalian SOE Sunshine Procurement Service Platform","s06-357":"fire / retrofit / ageing neighbourhood / EPCO","s06-358":"Daily 09:00","s06-359":"Tender sections on the 6 university and hospital websites","s06-360":"fire, maintenance, assessment, retrofit","s06-361":"Every Monday and Thursday","s06-362":"Main-contractor subcontractor pools (China Electronics System Engineering No.4 and others)","s06-363":"cleanroom / server room / gas suppression","s06-364":"Monthly","s06-365":"Inspection and assessment result notices","s06-366":"inspection, assessment, rectification notice","s06-367":"Monthly (looking 3~6 months ahead)","s06-368":"<b>Data note:<\/b> all 12 items correspond to pages actually opened between 2026-01-01 and 2026-11-25; where the body text is paywalled on aggregators (Procurement and Tendering Network, Caizhaowang and others), amounts and contacts are marked <b>—<\/b> and nothing is guessed. The Third People's Hospital assessment and the DUFE maintenance project are historic notices from the same procurement system, used as references for budget and qualification criteria; they do not mean the work is currently tendering. Price ranges are empirical and must yield to the evaluation method in the tender document.","s06-369":"<b>Verification boundary for the SK hynix part (section 05):<\/b> bizpartner.skhynix.com was reachable on 2026-11-25 and its menus and action entries are listed item by item; the srm / supplier / ep / partner subdomains were unreachable (000); searches for “Hynix” on the China Tendering and Bidding Public Service Platform and the national platform returned 0; “Dalian Hynix MSB3 new server room” was confirmed only at headline level on the Procurement and Tendering Network, the body text is members-only and <b>the amount is unverified<\/b>. The tender calendar and the “in time / too late” calls are inferred from contract cycles and construction milestones, <b>not an official SK schedule<\/b>; the registration processing time (1~3 months) is industry practice, not an SK commitment.","s06-370":"Compiled by Hermes · 2026-11-25 · single-page edition (Dalian only)","s06-371":"SK decision: three questions settle it","s06-372":"<b>Can the documents be complete before 2027-01?<\/b><br/>Yes → submit today; no → retarget to H2 2027","s06-373":"<b>Is there a comparable fire record within 3 years (with acceptance)?<\/b><br/>Yes → registration is worth it; no → take main-contractor subcontracts / small local lots first","s06-374":"<b>Does the entity's qualification cover fire construction?<\/b><br/>No → registration would be wasted; change the entity or add the licence first","s06-375":"<b>3 “yes” → submit today; 2 or fewer → take the local line to build record<\/b>, park SK until H2 2027.","s06-376":"The three things to do now","s06-377":"<b>Two filing items<\/b><br/>Social Fire Technical Service Information System (assessment + maintenance) + a micro/small entity; miss either and half of Dalian's lots are unbiddable","s06-378":"<b>Subscribe to four channels<\/b><br/>Liaoning procurement portal / SOE sunshine platform / 6 university and hospital websites","s06-379":"<b>Korean three-piece set<\/b><br/>SK hynix and the Jinpu Korean-owned plants: supplier registration + EHS pack + main-contractor subcontractor enrolment","s06-380":"Dalian lot types at a glance","s06-381":"Fire station retrofit","s06-382":"CNY 300k–2M","s06-383":"Care home / hospital assessment","s06-384":"CNY 65k–200k","s06-385":"University fire maintenance","s06-386":"CNY 450,000/yr","s06-387":"Ageing-neighbourhood EPCO","s06-388":"CNY 10M+","s06-389":"Korean-owned plant retrofit","s06-390":"CNY 500k–5M","s06-391":"The four names you must not miss","s06-392":"Fire retrofit → also called <b>fire and facility equipment retrofit and upgrade<\/b>, <b>fit-out retrofit<\/b>, <b>fire-safety assessment for existing-building retrofit<\/b>, <b>fire-system maintenance service<\/b>. Search only the first and you miss most of the real lots in Dalian.","s06-393":"The play in one sentence","s06-394":"Use small service lots (assessment / maintenance) to enter hospital and university pools, use EPCO and plant retrofit to raise qualification and track record, and trade those two for admission to the Korean SRM. The three lines vouch for each other.","s06-395":"Dalian · Fire Protection Retrofit · 2026"}},"ja":{"meta":{"title":"大連 · 消防改修 入札情報と入札方案（2026-11-25）","desc":"大連市の行政区画内における消防改修の入札情報と入札方案：4つの公告チャネル、公告一覧、資格と価格戦略、SKハイニックスチャネルの実測と時間枠。","ogTitle":"大連 · 消防改修 入札情報と入札方案","ogDesc":"検証可能な公告12件、4つの公告チャネル、SKハイニックスチャネルの実測（2026-11-25）。"},"ui":{"themeDark":"ダーク","themeLight":"ライト","themeToDark":"ダークに切り替え","themeToLight":"ライトに切り替え"},"s":{"diagram.aria":"4つの公告チャネルと巡回頻度","diagram.c1.cad":"毎日 09:00","diagram.c1.name":"① 政府","diagram.c1.p1":"遼寧省政府調達網","diagram.c1.p2":"市取引プラットフォーム","diagram.c2.cad":"毎日 09:00","diagram.c2.name":"② 国有企業","diagram.c2.p1":"大連国有企業陽光調達","diagram.c2.p2":"調達プラットフォーム","diagram.c3.cad":"月曜 · 木曜","diagram.c3.name":"③ 院校・病院","diagram.c3.p1":"6校の公式入札欄","diagram.c4.cad":"毎月","diagram.c4.name":"④ 韓国系","diagram.c4.p1":"SRM · 招待入札","diagram.c4.p2":"bizpartner","head-001":"大連 · 消防改修 入札情報と入札方案","head-002":"対象を「韓国シリーズ · 全国」から<b>大連（大连）市の行政区画内<\/b>（中山、西崗、沙河口、甘井子、旅順口、金州、普蘭店、瓦房店、庄河、長海、高新技術産業園区、金普新区、保税区）に絞り込みます。消防署の改修、養老院・病院の消防強化、院校の保守、老朽住宅団地 EPCO、そして韓国系（SKハイニックス等）の工場設備管理（厂务）チャネルを含みます。","head-003":"範囲 大連全域","head-004":"データ期間 2026-01-01 → 2026-11-25","head-005":"公告サンプル 12 件","head-006":"SK チャネルは実測済み 11-25","head-007":"単一ページ版 · 大連のみ","head-008":"SKハイニックス · 検索結果の要約（2026-11-25 実測、12 件の生の戻りは 5.0 参照）","head-009":"<b>公開入札公告：0 件。<\/b>中国入札投標公共サービスプラットフォームで「ハイニックス」を検索しても空でした。公開 SRM フロントエンドは存在しません（srm・supplier・ep・partner のサブドメインはすべて 000）。","head-010":"<b>唯一の公式入口：<\/b><a href=\"https://bizpartner.skhynix.com/\" rel=\"noopener\" target=\"_blank\">bizpartner.skhynix.com<\/a>「파트너 협업 포털」——<b>サプライヤー登録とログイン<\/b>のみで、掲示板はありません。","head-011":"<b>「いつ入札があるか」に公開スケジュールはありません：<\/b>逆算するしかありません——<b>2027-05~06 の年度保守入札が新規サプライヤーにとって唯一の現実的な窓<\/b>です。龍仁 Y1 の消防パッケージ（2026-10-26 時点で施工中）と大連の主パッケージはいずれもクローズ済みで、大連に残るのは引渡し／保守だけです。","head-012":"<b>今から申請を出す場合：<\/b>2027-05 には間に合います（バッファ約 2 か月）。2026-12~2027-02 には<b>間に合いません<\/b> → 判断は <a href=\"#sk\">第 05 節 5.4 判断マトリクス<\/a>をご覧ください。","head-013":"\n<strong>大連という層の結論：<\/strong>大連における消防改修は「ひとつの公告プール」ではなく、<b>4 つの相互に流通しない公告チャネル<\/b>です——①消防署／政府系は遼寧省政府調達網と市取引プラットフォーム；②国有企業とプラットフォーム会社（例：大連中山発展投資）は<b>大連国有企業陽光調達サービスプラットフォーム<\/b>；③病院と大学は<b>自らの公式サイトで公告<\/b>（第三病院、友誼／老年病病院、東北財経、医科大学、海事大学）；④韓国系の工場設備管理は SRM または招待入札。全国プラットフォームだけを見ていると 3/4 を取りこぼします。\n  ","s01-014":"<span class=\"no\">01<\/span>大連の結論と主要数値","s01-015":"大連域内で検証可能な公告（2026 期間）","s01-016":"6.5<span style=\"font-size:13px\">万<\/span>","s01-017":"単件の評価系で最小の金額（第三病院、小零細企業限定）","s01-018":"45<span style=\"font-size:13px\">万/年<\/span>","s01-019":"大学の消防保守 年度案件（東北財経の基準）","s01-020":"公告チャネル（政府／国有企業／院校・病院の自行調達／韓国系）","s01-021":"SKハイニックスの公開入札公告（11-25 実測）","s01-022":"<b>大連は「小口案件」の比率が高い。<\/b>評価 6.5万、保守 45万/年、消防署の内装改修といった 10~200万のレンジの案件で問われるのは、資格の厚みではなく<b>対応速度と地元資源<\/b>です。大口（老朽住宅団地 EPCO、園区の付帯設備）になって初めて資格と実績が効いてきます。","s01-023":"<b>「小零細企業向け特別枠」は加点ではなく必須条件です。<\/b>第三病院の評価案件は明確に「小零細企業に限定」としており、中堅・大企業には応募資格すらありません——大連のこうした小額消防サービス案件はこの条項を多く採用しているため、<b>小零細の主体または共同企業体<\/b>を用意する必要があります。","s01-024":"<b>消防技術サービスは届出、施工は資格、両者を混同しないこと。<\/b>評価／保守は「社会消防技術サービス情報システム（社会消防技术服务信息系统）」の届出（消防安全評価を含む）を、施工は「消防施設工事専門請負（消防设施工程专业承包）」の資格を見ます。病院の評価案件は前者のみを確認します。","s01-025":"<b>大連における韓国系の接点は工場設備管理であり、入札公告ではありません。<\/b>SKハイニックス大連（旧 Intel 工場）＋金普新区の韓国系関連工場では、消防改修は工場設備管理（厂务）の EHS と SRM 見積で進みます。11-25 の実測：公式にはサプライヤー登録ポータル <a href=\"https://bizpartner.skhynix.com/\" rel=\"noopener\" target=\"_blank\">bizpartner.skhynix.com<\/a> があるだけで、<b>公開の入札公告板は一切ありません<\/b>。公開プラットフォームで「ハイニックス」を検索しても 0 件で、ゼネコンの痕跡からしか位置づけられません（例：「大連海力士 MSB3 新建机房」は中国電子系統工程第四建設が受注）。→ <a href=\"#sk\">判断と時間枠は第 05 節<\/a>","s02-026":"<span class=\"no\">02<\/span>大連の4つの公告チャネル","s02-027":"チャネル","s02-028":"プラットフォーム／入口","s02-029":"典型的な案件","s02-030":"なぜ個別に追わねばならないか","s02-031":"<span class=\"tag\">① 政府<\/span>","s02-032":"遼寧省政府調達網 ccgp-liaoning.gov.cn · 遼寧省公共資源取引網 ggzy.ln.gov.cn · 全国プラットフォームの大連項目","s02-033":"消防救助署の改修、養老院の消防強化、学校の消防改修","s02-034":"公告が短く（3~5 営業日）、多くが競争性磋商のため、逃すと次がない","s02-035":"<span class=\"tag\">② 国有企業<\/span>","s02-036":"<a href=\"https://www.dlygcg.com/\" rel=\"noopener\" target=\"_blank\">大連国有企業陽光調達サービスプラットフォーム<\/a>（ほかに 120.46.142.208 のミラー）","s02-037":"老朽住宅団地改修 EPCO、プラットフォーム会社が保有する工場棟と物件","s02-038":"市レベルの公開プラットフォームには載らず、自社プラットフォームのみで公告；金額が大きく、総合評価法で落札者を決める","s02-039":"<span class=\"tag\">③ 院校・病院の自行調達<\/span>","s02-040":"大連市第三人民病院 dl3y.com · 友誼／老年病病院 dlyyyy.com · 東北財経大学 czb.dufe.edu.cn · 大連医科大学 zbcgzx.dmu.edu.cn · 大連海事大学 cgzx.dlmu.edu.cn","s02-041":"消防評価、消防保守、建物の部分改修","s02-042":"公式サイトの「入札公告」欄でしか出さず、アグリゲーターは本文と予算を取りこぼすことが多い","s02-043":"<span class=\"tag kr\">④ 韓国系の工場設備管理<\/span>","s02-044":"SKハイニックス SRM／韓国系工場の独自サプライヤーシステム；ゼネコン（中電四など）の下請データベース","s02-045":"クリーンルームの消防、機械室のガス消火、EHS 改善","s02-046":"非公開；参入方法はサプライヤー登録＋ゼネコンの下請登録で、所要 4~8 週間","s02-047":"<b>検索の落とし穴：<\/b>大連では「消防改造」という語が公開プラットフォームでほとんどヒットしません。多くの案件が<b>「消防・施設設備改修改良」「内装改修」「既存建築改修の消防安全評価」「消防保守サービス」<\/b>という名称だからです。キーワードはこの4つの呼び方ごとに設定しないと、毎日取りこぼします。","s03-048":"<span class=\"no\">03<\/span>大連域内の公告一覧（2026）","s03-049":"各行は実際に開いたページに対応します。アグリゲーターで本文が有料のものは、金額欄を推測せず <b>—<\/b> としています。<span class=\"tag done\">落札済み<\/span> の公告も<b>価格と資格要件の基準<\/b>として残しています。","s03-050":"案件","s03-051":"区域","s03-052":"種別／調達方式","s03-053":"金額 · 期間","s03-054":"節目","s03-055":"資格と要点","s03-056":"<a href=\"https://www.dl3y.com/index.php?p=news_ex&amp;id=2527&amp;c_id=23&amp;i=4&amp;lanmu=1\" rel=\"noopener\" target=\"_blank\">大連市第三人民病院 · 既存建築改修の消防安全評価<\/a><br/><span class=\"tag done\">落札済み<\/span>","s03-057":"甘井子<br/>千山路40号","s03-058":"病院／競争性交渉<br/><span class=\"small\">代理：大連成安<\/span>","s03-059":"<b>6.5 万<\/b><br/>上限価格も同額<br/>45 暦日","s03-060":"公告 06-30<br/>応募 06-30~07-03<br/>開札 07-08 09:00","s03-061":"<b>小零細企業<\/b>限定；「社会消防技術サービス情報システム」に消防安全評価を含めて届出済みであること；図書 300 元；信用中国／遼寧／大連の三重の失信記録を確認","s03-062":"<a href=\"https://m.chinabidding.cn/zbgg/U-vzNyH2E.html\" rel=\"noopener\" target=\"_blank\">中山区桃源消防救助署改修プロジェクト<\/a><br/><span class=\"tag\">入札公告<\/span>","s03-063":"中山区","s03-064":"消防救助署／入札<br/><span class=\"small\">本文は会員制<\/span>","s03-065":"公告 09-04","s03-066":"消防署の機能改修：隊舎、車庫、訓練施設；同種案件では「操業を止めない施工」に暗黙の要求がある","s03-067":"<a href=\"https://m.chinabidding.cn/zbgg/U-vzMwGjz.html\" rel=\"noopener\" target=\"_blank\">金州区消防救助大隊 · 華家・杏樹・迎金路消防署の内装改修<\/a><br/><span class=\"tag\">競争性磋商<\/span>","s03-068":"金州区","s03-069":"消防署／競争性磋商","s03-070":"公告 10-16","s03-071":"3署の一括案件：複数拠点での同時施工を組織する力；内装改修には消防設備の連動調整を含む","s03-072":"<a href=\"https://m.chinabidding.cn/zbgs/U-vzMhLU0.html\" rel=\"noopener\" target=\"_blank\">普蘭店区安波中心敬老院 · 消防・施設設備改修改良<\/a><br/><span class=\"tag done\">落札済み<\/span>","s03-073":"普蘭店","s03-074":"養老施設／競争性磋商","s03-075":"—<br/><span class=\"small\">落札：プロジェクトマネージャー 劉傑（遼）<\/span>","s03-076":"落札 10-19","s03-077":"磋商は事後資格審査 6 社で総合得点順；敬老院の改修は「入居者を院外に出さない」施工が前提で、夜間・区画別の作業が常態","s03-078":"保税区消防救助大隊 · 二十里堡政府専任消防署<br/><span class=\"small\"><a href=\"https://www.chinabidding.cn/zbgs/U-vzlLO53.html\" rel=\"noopener\" target=\"_blank\">落札公示<\/a><\/span>","s03-079":"保税区","s03-080":"消防署／落札公示","s03-081":"専任署の建設・内装パッケージ：現地の落札企業を逆引きでき、地元の競争構造のサンプルになる","s03-082":"大連市第三人民病院 · 消防系統の保守点検サービスおよび警報サービス<br/><span class=\"small\"><a href=\"https://www.dl3y.com/index.php?p=news_ex&amp;id=2569&amp;c_id=23&amp;i=4&amp;lanmu=1\" rel=\"noopener\" target=\"_blank\">落札公告<\/a><\/span>","s03-083":"甘井子","s03-084":"病院／保守サービス","s03-085":"保守案件は年間キャッシュフロー型で、評価案件と同じ調達体系；一度受注すればプール入り","s03-086":"<a href=\"https://czb.dufe.edu.cn/content_85391.html\" rel=\"noopener\" target=\"_blank\">東北財経大学 · 消防保守サービス<\/a><br/><span class=\"tag done\">基準参照<\/span>","s03-087":"沙河口","s03-088":"大学／競争性磋商","s03-089":"<b>45 万/年<\/b><br/>2 回更新可（通算≤3 年）","s03-090":"2024 年の公告<br/><span class=\"small\">価格の尺度として<\/span>","s03-091":"中小企業向け；共同企業体は不可；見積には年間保守＋緊急修理の対応を含む","s03-092":"<a href=\"https://www.ggzy.gov.cn/information/deal/html/a/210000/0101/20260407/00218dc24bfb25b449e296a2f33f38a74555.html\" rel=\"noopener\" target=\"_blank\">中山区華山街小区など老朽住宅団地改修工事 EPCO<\/a><br/><span class=\"tag done\">開札済み<\/span>","s03-093":"中山区","s03-094":"国有企業／EPCO 一括請負<br/><span class=\"small\">発注者：大連中山発展投資<\/span>","s03-095":"公告 04-07<br/>開札 05-11","s03-096":"総合評価法；消防は改修の部分項目（館内消火栓、警報、避難）；監督：中山区財政局","s03-097":"大連湾海底トンネル工事 · 大港区移転 41 号庫の部分消防改修<br/><span class=\"small\"><a href=\"https://ln.bidcenter.com.cn/diqucontent-402952491-1.html\" rel=\"noopener\" target=\"_blank\">補遺公告<\/a><\/span>","s03-098":"大連湾","s03-099":"交通インフラ／特定改修","s03-100":"補遺","s03-101":"埠頭・トンネル付属倉庫の消防改修：小規模で規範要求が高く、技術提案の裏付けに適する","s03-102":"西崗区老朽住宅団地改修工事 三期 · 検査サービス<br/><span class=\"small\"><a href=\"http://www.dalianzhaobiao.com/gongcheng/297.html\" rel=\"noopener\" target=\"_blank\">原文<\/a><\/span>","s03-103":"西崗区","s03-104":"政府／検査サービス","s03-105":"検査案件は「先行情報」：検査を終えた棟は半年以内にほぼ必ず改修案件が出る","s03-106":"大連ハイニックス MSB3 新建機房（設備一括：中国電子系統工程第四建設）<br/><span class=\"tag kr\">韓国系関連<\/span>","s03-107":"金普新区","s03-108":"韓国系工場設備管理／ゼネコン下請","s03-109":"SKハイニックス大連の設備管理拡張パッケージ：消防（ガス消火／プリアクション／クリーンゾーン）は通常ゼネコンが下請に出し、入口は公告ではなくゼネコンの下請データベース","s03-110":"大連地下鉄 3 号線 · 主要システム設備の安全向上改修<br/><span class=\"small\">（2026-08 報道、案件系の情報）<\/span>","s03-111":"全線","s03-112":"軌道交通／システム改修","s03-113":"軌道系の消防（トンネル排煙、コンコース警報）は門の高い分野で、ゼネコンに先行接触できる","s04-114":"<span class=\"no\">04<\/span>大連の入札方案","s04-115":"4.1 まず分類：大連の案件は「誰が落札者を決めるか」で4つの戦い方に分かれる","s04-116":"案件類型","s04-117":"典型的な金額","s04-118":"落札方式","s04-119":"戦い方","s04-120":"消防署／政府の小額改修","s04-121":"30–200 万","s04-122":"競争性磋商、小零細企業限定","s04-123":"迅速な対応＋地元の班；小零細の主体を用意して受ける","s04-124":"院校／病院の評価と保守","s04-125":"6.5–60 万","s04-126":"交渉／磋商、届出と対応力を見る","s04-127":"まず評価、次に保守で年間キャッシュフローを作る","s04-128":"国有企業 EPCO／老朽住宅団地","s04-129":"1000 万+","s04-130":"総合評価法","s04-131":"共同企業体（設計＋施工＋運営）、技術点は運営計画で取る","s04-132":"韓国系の工場設備管理","s04-133":"50–500 万","s04-134":"SRM 見積／招待入札","s04-135":"サプライヤー登録＋ゼネコン下請登録＋EHS 審査の三点セット","s04-136":"4.2 資格と届出の一覧（大連版）","s04-137":"消防施設工事専門請負の資格（施工案件）；建築工事一括請負の資格（工場棟の全体改修）","s04-138":"安全生産許可証（入札日＋工期をカバー）","s04-139":"<b>社会消防技術サービス情報システム<\/b>への届出：消防安全評価／消防施設の保守点検（サービス系案件では必須、届出がなければ即失格）","s04-140":"登録消防技師（評価・保守案件の人員要件、案件の要求に応じて 1~2 名を配置）","s04-141":"小零細企業であることの証明（中小企業声明書）——大連の小額案件で頻出の要求","s04-142":"信用照会の三点：信用中国、信用中国（遼寧）、信用中国（大連）＋中国政府調達網の失信リスト","s04-143":"地元対応力の証明：大連の現地プロジェクト部／倉庫／24 時間対応の確約（評価で主観点項目になることが多い）","s04-144":"電子入札：遼寧省政府調達網の CA、入札図書の暗号化アップロード演習（開札後 5 分以内に復号確認を完了する必要）","s04-145":"韓国系ラインは別途：中韓二言語の EHS マニュアル、作業許可（PTW）様式、健康診断と安全教育の記録","s04-146":"4.3 技術提案の主線：大連の3つの「必答」","s04-147":"<b>既存建築改修の適法ルート。<\/b>大連では地方規程 <b>DB2102/T 0053「既有建筑改造消防设计审查技术规程」（既存建築改修の消防設計審査 技術規程）<\/b>を運用しています——技術提案でこの規程を名指しし、「改修範囲による分類→対応する審査基準→検収資料リスト」の道筋を示す方が、GB 規格を漠然と引用するより点になります。","s04-148":"<b>営業・操業を止めない施工。<\/b>病院（第三、友誼、老年病）、敬老院（安波）、消防署（桃源、金州の3署）はいずれも使用停止にできません：区画隔離＋仮設消防（仮設消火栓／無線警報）＋24 時間の当直記録を計画に書き、図解を添えます。","s04-149":"<b>検収を一度で通す。<\/b>隠蔽部の三点セット（配管耐圧試験、ケーブル絶縁、防火区画貫通処理）は箇所番号ごとに映像とデータを残す；試運転期間に 10 日の是正余裕を確保；事前に地元の住建／消防と届出または検収のルートを確認します。","s04-150":"4.4 価格戦略（業界ではなく落札方式で決める）","s04-151":"落札方式","s04-152":"推奨見積","s04-153":"説明","s04-154":"競争性交渉／磋商（評価、保守、小額改修）","s04-155":"初回は上限価格の <b>-3%~-6%<\/b> に収める","s04-156":"第三病院の評価は「上限価格＝予算」で、超過は即無効；価格の余地は値下げではなくサービス範囲から作る","s04-157":"総合評価法（EPCO、国有企業）","s04-158":"<b>4%~8%<\/b> の下げ、技術点 +2 点ごとに見積を約 1.2% 上乗せできる","s04-159":"運営期間の計画と現地対応力が差のつく点","s04-160":"審査付き最低価格（一部の施工案件）","s04-161":"<b>8%~12%<\/b> の下げ、原価割れの警戒線（上限価格の約 85%）は下回らない","s04-162":"原価割れで失格する代償は、値引きよりはるかに大きい","s04-163":"保守の更新（東北財経モデル）","s04-164":"初年度 3%~5% 譲り、「2 回更新可」の条項を確保","s04-165":"3 年のキャッシュフロー＞単年の高値","s04-166":"以上は経験的なレンジです。正式見積の前に、必ず入札図書の評価方法に戻り、下げ幅の下限や基準価格の算術平均の有無を確認してください。","s04-167":"4.5 90 日間の大連アクション表","s04-168":"段階","s04-169":"アクション","s04-170":"達成基準","s04-171":"4 つの公告チャネルをすべて購読：遼寧調達網、市取引プラットフォーム、国有企業陽光調達プラットフォーム、6 校・病院の公式サイト欄","s04-172":"キーワード（消防改修／消防・施設設備改修改良／既存建築改修の消防安全評価／消防保守）のヒット通知が確認できる","s04-173":"2 点を補う：小零細の主体（または共同企業体）の準備；社会消防技術サービス情報システムへの届出（評価＋保守の2項目）","s04-174":"届出の画面写し＋小零細声明書の雛形が再利用可能","s04-175":"サービス系案件を 3 件応札（評価／保守を優先）、1 件落札して病院または大学のプールに入る","s04-176":"落札または上位 3 位以内；競合の見積サンプルを入手","s04-177":"韓国系ライン：SKハイニックス大連と金普新区の韓国系工場にサプライヤー登録＋EHS パッケージを提出；同時に中電四などのゼネコン下請データベースに登録","s04-178":"SRM アカウント 1 件＋ゼネコン 2 社の登録","s04-179":"落札済み案件で「大連価格尺度表」を作る（評価／保守／小額改修／EPCO の4類型）","s04-180":"下げ率モデル v1＋応札見送りの線引き（65 点未満は応札しない）","s04-181":"4.6 リスク（大連特有）","s04-182":"リスク","s04-183":"兆候","s04-184":"対応","s04-185":"小零細専用条項で門前払いになる","s04-186":"公告に「小零細企業に限定」とある","s04-187":"小零細の主体で受け、本体会社は下請にする；その場で株主構成を変えない","s04-188":"サービス系の届出がない","s04-189":"公告が「社会消防技術サービス情報システムへの届出」を要求","s04-190":"評価と保守の2類型をそれぞれ届出する。片方だけにしない","s04-191":"磋商の窓は 3~5 営業日しかない","s04-192":"公告期間が短く、図書は現地購入が必要","s04-193":"大連に常駐する担当が書類を回す；図書代と保証金を確保","s04-194":"地元班の価格競争","s04-195":"過去の落札価格が明らかに原価を下回る","s04-196":"値段を追わない；技術点の高い案件（EPCO、病院、工場設備管理）に移る","s04-197":"韓国系の EHS 審査に通らない","s04-198":"登録後に現場審査を要求される","s04-199":"事前に EHS 書類一式と訓練記録を用意し、小額修理から受けて取引実績を作る","s05-200":"<span class=\"no\">05<\/span>SKハイニックス：チャネル · 時間枠 · 今から申請して間に合うか","s05-201":"本節は判断材料であり、情報の積み上げではありません——各結論の後ろに「根拠」と「では当方はどうするか」を付けています。確認日 <b>2026-11-25<\/b>。","s05-202":"5.0 照会記録（生の戻り、2026-11-25 に逐条実測）","s05-203":"照会／入口","s05-204":"実際の戻り","s05-205":"判定","s05-206":"https://www.skhynix.com/ のトップページソース","s05-207":"200；サイト内リンクから唯一のサプライヤー入口 bizpartner.skhynix.com を抽出","s05-208":"公式の手がかりを発見","s05-209":"<a href=\"https://bizpartner.skhynix.com/\" rel=\"noopener\" target=\"_blank\">bizpartner.skhynix.com<\/a>「파트너 협업 포털」","s05-210":"200；メニュー 구매정책 및 규정 / 상생협력정책 / 상생협력 지원프로그램 / 고객지원；操作 협력사 신규등록・협력사 등록 방법・아이디추가・로그인；客服 1588-8883；새소식 最新＝2026-10-14（金融支援の説明）","s05-211":"<b>登録ポータルのみで、公告板はない<\/b>","s05-212":"srm / supplier / ep / partner.skhynix.com","s05-213":"4 つのサブドメインはすべて名前解決不可（HTTP 000）","s05-214":"公開 SRM フロントエンドは存在しない","s05-215":"「SK hynix supplier registration」「SK하이닉스 협력사 등록 SRM」「SK hynix e-procurement」を検索","s05-216":"公式の入札ページなし；戻りは報道、求人、第三者による伝聞が中心","s05-217":"公開公告のソースなし","s05-218":"中国入札投標公共サービスプラットフォーム（cebpubservice）で「ハイニックス」を検索","s05-219":"<b>0 件<\/b>","s05-220":"中国法人は公開公告を出さない","s05-221":"全国公共資源取引プラットフォーム／調達・入札網で「ハイニックス」を検索","s05-222":"ゼネコンの痕跡のみ：「大連海力士 MSB3 新建機房」——中国電子系統工程第四建設；本文は会員制で金額は不可視","s05-223":"パッケージはゼネコン層で流れている","s05-224":"「SK하이닉스 용인 클린룸 일정 / Y1」を検索","s05-225":"最初のクリーンルームが 2027-02 に開放、Trinity クリーンルーム 2027-05、2027 年量産；先行工区の進捗 89%","s05-226":"時間の定点が得られる","s05-227":"求人サイトで「SK하이닉스 용인 소방전기공사 현장」を検索","s05-228":"잡코리아 2026-10-26：오에스엘이엔지が現場管理を募集、業務内容＝半導体工場内の<b>空気吸引式火災感知器<\/b>の施工管理","s05-229":"<b>消防パッケージは発注・施工済み → 窓は閉じた<\/b>","s05-230":"「청주 M15 배관 유지보수 입찰」を検索","s05-231":"2026-06 入札、07-01 から 1 年の契約；招待範囲は「1군 협력사」に限定","s05-232":"年間保守のリズム＝5~6 月に発注","s05-233":"「SK hynix Dalian expansion」を検索","s05-234":"2 つの工場棟が 2026 年前半に完工、2026-11 から設備搬入","s05-235":"残るのは引渡し／保守の残余価値のみ","s05-236":"「SK hynix China US export license」を検索","s05-237":"大連工場の設備輸出許可が 2026 年末に期限切れ、2027 年は新たな手当てが必要","s05-238":"先送りリスク","s05-239":"「SK hynix Indiana packaging plant」を検索","s05-240":"2026-08-27 着工、投資 40 億ドル超","s05-241":"2027 年の観察項目","s05-242":"以上の 12 件は当日実際に実行した照会と戻りであり、アグリゲーターで本文が有料のものはタイトル水準のみを記録しています。発注カレンダーはこれらの戻りからの逆算で、SK の公式日程ではありません。","s05-243":"5.1 チャネル総括：登録ポータルはあるが、入札公告板はない","s05-244":"入口（すべて個別に実測済み）","s05-245":"実測結果","s05-246":"当方にとっての意味","s05-247":"<a href=\"https://bizpartner.skhynix.com/\" rel=\"noopener\" target=\"_blank\">bizpartner.skhynix.com<\/a><br/><span class=\"small\">「파트너 협업 포털」<\/span>","s05-248":"200、公開のランディングページ。メニュー：구매정책 및 규정 / 상생협력정책 / 상생협력 지원프로그램 / 고객지원；操作可能：<b>협력사 신규등록<\/b>・협력사 등록 방법・아이디추가・로그인；客服 1588-8883；最新公告は 2026-10-14 の金融支援の説明のみ","s05-249":"唯一の公式入口で、登録は自助で提出可能；<b>見積と招待入札はログイン後の協業エリア<\/b>にあり、外部からは見えない","s05-250":"srm / supplier / ep / partner.skhynix.com","s05-251":"すべて解決不可（000）","s05-252":"公開の SRM フロントエンドは存在せず、ネット上に出回る「入札 URL」の多くは推測です","s05-253":"中国入札投標公共サービスプラットフォーム · 全国公共資源取引プラットフォーム（「ハイニックス」で検索）","s05-254":"入札公告 0 件","s05-255":"中国法人は公開公告を出さず、公開プラットフォームに「SKハイニックス消防案件」は現れません","s05-256":"調達・入札網","s05-257":"ゼネコンの痕跡のみ（「大連海力士 MSB3 新建機房」——中国電子系統工程第四建設、タイトル水準、本文は会員）","s05-258":"設備管理パッケージは<b>ゼネコン層<\/b>を流れます。入口は中国電子系統工程第四建設などの下請データベース","s05-259":"<b>判断の意味：<\/b>公告を待つ＝永遠に来ない、ということです。「名簿に入る」ことが唯一の時点であり、それ自体に公告はありません。したがって以下の「いつ」はすべて、観測可能な契約サイクルと工事の節目からの逆算で、公式日程ではありません。","s05-260":"5.2 時間枠：「閉じた」ものと「まだ有効」なものを分けて見る","s05-261":"窓","s05-262":"期間","s05-263":"状態","s05-264":"根拠 · 当方へ","s05-265":"年度の施設／保守入札","s05-266":"2026-05~06 発注<br/>07-01 から 1 年","s05-267":"<span class=\"tag done\">閉鎖<\/span>","s05-268":"清州 M15 の配管設備保守：2026-06 入札、7-01 起算 → <b>今年のこの回にはもう参加できない<\/b>","s05-269":"龍仁 Y1 消防パッケージ（空気吸引式感知器）","s05-270":"発注・施工済み","s05-271":"<span class=\"tag done\">閉鎖<\/span>","s05-272":"現場施工管理の求人 2026-10-26（오에스엘이엔지「SK하이닉스 용인클러스터 소방전기공사」）→ <b>主パッケージは決定済み、残るのは是正／調整／保守<\/b>","s05-273":"大連 2 工場","s05-274":"2026-11 設備搬入<br/>~ 2027-01 引渡し","s05-275":"<span class=\"tag warn\">残余価値のみ<\/span>","s05-276":"建物は 2026 年前半に完工、11 月から設備搬入 → 狙うのは試運転／是正／保守であり、主パッケージではない","s05-277":"Trinity クリーンルーム（龍仁）","s05-278":"2027-05 開放<br/>準備期 2027-01~04","s05-279":"<span class=\"tag on\">有効<\/span>","s05-280":"最初のクリーンルーム 2027-02、Trinity 2027-05 → 2027 年前半の新設窓","s05-281":"<b>2027 年度の施設／保守入札<\/b>","s05-282":"<span class=\"tag on\">主目標<\/span>","s05-283":"2026 年のリズムから推算 → <b>新規サプライヤー唯一の現実的な入口<\/b>","s05-284":"インディアナ後工程工場","s05-285":"2027 年前半","s05-286":"<span class=\"tag\">観察<\/span>","s05-287":"2026-08-27 着工、設備と付帯パッケージが順次放出","s05-288":"<b>変数：<\/b>大連の米国製設備の輸出許可","s05-289":"2026-12 期限切れ","s05-290":"<span class=\"tag warn\">リスク<\/span>","s05-291":"2027 年に新たな手当てがなければ、大連の付帯発注は全体が先送り → 残余価値の窓が消える可能性","s05-292":"本稿の以前の版に書いた「5~6 月の窓」は <b>2026 年<\/b>のサイクルを指しており、すでに過ぎています。上の表は期限切れと有効を分けて並べ、これを再び「今応札できる」と取り違えないようにしています。","s05-293":"5.3 今から申請を出して、間に合うのか","s05-294":"<b>2027-05~06<\/b> の年度保守窓に対して","s05-295":"<b style=\"color:var(--green)\">間に合います<\/b>：本日提出 → 2027-02 までに書類審査完了 → 03 に名簿入り、なお約 2 か月のバッファがあります","s05-296":"2026-12~2027-02 の窓（大連の引渡し、Y1 の引渡し）に対して","s05-297":"<b style=\"color:var(--red)\">間に合いません<\/b>：主パッケージは決定済みで残るのは保守／是正のみ、しかも保守もまず名簿登録が必要です","s05-298":"2027-01~04 の Trinity 前期に対して","s05-299":"<b style=\"color:var(--amber)\">一部は間に合います<\/b>：審査が一度で通るか次第で、差し戻しの余地はありません","s05-300":"節目","s05-301":"日付","s05-302":"ボトルネック","s05-303":"「협력사 신규등록」を提出","s05-304":"資料の揃い具合がすべてを決める","s05-305":"一度目の書類審査","s05-306":"2026-12 中","s05-307":"不足で差し戻し → 再並び +4~8 週","s05-308":"翻訳／公証","s05-309":"2026-12 下","s05-310":"中韓二言語、公証が最も時間を食う","s05-311":"EHS／現場審査","s05-312":"現場条件と安全記録","s05-313":"名簿／等級の確定","s05-314":"2027-02 末~03","s05-315":"等級が招待の可否を決める","s05-316":"招待入札の窓","s05-317":"目標","s05-318":"<b>明確にしておくべき不確実性が2つ：<\/b>①SK は処理期間を公開しておらず、「1~3 か月」は業界の通例で約束ではありません；②登録≠招待——登録後に等級が付き、等級が足りなければ招待名簿に入れない可能性があります。したがって 2027-05 の目標は<b>「登録完了＋同種の実績を最低 1 件」<\/b>であるべきで、書類を出すだけでは足りません。","s05-319":"5.4 判断マトリクス：この登録コストを投じるべきか","s05-320":"判定項目","s05-321":"「はい」なら","s05-322":"「いいえ」なら","s05-323":"① 2027-01 までに書類審査を完了できる（資料が揃っている）","s05-324":"そのまま進める","s05-325":"目標を 2027 年後半の窓に変更","s05-326":"② 3 年以内の同種消防実績がある（検収書類を含む）","s05-327":"招待入札を争う資格がある","s05-328":"まず実績を補う：ゼネコン下請／地元の小口案件","s05-329":"③ 主体の事業範囲が消防施工をカバーする（中国法人）、または韓国の消防施設業の登録がある","s05-330":"直接応札できる","s05-331":"先に資格を補うか主体を変える。登録が無駄になる","s05-332":"④ 一度の差し戻しに耐えられる（再並び 4~8 週）","s05-333":"そのまま進める","s05-334":"SK だけに賭けない。重心は B ラインへ","s05-335":"<b>判定ルール：<\/b>4 項目中 <b>3 項目以上が「はい」→ 本日提出<\/b>；<b>2 項目以下 → まず B ラインで実績と資格を補う<\/b>。SK は 2027 年後半に回し、「逃さない」ために差し戻される書類を出すのは避けてください。","s05-336":"5.5 2 ライン並行（提案であり、選択肢の羅列ではない）","s05-337":"ライン","s05-338":"本日／今週のアクション","s05-339":"成果物","s05-340":"<b>A ライン<\/b> 韓国系","s05-341":"本日 SK 登録を提出；同時に大連の工場設備管理とゼネコン（中国電子系統工程第四建設など）の下請データベースに登録","s05-342":"SRM アカウント＋ゼネコン 2 社の登録；12 月中に小額保守案件が出る可能性","s05-343":"<b>B ライン<\/b> 大連地元","s05-344":"今週は公告中の小口案件（敬老院、消防署、病院評価）に応札；2027 年度保守の回を確保","s05-345":"落札実績／上位 3 位 → A ラインの資格証拠になる","s05-346":"<b>交差<\/b>","s05-347":"2027-05 に B ラインの実績で A ラインの招待入札資格を支える","s05-348":"B ラインの実績がなければ、A ラインの登録はアカウントにすぎない","s06-349":"<span class=\"no\">06<\/span>毎日何をスキャンするか（キーワードとサイト）","s06-350":"サイト","s06-351":"キーワード","s06-352":"頻度","s06-353":"遼寧省政府調達網 · 大連","s06-354":"消防改修／消防・施設設備改修改良／消防保守／消防安全評価","s06-355":"毎日 09:00","s06-356":"大連国有企業陽光調達サービスプラットフォーム","s06-357":"消防／改修／老朽住宅団地／EPCO","s06-358":"毎日 09:00","s06-359":"院校・病院の公式サイト入札欄（6 校）","s06-360":"消防、保守、評価、改修","s06-361":"毎週月曜・木曜","s06-362":"ゼネコンの下請データベース（中電四など）","s06-363":"クリーンルーム／機械室／ガス消火","s06-364":"毎月","s06-365":"検査・評価結果の公告","s06-366":"検査、評価、是正通知","s06-367":"毎月（3~6 か月の先読み）","s06-368":"<b>データの注記：<\/b>12 件はいずれも 2026-01-01 から 2026-11-25 の期間に実際に開いたページに対応します。アグリゲーター（調達・入札網、采招網など）で本文が有料の案件は、金額と連絡先を <b>—<\/b> とし、推測はしていません。第三病院の評価案件、東北財経の保守案件は同一調達体系の過去公告で、予算と資格要件の基準として参照するものであり、現在募集中であることを意味しません。見積レンジは経験値であり、入札図書の評価方法を基準としなければなりません。","s06-369":"<b>SKハイニックス部分（第 05 節）の検証範囲：<\/b>bizpartner.skhynix.com は 2026-11-25 に実測で到達でき、メニューと操作入口を項目ごとに列挙しました；srm / supplier / ep / partner のサブドメインは実測で到達不可（000）；中国入札投標公共サービスプラットフォームと全国プラットフォームで「ハイニックス」を検索した結果は 0 件；「大連海力士 MSB3 新建機房」は調達・入札網のタイトル水準の情報までしか確認できず、本文は会員制で<b>金額は未検証<\/b>です。発注カレンダーと「間に合う／間に合わない」は契約サイクルと工事の節目からの逆算であり、<b>SK の公式日程ではありません<\/b>；登録の処理期間（1~3 か月）は業界の通例で、SK は公開の約束をしていません。","s06-370":"整理：Hermes · 2026-11-25 · 単一ページ版（大連のみ）","s06-371":"SK 判断：3 つの問いで去就を決める","s06-372":"<b>資料は 2027-01 までに揃うか？<\/b><br/>揃う → 本日提出；揃わない → 目標を 2027 年後半に変更","s06-373":"<b>3 年以内の同種消防実績（検収込み）はあるか？<\/b><br/>ある → 登録に意味が出る；ない → まずゼネコン下請／地元の小口案件","s06-374":"<b>主体の資格は消防施工をカバーしているか？<\/b><br/>ない → 登録は無駄になる。まず主体を変えるか資格を補う","s06-375":"<b>3 項目「はい」→ 本日提出；2 項目以下 → 地元ラインで実績を補う<\/b>。SK は 2027 年後半へ。","s06-376":"今いちばんやるべき3つ","s06-377":"<b>届出の2点<\/b><br/>社会消防技術サービス情報システム（評価＋保守）＋小零細の主体。どちらか欠けると大連の案件の半分は応札できない","s06-378":"<b>4 つのチャネルを購読<\/b><br/>遼寧調達網／国有企業陽光プラットフォーム／6 校・病院の公式サイト","s06-379":"<b>韓国系の三点セット<\/b><br/>SKハイニックスと金普の韓国系工場：サプライヤー登録＋EHS パッケージ＋ゼネコン下請登録","s06-380":"大連の案件類型 早見表","s06-381":"消防署の改修","s06-382":"30–200万","s06-383":"敬老院／病院の評価","s06-384":"6.5–20万","s06-385":"大学の消防保守","s06-386":"45万/年","s06-387":"老朽住宅団地 EPCO","s06-388":"1000万+","s06-389":"韓国系の工場設備管理改修","s06-390":"50–500万","s06-391":"見落としやすい4つの呼び方","s06-392":"消防改修 → <b>消防・施設設備改修改良<\/b>、<b>内装改修<\/b>、<b>既存建築改修の消防安全評価<\/b>、<b>消防保守サービス<\/b>とも呼ばれます。1 つ目だけを検索すると、大連の実際の案件の多くを取りこぼします。","s06-393":"ひと言の戦い方","s06-394":"サービス系の小口案件（評価／保守）で病院と大学のプールに入り、EPCO と工場棟改修で資格と実績を高め、その2つで韓国系 SRM の参入を取る。3 本のラインが互いの証明になる。","s06-395":"Dalian · Fire Protection Retrofit · 2026"}}};/*I18N_END*/
+(function () {
+  var DICT = window.__KFB_I18N__ || {};
+  var LANGS = ['zh', 'ko', 'en', 'ja'];
+  var HTML_LANG = { zh: 'zh-Hans', ko: 'ko', en: 'en', ja: 'ja' };
+  var TITLE = { zh: document.title };
+  var DESC = { zh: (document.querySelector('meta[name="description"]') || {}).content || '' };
+  var LANG_KEY = 'kfb.lang';
+  var THEME_KEY = 'kfb.theme';
+  var root = document.documentElement;
+  var lang = 'zh';
+  var snapshot = [];
+  var nodes = [];
+
+  function collect() {
+    nodes = [].slice.call(document.querySelectorAll('[data-i18n],[data-i18n-html],[data-i18n-aria]'));
+    nodes.forEach(function (el) {
+      snapshot.push(el.hasAttribute('data-i18n-html') ? el.innerHTML : el.textContent);
+    });
+  }
+
+  function pack() { return DICT[lang] || null; }
+
+  function fill() {
+    var p = pack();
+    nodes.forEach(function (el, i) {
+      var key = el.getAttribute('data-i18n') || el.getAttribute('data-i18n-html') || el.getAttribute('data-i18n-aria');
+      var value = p && p.s ? p.s[key] : null;
+      if (value == null) value = snapshot[i];
+      if (el.hasAttribute('data-i18n-aria')) el.setAttribute('aria-label', value);
+      else if (el.hasAttribute('data-i18n-html')) el.innerHTML = value;
+      else el.textContent = value;
+    });
+    var meta = (p && p.meta) || {};
+    document.title = meta.title || TITLE.zh;
+    var desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.content = meta.desc || DESC.zh;
+    var og = document.querySelector('meta[property="og:title"]');
+    if (og && meta.ogTitle) og.content = meta.ogTitle;
+    var ogd = document.querySelector('meta[property="og:description"]');
+    if (ogd && meta.ogDesc) ogd.content = meta.ogDesc;
+    var toggle = document.getElementById('theme-toggle');
+    if (toggle) {
+      var dark = root.dataset.theme === 'dark';
+      var ui = (p && p.ui) || {};
+      toggle.textContent = dark ? (ui.themeLight || '浅色') : (ui.themeDark || '深色');
+      toggle.setAttribute('aria-pressed', String(dark));
+      toggle.setAttribute('aria-label', dark ? (ui.themeToLight || '切换到浅色') : (ui.themeToDark || '切换到深色'));
+    }
+    [].slice.call(document.querySelectorAll('.lang')).forEach(function (btn) {
+      btn.setAttribute('aria-pressed', String(btn.getAttribute('data-lang') === lang));
+    });
+  }
+
+  function applyLang(code, persist) {
+    lang = LANGS.indexOf(code) >= 0 ? code : 'zh';
+    root.lang = HTML_LANG[lang];
+    fill();
+    if (persist) { try { localStorage.setItem(LANG_KEY, lang); } catch (e) {} }
+  }
+
+  function applyTheme(mode, persist) {
+    root.dataset.theme = mode;
+    fill();
+    if (persist) { try { localStorage.setItem(THEME_KEY, mode); } catch (e) {} }
+  }
+
+  collect();
+  var savedLang = null, savedTheme = null;
+  try { savedLang = localStorage.getItem(LANG_KEY); } catch (e) {}
+  try { savedTheme = localStorage.getItem(THEME_KEY); } catch (e) {}
+  var navLang = (navigator.language || 'zh').toLowerCase();
+  var initial = savedLang && LANGS.indexOf(savedLang) >= 0 ? savedLang
+    : navLang.indexOf('ko') === 0 ? 'ko'
+    : navLang.indexOf('ja') === 0 ? 'ja'
+    : navLang.indexOf('zh') === 0 ? 'zh'
+    : navLang.indexOf('en') === 0 ? 'en'
+    : 'en';
+
+  applyLang(initial, false);
+  applyTheme(root.dataset.theme || 'light', false);
+
+  [].slice.call(document.querySelectorAll('.lang')).forEach(function (btn) {
+    btn.addEventListener('click', function () { applyLang(btn.getAttribute('data-lang'), true); });
+  });
+  var themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true);
+    });
+  }
+})();
+</script>
 </body>
 </html>
