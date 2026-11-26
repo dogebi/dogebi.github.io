@@ -103,6 +103,8 @@ label { line-height: 2; }
   background: var(--surface); border-radius: var(--radius-sm);
   padding: 10px 14px; font-size: 13.5px;
 }
+#local-info a { color: var(--accent); text-underline-offset: 2px; }
+#local-info a:hover { text-decoration-thickness: 2px; }
 #compare { margin-top: 4px; }
 #drawing, #sketch-pdf, #sketch-image, #drawing-image {
   width: 100%; margin-top: 12px; border: 1px solid var(--line); border-radius: var(--radius-sm);
