@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hans"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>制作你自己的 mod · Claude Code mods 指南 · k-mods</title><meta content="制作 mod 有两种方式：把需求说给 Claude 让它代劳，或者自己动手写代码。本文两种方式都会讲到，最后还说明把做好的 mod 提交到 k-mods 的完整流程。" name="description"/><link href="https://dogebi.github.io/k-mods/zh/guide/make-your-own/" rel="canonical"/><link href="https://dogebi.github.io/k-mods/guide/make-your-own/" hreflang="ko" rel="alternate"/><link href="https://dogebi.github.io/k-mods/en/guide/make-your-own/" hreflang="en" rel="alternate"/><link href="https://seonggwangju.github.io/k-mods/guide/make-your-own/" hreflang="x-default" rel="alternate"/><meta content="article" property="og:type"/><meta content="k-mods" property="og:site_name"/><meta content="나만의 mod 만들기 · Claude Code mods 가이드 · k-mods" property="og:title"/><meta content="制作 mod 有两种方式：把需求说给 Claude 让它代劳，或者自己动手写代码。本文两种方式都会讲到，最后还说明把做好的 mod 提交到 k-mods 的完整流程。" property="og:description"/><meta content="https://seonggwangju.github.io/k-mods/guide/make-your-own/" property="og:url"/><meta content="https://seonggwangju.github.io/k-mods/og/k-mods.png" property="og:image"/><meta content="ko_KR" property="og:locale"/><meta content="summary_large_image" name="twitter:card"/><meta content="#FFFFFF" media="(prefers-color-scheme: light)" name="theme-color"/><meta content="#0F1318" media="(prefers-color-scheme: dark)" name="theme-color"/><link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;circle cx='50' cy='50' r='44' fill='%2349B3EF'/&gt;&lt;/svg&gt;" rel="icon"/><link href="/k-mods/sitemap-index.xml" rel="sitemap"/><link href="/k-mods/llms.txt" rel="alternate" title="llms.txt" type="text/plain"/><link as="font" crossorigin="" href="/k-mods/fonts/SUIT-Variable.woff2" rel="preload" type="font/woff2"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/><style>@font-face{font-family:"SUIT Variable";src:url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2-variations"),url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}</style><script>(function(){try{var t=localStorage.getItem('kmods-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "做一个自己的 mod", "description": "制作 mod 有两种方式：用自然语言让 Claude 来做，或者自己写代码。本文两种方式都讲，最后再接到把做好的 mod 发布到 k-mods 的流程。", "url": "https://seonggwangju.github.io/k-mods/zh/guide/make-your-own/", "inLanguage": "zh-Hans", "dateModified": "2026-10-07T00:10:15+09:00", "author": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "publisher": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "about": {"@type": "Thing", "name": "Claude Code mods"}, "isPartOf": {"@id": "https://seonggwangju.github.io/k-mods/zh/#website"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "k-mods", "item": "https://seonggwangju.github.io/k-mods/zh/"}, {"@type": "ListItem", "position": 2, "name": "指南", "item": "https://seonggwangju.github.io/k-mods/zh/guide/"}, {"@type": "ListItem", "position": 3, "name": "做一个自己的 mod", "item": "https://seonggwangju.github.io/k-mods/zh/guide/make-your-own/"}]}</script><link href="/k-mods/assets/Base.BXNGk-Gx.css" rel="stylesheet"/><link href="/k-mods/paper.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;700&amp;family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+</head><body><a class="skip" href="#main">跳到正文</a><header class="site-header"><div class="container header-bar"><a class="logo" href="/k-mods/zh/">k-mods<span aria-hidden="true" class="dot"></span></a><div class="header-actions"><nav aria-label="选择语言" class="seg"><a href="/k-mods/guide/make-your-own/" hreflang="ko" lang="ko">KO</a><a href="/k-mods/en/guide/make-your-own/" hreflang="en" lang="en">EN</a><a aria-current="true" href="/k-mods/zh/guide/make-your-own/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a href="/k-mods/ja/guide/make-your-own/" hreflang="ja" lang="ja">日本語</a></nav><button aria-label="切换界面主题" class="icon-btn" data-theme-toggle="" type="button"><svg aria-hidden="true" class="theme-icon-moon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg aria-hidden="true" class="theme-icon-sun" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg></button><a aria-label="GitHub" class="icon-btn" href="https://github.com/dogebi/k-mods"><svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></header><main id="main"><div class="container guide-page"><nav aria-label="当前位置" class="crumb"><a href="/k-mods/zh/">k-mods</a><span aria-hidden="true">/</span><a href="/k-mods/zh/guide/">指南</a><span aria-hidden="true">/</span><span aria-current="page">做一个自己的 mod</span></nav><div class="guide-layout"><article class="prose"><h1 id="나만의-mod-만들기">做一个自己的 mod</h1>
+<p>制作 mod 有两种方式：用自然语言让 Claude 来做，或者自己写代码。本文两种方式都讲，最后再接到把做好的 mod 发布到 k-mods 的流程。</p>
+<h2 id="목차">目录</h2>
+<ul>
+<li><a href="#claude%EC%97%90%EA%B2%8C-%EC%8B%9C%ED%82%A4%EA%B8%B0">让 Claude 来做</a></li>
+<li><a href="#%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0">自己动手做</a>
+<ul>
+<li><a href="#1-%ED%8C%8C%EC%9D%BC-%EC%84%B8-%EA%B0%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0">1. 建三个文件</a></li>
+<li><a href="#2-%EC%BD%94%EB%93%9C-%EC%93%B0%EA%B8%B0">2. 写代码</a></li>
+<li><a href="#3-%EB%B6%88%EB%9F%AC%EC%99%80%EC%84%9C-%EC%8D%A8%EB%B3%B4%EA%B8%B0">3. 加载来试用</a></li>
+<li><a href="#4-%ED%83%80%EC%9E%85-%EC%84%A0%EC%96%B8%EA%B3%BC-validate">4. 类型声明与 validate</a></li>
+<li><a href="#5-%EC%A0%95%EC%A0%81-%EB%B6%84%EC%84%9D-%EA%B7%9C%EC%B9%99">5. 静态分析规则</a></li>
+<li><a href="#6-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%93%B0%EA%B8%B0">6. 写测试</a></li>
+<li><a href="#7-%EC%83%81%ED%83%9C-%EC%A0%80%EC%9E%A5-%EB%B3%80%EC%88%98-vs-state-vs-store">7. 状态保存：变量 vs state vs store</a></li>
+</ul>
+</li>
+<li><a href="#k-mods%EC%97%90-%EC%98%AC%EB%A6%AC%EA%B8%B0">发布到 k-mods</a></li>
+</ul>
+<h2 id="claude에게-시키기">让 Claude 来做</h2>
+<p>这是最快的办法。在会话里把想要的直接说出来就行。</p>
+<pre class="astro-code github-dark-default" data-language="plaintext" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span>입력창 위에 현재 git 브랜치를 보여주는 mod 만들어 줘</span></span></code></pre>
+<p> Claude 会用内置技能 <code>plugin-authoring</code> 来写 mod。这个技能知道你现在用的 Claude Code 版本能用哪些事件和 API、mod 该存在哪里。想直接打开这个技能，就在会话里 <code>/plugin-authoring</code>。</p>
+<p>流程是这样的。</p>
+<ol>
+<li><strong>编写位置</strong> ：Claude <code>~/.claude/dev-mods/&lt;이 세션의 ID&gt;/&lt;mod 이름&gt;/</code> 里写文件。 <code>default</code>·<code>acceptEdits</code> 在权限模式下 <code>~/.claude</code>是受保护的路径，每保存一个文件都会问是否批准。</li>
+<li><strong>批准热重载</strong> ：保存第一个文件时会问“要不要在这个会话里开启热重载”。 <strong>仅本次会话开启</strong> 选中后，本会话的 <code>dev-mods</code> 文件夹里的 mod 会在回合结束时加载，文件有改动的回合结束后又会重新加载。这个选择在恢复会话后也保留。 <strong>暂不</strong>选中后文件会留着，但下次重启该会话时才加载。</li>
+<li><strong>确认加载</strong>: <code>/plugin</code> → <strong>Installed</strong> 标签页里看 mod 有没有显示，也可以在这里关掉。 </li>
+<li><strong>试用并修改</strong>：没达到想要的效果，就直接告诉 Claude 要改什么。改了文件的回合一结束，就能马上试下一次。</li>
+</ol>
+<p> 有些会话里 Claude 写的 mod 根本不加载：没有能批准的人的 <code>claude -p</code> 运行或 <code>dontAsk</code> 模式、还没信任（trust）的工作区， <code>--safe-mode</code>·<code>--bare</code>·<code>disableAllHooks</code>或组织策略把 mod 本身关掉的情况。</p>
+<p><strong>想继续用这个 mod 的话</strong>: <code>dev-mods</code> 文件夹是给创建那个会话的人专用的，而 <code>cleanupPeriodDays</code>（默认 30 天）过了会自动删除。想继续用，就把文件夹复制到我管理的位置。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">cp</span><span style="color:#79C0FF"> -r</span><span style="color:#A5D6FF"> ~/.claude/dev-mods/</span><span style="color:#FF7B72">&lt;</span><span style="color:#A5D6FF">세션</span><span style="color:#A5D6FF"> I</span><span style="color:#E6EDF3">D</span><span style="color:#FF7B72">&gt;</span><span style="color:#A5D6FF">/git-branch</span><span style="color:#A5D6FF"> ~/mods/git-branch</span></span></code></pre>
+<p> 复制之后 <a href="#%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0">自己动手做</a> 里说的 <code>--plugin-dir</code>加载，想和别人一起用就公开成市场。</p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/mods/create#ask-claude-for-a-mod">Ask Claude for a mod</a></p>
+<h2 id="직접-만들기">自己动手做</h2>
+<p> 想弄懂代码怎么跑，直接写一遍最快。不需要 Node.js 或打包器，Claude Code 会 <code>.ts</code>·<code>.js</code> 会直接读文件。 </p>
+<p> 这里 <code>tool-tally</code> 的 mod。每次用工具就计数，并在 spinner 旁边 <code>· 도구 3번</code> 那样显示， <code>/tally</code>，就会告诉你到现在为止计的次数。</p>
+<h3 id="1-파일-세-개-만들기">1. 建三个文件</h3>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> tool-tally/.claude-plugin</span><span style="color:#A5D6FF"> tool-tally/hooks</span></span></code></pre>
+<p><code>tool-tally/.claude-plugin/plugin.json</code>是插件的清单（<code>manifest</code>）。</p>
+<pre class="astro-code github-dark-default" data-language="json" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E6EDF3">{</span></span>
+<span class="line"><span style="color:#7EE787">  "name"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"tool-tally"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#7EE787">  "version"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"0.1.0"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#7EE787">  "description"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"도구 호출 수를 세어 스피너 옆에 보여주고 /tally로 알려줘요"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#7EE787">  "author"</span><span style="color:#E6EDF3">: { </span><span style="color:#7EE787">"name"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"당신의 이름"</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+<p><code>tool-tally/hooks/hooks.json</code> 会告诉我代码文件在哪里。这个 <code>modules</code> 键，插件才能成为 mod。 </p>
+<pre class="astro-code github-dark-default" data-language="json" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E6EDF3">{</span></span>
+<span class="line"><span style="color:#7EE787">  "modules"</span><span style="color:#E6EDF3">: [</span><span style="color:#A5D6FF">"./register.ts"</span><span style="color:#E6EDF3">]</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+<h3 id="2-코드-쓰기">2. 写代码</h3>
+<p><code>tool-tally/hooks/register.ts</code>是钩子模块（<code>hooks module</code> ）。 <code>register</code> 导出函数后，Claude Code 加载 mod 时会调用一次。 </p>
+<pre class="astro-code github-dark-default" data-language="typescript" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FF7B72">import</span><span style="color:#FF7B72"> type</span><span style="color:#E6EDF3"> { On } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> 'claude-code'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// 횟수. 아래 두 훅이 같이 써요</span></span>
+<span class="line"><span style="color:#FF7B72">let</span><span style="color:#E6EDF3"> calls </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> register</span><span style="color:#E6EDF3">(</span><span style="color:#FFA657">on</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> On</span><span style="color:#E6EDF3">)</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> void</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#8B949E">  // 세션이 시작할 때 한 번: /tally 명령을 등록해요</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'session.start'</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">$</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">e</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">next</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    await</span><span style="color:#E6EDF3"> $.command.</span><span style="color:#D2A8FF">register</span><span style="color:#E6EDF3">({ name: </span><span style="color:#A5D6FF">'tally'</span><span style="color:#E6EDF3">, description: </span><span style="color:#A5D6FF">'지금까지 쓴 도구 횟수 보기'</span><span style="color:#E6EDF3"> })</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#D2A8FF"> next</span><span style="color:#E6EDF3">(e)</span></span>
+<span class="line"><span style="color:#E6EDF3">  })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // Claude가 도구를 쓰려고 할 때마다</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'tool.call'</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">$</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">e</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">next</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    calls </span><span style="color:#FF7B72">+=</span><span style="color:#79C0FF"> 1</span></span>
+<span class="line"><span style="color:#E6EDF3">    $.ui.</span><span style="color:#D2A8FF">invalidate</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'ui.render'</span><span style="color:#E6EDF3">) </span><span style="color:#8B949E">// 화면을 다시 그려서 새 숫자가 보이게 해요</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#D2A8FF"> next</span><span style="color:#E6EDF3">(e) </span><span style="color:#8B949E">// 도구는 평소대로 실행</span></span>
+<span class="line"><span style="color:#E6EDF3">  })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // /tally를 입력했을 때만</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'command.run'</span><span style="color:#E6EDF3">, { command: </span><span style="color:#A5D6FF">'tally'</span><span style="color:#E6EDF3"> }, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> () </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3"> { text: </span><span style="color:#A5D6FF">'지금까지 도구를 '</span><span style="color:#FF7B72"> +</span><span style="color:#E6EDF3"> calls </span><span style="color:#FF7B72">+</span><span style="color:#A5D6FF"> '번 썼어요'</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">  })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // 스피너를 그릴 때마다</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'ui.render'</span><span style="color:#E6EDF3">, { component: </span><span style="color:#A5D6FF">'Spinner'</span><span style="color:#E6EDF3"> }, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">$</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">e</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">next</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#D2A8FF"> next</span><span style="color:#E6EDF3">({ </span><span style="color:#FF7B72">...</span><span style="color:#E6EDF3">e, props: { </span><span style="color:#FF7B72">...</span><span style="color:#E6EDF3">e.props, suffix: </span><span style="color:#A5D6FF">' · 도구 '</span><span style="color:#FF7B72"> +</span><span style="color:#E6EDF3"> calls </span><span style="color:#FF7B72">+</span><span style="color:#A5D6FF"> '번'</span><span style="color:#E6EDF3"> } })</span></span>
+<span class="line"><span style="color:#E6EDF3">  })</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+<p>就是这四个钩子做的事。</p>
+<ul>
+<li><code>session.start</code> ：会话第一回合前执行一次，之后每次模块重载都会执行。 <code>/tally</code> 命令。 </li>
+<li><code>tool.call</code>：Claude 每次用工具前都会执行。把次数加一，并请求重绘界面。</li>
+<li><code>command.run</code>: <code>/tally</code> 时才会执行。 <code>next</code>不调用……直接回答的“响应（<code>answer</code>”的方式。</li>
+<li><code>ui.render</code>：每次绘制 spinner 时执行。Claude Code 的 spinner 原样保留，只在词后面加上次数的“变体（<code>rewrite</code>”的方式。</li>
+</ul>
+<h3 id="3-불러와서-써보기">3. 加载来试用</h3>
+<p><code>--plugin-dir</code>不安装，只在本次会话里加载插件目录。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#79C0FF"> --plugin-dir</span><span style="color:#A5D6FF"> ./tool-tally</span></span></code></pre>
+<p>让它用几次工具后（<code>여기 파일 목록 보여주고 README 읽어줘</code> 等）spinner 文案会 <code>Thinking · 도구 2번…</code> 那样变。结束后 <code>/tally</code> 输入 <code>tool-tally: 지금까지 도구를 2번 썼어요</code>有没有出现。</p>
+<p> 开着会话不动 <code>register.ts</code> 的 <code>' · 도구 '</code><code>' · 지금까지 '</code> 改掉再保存试试。保存后，转录里会出现 <code>tool-tally</code> 会出现 reloaded 一行，下一个 spinner 起就能看到新文案。这就是热重载。 </p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/mods/create#write-a-mod-yourself">Write a mod yourself</a></p>
+<h3 id="4-타입-선언과-validate">4. 类型声明与 validate</h3>
+<p><code>--plugin-dir</code> 加载或重载 mod 时，Claude Code 都会生成与我用的版本完全对应的类型声明 <code>tool-tally/.claude-plugin/types/</code> 写在下面。 </p>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>包含的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>claude-code/index.d.ts</code></td>
+<td>所有事件与输入输出、所有 mod API 方法、各界面能画的元素</td>
+</tr>
+<tr>
+<td><code>claude-code-tools/index.d.ts</code></td>
+<td>内置工具的输入与结果类型（<code>e.tool === 'Bash'</code>来收窄使用范围）</td>
+</tr>
+<tr>
+<td><code>claude-code-mcp/index.d.ts</code></td>
+<td>最近保存时已连接的 MCP 工具的输入类型</td>
+</tr>
+<tr>
+<td><code>tsconfig.json</code></td>
+<td>适配钩子模块的编译选项</td>
+</tr>
+</tbody>
+</table>
+<p>编辑器的自动补全和类型检查会看这些文件。每个版本的事件与 API 都可能变，所以这些生成的文件比其他任何文档都准确。</p>
+<p><code>claude plugin validate</code>不用起会话，就能看到 Claude Code 是怎么读我的 mod 的。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> validate</span><span style="color:#A5D6FF"> ./tool-tally</span></span></code></pre>
+<pre class="astro-code github-dark-default" data-language="text" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span>  ❯ ./register.ts hooks: session.start, tool.call, command.run{command=tally}, ui.render{component=Spinner}</span></span>
+<span class="line"><span>  ❯ ./register.ts calls: $.command.register, $.ui.invalidate</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>✔ Validation passed</span></span></code></pre>
+<p><code>hooks:</code> 行会显示这个模块接的事件和 matcher。想要的事件不在这行里（通常是事件名打错），那个钩子就不会执行。 <code>calls:</code> 行会显示这个模块调用的全部 mod API。要上架到 k-mods 的 mod <code>scripts/check.sh mods/&lt;이름&gt;</code> 以 <code>--strict</code> 一次跑完 validate 和测试。 </p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/mods/create#get-type-definitions-for-your-version">Get type definitions for your version</a>, <a href="https://code.claude.com/docs/en/plugins/mods/create#check-what-claude-code-reads-from-your-mod">Check what Claude Code reads from your mod</a></p>
+<h3 id="5-정적-분석-규칙">5. 静态分析规则</h3>
+<p> Claude Code 不执行代码也能读出会接哪些事件、调哪些 API。为此代码必须守几条规则。违反了 <code>claude plugin validate</code>会报错。</p>
+<ul>
+<li><strong><code>$.네임스페이스.메서드(...)</code>完整展开写出</strong>: <code>const ui = $.ui</code> 那样放进变量、解构，或 <code>$[name]</code> 那样用算出来的名字访问是不行的。 <code>$.ui</code> 放进变量时 <code>$.ui is used as a value</code>而失败。</li>
+<li><strong><code>$</code>的辅助函数，只能是同一文件顶层声明的函数</strong> ：闭包、方法、从其他文件导入的函数上 <code>$</code>无法传入。（<code>$.state</code> 的 <code>read</code>·<code>update</code>是例外。）</li>
+<li><strong>事件名要用字符串字面量</strong>: <code>on('tool.call', ...)</code>那样直接写。用变量或循环传事件名会失败。</li>
+<li><strong>同一事件不要在没有 matcher 的情况下注册两次</strong>: <code>session.start</code>那样没有 matcher 的事件，一个模块只注册一次。</li>
+<li><strong><code>register</code> 在内 <code>on</code>不要重复声明叫……的名字</strong> ：用变量或参数 <code>on</code> 指到……时 <code>"on" is declared again (shadowed)</code>而失败。</li>
+<li><strong> import 只认插件内的相对路径和 <code>claude-code</code>仅</strong> ：动态 <code>import()</code> 或 <code>require</code>不行。所有文件都是 ES 模块。</li>
+<li><strong> Node API、全局 <code>fetch</code>·<code>setTimeout</code> 无 </strong> ：文件是 <code>$.fs</code> ，网络是 <code>$.http</code> ，定时器是 <code>$.clock</code>。</li>
+<li><strong> （k-mods 附加规则）能拦截工具调用的钩子上 <code>.catch</code> 添加 </strong>: <code>tool.call</code>, <code>tool.check</code>, <code>prompt.submit</code> 那样能切断链条的钩子失败时怎么办 <code>.catch</code> 来定 <code>--strict</code> 通过 validate。如果是负责拦截的 mod，失败时也要按拦截来回答（fail closed）。 </li>
+</ul>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/mods/create#check-what-claude-code-reads-from-your-mod">Follow these rules so that static analysis can find every hook and call</a></p>
+<h3 id="6-테스트-쓰기">6. 写测试</h3>
+<p><code>claude plugin test</code> 不用会话、不用登录、不用网络就能测钩子。 <code>claude-code/testing</code>里导入测试工具。</p>
+<p><code>tool-tally/tests/tool-tally.test.ts</code>:</p>
+<pre class="astro-code github-dark-default" data-language="typescript" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { expect, test } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> 'claude-code/testing'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">test</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'/tally는 지금까지 받은 도구 호출 수를 보고해요'</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">$</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">on</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#8B949E">  // Claude Code 대신 도구 호출에 답해 줘요 (실제 도구는 실행 안 됨)</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'tool.call'</span><span style="color:#E6EDF3">, () </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> ({ result: </span><span style="color:#A5D6FF">'ok'</span><span style="color:#E6EDF3"> }))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  await</span><span style="color:#E6EDF3"> $.tool.</span><span style="color:#D2A8FF">call</span><span style="color:#E6EDF3">({ tool: </span><span style="color:#A5D6FF">'Bash'</span><span style="color:#E6EDF3">, command: </span><span style="color:#A5D6FF">'ls'</span><span style="color:#E6EDF3"> })</span></span>
+<span class="line"><span style="color:#FF7B72">  await</span><span style="color:#E6EDF3"> $.tool.</span><span style="color:#D2A8FF">call</span><span style="color:#E6EDF3">({ tool: </span><span style="color:#A5D6FF">'Read'</span><span style="color:#E6EDF3">, file_path: </span><span style="color:#A5D6FF">'README.md'</span><span style="color:#E6EDF3"> })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> answer</span><span style="color:#FF7B72"> =</span><span style="color:#FF7B72"> await</span><span style="color:#E6EDF3"> $.command.</span><span style="color:#D2A8FF">run</span><span style="color:#E6EDF3">({ command: </span><span style="color:#A5D6FF">'tally'</span><span style="color:#E6EDF3">, args: </span><span style="color:#A5D6FF">''</span><span style="color:#E6EDF3"> })</span></span>
+<span class="line"><span style="color:#D2A8FF">  expect</span><span style="color:#E6EDF3">(answer.text).</span><span style="color:#D2A8FF">toBe</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'지금까지 도구를 2번 썼어요'</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"><span style="color:#E6EDF3">})</span></span></code></pre>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> test</span></span></code></pre>
+<p><code>tool-tally</code> 目录里运行，就会显示测试名和是否通过。要上架到 k-mods 的 mod，最好把纯逻辑（分类、格式转换等） <code>$</code> 抽成不接这个参数的函数，用普通单元测试验证，只有事件往来的流程 <code>claude plugin test</code>来确认。</p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/mods/test">Test a mod</a></p>
+<h3 id="7-상태-저장-변수-vs-state-vs-store">7. 状态保存：变量 vs state vs store</h3>
+<p>值放在哪里，决定了它能存活多久。</p>
+<table>
+<thead>
+<tr>
+<th>保存位置</th>
+<th>存活时间</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模块变量（<code>let calls = 0</code>)</td>
+<td>直到模块重载为止（开发中每次保存都会重置）</td>
+<td> 丢了也没关系的值。本教程的 <code>calls</code>如</td>
+</tr>
+<tr>
+<td><code>$.state</code></td>
+<td> 会话结束或 <code>/clear</code>·<code>/resume</code>·<code>/branch</code>为止。重载后也还在。</td>
+<td>界面依赖这个值，但又要熬过重载时。写入值后，读这个值的界面会自动重绘（响应式）。</td>
+</tr>
+<tr>
+<td><code>$.store</code></td>
+<td> 我自己删掉，或者 <code>cleanupPeriodDays</code> 期间一直没有会话使用为止 </td>
+<td>像设置值、记录这类下次开会话也要留下的值。这台电脑的所有会话共用一个。</td>
+</tr>
+</tbody>
+</table>
+<p>三种混着用的情况也很多。详细的代码示例（<code>$.state</code> 里声明类型， <code>/clear</code> 之后恢复值等）都在官方文档里。 </p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/mods/interface#keep-state">Keep state</a></p>
+<h2 id="k-mods에-올리기">发布到 k-mods</h2>
+<p>mod 做好后可以上架到 k-mods 目录。有两条路：不用自己写代码的办法，和自己注册的办法。</p>
+<ul>
+<li><strong>如果你知道好的 mod</strong> ：即使不懂代码 <a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">推荐 mod</a> 留个 issue 就行。 </li>
+<li><strong>想自己注册的话</strong>: <code>registry/&lt;이름&gt;.json</code> 发一个只加一个文件的 PR。自动检查会验证安装、静态分析和许可证。 </li>
+</ul>
+<p> 两条路的详细流程和规则都在 <a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">贡献指南</a>里。</p>
+<hr/>
+<p> 了解更多： <a href="/k-mods/zh/guide/what-are-mods/">mods 是什么？</a> · <a href="/k-mods/zh/guide/install/">安装指南</a> · <a href="/k-mods/zh/guide/safety/">安全指南</a> · <a href="/k-mods/zh/guide/cheatsheet/">速查表</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">贡献指南</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/README.md">README</a></p>
+</article><aside class="guide-side"><p class="eyebrow">指南</p><ul class="guide-nav"><li><a href="/k-mods/zh/guide/what-are-mods/">mods 是什么？</a></li><li><a href="/k-mods/zh/guide/install/">安装指南</a></li><li><a href="/k-mods/zh/guide/safety/">如何安全使用 mod</a></li><li><a href="/k-mods/zh/guide/cheatsheet/">mods 速查表（韩语）</a></li><li><a aria-current="page" href="/k-mods/zh/guide/make-your-own/">做一个自己的 mod</a></li></ul><div class="side-links"><span class="side-meta">最后修改 · 2026 年 10 月 6 日</span><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/blob/main/docs/guide/make-your-own.md"><svg aria-hidden="true" fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>在 GitHub 查看原文</a><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/edit/main/docs/guide/make-your-own.md"><svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>编辑此文档</a></div></aside></div></div></main><footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><p class="footer-logo"><span>k-mods</span><span aria-hidden="true" class="dot dot--sm"></span><span class="footer-copy">© 2026 · MIT</span></p><p class="footer-tagline">列表由 GitHub 仓库 SeongGwangJu/k-mods 的 registry 自动生成。mod 的新增和修改通过 PR 接收。</p><a class="footer-sync mono" href="https://github.com/SeongGwangJu/k-mods/commit/10e9d6a3bf9be6f3dd3eadc4462fdf651bedca30">最后同步 2026 年 10 月 30 日 · 10e9d6a</a><a class="footer-star" href="https://github.com/SeongGwangJu/k-mods"><svg aria-hidden="true" fill="currentColor" height="13" viewbox="0 0 24 24" width="13"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></svg>如果觉得好用，请在 GitHub 上点个 star</a></div><nav aria-label="站点链接" class="footer-nav"><a href="https://github.com/SeongGwangJu/k-mods">GitHub</a><a href="/k-mods/zh/guide/install/">安装指南</a><a href="/k-mods/zh/guide/safety/">如何安全使用</a><a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">参与贡献</a><a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">推荐 mod</a><a href="https://seonggwangju.github.io/">作者</a></nav></div></footer><dialog aria-label="mod 详情" class="modal" data-modal=""><button aria-label="上一个 mod" class="modal-arrow" data-modal-prev="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m15 18-6-6 6-6" stroke-width="2"></path></svg></button><div class="modal-panel"><div aria-hidden="true" class="modal-handle"><span></span></div><div class="modal-bar"><a class="modal-expand" data-modal-expand="" href="#"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" stroke-width="1.6"></path></svg><span>以完整页面打开</span><kbd class="key modal-key">⌘↵</kbd></a><span class="modal-crumb" data-modal-crumb=""></span><button aria-label="关闭" class="icon-btn icon-btn--plain" data-modal-close="" type="button"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M6 18 18 6M6 6l12 12"></path></svg></button></div><div class="modal-body" data-modal-body="" tabindex="-1"><p class="modal-loading">加载中</p></div></div><button aria-label="下一个 mod" class="modal-arrow" data-modal-next="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m9 18 6-6-6-6" stroke-width="2"></path></svg></button><div aria-hidden="true" class="hint" data-modal-hint=""><span><kbd data-hint-mod="">⌘</kbd><kbd>Enter</kbd>完整页面</span><i></i><span><kbd>←</kbd><kbd>→</kbd>上一页 / 下一页</span><i></i><span><kbd>Esc</kbd>关闭</span></div></dialog><p aria-live="polite" class="sr-only" data-live=""></p><script src="/k-mods/assets/Base.astro_astro_type_script_index_0_lang.BaoNknEh.js" type="module"></script></body></html>

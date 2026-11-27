@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>自分だけのmodを作る · Claude Code modsガイド · k-mods</title><meta content="modの作り方は2通りです。Claudeに言葉で指示するか、自分でコードを書くか。この記事では両方を扱い、最後に完成したmodをk-modsへ公開する手順まで説明します。" name="description"/><link href="https://dogebi.github.io/k-mods/ja/guide/make-your-own/" rel="canonical"/><link href="https://dogebi.github.io/k-mods/guide/make-your-own/" hreflang="ko" rel="alternate"/><link href="https://dogebi.github.io/k-mods/en/guide/make-your-own/" hreflang="en" rel="alternate"/><link href="https://seonggwangju.github.io/k-mods/guide/make-your-own/" hreflang="x-default" rel="alternate"/><meta content="article" property="og:type"/><meta content="k-mods" property="og:site_name"/><meta content="나만의 mod 만들기 · Claude Code mods 가이드 · k-mods" property="og:title"/><meta content="modの作り方は2通りです。Claudeに言葉で指示するか、自分でコードを書くか。この記事では両方を扱い、最後に完成したmodをk-modsへ公開する手順まで説明します。" property="og:description"/><meta content="https://seonggwangju.github.io/k-mods/guide/make-your-own/" property="og:url"/><meta content="https://seonggwangju.github.io/k-mods/og/k-mods.png" property="og:image"/><meta content="ko_KR" property="og:locale"/><meta content="summary_large_image" name="twitter:card"/><meta content="#FFFFFF" media="(prefers-color-scheme: light)" name="theme-color"/><meta content="#0F1318" media="(prefers-color-scheme: dark)" name="theme-color"/><link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;circle cx='50' cy='50' r='44' fill='%2349B3EF'/&gt;&lt;/svg&gt;" rel="icon"/><link href="/k-mods/sitemap-index.xml" rel="sitemap"/><link href="/k-mods/llms.txt" rel="alternate" title="llms.txt" type="text/plain"/><link as="font" crossorigin="" href="/k-mods/fonts/SUIT-Variable.woff2" rel="preload" type="font/woff2"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/><style>@font-face{font-family:"SUIT Variable";src:url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2-variations"),url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}</style><script>(function(){try{var t=localStorage.getItem('kmods-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "自分だけのmodを作る", "description": "modを作る方法は2つです。Claudeに言葉で指示するか、自分でコードを書いてもかまいません。この記事では両方の方法を扱い、最後に完成したmodをk-modsに公開する手順へ続きます。", "url": "https://seonggwangju.github.io/k-mods/ja/guide/make-your-own/", "inLanguage": "ja", "dateModified": "2026-10-07T00:10:15+09:00", "author": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "publisher": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "about": {"@type": "Thing", "name": "Claude Code mods"}, "isPartOf": {"@id": "https://seonggwangju.github.io/k-mods/ja/#website"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "k-mods", "item": "https://seonggwangju.github.io/k-mods/ja/"}, {"@type": "ListItem", "position": 2, "name": "ガイド", "item": "https://seonggwangju.github.io/k-mods/ja/guide/"}, {"@type": "ListItem", "position": 3, "name": "自分だけのmodを作る", "item": "https://seonggwangju.github.io/k-mods/ja/guide/make-your-own/"}]}</script><link href="/k-mods/assets/Base.BXNGk-Gx.css" rel="stylesheet"/><link href="/k-mods/paper.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;700&amp;family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+</head><body><a class="skip" href="#main">本文へスキップ</a><header class="site-header"><div class="container header-bar"><a class="logo" href="/k-mods/ja/">k-mods<span aria-hidden="true" class="dot"></span></a><div class="header-actions"><nav aria-label="言語を選択" class="seg"><a href="/k-mods/guide/make-your-own/" hreflang="ko" lang="ko">KO</a><a href="/k-mods/en/guide/make-your-own/" hreflang="en" lang="en">EN</a><a href="/k-mods/zh/guide/make-your-own/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a aria-current="true" href="/k-mods/ja/guide/make-your-own/" hreflang="ja" lang="ja">日本語</a></nav><button aria-label="画面テーマを切り替え" class="icon-btn" data-theme-toggle="" type="button"><svg aria-hidden="true" class="theme-icon-moon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg aria-hidden="true" class="theme-icon-sun" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg></button><a aria-label="GitHub" class="icon-btn" href="https://github.com/dogebi/k-mods"><svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></header><main id="main"><div class="container guide-page"><nav aria-label="現在位置" class="crumb"><a href="/k-mods/ja/">k-mods</a><span aria-hidden="true">/</span><a href="/k-mods/ja/guide/">ガイド</a><span aria-hidden="true">/</span><span aria-current="page">自分だけのmodを作る</span></nav><div class="guide-layout"><article class="prose"><h1 id="나만의-mod-만들기">自分だけのmodを作る</h1>
+<p>modを作る方法は2つです。Claudeに言葉で指示するか、自分でコードを書いてもかまいません。この記事では両方の方法を扱い、最後に完成したmodをk-modsに公開する手順へ続きます。</p>
+<h2 id="목차">目次</h2>
+<ul>
+<li><a href="#claude%EC%97%90%EA%B2%8C-%EC%8B%9C%ED%82%A4%EA%B8%B0">Claudeにやらせる</a></li>
+<li><a href="#%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0">自分で作る</a>
+<ul>
+<li><a href="#1-%ED%8C%8C%EC%9D%BC-%EC%84%B8-%EA%B0%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0">1. ファイルを3つ作る</a></li>
+<li><a href="#2-%EC%BD%94%EB%93%9C-%EC%93%B0%EA%B8%B0">2. コードを書く</a></li>
+<li><a href="#3-%EB%B6%88%EB%9F%AC%EC%99%80%EC%84%9C-%EC%8D%A8%EB%B3%B4%EA%B8%B0">3. 読み込んで使ってみる</a></li>
+<li><a href="#4-%ED%83%80%EC%9E%85-%EC%84%A0%EC%96%B8%EA%B3%BC-validate">4. 型宣言とvalidate</a></li>
+<li><a href="#5-%EC%A0%95%EC%A0%81-%EB%B6%84%EC%84%9D-%EA%B7%9C%EC%B9%99">5. 静的解析のルール</a></li>
+<li><a href="#6-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%93%B0%EA%B8%B0">6. テストを書く</a></li>
+<li><a href="#7-%EC%83%81%ED%83%9C-%EC%A0%80%EC%9E%A5-%EB%B3%80%EC%88%98-vs-state-vs-store">7. 状態の保存: 変数 vs state vs store</a></li>
+</ul>
+</li>
+<li><a href="#k-mods%EC%97%90-%EC%98%AC%EB%A6%AC%EA%B8%B0">k-modsに公開する</a></li>
+</ul>
+<h2 id="claude에게-시키기">Claudeにやらせる</h2>
+<p>最も速い方法です。セッション内で望むことをそのまま伝えればOKです。</p>
+<pre class="astro-code github-dark-default" data-language="plaintext" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span>입력창 위에 현재 git 브랜치를 보여주는 mod 만들어 줘</span></span></code></pre>
+<p> Claudeは組み込みスキルの <code>plugin-authoring</code> を使ってmodを書きます。このスキルは、今使っているClaude Codeのバージョンでどのイベント・APIが使えるか、modをどこに保存すべきかを知っています。スキルを自分で有効にしたいなら、セッションで <code>/plugin-authoring</code>を入力してください。</p>
+<p>進め方は次のとおりです。</p>
+<ol>
+<li><strong>作成場所</strong> : Claudeは <code>~/.claude/dev-mods/&lt;이 세션의 ID&gt;/&lt;mod 이름&gt;/</code> にファイルを書きます。 <code>default</code>·<code>acceptEdits</code> 権限モードでは <code>~/.claude</code>が保護されたパスなので、ファイルを1つ保存するたびに承認を尋ねます。</li>
+<li><strong>ホットリロードの承認</strong> : 最初のファイルを保存すると「このセッションでホットリロードを有効にするか」を尋ねます。 <strong>今回のセッションだけ有効にする</strong> を選ぶと、このセッションの <code>dev-mods</code> フォルダーにあるmodはターンが終わるときに読み込まれ、ファイルが変わったターンが終わるたびに再読み込みされます。この選択はセッションを再開しても維持されます。 <strong>今はしない</strong>を選ぶと、ファイルはそのまま残りますが、次にそのセッションを再開するときに読み込まれます。</li>
+<li><strong>読み込み確認</strong>: <code>/plugin</code> → <strong>Installed</strong> タブでmodが見えるか確認し、ここでオフにすることもできます。 </li>
+<li><strong>使って直す</strong>: 思うようにいかなければ、何を変えたいかをClaudeに伝えればOKです。ファイルを変えたターンが終われば、すぐに次の試行ができます。</li>
+</ol>
+<p> 一部のセッションでは、Claudeが書いたmodがまったく読み込まれません: 承認してくれる人がいない <code>claude -p</code> 実行や <code>dontAsk</code> モード、まだ信頼（trust）していないワークスペース、 <code>--safe-mode</code>·<code>--bare</code>·<code>disableAllHooks</code>か、組織ポリシーでmod自体がオフになっている場合です。</p>
+<p><strong>modを使い続けたいなら</strong>: <code>dev-mods</code> フォルダーはそのセッションを作ったセッション専用で、 <code>cleanupPeriodDays</code>（デフォルト30日）が過ぎると自動で消えます。使い続けるには、フォルダーを自分が管理する場所へコピーしてください。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">cp</span><span style="color:#79C0FF"> -r</span><span style="color:#A5D6FF"> ~/.claude/dev-mods/</span><span style="color:#FF7B72">&lt;</span><span style="color:#A5D6FF">세션</span><span style="color:#A5D6FF"> I</span><span style="color:#E6EDF3">D</span><span style="color:#FF7B72">&gt;</span><span style="color:#A5D6FF">/git-branch</span><span style="color:#A5D6FF"> ~/mods/git-branch</span></span></code></pre>
+<p> コピーした後は <a href="#%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0">自分で作る</a> で説明する <code>--plugin-dir</code>で読み込むか、他の人と使うならマーケットプレイスとして公開すればOKです。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/create#ask-claude-for-a-mod">Ask Claude for a mod</a></p>
+<h2 id="직접-만들기">自分で作る</h2>
+<p> コードがどう動くかを学びたいなら、自分で書いてみるのが一番速いです。Node.jsもバンドラーもなしで、Claude Codeが <code>.ts</code>·<code>.js</code> ファイルを直接読みます。 </p>
+<p> ここでは <code>tool-tally</code> というmodを作ります。ツールを使うたびに数えて、スピナーの横に <code>· 도구 3번</code> のように表示し、 <code>/tally</code>を入力すると、これまで数えた回数を教えてくれます。</p>
+<h3 id="1-파일-세-개-만들기">1. ファイルを3つ作る</h3>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> tool-tally/.claude-plugin</span><span style="color:#A5D6FF"> tool-tally/hooks</span></span></code></pre>
+<p><code>tool-tally/.claude-plugin/plugin.json</code>はプラグインのマニフェスト（<code>manifest</code>）です。</p>
+<pre class="astro-code github-dark-default" data-language="json" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E6EDF3">{</span></span>
+<span class="line"><span style="color:#7EE787">  "name"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"tool-tally"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#7EE787">  "version"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"0.1.0"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#7EE787">  "description"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"도구 호출 수를 세어 스피너 옆에 보여주고 /tally로 알려줘요"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#7EE787">  "author"</span><span style="color:#E6EDF3">: { </span><span style="color:#7EE787">"name"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"당신의 이름"</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+<p><code>tool-tally/hooks/hooks.json</code> はコードファイルがどこにあるかを教えます。この <code>modules</code> キーがないとプラグインはmodになりません。 </p>
+<pre class="astro-code github-dark-default" data-language="json" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E6EDF3">{</span></span>
+<span class="line"><span style="color:#7EE787">  "modules"</span><span style="color:#E6EDF3">: [</span><span style="color:#A5D6FF">"./register.ts"</span><span style="color:#E6EDF3">]</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+<h3 id="2-코드-쓰기">2. コードを書く</h3>
+<p><code>tool-tally/hooks/register.ts</code>がフックモジュール（<code>hooks module</code> ）です。 <code>register</code> 関数をエクスポートすると、Claude Codeがmodを読み込むときに一度呼びます。 </p>
+<pre class="astro-code github-dark-default" data-language="typescript" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FF7B72">import</span><span style="color:#FF7B72"> type</span><span style="color:#E6EDF3"> { On } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> 'claude-code'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// 횟수. 아래 두 훅이 같이 써요</span></span>
+<span class="line"><span style="color:#FF7B72">let</span><span style="color:#E6EDF3"> calls </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> register</span><span style="color:#E6EDF3">(</span><span style="color:#FFA657">on</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> On</span><span style="color:#E6EDF3">)</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> void</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#8B949E">  // 세션이 시작할 때 한 번: /tally 명령을 등록해요</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'session.start'</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">$</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">e</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">next</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    await</span><span style="color:#E6EDF3"> $.command.</span><span style="color:#D2A8FF">register</span><span style="color:#E6EDF3">({ name: </span><span style="color:#A5D6FF">'tally'</span><span style="color:#E6EDF3">, description: </span><span style="color:#A5D6FF">'지금까지 쓴 도구 횟수 보기'</span><span style="color:#E6EDF3"> })</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#D2A8FF"> next</span><span style="color:#E6EDF3">(e)</span></span>
+<span class="line"><span style="color:#E6EDF3">  })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // Claude가 도구를 쓰려고 할 때마다</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'tool.call'</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">$</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">e</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">next</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    calls </span><span style="color:#FF7B72">+=</span><span style="color:#79C0FF"> 1</span></span>
+<span class="line"><span style="color:#E6EDF3">    $.ui.</span><span style="color:#D2A8FF">invalidate</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'ui.render'</span><span style="color:#E6EDF3">) </span><span style="color:#8B949E">// 화면을 다시 그려서 새 숫자가 보이게 해요</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#D2A8FF"> next</span><span style="color:#E6EDF3">(e) </span><span style="color:#8B949E">// 도구는 평소대로 실행</span></span>
+<span class="line"><span style="color:#E6EDF3">  })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // /tally를 입력했을 때만</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'command.run'</span><span style="color:#E6EDF3">, { command: </span><span style="color:#A5D6FF">'tally'</span><span style="color:#E6EDF3"> }, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> () </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3"> { text: </span><span style="color:#A5D6FF">'지금까지 도구를 '</span><span style="color:#FF7B72"> +</span><span style="color:#E6EDF3"> calls </span><span style="color:#FF7B72">+</span><span style="color:#A5D6FF"> '번 썼어요'</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">  })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // 스피너를 그릴 때마다</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'ui.render'</span><span style="color:#E6EDF3">, { component: </span><span style="color:#A5D6FF">'Spinner'</span><span style="color:#E6EDF3"> }, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">$</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">e</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">next</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#D2A8FF"> next</span><span style="color:#E6EDF3">({ </span><span style="color:#FF7B72">...</span><span style="color:#E6EDF3">e, props: { </span><span style="color:#FF7B72">...</span><span style="color:#E6EDF3">e.props, suffix: </span><span style="color:#A5D6FF">' · 도구 '</span><span style="color:#FF7B72"> +</span><span style="color:#E6EDF3"> calls </span><span style="color:#FF7B72">+</span><span style="color:#A5D6FF"> '번'</span><span style="color:#E6EDF3"> } })</span></span>
+<span class="line"><span style="color:#E6EDF3">  })</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+<p>4つのフックがやることです。</p>
+<ul>
+<li><code>session.start</code> : セッションの最初のターンの前に一度、そしてモジュールがリロードされるたびに実行されます。 <code>/tally</code> コマンドを追加します。 </li>
+<li><code>tool.call</code>: Claudeがツールを使う直前に毎回実行されます。回数を増やし、画面を再描画するよう要求します。</li>
+<li><code>command.run</code>: <code>/tally</code> を入力したときだけ実行されます。 <code>next</code>を呼ばずにすぐ答える「応答（<code>answer</code>）」という方式です。</li>
+<li><code>ui.render</code>: スピナーを描くたびに実行されます。Claude Codeのスピナーはそのままにし、単語の後ろに回数だけを付ける「変形（<code>rewrite</code>）」という方式です。</li>
+</ul>
+<h3 id="3-불러와서-써보기">3. 読み込んで使ってみる</h3>
+<p><code>--plugin-dir</code>はインストールせず、今回のセッションだけプラグインディレクトリを読み込みます。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#79C0FF"> --plugin-dir</span><span style="color:#A5D6FF"> ./tool-tally</span></span></code></pre>
+<p>何かツールを数回使わせてみると（<code>여기 파일 목록 보여주고 README 읽어줘</code> など）スピナーの文言が <code>Thinking · 도구 2번…</code> のように変わります。終わったら <code>/tally</code> を入力して <code>tool-tally: 지금까지 도구를 2번 썼어요</code>が出るか確認してください。</p>
+<p> セッションを開いたまま <code>register.ts</code> の <code>' · 도구 '</code> を <code>' · 지금까지 '</code> に変えて保存してみてください。保存するとトランスクリプトに <code>tool-tally</code> reloadedという行が出て、次のスピナーからすぐに新しい文言が見えます。これがホットリロードです。 </p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/create#write-a-mod-yourself">Write a mod yourself</a></p>
+<h3 id="4-타입-선언과-validate">4. 型宣言とvalidate</h3>
+<p><code>--plugin-dir</code> でmodを読み込むかリロードするたびに、Claude Codeは自分が使っているバージョンに正確に合う型宣言を <code>tool-tally/.claude-plugin/types/</code> の下に書いてくれます。 </p>
+<table>
+<thead>
+<tr>
+<th>パス</th>
+<th>含まれる内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>claude-code/index.d.ts</code></td>
+<td>すべてのイベントと入出力、すべてのmod APIメソッド、各画面が描ける要素</td>
+</tr>
+<tr>
+<td><code>claude-code-tools/index.d.ts</code></td>
+<td>組み込みツールの入力・結果の型（<code>e.tool === 'Bash'</code>に絞って使えるように）</td>
+</tr>
+<tr>
+<td><code>claude-code-mcp/index.d.ts</code></td>
+<td>最後に保存した時点で接続されていたMCPツールの入力型</td>
+</tr>
+<tr>
+<td><code>tsconfig.json</code></td>
+<td>フックモジュールに合わせたコンパイルオプション</td>
+</tr>
+</tbody>
+</table>
+<p>エディターの自動補完と型チェックがこれらのファイルを参照します。バージョンごとにイベント・APIが変わりうるので、この生成されたファイルが他のどのドキュメントよりも正確です。</p>
+<p><code>claude plugin validate</code>はセッションを起動せずに、Claude Codeが自分のmodをどう読むかを表示します。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> validate</span><span style="color:#A5D6FF"> ./tool-tally</span></span></code></pre>
+<pre class="astro-code github-dark-default" data-language="text" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span>  ❯ ./register.ts hooks: session.start, tool.call, command.run{command=tally}, ui.render{component=Spinner}</span></span>
+<span class="line"><span>  ❯ ./register.ts calls: $.command.register, $.ui.invalidate</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>✔ Validation passed</span></span></code></pre>
+<p><code>hooks:</code> の行は、このモジュールが受け取るイベントをマッチャー（matcher）とともに表示します。意図したイベントがこの行になければ（たいていイベント名の打ち間違い）、そのフックは実行されません。 <code>calls:</code> の行は、このモジュールが呼ぶmod APIをすべて表示します。k-modsに公開するmodは <code>scripts/check.sh mods/&lt;이름&gt;</code> で <code>--strict</code> validateとテストを一度に実行します。 </p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/create#get-type-definitions-for-your-version">Get type definitions for your version</a>, <a href="https://code.claude.com/docs/en/plugins/mods/create#check-what-claude-code-reads-from-your-mod">Check what Claude Code reads from your mod</a></p>
+<h3 id="5-정적-분석-규칙">5. 静的解析のルール</h3>
+<p> Claude Codeはコードを実行しなくても、どのイベントを受け取りどのAPIを呼ぶかを読み取ります。そのためにはコードがいくつかのルールを守る必要があります。破ると <code>claude plugin validate</code>がエラーを出します。</p>
+<ul>
+<li><strong><code>$.네임스페이스.메서드(...)</code>を最後まで展開して書く</strong>: <code>const ui = $.ui</code> のように変数に入れるか、分割代入するか、 <code>$[name]</code> のように計算された名前でアクセスしてはいけません。 <code>$.ui</code> を変数に入れると <code>$.ui is used as a value</code>で失敗します。</li>
+<li><strong><code>$</code>を渡すヘルパー関数は、同じファイルの最上位で宣言した関数だけが</strong> : クロージャ、メソッド、別のファイルから取り込んだ関数には <code>$</code>を渡せません。（<code>$.state</code> の <code>read</code>·<code>update</code>は例外です。）</li>
+<li><strong>イベント名は文字列リテラル</strong>: <code>on('tool.call', ...)</code>のように直接書く必要があります。変数やループでイベント名を回すと失敗します。</li>
+<li><strong>同じイベントをマッチャーなしで2回登録しない</strong>: <code>session.start</code>のようにマッチャーのないイベントは、1つのモジュールに1回だけ登録します。</li>
+<li><strong><code>register</code> の中で <code>on</code>という名前を再宣言しない</strong> : 変数やパラメータで <code>on</code> を隠すと <code>"on" is declared again (shadowed)</code>で失敗します。</li>
+<li><strong> importはプラグイン内の相対パスと <code>claude-code</code>だけ</strong> : 動的 <code>import()</code> や <code>require</code>は使えません。すべてのファイルはESモジュールです。</li>
+<li><strong> Node API・グローバル <code>fetch</code>·<code>setTimeout</code> なし </strong> : ファイルは <code>$.fs</code> 、ネットワークは <code>$.http</code> 、タイマーは <code>$.clock</code>を使います。</li>
+<li><strong> （k-modsの追加ルール）ツール呼び出しをブロックできるフックには <code>.catch</code> 付ける </strong>: <code>tool.call</code>, <code>tool.check</code>, <code>prompt.submit</code> のようにチェーンを断ち切れるフックが失敗したらどうするか <code>.catch</code> で決めないと <code>--strict</code> validateを通ります。ブロックする役割のmodなら、失敗したときもブロックする側で答えてください（fail closed）。 </li>
+</ul>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/create#check-what-claude-code-reads-from-your-mod">Follow these rules so that static analysis can find every hook and call</a></p>
+<h3 id="6-테스트-쓰기">6. テストを書く</h3>
+<p><code>claude plugin test</code> はセッションもログインもネットワークもなしでフックをテストします。 <code>claude-code/testing</code>からテストツールを取り込みます。</p>
+<p><code>tool-tally/tests/tool-tally.test.ts</code>:</p>
+<pre class="astro-code github-dark-default" data-language="typescript" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { expect, test } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> 'claude-code/testing'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">test</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'/tally는 지금까지 받은 도구 호출 수를 보고해요'</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">$</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">on</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#8B949E">  // Claude Code 대신 도구 호출에 답해 줘요 (실제 도구는 실행 안 됨)</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'tool.call'</span><span style="color:#E6EDF3">, () </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> ({ result: </span><span style="color:#A5D6FF">'ok'</span><span style="color:#E6EDF3"> }))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  await</span><span style="color:#E6EDF3"> $.tool.</span><span style="color:#D2A8FF">call</span><span style="color:#E6EDF3">({ tool: </span><span style="color:#A5D6FF">'Bash'</span><span style="color:#E6EDF3">, command: </span><span style="color:#A5D6FF">'ls'</span><span style="color:#E6EDF3"> })</span></span>
+<span class="line"><span style="color:#FF7B72">  await</span><span style="color:#E6EDF3"> $.tool.</span><span style="color:#D2A8FF">call</span><span style="color:#E6EDF3">({ tool: </span><span style="color:#A5D6FF">'Read'</span><span style="color:#E6EDF3">, file_path: </span><span style="color:#A5D6FF">'README.md'</span><span style="color:#E6EDF3"> })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> answer</span><span style="color:#FF7B72"> =</span><span style="color:#FF7B72"> await</span><span style="color:#E6EDF3"> $.command.</span><span style="color:#D2A8FF">run</span><span style="color:#E6EDF3">({ command: </span><span style="color:#A5D6FF">'tally'</span><span style="color:#E6EDF3">, args: </span><span style="color:#A5D6FF">''</span><span style="color:#E6EDF3"> })</span></span>
+<span class="line"><span style="color:#D2A8FF">  expect</span><span style="color:#E6EDF3">(answer.text).</span><span style="color:#D2A8FF">toBe</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'지금까지 도구를 2번 썼어요'</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"><span style="color:#E6EDF3">})</span></span></code></pre>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> test</span></span></code></pre>
+<p><code>tool-tally</code> ディレクトリで実行すると、テスト名と合否が出ます。k-modsに公開するmodは、純粋なロジック（分類、フォーマット変換など）を <code>$</code> を受け取らない関数に切り出して通常の単体テストで検証し、イベントのやり取りの流れだけを <code>claude plugin test</code>で確認することをおすすめします。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/test">Test a mod</a></p>
+<h3 id="7-상태-저장-변수-vs-state-vs-store">7. 状態の保存: 変数 vs state vs store</h3>
+<p>値をどこに置くかによって、どれだけ長く残るかが変わります。</p>
+<table>
+<thead>
+<tr>
+<th>保存場所</th>
+<th>残る期間</th>
+<th>こんなときに使います</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>モジュール変数（<code>let calls = 0</code>)</td>
+<td>モジュールがリロードされるまで（開発中に保存するたびリセット）</td>
+<td> 失ってもよい値。このチュートリアルの <code>calls</code>のように</td>
+</tr>
+<tr>
+<td><code>$.state</code></td>
+<td> セッションが終わるか、 <code>/clear</code>·<code>/resume</code>·<code>/branch</code>をするまで。リロードにも耐えます。</td>
+<td>画面が依存する値だが、リロードには耐える必要があるとき。値を書き込むと、その値を読む画面が自動で再描画されます（リアクティブ）。</td>
+</tr>
+<tr>
+<td><code>$.store</code></td>
+<td> 自分が削除するか、 <code>cleanupPeriodDays</code> の間、どのセッションも使わなくなるまで </td>
+<td>設定値・記録のように、次にセッションを開いても残っているべき値。このコンピューターのすべてのセッションが1つを共有します。</td>
+</tr>
+</tbody>
+</table>
+<p>3つを混ぜて使うこともよくあります。詳しいコード例（<code>$.state</code> に型宣言する、 <code>/clear</code> 以降の値の復元など）は公式ドキュメントにあります。 </p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/interface#keep-state">Keep state</a></p>
+<h2 id="k-mods에-올리기">k-modsに公開する</h2>
+<p>modができたらk-modsカタログに公開できます。コードを直接書かなくてよい方法と、自分で登録する方法の2つです。</p>
+<ul>
+<li><strong>良いmodを知っているなら</strong> : コードを知らなくても <a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">modを推薦する</a> Issueを残せばOKです。 </li>
+<li><strong>自分で登録したいなら</strong>: <code>registry/&lt;이름&gt;.json</code> ファイルを1つ追加するPRを送ってください。自動チェックがインストール・静的解析・ライセンスを確認します。 </li>
+</ul>
+<p> どちらの経路も、詳しい手順とルールは <a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">コントリビュートガイド</a>にあります。</p>
+<hr/>
+<p> 詳しく見る： <a href="/k-mods/ja/guide/what-are-mods/">modsとは？</a> · <a href="/k-mods/ja/guide/install/">インストールガイド</a> · <a href="/k-mods/ja/guide/safety/">安全ガイド</a> · <a href="/k-mods/ja/guide/cheatsheet/">チートシート</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">コントリビュートガイド</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/README.md">README</a></p>
+</article><aside class="guide-side"><p class="eyebrow">ガイド</p><ul class="guide-nav"><li><a href="/k-mods/ja/guide/what-are-mods/">modsとは？</a></li><li><a href="/k-mods/ja/guide/install/">インストールガイド</a></li><li><a href="/k-mods/ja/guide/safety/">modを安全に使う方法</a></li><li><a href="/k-mods/ja/guide/cheatsheet/">modsチートシート（韓国語）</a></li><li><a aria-current="page" href="/k-mods/ja/guide/make-your-own/">自分だけのmodを作る</a></li></ul><div class="side-links"><span class="side-meta">最終更新・2026年10月6日</span><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/blob/main/docs/guide/make-your-own.md"><svg aria-hidden="true" fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>GitHubで原文を見る</a><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/edit/main/docs/guide/make-your-own.md"><svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>このドキュメントを編集</a></div></aside></div></div></main><footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><p class="footer-logo"><span>k-mods</span><span aria-hidden="true" class="dot dot--sm"></span><span class="footer-copy">© 2026 · MIT</span></p><p class="footer-tagline">一覧はGitHubリポジトリSeongGwangJu/k-modsのregistryから自動で生成されます。modの追加と修正はPRで受け付けます。</p><a class="footer-sync mono" href="https://github.com/SeongGwangJu/k-mods/commit/10e9d6a3bf9be6f3dd3eadc4462fdf651bedca30">最終反映 2026年10月30日・10e9d6a</a><a class="footer-star" href="https://github.com/SeongGwangJu/k-mods"><svg aria-hidden="true" fill="currentColor" height="13" viewbox="0 0 24 24" width="13"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></svg>役に立ったらGitHubでスターを押してください</a></div><nav aria-label="サイトリンク" class="footer-nav"><a href="https://github.com/SeongGwangJu/k-mods">GitHub</a><a href="/k-mods/ja/guide/install/">インストールガイド</a><a href="/k-mods/ja/guide/safety/">安全に使う方法</a><a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">貢献する</a><a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">mod提案</a><a href="https://seonggwangju.github.io/">作成者</a></nav></div></footer><dialog aria-label="mod の詳細" class="modal" data-modal=""><button aria-label="前の mod" class="modal-arrow" data-modal-prev="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m15 18-6-6 6-6" stroke-width="2"></path></svg></button><div class="modal-panel"><div aria-hidden="true" class="modal-handle"><span></span></div><div class="modal-bar"><a class="modal-expand" data-modal-expand="" href="#"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" stroke-width="1.6"></path></svg><span>全ページで開く</span><kbd class="key modal-key">⌘↵</kbd></a><span class="modal-crumb" data-modal-crumb=""></span><button aria-label="閉じる" class="icon-btn icon-btn--plain" data-modal-close="" type="button"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M6 18 18 6M6 6l12 12"></path></svg></button></div><div class="modal-body" data-modal-body="" tabindex="-1"><p class="modal-loading">読み込み中</p></div></div><button aria-label="次の mod" class="modal-arrow" data-modal-next="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m9 18 6-6-6-6" stroke-width="2"></path></svg></button><div aria-hidden="true" class="hint" data-modal-hint=""><span><kbd data-hint-mod="">⌘</kbd><kbd>Enter</kbd>全ページ</span><i></i><span><kbd>←</kbd><kbd>→</kbd>前へ / 次へ</span><i></i><span><kbd>Esc</kbd>閉じる</span></div></dialog><p aria-live="polite" class="sr-only" data-live=""></p><script src="/k-mods/assets/Base.astro_astro_type_script_index_0_lang.BaoNknEh.js" type="module"></script></body></html>

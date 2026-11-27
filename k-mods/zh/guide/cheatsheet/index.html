@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hans"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>mods 速查表（韩语） · Claude Code mods 指南 · k-mods</title><meta content="把开发 mods 需要的文件构成、事件、API、渲染位置和各类限制压缩成一张表，说明尽量写得简短，完整背景请先读《mods 是什么？》和《做自己的 mod》。" name="description"/><link href="https://dogebi.github.io/k-mods/zh/guide/cheatsheet/" rel="canonical"/><link href="https://dogebi.github.io/k-mods/guide/cheatsheet/" hreflang="ko" rel="alternate"/><link href="https://dogebi.github.io/k-mods/en/guide/cheatsheet/" hreflang="en" rel="alternate"/><link href="https://seonggwangju.github.io/k-mods/guide/cheatsheet/" hreflang="x-default" rel="alternate"/><meta content="article" property="og:type"/><meta content="k-mods" property="og:site_name"/><meta content="mods 치트시트 (한국어) · Claude Code mods 가이드 · k-mods" property="og:title"/><meta content="把开发 mods 需要的文件构成、事件、API、渲染位置和各类限制压缩成一张表，说明尽量写得简短，完整背景请先读《mods 是什么？》和《做自己的 mod》。" property="og:description"/><meta content="https://seonggwangju.github.io/k-mods/guide/cheatsheet/" property="og:url"/><meta content="https://seonggwangju.github.io/k-mods/og/k-mods.png" property="og:image"/><meta content="ko_KR" property="og:locale"/><meta content="summary_large_image" name="twitter:card"/><meta content="#FFFFFF" media="(prefers-color-scheme: light)" name="theme-color"/><meta content="#0F1318" media="(prefers-color-scheme: dark)" name="theme-color"/><link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;circle cx='50' cy='50' r='44' fill='%2349B3EF'/&gt;&lt;/svg&gt;" rel="icon"/><link href="/k-mods/sitemap-index.xml" rel="sitemap"/><link href="/k-mods/llms.txt" rel="alternate" title="llms.txt" type="text/plain"/><link as="font" crossorigin="" href="/k-mods/fonts/SUIT-Variable.woff2" rel="preload" type="font/woff2"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/><style>@font-face{font-family:"SUIT Variable";src:url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2-variations"),url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}</style><script>(function(){try{var t=localStorage.getItem('kmods-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "mods 速查表（韩语）", "description": "把开发 mods 需要的文件结构、事件、API、渲染位置和限制压缩成了表格。说明已尽量精简，完整背景请先看“mods 是什么？”和“做一个自己的 mod”。", "url": "https://seonggwangju.github.io/k-mods/zh/guide/cheatsheet/", "inLanguage": "zh-Hans", "dateModified": "2026-10-07T00:10:15+09:00", "author": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "publisher": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "about": {"@type": "Thing", "name": "Claude Code mods"}, "isPartOf": {"@id": "https://seonggwangju.github.io/k-mods/zh/#website"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "k-mods", "item": "https://seonggwangju.github.io/k-mods/zh/"}, {"@type": "ListItem", "position": 2, "name": "指南", "item": "https://seonggwangju.github.io/k-mods/zh/guide/"}, {"@type": "ListItem", "position": 3, "name": "mods 速查表（韩语）", "item": "https://seonggwangju.github.io/k-mods/zh/guide/cheatsheet/"}]}</script><link href="/k-mods/assets/Base.BXNGk-Gx.css" rel="stylesheet"/><link href="/k-mods/paper.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;700&amp;family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+</head><body><a class="skip" href="#main">跳到正文</a><header class="site-header"><div class="container header-bar"><a class="logo" href="/k-mods/zh/">k-mods<span aria-hidden="true" class="dot"></span></a><div class="header-actions"><nav aria-label="选择语言" class="seg"><a href="/k-mods/guide/cheatsheet/" hreflang="ko" lang="ko">KO</a><a href="/k-mods/en/guide/cheatsheet/" hreflang="en" lang="en">EN</a><a aria-current="true" href="/k-mods/zh/guide/cheatsheet/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a href="/k-mods/ja/guide/cheatsheet/" hreflang="ja" lang="ja">日本語</a></nav><button aria-label="切换界面主题" class="icon-btn" data-theme-toggle="" type="button"><svg aria-hidden="true" class="theme-icon-moon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg aria-hidden="true" class="theme-icon-sun" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg></button><a aria-label="GitHub" class="icon-btn" href="https://github.com/dogebi/k-mods"><svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></header><main id="main"><div class="container guide-page"><nav aria-label="当前位置" class="crumb"><a href="/k-mods/zh/">k-mods</a><span aria-hidden="true">/</span><a href="/k-mods/zh/guide/">指南</a><span aria-hidden="true">/</span><span aria-current="page">mods 速查表（韩语）</span></nav><div class="guide-layout"><article class="prose"><h1 id="mods-치트시트-한국어">mods 速查表（韩语）</h1>
+<p> 把开发 mods 需要的文件结构、事件、API、渲染位置和限制压缩成了表格。说明已尽量精简，完整背景请 <a href="/k-mods/zh/guide/what-are-mods/">mods 是什么？</a> 和 <a href="/k-mods/zh/guide/make-your-own/">做一个自己的 mod</a>请先看。</p>
+<blockquote>
+<p> 基准版本为 Claude Code <strong>2.1.291</strong> 。每个版本的事件与 API 都可能变化，准确的定义请见 <code>--plugin-dir</code>加载 mod 时生成的类型声明（<code>.claude-plugin/types/claude-code/index.d.ts</code>）优先于本文档。</p>
+</blockquote>
+<h2 id="목차">目录</h2>
+<ul>
+<li><a href="#%ED%8C%8C%EC%9D%BC-%EA%B5%AC%EC%84%B1">文件构成</a></li>
+<li><a href="#%ED%9B%85-%ED%95%A8%EC%88%98-%EC%9D%B8%EC%9E%90">钩子函数参数</a></li>
+<li><a href="#%EC%9D%B4%EB%B2%A4%ED%8A%B8">事件</a></li>
+<li><a href="#-api-%EB%84%A4%EC%9E%84%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%8A%A4"><code>$</code> API 命名空间 </a></li>
+<li><a href="#%EB%A0%8C%EB%8D%94-%EC%82%AC%EC%9D%B4%ED%8A%B8">渲染位置</a></li>
+<li><a href="#%EC%9A%94%EC%86%8C-elements">元素 (elements)</a></li>
+<li><a href="#%ED%95%9C%EA%B3%84-limits">限制 (limits)</a></li>
+<li><a href="#%EC%84%A4%EC%A0%95%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98">设置、环境变量</a></li>
+<li><a href="#%EB%AA%85%EB%A0%B9%EC%96%B4">命令</a></li>
+</ul>
+<h2 id="파일-구성">文件构成</h2>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>必填</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.claude-plugin/plugin.json</code></td>
+<td>是</td>
+<td>插件清单。作为 mod 不需要额外字段</td>
+</tr>
+<tr>
+<td><code>hooks/hooks.json</code></td>
+<td>是</td>
+<td><code>modules</code> ：钩子模块路径数组。 <code>"modules": ["./register.js"]</code> 那样只写一个。配置钩子也 <code>hooks</code> 可以在该键下一起存放 </td>
+</tr>
+<tr>
+<td> 钩子模块（例如： <code>hooks/register.ts</code>)</td>
+<td>是</td>
+<td> mod 的入口。 <code>register(on, options)</code> 导出为 ES 模块。扩展名： <code>.js</code>, <code>.mjs</code>, <code>.cjs</code>, <code>.jsx</code>, <code>.ts</code>, <code>.mts</code>, <code>.cts</code>, <code>.tsx</code></td>
+</tr>
+<tr>
+<td><code>types/index.d.ts</code> （清单的 <code>types</code>所指）</td>
+<td><code>$.state</code>时，或只在给 mods API 添加命名空间时</td>
+<td><code>PluginState</code> 声明值与额外命名空间 </td>
+</tr>
+<tr>
+<td><code>*.test.ts</code> / <code>*.test.tsx</code></td>
+<td>否</td>
+<td><code>claude plugin test</code>所运行的测试</td>
+</tr>
+</tbody>
+</table>
+<p><code>register</code><code>on</code> 和 <code>options</code> 接收。 <code>options</code><code>userConfig</code> 字段的值，且已填入默认值。 </p>
+<h2 id="훅-함수-인자">钩子函数参数</h2>
+<p><code>on(이벤트 이름, 매처?, 훅)</code> 来注册。matcher 是筛选事件字段的可选过滤器， <code>on</code> 的返回值是 <code>.catch(핸들러)</code>可以附加的 registration。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$</code></td>
+<td> mods API。必须 <code>$.네임스페이스.메서드(...)</code>要写全路径</td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td> 事件输入值。它被深度冻结（frozen），无法直接修改。要改动就复制后 <code>next</code>交给</td>
+</tr>
+<tr>
+<td><code>next(e)</code></td>
+<td>调用下一个处理器（其他 mod，最后是 Claude Code 自身的行为），并以结果 resolve</td>
+</tr>
+<tr>
+<td><code>next.signal</code></td>
+<td> 事件中断时会 abort 的 <code>AbortSignal</code></td>
+</tr>
+<tr>
+<td><code>next.origin</code></td>
+<td> 保存触发该事件来源的 <code>{ plugin, tier }</code> 。Claude Code 自身则 <code>{ plugin: 'engine', tier: 'core' }</code> ，而 mod 的 <code>tier</code><code>prepend</code>/<code>user</code>/<code>append</code>/<code>builtin</code></td>
+</tr>
+<tr>
+<td><code>next.budget</code></td>
+<td> 此钩子的超时时间。 <code>next.budget.ms</code> 为总上限， <code>next.budget.remainingMs</code>为剩余时间</td>
+</tr>
+<tr>
+<td><code>next.to(e, tier)</code></td>
+<td><code>append</code>/<code>builtin</code>/<code>core</code> 中，会跳到更靠后的 tier。 <code>prependPlugins</code>·<code>appendPlugins</code>中所属的 mod 才能被调用</td>
+</tr>
+<tr>
+<td><code>next.error</code>, <code>next.called</code></td>
+<td><code>.catch</code> 只能在处理函数内使用。 <code>next.error.kind</code><code>throw</code> 或 <code>timeout</code>, <code>next.called</code> 是失败的钩子 <code>next</code>是否调用过</td>
+</tr>
+</tbody>
+</table>
+<h2 id="이벤트">事件</h2>
+<p> 在表格的“可以返回的内容”中 <code>next(e)</code> 原样放行， <code>next({ ...e, text })</code> 只改那个字段后放行，直接返回对象则 <code>next</code>而不调用它、直接给出回答。</p>
+<p><strong>工具</strong></p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>何时</th>
+<th>可以返回的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tool.call</code></td>
+<td>工具执行之前</td>
+<td><code>next(e)</code>, <code>{ deny: 이유 }</code>, <code>{ result }</code></td>
+</tr>
+<tr>
+<td><code>tool.check</code></td>
+<td><code>tool.call</code> 和 <code>PreToolUse</code> 钩子之后、决定是否执行时 </td>
+<td><code>{ decision }</code> (<code>allow</code>/<code>ask</code>/<code>deny</code>)</td>
+</tr>
+<tr>
+<td><code>tool.describe</code></td>
+<td>首次把工具说明发给 Claude 时，每个工具一次</td>
+<td><code>{ description, isDeferred? }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>提示与 Claude 读取的内容</strong></p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>何时</th>
+<th>可以返回的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prompt.submit</code></td>
+<td>提示被提交时</td>
+<td><code>next({ ...e, text })</code>, <code>next({ ...e, context })</code>, <code>{ drop: 이유 }</code></td>
+</tr>
+<tr>
+<td><code>prompt.fill</code>, <code>prompt.suggest</code></td>
+<td>草稿或灰色建议即将填入提示输入框时</td>
+<td> 用修改后的文本 <code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>prompt.edit</code></td>
+<td>用户编辑提示词输入框时</td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>prompt.compose</code></td>
+<td>绘制系统提示词时</td>
+<td><code>{ sections }</code></td>
+</tr>
+<tr>
+<td><code>prompt.section</code></td>
+<td>系统提示词的每个命名区段一次</td>
+<td><code>{ text }</code> ，若要省略 <code>{ text: null }</code></td>
+</tr>
+<tr>
+<td><code>prompt.context</code></td>
+<td>每个对话一次，首条消息和发送的上下文</td>
+<td><code>{ blocks }</code></td>
+</tr>
+<tr>
+<td><code>prompt.attachment</code></td>
+<td>Claude Code 自行添加提醒这类消息时</td>
+<td><code>{ text }</code> ，若要省略 <code>{ text: null }</code></td>
+</tr>
+<tr>
+<td><code>skill.prompt</code></td>
+<td>技能文本向 Claude 展开时</td>
+<td><code>{ text }</code></td>
+</tr>
+<tr>
+<td><code>attribution.text</code></td>
+<td>生成提交与 PR 归属文案时</td>
+<td><code>{ text }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>命令与设置</strong></p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>何时</th>
+<th>可以返回的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>command.run</code></td>
+<td>命令执行之前</td>
+<td><code>{ text }</code>, <code>{}</code>, <code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>command.describe</code></td>
+<td>用于命令列表的说明，每个命令一次</td>
+<td><code>{ description, argumentHint, isHidden }</code></td>
+</tr>
+<tr>
+<td><code>config.set</code></td>
+<td><code>/config</code> 行值即将改变时 </td>
+<td><code>next({ ...e, value })</code>, <code>{ deny: 이유 }</code></td>
+</tr>
+<tr>
+<td><code>config.describe</code></td>
+<td><code>/config</code> 每行一次 </td>
+<td><code>{ label, description, isHidden }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>轮次</strong></p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>何时</th>
+<th>可以返回的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>turn.start</code></td>
+<td>回合开始时</td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>turn.step</code></td>
+<td>向模型发送单个请求之前（有工具调用时会多次）</td>
+<td><code>yield* next(e)</code>, <code>next({ ...e, model })</code>, <code>next({ ...e, effort })</code></td>
+</tr>
+<tr>
+<td><code>turn.complete</code></td>
+<td>回合结束时</td>
+<td><code>next(e)</code> ，或在回答下方显示一行的 <code>{ text }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>会话</strong></p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>何时</th>
+<th>可以返回的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>session.start</code></td>
+<td> 每个 mod 一次，在首条提示词之前（重新加载后也会执行， <code>/clear</code>·<code>/resume</code>·<code>/branch</code> 之后就不行了） </td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>session.end</code></td>
+<td> 会话结束，或 <code>/clear</code>·<code>/resume</code>·<code>/branch</code></td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>session.compact</code></td>
+<td>压缩对话之前</td>
+<td><code>{ skip: 이유 }</code></td>
+</tr>
+<tr>
+<td><code>session.receive</code>, <code>session.send</code></td>
+<td>与其他智能体、会话收发消息时</td>
+<td> 获取 <code>{ consumed: 이유 }</code> 、发送 <code>{ isDelivered: false, reason }</code></td>
+</tr>
+<tr>
+<td><code>session.append</code></td>
+<td>对话中每条留存的消息保存之前</td>
+<td><code>next({ ...e, message })</code></td>
+</tr>
+<tr>
+<td><code>session.attach</code>, <code>session.detach</code></td>
+<td>其他应用连接或断开会话时</td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>session.measure</code></td>
+<td>每个回合结束时，套餐额度百分比变化时</td>
+<td><code>next(e)</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>子智能体</strong></p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>何时</th>
+<th>可以返回的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agent.offer</code></td>
+<td>向 Claude 建议子智能体类型时</td>
+<td> 要隐藏 <code>{ isOffered: false }</code></td>
+</tr>
+<tr>
+<td><code>agent.spawn</code></td>
+<td>子智能体或智能体团队同伴启动之前</td>
+<td> 指定模型 <code>next({ ...e, model })</code> 、拒绝 <code>{ deny: 이유 }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>接口</strong></p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>何时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ui.render</code></td>
+<td>绘制渲染位置之前</td>
+</tr>
+<tr>
+<td><code>ui.resolve</code></td>
+<td>mod 加载时，每个应用、站点、mod 各一次</td>
+</tr>
+<tr>
+<td><code>ui.press</code>, <code>ui.input</code>, <code>ui.select</code></td>
+<td> mod 绘制的 <code>Button</code>/<code>Input</code>/<code>Select</code>使用时</td>
+</tr>
+<tr>
+<td><code>ui.focus</code>, <code>ui.scroll</code></td>
+<td>焦点或滚动位置即将改变时</td>
+</tr>
+<tr>
+<td><code>ui.close</code></td>
+<td>面板即将关闭时</td>
+</tr>
+<tr>
+<td><code>ui.message</code></td>
+<td><code>Client</code> 元素向 mod 发送数据时 </td>
+</tr>
+<tr>
+<td><code>ui.fault</code></td>
+<td> mod 绘制的 <code>Client</code>加载、绘制、执行失败时（2.1.289+）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>其他 mod</strong></p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>何时</th>
+<th>可以返回的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>plugin.register</code></td>
+<td> 钩子模块即将加载时。 <code>e.uses</code>里包含该 mod 接收的事件、调用、环境变量和状态</td>
+<td><code>{ refuse: 이유 }</code></td>
+</tr>
+<tr>
+<td><code>engine.create</code></td>
+<td>在创建这个 mod 专用的 mods API 时</td>
+<td>增删命名空间后的 API</td>
+</tr>
+</tbody>
+</table>
+<p><strong>遥测</strong></p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>何时</th>
+<th>可以返回的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>telemetry.log</code>, <code>telemetry.mark</code></td>
+<td> 留下用量记录或显示功能使用时。已安装的 mod 则 <code>{ to: 'collector' }</code> matcher 必填 </td>
+<td><code>next(e)</code>, <code>{ deny: 이유 }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>设置钩子事件</strong>: <code>classic.&lt;이벤트&gt;</code> 的形式（例如： <code>classic.Stop</code>, <code>classic.PostToolUse</code>). <code>e</code>与设置钩子从 stdin 收到的 JSON 完全一致。</p>
+<p><strong>mods API 调用本身</strong> ：所有 mods API 方法都是 <code>네임스페이스.메서드</code> 同名事件（例如： <code>fs.read</code>, <code>model.complete</code>, <code>ui.open</code> ）。前面的 mod 拦截后 <code>next(e)</code>, <code>{ deny: 이유 }</code>, <code>{ value }</code>即可回答。</p>
+<h2 id="-api-네임스페이스"><code>$</code> API 命名空间 </h2>
+<table>
+<thead>
+<tr>
+<th>命名空间</th>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$.plugin</code></td>
+<td><code>name</code>, <code>root</code></td>
+<td>此插件的名称和目录</td>
+</tr>
+<tr>
+<td><code>$.ui</code></td>
+<td><code>resolve</code>, <code>invalidate</code>, <code>open</code>, <code>close</code>, <code>panes</code>, <code>focus</code>, <code>scroll</code>, <code>toast</code>, <code>status</code>, <code>log</code>, <code>notice</code>, <code>ask</code>, <code>copy</code>, <code>selection</code>, <code>blit</code></td>
+<td>绘制界面、开关面板、显示提示条与问题</td>
+</tr>
+<tr>
+<td><code>$.command</code></td>
+<td><code>register</code>, <code>run</code>, <code>list</code></td>
+<td><code>/명령어</code> 添加、执行、列表 </td>
+</tr>
+<tr>
+<td><code>$.tool</code></td>
+<td><code>register</code>, <code>call</code>, <code>check</code>, <code>list</code></td>
+<td>Claude 可用工具的添加、调用、检查、列表</td>
+</tr>
+<tr>
+<td><code>$.agent</code></td>
+<td><code>register</code>, <code>spawn</code>, <code>list</code></td>
+<td>子智能体的注册、执行、列表</td>
+</tr>
+<tr>
+<td><code>$.model</code></td>
+<td><code>complete</code>, <code>fork</code>, <code>classify</code></td>
+<td>在对话之外直接向模型提问</td>
+</tr>
+<tr>
+<td><code>$.prompt</code></td>
+<td><code>submit</code>, <code>read</code>, <code>fill</code>, <code>suggest</code>, <code>compose</code></td>
+<td>提交、读取提示，填充输入框</td>
+</tr>
+<tr>
+<td><code>$.turn</code></td>
+<td><code>abort</code></td>
+<td>中止进行中的回合</td>
+</tr>
+<tr>
+<td><code>$.session</code></td>
+<td><code>messages</code>, <code>cwd</code>, <code>root</code>, <code>model</code>, <code>turns</code>, <code>id</code>, <code>repo</code>, <code>surfaces</code>, <code>usage</code>, <code>version</code>, <code>compact</code>, <code>send</code>, <code>append</code>, <code>authorize</code></td>
+<td>读取会话信息，向其他会话发送消息</td>
+</tr>
+<tr>
+<td><code>$.config</code></td>
+<td><code>list</code>, <code>set</code></td>
+<td><code>/config</code> 读取、写入值 </td>
+</tr>
+<tr>
+<td><code>$.settings</code></td>
+<td><code>read</code></td>
+<td>读取设置文件与管理策略</td>
+</tr>
+<tr>
+<td><code>$.env</code></td>
+<td><code>get</code>, <code>set</code></td>
+<td>读取、写入环境变量</td>
+</tr>
+<tr>
+<td><code>$.fs</code></td>
+<td><code>read</code>, <code>write</code>, <code>list</code>, <code>exists</code>, <code>stat</code>, <code>ancestors</code></td>
+<td>读取、写入、列出文件</td>
+</tr>
+<tr>
+<td><code>$.store</code></td>
+<td><code>get</code>, <code>set</code>, <code>delete</code>, <code>keys</code></td>
+<td>本机所有会话共享的键值存储</td>
+</tr>
+<tr>
+<td><code>$.state</code></td>
+<td><code>get</code>, <code>set</code> (+ <code>atom</code>, <code>read</code>, <code>update</code>, <code>derive</code>, <code>memberOf</code> 导入) </td>
+<td>响应式状态。写入值后，读取该值的界面会自动重绘</td>
+</tr>
+<tr>
+<td><code>$.clock</code></td>
+<td><code>now</code>, <code>sleep</code>, <code>after</code>, <code>every</code></td>
+<td>定时器（<code>setTimeout</code>·<code>setInterval</code> 代替） </td>
+</tr>
+<tr>
+<td><code>$.http</code></td>
+<td><code>fetch</code></td>
+<td>网络请求</td>
+</tr>
+<tr>
+<td><code>$.process</code></td>
+<td><code>run</code>, <code>spawn</code></td>
+<td>运行程序</td>
+</tr>
+<tr>
+<td><code>$.mcp</code></td>
+<td><code>call</code>, <code>connect</code></td>
+<td>调用已连接的 MCP 服务器工具</td>
+</tr>
+<tr>
+<td><code>$.audio</code></td>
+<td><code>play</code>, <code>speak</code></td>
+<td>播放声音</td>
+</tr>
+<tr>
+<td><code>$.telemetry</code></td>
+<td><code>log</code>, <code>mark</code></td>
+<td>用量记录（只有 Claude Code 或内置 mod 调用时才实际发送）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="렌더-사이트">渲染位置</h2>
+<table>
+<thead>
+<tr>
+<th>站点</th>
+<th><code>e.props</code></th>
+<th><code>e.requestId</code></th>
+<th>绘制位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Pane</code></td>
+<td><code>title</code>, <code>isFocused</code>, <code>bodyColumns</code>, <code>placement</code>, <code>scroll</code>, <code>view</code></td>
+<td> 该面板的 <code>id</code></td>
+<td>终端、桌面端</td>
+</tr>
+<tr>
+<td><code>AbovePrompt</code></td>
+<td><code>hasSurvey</code>, <code>isWorking</code>, <code>maxRows</code>, <code>bodyColumns</code>, <code>scroll</code>, <code>view</code></td>
+<td>单实例</td>
+<td>终端、桌面端</td>
+</tr>
+<tr>
+<td><code>UserMessage</code></td>
+<td><code>text</code>, <code>origin</code>, <code>isExpanded</code> 等 </td>
+<td>消息 id</td>
+<td>终端、桌面端</td>
+</tr>
+<tr>
+<td><code>AssistantMessage</code></td>
+<td>回答文本</td>
+<td>消息 id</td>
+<td>终端、桌面端</td>
+</tr>
+<tr>
+<td><code>ToolUse</code>, <code>ToolResult</code>, <code>ToolGroup</code></td>
+<td>工具名称、输入、结果</td>
+<td>工具调用 id</td>
+<td>终端、桌面端</td>
+</tr>
+<tr>
+<td><code>CommandOutput</code></td>
+<td><code>command</code>, <code>text</code></td>
+<td>消息 id</td>
+<td>终端、桌面端</td>
+</tr>
+<tr>
+<td><code>AskUserQuestion</code></td>
+<td>问题与选项</td>
+<td>工具调用 id</td>
+<td>终端、桌面端</td>
+</tr>
+<tr>
+<td><code>ToolProgress</code></td>
+<td><code>kind</code></td>
+<td>工具调用 id</td>
+<td>终端</td>
+</tr>
+<tr>
+<td><code>Spinner</code></td>
+<td><code>word</code>, <code>message</code>, <code>suffix</code>, <code>mode</code></td>
+<td>智能体 id</td>
+<td>终端、桌面端</td>
+</tr>
+<tr>
+<td><code>TurnDuration</code></td>
+<td><code>word</code>, <code>durationMs</code></td>
+<td>消息 id</td>
+<td>终端</td>
+</tr>
+<tr>
+<td><code>InfoNotice</code></td>
+<td><code>text</code>, <code>command</code></td>
+<td>消息 id</td>
+<td>终端</td>
+</tr>
+<tr>
+<td><code>SessionMode</code></td>
+<td><code>modes</code></td>
+<td>单实例</td>
+<td>终端、桌面端</td>
+</tr>
+<tr>
+<td><code>PromptHint</code></td>
+<td><code>isDraft</code>, <code>isWorking</code>, <code>hint</code></td>
+<td>单实例</td>
+<td>终端、桌面端</td>
+</tr>
+</tbody>
+</table>
+<p><code>e.viewport</code> 在 <code>columns</code>·<code>rows</code>·<code>isFullscreen</code> 会写入（测量前为空）。面板与条的宽度是 <code>e.props.bodyColumns</code> ，dock 状态面板的高度是 <code>e.props.scroll.bodyRows</code>来对齐。</p>
+<h2 id="요소-elements">元素 (elements)</h2>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>主要 props</th>
+<th style="text-align: center">终端</th>
+<th style="text-align: center">桌面</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Box</code></td>
+<td><code>key</code> ，flex 布局， <code>gap</code>, <code>padding</code>, <code>margin</code>, <code>width</code>, <code>height</code>, <code>borderStyle</code>, <code>backgroundColor</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Text</code></td>
+<td><code>color</code>, <code>backgroundColor</code>, <code>bold</code>, <code>italic</code>, <code>underline</code>, <code>dimColor</code>, <code>inverse</code>, <code>wrap</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Button</code></td>
+<td><code>key</code>, <code>label</code>, <code>onPress</code>, <code>hotkey</code>, <code>plain</code>, <code>dimColor</code>, <code>autoFocus</code>, <code>action</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Link</code></td>
+<td><code>href</code>, <code>label</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Code</code></td>
+<td>代码正文（最多 10,000 字符）</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Markdown</code></td>
+<td><code>text</code> （最多 10,000 字）， <code>key</code>, <code>dimColor</code>, <code>onLinkPress</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Input</code></td>
+<td><code>key</code>, <code>label</code>, <code>placeholder</code>, <code>value</code>, <code>submitLabel</code>, <code>onSubmit</code>, <code>onInput</code>, <code>autoFocus</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Select</code></td>
+<td><code>key</code>, <code>label</code>, <code>options</code>, <code>value</code>, <code>onSelect</code>, <code>autoFocus</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Svg</code></td>
+<td>SVG 文档（最大 131,072 字）</td>
+<td style="text-align: center"></td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Client</code></td>
+<td><code>module</code>, <code>key</code>。由单独文件绘制的区域（动画、指针输入）</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Raster</code></td>
+<td><code>key</code>, <code>columns</code> （最多 512）， <code>rows</code> （最多 256）， <code>cells</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td><code>Image</code></td>
+<td>PNG、RGBA 字节（最大 2MiB）或文件路径</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="한계-limits">限制 (limits)</h2>
+<table>
+<thead>
+<tr>
+<th>条目</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单个钩子的执行时间（<code>next</code>·不含 mods API 调用等待时间）</td>
+<td> 10 秒， <code>prompt.edit</code>为 50ms</td>
+</tr>
+<tr>
+<td><code>.catch</code> 处理函数执行时间 </td>
+<td>1 秒</td>
+</tr>
+<tr>
+<td><code>session.end</code> 整个钩子 </td>
+<td>按 SessionEnd 钩子的预算（默认 1.5 秒）</td>
+</tr>
+<tr>
+<td><code>$.process.run</code> 超时 </td>
+<td>默认 30 秒，最大 10 分钟</td>
+</tr>
+<tr>
+<td><code>$.model.complete</code> 的 <code>maxTokens</code></td>
+<td>默认 1024，最大 64,000 或模型上限</td>
+</tr>
+<tr>
+<td><code>$.fs.read</code>/<code>$.fs.write</code></td>
+<td>每个文件 4MiB</td>
+</tr>
+<tr>
+<td><code>Text</code> 单个子字符串 </td>
+<td>10,000 字</td>
+</tr>
+<tr>
+<td><code>$.store</code></td>
+<td>整个 4MiB JSON</td>
+</tr>
+<tr>
+<td><code>$.session.messages()</code></td>
+<td>最近 4,096 条记录</td>
+</tr>
+<tr>
+<td><code>$.ui.invalidate('ui.render')</code> 重绘 </td>
+<td>限制为每秒 10 次（终端中可见的面板、展开的条、提示行是 30 次）。更快的调用会被合并</td>
+</tr>
+<tr>
+<td><code>$.ui.toast</code></td>
+<td>默认显示 4 秒</td>
+</tr>
+<tr>
+<td>未经用户请求打开的面板</td>
+<td>终端宽度 144 列起显示，打开过一次则从 110 列起显示</td>
+</tr>
+<tr>
+<td>命令、工具、子智能体、面板名称</td>
+<td>英文字母、数字、<code>_</code>·<code>-</code>，最多 64 字</td>
+</tr>
+<tr>
+<td><code>claude plugin test</code> 一个测试 </td>
+<td>默认 5 秒</td>
+</tr>
+</tbody>
+</table>
+<h2 id="설정환경변수">设置、环境变量</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>在哪里</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CLAUDE_CODE_PLUGIN_DIRS</code></td>
+<td> 环境变量或 <code>~/.claude/settings.json</code> 的 <code>env</code></td>
+<td><code>--plugin-dir</code>那样加载插件目录</td>
+</tr>
+<tr>
+<td><code>CLAUDE_CODE_PLUGIN_DIR_WATCH</code></td>
+<td>环境变量</td>
+<td><code>1</code> 时，非交互式会话在保存时也会 <code>--plugin-dir</code> 重新加载 mod </td>
+</tr>
+<tr>
+<td><code>prependPlugins</code>, <code>appendPlugins</code></td>
+<td>managed settings（没有 managed settings 的个人用户可自行设置）</td>
+<td>把 mod 的执行顺序固定在用户 mod 之前或之后</td>
+</tr>
+<tr>
+<td><code>allowManagedModsOnly</code></td>
+<td>managed settings（内置防护选项）</td>
+<td>仅加载组织 mod 和内置 mod</td>
+</tr>
+<tr>
+<td><code>allowModsToOverrideDenyRules</code></td>
+<td>managed settings（内置防护选项）</td>
+<td> 用户 mod <code>deny</code> 反转规则以允许批准 </td>
+</tr>
+<tr>
+<td><code>allowManagedHooksOnly</code></td>
+<td>managed settings</td>
+<td>拦截非组织的钩子与安装类 mod</td>
+</tr>
+<tr>
+<td><code>disableAllHooks</code></td>
+<td>所有设置文件</td>
+<td>关闭已安装 mod 的全部钩子（在个人设置里只关自己的 mod，在 managed settings 里则全关）</td>
+</tr>
+<tr>
+<td><code>disableSideloadFlags</code></td>
+<td>managed settings</td>
+<td> 启动时 <code>--plugin-dir</code>·<code>--plugin-url</code> 拒绝 </td>
+</tr>
+<tr>
+<td><code>pluginConfigs</code></td>
+<td>用户或 managed settings</td>
+<td> mod 的 <code>userConfig</code> 保存值 </td>
+</tr>
+</tbody>
+</table>
+<h2 id="명령어">命令</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/plugin</code></td>
+<td> 标签页下方 <code>N mods active · 이름</code>那样显示已加载的 mod 数量</td>
+</tr>
+<tr>
+<td><code>claude plugin validate &lt;경로&gt;</code></td>
+<td>读取清单和钩子模块，把错误、接收的事件（<code>hooks:</code>），调用的 API（<code>calls:</code> ）并输出。 <code>--strict</code> 会把警告也当成错误， <code>--json</code>会作为机器可读的报告</td>
+</tr>
+<tr>
+<td><code>claude plugin test [경로]</code></td>
+<td><code>.test.ts</code>/<code>.test.tsx</code>结尾的文件全部执行。失败则退出码为 1</td>
+</tr>
+<tr>
+<td><code>claude --plugin-dir &lt;경로&gt;</code></td>
+<td>只在一个会话里加载插件目录，每次保存都重新加载钩子模块。可重复多次</td>
+</tr>
+<tr>
+<td><code>/reload-plugins</code></td>
+<td>把插件改动立即应用到当前运行的会话</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<p> 了解更多： <a href="/k-mods/zh/guide/what-are-mods/">mods 是什么？</a> · <a href="/k-mods/zh/guide/install/">安装指南</a> · <a href="/k-mods/zh/guide/make-your-own/">做一个自己的 mod</a> · <a href="/k-mods/zh/guide/safety/">安全指南</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/README.md">README</a></p>
+</article><aside class="guide-side"><p class="eyebrow">指南</p><ul class="guide-nav"><li><a href="/k-mods/zh/guide/what-are-mods/">mods 是什么？</a></li><li><a href="/k-mods/zh/guide/install/">安装指南</a></li><li><a href="/k-mods/zh/guide/safety/">如何安全使用 mod</a></li><li><a aria-current="page" href="/k-mods/zh/guide/cheatsheet/">mods 速查表（韩语）</a></li><li><a href="/k-mods/zh/guide/make-your-own/">做一个自己的 mod</a></li></ul><div class="side-links"><span class="side-meta">最后修改 · 2026 年 10 月 6 日</span><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/blob/main/docs/guide/cheatsheet.md"><svg aria-hidden="true" fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>在 GitHub 查看原文</a><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/edit/main/docs/guide/cheatsheet.md"><svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>编辑此文档</a></div></aside></div></div></main><footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><p class="footer-logo"><span>k-mods</span><span aria-hidden="true" class="dot dot--sm"></span><span class="footer-copy">© 2026 · MIT</span></p><p class="footer-tagline">列表由 GitHub 仓库 SeongGwangJu/k-mods 的 registry 自动生成。mod 的新增和修改通过 PR 接收。</p><a class="footer-sync mono" href="https://github.com/SeongGwangJu/k-mods/commit/10e9d6a3bf9be6f3dd3eadc4462fdf651bedca30">最后同步 2026 年 10 月 30 日 · 10e9d6a</a><a class="footer-star" href="https://github.com/SeongGwangJu/k-mods"><svg aria-hidden="true" fill="currentColor" height="13" viewbox="0 0 24 24" width="13"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></svg>如果觉得好用，请在 GitHub 上点个 star</a></div><nav aria-label="站点链接" class="footer-nav"><a href="https://github.com/SeongGwangJu/k-mods">GitHub</a><a href="/k-mods/zh/guide/install/">安装指南</a><a href="/k-mods/zh/guide/safety/">如何安全使用</a><a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">参与贡献</a><a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">推荐 mod</a><a href="https://seonggwangju.github.io/">作者</a></nav></div></footer><dialog aria-label="mod 详情" class="modal" data-modal=""><button aria-label="上一个 mod" class="modal-arrow" data-modal-prev="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m15 18-6-6 6-6" stroke-width="2"></path></svg></button><div class="modal-panel"><div aria-hidden="true" class="modal-handle"><span></span></div><div class="modal-bar"><a class="modal-expand" data-modal-expand="" href="#"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" stroke-width="1.6"></path></svg><span>以完整页面打开</span><kbd class="key modal-key">⌘↵</kbd></a><span class="modal-crumb" data-modal-crumb=""></span><button aria-label="关闭" class="icon-btn icon-btn--plain" data-modal-close="" type="button"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M6 18 18 6M6 6l12 12"></path></svg></button></div><div class="modal-body" data-modal-body="" tabindex="-1"><p class="modal-loading">加载中</p></div></div><button aria-label="下一个 mod" class="modal-arrow" data-modal-next="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m9 18 6-6-6-6" stroke-width="2"></path></svg></button><div aria-hidden="true" class="hint" data-modal-hint=""><span><kbd data-hint-mod="">⌘</kbd><kbd>Enter</kbd>完整页面</span><i></i><span><kbd>←</kbd><kbd>→</kbd>上一页 / 下一页</span><i></i><span><kbd>Esc</kbd>关闭</span></div></dialog><p aria-live="polite" class="sr-only" data-live=""></p><script src="/k-mods/assets/Base.astro_astro_type_script_index_0_lang.BaoNknEh.js" type="module"></script></body></html>

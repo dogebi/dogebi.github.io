@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>インストールガイド · Claude Code modsガイド · k-mods</title><meta content="k-modsは通常のClaude Codeプラグインマーケットプレイスです。インストール・更新・削除はClaude Codeの/pluginコマンドとclaude pluginコマンドで行います。" name="description"/><link href="https://dogebi.github.io/k-mods/ja/guide/install/" rel="canonical"/><link href="https://dogebi.github.io/k-mods/guide/install/" hreflang="ko" rel="alternate"/><link href="https://dogebi.github.io/k-mods/en/guide/install/" hreflang="en" rel="alternate"/><link href="https://seonggwangju.github.io/k-mods/guide/install/" hreflang="x-default" rel="alternate"/><meta content="article" property="og:type"/><meta content="k-mods" property="og:site_name"/><meta content="설치 가이드 · Claude Code mods 가이드 · k-mods" property="og:title"/><meta content="k-modsは通常のClaude Codeプラグインマーケットプレイスです。インストール・更新・削除はClaude Codeの/pluginコマンドとclaude pluginコマンドで行います。" property="og:description"/><meta content="https://seonggwangju.github.io/k-mods/guide/install/" property="og:url"/><meta content="https://seonggwangju.github.io/k-mods/og/k-mods.png" property="og:image"/><meta content="ko_KR" property="og:locale"/><meta content="summary_large_image" name="twitter:card"/><meta content="#FFFFFF" media="(prefers-color-scheme: light)" name="theme-color"/><meta content="#0F1318" media="(prefers-color-scheme: dark)" name="theme-color"/><link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;circle cx='50' cy='50' r='44' fill='%2349B3EF'/&gt;&lt;/svg&gt;" rel="icon"/><link href="/k-mods/sitemap-index.xml" rel="sitemap"/><link href="/k-mods/llms.txt" rel="alternate" title="llms.txt" type="text/plain"/><link as="font" crossorigin="" href="/k-mods/fonts/SUIT-Variable.woff2" rel="preload" type="font/woff2"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/><style>@font-face{font-family:"SUIT Variable";src:url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2-variations"),url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}</style><script>(function(){try{var t=localStorage.getItem('kmods-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "インストールガイド", "description": "k-modsは一般的なClaude Codeプラグインマーケットプレイスです。そのためインストール・アップデート・削除はすべてClaude Codeの/pluginコマンドとclaude pluginシェルコマンドで行います。", "url": "https://seonggwangju.github.io/k-mods/ja/guide/install/", "inLanguage": "ja", "dateModified": "2026-10-11T04:26:01+09:00", "author": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "publisher": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "about": {"@type": "Thing", "name": "Claude Code mods"}, "isPartOf": {"@id": "https://seonggwangju.github.io/k-mods/ja/#website"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "k-mods", "item": "https://seonggwangju.github.io/k-mods/ja/"}, {"@type": "ListItem", "position": 2, "name": "ガイド", "item": "https://seonggwangju.github.io/k-mods/ja/guide/"}, {"@type": "ListItem", "position": 3, "name": "インストールガイド", "item": "https://seonggwangju.github.io/k-mods/ja/guide/install/"}]}</script><link href="/k-mods/assets/Base.BXNGk-Gx.css" rel="stylesheet"/><link href="/k-mods/paper.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;700&amp;family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+</head><body><a class="skip" href="#main">本文へスキップ</a><header class="site-header"><div class="container header-bar"><a class="logo" href="/k-mods/ja/">k-mods<span aria-hidden="true" class="dot"></span></a><div class="header-actions"><nav aria-label="言語を選択" class="seg"><a href="/k-mods/guide/install/" hreflang="ko" lang="ko">KO</a><a href="/k-mods/en/guide/install/" hreflang="en" lang="en">EN</a><a href="/k-mods/zh/guide/install/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a aria-current="true" href="/k-mods/ja/guide/install/" hreflang="ja" lang="ja">日本語</a></nav><button aria-label="画面テーマを切り替え" class="icon-btn" data-theme-toggle="" type="button"><svg aria-hidden="true" class="theme-icon-moon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg aria-hidden="true" class="theme-icon-sun" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg></button><a aria-label="GitHub" class="icon-btn" href="https://github.com/dogebi/k-mods"><svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></header><main id="main"><div class="container guide-page"><nav aria-label="現在位置" class="crumb"><a href="/k-mods/ja/">k-mods</a><span aria-hidden="true">/</span><a href="/k-mods/ja/guide/">ガイド</a><span aria-hidden="true">/</span><span aria-current="page">インストールガイド</span></nav><div class="guide-layout"><article class="prose"><h1 id="설치-가이드">インストールガイド</h1>
+<p> k-modsは通常のClaude Codeプラグインマーケットプレイスです。そのためインストール・アップデート・削除はすべてClaude Codeの <code>/plugin</code> コマンドと <code>claude plugin</code> シェルコマンドで行えます。この記事では、バージョン確認からマーケットプレイスの追加、インストールスコープ（scope）、チームメンバーと一緒に使う方法、トラブルシューティングまでを順番にまとめます。 </p>
+<h2 id="목차">目次</h2>
+<ul>
+<li><a href="#%EB%B2%84%EC%A0%84-%ED%99%95%EC%9D%B8">バージョン確認</a></li>
+<li><a href="#%EB%A7%88%EC%BC%93%ED%94%8C%EB%A0%88%EC%9D%B4%EC%8A%A4-%EC%B6%94%EA%B0%80">マーケットプレイスを追加</a></li>
+<li><a href="#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">インストールする</a></li>
+<li><a href="#%EC%84%A4%EC%B9%98-%EB%B2%94%EC%9C%84scope">インストールスコープ（scope）</a></li>
+<li><a href="#%EB%81%84%EA%B8%B0%EC%82%AD%EC%A0%9C%ED%95%98%EA%B8%B0">無効化・削除する</a></li>
+<li><a href="#%EC%84%B8%EC%85%98%EC%97%90-%EB%B0%94%EB%A1%9C-%EB%B0%98%EC%98%81%ED%95%98%EA%B8%B0">セッションにすぐ反映する</a></li>
+<li><a href="#%EC%84%A4%EC%B9%98%EB%90%9C-mod-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0">インストール済みmodを確認する</a></li>
+<li><a href="#%EC%84%A4%EC%A0%95%EA%B0%92-%EB%84%A3%EA%B8%B0-userconfig">設定値を入れる（userConfig）</a></li>
+<li><a href="#%EC%B5%9C%EC%8B%A0-%EB%B2%84%EC%A0%84-%EC%9C%A0%EC%A7%80%ED%95%98%EA%B8%B0">最新バージョンを保つ</a></li>
+<li><a href="#%ED%8C%80%EC%9B%90%EA%B3%BC-%ED%95%A8%EA%BB%98-%EC%93%B0%EA%B8%B0">チームメンバーと一緒に使う</a></li>
+<li><a href="#%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8">トラブルシューティングのチェックリスト</a></li>
+</ul>
+<h2 id="버전-확인">バージョン確認</h2>
+<p>modを読み込むには最低バージョンが必要です。</p>
+<ul>
+<li><strong>ターミナル</strong> : Claude Code 2.1.287以上。シェルで <code>claude --version</code>で確認します。</li>
+<li><strong>デスクトップアプリ</strong> : 2.1.286以上。Codeタブで <code>/status</code> を入力すると <strong>Claude Code</strong> の行にバージョンが出ます。 </li>
+</ul>
+<p>バージョンが低い場合は、Claude Codeかデスクトップアプリをアップデートしてから再試行してください。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/overview#turn-mods-on-or-off">Turn mods on or off</a></p>
+<h2 id="마켓플레이스-추가">マーケットプレイスを追加</h2>
+<p>k-modsをインストールするには、まずマーケットプレイスを一度登録する必要があります。セッション内で行っても、シェルで行ってもかまいません。</p>
+<p><strong>セッション内で</strong></p>
+<pre class="astro-code github-dark-default" data-language="plaintext" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span>/plugin marketplace add SeongGwangJu/k-mods</span></span></code></pre>
+<p><strong>シェルで</strong> （セッションを開かず、スクリプトなどから） </p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> marketplace</span><span style="color:#A5D6FF"> add</span><span style="color:#A5D6FF"> SeongGwangJu/k-mods</span></span></code></pre>
+<p> 成功したら <code>Successfully added marketplace: k-mods</code> が表示されます。マーケットプレイス名はリポジトリ名ではなく <code>marketplace.json</code> の <code>name</code> フィールドから来ますが、k-modsでは両者が同じです。以降は <code>&lt;mod 이름&gt;@k-mods</code> という形でインストールします。 </p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/install#add-a-marketplace">Add a marketplace</a></p>
+<h2 id="설치하기">インストールする</h2>
+<p><strong>セッション内で</strong></p>
+<pre class="astro-code github-dark-default" data-language="plaintext" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span>/plugin install starter@k-mods</span></span></code></pre>
+<p> セッションで <code>/plugin install</code> はすぐにはインストールせず、まず <code>/plugin</code> パネルでそのmodの詳細情報（説明、追加されるコマンド・フック、権限）を表示します。そこでインストールスコープを選ぶと、そのときにインストールされます。 </p>
+<p><strong>シェルで</strong> （すぐにインストール） </p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> install</span><span style="color:#A5D6FF"> starter@k-mods</span></span></code></pre>
+<p>k-modsがあらかじめまとめたセットもあります。</p>
+<ul>
+<li><code>starter@k-mods</code>: おすすめセット。READMEの「まず使ってみてください」にあるmod（ko-ui, skins, pixel-pals, ctx-strip, mod-store）が一度にインストールされます。</li>
+<li><code>korean-pack@k-mods</code>: 韓国語パックのみ（メニュー・設定・タスクバーの翻訳、ko-ui）。</li>
+</ul>
+<p> 1つずつ選んでインストールしたいなら <code>mod-store@k-mods</code> をインストールした後、セッションで <code>/k-mods</code>を入力してください。カタログがパネルで開き、ボタンでインストール・削除できます。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/install#install-a-plugin">Install a plugin</a></p>
+<h2 id="설치-범위scope">インストールスコープ（scope）</h2>
+<p>インストール時に3つのスコープから1つを選びます。スコープは「誰がこのmodを受け取るか」と「どの設定ファイルに記録されるか」を決めます。</p>
+<table>
+<thead>
+<tr>
+<th>スコープ</th>
+<th>誰が受け取るか</th>
+<th>記録されるファイル</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user（ユーザー）</td>
+<td>このコンピューターのすべてのプロジェクトで自分だけ</td>
+<td><code>~/.claude/settings.json</code></td>
+</tr>
+<tr>
+<td>project（プロジェクト）</td>
+<td>このリポジトリで作業する全員</td>
+<td><code>.claude/settings.json</code> （コミットするファイル） </td>
+</tr>
+<tr>
+<td>local（ローカル）</td>
+<td>このリポジトリで自分だけ</td>
+<td><code>.claude/settings.local.json</code> （通常はコミットしない） </td>
+</tr>
+</tbody>
+</table>
+<p> シェルでは <code>--scope user|project|local</code> で選び、省略すると <code>user</code>です。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> install</span><span style="color:#A5D6FF"> blast-radius-ko@k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span></code></pre>
+<p> 同じmodが複数のスコープに同時に設定されていると <strong>local &gt; project &gt; user</strong> の順に優先されます。たとえばプロジェクトが有効にしているmodを自分だけオフにしたいなら、localスコープでオフにすればかまいません。 </p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/install#choose-an-install-scope">Choose an install scope</a></p>
+<h2 id="끄기삭제하기">無効化・削除する</h2>
+<p><strong>セッション内で</strong>: <code>/plugin</code> → <strong>Installed</strong> タブで項目を選ぶと <strong>Disable plugin</strong>, <strong>Uninstall</strong> 同じメニューが出ます。 <code>/plugin enable &lt;mod&gt;@k-mods</code>, <code>/plugin disable &lt;mod&gt;@k-mods</code>, <code>/plugin uninstall &lt;mod&gt;@k-mods</code>で直接開くこともできます。</p>
+<p><strong>シェルで</strong></p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> disable</span><span style="color:#A5D6FF"> blast-radius-ko@k-mods</span></span>
+<span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> enable</span><span style="color:#A5D6FF"> blast-radius-ko@k-mods</span></span>
+<span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> uninstall</span><span style="color:#A5D6FF"> blast-radius-ko@k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span></code></pre>
+<p><code>enable</code>·<code>disable</code> は <code>--scope</code> を省略すると、そのmodがすでに設定されているスコープを自動で探します。 <code>uninstall</code> は省略すると <code>user</code> スコープを削除します。 </p>
+<p> プロジェクトが有効にしているmodを <strong>Uninstall</strong> すると「自分だけオフにするか、全体から外すか」を尋ねます。自分だけオフにするには <code>.claude/settings.local.json</code> に <code>false</code> を書く側（デフォルトキー <strong>y</strong>）を、全体から外すには共有ファイル自体を変える側（<strong>u</strong>）を選べばOKです。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/install#manage-installed-plugins">Manage installed plugins</a></p>
+<h2 id="세션에-바로-반영하기">セッションにすぐ反映する</h2>
+<p> シェルでインストール・アップデート・削除したか、 <code>/plugin</code> パネルの外で設定ファイルを変えた場合、開いているセッションには自動では反映されません。セッション内で次のように入力してください。 </p>
+<pre class="astro-code github-dark-default" data-language="plaintext" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span>/reload-plugins</span></span></code></pre>
+<p><code>/plugin</code> パネルを閉じるときに変更があれば、Claude Codeが自動で <code>/reload-plugins</code> を実行してくれます。ただし、今回のリロードがプロンプトキャッシュを壊す可能性がある場合（MCPサーバーが追加・削除される場合など）は、すぐには適用せず警告だけ出します。そのときは <code>/reload-plugins --force</code>で強制適用できますが、次のリクエスト1回はキャッシュなしで処理されるためコストが余計にかかります。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/cli-reference#reload-plugins">/reload-plugins</a></p>
+<h2 id="설치된-mod-확인하기">インストール済みmodを確認する</h2>
+<p> セッション内で <code>/plugin</code> を入力すると、タブの下に薄い文字で <code>N mods active · 이름1, 이름2</code> のように表示されます。この行には <strong>組み込みmodは含まれません。</strong> インストールしたのにこの行に名前が見えないなら、読み込みに失敗しています。 </p>
+<p>シェルではより詳しく見られます。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> list</span></span>
+<span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> details</span><span style="color:#A5D6FF"> mod-store</span></span></code></pre>
+<p><code>plugin list</code> はバージョン・スコープ・状態を表示し、 <code>plugin details</code>は、そのmodが追加するコマンド・フック・エージェントの一覧とコンテキストコストを表示します。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/overview#see-which-mods-a-session-loaded">See which mods a session loaded</a></p>
+<h2 id="설정값-넣기-userconfig">設定値を入れる（userConfig）</h2>
+<p> 一部のmodはインストール時に追加の値を尋ねます（APIアドレス、トークンなど）。これらの値はプラグインの <code>userConfig</code>として宣言されています。</p>
+<ul>
+<li><strong>インストール・有効化のタイミング</strong>: 値が空なら設定ダイアログが自動で開きます。</li>
+<li><strong>後で開き直す</strong> : セッションで <code>/plugin configure &lt;mod&gt;@k-mods</code>を入力します。</li>
+<li><strong>一目でわかる概要</strong> : Claude Code 2.1.269以上なら <code>/config</code> パネルには有効なmodごとに設定行が表示されます。ただし、機密性の高い値（ <code>sensitive</code>）や複数を選ぶ値（<code>multiple</code> ）は <code>/config</code>に表示されません。</li>
+<li><strong>シェルで値を入れる</strong> : インストールするときに <code>--config key=value</code>を付けたり、インストール後に次のようにJSONを標準入力へ流し込みます。</li>
+</ul>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> '{"api_url": "https://example.com"}'</span><span style="color:#FF7B72"> |</span><span style="color:#FFA657"> claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> configure</span><span style="color:#A5D6FF"> my-mod@k-mods</span><span style="color:#79C0FF"> --values-stdin</span></span></code></pre>
+<p> 機密性の高い値は <code>settings.json</code>ではなく、OSの安全なストア（macOSキーチェーンなど）に保存されます。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/manifest-reference#user-configuration">User configuration</a></p>
+<h2 id="최신-버전-유지하기">最新バージョンを保つ</h2>
+<p>マーケットプレイスごとに自動アップデートのデフォルトが異なります。</p>
+<ul>
+<li><strong>デフォルトでオン</strong>: Anthropic公式マーケットプレイスのほとんど</li>
+<li><strong>デフォルトでオフ</strong>: k-modsを含むその他すべてのマーケットプレイス</li>
+</ul>
+<p>k-modsは自動アップデートがデフォルトでオフなので、最新のレビュー・バグ修正を受け取るにはときどき次のいずれかを行ってください。</p>
+<ul>
+<li>
+<p><strong>セッションで自動アップデートを有効にする</strong>: <code>/plugin</code> → <strong>Marketplaces</strong> タブ → <code>k-mods</code> 選択 → <strong>Enable auto-update</strong></p>
+</li>
+<li>
+<p><strong>マーケットプレイスのカタログだけを更新</strong> （新しいmodを追加するか確認、インストール済みのmodはそのまま） </p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> marketplace</span><span style="color:#A5D6FF"> update</span><span style="color:#A5D6FF"> k-mods</span></span></code></pre>
+</li>
+<li>
+<p><strong>インストールしたmodまでまとめてアップデート</strong> : セッションで <code>/plugin</code> → <strong>Marketplaces</strong> タブ → <code>k-mods</code> 選択 → <strong>Update marketplace</strong></p>
+</li>
+<li>
+<p><strong>modを1つだけアップデート</strong></p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> update</span><span style="color:#A5D6FF"> starter@k-mods</span></span></code></pre>
+</li>
+</ul>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/install#keep-plugins-updated">Keep plugins updated</a></p>
+<h2 id="팀원과-함께-쓰기">チームメンバーと一緒に使う</h2>
+<p> リポジトリに設定をコミットしておくと、そのリポジトリを開くすべてのチームメンバーにk-modsマーケットプレイスが自動で登録され、指定したmodが「オン」状態で始まります。 <code>.claude/settings.json</code>に次のように書いてコミットしてください。</p>
+<pre class="astro-code github-dark-default" data-language="json" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E6EDF3">{</span></span>
+<span class="line"><span style="color:#7EE787">  "extraKnownMarketplaces"</span><span style="color:#E6EDF3">: {</span></span>
+<span class="line"><span style="color:#7EE787">    "k-mods"</span><span style="color:#E6EDF3">: {</span></span>
+<span class="line"><span style="color:#7EE787">      "source"</span><span style="color:#E6EDF3">: { </span><span style="color:#7EE787">"source"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"github"</span><span style="color:#E6EDF3">, </span><span style="color:#7EE787">"repo"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"SeongGwangJu/k-mods"</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  },</span></span>
+<span class="line"><span style="color:#7EE787">  "enabledPlugins"</span><span style="color:#E6EDF3">: {</span></span>
+<span class="line"><span style="color:#7EE787">    "starter@k-mods"</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">true</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+<p>シェルで一度実行するだけで、このファイルが自動で作られます。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> marketplace</span><span style="color:#A5D6FF"> add</span><span style="color:#A5D6FF"> SeongGwangJu/k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span>
+<span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> install</span><span style="color:#A5D6FF"> starter@k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span></code></pre>
+<p><strong>注意点</strong>: <code>enabledPlugins</code>に書かれたmodは「オン」状態になるだけで、チームメンバーのコンピューターへ自動でダウンロードされるわけではありません。リポジトリを新たに取得した各メンバーは、一度ずつ次のコマンドを実行しないと実際にはインストールされません（ワークスペースを信頼（trust）した後）。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> install</span><span style="color:#A5D6FF"> starter@k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span></code></pre>
+<p>この手順を省くと、Claude Codeが「<code>.claude/settings.json</code>このプラグインを有効にしているがインストールされていない」と知らせます。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/host-marketplace#register-the-marketplace-for-everyone-in-a-repository">Register the marketplace for everyone in a repository</a>, <a href="https://code.claude.com/docs/en/settings-reference#extraknownmarketplaces">extraKnownMarketplaces</a>, <a href="https://code.claude.com/docs/en/settings-reference#enabledplugins">enabledPlugins</a></p>
+<h2 id="문제-해결-체크리스트">トラブルシューティングのチェックリスト</h2>
+<p>modはインストールできたのに何も起きない場合は、上から下へ確認してみてください。</p>
+<ol>
+<li>
+<p><strong>バージョンが低すぎる</strong>: <code>claude --version</code> またはデスクトップアプリの <code>/status</code> 確認。 <a href="#%EB%B2%84%EC%A0%84-%ED%99%95%EC%9D%B8">バージョン確認</a> 参考。 </p>
+</li>
+<li>
+<p><strong>ワークスペースをまだ信頼（trust）していない</strong>: このディレクトリでインタラクティブセッションを一度開き、信頼確認のダイアログを承認しないとmodは読み込まれません。</p>
+</li>
+<li>
+<p><strong><code>--bare</code> や <code>--safe-mode</code>で始まる</strong>: この2つのフラグはインストール済みのmodをすべて無効にします。フラグなしで再起動してみてください。</p>
+</li>
+<li>
+<p><strong><code>disableAllHooks</code>が設定済み</strong> : 自分の設定ファイルや組織のmanaged settingsにこの値が <code>true</code>ならインストールしたmodがすべて無効になります。</p>
+</li>
+<li>
+<p><strong>組織ポリシーでブロックされている</strong> : 管理者が <code>allowManagedModsOnly</code> を有効にしたなら、組織が配布したmodだけが読み込まれます。詳しくは <a href="/k-mods/ja/guide/safety/">安全ガイド</a>にあります。</p>
+</li>
+<li>
+<p><strong><code>/plugin</code>の「N mods active」の行に名前がない</strong> : インストールはできたものの、読み込みに失敗したということです。 <code>claude plugin validate &lt;경로&gt;</code>で先に確認するか、下のデバッグログを見てください。</p>
+</li>
+<li>
+<p><strong>デバッグログを確認</strong>: シェルで次のように実行すると、なぜ表示されないかの理由がログに1行残ります。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#79C0FF"> --debug-file</span><span style="color:#A5D6FF"> ./mod-debug.log</span><span style="color:#79C0FF"> --plugin-dir</span><span style="color:#A5D6FF"> ./문제의-mod</span></span>
+<span class="line"><span style="color:#FFA657">tail</span><span style="color:#79C0FF"> -f</span><span style="color:#A5D6FF"> ./mod-debug.log</span><span style="color:#FF7B72"> |</span><span style="color:#FFA657"> grep</span><span style="color:#A5D6FF"> 문제의-mod</span></span></code></pre>
+</li>
+</ol>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/troubleshoot#find-out-why-a-mod-does-nothing">Find out why a mod does nothing</a>, <a href="https://code.claude.com/docs/en/plugins/mods/troubleshoot#check-whether-mods-can-load">Check whether mods can load</a></p>
+<hr/>
+<p> 詳しく見る： <a href="/k-mods/ja/guide/what-are-mods/">modsとは？</a> · <a href="/k-mods/ja/guide/safety/">安全ガイド</a> · <a href="/k-mods/ja/guide/make-your-own/">自分だけのmodを作る</a> · <a href="/k-mods/ja/guide/cheatsheet/">チートシート</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">コントリビュートガイド</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/README.md">README</a></p>
+</article><aside class="guide-side"><p class="eyebrow">ガイド</p><ul class="guide-nav"><li><a href="/k-mods/ja/guide/what-are-mods/">modsとは？</a></li><li><a aria-current="page" href="/k-mods/ja/guide/install/">インストールガイド</a></li><li><a href="/k-mods/ja/guide/safety/">modを安全に使う方法</a></li><li><a href="/k-mods/ja/guide/cheatsheet/">modsチートシート（韓国語）</a></li><li><a href="/k-mods/ja/guide/make-your-own/">自分だけのmodを作る</a></li></ul><div class="side-links"><span class="side-meta">最終更新 · 2026年10月10日</span><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/blob/main/docs/guide/install.md"><svg aria-hidden="true" fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>GitHubで原文を見る</a><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/edit/main/docs/guide/install.md"><svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>このドキュメントを編集</a></div></aside></div></div></main><footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><p class="footer-logo"><span>k-mods</span><span aria-hidden="true" class="dot dot--sm"></span><span class="footer-copy">© 2026 · MIT</span></p><p class="footer-tagline">一覧はGitHubリポジトリSeongGwangJu/k-modsのregistryから自動で生成されます。modの追加と修正はPRで受け付けます。</p><a class="footer-sync mono" href="https://github.com/SeongGwangJu/k-mods/commit/10e9d6a3bf9be6f3dd3eadc4462fdf651bedca30">最終反映 2026年10月30日・10e9d6a</a><a class="footer-star" href="https://github.com/SeongGwangJu/k-mods"><svg aria-hidden="true" fill="currentColor" height="13" viewbox="0 0 24 24" width="13"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></svg>役に立ったらGitHubでスターを押してください</a></div><nav aria-label="サイトリンク" class="footer-nav"><a href="https://github.com/SeongGwangJu/k-mods">GitHub</a><a href="/k-mods/ja/guide/install/">インストールガイド</a><a href="/k-mods/ja/guide/safety/">安全に使う方法</a><a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">貢献する</a><a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">mod提案</a><a href="https://seonggwangju.github.io/">作成者</a></nav></div></footer><dialog aria-label="mod の詳細" class="modal" data-modal=""><button aria-label="前の mod" class="modal-arrow" data-modal-prev="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m15 18-6-6 6-6" stroke-width="2"></path></svg></button><div class="modal-panel"><div aria-hidden="true" class="modal-handle"><span></span></div><div class="modal-bar"><a class="modal-expand" data-modal-expand="" href="#"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" stroke-width="1.6"></path></svg><span>全ページで開く</span><kbd class="key modal-key">⌘↵</kbd></a><span class="modal-crumb" data-modal-crumb=""></span><button aria-label="閉じる" class="icon-btn icon-btn--plain" data-modal-close="" type="button"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M6 18 18 6M6 6l12 12"></path></svg></button></div><div class="modal-body" data-modal-body="" tabindex="-1"><p class="modal-loading">読み込み中</p></div></div><button aria-label="次の mod" class="modal-arrow" data-modal-next="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m9 18 6-6-6-6" stroke-width="2"></path></svg></button><div aria-hidden="true" class="hint" data-modal-hint=""><span><kbd data-hint-mod="">⌘</kbd><kbd>Enter</kbd>全ページ</span><i></i><span><kbd>←</kbd><kbd>→</kbd>前へ / 次へ</span><i></i><span><kbd>Esc</kbd>閉じる</span></div></dialog><p aria-live="polite" class="sr-only" data-live=""></p><script src="/k-mods/assets/Base.astro_astro_type_script_index_0_lang.BaoNknEh.js" type="module"></script></body></html>

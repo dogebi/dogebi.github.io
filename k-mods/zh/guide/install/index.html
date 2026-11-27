@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hans"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>安装指南 · Claude Code mods 指南 · k-mods</title><meta content="k-mods 是一个普通的 Claude Code 插件市场，因此安装、更新和卸载全部通过 Claude Code 的 /plugin 命令和 claude plugin 终端命令完成。" name="description"/><link href="https://dogebi.github.io/k-mods/zh/guide/install/" rel="canonical"/><link href="https://dogebi.github.io/k-mods/guide/install/" hreflang="ko" rel="alternate"/><link href="https://dogebi.github.io/k-mods/en/guide/install/" hreflang="en" rel="alternate"/><link href="https://seonggwangju.github.io/k-mods/guide/install/" hreflang="x-default" rel="alternate"/><meta content="article" property="og:type"/><meta content="k-mods" property="og:site_name"/><meta content="설치 가이드 · Claude Code mods 가이드 · k-mods" property="og:title"/><meta content="k-mods 是一个普通的 Claude Code 插件市场，因此安装、更新和卸载全部通过 Claude Code 的 /plugin 命令和 claude plugin 终端命令完成。" property="og:description"/><meta content="https://seonggwangju.github.io/k-mods/guide/install/" property="og:url"/><meta content="https://seonggwangju.github.io/k-mods/og/k-mods.png" property="og:image"/><meta content="ko_KR" property="og:locale"/><meta content="summary_large_image" name="twitter:card"/><meta content="#FFFFFF" media="(prefers-color-scheme: light)" name="theme-color"/><meta content="#0F1318" media="(prefers-color-scheme: dark)" name="theme-color"/><link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;circle cx='50' cy='50' r='44' fill='%2349B3EF'/&gt;&lt;/svg&gt;" rel="icon"/><link href="/k-mods/sitemap-index.xml" rel="sitemap"/><link href="/k-mods/llms.txt" rel="alternate" title="llms.txt" type="text/plain"/><link as="font" crossorigin="" href="/k-mods/fonts/SUIT-Variable.woff2" rel="preload" type="font/woff2"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/><style>@font-face{font-family:"SUIT Variable";src:url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2-variations"),url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}</style><script>(function(){try{var t=localStorage.getItem('kmods-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "安装指南", "description": "k-mods 是一个普通的 Claude Code 插件市场。所以安装、更新、卸载全都通过 Claude Code 的 /plugin 命令和 claude plugin shell 命令完成。", "url": "https://seonggwangju.github.io/k-mods/zh/guide/install/", "inLanguage": "zh-Hans", "dateModified": "2026-10-11T04:26:01+09:00", "author": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "publisher": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "about": {"@type": "Thing", "name": "Claude Code mods"}, "isPartOf": {"@id": "https://seonggwangju.github.io/k-mods/zh/#website"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "k-mods", "item": "https://seonggwangju.github.io/k-mods/zh/"}, {"@type": "ListItem", "position": 2, "name": "指南", "item": "https://seonggwangju.github.io/k-mods/zh/guide/"}, {"@type": "ListItem", "position": 3, "name": "安装指南", "item": "https://seonggwangju.github.io/k-mods/zh/guide/install/"}]}</script><link href="/k-mods/assets/Base.BXNGk-Gx.css" rel="stylesheet"/><link href="/k-mods/paper.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;700&amp;family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+</head><body><a class="skip" href="#main">跳到正文</a><header class="site-header"><div class="container header-bar"><a class="logo" href="/k-mods/zh/">k-mods<span aria-hidden="true" class="dot"></span></a><div class="header-actions"><nav aria-label="选择语言" class="seg"><a href="/k-mods/guide/install/" hreflang="ko" lang="ko">KO</a><a href="/k-mods/en/guide/install/" hreflang="en" lang="en">EN</a><a aria-current="true" href="/k-mods/zh/guide/install/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a href="/k-mods/ja/guide/install/" hreflang="ja" lang="ja">日本語</a></nav><button aria-label="切换界面主题" class="icon-btn" data-theme-toggle="" type="button"><svg aria-hidden="true" class="theme-icon-moon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg aria-hidden="true" class="theme-icon-sun" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg></button><a aria-label="GitHub" class="icon-btn" href="https://github.com/dogebi/k-mods"><svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></header><main id="main"><div class="container guide-page"><nav aria-label="当前位置" class="crumb"><a href="/k-mods/zh/">k-mods</a><span aria-hidden="true">/</span><a href="/k-mods/zh/guide/">指南</a><span aria-hidden="true">/</span><span aria-current="page">安装指南</span></nav><div class="guide-layout"><article class="prose"><h1 id="설치-가이드">安装指南</h1>
+<p> k-mods 是普通的 Claude Code 插件市场。所以安装、更新、卸载全都通过 Claude Code 的 <code>/plugin</code> 命令与 <code>claude plugin</code> 用 shell 命令完成。本文按顺序整理从检查版本、添加市场、安装范围 (scope)、与团队成员共用，到问题排查。 </p>
+<h2 id="목차">目录</h2>
+<ul>
+<li><a href="#%EB%B2%84%EC%A0%84-%ED%99%95%EC%9D%B8">检查版本</a></li>
+<li><a href="#%EB%A7%88%EC%BC%93%ED%94%8C%EB%A0%88%EC%9D%B4%EC%8A%A4-%EC%B6%94%EA%B0%80">添加市场</a></li>
+<li><a href="#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0">安装</a></li>
+<li><a href="#%EC%84%A4%EC%B9%98-%EB%B2%94%EC%9C%84scope">安装范围 (scope)</a></li>
+<li><a href="#%EB%81%84%EA%B8%B0%EC%82%AD%EC%A0%9C%ED%95%98%EA%B8%B0">关闭、删除</a></li>
+<li><a href="#%EC%84%B8%EC%85%98%EC%97%90-%EB%B0%94%EB%A1%9C-%EB%B0%98%EC%98%81%ED%95%98%EA%B8%B0">立即应用到会话</a></li>
+<li><a href="#%EC%84%A4%EC%B9%98%EB%90%9C-mod-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0">查看已安装的 mod</a></li>
+<li><a href="#%EC%84%A4%EC%A0%95%EA%B0%92-%EB%84%A3%EA%B8%B0-userconfig">填入设置值 (userConfig)</a></li>
+<li><a href="#%EC%B5%9C%EC%8B%A0-%EB%B2%84%EC%A0%84-%EC%9C%A0%EC%A7%80%ED%95%98%EA%B8%B0">保持最新版本</a></li>
+<li><a href="#%ED%8C%80%EC%9B%90%EA%B3%BC-%ED%95%A8%EA%BB%98-%EC%93%B0%EA%B8%B0">与团队成员共用</a></li>
+<li><a href="#%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8">问题排查清单</a></li>
+</ul>
+<h2 id="버전-확인">检查版本</h2>
+<p>mod 要加载需要最低版本。</p>
+<ul>
+<li><strong>终端</strong> ：Claude Code 2.1.287 及以上。在 shell 中 <code>claude --version</code>来确认。</li>
+<li><strong>桌面应用</strong> ：2.1.286 及以上。在 Code 标签页中 <code>/status</code> 输入后会 <strong>Claude Code</strong> 行会显示版本。 </li>
+</ul>
+<p>版本过低时，请更新 Claude Code 或桌面应用后重试。</p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/mods/overview#turn-mods-on-or-off">Turn mods on or off</a></p>
+<h2 id="마켓플레이스-추가">添加市场</h2>
+<p>安装 k-mods 前需要先注册一次市场。在会话里做也行，在 shell 里做也行。</p>
+<p><strong>在会话内</strong></p>
+<pre class="astro-code github-dark-default" data-language="plaintext" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span>/plugin marketplace add SeongGwangJu/k-mods</span></span></code></pre>
+<p><strong>在 shell 中</strong> （不打开会话，在脚本等中使用） </p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> marketplace</span><span style="color:#A5D6FF"> add</span><span style="color:#A5D6FF"> SeongGwangJu/k-mods</span></span></code></pre>
+<p> 成功后 <code>Successfully added marketplace: k-mods</code> 会出现。市场名称不是仓库名，而是 <code>marketplace.json</code> 的 <code>name</code> 字段里来，而 k-mods 两者相同。之后 <code>&lt;mod 이름&gt;@k-mods</code> 的形式安装。 </p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/install#add-a-marketplace">Add a marketplace</a></p>
+<h2 id="설치하기">安装</h2>
+<p><strong>在会话内</strong></p>
+<pre class="astro-code github-dark-default" data-language="plaintext" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span>/plugin install starter@k-mods</span></span></code></pre>
+<p> 在会话中 <code>/plugin install</code> 不会直接安装，而是先 <code>/plugin</code> 面板会显示该 mod 的详细信息（说明、新增的命令与钩子、权限）。在那里选安装范围，才会在那一刻安装。 </p>
+<p><strong>在 shell 中</strong> （立即安装） </p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> install</span><span style="color:#A5D6FF"> starter@k-mods</span></span></code></pre>
+<p>k-mods 也预先打包了一些组合。</p>
+<ul>
+<li><code>starter@k-mods</code>：推荐组合。README“先试试这些”里的 mod（ko-ui、skins、pixel-pals、ctx-strip、mod-store）会一次装好。</li>
+<li><code>korean-pack@k-mods</code>：只装韩语包（菜单、设置、任务栏翻译，ko-ui）。</li>
+</ul>
+<p> 想逐个挑着装的话 <code>mod-store@k-mods</code> 装上之后，在会话中 <code>/k-mods</code>。目录会以面板打开，可以用按钮安装和删除。</p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/install#install-a-plugin">Install a plugin</a></p>
+<h2 id="설치-범위scope">安装范围 (scope)</h2>
+<p>安装时从三个范围中选一个。范围决定了“谁拿到这个 mod”和“记录到哪个设置文件”。</p>
+<table>
+<thead>
+<tr>
+<th>范围</th>
+<th>谁能拿到</th>
+<th>被记录的文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user（用户）</td>
+<td>在这台电脑的所有项目里，只有我</td>
+<td><code>~/.claude/settings.json</code></td>
+</tr>
+<tr>
+<td>project（项目）</td>
+<td>在这个仓库里工作的所有人</td>
+<td><code>.claude/settings.json</code> （会提交的文件） </td>
+</tr>
+<tr>
+<td>local（本地）</td>
+<td>只在这个仓库里，我</td>
+<td><code>.claude/settings.local.json</code> （通常不提交） </td>
+</tr>
+</tbody>
+</table>
+<p> 在 shell 中 <code>--scope user|project|local</code> 来选择，省略时 <code>user</code>。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> install</span><span style="color:#A5D6FF"> blast-radius-ko@k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span></code></pre>
+<p> 同一个 mod 同时在多个范围设置时 <strong>local &gt; project &gt; user</strong> 的顺序优先。比如只想自己关掉项目开启的 mod，在 local 范围关掉即可。 </p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/install#choose-an-install-scope">Choose an install scope</a></p>
+<h2 id="끄기삭제하기">关闭、删除</h2>
+<p><strong>在会话内</strong>: <code>/plugin</code> → <strong>Installed</strong> 在标签页里选中条目后 <strong>Disable plugin</strong>, <strong>Uninstall</strong> 会出现相同的菜单。 <code>/plugin enable &lt;mod&gt;@k-mods</code>, <code>/plugin disable &lt;mod&gt;@k-mods</code>, <code>/plugin uninstall &lt;mod&gt;@k-mods</code>也能直接打开。</p>
+<p><strong>在 shell 中</strong></p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> disable</span><span style="color:#A5D6FF"> blast-radius-ko@k-mods</span></span>
+<span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> enable</span><span style="color:#A5D6FF"> blast-radius-ko@k-mods</span></span>
+<span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> uninstall</span><span style="color:#A5D6FF"> blast-radius-ko@k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span></code></pre>
+<p><code>enable</code>·<code>disable</code><code>--scope</code> 省略时，会自动找出该 mod 已设置的范围。 <code>uninstall</code> 省略时 <code>user</code> 里删掉这个范围。 </p>
+<p> 项目开启的 mod <strong>Uninstall</strong> 就会问“只关掉我这边，还是从整体中移除”。只想自己关掉就 <code>.claude/settings.local.json</code> 在 <code>false</code> 的写法（默认键 <strong>y</strong>)，若要从整体中移除，就选直接改共享文件的方式（<strong>u</strong>)，选择这个即可。</p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/install#manage-installed-plugins">Manage installed plugins</a></p>
+<h2 id="세션에-바로-반영하기">立即应用到会话</h2>
+<p> 在 shell 中安装、更新或删除过，或者 <code>/plugin</code> 如果在面板外改了设置文件，已打开的会话不会自动反映。请在会话里这样输入。 </p>
+<pre class="astro-code github-dark-default" data-language="plaintext" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span>/reload-plugins</span></span></code></pre>
+<p><code>/plugin</code> 关闭面板时如果有改动，Claude Code 会自动 <code>/reload-plugins</code> 。但如果这次重载可能破坏提示缓存（例如增删 MCP 服务器时），就不会立即应用，只给警告。那种情况下 <code>/reload-plugins --force</code>强制应用，不过接下来的一个请求会不经缓存处理，成本更高。</p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/cli-reference#reload-plugins">/reload-plugins</a></p>
+<h2 id="설치된-mod-확인하기">查看已安装的 mod</h2>
+<p> 在会话内 <code>/plugin</code> 输入后，标签页下方会以浅色文字 <code>N mods active · 이름1, 이름2</code> 的形式出现。这一行里 <strong>不包含内置 mod。</strong> 装了却在这一行看不到名字，就是加载失败。 </p>
+<p>在 shell 里能看得更详细。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> list</span></span>
+<span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> details</span><span style="color:#A5D6FF"> mod-store</span></span></code></pre>
+<p><code>plugin list</code> 会显示版本、范围、状态， <code>plugin details</code>会显示该 mod 新增的命令、钩子、智能体列表，以及上下文开销。</p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/mods/overview#see-which-mods-a-session-loaded">See which mods a session loaded</a></p>
+<h2 id="설정값-넣기-userconfig">填入设置值 (userConfig)</h2>
+<p> 有些 mod 安装时会追问额外值（API 地址、令牌等）。这些值存在插件的 <code>userConfig</code>声明的。</p>
+<ul>
+<li><strong>安装与激活时机</strong>：值为空时，设置对话框会自动弹出。</li>
+<li><strong>稍后重新打开</strong> ：在会话中 <code>/plugin configure &lt;mod&gt;@k-mods</code>。</li>
+<li><strong>一眼看懂</strong> ：Claude Code 2.1.269 及以上时 <code>/config</code> 面板里每个已激活的 mod 都有一行设置。不过敏感值（ <code>sensitive</code>）或可选择多个的值（<code>multiple</code> ) 则 <code>/config</code>里看不到。</li>
+<li><strong>在 shell 中填入值</strong> ：安装时 <code>--config key=value</code>，或者在安装后像下面这样把 JSON 从标准输入传进去。</li>
+</ul>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> '{"api_url": "https://example.com"}'</span><span style="color:#FF7B72"> |</span><span style="color:#FFA657"> claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> configure</span><span style="color:#A5D6FF"> my-mod@k-mods</span><span style="color:#79C0FF"> --values-stdin</span></span></code></pre>
+<p> 敏感值会 <code>settings.json</code>，而是保存到操作系统的安全存储（macOS 钥匙串等）。</p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/manifest-reference#user-configuration">User configuration</a></p>
+<h2 id="최신-버전-유지하기">保持最新版本</h2>
+<p>每个市场的自动更新默认值不同。</p>
+<ul>
+<li><strong>默认开启</strong>：Anthropic 官方市场的大部分</li>
+<li><strong>默认关闭</strong>：包括 k-mods 在内的其他所有市场</li>
+</ul>
+<p>k-mods 默认关闭自动更新，想拿到最新审查和修复，请偶尔执行下面任一操作。</p>
+<ul>
+<li>
+<p><strong>在会话中开启自动更新</strong>: <code>/plugin</code> → <strong>Marketplaces</strong> 标签页 → <code>k-mods</code> 选择 → <strong>Enable auto-update</strong></p>
+</li>
+<li>
+<p><strong>只刷新市场目录</strong> （确认是否新增 mod，已安装的 mod 保持不变） </p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> marketplace</span><span style="color:#A5D6FF"> update</span><span style="color:#A5D6FF"> k-mods</span></span></code></pre>
+</li>
+<li>
+<p><strong>连同已安装的 mod 一起更新</strong> ：在会话中 <code>/plugin</code> → <strong>Marketplaces</strong> 标签页 → <code>k-mods</code> 选择 → <strong>Update marketplace</strong></p>
+</li>
+<li>
+<p><strong>只更新一个 mod</strong></p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> update</span><span style="color:#A5D6FF"> starter@k-mods</span></span></code></pre>
+</li>
+</ul>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/install#keep-plugins-updated">Keep plugins updated</a></p>
+<h2 id="팀원과-함께-쓰기">与团队成员共用</h2>
+<p> 把设置提交到仓库里，打开该仓库的所有成员都会自动注册 k-mods 市场，并以“已开启”状态启动指定的 mod。 <code>.claude/settings.json</code>里这样写，然后提交。</p>
+<pre class="astro-code github-dark-default" data-language="json" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E6EDF3">{</span></span>
+<span class="line"><span style="color:#7EE787">  "extraKnownMarketplaces"</span><span style="color:#E6EDF3">: {</span></span>
+<span class="line"><span style="color:#7EE787">    "k-mods"</span><span style="color:#E6EDF3">: {</span></span>
+<span class="line"><span style="color:#7EE787">      "source"</span><span style="color:#E6EDF3">: { </span><span style="color:#7EE787">"source"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"github"</span><span style="color:#E6EDF3">, </span><span style="color:#7EE787">"repo"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"SeongGwangJu/k-mods"</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  },</span></span>
+<span class="line"><span style="color:#7EE787">  "enabledPlugins"</span><span style="color:#E6EDF3">: {</span></span>
+<span class="line"><span style="color:#7EE787">    "starter@k-mods"</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">true</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+<p>在 shell 里运行一次，这个文件就会自动生成。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> marketplace</span><span style="color:#A5D6FF"> add</span><span style="color:#A5D6FF"> SeongGwangJu/k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span>
+<span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> install</span><span style="color:#A5D6FF"> starter@k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span></code></pre>
+<p><strong>注意点</strong>: <code>enabledPlugins</code>里写的 mod 只是变成“已开启”状态，不会自动下载到团队成员的电脑。新拿到仓库的每位成员都要执行一次下面的命令才会真正装上（在信任（trust）工作区之后）。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> install</span><span style="color:#A5D6FF"> starter@k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span></code></pre>
+<p>跳过这一步，Claude Code 会提示“<code>.claude/settings.json</code>开了这个插件但没装”的提示。</p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/host-marketplace#register-the-marketplace-for-everyone-in-a-repository">Register the marketplace for everyone in a repository</a>, <a href="https://code.claude.com/docs/en/settings-reference#extraknownmarketplaces">extraKnownMarketplaces</a>, <a href="https://code.claude.com/docs/en/settings-reference#enabledplugins">enabledPlugins</a></p>
+<h2 id="문제-해결-체크리스트">问题排查清单</h2>
+<p>mod 装好了却什么都没发生，就从上到下逐项检查。</p>
+<ol>
+<li>
+<p><strong>版本过低</strong>: <code>claude --version</code> 或桌面应用的 <code>/status</code> 确认。 <a href="#%EB%B2%84%EC%A0%84-%ED%99%95%EC%9D%B8">检查版本</a> 参考。 </p>
+</li>
+<li>
+<p><strong>尚未信任（trust）工作区</strong>：需要在这个目录中打开一次交互式会话并接受信任确认窗口，mod 才会加载。</p>
+</li>
+<li>
+<p><strong><code>--bare</code> 或 <code>--safe-mode</code>以……开头</strong>：这两个 flag 会关闭全部已安装的 mod。请去掉 flag 再启动一次。</p>
+</li>
+<li>
+<p><strong><code>disableAllHooks</code>已设置</strong> ：在我的设置文件或组织的 managed settings 中，这个值 <code>true</code>时，装好的 mod 会全部关闭。</p>
+</li>
+<li>
+<p><strong>被组织策略阻止</strong> ：管理员 <code>allowManagedModsOnly</code> 开启后，只加载组织分发的 mod。详见 <a href="/k-mods/zh/guide/safety/">安全指南</a>里。</p>
+</li>
+<li>
+<p><strong><code>/plugin</code>的“N mods active”行里没有名字</strong> ：装是装上了，但加载失败。 <code>claude plugin validate &lt;경로&gt;</code>先确认，或看下面的调试日志。</p>
+</li>
+<li>
+<p><strong>查看调试日志</strong>：在 shell 里这样运行，日志中会留下一行说明为什么没出现。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#79C0FF"> --debug-file</span><span style="color:#A5D6FF"> ./mod-debug.log</span><span style="color:#79C0FF"> --plugin-dir</span><span style="color:#A5D6FF"> ./문제의-mod</span></span>
+<span class="line"><span style="color:#FFA657">tail</span><span style="color:#79C0FF"> -f</span><span style="color:#A5D6FF"> ./mod-debug.log</span><span style="color:#FF7B72"> |</span><span style="color:#FFA657"> grep</span><span style="color:#A5D6FF"> 문제의-mod</span></span></code></pre>
+</li>
+</ol>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/mods/troubleshoot#find-out-why-a-mod-does-nothing">Find out why a mod does nothing</a>, <a href="https://code.claude.com/docs/en/plugins/mods/troubleshoot#check-whether-mods-can-load">Check whether mods can load</a></p>
+<hr/>
+<p> 了解更多： <a href="/k-mods/zh/guide/what-are-mods/">mods 是什么？</a> · <a href="/k-mods/zh/guide/safety/">安全指南</a> · <a href="/k-mods/zh/guide/make-your-own/">做一个自己的 mod</a> · <a href="/k-mods/zh/guide/cheatsheet/">速查表</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">贡献指南</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/README.md">README</a></p>
+</article><aside class="guide-side"><p class="eyebrow">指南</p><ul class="guide-nav"><li><a href="/k-mods/zh/guide/what-are-mods/">mods 是什么？</a></li><li><a aria-current="page" href="/k-mods/zh/guide/install/">安装指南</a></li><li><a href="/k-mods/zh/guide/safety/">如何安全使用 mod</a></li><li><a href="/k-mods/zh/guide/cheatsheet/">mods 速查表（韩语）</a></li><li><a href="/k-mods/zh/guide/make-your-own/">做一个自己的 mod</a></li></ul><div class="side-links"><span class="side-meta">最后修改 · 2026 年 10 月 10 日</span><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/blob/main/docs/guide/install.md"><svg aria-hidden="true" fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>在 GitHub 查看原文</a><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/edit/main/docs/guide/install.md"><svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>编辑此文档</a></div></aside></div></div></main><footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><p class="footer-logo"><span>k-mods</span><span aria-hidden="true" class="dot dot--sm"></span><span class="footer-copy">© 2026 · MIT</span></p><p class="footer-tagline">列表由 GitHub 仓库 SeongGwangJu/k-mods 的 registry 自动生成。mod 的新增和修改通过 PR 接收。</p><a class="footer-sync mono" href="https://github.com/SeongGwangJu/k-mods/commit/10e9d6a3bf9be6f3dd3eadc4462fdf651bedca30">最后同步 2026 年 10 月 30 日 · 10e9d6a</a><a class="footer-star" href="https://github.com/SeongGwangJu/k-mods"><svg aria-hidden="true" fill="currentColor" height="13" viewbox="0 0 24 24" width="13"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></svg>如果觉得好用，请在 GitHub 上点个 star</a></div><nav aria-label="站点链接" class="footer-nav"><a href="https://github.com/SeongGwangJu/k-mods">GitHub</a><a href="/k-mods/zh/guide/install/">安装指南</a><a href="/k-mods/zh/guide/safety/">如何安全使用</a><a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">参与贡献</a><a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">推荐 mod</a><a href="https://seonggwangju.github.io/">作者</a></nav></div></footer><dialog aria-label="mod 详情" class="modal" data-modal=""><button aria-label="上一个 mod" class="modal-arrow" data-modal-prev="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m15 18-6-6 6-6" stroke-width="2"></path></svg></button><div class="modal-panel"><div aria-hidden="true" class="modal-handle"><span></span></div><div class="modal-bar"><a class="modal-expand" data-modal-expand="" href="#"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" stroke-width="1.6"></path></svg><span>以完整页面打开</span><kbd class="key modal-key">⌘↵</kbd></a><span class="modal-crumb" data-modal-crumb=""></span><button aria-label="关闭" class="icon-btn icon-btn--plain" data-modal-close="" type="button"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M6 18 18 6M6 6l12 12"></path></svg></button></div><div class="modal-body" data-modal-body="" tabindex="-1"><p class="modal-loading">加载中</p></div></div><button aria-label="下一个 mod" class="modal-arrow" data-modal-next="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m9 18 6-6-6-6" stroke-width="2"></path></svg></button><div aria-hidden="true" class="hint" data-modal-hint=""><span><kbd data-hint-mod="">⌘</kbd><kbd>Enter</kbd>完整页面</span><i></i><span><kbd>←</kbd><kbd>→</kbd>上一页 / 下一页</span><i></i><span><kbd>Esc</kbd>关闭</span></div></dialog><p aria-live="polite" class="sr-only" data-live=""></p><script src="/k-mods/assets/Base.astro_astro_type_script_index_0_lang.BaoNknEh.js" type="module"></script></body></html>

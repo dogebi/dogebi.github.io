@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>modsとは何か · Claude Code mods ガイド · k-mods</title><meta content="modはClaude Code 2.1.287から使える公式機能です。プラグイン内のJavaScript・TypeScriptコードがツール呼び出しのイベントを受け取り、動作を変え、画面を描画します。" name="description"/><link href="https://dogebi.github.io/k-mods/ja/guide/what-are-mods/" rel="canonical"/><link href="https://dogebi.github.io/k-mods/guide/what-are-mods/" hreflang="ko" rel="alternate"/><link href="https://dogebi.github.io/k-mods/en/guide/what-are-mods/" hreflang="en" rel="alternate"/><link href="https://seonggwangju.github.io/k-mods/guide/what-are-mods/" hreflang="x-default" rel="alternate"/><meta content="article" property="og:type"/><meta content="k-mods" property="og:site_name"/><meta content="mods가 뭔가요? · Claude Code mods 가이드 · k-mods" property="og:title"/><meta content="modはClaude Code 2.1.287から使える公式機能です。プラグイン内のJavaScript・TypeScriptコードがツール呼び出しのイベントを受け取り、動作を変え、画面を描画します。" property="og:description"/><meta content="https://seonggwangju.github.io/k-mods/guide/what-are-mods/" property="og:url"/><meta content="https://seonggwangju.github.io/k-mods/og/k-mods.png" property="og:image"/><meta content="ko_KR" property="og:locale"/><meta content="summary_large_image" name="twitter:card"/><meta content="#FFFFFF" media="(prefers-color-scheme: light)" name="theme-color"/><meta content="#0F1318" media="(prefers-color-scheme: dark)" name="theme-color"/><link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;circle cx='50' cy='50' r='44' fill='%2349B3EF'/&gt;&lt;/svg&gt;" rel="icon"/><link href="/k-mods/sitemap-index.xml" rel="sitemap"/><link href="/k-mods/llms.txt" rel="alternate" title="llms.txt" type="text/plain"/><link as="font" crossorigin="" href="/k-mods/fonts/SUIT-Variable.woff2" rel="preload" type="font/woff2"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/><style>@font-face{font-family:"SUIT Variable";src:url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2-variations"),url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}</style><script>(function(){try{var t=localStorage.getItem('kmods-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "modsとは？", "description": "modはClaude Code 2.1.287から使える公式機能です。プラグイン（plugin）内のJavaScript・TypeScriptコードがツール呼び出しやプロンプト送信などのイベントを直接受け取り、Claude Codeの動作を変えたり画面を描画したりします。", "url": "https://seonggwangju.github.io/k-mods/ja/guide/what-are-mods/", "inLanguage": "ja", "dateModified": "2026-10-07T00:10:15+09:00", "author": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "publisher": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "about": {"@type": "Thing", "name": "Claude Code mods"}, "isPartOf": {"@id": "https://seonggwangju.github.io/k-mods/ja/#website"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "k-mods", "item": "https://seonggwangju.github.io/k-mods/ja/"}, {"@type": "ListItem", "position": 2, "name": "ガイド", "item": "https://seonggwangju.github.io/k-mods/ja/guide/"}, {"@type": "ListItem", "position": 3, "name": "modsとは？", "item": "https://seonggwangju.github.io/k-mods/ja/guide/what-are-mods/"}]}</script><link href="/k-mods/assets/Base.BXNGk-Gx.css" rel="stylesheet"/><link href="/k-mods/paper.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;700&amp;family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+</head><body><a class="skip" href="#main">本文へスキップ</a><header class="site-header"><div class="container header-bar"><a class="logo" href="/k-mods/ja/">k-mods<span aria-hidden="true" class="dot"></span></a><div class="header-actions"><nav aria-label="言語を選択" class="seg"><a href="/k-mods/guide/what-are-mods/" hreflang="ko" lang="ko">KO</a><a href="/k-mods/en/guide/what-are-mods/" hreflang="en" lang="en">EN</a><a href="/k-mods/zh/guide/what-are-mods/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a aria-current="true" href="/k-mods/ja/guide/what-are-mods/" hreflang="ja" lang="ja">日本語</a></nav><button aria-label="画面テーマを切り替え" class="icon-btn" data-theme-toggle="" type="button"><svg aria-hidden="true" class="theme-icon-moon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg aria-hidden="true" class="theme-icon-sun" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg></button><a aria-label="GitHub" class="icon-btn" href="https://github.com/dogebi/k-mods"><svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></header><main id="main"><div class="container guide-page"><nav aria-label="現在位置" class="crumb"><a href="/k-mods/ja/">k-mods</a><span aria-hidden="true">/</span><a href="/k-mods/ja/guide/">ガイド</a><span aria-hidden="true">/</span><span aria-current="page">modsとは？</span></nav><div class="guide-layout"><article class="prose"><h1 id="mods가-뭔가요">modsとは？</h1>
+<p>modはClaude Code 2.1.287から使える公式機能です。プラグイン(<code>plugin</code>)の中のJavaScript・TypeScriptコードが、ツール呼び出しやプロンプト送信といったイベントを直接受け取って、Claude Codeの動作を変えたり画面を描画したりします。この記事では、modとは正確に何なのか、何ができるのか、どこで動作するのか、似た他の機能と何が違うのか、どうやってオン・オフするのかを整理します。</p>
+<h2 id="목차">目次</h2>
+<ul>
+<li><a href="#%ED%95%9C-%EC%A4%84-%EC%A0%95%EC%9D%98">一行定義</a></li>
+<li><a href="#%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94">どのように動作するのか</a></li>
+<li><a href="#mod%EA%B0%80-%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94-%EC%9D%BC">modにできること</a></li>
+<li><a href="#%EC%96%B4%EB%94%94%EC%84%9C-%EB%8F%84%EB%82%98%EC%9A%94">どこで動作するのか</a></li>
+<li><a href="#%EC%84%A4%EC%A0%95-%ED%9B%85%EC%8A%A4%ED%82%ACmcp%EC%99%80-%EB%AD%90%EA%B0%80-%EB%8B%A4%EB%A5%B8%EA%B0%80%EC%9A%94">設定フック・スキル・MCPとの違い</a></li>
+<li><a href="#claude-code%EC%97%90-%EB%82%B4%EC%9E%A5%EB%90%9C-mods">Claude Codeに内蔵されたmods</a></li>
+<li><a href="#mods-%EC%BC%9C%EA%B3%A0-%EB%81%84%EA%B8%B0">modsのオン・オフ</a></li>
+<li><a href="#%EB%B2%84%EC%A0%84-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD">バージョン要件</a></li>
+</ul>
+<h2 id="한-줄-정의">一行定義</h2>
+<p> mod は <strong>Claude Codeの中で直接実行されるプラグイン(<code>plugin</code>)のコード</strong>です。ツール呼び出し、プロンプト送信、画面描画のように、Claude Codeが何かをしようとする瞬間ごとに「イベント(<code>event</code> )」が発生しますが、modはJavaScriptやTypeScriptで書いた関数(フック、 <code>hook</code>)でそのイベントを受け取り、監視したり、変更したり、いっそ横取りして代わりに処理したりします。</p>
+<blockquote>
+<p>一行の自己要約: modはClaude Codeのイベントの間に割り込むミドルウェア(<code>middleware</code>)です。見て、変えて、代わりに答えます。</p>
+</blockquote>
+<p>Claude Codeは設定ファイルで登録する従来の方式も「フック」と呼びますが、k-modsのドキュメントで「フック」は常にmodのハンドラーを指します。シェルコマンド・HTTPリクエスト・プロンプトで動作する従来の方式は「設定フック(<code>settings hook</code>)」と呼んで区別します。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/overview">Mods overview</a></p>
+<h2 id="어떻게-동작하나요">どのように動作するのか</h2>
+<p> 1つのmodのコード(フックモジュール、 <code>hooks module</code> )は <code>register(on)</code> 関数をエクスポートし、その中で <code>on(이벤트 이름, 핸들러)</code>でイベントを登録します。Claude Codeはハンドラーに3つを渡します。</p>
+<ul>
+<li><code>$</code>: mod APIです。画面を描画したりファイルを読んだりするなど、外の世界と接する唯一の窓口です。</li>
+<li><code>e</code>: イベントデータです。読み取り専用なので書き換えはできません。</li>
+<li><code>next</code>: 次のハンドラー(別のmod、またはClaude Code自体の動作)を呼ぶ関数です。</li>
+</ul>
+<p>ハンドラーはこの3つのいずれかでイベントを処理します。</p>
+<table>
+<thead>
+<tr>
+<th>処理方式</th>
+<th>やること</th>
+<th>コード</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>観察(<code>observe</code>)</td>
+<td>そのまま流します</td>
+<td><code>return next(e)</code></td>
+</tr>
+<tr>
+<td>変形(<code>rewrite</code>)</td>
+<td>内容を変えて流します</td>
+<td><code>return next({ ...e, text: e.text.trim() })</code></td>
+</tr>
+<tr>
+<td>応答(<code>answer</code>)</td>
+<td><code>next</code>を呼ばずに直接答えてチェーンを切ります</td>
+<td><code>return { deny: '이유' }</code></td>
+</tr>
+</tbody>
+</table>
+<p>たとえば、ツール呼び出しのたびにカウントを増やしてスピナーの横に表示するmodは、こんな形になっています。</p>
+<pre class="astro-code github-dark-default" data-language="javascript" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FF7B72">let</span><span style="color:#E6EDF3"> calls </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> register</span><span style="color:#E6EDF3">(</span><span style="color:#FFA657">on</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'tool.call'</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">$</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">e</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">next</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    calls </span><span style="color:#FF7B72">+=</span><span style="color:#79C0FF"> 1</span></span>
+<span class="line"><span style="color:#E6EDF3">    $.ui.</span><span style="color:#D2A8FF">invalidate</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'ui.render'</span><span style="color:#E6EDF3">) </span><span style="color:#8B949E">// 화면을 다시 그려 달라고 요청</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#D2A8FF"> next</span><span style="color:#E6EDF3">(e) </span><span style="color:#8B949E">// 도구는 평소대로 실행</span></span>
+<span class="line"><span style="color:#E6EDF3">  })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'ui.render'</span><span style="color:#E6EDF3">, { component: </span><span style="color:#A5D6FF">'Spinner'</span><span style="color:#E6EDF3"> }, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">$</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">e</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">next</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#D2A8FF"> next</span><span style="color:#E6EDF3">({ </span><span style="color:#FF7B72">...</span><span style="color:#E6EDF3">e, props: { </span><span style="color:#FF7B72">...</span><span style="color:#E6EDF3">e.props, suffix: </span><span style="color:#A5D6FF">' · 도구 '</span><span style="color:#FF7B72"> +</span><span style="color:#E6EDF3"> calls </span><span style="color:#FF7B72">+</span><span style="color:#A5D6FF"> '번'</span><span style="color:#E6EDF3"> } })</span></span>
+<span class="line"><span style="color:#E6EDF3">  })</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+<p> 1番目のフックは <code>tool.call</code> を観察するだけで、2番目のフックは <code>ui.render</code> を変形して、スピナーの文言の後ろに呼び出し回数を付けます。同じイベントに複数のmodが登録されている場合は、ミドルウェアチェーンのように順番に実行されます。登録順序のルールと失敗時の処理は <a href="/k-mods/ja/guide/cheatsheet/">チートシート</a> と <a href="/k-mods/ja/guide/make-your-own/">自分だけのmodを作る</a>でさらに扱います。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/overview#how-a-mod-works">How a mod works</a>, <a href="https://code.claude.com/docs/en/plugins/mods/events">React to events</a></p>
+<h2 id="mod가-할-수-있는-일">modにできること</h2>
+<p>設定フック、スキル、ステータスライン(<code>status line</code> )、MCPサーバーはすべてClaude Code <strong>外部</strong> で動きます。スクリプトを実行したり、Claudeに文章やツールを渡したりするだけです。modはClaude Code <strong>ない</strong>で動作するため、こんなことができます。</p>
+<ol>
+<li><strong>画面描画</strong>: トランスクリプト横のパネル(<code>pane</code>)や入力欄の上の帯(<code>AbovePrompt</code>)にタブ、ボタン、入力欄を描画します。</li>
+<li><strong>Claude Code自体の画面の再描画</strong>: ツール呼び出しの行、スピナー、Claudeが質問するときのダイアログなどを変更したり、新しく描画したりします。</li>
+<li><strong>ツール呼び出し・リクエストの横取り</strong>: ツール呼び出しを一時停止してユーザーに尋ねたり、実行せずにすぐ答えたり、リクエストを1つだけ別のモデルに送ったりします。</li>
+<li><strong>コマンドで自分のコードをすぐ実行</strong> : Claudeのターンなしで即時実行される <code>/명령어</code>を追加します。Claudeが作業中でも実行されるようにできます。</li>
+<li><strong>フック同士のデータ共有</strong>: 1つのmod内のフックは同じファイルの変数を共有します。あるフックがツール呼び出しの回数を数え、別のフックがその値を画面に表示する、といった具合です。</li>
+</ol>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/overview#what-a-mod-can-do">What a mod can do</a></p>
+<h2 id="어디서-도나요">どこで動作するのか</h2>
+<p> modのフックは、プラグインが読み込まれるすべてのセッションで実行されます。ただし <strong>画面を描画する機能</strong>はターミナルとデスクトップアプリでのみ表示されます。</p>
+<table>
+<thead>
+<tr>
+<th>実行環境</th>
+<th style="text-align: center">フック実行</th>
+<th style="text-align: center">画面表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ターミナル(<code>claude</code>)、エディタ統合ターミナル、JetBrainsプラグイン</td>
+<td style="text-align: center">済み</td>
+<td style="text-align: center">表示</td>
+</tr>
+<tr>
+<td>デスクトップアプリのCodeタブ(WSLセッションを除く)</td>
+<td style="text-align: center">済み</td>
+<td style="text-align: center">表示(ターミナル専用要素の一部を除く)</td>
+</tr>
+<tr>
+<td>デスクトップアプリのWSLセッション</td>
+<td style="text-align: center">不可(WSLではプラグイン自体が使えない)</td>
+<td style="text-align: center">非表示</td>
+</tr>
+<tr>
+<td>VS Code拡張のチャットパネル</td>
+<td style="text-align: center">済み</td>
+<td style="text-align: center">非表示</td>
+</tr>
+<tr>
+<td><code>claude -p</code>, Agent SDK</td>
+<td style="text-align: center">済み</td>
+<td style="text-align: center">非表示</td>
+</tr>
+<tr>
+<td>claude.ai・モバイルアプリのリモートコントロール(<code>Remote Control</code>)</td>
+<td style="text-align: center">可能(自分のコンピューターのセッションで)</td>
+<td style="text-align: center">自分のコンピューターのターミナルにのみ表示</td>
+</tr>
+<tr>
+<td>クラウドセッション</td>
+<td style="text-align: center">プラグインがクラウドセッションまで届く場合のみ可能</td>
+<td style="text-align: center">非表示</td>
+</tr>
+</tbody>
+</table>
+<p>画面を描画するmodは、いまどのアプリで動いているかを確認して、描画できない場所ではトランスクリプトの行やコマンド応答のテキストで代替するのがおすすめです。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/overview#where-mods-run">Where mods run</a></p>
+<h2 id="설정-훅스킬mcp와-뭐가-다른가요">設定フック・スキル・MCPとの違い</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>mod</th>
+<th>設定フック(<code>settings hook</code>)</th>
+<th>スキル(<code>skill</code>)</th>
+<th>MCPサーバー</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正体</td>
+<td>Claude Codeプロセスの中で直接動作するプラグイン関数</td>
+<td>ライフサイクルイベントでClaude Codeが実行するシェルコマンド・HTTPリクエスト・プロンプト</td>
+<td> Claudeが読む指示が入った <code>SKILL.md</code></td>
+<td>外部プロセス・サービスがClaudeにツールを渡す</td>
+</tr>
+<tr>
+<td>変えられるもの</td>
+<td>ツール呼び出し、プロンプト、コマンド、ターン、画面に描画する内容</td>
+<td>イベントの進行可否、ツール呼び出しの引数・結果、Claudeに追加されるコンテキスト</td>
+<td>Claudeが知っていることと行うこと</td>
+<td>Claudeが使えるツール</td>
+</tr>
+<tr>
+<td>画面を描画するか</td>
+<td>可</td>
+<td>不可</td>
+<td>不可</td>
+<td>不可</td>
+</tr>
+<tr>
+<td>何で作るのか</td>
+<td>JavaScript・TypeScript</td>
+<td> スクリプト + <code>settings.json</code> 項目 </td>
+<td>Markdown</td>
+<td>任意の言語で作ったサーバー</td>
+</tr>
+<tr>
+<td>いつ選ぶのか</td>
+<td>パネルや入力欄の上の帯が必要なとき、カスタムコマンドが必要なとき、イベント自体を変える必要があるとき</td>
+<td>既存のスクリプトでイベントをブロックしたり許可したり記録するだけで足りるとき</td>
+<td>同じ指示を何度も貼り付けているとき</td>
+<td>Claudeが外部システムに接続する必要があるとき</td>
+</tr>
+</tbody>
+</table>
+<p> 1つのプラグインがmod、スキル、MCPサーバーを同時に含むこともあります。k-modsの <code>mod-store</code>のようにコマンド(<code>/k-mods</code>)と画面描画を併せ持つmodがその例です。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/overview#compare-mods-settings-hooks-skills-and-mcp-servers">Compare mods, settings hooks, skills, and MCP servers</a></p>
+<h2 id="claude-code에-내장된-mods">Claude Codeに内蔵されたmods</h2>
+<p> Claude Code自体の機能の一部もmodで作られています。 <code>/plugin</code> → <strong>Installed</strong> タブの <strong>Built-in</strong> 以下で確認でき、アップデート・削除はできませんが、オフにすることはできます。 </p>
+<table>
+<thead>
+<tr>
+<th><code>/plugin</code>に表示される名前</th>
+<th>やること</th>
+<th>オフにする方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cc-plugin-agents-md</code></td>
+<td><code>AGENTS.md</code>をプロジェクト指示として読み込む</td>
+<td><code>/plugin</code>でオフにするか、どの指示ファイルを使うかの設定を変更</td>
+</tr>
+<tr>
+<td><code>cc-plugin-diff</code></td>
+<td><code>/diff</code> コマンドとそのパネルを担当 </td>
+<td><code>/plugin</code> でオフにすると <code>/diff</code>はClaude Codeの基本バージョンで動作</td>
+</tr>
+<tr>
+<td><code>cc-plugin-plugin-authoring</code></td>
+<td> modを使うための <code>plugin-authoring</code> スキルを提供 </td>
+<td><code>/plugin</code>でオフにする</td>
+</tr>
+<tr>
+<td><code>cc-plugin-sec-default</code></td>
+<td>ユーザーがインストールしたmodから、組織が管理する設定を守る</td>
+<td>ユーザーはオフにできない。管理者がmanaged settingsで順序を決める</td>
+</tr>
+<tr>
+<td><code>cc-plugin-telemetry</code></td>
+<td>Claude Codeと内蔵modsの使用量記録の送信</td>
+<td><code>/plugin</code>でオフにするか、分析機能自体を無効化(<code>DISABLE_TELEMETRY</code> など) </td>
+</tr>
+<tr>
+<td><code>cc-plugin-you-should-know</code></td>
+<td>作業が長引くときに見落としやすい点を教えてくれる補助エージェント</td>
+<td> デフォルトはオフ。 <code>/plugin</code>でオン・オフ</td>
+</tr>
+</tbody>
+</table>
+<p><code>diff</code>, <code>agents-md</code>, <code>sec-default</code>, <code>telemetry</code> のソースは <a href="https://github.com/anthropics/claude-code/tree/main/mods">claude-codeリポジトリのmodsディレクトリ</a>にテストまで含めて公開されています。実際のmodコードがどうなっているかを参考にするのに向いています。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/overview#mods-built-into-claude-code">Mods built into Claude Code</a></p>
+<h2 id="mods-켜고-끄기">modsのオン・オフ</h2>
+<p>無効にする範囲によって方法が異なります。</p>
+<ul>
+<li><strong>modを1つだけ</strong>: <code>/plugin</code> → <strong>Installed</strong> タブで無効化するか削除します。 </li>
+<li><strong>今回のセッションのすべてのmod</strong>: <code>claude --safe-mode</code>で始まります。他のカスタマイズも同時にオフになります。</li>
+<li><strong>自分がインストールしたすべてのmod、すべてのセッション</strong>: <code>~/.claude/settings.json</code> に <code>"disableAllHooks": true</code>を設定します。設定フックとカスタムステータスラインも一緒にオフになり、組織が管理しているものだけが動作し続けます。</li>
+</ul>
+<p> 組織に所属している場合は、管理者がmanaged settingsでmodの読み込み自体をさらに制限することもあります。詳しくは <a href="/k-mods/ja/guide/safety/">安全ガイド</a>にあります。</p>
+<blockquote>
+<p> アーリーアクセスのとき <code>CLAUDE_CODE_ENABLE_FUNCTION_HOOKS</code> を設定している場合は削除してください。Claude Code 2.1.287からはこの変数を無視するため <code>0</code>にしてもmodはオフになりません。</p>
+</blockquote>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/overview#turn-mods-on-or-off">Turn mods on or off</a></p>
+<h2 id="버전-요구사항">バージョン要件</h2>
+<ul>
+<li><strong>ターミナル</strong> : Claude Code 2.1.287 以上。 <code>claude --version</code>で確認します。</li>
+<li><strong>デスクトップアプリ</strong> : 2.1.286以上。Codeタブで <code>/status</code> を入力すると <strong>Claude Code</strong> の行にバージョンが出ます。 </li>
+</ul>
+<p> バージョンが低いと、modはインストールできても読み込まれません。インストール・アップデートの方法は <a href="/k-mods/ja/guide/install/">インストールガイド</a>をご覧ください。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/overview#turn-mods-on-or-off">Turn mods on or off</a></p>
+<hr/>
+<p> 詳しく見る： <a href="/k-mods/ja/guide/install/">インストールガイド</a> · <a href="/k-mods/ja/guide/make-your-own/">自分だけのmodを作る</a> · <a href="/k-mods/ja/guide/safety/">安全ガイド</a> · <a href="/k-mods/ja/guide/cheatsheet/">チートシート</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/README.md">README</a></p>
+</article><aside class="guide-side"><p class="eyebrow">ガイド</p><ul class="guide-nav"><li><a aria-current="page" href="/k-mods/ja/guide/what-are-mods/">modsとは？</a></li><li><a href="/k-mods/ja/guide/install/">インストールガイド</a></li><li><a href="/k-mods/ja/guide/safety/">modを安全に使う方法</a></li><li><a href="/k-mods/ja/guide/cheatsheet/">modsチートシート（韓国語）</a></li><li><a href="/k-mods/ja/guide/make-your-own/">自分だけのmodを作る</a></li></ul><div class="side-links"><span class="side-meta">最終更新・2026年10月6日</span><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/blob/main/docs/guide/what-are-mods.md"><svg aria-hidden="true" fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>GitHubで原文を見る</a><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/edit/main/docs/guide/what-are-mods.md"><svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>このドキュメントを編集</a></div></aside></div></div></main><footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><p class="footer-logo"><span>k-mods</span><span aria-hidden="true" class="dot dot--sm"></span><span class="footer-copy">© 2026 · MIT</span></p><p class="footer-tagline">一覧はGitHubリポジトリSeongGwangJu/k-modsのregistryから自動で生成されます。modの追加と修正はPRで受け付けます。</p><a class="footer-sync mono" href="https://github.com/SeongGwangJu/k-mods/commit/10e9d6a3bf9be6f3dd3eadc4462fdf651bedca30">最終反映 2026年10月30日・10e9d6a</a><a class="footer-star" href="https://github.com/SeongGwangJu/k-mods"><svg aria-hidden="true" fill="currentColor" height="13" viewbox="0 0 24 24" width="13"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></svg>役に立ったらGitHubでスターを押してください</a></div><nav aria-label="サイトリンク" class="footer-nav"><a href="https://github.com/SeongGwangJu/k-mods">GitHub</a><a href="/k-mods/ja/guide/install/">インストールガイド</a><a href="/k-mods/ja/guide/safety/">安全に使う方法</a><a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">貢献する</a><a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">mod提案</a><a href="https://seonggwangju.github.io/">作成者</a></nav></div></footer><dialog aria-label="mod の詳細" class="modal" data-modal=""><button aria-label="前の mod" class="modal-arrow" data-modal-prev="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m15 18-6-6 6-6" stroke-width="2"></path></svg></button><div class="modal-panel"><div aria-hidden="true" class="modal-handle"><span></span></div><div class="modal-bar"><a class="modal-expand" data-modal-expand="" href="#"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" stroke-width="1.6"></path></svg><span>全ページで開く</span><kbd class="key modal-key">⌘↵</kbd></a><span class="modal-crumb" data-modal-crumb=""></span><button aria-label="閉じる" class="icon-btn icon-btn--plain" data-modal-close="" type="button"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M6 18 18 6M6 6l12 12"></path></svg></button></div><div class="modal-body" data-modal-body="" tabindex="-1"><p class="modal-loading">読み込み中</p></div></div><button aria-label="次の mod" class="modal-arrow" data-modal-next="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m9 18 6-6-6-6" stroke-width="2"></path></svg></button><div aria-hidden="true" class="hint" data-modal-hint=""><span><kbd data-hint-mod="">⌘</kbd><kbd>Enter</kbd>全ページ</span><i></i><span><kbd>←</kbd><kbd>→</kbd>前へ / 次へ</span><i></i><span><kbd>Esc</kbd>閉じる</span></div></dialog><p aria-live="polite" class="sr-only" data-live=""></p><script src="/k-mods/assets/Base.astro_astro_type_script_index_0_lang.BaoNknEh.js" type="module"></script></body></html>

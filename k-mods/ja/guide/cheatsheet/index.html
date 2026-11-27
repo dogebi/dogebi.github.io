@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>modsチートシート（韓国語）・Claude Code modsガイド・k-mods</title><meta content="mods開発に必要なファイル構成・イベント・API・レンダーサイト・制限を表にまとめました。全体像は先に「modsとは何か」と「自分だけのmod作り」をご覧ください。" name="description"/><link href="https://dogebi.github.io/k-mods/ja/guide/cheatsheet/" rel="canonical"/><link href="https://dogebi.github.io/k-mods/guide/cheatsheet/" hreflang="ko" rel="alternate"/><link href="https://dogebi.github.io/k-mods/en/guide/cheatsheet/" hreflang="en" rel="alternate"/><link href="https://seonggwangju.github.io/k-mods/guide/cheatsheet/" hreflang="x-default" rel="alternate"/><meta content="article" property="og:type"/><meta content="k-mods" property="og:site_name"/><meta content="mods 치트시트 (한국어) · Claude Code mods 가이드 · k-mods" property="og:title"/><meta content="mods開発に必要なファイル構成・イベント・API・レンダーサイト・制限を表にまとめました。全体像は先に「modsとは何か」と「自分だけのmod作り」をご覧ください。" property="og:description"/><meta content="https://seonggwangju.github.io/k-mods/guide/cheatsheet/" property="og:url"/><meta content="https://seonggwangju.github.io/k-mods/og/k-mods.png" property="og:image"/><meta content="ko_KR" property="og:locale"/><meta content="summary_large_image" name="twitter:card"/><meta content="#FFFFFF" media="(prefers-color-scheme: light)" name="theme-color"/><meta content="#0F1318" media="(prefers-color-scheme: dark)" name="theme-color"/><link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;circle cx='50' cy='50' r='44' fill='%2349B3EF'/&gt;&lt;/svg&gt;" rel="icon"/><link href="/k-mods/sitemap-index.xml" rel="sitemap"/><link href="/k-mods/llms.txt" rel="alternate" title="llms.txt" type="text/plain"/><link as="font" crossorigin="" href="/k-mods/fonts/SUIT-Variable.woff2" rel="preload" type="font/woff2"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/><style>@font-face{font-family:"SUIT Variable";src:url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2-variations"),url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}</style><script>(function(){try{var t=localStorage.getItem('kmods-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "modsチートシート（韓国語）", "description": "mods開発に必要なファイル構成、イベント、API、レンダーサイト、制限を表にまとめました。説明はできるだけ短くしたので、全体像はmodsとは？と自分だけのmodを作るのページを先にご覧ください。", "url": "https://seonggwangju.github.io/k-mods/ja/guide/cheatsheet/", "inLanguage": "ja", "dateModified": "2026-10-07T00:10:15+09:00", "author": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "publisher": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "about": {"@type": "Thing", "name": "Claude Code mods"}, "isPartOf": {"@id": "https://seonggwangju.github.io/k-mods/ja/#website"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "k-mods", "item": "https://seonggwangju.github.io/k-mods/ja/"}, {"@type": "ListItem", "position": 2, "name": "ガイド", "item": "https://seonggwangju.github.io/k-mods/ja/guide/"}, {"@type": "ListItem", "position": 3, "name": "modsチートシート（韓国語）", "item": "https://seonggwangju.github.io/k-mods/ja/guide/cheatsheet/"}]}</script><link href="/k-mods/assets/Base.BXNGk-Gx.css" rel="stylesheet"/><link href="/k-mods/paper.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;700&amp;family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+</head><body><a class="skip" href="#main">本文へスキップ</a><header class="site-header"><div class="container header-bar"><a class="logo" href="/k-mods/ja/">k-mods<span aria-hidden="true" class="dot"></span></a><div class="header-actions"><nav aria-label="言語を選択" class="seg"><a href="/k-mods/guide/cheatsheet/" hreflang="ko" lang="ko">KO</a><a href="/k-mods/en/guide/cheatsheet/" hreflang="en" lang="en">EN</a><a href="/k-mods/zh/guide/cheatsheet/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a aria-current="true" href="/k-mods/ja/guide/cheatsheet/" hreflang="ja" lang="ja">日本語</a></nav><button aria-label="画面テーマを切り替え" class="icon-btn" data-theme-toggle="" type="button"><svg aria-hidden="true" class="theme-icon-moon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg aria-hidden="true" class="theme-icon-sun" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg></button><a aria-label="GitHub" class="icon-btn" href="https://github.com/dogebi/k-mods"><svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></header><main id="main"><div class="container guide-page"><nav aria-label="現在位置" class="crumb"><a href="/k-mods/ja/">k-mods</a><span aria-hidden="true">/</span><a href="/k-mods/ja/guide/">ガイド</a><span aria-hidden="true">/</span><span aria-current="page">modsチートシート（韓国語）</span></nav><div class="guide-layout"><article class="prose"><h1 id="mods-치트시트-한국어">modsチートシート（韓国語）</h1>
+<p> mods開発に必要なファイル構成、イベント、API、レンダーサイト、制限を表にまとめました。説明はできるだけ短くしたので、全体像は <a href="/k-mods/ja/guide/what-are-mods/">modsとは？</a> と <a href="/k-mods/ja/guide/make-your-own/">自分だけのmodを作る</a>を先にご覧ください。</p>
+<blockquote>
+<p> 基準バージョンはClaude Code <strong>2.1.291</strong> です。バージョンごとにイベント・APIが変わりうるので、正確な定義は <code>--plugin-dir</code>でmodを読み込むときに生成される型宣言（<code>.claude-plugin/types/claude-code/index.d.ts</code>)がこのドキュメントより優先されます。</p>
+</blockquote>
+<h2 id="목차">目次</h2>
+<ul>
+<li><a href="#%ED%8C%8C%EC%9D%BC-%EA%B5%AC%EC%84%B1">ファイル構成</a></li>
+<li><a href="#%ED%9B%85-%ED%95%A8%EC%88%98-%EC%9D%B8%EC%9E%90">フック関数の引数</a></li>
+<li><a href="#%EC%9D%B4%EB%B2%A4%ED%8A%B8">イベント</a></li>
+<li><a href="#-api-%EB%84%A4%EC%9E%84%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%8A%A4"><code>$</code> API名前空間 </a></li>
+<li><a href="#%EB%A0%8C%EB%8D%94-%EC%82%AC%EC%9D%B4%ED%8A%B8">レンダーサイト</a></li>
+<li><a href="#%EC%9A%94%EC%86%8C-elements">要素（elements）</a></li>
+<li><a href="#%ED%95%9C%EA%B3%84-limits">上限（limits）</a></li>
+<li><a href="#%EC%84%A4%EC%A0%95%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98">設定・環境変数</a></li>
+<li><a href="#%EB%AA%85%EB%A0%B9%EC%96%B4">コマンド</a></li>
+</ul>
+<h2 id="파일-구성">ファイル構成</h2>
+<table>
+<thead>
+<tr>
+<th>ファイル</th>
+<th>必須</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.claude-plugin/plugin.json</code></td>
+<td>はい</td>
+<td>プラグインのマニフェスト。modなので追加で必要なフィールドはありません</td>
+</tr>
+<tr>
+<td><code>hooks/hooks.json</code></td>
+<td>はい</td>
+<td><code>modules</code> ：フックモジュールのパス配列。 <code>"modules": ["./register.js"]</code> のように1つだけ書きます。設定フックも <code>hooks</code> キーの下に一緒に含められます </td>
+</tr>
+<tr>
+<td> フックモジュール（例: <code>hooks/register.ts</code>)</td>
+<td>はい</td>
+<td> modのエントリポイント。 <code>register(on, options)</code> をエクスポートするESモジュール。拡張子： <code>.js</code>, <code>.mjs</code>, <code>.cjs</code>, <code>.jsx</code>, <code>.ts</code>, <code>.mts</code>, <code>.cts</code>, <code>.tsx</code></td>
+</tr>
+<tr>
+<td><code>types/index.d.ts</code> (マニフェストの <code>types</code>を指す）</td>
+<td><code>$.state</code>を使うとき、またはmods APIに名前空間を追加するときだけ</td>
+<td><code>PluginState</code> 値と追加名前空間の宣言 </td>
+</tr>
+<tr>
+<td><code>*.test.ts</code> / <code>*.test.tsx</code></td>
+<td>いいえ</td>
+<td><code>claude plugin test</code>が実行するテスト</td>
+</tr>
+</tbody>
+</table>
+<p><code>register</code> は <code>on</code> と <code>options</code> を受け取ります。 <code>options</code> は <code>userConfig</code> フィールドの値で、デフォルト値が入っています。 </p>
+<h2 id="훅-함수-인자">フック関数の引数</h2>
+<p><code>on(이벤트 이름, 매처?, 훅)</code> として登録します。マッチャーはイベントフィールドを絞り込む任意のフィルタで、 <code>on</code> の戻り値は <code>.catch(핸들러)</code>を付けられるregistrationです。</p>
+<table>
+<thead>
+<tr>
+<th>引数</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$</code></td>
+<td> mods API。必ず <code>$.네임스페이스.메서드(...)</code>まで省略せずに書きます</td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td> イベントの入力値。深く凍結（frozen）されているので直接は変更できません。変更するにはコピーして <code>next</code>に渡します</td>
+</tr>
+<tr>
+<td><code>next(e)</code></td>
+<td>次のハンドラ（他のmod、最後はClaude Code自体の動作）を呼びます。結果でresolveされます</td>
+</tr>
+<tr>
+<td><code>next.signal</code></td>
+<td> イベントが中断されるとabortされる <code>AbortSignal</code></td>
+</tr>
+<tr>
+<td><code>next.origin</code></td>
+<td> このイベントを発行した側を含む <code>{ plugin, tier }</code> 。Claude Code自身は <code>{ plugin: 'engine', tier: 'core' }</code> で、modの <code>tier</code> は <code>prepend</code>/<code>user</code>/<code>append</code>/<code>builtin</code></td>
+</tr>
+<tr>
+<td><code>next.budget</code></td>
+<td> このフックのタイムアウト。 <code>next.budget.ms</code> は全体の上限、 <code>next.budget.remainingMs</code>は残り時間</td>
+</tr>
+<tr>
+<td><code>next.to(e, tier)</code></td>
+<td><code>append</code>/<code>builtin</code>/<code>core</code> のうち、さらに後ろのtierへスキップします。 <code>prependPlugins</code>·<code>appendPlugins</code>に属するmodのみ呼び出せます</td>
+</tr>
+<tr>
+<td><code>next.error</code>, <code>next.called</code></td>
+<td><code>.catch</code> ハンドラの中でのみ使います。 <code>next.error.kind</code> は <code>throw</code> や <code>timeout</code>, <code>next.called</code> は失敗したフックが <code>next</code>を呼んだことがあるか</td>
+</tr>
+</tbody>
+</table>
+<h2 id="이벤트">イベント</h2>
+<p> 表の「返せるもの」から <code>next(e)</code> はそのまま通過、 <code>next({ ...e, text })</code> はそのフィールドだけ変更して通過、オブジェクトをそのまま返すと <code>next</code>を呼ばずに直接応答することです。</p>
+<p><strong>ツール</strong></p>
+<table>
+<thead>
+<tr>
+<th>イベント</th>
+<th>いつ</th>
+<th>返せるもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tool.call</code></td>
+<td>ツールを実行する直前に</td>
+<td><code>next(e)</code>, <code>{ deny: 이유 }</code>, <code>{ result }</code></td>
+</tr>
+<tr>
+<td><code>tool.check</code></td>
+<td><code>tool.call</code> と <code>PreToolUse</code> フックの後、実行するかどうかを決めるとき </td>
+<td><code>{ decision }</code> (<code>allow</code>/<code>ask</code>/<code>deny</code>)</td>
+</tr>
+<tr>
+<td><code>tool.describe</code></td>
+<td>ツール説明をClaudeに初めて送るとき、ツールごとに1回</td>
+<td><code>{ description, isDeferred? }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>プロンプトとClaudeが読むもの</strong></p>
+<table>
+<thead>
+<tr>
+<th>イベント</th>
+<th>いつ</th>
+<th>返せるもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prompt.submit</code></td>
+<td>プロンプトが送信されるとき</td>
+<td><code>next({ ...e, text })</code>, <code>next({ ...e, context })</code>, <code>{ drop: 이유 }</code></td>
+</tr>
+<tr>
+<td><code>prompt.fill</code>, <code>prompt.suggest</code></td>
+<td>プロンプト入力欄に下書き・薄い提案が入る直前</td>
+<td> 変更後のテキストで <code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>prompt.edit</code></td>
+<td>ユーザーがプロンプト入力欄を編集するとき</td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>prompt.compose</code></td>
+<td>システムプロンプトを描画するとき</td>
+<td><code>{ sections }</code></td>
+</tr>
+<tr>
+<td><code>prompt.section</code></td>
+<td>システムプロンプトの名前付きセクションごとに1回</td>
+<td><code>{ text }</code> 、省略するには <code>{ text: null }</code></td>
+</tr>
+<tr>
+<td><code>prompt.context</code></td>
+<td>会話ごとに1回、最初のメッセージと送信するコンテキスト</td>
+<td><code>{ blocks }</code></td>
+</tr>
+<tr>
+<td><code>prompt.attachment</code></td>
+<td>Claude Codeがリマインダーのようなメッセージを独自に追加するとき</td>
+<td><code>{ text }</code> 、省略するには <code>{ text: null }</code></td>
+</tr>
+<tr>
+<td><code>skill.prompt</code></td>
+<td>スキル記事がClaudeに展開されるとき</td>
+<td><code>{ text }</code></td>
+</tr>
+<tr>
+<td><code>attribution.text</code></td>
+<td>コミット・PRの帰属文言を作るとき</td>
+<td><code>{ text }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>コマンドと設定</strong></p>
+<table>
+<thead>
+<tr>
+<th>イベント</th>
+<th>いつ</th>
+<th>返せるもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>command.run</code></td>
+<td>コマンドが実行される直前に</td>
+<td><code>{ text }</code>, <code>{}</code>, <code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>command.describe</code></td>
+<td>コマンド一覧用の説明、コマンドごとに1回</td>
+<td><code>{ description, argumentHint, isHidden }</code></td>
+</tr>
+<tr>
+<td><code>config.set</code></td>
+<td><code>/config</code> 行の値が変わる直前 </td>
+<td><code>next({ ...e, value })</code>, <code>{ deny: 이유 }</code></td>
+</tr>
+<tr>
+<td><code>config.describe</code></td>
+<td><code>/config</code> 行ごとに1回 </td>
+<td><code>{ label, description, isHidden }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>ターン</strong></p>
+<table>
+<thead>
+<tr>
+<th>イベント</th>
+<th>いつ</th>
+<th>返せるもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>turn.start</code></td>
+<td>ターンが始まるとき</td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>turn.step</code></td>
+<td>モデルにリクエストを1つ送る直前（ツール呼び出しがあれば複数回）</td>
+<td><code>yield* next(e)</code>, <code>next({ ...e, model })</code>, <code>next({ ...e, effort })</code></td>
+</tr>
+<tr>
+<td><code>turn.complete</code></td>
+<td>ターンが終わったとき</td>
+<td><code>next(e)</code> 、または回答の下に1行を表示する <code>{ text }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>セッション</strong></p>
+<table>
+<thead>
+<tr>
+<th>イベント</th>
+<th>いつ</th>
+<th>返せるもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>session.start</code></td>
+<td> modごとに1回、最初のプロンプトの前（リロード後も実行、 <code>/clear</code>·<code>/resume</code>·<code>/branch</code> 以降は不可） </td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>session.end</code></td>
+<td> セッション終了、または <code>/clear</code>·<code>/resume</code>·<code>/branch</code></td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>session.compact</code></td>
+<td>会話を圧縮する直前に</td>
+<td><code>{ skip: 이유 }</code></td>
+</tr>
+<tr>
+<td><code>session.receive</code>, <code>session.send</code></td>
+<td>他のエージェント・セッションとメッセージをやり取りするとき</td>
+<td> 受け取る <code>{ consumed: 이유 }</code> 、送信 <code>{ isDelivered: false, reason }</code></td>
+</tr>
+<tr>
+<td><code>session.append</code></td>
+<td>会話に残る各行が保存される前</td>
+<td><code>next({ ...e, message })</code></td>
+</tr>
+<tr>
+<td><code>session.attach</code>, <code>session.detach</code></td>
+<td>他のアプリがセッションに接続・切断するとき</td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>session.measure</code></td>
+<td>ターンが終わるたび、プラン上限のパーセントが変わるとき</td>
+<td><code>next(e)</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>サブエージェント</strong></p>
+<table>
+<thead>
+<tr>
+<th>イベント</th>
+<th>いつ</th>
+<th>返せるもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agent.offer</code></td>
+<td>サブエージェントの種類をClaudeに提案するとき</td>
+<td> 隠すには <code>{ isOffered: false }</code></td>
+</tr>
+<tr>
+<td><code>agent.spawn</code></td>
+<td>サブエージェント・エージェントチームの同僚が起動する直前に</td>
+<td> モデル指定 <code>next({ ...e, model })</code> 、拒否 <code>{ deny: 이유 }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>インターフェース</strong></p>
+<table>
+<thead>
+<tr>
+<th>イベント</th>
+<th>いつ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ui.render</code></td>
+<td>レンダーサイトを描画する直前に</td>
+</tr>
+<tr>
+<td><code>ui.resolve</code></td>
+<td>modロード時、アプリ・サイト・modごとに1回</td>
+</tr>
+<tr>
+<td><code>ui.press</code>, <code>ui.input</code>, <code>ui.select</code></td>
+<td> modが描画した <code>Button</code>/<code>Input</code>/<code>Select</code>を使うとき</td>
+</tr>
+<tr>
+<td><code>ui.focus</code>, <code>ui.scroll</code></td>
+<td>フォーカス・スクロール位置が変わる直前</td>
+</tr>
+<tr>
+<td><code>ui.close</code></td>
+<td>パネルが閉じる直前</td>
+</tr>
+<tr>
+<td><code>ui.message</code></td>
+<td><code>Client</code> 要素がmodにデータを送るとき </td>
+</tr>
+<tr>
+<td><code>ui.fault</code></td>
+<td> modが描画した <code>Client</code>がロード・描画・実行に失敗したとき（2.1.289+）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>他のmod</strong></p>
+<table>
+<thead>
+<tr>
+<th>イベント</th>
+<th>いつ</th>
+<th>返せるもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>plugin.register</code></td>
+<td> フックモジュールが読み込まれる直前。 <code>e.uses</code>にそのmodが受け取るイベント・呼び出し・環境変数・状態が含まれる</td>
+<td><code>{ refuse: 이유 }</code></td>
+</tr>
+<tr>
+<td><code>engine.create</code></td>
+<td>このmod用のmods APIを作るとき</td>
+<td>名前空間を追加・削除したAPI</td>
+</tr>
+</tbody>
+</table>
+<p><strong>テレメトリ</strong></p>
+<table>
+<thead>
+<tr>
+<th>イベント</th>
+<th>いつ</th>
+<th>返せるもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>telemetry.log</code>, <code>telemetry.mark</code></td>
+<td> 使用量記録が残るか機能の使用が表示されるとき。インストールしたmodは <code>{ to: 'collector' }</code> マッチャー必須 </td>
+<td><code>next(e)</code>, <code>{ deny: 이유 }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>設定フックイベント</strong>: <code>classic.&lt;이벤트&gt;</code> という形です（例: <code>classic.Stop</code>, <code>classic.PostToolUse</code>). <code>e</code>は設定フックがstdinで受け取るJSONそのままです。</p>
+<p><strong>mods API呼び出し自体</strong> ：すべてのmods APIメソッドは <code>네임스페이스.메서드</code> という名前のイベントでもあります（例: <code>fs.read</code>, <code>model.complete</code>, <code>ui.open</code> )。先行するmodが横取りして <code>next(e)</code>, <code>{ deny: 이유 }</code>, <code>{ value }</code>で答えられます。</p>
+<h2 id="-api-네임스페이스"><code>$</code> API名前空間 </h2>
+<table>
+<thead>
+<tr>
+<th>名前空間</th>
+<th>メソッド</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$.plugin</code></td>
+<td><code>name</code>, <code>root</code></td>
+<td>このプラグインの名前とディレクトリ</td>
+</tr>
+<tr>
+<td><code>$.ui</code></td>
+<td><code>resolve</code>, <code>invalidate</code>, <code>open</code>, <code>close</code>, <code>panes</code>, <code>focus</code>, <code>scroll</code>, <code>toast</code>, <code>status</code>, <code>log</code>, <code>notice</code>, <code>ask</code>, <code>copy</code>, <code>selection</code>, <code>blit</code></td>
+<td>画面の描画、パネルの開閉、トースト・質問の表示</td>
+</tr>
+<tr>
+<td><code>$.command</code></td>
+<td><code>register</code>, <code>run</code>, <code>list</code></td>
+<td><code>/명령어</code> 追加・実行・一覧 </td>
+</tr>
+<tr>
+<td><code>$.tool</code></td>
+<td><code>register</code>, <code>call</code>, <code>check</code>, <code>list</code></td>
+<td>Claudeが使うツールの追加・呼び出し・検査・一覧</td>
+</tr>
+<tr>
+<td><code>$.agent</code></td>
+<td><code>register</code>, <code>spawn</code>, <code>list</code></td>
+<td>サブエージェントの登録・実行・一覧</td>
+</tr>
+<tr>
+<td><code>$.model</code></td>
+<td><code>complete</code>, <code>fork</code>, <code>classify</code></td>
+<td>会話の外からモデルに直接質問</td>
+</tr>
+<tr>
+<td><code>$.prompt</code></td>
+<td><code>submit</code>, <code>read</code>, <code>fill</code>, <code>suggest</code>, <code>compose</code></td>
+<td>プロンプトの送信・読み取り・入力欄の埋め込み</td>
+</tr>
+<tr>
+<td><code>$.turn</code></td>
+<td><code>abort</code></td>
+<td>進行中のターンを中断</td>
+</tr>
+<tr>
+<td><code>$.session</code></td>
+<td><code>messages</code>, <code>cwd</code>, <code>root</code>, <code>model</code>, <code>turns</code>, <code>id</code>, <code>repo</code>, <code>surfaces</code>, <code>usage</code>, <code>version</code>, <code>compact</code>, <code>send</code>, <code>append</code>, <code>authorize</code></td>
+<td>セッション情報の読み取り、他のセッションへのメッセージ送信</td>
+</tr>
+<tr>
+<td><code>$.config</code></td>
+<td><code>list</code>, <code>set</code></td>
+<td><code>/config</code> 値の読み取り・書き込み </td>
+</tr>
+<tr>
+<td><code>$.settings</code></td>
+<td><code>read</code></td>
+<td>設定ファイル・管理ポリシーの読み取り</td>
+</tr>
+<tr>
+<td><code>$.env</code></td>
+<td><code>get</code>, <code>set</code></td>
+<td>環境変数の読み取り・書き込み</td>
+</tr>
+<tr>
+<td><code>$.fs</code></td>
+<td><code>read</code>, <code>write</code>, <code>list</code>, <code>exists</code>, <code>stat</code>, <code>ancestors</code></td>
+<td>ファイルの読み取り・書き込み・一覧</td>
+</tr>
+<tr>
+<td><code>$.store</code></td>
+<td><code>get</code>, <code>set</code>, <code>delete</code>, <code>keys</code></td>
+<td>このコンピューターのすべてのセッションが共有するキー・値ストア</td>
+</tr>
+<tr>
+<td><code>$.state</code></td>
+<td><code>get</code>, <code>set</code> (+ <code>atom</code>, <code>read</code>, <code>update</code>, <code>derive</code>, <code>memberOf</code> インポート） </td>
+<td>リアクティブな状態。値を書き込むと、その値を読む画面が自動で再描画されます</td>
+</tr>
+<tr>
+<td><code>$.clock</code></td>
+<td><code>now</code>, <code>sleep</code>, <code>after</code>, <code>every</code></td>
+<td>タイマー（<code>setTimeout</code>·<code>setInterval</code> の代わりに） </td>
+</tr>
+<tr>
+<td><code>$.http</code></td>
+<td><code>fetch</code></td>
+<td>ネットワークリクエスト</td>
+</tr>
+<tr>
+<td><code>$.process</code></td>
+<td><code>run</code>, <code>spawn</code></td>
+<td>プログラム実行</td>
+</tr>
+<tr>
+<td><code>$.mcp</code></td>
+<td><code>call</code>, <code>connect</code></td>
+<td>接続されたMCPサーバーのツール呼び出し</td>
+</tr>
+<tr>
+<td><code>$.audio</code></td>
+<td><code>play</code>, <code>speak</code></td>
+<td>音を再生</td>
+</tr>
+<tr>
+<td><code>$.telemetry</code></td>
+<td><code>log</code>, <code>mark</code></td>
+<td>使用量記録（Claude Code・内蔵modが呼んだときだけ実際に送信される）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="렌더-사이트">レンダーサイト</h2>
+<table>
+<thead>
+<tr>
+<th>サイト</th>
+<th><code>e.props</code></th>
+<th><code>e.requestId</code></th>
+<th>描画される場所</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Pane</code></td>
+<td><code>title</code>, <code>isFocused</code>, <code>bodyColumns</code>, <code>placement</code>, <code>scroll</code>, <code>view</code></td>
+<td> そのパネルの <code>id</code></td>
+<td>ターミナル、デスクトップ</td>
+</tr>
+<tr>
+<td><code>AbovePrompt</code></td>
+<td><code>hasSurvey</code>, <code>isWorking</code>, <code>maxRows</code>, <code>bodyColumns</code>, <code>scroll</code>, <code>view</code></td>
+<td>単一インスタンス</td>
+<td>ターミナル、デスクトップ</td>
+</tr>
+<tr>
+<td><code>UserMessage</code></td>
+<td><code>text</code>, <code>origin</code>, <code>isExpanded</code> など </td>
+<td>メッセージid</td>
+<td>ターミナル、デスクトップ</td>
+</tr>
+<tr>
+<td><code>AssistantMessage</code></td>
+<td>回答テキスト</td>
+<td>メッセージid</td>
+<td>ターミナル、デスクトップ</td>
+</tr>
+<tr>
+<td><code>ToolUse</code>, <code>ToolResult</code>, <code>ToolGroup</code></td>
+<td>ツール名・入力・結果</td>
+<td>ツール呼び出しid</td>
+<td>ターミナル、デスクトップ</td>
+</tr>
+<tr>
+<td><code>CommandOutput</code></td>
+<td><code>command</code>, <code>text</code></td>
+<td>メッセージid</td>
+<td>ターミナル、デスクトップ</td>
+</tr>
+<tr>
+<td><code>AskUserQuestion</code></td>
+<td>質問と選択肢</td>
+<td>ツール呼び出しid</td>
+<td>ターミナル、デスクトップ</td>
+</tr>
+<tr>
+<td><code>ToolProgress</code></td>
+<td><code>kind</code></td>
+<td>ツール呼び出しid</td>
+<td>ターミナル</td>
+</tr>
+<tr>
+<td><code>Spinner</code></td>
+<td><code>word</code>, <code>message</code>, <code>suffix</code>, <code>mode</code></td>
+<td>エージェントID</td>
+<td>ターミナル、デスクトップ</td>
+</tr>
+<tr>
+<td><code>TurnDuration</code></td>
+<td><code>word</code>, <code>durationMs</code></td>
+<td>メッセージid</td>
+<td>ターミナル</td>
+</tr>
+<tr>
+<td><code>InfoNotice</code></td>
+<td><code>text</code>, <code>command</code></td>
+<td>メッセージid</td>
+<td>ターミナル</td>
+</tr>
+<tr>
+<td><code>SessionMode</code></td>
+<td><code>modes</code></td>
+<td>単一インスタンス</td>
+<td>ターミナル、デスクトップ</td>
+</tr>
+<tr>
+<td><code>PromptHint</code></td>
+<td><code>isDraft</code>, <code>isWorking</code>, <code>hint</code></td>
+<td>単一インスタンス</td>
+<td>ターミナル、デスクトップ</td>
+</tr>
+</tbody>
+</table>
+<p><code>e.viewport</code> には <code>columns</code>·<code>rows</code>·<code>isFullscreen</code> が入ります（測定前はなし）。パネル・帯の幅は <code>e.props.bodyColumns</code> で、dockステータスパネルの高さは <code>e.props.scroll.bodyRows</code>に合わせます。</p>
+<h2 id="요소-elements">要素（elements）</h2>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>主なprops</th>
+<th style="text-align: center">ターミナル</th>
+<th style="text-align: center">デスクトップ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Box</code></td>
+<td><code>key</code> 、フレックスレイアウト、 <code>gap</code>, <code>padding</code>, <code>margin</code>, <code>width</code>, <code>height</code>, <code>borderStyle</code>, <code>backgroundColor</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Text</code></td>
+<td><code>color</code>, <code>backgroundColor</code>, <code>bold</code>, <code>italic</code>, <code>underline</code>, <code>dimColor</code>, <code>inverse</code>, <code>wrap</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Button</code></td>
+<td><code>key</code>, <code>label</code>, <code>onPress</code>, <code>hotkey</code>, <code>plain</code>, <code>dimColor</code>, <code>autoFocus</code>, <code>action</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Link</code></td>
+<td><code>href</code>, <code>label</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Code</code></td>
+<td>コード本文（最大10,000文字）</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Markdown</code></td>
+<td><code>text</code> (最大10,000文字), <code>key</code>, <code>dimColor</code>, <code>onLinkPress</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Input</code></td>
+<td><code>key</code>, <code>label</code>, <code>placeholder</code>, <code>value</code>, <code>submitLabel</code>, <code>onSubmit</code>, <code>onInput</code>, <code>autoFocus</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Select</code></td>
+<td><code>key</code>, <code>label</code>, <code>options</code>, <code>value</code>, <code>onSelect</code>, <code>autoFocus</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Svg</code></td>
+<td>SVGドキュメント（最大131,072文字）</td>
+<td style="text-align: center"></td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Client</code></td>
+<td><code>module</code>, <code>key</code>。別ファイルが描画する領域（アニメーション・ポインタ入力）</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Raster</code></td>
+<td><code>key</code>, <code>columns</code> (最大512), <code>rows</code> (最大256), <code>cells</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td><code>Image</code></td>
+<td>PNG・RGBAバイト（最大2MiB）またはファイルパス</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="한계-limits">上限（limits）</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>フック1つの実行時間（<code>next</code>・mods API呼び出しの待ち時間を除く）</td>
+<td> 10秒、 <code>prompt.edit</code>は50ms</td>
+</tr>
+<tr>
+<td><code>.catch</code> ハンドラの実行時間 </td>
+<td>1秒</td>
+</tr>
+<tr>
+<td><code>session.end</code> フック全体 </td>
+<td>SessionEndフックの予算分（既定1.5秒）</td>
+</tr>
+<tr>
+<td><code>$.process.run</code> タイムアウト </td>
+<td>既定30秒、最大10分</td>
+</tr>
+<tr>
+<td><code>$.model.complete</code> の <code>maxTokens</code></td>
+<td>既定1024、最大64,000またはモデル上限</td>
+</tr>
+<tr>
+<td><code>$.fs.read</code>/<code>$.fs.write</code></td>
+<td>1ファイルあたり4MiB</td>
+</tr>
+<tr>
+<td><code>Text</code> 子文字列1つ </td>
+<td>10,000文字</td>
+</tr>
+<tr>
+<td><code>$.store</code></td>
+<td>全体で4MiBのJSON</td>
+</tr>
+<tr>
+<td><code>$.session.messages()</code></td>
+<td>最新4,096件の項目</td>
+</tr>
+<tr>
+<td><code>$.ui.invalidate('ui.render')</code> 再描画 </td>
+<td>1秒あたり10回（ターミナルの表示中のパネル・展開した帯・ヒント行は30回）に制限。それより速い呼び出しはまとめられる</td>
+</tr>
+<tr>
+<td><code>$.ui.toast</code></td>
+<td>既定4秒間表示</td>
+</tr>
+<tr>
+<td>ユーザーの要求なしに開いたパネル</td>
+<td>ターミナルは144桁から表示、一度開いたことがあれば110桁から</td>
+</tr>
+<tr>
+<td>コマンド・ツール・サブエージェント・パネル名</td>
+<td>英字・数字・<code>_</code>·<code>-</code>、最大64文字</td>
+</tr>
+<tr>
+<td><code>claude plugin test</code> テスト1つ </td>
+<td>既定5秒</td>
+</tr>
+</tbody>
+</table>
+<h2 id="설정환경변수">設定・環境変数</h2>
+<table>
+<thead>
+<tr>
+<th>名前</th>
+<th>どこで</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CLAUDE_CODE_PLUGIN_DIRS</code></td>
+<td> 環境変数または <code>~/.claude/settings.json</code> の <code>env</code></td>
+<td><code>--plugin-dir</code>のようにプラグインディレクトリを読み込む</td>
+</tr>
+<tr>
+<td><code>CLAUDE_CODE_PLUGIN_DIR_WATCH</code></td>
+<td>環境変数</td>
+<td><code>1</code> なら非インタラクティブセッションも保存するとき <code>--plugin-dir</code> modをリロード </td>
+</tr>
+<tr>
+<td><code>prependPlugins</code>, <code>appendPlugins</code></td>
+<td>managed settings（managed settingsがない個人ユーザーは自分で設定可能）</td>
+<td>modの実行順をユーザーmodより前・後ろに固定</td>
+</tr>
+<tr>
+<td><code>allowManagedModsOnly</code></td>
+<td>managed settings（内蔵ガードオプション）</td>
+<td>組織modと組み込みmodのみ読み込む</td>
+</tr>
+<tr>
+<td><code>allowModsToOverrideDenyRules</code></td>
+<td>managed settings（内蔵ガードオプション）</td>
+<td> ユーザーmodが <code>deny</code> ルールを反転して承認させることを許可 </td>
+</tr>
+<tr>
+<td><code>allowManagedHooksOnly</code></td>
+<td>managed settings</td>
+<td>組織のものでないフック・インストール済みmodをブロック</td>
+</tr>
+<tr>
+<td><code>disableAllHooks</code></td>
+<td>すべての設定ファイル</td>
+<td>インストール済みmodのフックをすべて無効化（自分の設定なら自分のmodのみ、managed settingsならすべて）</td>
+</tr>
+<tr>
+<td><code>disableSideloadFlags</code></td>
+<td>managed settings</td>
+<td> 開始時 <code>--plugin-dir</code>·<code>--plugin-url</code> 拒否 </td>
+</tr>
+<tr>
+<td><code>pluginConfigs</code></td>
+<td>ユーザーまたはmanaged settings</td>
+<td> mod の <code>userConfig</code> 値を保存 </td>
+</tr>
+</tbody>
+</table>
+<h2 id="명령어">コマンド</h2>
+<table>
+<thead>
+<tr>
+<th>コマンド</th>
+<th>やること</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/plugin</code></td>
+<td> タブの下 <code>N mods active · 이름</code>のように読み込まれたmod数を表示</td>
+</tr>
+<tr>
+<td><code>claude plugin validate &lt;경로&gt;</code></td>
+<td>マニフェストとフックモジュールを読み取り、エラー、受け取るイベント（<code>hooks:</code>)、呼び出すAPI(<code>calls:</code> )を出力。 <code>--strict</code> は警告もエラーとして、 <code>--json</code>は機械が読むレポートとして</td>
+</tr>
+<tr>
+<td><code>claude plugin test [경로]</code></td>
+<td><code>.test.ts</code>/<code>.test.tsx</code>で終わるファイルをすべて実行。失敗すると終了コード1</td>
+</tr>
+<tr>
+<td><code>claude --plugin-dir &lt;경로&gt;</code></td>
+<td>1つのセッションにだけプラグインディレクトリを読み込み、保存のたびにフックモジュールをリロード。何度でも繰り返し可能</td>
+</tr>
+<tr>
+<td><code>/reload-plugins</code></td>
+<td>実行中のセッションにプラグインの変更をすぐ反映</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<p> 詳しく見る： <a href="/k-mods/ja/guide/what-are-mods/">modsとは？</a> · <a href="/k-mods/ja/guide/install/">インストールガイド</a> · <a href="/k-mods/ja/guide/make-your-own/">自分だけのmodを作る</a> · <a href="/k-mods/ja/guide/safety/">安全ガイド</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/README.md">README</a></p>
+</article><aside class="guide-side"><p class="eyebrow">ガイド</p><ul class="guide-nav"><li><a href="/k-mods/ja/guide/what-are-mods/">modsとは？</a></li><li><a href="/k-mods/ja/guide/install/">インストールガイド</a></li><li><a href="/k-mods/ja/guide/safety/">modを安全に使う方法</a></li><li><a aria-current="page" href="/k-mods/ja/guide/cheatsheet/">modsチートシート（韓国語）</a></li><li><a href="/k-mods/ja/guide/make-your-own/">自分だけのmodを作る</a></li></ul><div class="side-links"><span class="side-meta">最終更新・2026年10月6日</span><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/blob/main/docs/guide/cheatsheet.md"><svg aria-hidden="true" fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>GitHubで原文を見る</a><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/edit/main/docs/guide/cheatsheet.md"><svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>このドキュメントを編集</a></div></aside></div></div></main><footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><p class="footer-logo"><span>k-mods</span><span aria-hidden="true" class="dot dot--sm"></span><span class="footer-copy">© 2026 · MIT</span></p><p class="footer-tagline">一覧はGitHubリポジトリSeongGwangJu/k-modsのregistryから自動で生成されます。modの追加と修正はPRで受け付けます。</p><a class="footer-sync mono" href="https://github.com/SeongGwangJu/k-mods/commit/10e9d6a3bf9be6f3dd3eadc4462fdf651bedca30">最終反映 2026年10月30日・10e9d6a</a><a class="footer-star" href="https://github.com/SeongGwangJu/k-mods"><svg aria-hidden="true" fill="currentColor" height="13" viewbox="0 0 24 24" width="13"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></svg>役に立ったらGitHubでスターを押してください</a></div><nav aria-label="サイトリンク" class="footer-nav"><a href="https://github.com/SeongGwangJu/k-mods">GitHub</a><a href="/k-mods/ja/guide/install/">インストールガイド</a><a href="/k-mods/ja/guide/safety/">安全に使う方法</a><a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">貢献する</a><a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">mod提案</a><a href="https://seonggwangju.github.io/">作成者</a></nav></div></footer><dialog aria-label="mod の詳細" class="modal" data-modal=""><button aria-label="前の mod" class="modal-arrow" data-modal-prev="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m15 18-6-6 6-6" stroke-width="2"></path></svg></button><div class="modal-panel"><div aria-hidden="true" class="modal-handle"><span></span></div><div class="modal-bar"><a class="modal-expand" data-modal-expand="" href="#"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" stroke-width="1.6"></path></svg><span>全ページで開く</span><kbd class="key modal-key">⌘↵</kbd></a><span class="modal-crumb" data-modal-crumb=""></span><button aria-label="閉じる" class="icon-btn icon-btn--plain" data-modal-close="" type="button"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M6 18 18 6M6 6l12 12"></path></svg></button></div><div class="modal-body" data-modal-body="" tabindex="-1"><p class="modal-loading">読み込み中</p></div></div><button aria-label="次の mod" class="modal-arrow" data-modal-next="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m9 18 6-6-6-6" stroke-width="2"></path></svg></button><div aria-hidden="true" class="hint" data-modal-hint=""><span><kbd data-hint-mod="">⌘</kbd><kbd>Enter</kbd>全ページ</span><i></i><span><kbd>←</kbd><kbd>→</kbd>前へ / 次へ</span><i></i><span><kbd>Esc</kbd>閉じる</span></div></dialog><p aria-live="polite" class="sr-only" data-live=""></p><script src="/k-mods/assets/Base.astro_astro_type_script_index_0_lang.BaoNknEh.js" type="module"></script></body></html>

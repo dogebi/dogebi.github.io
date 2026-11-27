@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hans"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>如何安全使用 mod · Claude Code mods 指南 · k-mods</title><meta content="mod 没有沙箱隔离，是以你自己的权限在 Claude Code 里运行的，所以安装之前先弄清楚它能做什么、会碰到哪些东西很重要。" name="description"/><link href="https://dogebi.github.io/k-mods/zh/guide/safety/" rel="canonical"/><link href="https://dogebi.github.io/k-mods/guide/safety/" hreflang="ko" rel="alternate"/><link href="https://dogebi.github.io/k-mods/en/guide/safety/" hreflang="en" rel="alternate"/><link href="https://seonggwangju.github.io/k-mods/guide/safety/" hreflang="x-default" rel="alternate"/><meta content="article" property="og:type"/><meta content="k-mods" property="og:site_name"/><meta content="mod를 안전하게 쓰는 법 · Claude Code mods 가이드 · k-mods" property="og:title"/><meta content="mod 没有沙箱隔离，是以你自己的权限在 Claude Code 里运行的，所以安装之前先弄清楚它能做什么、会碰到哪些东西很重要。" property="og:description"/><meta content="https://seonggwangju.github.io/k-mods/guide/safety/" property="og:url"/><meta content="https://seonggwangju.github.io/k-mods/og/k-mods.png" property="og:image"/><meta content="ko_KR" property="og:locale"/><meta content="summary_large_image" name="twitter:card"/><meta content="#FFFFFF" media="(prefers-color-scheme: light)" name="theme-color"/><meta content="#0F1318" media="(prefers-color-scheme: dark)" name="theme-color"/><link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;circle cx='50' cy='50' r='44' fill='%2349B3EF'/&gt;&lt;/svg&gt;" rel="icon"/><link href="/k-mods/sitemap-index.xml" rel="sitemap"/><link href="/k-mods/llms.txt" rel="alternate" title="llms.txt" type="text/plain"/><link as="font" crossorigin="" href="/k-mods/fonts/SUIT-Variable.woff2" rel="preload" type="font/woff2"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/><style>@font-face{font-family:"SUIT Variable";src:url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2-variations"),url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}</style><script>(function(){try{var t=localStorage.getItem('kmods-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "如何安全使用 mod", "description": "mod 没有沙箱，会以我的权限在 Claude Code 里运行。所以安装前了解它能做什么很重要。", "url": "https://seonggwangju.github.io/k-mods/zh/guide/safety/", "inLanguage": "zh-Hans", "dateModified": "2026-10-07T00:10:15+09:00", "author": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "publisher": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "about": {"@type": "Thing", "name": "Claude Code mods"}, "isPartOf": {"@id": "https://seonggwangju.github.io/k-mods/zh/#website"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "k-mods", "item": "https://seonggwangju.github.io/k-mods/zh/"}, {"@type": "ListItem", "position": 2, "name": "指南", "item": "https://seonggwangju.github.io/k-mods/zh/guide/"}, {"@type": "ListItem", "position": 3, "name": "如何安全使用 mod", "item": "https://seonggwangju.github.io/k-mods/zh/guide/safety/"}]}</script><link href="/k-mods/assets/Base.BXNGk-Gx.css" rel="stylesheet"/><link href="/k-mods/paper.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;700&amp;family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+</head><body><a class="skip" href="#main">跳到正文</a><header class="site-header"><div class="container header-bar"><a class="logo" href="/k-mods/zh/">k-mods<span aria-hidden="true" class="dot"></span></a><div class="header-actions"><nav aria-label="选择语言" class="seg"><a href="/k-mods/guide/safety/" hreflang="ko" lang="ko">KO</a><a href="/k-mods/en/guide/safety/" hreflang="en" lang="en">EN</a><a aria-current="true" href="/k-mods/zh/guide/safety/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a href="/k-mods/ja/guide/safety/" hreflang="ja" lang="ja">日本語</a></nav><button aria-label="切换界面主题" class="icon-btn" data-theme-toggle="" type="button"><svg aria-hidden="true" class="theme-icon-moon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg aria-hidden="true" class="theme-icon-sun" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg></button><a aria-label="GitHub" class="icon-btn" href="https://github.com/dogebi/k-mods"><svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></header><main id="main"><div class="container guide-page"><nav aria-label="当前位置" class="crumb"><a href="/k-mods/zh/">k-mods</a><span aria-hidden="true">/</span><a href="/k-mods/zh/guide/">指南</a><span aria-hidden="true">/</span><span aria-current="page">如何安全使用 mod</span></nav><div class="guide-layout"><article class="prose"><h1 id="mod를-안전하게-쓰는-법">如何安全使用 mod</h1>
+<p>mod 在没有沙箱的情况下、以我的权限运行在 Claude Code 内。所以在安装之前了解它能做什么很重要。本文整理 mod 能触及的范围、安装前自行确认的方法、k-mods 的审查标准与权限标签、组织管理员可用的管控，以及需要警惕的信号。</p>
+<h2 id="목차">目录</h2>
+<ul>
+<li><a href="#mod%EB%8A%94-%EC%83%8C%EB%93%9C%EB%B0%95%EC%8A%A4%EA%B0%80-%EC%97%86%EC%96%B4%EC%9A%94">mod 没有沙箱</a></li>
+<li><a href="#%EC%84%A4%EC%B9%98-%EC%A0%84%EC%97%90-%EC%A7%81%EC%A0%91-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0">安装前自行确认</a></li>
+<li><a href="#k-mods%EA%B0%80-%EA%B2%80%ED%86%A0%ED%95%98%EB%8A%94-%EB%B0%A9%EC%8B%9D">k-mods 的审查方式</a></li>
+<li><a href="#%EA%B6%8C%ED%95%9C-%EB%9D%BC%EB%B2%A8">权限标签</a></li>
+<li><a href="#k-mods-mod-%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%9D%BD%EB%8A%94-%EB%B2%95">k-mods 的 mod 页面怎么读</a></li>
+<li><a href="#%ED%9A%8C%EC%82%AC%EC%A1%B0%EC%A7%81%EC%97%90%EC%84%9C-%EC%93%B8-%EB%95%8C">在公司或组织中使用时</a></li>
+<li><a href="#%EC%9D%B4%EB%9F%B0-mod%EB%8A%94-%EC%A1%B0%EC%8B%AC%ED%95%98%EC%84%B8%EC%9A%94">请当心这类 mod</a></li>
+</ul>
+<h2 id="mod는-샌드박스가-없어요">mod 没有沙箱</h2>
+<p>mod 一旦加载，就能做这些事。</p>
+<ul>
+<li><strong>在我的电脑上以我的身份行动</strong>：在我的账号能碰到的任何地方读写文件、运行程序、发网络请求。</li>
+<li><strong>读取我的机密信息</strong>：读环境变量和设置文件。里面的 API key 也算。</li>
+<li><strong>查看我的会话</strong>：看我发的所有提示和 Claude 调用的所有工具。</li>
+<li><strong>改动我的会话</strong>：可以改写提示或工具调用、冒充我发提示，或给我其他会话发消息。</li>
+<li><strong>不问即行动</strong>：可以在问用户之前就批准工具调用。</li>
+<li><strong>消耗我的用量</strong>：用我的套餐或 API key 调模型。</li>
+</ul>
+<p><a href="https://code.claude.com/docs/en/sandboxing">沙盒</a>即使开启了，mod 也不受影响。沙箱只隔离 Claude 执行的 Bash 命令，mod 自行启动的进程在沙箱之外运行。</p>
+<p> 批准工具调用的 mod， <code>ask</code> 规则会询问的调用，或我的 <code>PreToolUse</code> 连钩子拦截的调用也能代为批准。更进一步， <strong>没有 managed settings，且未以 Team/Enterprise 套餐登录的个人用户</strong>的话，内置防护（<code>sec-default@builtin</code> ）根本不会加载，所以 <code>deny</code> 连规则已拦截的调用，mod 也能反转批准。不过 mod 无法更改 Claude Code 的 <strong>权限确认对话框本身无法更改。</strong> 无法操纵向用户显示什么。（官方文档： <a href="https://code.claude.com/docs/en/permissions#extend-permissions-with-hooks">Extend permissions with hooks</a>)</p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/mods/overview#decide-whether-to-trust-a-mod">Decide whether to trust a mod</a>, <a href="https://code.claude.com/docs/en/plugins/mods/admin#know-what-happens-by-default">Know what happens by default</a></p>
+<h2 id="설치-전에-직접-확인하기">安装前自行确认</h2>
+<p>在直接从市场安装之前，可以不在运行的情况下查看该 mod 接收的事件和调用的 API。克隆仓库后在 shell 中执行。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> validate</span><span style="color:#A5D6FF"> ./some-mod</span></span></code></pre>
+<pre class="astro-code github-dark-default" data-language="text" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span>  ❯ ./register.js hooks: session.start, tool.call, ui.render{component=Pane}</span></span>
+<span class="line"><span>  ❯ ./register.js calls: $.fs.read, $.http.fetch, $.store.set, $.ui.open</span></span></code></pre>
+<p><code>calls:</code> 行尤其值得关注的条目。 </p>
+<table>
+<thead>
+<tr>
+<th>调用</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$.fs.read</code>, <code>$.fs.write</code></td>
+<td>在我的账号能触达的任何位置读写文件</td>
+</tr>
+<tr>
+<td><code>$.process.run</code>, <code>$.process.spawn</code></td>
+<td>以我的权限执行程序</td>
+</tr>
+<tr>
+<td><code>$.http.fetch</code></td>
+<td>发送网络请求</td>
+</tr>
+<tr>
+<td><code>$.env.get</code>, <code>$.settings.read</code></td>
+<td> 读取环境变量和配置。其中可能包含 API 密钥。输出的 <code>env reads:</code> 行会写出是哪个变量。 </td>
+</tr>
+<tr>
+<td><code>$.env.set</code></td>
+<td> 设置环境变量。可能影响此后 Claude Code 执行的所有命令和 MCP 服务器。 <code>env writes:</code> 行会写出是哪个变量。 </td>
+</tr>
+<tr>
+<td><code>$.mcp.call</code></td>
+<td>在会话权限规则下调用已连接的 MCP 服务器的工具</td>
+</tr>
+<tr>
+<td><code>$.model.complete</code></td>
+<td>用我的套餐或 API 密钥调用模型</td>
+</tr>
+<tr>
+<td><code>$.prompt.submit</code></td>
+<td>代为发送提示词。也可以伪装成我输入的</td>
+</tr>
+<tr>
+<td><code>$.session.send</code></td>
+<td>发送会被其他会话或子代理中的 Claude 读取的消息</td>
+</tr>
+</tbody>
+</table>
+<p><code>hooks:</code> 行看重以下几点。 <code>tool.call</code> 和 <code>prompt.submit</code> ，意味着能查看并修改所有工具调用和提示词， <code>session.append</code> ，意味着能在对话的每一行被保存之前就改写它。 <code>ui.render{component=AskUserQuestion}</code> ，意味着可以重绘 Claude 向用户提问的对话框， <code>tool.check</code>，意味着能在权限确认框弹出之前就批准或拒绝工具调用。</p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/mods/admin#review-what-a-mod-can-do">Review what a mod can do</a></p>
+<h2 id="k-mods가-검토하는-방식">k-mods 的审查方式</h2>
+<p>上架到 k-mods 目录的 mod，装之前会走这些流程。</p>
+<ol>
+<li><strong>许可证门槛</strong>：没有许可证的仓库代码，在拿到作者同意前不会收录。</li>
+<li><strong>提交固定（<code>sha</code>)</strong>：原样引入原版的 mod 会固定审查时点的确切提交。原仓库以后再怎么变，我拿到的都是审查过的那个代码。更新只在重新审查之后才上。</li>
+<li><strong>静态分析 + 代码阅读</strong>: <code>claude plugin validate</code>是否通过，并由人工通读全部代码（<code>code-read</code>）。mod 有测试的话也会看是否通过（<code>unit-test</code>），会画界面的 mod 会在真实会话里起一次确认（<code>live-session</code>）。每个 mod 页面的“审查方式”里写了走过哪些流程。</li>
+<li><strong>权限标签显示</strong> ：根据静态分析找到的调用，给这个 mod 在我电脑上做的事打标签。下面 <a href="#%EA%B6%8C%ED%95%9C-%EB%9D%BC%EB%B2%A8">权限标签</a> 参考。 </li>
+<li><strong>更新时重新审查</strong>：升过版本的 mod 会重走第一次收录时的流程。</li>
+<li><strong>应作者要求删除</strong>：原作者要求下架就立刻从目录里撤掉。</li>
+</ol>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/security">Plugin security and trust</a></p>
+<h2 id="권한-라벨">权限标签</h2>
+<p>各 mod 页面会用标签标出静态分析找出的权限。按危险程度从高到低排列。</p>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🌐 网络</td>
+<td><code>$.http</code> 或 <code>$.mcp</code>与互联网或外部服务器通信。对话内容可能外泄，请确认目的地</td>
+</tr>
+<tr>
+<td>⚙️ 程序执行</td>
+<td><code>$.process</code>在我的电脑上执行程序</td>
+</tr>
+<tr>
+<td>✏️ 文件写入</td>
+<td><code>$.fs.write</code>写入文件</td>
+</tr>
+<tr>
+<td>🤖 模型调用</td>
+<td><code>$.model</code>调用模型。消耗我的用量</td>
+</tr>
+<tr>
+<td>🛡️ 工具调用控制</td>
+<td><code>tool.call</code> 或 <code>tool.check</code> 可用钩子拦截工具调用或代为回答 </td>
+</tr>
+<tr>
+<td>💬 提示词输入</td>
+<td><code>$.prompt.submit</code> 或 <code>$.prompt.fill</code>代为填入或发送提示词</td>
+</tr>
+<tr>
+<td>👀 对话读取</td>
+<td><code>prompt.submit</code>·<code>turn.complete</code>·<code>session.append</code> 钩子或绘制对话的界面， <code>$.session.messages</code>接触对话内容</td>
+</tr>
+<tr>
+<td>🔑 环境与配置读取</td>
+<td><code>$.env</code> 或 <code>$.settings</code>读取</td>
+</tr>
+<tr>
+<td>📂 文件读取</td>
+<td><code>$.fs.read</code> 系列的方式读取文件 </td>
+</tr>
+<tr>
+<td>📨 会话消息</td>
+<td><code>$.session.send</code>向其他会话发送消息</td>
+</tr>
+<tr>
+<td>🔊 声音</td>
+<td><code>$.audio</code>发出声音</td>
+</tr>
+<tr>
+<td>🎨 仅界面</td>
+<td>以上都不做，只绘制界面</td>
+</tr>
+</tbody>
+</table>
+<p><strong>标签的读法。</strong> 绘制界面的 mod 几乎都带 👀（对话读取）。因为即使只接收回合结束的信号，Claude 的最后一条回答也会一并进来。所以不必仅凭 👀 一个就担心。真正要看的是 <strong>组合</strong>。即使有 👀，若没有 🌐（网络）、⚙️（程序执行）、💬（提示词输入），该 mod 就没有把对话送出设备之外的途径。💬 可能成为让 Claude 代为发送的绕行手段，所以要一并查看。反过来，若 👀 与 🌐 同时存在，请务必在 mod 页面的“代码中的地址”和审查笔记中确认向何处发送了什么。</p>
+<p>一个 mod 可以带多个标签。若没有任何标签，表示这是一个只改界面的 mod。</p>
+<h2 id="k-mods-mod-페이지-읽는-법">k-mods 的 mod 页面怎么读</h2>
+<p> 各 mod 页面（或 <code>/plugin</code>中查看的详细信息）中确认以下几项。</p>
+<ul>
+<li><strong>种类（<code>kind</code>)</strong>: <code>오리지널</code> （k-mods 从零制作）， <code>한국 수정판</code> （原版由 k-mods 修补）， <code>원본</code> （保持原样，只固定提交）， <code>묶음</code>（把多个 mod 打包的安装组合）</li>
+<li><strong>权限标签</strong>：上表里的标签</li>
+<li><strong>审查记录</strong>：审查日期、审查用的 Claude Code 版本、审查方式（<code>validate</code>/<code>code-read</code>/<code>unit-test</code>/<code>live-session</code>），以及审查中发现的问题（网络目标、运行外部程序等）</li>
+<li><strong>来源</strong>：原版 mod 就给原作者仓库和固定的提交链接。修改版就说明相对原版改了什么</li>
+</ul>
+<p> 若有疑点，安装前 <code>claude plugin validate &lt;복제한 폴더&gt;</code>自行再确认一次。</p>
+<h2 id="회사조직에서-쓸-때">在公司或组织中使用时</h2>
+<p>如果是公司的 Claude Code 环境，管理员可以单独设置 mod 策略。</p>
+<ul>
+<li><strong><code>allowManagedModsOnly</code></strong>：开启后，用户安装的 mod 完全不会加载，只有组织分发的 mod 和 Claude Code 内置 mod 运行。k-mods 的 mod 在这项策略下也可能不加载。</li>
+<li><strong><code>prependPlugins</code>/<code>appendPlugins</code></strong>：设定组织策略 mod 比用户 mod 先（或后）执行的顺序。</li>
+<li><strong><code>sec-default@builtin</code></strong> ：有 managed settings，或用 Team、Enterprise 套餐登录时，先于所有用户安装的 mod 加载的内置防护。组织管理的系统提示、managed <code>CLAUDE.md</code>，保护 managed MCP 服务器的工具和说明不被用户 mod 碰到。除此之外不做别的拦截。</li>
+</ul>
+<p>在公司环境里如果某个 k-mods mod 不显示，请先确认是否由这些策略导致。管理员侧的设置方法在官方文档里。</p>
+<p> 官方文档： <a href="https://code.claude.com/docs/en/plugins/mods/admin">Manage mods for your organization</a></p>
+<h2 id="이런-mod는-조심하세요">请当心这类 mod</h2>
+<ul>
+<li><code>calls:</code> 在行内 <code>$.http.fetch</code> 或 <code>$.process.run</code>，但说明的任何地方都没写为什么需要它。</li>
+<li><code>hooks:</code> 在行内 <code>prompt.submit</code> 或 <code>session.append</code>，但说明里没有写对话内容不会发送到设备之外。</li>
+<li><code>tool.check</code>这类可批准或拒绝工具调用的 mod，但源码未公开，或无法得知它接收哪个提交。</li>
+<li>来自完全没有许可证的仓库的代码。</li>
+<li> 一边接收令牌或密码，一边 <code>userConfig</code> 的 <code>sensitive</code> 不做任何标记地以明文保存。 </li>
+<li>说明写的是“只改界面”，却带着 🌐 网络或 ⚙️ 程序执行标签。说明与权限不符时，最好再多读一些代码。</li>
+</ul>
+<hr/>
+<p> 了解更多： <a href="/k-mods/zh/guide/what-are-mods/">mods 是什么？</a> · <a href="/k-mods/zh/guide/install/">安装指南</a> · <a href="/k-mods/zh/guide/make-your-own/">做一个自己的 mod</a> · <a href="/k-mods/zh/guide/cheatsheet/">速查表</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">贡献指南</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/README.md">README</a></p>
+</article><aside class="guide-side"><p class="eyebrow">指南</p><ul class="guide-nav"><li><a href="/k-mods/zh/guide/what-are-mods/">mods 是什么？</a></li><li><a href="/k-mods/zh/guide/install/">安装指南</a></li><li><a aria-current="page" href="/k-mods/zh/guide/safety/">如何安全使用 mod</a></li><li><a href="/k-mods/zh/guide/cheatsheet/">mods 速查表（韩语）</a></li><li><a href="/k-mods/zh/guide/make-your-own/">做一个自己的 mod</a></li></ul><div class="side-links"><span class="side-meta">最后修改 · 2026 年 10 月 6 日</span><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/blob/main/docs/guide/safety.md"><svg aria-hidden="true" fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>在 GitHub 查看原文</a><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/edit/main/docs/guide/safety.md"><svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>编辑此文档</a></div></aside></div></div></main><footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><p class="footer-logo"><span>k-mods</span><span aria-hidden="true" class="dot dot--sm"></span><span class="footer-copy">© 2026 · MIT</span></p><p class="footer-tagline">列表由 GitHub 仓库 SeongGwangJu/k-mods 的 registry 自动生成。mod 的新增和修改通过 PR 接收。</p><a class="footer-sync mono" href="https://github.com/SeongGwangJu/k-mods/commit/10e9d6a3bf9be6f3dd3eadc4462fdf651bedca30">最后同步 2026 年 10 月 30 日 · 10e9d6a</a><a class="footer-star" href="https://github.com/SeongGwangJu/k-mods"><svg aria-hidden="true" fill="currentColor" height="13" viewbox="0 0 24 24" width="13"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></svg>如果觉得好用，请在 GitHub 上点个 star</a></div><nav aria-label="站点链接" class="footer-nav"><a href="https://github.com/SeongGwangJu/k-mods">GitHub</a><a href="/k-mods/zh/guide/install/">安装指南</a><a href="/k-mods/zh/guide/safety/">如何安全使用</a><a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">参与贡献</a><a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">推荐 mod</a><a href="https://seonggwangju.github.io/">作者</a></nav></div></footer><dialog aria-label="mod 详情" class="modal" data-modal=""><button aria-label="上一个 mod" class="modal-arrow" data-modal-prev="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m15 18-6-6 6-6" stroke-width="2"></path></svg></button><div class="modal-panel"><div aria-hidden="true" class="modal-handle"><span></span></div><div class="modal-bar"><a class="modal-expand" data-modal-expand="" href="#"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" stroke-width="1.6"></path></svg><span>以完整页面打开</span><kbd class="key modal-key">⌘↵</kbd></a><span class="modal-crumb" data-modal-crumb=""></span><button aria-label="关闭" class="icon-btn icon-btn--plain" data-modal-close="" type="button"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M6 18 18 6M6 6l12 12"></path></svg></button></div><div class="modal-body" data-modal-body="" tabindex="-1"><p class="modal-loading">加载中</p></div></div><button aria-label="下一个 mod" class="modal-arrow" data-modal-next="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m9 18 6-6-6-6" stroke-width="2"></path></svg></button><div aria-hidden="true" class="hint" data-modal-hint=""><span><kbd data-hint-mod="">⌘</kbd><kbd>Enter</kbd>完整页面</span><i></i><span><kbd>←</kbd><kbd>→</kbd>上一页 / 下一页</span><i></i><span><kbd>Esc</kbd>关闭</span></div></dialog><p aria-live="polite" class="sr-only" data-live=""></p><script src="/k-mods/assets/Base.astro_astro_type_script_index_0_lang.BaoNknEh.js" type="module"></script></body></html>

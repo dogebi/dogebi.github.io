@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>modを安全に使う方法 · Claude Code mods ガイド · k-mods</title><meta content="modはサンドボックスなしで、自分の権限のままClaude Code内で動作します。そのためインストール前に何ができるのかを把握しておくことが重要です。" name="description"/><link href="https://dogebi.github.io/k-mods/ja/guide/safety/" rel="canonical"/><link href="https://dogebi.github.io/k-mods/guide/safety/" hreflang="ko" rel="alternate"/><link href="https://dogebi.github.io/k-mods/en/guide/safety/" hreflang="en" rel="alternate"/><link href="https://seonggwangju.github.io/k-mods/guide/safety/" hreflang="x-default" rel="alternate"/><meta content="article" property="og:type"/><meta content="k-mods" property="og:site_name"/><meta content="mod를 안전하게 쓰는 법 · Claude Code mods 가이드 · k-mods" property="og:title"/><meta content="modはサンドボックスなしで、自分の権限のままClaude Code内で動作します。そのためインストール前に何ができるのかを把握しておくことが重要です。" property="og:description"/><meta content="https://seonggwangju.github.io/k-mods/guide/safety/" property="og:url"/><meta content="https://seonggwangju.github.io/k-mods/og/k-mods.png" property="og:image"/><meta content="ko_KR" property="og:locale"/><meta content="summary_large_image" name="twitter:card"/><meta content="#FFFFFF" media="(prefers-color-scheme: light)" name="theme-color"/><meta content="#0F1318" media="(prefers-color-scheme: dark)" name="theme-color"/><link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;circle cx='50' cy='50' r='44' fill='%2349B3EF'/&gt;&lt;/svg&gt;" rel="icon"/><link href="/k-mods/sitemap-index.xml" rel="sitemap"/><link href="/k-mods/llms.txt" rel="alternate" title="llms.txt" type="text/plain"/><link as="font" crossorigin="" href="/k-mods/fonts/SUIT-Variable.woff2" rel="preload" type="font/woff2"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/><style>@font-face{font-family:"SUIT Variable";src:url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2-variations"),url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}</style><script>(function(){try{var t=localStorage.getItem('kmods-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "modを安全に使う方法", "description": "modはサンドボックスなしで自分の権限でClaude Code内で動作します。そのためインストール前に何ができるかを把握しておくことが重要です。", "url": "https://seonggwangju.github.io/k-mods/ja/guide/safety/", "inLanguage": "ja", "dateModified": "2026-10-07T00:10:15+09:00", "author": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "publisher": {"@type": "Person", "name": "Seong Gwang Ju", "url": "https://seonggwangju.github.io/", "sameAs": ["https://github.com/SeongGwangJu", "https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]}, "about": {"@type": "Thing", "name": "Claude Code mods"}, "isPartOf": {"@id": "https://seonggwangju.github.io/k-mods/ja/#website"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "k-mods", "item": "https://seonggwangju.github.io/k-mods/ja/"}, {"@type": "ListItem", "position": 2, "name": "ガイド", "item": "https://seonggwangju.github.io/k-mods/ja/guide/"}, {"@type": "ListItem", "position": 3, "name": "modを安全に使う方法", "item": "https://seonggwangju.github.io/k-mods/ja/guide/safety/"}]}</script><link href="/k-mods/assets/Base.BXNGk-Gx.css" rel="stylesheet"/><link href="/k-mods/paper.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;700&amp;family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+</head><body><a class="skip" href="#main">本文へスキップ</a><header class="site-header"><div class="container header-bar"><a class="logo" href="/k-mods/ja/">k-mods<span aria-hidden="true" class="dot"></span></a><div class="header-actions"><nav aria-label="言語を選択" class="seg"><a href="/k-mods/guide/safety/" hreflang="ko" lang="ko">KO</a><a href="/k-mods/en/guide/safety/" hreflang="en" lang="en">EN</a><a href="/k-mods/zh/guide/safety/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a aria-current="true" href="/k-mods/ja/guide/safety/" hreflang="ja" lang="ja">日本語</a></nav><button aria-label="画面テーマを切り替え" class="icon-btn" data-theme-toggle="" type="button"><svg aria-hidden="true" class="theme-icon-moon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg aria-hidden="true" class="theme-icon-sun" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg></button><a aria-label="GitHub" class="icon-btn" href="https://github.com/dogebi/k-mods"><svg aria-hidden="true" fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></header><main id="main"><div class="container guide-page"><nav aria-label="現在位置" class="crumb"><a href="/k-mods/ja/">k-mods</a><span aria-hidden="true">/</span><a href="/k-mods/ja/guide/">ガイド</a><span aria-hidden="true">/</span><span aria-current="page">modを安全に使う方法</span></nav><div class="guide-layout"><article class="prose"><h1 id="mod를-안전하게-쓰는-법">modを安全に使う方法</h1>
+<p>modはサンドボックスなしで、自分の権限のままClaude Codeの中で動作します。そのため、インストールする前に何ができるのかを把握しておくことが重要です。この記事では、modが届く範囲、インストール前に自分で確認する方法、k-modsがレビューする基準と権限ラベル、組織の管理者が使える統制、注意すべき兆候を整理します。</p>
+<h2 id="목차">目次</h2>
+<ul>
+<li><a href="#mod%EB%8A%94-%EC%83%8C%EB%93%9C%EB%B0%95%EC%8A%A4%EA%B0%80-%EC%97%86%EC%96%B4%EC%9A%94">modにサンドボックスはありません</a></li>
+<li><a href="#%EC%84%A4%EC%B9%98-%EC%A0%84%EC%97%90-%EC%A7%81%EC%A0%91-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0">インストール前に自分で確認する</a></li>
+<li><a href="#k-mods%EA%B0%80-%EA%B2%80%ED%86%A0%ED%95%98%EB%8A%94-%EB%B0%A9%EC%8B%9D">k-modsのレビュー方法</a></li>
+<li><a href="#%EA%B6%8C%ED%95%9C-%EB%9D%BC%EB%B2%A8">権限ラベル</a></li>
+<li><a href="#k-mods-mod-%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%9D%BD%EB%8A%94-%EB%B2%95">k-modsのmodページの読み方</a></li>
+<li><a href="#%ED%9A%8C%EC%82%AC%EC%A1%B0%EC%A7%81%EC%97%90%EC%84%9C-%EC%93%B8-%EB%95%8C">会社・組織で使う場合</a></li>
+<li><a href="#%EC%9D%B4%EB%9F%B0-mod%EB%8A%94-%EC%A1%B0%EC%8B%AC%ED%95%98%EC%84%B8%EC%9A%94">こんなmodには注意してください</a></li>
+</ul>
+<h2 id="mod는-샌드박스가-없어요">modにサンドボックスはありません</h2>
+<p>modが一度読み込まれると、こんなことができるようになります。</p>
+<ul>
+<li><strong>自分のコンピューター上で自分と同じように振る舞う</strong>: 自分のアカウントが届くあらゆる場所でファイルを読み書きし、プログラムを実行し、ネットワークリクエストを送ります。</li>
+<li><strong>自分の秘密情報の読み取り</strong>: 環境変数と設定ファイルを読みます。そこに入っているAPIキーも含まれます。</li>
+<li><strong>自分のセッションを閲覧</strong>: 自分が送るすべてのプロンプトと、Claudeが呼ぶすべてのツールを見ます。</li>
+<li><strong>自分のセッションを変更</strong>: プロンプトやツール呼び出しを書き換えたり、自分が打ったかのようにプロンプトを代わりに送ったり、自分の別のセッションにメッセージを送ったりできます。</li>
+<li><strong>尋ねずに行動</strong>: ユーザーに尋ねる前にツール呼び出しを承認できます。</li>
+<li><strong>自分の使用量を消費</strong>: 自分のプランやAPIキーでモデルを呼び出します。</li>
+</ul>
+<p><a href="https://code.claude.com/docs/en/sandboxing">サンドボックス</a>を有効にしていてもmodは影響を受けません。サンドボックスはClaudeが実行するBashコマンドだけを隔離し、modが直接起動したプロセスはサンドボックスの外で動作します。</p>
+<p> ツール呼び出しを承認するmodは <code>ask</code> ルールが問い合わせる呼び出しや、自分の <code>PreToolUse</code> フックが止めた呼び出しも代わりに承認できます。さらに <strong>managed settingsがなく、Team・Enterpriseプランでログインしていない個人ユーザー</strong>なら、内蔵ガード(<code>sec-default@builtin</code> ）がまったく読み込まれないので <code>deny</code> ルールでブロックした呼び出しまで、modが覆して承認できてしまいます。ただしmodはClaude Codeの <strong>権限確認のダイアログ自体は変更できません。</strong> ユーザーに何を表示するかは操作できません。(公式ドキュメント: <a href="https://code.claude.com/docs/en/permissions#extend-permissions-with-hooks">Extend permissions with hooks</a>)</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/overview#decide-whether-to-trust-a-mod">Decide whether to trust a mod</a>, <a href="https://code.claude.com/docs/en/plugins/mods/admin#know-what-happens-by-default">Know what happens by default</a></p>
+<h2 id="설치-전에-직접-확인하기">インストール前に自分で確認する</h2>
+<p>マーケットプレイスからすぐにインストールする前に、そのmodが受け取るイベントと呼び出すAPIを、実行せずに確認できます。リポジトリをクローンしたうえで、シェルで実行してください。</p>
+<pre class="astro-code github-dark-default" data-language="bash" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> validate</span><span style="color:#A5D6FF"> ./some-mod</span></span></code></pre>
+<pre class="astro-code github-dark-default" data-language="text" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0"><code><span class="line"><span>  ❯ ./register.js hooks: session.start, tool.call, ui.render{component=Pane}</span></span>
+<span class="line"><span>  ❯ ./register.js calls: $.fs.read, $.http.fetch, $.store.set, $.ui.open</span></span></code></pre>
+<p><code>calls:</code> 行で特に注目したい項目です。 </p>
+<table>
+<thead>
+<tr>
+<th>呼び出し</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$.fs.read</code>, <code>$.fs.write</code></td>
+<td>自分のアカウントが届く場所ならどこでもファイルを読み書きします</td>
+</tr>
+<tr>
+<td><code>$.process.run</code>, <code>$.process.spawn</code></td>
+<td>自分の権限でプログラムを実行します</td>
+</tr>
+<tr>
+<td><code>$.http.fetch</code></td>
+<td>ネットワークリクエストを送信します</td>
+</tr>
+<tr>
+<td><code>$.env.get</code>, <code>$.settings.read</code></td>
+<td> 環境変数・設定を読みます。APIキーが含まれている可能性があります。出力の <code>env reads:</code> 行にどの変数かが表示されます。 </td>
+</tr>
+<tr>
+<td><code>$.env.set</code></td>
+<td> 環境変数を設定します。以降Claude Codeが実行するすべてのコマンド・MCPサーバーに影響する可能性があります。 <code>env writes:</code> 行にどの変数かが表示されます。 </td>
+</tr>
+<tr>
+<td><code>$.mcp.call</code></td>
+<td>接続されたMCPサーバーのツールを、セッションの権限ルールのもとで呼び出します</td>
+</tr>
+<tr>
+<td><code>$.model.complete</code></td>
+<td>自分のプランやAPIキーでモデルを呼び出します</td>
+</tr>
+<tr>
+<td><code>$.prompt.submit</code></td>
+<td>プロンプトを代わりに送信します。自分が入力したように見せかけることもできます</td>
+</tr>
+<tr>
+<td><code>$.session.send</code></td>
+<td>他のセッションやサブエージェントのClaudeが読むメッセージを送信します</td>
+</tr>
+</tbody>
+</table>
+<p><code>hooks:</code> 行では次の点が重要です。 <code>tool.call</code> と <code>prompt.submit</code> は、すべてのツール呼び出しとプロンプトを見て変更できるという意味で、 <code>session.append</code> は、会話の各行を保存される前に書き換えられるという意味です。 <code>ui.render{component=AskUserQuestion}</code> は、Claudeがユーザーに尋ねるダイアログを描き直せるという意味で、 <code>tool.check</code>は、権限確認画面が表示される前にツール呼び出しを承認・拒否できるという意味です。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/admin#review-what-a-mod-can-do">Review what a mod can do</a></p>
+<h2 id="k-mods가-검토하는-방식">k-modsのレビュー方法</h2>
+<p>k-modsカタログに掲載されたmodは、インストール前にこうした過程を経ます。</p>
+<ol>
+<li><strong>ライセンスゲート</strong>: ライセンスのないリポジトリのコードは、作者の許可を得るまでは公開しません。</li>
+<li><strong>コミット固定(<code>sha</code>)</strong>: 原本をそのまま取り込むmodは、レビューした時点の正確なコミットを固定します。原本リポジトリが後で変わっても、自分が受け取るのはレビューしたそのコードのままです。アップデートは再レビューの後にだけ公開します。</li>
+<li><strong>静的解析 + コード読み込み</strong>: <code>claude plugin validate</code>を通過するか確認し、人がコード全体を読みます(<code>code-read</code>）。modにテストがあれば通るかも確認し（<code>unit-test</code>）、画面を描くmodは実際のセッションで一度表示して確認します（<code>live-session</code>）。各modページの「レビュー方法」に、どんな過程を経たかが書かれています。</li>
+<li><strong>権限ラベルの表示</strong> : 静的解析で見つけた呼び出しをもとに、このmodが自分のコンピューターで行うことをラベルとして付けます。下の <a href="#%EA%B6%8C%ED%95%9C-%EB%9D%BC%EB%B2%A8">権限ラベル</a> 参考。 </li>
+<li><strong>アップデート時に再レビュー</strong>: バージョンが上がったmodは、最初に公開したときと同じ過程をもう一度通ります。</li>
+<li><strong>作者の要請により削除</strong>: 原作者が削除を求めたら、すぐにカタログから外します。</li>
+</ol>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/security">Plugin security and trust</a></p>
+<h2 id="권한-라벨">権限ラベル</h2>
+<p>各modページには、静的解析で見つかった権限がラベルとして付いています。危険なものから順に並べています。</p>
+<table>
+<thead>
+<tr>
+<th>ラベル</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🌐 ネットワーク</td>
+<td><code>$.http</code> や <code>$.mcp</code>でインターネットや外部サーバーと通信します。会話内容が外部に出る可能性があるため、送信先を確認してください</td>
+</tr>
+<tr>
+<td>⚙️ プログラム実行</td>
+<td><code>$.process</code>で自分のコンピューター上でプログラムを実行します</td>
+</tr>
+<tr>
+<td>✏️ ファイル書き込み</td>
+<td><code>$.fs.write</code>でファイルを書き込みます</td>
+</tr>
+<tr>
+<td>🤖 モデル呼び出し</td>
+<td><code>$.model</code>でモデルを呼び出します。自分の使用量を消費します</td>
+</tr>
+<tr>
+<td>🛡️ ツール呼び出しの制御</td>
+<td><code>tool.call</code> や <code>tool.check</code> フックでツール呼び出しを止めたり、代わりに答えたりできます </td>
+</tr>
+<tr>
+<td>💬 プロンプト入力</td>
+<td><code>$.prompt.submit</code> や <code>$.prompt.fill</code>でプロンプトを代わりに入力したり送信したりします</td>
+</tr>
+<tr>
+<td>👀 会話読み取り</td>
+<td><code>prompt.submit</code>·<code>turn.complete</code>·<code>session.append</code> フックや会話を描画する画面、 <code>$.session.messages</code>で会話内容にアクセスします</td>
+</tr>
+<tr>
+<td>🔑 環境・設定の読み取り</td>
+<td><code>$.env</code> や <code>$.settings</code>を読みます</td>
+</tr>
+<tr>
+<td>📂 ファイル読み取り</td>
+<td><code>$.fs.read</code> 系のファイルを読みます </td>
+</tr>
+<tr>
+<td>📨 セッションメッセージ</td>
+<td><code>$.session.send</code>で他のセッションにメッセージを送信します</td>
+</tr>
+<tr>
+<td>🔊 音</td>
+<td><code>$.audio</code>で音を鳴らします</td>
+</tr>
+<tr>
+<td>🎨 画面のみ</td>
+<td>上記のどれも行わず、画面を描画するだけです</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ラベルの読み方。</strong> 画面を描画するmodは、ほぼすべて👀(会話読み取り)が付きます。ターンが終わったというシグナルだけを受け取っても、Claudeの最後の回答が一緒に入ってくるからです。そのため、👀だけを心配する必要はありません。本当に見るべきは <strong>組み合わせ</strong>です。👀があっても、🌐(ネットワーク)・⚙️(プログラム実行)・💬(プロンプト入力)がなければ、そのmodが会話を端末の外に持ち出す方法はありません。💬はClaudeに代わりに送ってもらう抜け道になり得るため、あわせて確認します。逆に👀と🌐が揃っている場合は、modページの「コード内のアドレス」とレビューノートで、どこに何を送っているかを必ず確認してください。</p>
+<p>1つのmodにラベルが複数付くことがあります。ラベルがなければ、画面だけを変えるmodという意味です。</p>
+<h2 id="k-mods-mod-페이지-읽는-법">k-modsのmodページの読み方</h2>
+<p> 各modページ(または <code>/plugin</code>で確認できる詳細情報)で、次の点を確認してください。</p>
+<ul>
+<li><strong>種類(<code>kind</code>)</strong>: <code>오리지널</code> （k-modsが最初から作成）、 <code>한국 수정판</code> （原本をk-modsが修正）、 <code>원본</code> （原本そのまま、コミットだけ固定）、 <code>묶음</code>（他のmodを複数まとめたインストールセット）</li>
+<li><strong>権限ラベル</strong>: 上の表のラベル</li>
+<li><strong>レビュー記録</strong>: レビュー日、レビューに使ったClaude Codeのバージョン、レビュー方法（<code>validate</code>/<code>code-read</code>/<code>unit-test</code>/<code>live-session</code>）、レビュー中に見つかった点（ネットワークの宛先、外部プログラムの実行など）</li>
+<li><strong>出典</strong>: 原本modなら原作者のリポジトリと固定したコミットのリンク。修正版なら原本と何を変えたか</li>
+</ul>
+<p> 疑問な点があれば、インストール前に <code>claude plugin validate &lt;복제한 폴더&gt;</code>で、もう一度自分で確認してみてください。</p>
+<h2 id="회사조직에서-쓸-때">会社・組織で使う場合</h2>
+<p>会社のClaude Code環境であれば、管理者がmodポリシーを別途設定できます。</p>
+<ul>
+<li><strong><code>allowManagedModsOnly</code></strong>: 有効になっていると、ユーザーがインストールしたmodはまったく読み込まれず、組織が配布したmodとClaude Codeの組み込みmodだけが動きます。k-modsのmodもこのポリシーの下では読み込まれないことがあります。</li>
+<li><strong><code>prependPlugins</code>/<code>appendPlugins</code></strong>: 組織のポリシーmodをユーザーmodより先に（または後に）実行するよう順序を決めます。</li>
+<li><strong><code>sec-default@builtin</code></strong> : managed settingsがあるか、Team・Enterpriseプランでログインしている場合に、ユーザーがインストールしたすべてのmodより先に読み込まれる組み込みガードです。組織が管理するシステムプロンプト、managed <code>CLAUDE.md</code>、managed MCPサーバーのツール・説明はユーザーmodが触れないように守ります。それ以外は特にブロックしません。</li>
+</ul>
+<p>会社の環境で特定のk-mods modが表示されない場合は、まずこれらのポリシーが原因かどうかを確認してください。管理者側の設定方法は公式ドキュメントにあります。</p>
+<p> 公式ドキュメント: <a href="https://code.claude.com/docs/en/plugins/mods/admin">Manage mods for your organization</a></p>
+<h2 id="이런-mod는-조심하세요">こんなmodには注意してください</h2>
+<ul>
+<li><code>calls:</code> 行に <code>$.http.fetch</code> や <code>$.process.run</code>がありますが、説明のどこにもなぜ必要なのかが書かれていません。</li>
+<li><code>hooks:</code> 行に <code>prompt.submit</code> や <code>session.append</code>がありますが、会話内容を端末の外に送信しないという説明がありません。</li>
+<li><code>tool.check</code>のようにツール呼び出しを承認・拒否できるmodですが、ソースが非公開だったり、どのコミットを受け取るのか分からなかったりします。</li>
+<li>ライセンスがまったくないリポジトリのコードです。</li>
+<li> トークンやパスワードを受け取りながら <code>userConfig</code> の <code>sensitive</code> 表示なしで平文のまま保存します。 </li>
+<li>「画面だけを変える」という説明なのに、🌐 ネットワークや ⚙️ プログラム実行のラベルが付いています。説明と権限が食い違う場合は、コードをもう少し読んでみるのがおすすめです。</li>
+</ul>
+<hr/>
+<p> 詳しく見る： <a href="/k-mods/ja/guide/what-are-mods/">modsとは？</a> · <a href="/k-mods/ja/guide/install/">インストールガイド</a> · <a href="/k-mods/ja/guide/make-your-own/">自分だけのmodを作る</a> · <a href="/k-mods/ja/guide/cheatsheet/">チートシート</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">コントリビュートガイド</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/README.md">README</a></p>
+</article><aside class="guide-side"><p class="eyebrow">ガイド</p><ul class="guide-nav"><li><a href="/k-mods/ja/guide/what-are-mods/">modsとは？</a></li><li><a href="/k-mods/ja/guide/install/">インストールガイド</a></li><li><a aria-current="page" href="/k-mods/ja/guide/safety/">modを安全に使う方法</a></li><li><a href="/k-mods/ja/guide/cheatsheet/">modsチートシート（韓国語）</a></li><li><a href="/k-mods/ja/guide/make-your-own/">自分だけのmodを作る</a></li></ul><div class="side-links"><span class="side-meta">最終更新・2026年10月6日</span><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/blob/main/docs/guide/safety.md"><svg aria-hidden="true" fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>GitHubで原文を見る</a><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/edit/main/docs/guide/safety.md"><svg aria-hidden="true" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="14"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>このドキュメントを編集</a></div></aside></div></div></main><footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><p class="footer-logo"><span>k-mods</span><span aria-hidden="true" class="dot dot--sm"></span><span class="footer-copy">© 2026 · MIT</span></p><p class="footer-tagline">一覧はGitHubリポジトリSeongGwangJu/k-modsのregistryから自動で生成されます。modの追加と修正はPRで受け付けます。</p><a class="footer-sync mono" href="https://github.com/SeongGwangJu/k-mods/commit/10e9d6a3bf9be6f3dd3eadc4462fdf651bedca30">最終反映 2026年10月30日・10e9d6a</a><a class="footer-star" href="https://github.com/SeongGwangJu/k-mods"><svg aria-hidden="true" fill="currentColor" height="13" viewbox="0 0 24 24" width="13"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></svg>役に立ったらGitHubでスターを押してください</a></div><nav aria-label="サイトリンク" class="footer-nav"><a href="https://github.com/SeongGwangJu/k-mods">GitHub</a><a href="/k-mods/ja/guide/install/">インストールガイド</a><a href="/k-mods/ja/guide/safety/">安全に使う方法</a><a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">貢献する</a><a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">mod提案</a><a href="https://seonggwangju.github.io/">作成者</a></nav></div></footer><dialog aria-label="mod の詳細" class="modal" data-modal=""><button aria-label="前の mod" class="modal-arrow" data-modal-prev="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m15 18-6-6 6-6" stroke-width="2"></path></svg></button><div class="modal-panel"><div aria-hidden="true" class="modal-handle"><span></span></div><div class="modal-bar"><a class="modal-expand" data-modal-expand="" href="#"><svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="16"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" stroke-width="1.6"></path></svg><span>全ページで開く</span><kbd class="key modal-key">⌘↵</kbd></a><span class="modal-crumb" data-modal-crumb=""></span><button aria-label="閉じる" class="icon-btn icon-btn--plain" data-modal-close="" type="button"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><path d="M6 18 18 6M6 6l12 12"></path></svg></button></div><div class="modal-body" data-modal-body="" tabindex="-1"><p class="modal-loading">読み込み中</p></div></div><button aria-label="次の mod" class="modal-arrow" data-modal-next="" type="button"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22"><path d="m9 18 6-6-6-6" stroke-width="2"></path></svg></button><div aria-hidden="true" class="hint" data-modal-hint=""><span><kbd data-hint-mod="">⌘</kbd><kbd>Enter</kbd>全ページ</span><i></i><span><kbd>←</kbd><kbd>→</kbd>前へ / 次へ</span><i></i><span><kbd>Esc</kbd>閉じる</span></div></dialog><p aria-live="polite" class="sr-only" data-live=""></p><script src="/k-mods/assets/Base.astro_astro_type_script_index_0_lang.BaoNknEh.js" type="module"></script></body></html>
