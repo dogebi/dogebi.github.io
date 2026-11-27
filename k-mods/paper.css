@@ -406,12 +406,12 @@ pre.astro-code, .prose pre, .astro-code { border: 1px solid var(--rule); border-
   .container { padding-inline: 16px; }
 }
 
-/* ---- 미리보기 틀은 내용에 맞춰 줄어든다 (1in8b 패널처럼) ---------------- */
-.stage, .stage--large, .stage--feature, .stage--card { aspect-ratio: auto; }
-.stage > img, .stage > video,
-.stage--large > img, .stage--large > video,
-.stage--feature > img, .stage--feature > video,
-.stage--card > img, .stage--card > video {
+/* ---- 미리보기 틀 -------------------------------------------------------
+   표제부 큰 그림만 내용에 맞춰 줄어들고(위쪽 hero), 목록의 카드는 16/10 판을 유지한다.
+   판을 유지해야 카드 높이가 같아지고, 캡처 비율이 제각각인 mod 들이 한 줄에서
+   들쭉날쭉하지 않는다. 이미지는 contain 이라 잘리지 않는다. */
+.stage--large { aspect-ratio: auto; }
+.stage--large > img, .stage--large > video {
   position: static;
   inset: auto;
   width: 100%;
@@ -419,6 +419,32 @@ pre.astro-code, .prose pre, .astro-code { border: 1px solid var(--rule); border-
   padding: 0;
   object-fit: contain;
   display: block;
+}
+/* 미리보기 판은 화면(스크린)이므로 어두운 바탕을 쓴다.
+   캡처가 모두 어두운 터미널 화면이라, contain 으로 남는 여백이 판 색과 같아져
+   흰 띠가 생기지 않는다. 비율은 고정해 한 줄에서 카드 높이가 어긋나지 않게 한다. */
+.stage, .stage--card { aspect-ratio: 16 / 10; background: #10161a; }
+.stage--feature { aspect-ratio: 16 / 9; background: #10161a; }
+:root[data-theme="dark"] .stage { background: #0a0f12; }
+.stage > img, .stage > video { inset: 10px; width: calc(100% - 20px); height: calc(100% - 20px); object-fit: contain; }
+.stage--feature > img, .stage--feature > video { inset: 12px; width: calc(100% - 24px); height: calc(100% - 24px); }
+
+/* ---- 표제부 가로 행: 잘린 카드가 보이지 않게 3·2·1 칸으로 나눈다 --------
+   원본은 카드 폭을 38.46% 로 잡아 오른쪽에 반쯤 걸친 카드를 남기는데,
+   스크롤바까지 숨겨서 "화면에서 잘린" 것처럼 읽힌다. 폭을 칸 수로 나누고
+   스크롤 막대를 얇게 보여 준다. */
+.feat-row {
+  gap: 24px;
+  padding-bottom: 14px;
+  scrollbar-width: thin;
+  scroll-padding-inline: 6px;
+}
+.feat-row > .card { flex: 0 0 calc((100% - 54px) / 3); }
+@media (max-width: 1099px) {
+  .feat-row > .card { flex-basis: calc((100% - 30px) / 2); }
+}
+@media (max-width: 719px) {
+  .feat-row > .card { flex-basis: 86%; }
 }
 
 /* 표제부 제목은 1in8b 의 큰 세리프를 따르되 세 줄로 넘치지 않는 선 */
