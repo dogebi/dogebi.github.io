@@ -1,17 +1,43 @@
 <!doctype html>
-<!-- 계산기와 연결되는 카탈로그 페이지 -->
+<!-- 검색과 필터를 제공하는 계산기 카탈로그 페이지 -->
 <html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>大模型 · dogebi</title>  <script type="module" crossorigin src="/rea-vram-calculator/assets/hardware-Dl_lnPoa.js"></script>
-  <script type="module" crossorigin src="/rea-vram-calculator/assets/catalog-AM7c64Yc.js"></script>
-  <link rel="stylesheet" crossorigin href="/rea-vram-calculator/assets/hardware-Dnmqh3mm.css">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>模型目录 · dogebi</title>
+  <script type="module" crossorigin src="/rea-vram-calculator/assets/hardware-OI6wm6s0.js"></script>
+  <script type="module" crossorigin src="/rea-vram-calculator/assets/catalog-DYg1Dg1F.js"></script>
+  <link rel="stylesheet" crossorigin href="/rea-vram-calculator/assets/hardware-90vFQHJy.css">
 </head>
-<body>
+<body class="catalog-page" data-catalog="models">
 <div class="app-shell">
 <header class="topbar">
 <a class="wordmark" href="./">dogebi</a>
-<nav class="site-nav" aria-label="主导航"><a href="./models.html" class="current" aria-current="page">大模型</a><a href="./">显存计算器</a><a href="./hardware.html">硬件</a></nav>
+<nav class="site-nav" aria-label="主导航">
+<a href="./models.html" class="current" aria-current="page">大模型</a>
+<a href="./">显存计算器</a>
+<a href="./hardware.html">硬件</a>
+</nav>
 </header>
-<main class="workspace"><h1>大模型</h1><p>选择示例模型，或在计算器中输入任意公开的 Hugging Face 模型 ID。</p><ul class="catalog-list"><li><a href="./?model=Qwen%2FQwen2.5-0.5B-Instruct#hub-model">Qwen/Qwen2.5-0.5B-Instruct</a></li><li><a href="./?model=Qwen%2FQwen2.5-7B-Instruct#hub-model">Qwen/Qwen2.5-7B-Instruct</a></li><li><a href="./?model=Qwen%2FQwen3-4B#hub-model">Qwen/Qwen3-4B</a></li><li><a href="./?model=Qwen%2FQwen3-8B#hub-model">Qwen/Qwen3-8B</a></li><li><a href="./?model=TinyLlama%2FTinyLlama-1.1B-Chat-v1.0#hub-model">TinyLlama/TinyLlama-1.1B-Chat-v1.0</a></li></ul></main>
+<main class="workspace">
+<h1>大模型目录</h1>
+<p class="catalog-intro">按名称或发布者查找示例模型。选择模型后，计算器会从 Hugging Face 读取公开配置。</p>
+<form class="catalog-filters">
+<label>搜索<input id="catalog-search" type="search" placeholder="例如 Qwen3"></label>
+<label>发布者<select id="catalog-vendor"><option value="">全部</option></select></label>
+
+<label>排序<select id="catalog-sort"><option value="default">默认</option><option value="name">名称</option><option value="desc">参数规模从大到小</option><option value="asc">参数规模从小到大</option></select></label>
+<button type="reset">清除筛选</button>
+</form>
+<p id="catalog-status" role="status"></p>
+<div class="catalog-table-wrap" tabindex="0" role="region" aria-label="模型列表">
+<table class="catalog-table">
+<thead><tr><th scope="col">模型</th><th scope="col">发布者</th><th scope="col">参数规模（约）</th><th scope="col">估算</th></tr></thead>
+<tbody id="catalog-rows"></tbody>
+</table>
+</div>
+<p class="catalog-note">目录收录支持自动导入的示例。也可以在计算器中查询其他公开模型 ID。</p>
+</main>
 </div>
 </body>
 </html>

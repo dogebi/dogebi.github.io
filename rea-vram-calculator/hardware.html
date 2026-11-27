@@ -1,17 +1,43 @@
 <!doctype html>
-<!-- 계산기와 연결되는 카탈로그 페이지 -->
+<!-- 검색과 필터를 제공하는 계산기 카탈로그 페이지 -->
 <html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>硬件 · dogebi</title>  <script type="module" crossorigin src="/rea-vram-calculator/assets/hardware-Dl_lnPoa.js"></script>
-  <script type="module" crossorigin src="/rea-vram-calculator/assets/catalog-AM7c64Yc.js"></script>
-  <link rel="stylesheet" crossorigin href="/rea-vram-calculator/assets/hardware-Dnmqh3mm.css">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>硬件目录 · dogebi</title>
+  <script type="module" crossorigin src="/rea-vram-calculator/assets/hardware-OI6wm6s0.js"></script>
+  <script type="module" crossorigin src="/rea-vram-calculator/assets/catalog-DYg1Dg1F.js"></script>
+  <link rel="stylesheet" crossorigin href="/rea-vram-calculator/assets/hardware-90vFQHJy.css">
 </head>
-<body>
+<body class="catalog-page" data-catalog="hardware">
 <div class="app-shell">
 <header class="topbar">
 <a class="wordmark" href="./">dogebi</a>
-<nav class="site-nav" aria-label="主导航"><a href="./models.html">大模型</a><a href="./">显存计算器</a><a href="./hardware.html" class="current" aria-current="page">硬件</a></nav>
+<nav class="site-nav" aria-label="主导航">
+<a href="./models.html">大模型</a>
+<a href="./">显存计算器</a>
+<a href="./hardware.html" class="current" aria-current="page">硬件</a>
+</nav>
 </header>
-<main class="workspace"><h1>硬件</h1><p>此处显示计算器内置的设备预设。点击设备即可在计算器中应用该预设。</p><ul class="catalog-list" id="hardware-list"></ul></main>
+<main class="workspace">
+<h1>硬件目录</h1>
+<p class="catalog-intro">比较计算器支持的设备预设，并用所选配置估算显存与性能。</p>
+<form class="catalog-filters">
+<label>搜索<input id="catalog-search" type="search" placeholder="例如 RTX 4090"></label>
+<label>品牌<select id="catalog-vendor"><option value="">全部</option></select></label>
+<label>最低内存<select id="catalog-min"><option value="0">不限</option><option value="16">16 GB</option><option value="24">24 GB</option><option value="48">48 GB</option><option value="96">96 GB</option></select></label>
+<label>排序<select id="catalog-sort"><option value="default">默认</option><option value="name">名称</option><option value="desc">内存从高到低</option><option value="asc">内存从低到高</option></select></label>
+<button type="reset">清除筛选</button>
+</form>
+<p id="catalog-status" role="status"></p>
+<div class="catalog-table-wrap" tabindex="0" role="region" aria-label="硬件规格">
+<table class="catalog-table">
+<thead><tr><th scope="col">设备</th><th scope="col">内存类型</th><th scope="col">容量</th><th scope="col">带宽</th><th scope="col">功耗预设</th><th scope="col">估算</th></tr></thead>
+<tbody id="catalog-rows"></tbody>
+</table>
+</div>
+<p class="catalog-note">数值来自计算器预设。统一内存也由系统和其他应用共享。</p>
+</main>
 </div>
 </body>
 </html>
