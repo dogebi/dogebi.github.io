@@ -8,8 +8,8 @@
     <meta name="description" content="Estimate LLM inference memory, decode speed, prefill, and GPU fit with a transparent Roofline model." />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='20' cy='20' r='13' fill='%2336bd72'/%3E%3Ccircle cx='44' cy='20' r='13' fill='%232c7048'/%3E%3Ccircle cx='20' cy='44' r='13' fill='%232c7048'/%3E%3Ccircle cx='44' cy='44' r='13' fill='%2336bd72'/%3E%3C/svg%3E" />
     <title>LLM 显存计算器 - 我能运行这个 LLM 吗？</title>
-    <script type="module" crossorigin src="/rea-vram-calculator/assets/index-BOLA2HaX.js"></script>
-    <link rel="modulepreload" crossorigin href="/rea-vram-calculator/assets/hardware-OI6wm6s0.js">
+    <script type="module" crossorigin src="/rea-vram-calculator/assets/index-CQ2N0kg0.js"></script>
+    <link rel="modulepreload" crossorigin href="/rea-vram-calculator/assets/hardware-iCGVmbQm.js">
     <link rel="stylesheet" crossorigin href="/rea-vram-calculator/assets/hardware-90vFQHJy.css">
   </head>
   <body class="calculator-page">
@@ -184,21 +184,23 @@
                 <label class="field-label" for="gpu" data-i18n="gpu">设备 / GPU</label>
                 <select id="gpu" class="control-select">
                 <option value="custom" data-i18n="custom">自定义硬件</option>
-                <option value="rtx5090">NVIDIA GeForce RTX 5090</option><option value="rtx4090">NVIDIA GeForce RTX 4090</option><option value="rtx3090">NVIDIA GeForce RTX 3090</option>
+                <option value="rtx5090">NVIDIA GeForce RTX 5090</option><option value="rtx4090" selected>NVIDIA GeForce RTX 4090</option><option value="rtx3090">NVIDIA GeForce RTX 3090</option>
                 <option value="h100">NVIDIA H100 SXM 80GB</option><option value="h100pcie">NVIDIA H100 PCIe 80GB</option><option value="h200">NVIDIA H200 141GB</option><option value="b200">NVIDIA B200 180GB</option>
                 <option value="a100">NVIDIA A100 80GB</option><option value="l40s">NVIDIA L40S</option><option value="l4">NVIDIA L4</option>
                 <option value="mi300x">AMD Instinct MI300X</option><option value="mi325x">AMD Instinct MI325X</option><option value="rx7900">AMD Radeon RX 7900 XTX</option><option value="rx9070">AMD Radeon RX 9070</option>
                 <option value="m4max">Apple M4 Max</option><option value="m5ultra">Apple M5 Ultra</option>
                 </select>
               </div>
+              <p id="gpu-status" role="status"></p>
+              <p><a href="https://github.com/DarkStark9000/gpu-specs">gpu-specs · Debarshi Das · CC BY 4.0</a></p>
               <div class="hardware-specs">
-                <div class="field-block"><label class="field-label" for="gpu-vram" data-i18n="vramPerGpu">显存 / GPU</label><div class="input-with-unit"><input id="gpu-vram" type="number" min="1" max="1024" step="1" value="24" inputmode="numeric"><span>GB</span></div></div>
-                <div class="field-block"><label class="field-label" for="gpu-bandwidth" data-i18n="memoryBandwidth">内存带宽</label><div class="input-with-unit"><input id="gpu-bandwidth" type="number" min="1" max="20000" step="1" value="1008" inputmode="numeric"><span>GB/s</span></div></div>
-                <div class="field-block"><label class="field-label" for="gpu-compute" data-i18n="denseCompute">FP16/BF16 算力</label><div class="input-with-unit"><input id="gpu-compute" type="number" min="0.1" max="100000" step="0.1" value="82.6" inputmode="decimal"><span>TFLOPS</span></div></div>
+                <div class="field-block"><label class="field-label" for="gpu-vram" data-i18n="vramPerGpu">显存 / GPU</label><div class="input-with-unit"><input id="gpu-vram" type="number" min="1" max="1024" step="1" inputmode="numeric"><span>GB</span></div></div>
+                <div class="field-block"><label class="field-label" for="gpu-bandwidth" data-i18n="memoryBandwidth">内存带宽</label><div class="input-with-unit"><input id="gpu-bandwidth" type="number" min="1" max="20000" step="1" inputmode="numeric"><span>GB/s</span></div></div>
+                <div class="field-block"><label class="field-label" for="gpu-compute" data-i18n="denseCompute">FP16/BF16 算力</label><div class="input-with-unit"><input id="gpu-compute" type="number" min="0.1" max="100000" step="0.1" inputmode="decimal"><span>TFLOPS</span></div></div>
                 <div class="field-block" id="single-gpu-count-wrap"><label class="field-label" for="gpu-count" data-i18n="gpuCount">GPU 数量</label><div class="stepper"><button type="button" data-step="gpu-count" data-delta="-1" aria-label="Decrease GPU count">−</button><input id="gpu-count" type="number" min="1" max="64" value="1" inputmode="numeric"><button type="button" data-step="gpu-count" data-delta="1" aria-label="Increase GPU count">+</button></div></div>
                 <div class="field-block"><label class="field-label" for="gpu-cost" data-i18n="rentalCost">Spot 单卡价格</label><div class="input-with-unit"><input id="gpu-cost" type="number" min="0" max="10000" step="0.01" value="0" inputmode="decimal"><span>USD/h</span></div></div>
                 <div class="field-block"><label class="field-label" for="gpu-ondemand">On-demand 单卡价格</label><div class="input-with-unit"><input id="gpu-ondemand" type="number" min="0" max="10000" step="0.01" value="0" inputmode="decimal"><span>USD/h</span></div></div>
-                <div class="field-block"><label class="field-label" for="gpu-power">单卡功耗</label><div class="input-with-unit"><input id="gpu-power" type="number" min="1" max="5000" value="350"><span>W</span></div></div>
+                <div class="field-block"><label class="field-label" for="gpu-power">单卡功耗</label><div class="input-with-unit"><input id="gpu-power" type="number" min="1" max="5000"><span>W</span></div></div>
               </div>
               <div id="cluster-options" class="field-row hidden">
                 <div class="field-block"><label class="field-label" for="node-count">노드 수</label><input class="plain-input" id="node-count" type="number" min="1" max="128" value="1"></div>
@@ -262,7 +264,7 @@
             <p class="privacy-note"><span aria-hidden="true">◈</span><span data-i18n="privacy">计算在本地浏览器完成，输入不会上传。</span></p>
           </aside>
 
-          <section class="results-panel" aria-live="polite" aria-label="Estimate results">
+          <section class="results-panel hidden" aria-live="polite" aria-label="Estimate results">
             <div class="results-head">
               <div><p class="panel-kicker" data-i18n="analysis">PERFORMANCE PROFILE</p><h2 data-i18n="results">性能与显存分析</h2></div>
               <span id="fit-badge" class="fit-badge"><span class="fit-badge-dot"></span><span id="fit-text">Ready</span></span>
