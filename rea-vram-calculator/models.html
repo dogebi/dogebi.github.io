@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>模型目录 · dogebi</title>
   <script type="module" crossorigin src="/rea-vram-calculator/assets/hardware-iCGVmbQm.js"></script>
-  <script type="module" crossorigin src="/rea-vram-calculator/assets/catalog-DZPp_y5B.js"></script>
+  <script type="module" crossorigin src="/rea-vram-calculator/assets/catalog-CaZ6iYRB.js"></script>
   <link rel="stylesheet" crossorigin href="/rea-vram-calculator/assets/hardware-90vFQHJy.css">
 </head>
 <body class="catalog-page" data-catalog="models">
@@ -24,7 +24,7 @@
 <p class="catalog-intro">通过 Hugging Face 实时搜索文本生成模型。受支持的模型可将公开配置导入计算器。</p>
 <form class="catalog-filters">
 <label>搜索<input id="catalog-search" type="search" placeholder="例如 Qwen3"></label>
-<label>数据源<select id="catalog-hub"><option value="https://hf-mirror.com">HF Mirror</option><option value="https://huggingface.co">Hugging Face</option></select></label>
+<label>数据源<select id="catalog-hub"><option selected value="https://huggingface.co">Hugging Face（官方）</option><option value="https://hf-mirror.com">HF Mirror（仅下载）</option></select></label>
 <label>发布者<select id="catalog-vendor"><option value="">全部</option></select></label>
 
 <label>排序<select id="catalog-sort"><option value="default">下载量</option><option value="name">名称</option><option value="desc">参数规模从大到小</option><option value="asc">参数规模从小到大</option></select></label>
@@ -37,7 +37,7 @@
 <tbody id="catalog-rows"></tbody>
 </table>
 </div>
-<p class="catalog-note"><a href="https://hf-mirror.com/">HF Mirror</a> · 每次最多 30 项，排名按搜索结果的 Hub 下载量排列。发布者筛选保留原排名，缺失数据以破折号表示。</p>
+<p class="catalog-note"><a href="https://hf-mirror.com/">HF Mirror</a> 已不再代理 API（其 /api 请求会 308 跳转到官方），因此查询失败时页面会自动回退到 Hugging Face；完全无法联网时显示内置快照。每次最多 30 项，排名按搜索结果的 Hub 下载量排列。发布者筛选保留原排名，缺失数据以破折号表示。</p>
 </main>
 </div>
 </body>

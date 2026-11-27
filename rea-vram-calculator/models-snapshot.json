@@ -1,0 +1,451 @@
+{
+ "generated": "2026-11-27",
+ "source": "https://huggingface.co/api/models?pipeline_tag=text-generation&sort=downloads&direction=-1&limit=60",
+ "note": "오프라인 폴백 스냅샷 — API 접속 실패 시에만 표시. 재생성: python3 tools/snapshot_models.py",
+ "models": [
+  {
+   "id": "openai-community/gpt2",
+   "downloads": 32370580,
+   "gated": false,
+   "safetensors": {
+    "total": 137022720
+   }
+  },
+  {
+   "id": "Qwen/Qwen3-0.6B",
+   "downloads": 13725088,
+   "gated": false,
+   "safetensors": {
+    "total": 751632384
+   }
+  },
+  {
+   "id": "Qwen/Qwen3-14B",
+   "downloads": 13229293,
+   "gated": false,
+   "safetensors": {
+    "total": 14768307200
+   }
+  },
+  {
+   "id": "deepseek-ai/DeepSeek-V3.2",
+   "downloads": 11561559,
+   "gated": false,
+   "safetensors": {
+    "total": 685355329792
+   }
+  },
+  {
+   "id": "Qwen/Qwen3-4B-Instruct-2507",
+   "downloads": 11349952,
+   "gated": false,
+   "safetensors": {
+    "total": 4022468096
+   }
+  },
+  {
+   "id": "Qwen/Qwen2.5-7B-Instruct",
+   "downloads": 6358576,
+   "gated": false,
+   "safetensors": {
+    "total": 7615616512
+   }
+  },
+  {
+   "id": "Qwen/Qwen3-8B",
+   "downloads": 5638481,
+   "gated": false,
+   "safetensors": {
+    "total": 8190735360
+   }
+  },
+  {
+   "id": "openai/gpt-oss-20b",
+   "downloads": 5230971,
+   "gated": false,
+   "safetensors": {
+    "total": 20914757184
+   }
+  },
+  {
+   "id": "ornith-ai/Ornith-1.5-9B-GGUF",
+   "downloads": 5086272,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "facebook/opt-125m",
+   "downloads": 4928256,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "dphn/dolphin-2.9.1-yi-1.5-34b",
+   "downloads": 4822636,
+   "gated": false,
+   "safetensors": {
+    "total": 34388917248
+   }
+  },
+  {
+   "id": "Qwen/Qwen2.5-1.5B-Instruct",
+   "downloads": 4649662,
+   "gated": false,
+   "safetensors": {
+    "total": 1543714304
+   }
+  },
+  {
+   "id": "meta-llama/Llama-3.1-8B-Instruct",
+   "downloads": 3822477,
+   "gated": "manual",
+   "safetensors": {
+    "total": 8030261248
+   }
+  },
+  {
+   "id": "Qwen/Qwen3-32B",
+   "downloads": 3735356,
+   "gated": false,
+   "safetensors": {
+    "total": 32762123264
+   }
+  },
+  {
+   "id": "ornith-ai/Ornith-1.5-35B-A3B-GGUF",
+   "downloads": 3718592,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF",
+   "downloads": 3682279,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "Qwen/Qwen2.5-0.5B-Instruct",
+   "downloads": 3623929,
+   "gated": false,
+   "safetensors": {
+    "total": 494032768
+   }
+  },
+  {
+   "id": "nvidia/Qwen3.6-35B-A3B-NVFP4",
+   "downloads": 3593391,
+   "gated": false,
+   "safetensors": {
+    "total": 18683860336
+   }
+  },
+  {
+   "id": "farbodtavakkoli/OTel-2.0-Decision-26B-A4B-4bit",
+   "downloads": 3193842,
+   "gated": false,
+   "safetensors": {
+    "total": 25805936206
+   }
+  },
+  {
+   "id": "trl-internal-testing/tiny-Qwen3ForCausalLM",
+   "downloads": 2996022,
+   "gated": false,
+   "safetensors": {
+    "total": 2435688
+   }
+  },
+  {
+   "id": "Qwen/Qwen3-4B",
+   "downloads": 2937742,
+   "gated": false,
+   "safetensors": {
+    "total": 4022468096
+   }
+  },
+  {
+   "id": "Qwen/Qwen3-1.7B",
+   "downloads": 2558223,
+   "gated": false,
+   "safetensors": {
+    "total": 2031739904
+   }
+  },
+  {
+   "id": "trl-internal-testing/tiny-Qwen2ForCausalLM-2.5",
+   "downloads": 2536353,
+   "gated": false,
+   "safetensors": {
+    "total": 2436264
+   }
+  },
+  {
+   "id": "openai/gpt-oss-120b",
+   "downloads": 2247049,
+   "gated": false,
+   "safetensors": {
+    "total": 116829156672
+   }
+  },
+  {
+   "id": "JonathanColetti/Qwen3.8-27B-Uncensored-GGUF",
+   "downloads": 2135073,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "EleutherAI/pythia-160m",
+   "downloads": 2036565,
+   "gated": false,
+   "safetensors": {
+    "total": 212654688
+   }
+  },
+  {
+   "id": "peasantsmith/GLM-5.3-Flash-Maya-GGUF",
+   "downloads": 1979344,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+   "downloads": 1935974,
+   "gated": false,
+   "safetensors": {
+    "total": 30532122624
+   }
+  },
+  {
+   "id": "Qwen/Qwen2.5-3B-Instruct",
+   "downloads": 1838954,
+   "gated": false,
+   "safetensors": {
+    "total": 3085938688
+   }
+  },
+  {
+   "id": "Qwen/Qwen3-4B-Instruct-2507-FP8",
+   "downloads": 1838830,
+   "gated": false,
+   "safetensors": {
+    "total": 4411646016
+   }
+  },
+  {
+   "id": "ornith-ai/Ornith-1.0-9B-GGUF",
+   "downloads": 1830658,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "nvidia/Gemma-4-26B-A4B-NVFP4",
+   "downloads": 1813977,
+   "gated": false,
+   "safetensors": {
+    "total": 14386941232
+   }
+  },
+  {
+   "id": "Qwen/Qwen2.5-Coder-7B-Instruct",
+   "downloads": 1669986,
+   "gated": false,
+   "safetensors": {
+    "total": 7615616512
+   }
+  },
+  {
+   "id": "Qwen/Qwen3-14B-AWQ",
+   "downloads": 1641871,
+   "gated": false,
+   "safetensors": {
+    "total": 14768307200
+   }
+  },
+  {
+   "id": "ukisai/Swift-1.5-Qwen3.8-27B-GSQ-RCO-GGUF",
+   "downloads": 1611833,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "deepseek-ai/DeepSeek-R1",
+   "downloads": 1425096,
+   "gated": false,
+   "safetensors": {
+    "total": 684489845504
+   }
+  },
+  {
+   "id": "farbodtavakkoli/OTel-2.0-LLM-31B-IT-QLoRA",
+   "downloads": 1391849,
+   "gated": "auto",
+   "safetensors": {
+    "total": 31273086512
+   }
+  },
+  {
+   "id": "distilbert/distilgpt2",
+   "downloads": 1350504,
+   "gated": false,
+   "safetensors": {
+    "total": 88204032
+   }
+  },
+  {
+   "id": "meta-llama/Llama-3.2-1B-Instruct",
+   "downloads": 1350448,
+   "gated": "manual",
+   "safetensors": {
+    "total": 1235814400
+   }
+  },
+  {
+   "id": "Qwen/Qwen2.5-Coder-14B-Instruct",
+   "downloads": 1343887,
+   "gated": false,
+   "safetensors": {
+    "total": 14770033664
+   }
+  },
+  {
+   "id": "kindlingai/glm-5.3-exlr8-k2-k3-k4",
+   "downloads": 1341386,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "HuggingFaceTB/SmolLM2-135M",
+   "downloads": 1330984,
+   "gated": false,
+   "safetensors": {
+    "total": 134515008
+   }
+  },
+  {
+   "id": "DavidAU/LFM2.5-24B-A2B-Turbo-Brilliance-50X-NEO-MAX-Imatrix-GGUF",
+   "downloads": 1301222,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "Qwen/Qwen2.5-0.5B",
+   "downloads": 1297803,
+   "gated": false,
+   "safetensors": {
+    "total": 494032768
+   }
+  },
+  {
+   "id": "OsaurusAI/Diplodocus-preview-GGUF",
+   "downloads": 1296509,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "Qwen/Qwen2.5-7B-Instruct-AWQ",
+   "downloads": 1285780,
+   "gated": false,
+   "safetensors": {
+    "total": 7615616512
+   }
+  },
+  {
+   "id": "empero-ai/Qwen3.8-35B-A3B-Distill-GGUF",
+   "downloads": 1285670,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "prism-ml/Ternary-Bonsai-2-27B-gguf",
+   "downloads": 1283338,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "ornith-ai/Ornith-1.5-122B-GGUF",
+   "downloads": 1268828,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "openai-community/gpt2-large",
+   "downloads": 1262395,
+   "gated": false,
+   "safetensors": {
+    "total": 811778816
+   }
+  },
+  {
+   "id": "0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "downloads": 1242305,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "ornith-ai/Ornith-1.0-35B",
+   "downloads": 1192768,
+   "gated": false,
+   "safetensors": {
+    "total": 664944
+   }
+  },
+  {
+   "id": "ornith-ai/Ornith-1.5-397B-GGUF",
+   "downloads": 1154000,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "Qwen/Qwen3-14B-FP8",
+   "downloads": 1149324,
+   "gated": false,
+   "safetensors": {
+    "total": 14768307200
+   }
+  },
+  {
+   "id": "AtomicChat/LFM2.5-24B-A2B-Uncensored-GGUF",
+   "downloads": 1137878,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "deepseek-ai/DeepSeek-V4-Flash-0731",
+   "downloads": 1134785,
+   "gated": false,
+   "safetensors": {
+    "total": 304180418494
+   }
+  },
+  {
+   "id": "ornith-ai/Ornith-1.0-35B-GGUF",
+   "downloads": 1115248,
+   "gated": false,
+   "safetensors": null
+  },
+  {
+   "id": "zai-org/GLM-5.3",
+   "downloads": 1081011,
+   "gated": false,
+   "safetensors": {
+    "total": 753329940480
+   }
+  },
+  {
+   "id": "ornith-ai/Ornith-1.5-9B-NVFP4",
+   "downloads": 1077746,
+   "gated": false,
+   "safetensors": {
+    "total": 9653104368
+   }
+  },
+  {
+   "id": "Qwen/Qwen3-30B-A3B",
+   "downloads": 1075565,
+   "gated": false,
+   "safetensors": {
+    "total": 30532122624
+   }
+  }
+ ]
+}
