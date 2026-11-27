@@ -169,7 +169,9 @@ body {
 .copy-btn:hover { border-color: var(--ink); color: var(--ink); }
 
 /* 미리보기(터미널) 틀 */
-.hero-figure, .stage {
+/* 그림 틀은 종이 그대로, 어두운 바탕은 안쪽 .stage 만 (캡션이 어둠에 먹히지 않게) */
+.hero-figure { border: 0; background: transparent; overflow: visible; }
+.stage {
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   background: var(--stage);
