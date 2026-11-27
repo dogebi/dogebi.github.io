@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Make your own mod · Claude Code mods guides · k-mods</title><meta name="description" content="There are two ways to make a mod. You can ask Claude in plain language, or you can write the code yourself."><link rel="canonical" href="https://seonggwangju.github.io/k-mods/en/guide/make-your-own/"><link rel="alternate" hreflang="ko" href="https://seonggwangju.github.io/k-mods/guide/make-your-own/"><link rel="alternate" hreflang="en" href="https://seonggwangju.github.io/k-mods/en/guide/make-your-own/"><link rel="alternate" hreflang="x-default" href="https://seonggwangju.github.io/k-mods/guide/make-your-own/"><meta property="og:type" content="article"><meta property="og:site_name" content="k-mods"><meta property="og:title" content="Make your own mod · Claude Code mods guides · k-mods"><meta property="og:description" content="There are two ways to make a mod. You can ask Claude in plain language, or you can write the code yourself."><meta property="og:url" content="https://seonggwangju.github.io/k-mods/en/guide/make-your-own/"><meta property="og:image" content="https://seonggwangju.github.io/k-mods/og/k-mods.png"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1318"><link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;circle cx='50' cy='50' r='44' fill='%2349B3EF'/&gt;&lt;/svg&gt;"><link rel="sitemap" href="/k-mods/sitemap-index.xml"><link rel="alternate" type="text/plain" title="llms.txt" href="/k-mods/llms.txt"><link rel="preload" href="/k-mods/fonts/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"><style>@font-face{font-family:"SUIT Variable";src:url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2-variations"),url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}</style><script>(function(){try{var t=localStorage.getItem('kmods-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Make your own mod","description":"There are two ways to make a mod. You can ask Claude in plain language, or you can write the code yourself.","url":"https://seonggwangju.github.io/k-mods/en/guide/make-your-own/","inLanguage":"en","dateModified":"2026-10-08T15:48:47+09:00","author":{"@type":"Person","name":"Seong Gwang Ju","url":"https://seonggwangju.github.io/","sameAs":["https://github.com/SeongGwangJu","https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]},"publisher":{"@type":"Person","name":"Seong Gwang Ju","url":"https://seonggwangju.github.io/","sameAs":["https://github.com/SeongGwangJu","https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]},"about":{"@type":"Thing","name":"Claude Code mods"},"isPartOf":{"@id":"https://seonggwangju.github.io/k-mods/#website"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"k-mods","item":"https://seonggwangju.github.io/k-mods/en/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://seonggwangju.github.io/k-mods/en/guide/"},{"@type":"ListItem","position":3,"name":"Make your own mod","item":"https://seonggwangju.github.io/k-mods/en/guide/make-your-own/"}]}</script><link rel="stylesheet" href="/k-mods/assets/Base.BXNGk-Gx.css"><link rel="stylesheet" href="/k-mods/paper.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&amp;display=swap">
+</head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="container header-bar"><a class="logo" href="/k-mods/en/">k-mods<span class="dot" aria-hidden="true"></span></a><div class="header-actions"><nav class="seg" aria-label="Language"><a href="/k-mods/guide/make-your-own/" hreflang="ko" lang="ko">KO</a><a href="/k-mods/en/guide/make-your-own/" hreflang="en" lang="en" aria-current="true">EN</a></nav><button type="button" class="icon-btn" data-theme-toggle aria-label="Toggle color theme"><svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg></button><a class="icon-btn" href="https://github.com/SeongGwangJu/k-mods" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></header><main id="main"><div class="container guide-page"><nav class="crumb" aria-label="Breadcrumb"><a href="/k-mods/en/">k-mods</a><span aria-hidden="true">/</span><a href="/k-mods/en/guide/">Guides</a><span aria-hidden="true">/</span><span aria-current="page">Make your own mod</span></nav><div class="guide-layout"><article class="prose"><h1 id="make-your-own-mod">Make your own mod</h1>
+<p>There are two ways to make a mod. You can ask Claude in plain language, or you can write the code yourself. This guide covers both, and ends with the steps for adding a finished mod to k-mods.</p>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#have-claude-make-it">Have Claude make it</a></li>
+<li><a href="#build-it-yourself">Build it yourself</a>
+<ul>
+<li><a href="#1-create-three-files">1. Create three files</a></li>
+<li><a href="#2-write-the-code">2. Write the code</a></li>
+<li><a href="#3-load-it-and-try-it">3. Load it and try it</a></li>
+<li><a href="#4-type-declarations-and-validate">4. Type declarations and validate</a></li>
+<li><a href="#5-static-analysis-rules">5. Static analysis rules</a></li>
+<li><a href="#6-write-tests">6. Write tests</a></li>
+<li><a href="#7-storing-state-variable-vs-state-vs-store">7. Storing state: variable vs state vs store</a></li>
+</ul>
+</li>
+<li><a href="#submit-to-k-mods">Submit to k-mods</a></li>
+</ul>
+<h2 id="have-claude-make-it">Have Claude make it</h2>
+<p>This is the fastest way. In a session, just say what you want.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Make a mod that shows the current git branch above the prompt input</span></span></code></pre>
+<p>Claude writes the mod using the built-in skill <code>plugin-authoring</code>. This skill knows which events and APIs are available in the Claude Code version you are using and where the mod has to be saved. To invoke the skill yourself, enter <code>/plugin-authoring</code> in a session.</p>
+<p>The flow goes like this.</p>
+<ol>
+<li><strong>Where it writes</strong>: Claude writes files to <code>~/.claude/dev-mods/&lt;session ID&gt;/&lt;mod name&gt;/</code>. In the <code>default</code> and <code>acceptEdits</code> permission modes, <code>~/.claude</code> is a protected path, so it asks for approval every time it saves a file.</li>
+<li><strong>Hot reload approval</strong>: When the first file is saved, it asks whether to turn on hot reload in this session. If you choose <strong>Enable for this session only</strong>, the mods in this session’s <code>dev-mods</code> folder load when a turn ends, and reload at the end of every turn where a file changed. This choice persists when you resume the session. If you choose <strong>Not now</strong>, the files stay, and they load the next time that session is restarted.</li>
+<li><strong>Check that it loaded</strong>: In <code>/plugin</code> → <strong>Installed</strong> tab, check that the mod appears. You can turn it off there too.</li>
+<li><strong>Try it and fix it</strong>: If it did not work as you wanted, tell Claude what to change. When the turn that changed the file ends, you can try again right away.</li>
+</ol>
+<p>In some sessions a mod that Claude wrote does not load at all: <code>claude -p</code> runs or <code>dontAsk</code> mode, where nobody can approve; workspaces you have not trusted yet; and cases where mods themselves are turned off by <code>--safe-mode</code>, <code>--bare</code>, <code>disableAllHooks</code>, or organization policy.</p>
+<p><strong>To keep using the mod</strong>: The <code>dev-mods</code> folder belongs only to the session that created it, and it is deleted automatically after <code>cleanupPeriodDays</code> (30 days by default). To keep the mod, copy the folder somewhere you manage.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">cp</span><span style="color:#79C0FF"> -r</span><span style="color:#A5D6FF"> ~/.claude/dev-mods/</span><span style="color:#FF7B72">&lt;</span><span style="color:#A5D6FF">session</span><span style="color:#A5D6FF"> I</span><span style="color:#E6EDF3">D</span><span style="color:#FF7B72">&gt;</span><span style="color:#A5D6FF">/git-branch</span><span style="color:#A5D6FF"> ~/mods/git-branch</span></span></code></pre>
+<p>After copying, load it with <code>--plugin-dir</code> as described in <a href="#build-it-yourself">Build it yourself</a>, or publish it through a marketplace to use it with other people.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/mods/create#ask-claude-for-a-mod">Ask Claude for a mod</a></p>
+<h2 id="build-it-yourself">Build it yourself</h2>
+<p>If you want to learn how the code works, writing it yourself is fastest. You need no Node.js or bundler. Claude Code reads <code>.ts</code> and <code>.js</code> files directly.</p>
+<p>Here we build a mod called <code>tool-tally</code>. It counts each tool use and shows the count next to the spinner, like <code>· 도구 3번</code> (Korean for “tool 3 times”), and when you enter <code>/tally</code>, it tells you the count so far.</p>
+<h3 id="1-create-three-files">1. Create three files</h3>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> tool-tally/.claude-plugin</span><span style="color:#A5D6FF"> tool-tally/hooks</span></span></code></pre>
+<p><code>tool-tally/.claude-plugin/plugin.json</code> is the plugin’s manifest.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E6EDF3">{</span></span>
+<span class="line"><span style="color:#7EE787">  "name"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"tool-tally"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#7EE787">  "version"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"0.1.0"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#7EE787">  "description"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"Counts tool calls, shows the count next to the spinner, and reports it with /tally"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#7EE787">  "author"</span><span style="color:#E6EDF3">: { </span><span style="color:#7EE787">"name"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"Your name"</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+<p><code>tool-tally/hooks/hooks.json</code> tells Claude Code where the code file is. With this <code>modules</code> key, the plugin becomes a mod.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E6EDF3">{</span></span>
+<span class="line"><span style="color:#7EE787">  "modules"</span><span style="color:#E6EDF3">: [</span><span style="color:#A5D6FF">"./register.ts"</span><span style="color:#E6EDF3">]</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+<h3 id="2-write-the-code">2. Write the code</h3>
+<p><code>tool-tally/hooks/register.ts</code> is the hooks module. If it exports a <code>register</code> function, Claude Code calls it once when it loads the mod.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#FF7B72">import</span><span style="color:#FF7B72"> type</span><span style="color:#E6EDF3"> { On } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> 'claude-code'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// The count. The hooks below share it</span></span>
+<span class="line"><span style="color:#FF7B72">let</span><span style="color:#E6EDF3"> calls </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> register</span><span style="color:#E6EDF3">(</span><span style="color:#FFA657">on</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> On</span><span style="color:#E6EDF3">)</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> void</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#8B949E">  // Once when the session starts: register the /tally command</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'session.start'</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">$</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">e</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">next</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    await</span><span style="color:#E6EDF3"> $.command.</span><span style="color:#D2A8FF">register</span><span style="color:#E6EDF3">({ name: </span><span style="color:#A5D6FF">'tally'</span><span style="color:#E6EDF3">, description: </span><span style="color:#A5D6FF">'Show how many tools have been used so far'</span><span style="color:#E6EDF3"> })</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#D2A8FF"> next</span><span style="color:#E6EDF3">(e)</span></span>
+<span class="line"><span style="color:#E6EDF3">  })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // Every time Claude is about to use a tool</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'tool.call'</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">$</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">e</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">next</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    calls </span><span style="color:#FF7B72">+=</span><span style="color:#79C0FF"> 1</span></span>
+<span class="line"><span style="color:#E6EDF3">    $.ui.</span><span style="color:#D2A8FF">invalidate</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'ui.render'</span><span style="color:#E6EDF3">) </span><span style="color:#8B949E">// Redraw the screen so the new number shows</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#D2A8FF"> next</span><span style="color:#E6EDF3">(e) </span><span style="color:#8B949E">// The tool runs as usual</span></span>
+<span class="line"><span style="color:#E6EDF3">  })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // Only when /tally is entered</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'command.run'</span><span style="color:#E6EDF3">, { command: </span><span style="color:#A5D6FF">'tally'</span><span style="color:#E6EDF3"> }, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> () </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3"> { text: </span><span style="color:#A5D6FF">'지금까지 도구를 '</span><span style="color:#FF7B72"> +</span><span style="color:#E6EDF3"> calls </span><span style="color:#FF7B72">+</span><span style="color:#A5D6FF"> '번 썼어요'</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">  })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // Every time the spinner is drawn</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'ui.render'</span><span style="color:#E6EDF3">, { component: </span><span style="color:#A5D6FF">'Spinner'</span><span style="color:#E6EDF3"> }, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">$</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">e</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">next</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#D2A8FF"> next</span><span style="color:#E6EDF3">({ </span><span style="color:#FF7B72">...</span><span style="color:#E6EDF3">e, props: { </span><span style="color:#FF7B72">...</span><span style="color:#E6EDF3">e.props, suffix: </span><span style="color:#A5D6FF">' · 도구 '</span><span style="color:#FF7B72"> +</span><span style="color:#E6EDF3"> calls </span><span style="color:#FF7B72">+</span><span style="color:#A5D6FF"> '번'</span><span style="color:#E6EDF3"> } })</span></span>
+<span class="line"><span style="color:#E6EDF3">  })</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+<p>The four hooks do this.</p>
+<ul>
+<li><code>session.start</code>: Runs once before the first turn of the session, and again every time the module reloads. Adds the <code>/tally</code> command.</li>
+<li><code>tool.call</code>: Runs right before each time Claude uses a tool. Raises the count and asks for the screen to be redrawn.</li>
+<li><code>command.run</code>: Runs only when <code>/tally</code> is entered. It answers directly without calling <code>next</code>, which is the “answer” mode.</li>
+<li><code>ui.render</code>: Runs every time the spinner is drawn. It leaves Claude Code’s spinner as it is and only appends the count after the word, which is the “rewrite” mode.</li>
+</ul>
+<h3 id="3-load-it-and-try-it">3. Load it and try it</h3>
+<p><code>--plugin-dir</code> loads a plugin directory for this session only, without installing it.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#79C0FF"> --plugin-dir</span><span style="color:#A5D6FF"> ./tool-tally</span></span></code></pre>
+<p>Ask it to use a few tools (for example <code>List the files here and read the README</code>), and the spinner text changes to something like <code>Thinking · 도구 2번…</code>. When it finishes, enter <code>/tally</code> and check that <code>tool-tally: 지금까지 도구를 2번 썼어요</code> appears.</p>
+<p>With the session still open, change <code>' · 도구 '</code> (“tool”) in <code>register.ts</code> to <code>' · 지금까지 '</code> (“so far”) and save. After you save, a <code>tool-tally</code> reloaded line appears in the transcript, and the next spinner shows the new text right away. This is hot reload.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/mods/create#write-a-mod-yourself">Write a mod yourself</a></p>
+<h3 id="4-type-declarations-and-validate">4. Type declarations and validate</h3>
+<p>Every time you load or reload a mod with <code>--plugin-dir</code>, Claude Code writes type declarations that match your exact version under <code>tool-tally/.claude-plugin/types/</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>claude-code/index.d.ts</code></td>
+<td>All events and their inputs and outputs, all mod API methods, and the elements each screen can draw</td>
+</tr>
+<tr>
+<td><code>claude-code-tools/index.d.ts</code></td>
+<td>Input and result types of the built-in tools (so you can narrow with <code>e.tool === 'Bash'</code>)</td>
+</tr>
+<tr>
+<td><code>claude-code-mcp/index.d.ts</code></td>
+<td>Input types of the MCP tools that were connected at the most recent save</td>
+</tr>
+<tr>
+<td><code>tsconfig.json</code></td>
+<td>Compile options for hook modules</td>
+</tr>
+</tbody>
+</table>
+<p>Editor autocomplete and type checking read these files. Events and APIs can change between versions, so these generated files are more accurate than any other document.</p>
+<p><code>claude plugin validate</code> shows how Claude Code reads your mod, without starting a session.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> validate</span><span style="color:#A5D6FF"> ./tool-tally</span></span></code></pre>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>  ❯ ./register.ts hooks: session.start, tool.call, command.run{command=tally}, ui.render{component=Spinner}</span></span>
+<span class="line"><span>  ❯ ./register.ts calls: $.command.register, $.ui.invalidate</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>✔ Validation passed</span></span></code></pre>
+<p>The <code>hooks:</code> line shows the events this module receives, with their matchers. If an event you intended is not on this line (usually a typo in the event name), that hook does not run. The <code>calls:</code> line shows every mod API this module calls. For a mod going into k-mods, <code>scripts/check.sh mods/&lt;name&gt;</code> runs <code>--strict</code> validate and the tests in one go.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/mods/create#get-type-definitions-for-your-version">Get type definitions for your version</a>, <a href="https://code.claude.com/docs/en/plugins/mods/create#check-what-claude-code-reads-from-your-mod">Check what Claude Code reads from your mod</a></p>
+<h3 id="5-static-analysis-rules">5. Static analysis rules</h3>
+<p>Claude Code reads which events a mod receives and which APIs it calls without running the code. For that, your code has to follow a few rules. If you break them, <code>claude plugin validate</code> reports an error.</p>
+<ul>
+<li><strong>Write <code>$.namespace.method(...)</code> fully expanded</strong>: You cannot put it in a variable like <code>const ui = $.ui</code>, destructure it, or access it with a computed name like <code>$[name]</code>. If you put <code>$.ui</code> in a variable, it fails with <code>$.ui is used as a value</code>.</li>
+<li><strong>Helper functions that take <code>$</code> must be functions declared at the top level of the same file</strong>: You cannot pass <code>$</code> to closures, methods, or functions imported from another file. (<code>read</code> and <code>update</code> of <code>$.state</code> are exceptions.)</li>
+<li><strong>Event names are string literals</strong>: Write them directly, like <code>on('tool.call', ...)</code>. Looping over event names with a variable or a loop fails.</li>
+<li><strong>Do not register the same event twice without a matcher</strong>: An event with no matcher, like <code>session.start</code>, is registered only once per module.</li>
+<li><strong>Do not redeclare the name <code>on</code> inside <code>register</code></strong>: If you shadow <code>on</code> with a variable or parameter, it fails with <code>"on" is declared again (shadowed)</code>.</li>
+<li><strong>Imports are limited to relative paths inside the plugin and <code>claude-code</code></strong>: Dynamic <code>import()</code> and <code>require</code> are not allowed. Every file is an ES module.</li>
+<li><strong>No Node APIs, global <code>fetch</code>, or <code>setTimeout</code></strong>: Use <code>$.fs</code> for files, <code>$.http</code> for the network, and <code>$.clock</code> for timers.</li>
+<li><strong>(k-mods extra rule) Attach <code>.catch</code> to hooks that can block tool calls</strong>: If a hook that can end the chain, such as <code>tool.call</code>, <code>tool.check</code>, or <code>prompt.submit</code>, fails, you must decide what happens with <code>.catch</code> to pass <code>--strict</code> validate. If the mod’s job is to block, answer on the blocking side even when it fails (fail closed).</li>
+</ul>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/mods/create#check-what-claude-code-reads-from-your-mod">Follow these rules so that static analysis can find every hook and call</a></p>
+<h3 id="6-write-tests">6. Write tests</h3>
+<p><code>claude plugin test</code> tests hooks with no session, no login, and no network. You import the test tools from <code>claude-code/testing</code>.</p>
+<p><code>tool-tally/tests/tool-tally.test.ts</code>:</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { expect, test } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> 'claude-code/testing'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">test</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'/tally reports the number of tool calls received so far'</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">async</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">$</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">on</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#8B949E">  // Answer tool calls in place of Claude Code (no real tool runs)</span></span>
+<span class="line"><span style="color:#D2A8FF">  on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'tool.call'</span><span style="color:#E6EDF3">, () </span><span style="color:#FF7B72">=&gt;</span><span style="color:#E6EDF3"> ({ result: </span><span style="color:#A5D6FF">'ok'</span><span style="color:#E6EDF3"> }))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  await</span><span style="color:#E6EDF3"> $.tool.</span><span style="color:#D2A8FF">call</span><span style="color:#E6EDF3">({ tool: </span><span style="color:#A5D6FF">'Bash'</span><span style="color:#E6EDF3">, command: </span><span style="color:#A5D6FF">'ls'</span><span style="color:#E6EDF3"> })</span></span>
+<span class="line"><span style="color:#FF7B72">  await</span><span style="color:#E6EDF3"> $.tool.</span><span style="color:#D2A8FF">call</span><span style="color:#E6EDF3">({ tool: </span><span style="color:#A5D6FF">'Read'</span><span style="color:#E6EDF3">, file_path: </span><span style="color:#A5D6FF">'README.md'</span><span style="color:#E6EDF3"> })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> answer</span><span style="color:#FF7B72"> =</span><span style="color:#FF7B72"> await</span><span style="color:#E6EDF3"> $.command.</span><span style="color:#D2A8FF">run</span><span style="color:#E6EDF3">({ command: </span><span style="color:#A5D6FF">'tally'</span><span style="color:#E6EDF3">, args: </span><span style="color:#A5D6FF">''</span><span style="color:#E6EDF3"> })</span></span>
+<span class="line"><span style="color:#D2A8FF">  expect</span><span style="color:#E6EDF3">(answer.text).</span><span style="color:#D2A8FF">toBe</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">'지금까지 도구를 2번 썼어요'</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"><span style="color:#E6EDF3">})</span></span></code></pre>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> test</span></span></code></pre>
+<p>Run it in the <code>tool-tally</code> directory and the test names and whether they passed appear. For a mod going into k-mods, we recommend pulling pure logic (classification, format conversion, and so on) into functions that do not take <code>$</code> and verifying it with ordinary unit tests, and using <code>claude plugin test</code> only to check the flow of events.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/mods/test">Test a mod</a></p>
+<h3 id="7-storing-state-variable-vs-state-vs-store">7. Storing state: variable vs state vs store</h3>
+<p>Where you put a value decides how long it survives.</p>
+<table>
+<thead>
+<tr>
+<th>Where it is stored</th>
+<th>How long it survives</th>
+<th>When to use it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module variable (<code>let calls = 0</code>)</td>
+<td>Until the module reloads (resets on every save during development)</td>
+<td>Values you can afford to lose, like <code>calls</code> in this tutorial</td>
+</tr>
+<tr>
+<td><code>$.state</code></td>
+<td>Until the session ends or you run <code>/clear</code>, <code>/resume</code>, or <code>/branch</code>. It survives reloads.</td>
+<td>When a screen depends on the value and it must survive a reload. When you write a value, every screen that reads it redraws automatically (reactive).</td>
+</tr>
+<tr>
+<td><code>$.store</code></td>
+<td>Until you delete it, or until no session uses it for <code>cleanupPeriodDays</code></td>
+<td>Values that must still be there the next time you open a session, like settings and records. All sessions on this computer share one.</td>
+</tr>
+</tbody>
+</table>
+<p>Mixing all three is common. Detailed code examples (declaring a type for <code>$.state</code>, restoring a value after <code>/clear</code>, and so on) are in the official docs.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/mods/interface#keep-state">Keep state</a></p>
+<h2 id="submit-to-k-mods">Submit to k-mods</h2>
+<p>When your mod is done, you can add it to the k-mods catalog. There are two ways: one that needs no code from you, and one where you register it yourself.</p>
+<ul>
+<li><strong>If you know a good mod</strong>: You do not need to know code. Just open a <a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">Suggest a mod</a> issue.</li>
+<li><strong>If you want to register it yourself</strong>: Send a PR that adds one <code>registry/&lt;name&gt;.json</code> file. Automated checks verify the install, static analysis, and license.</li>
+</ul>
+<p>The detailed steps and rules for both paths are in the <a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">Contributing guide</a>.</p>
+<hr>
+<p>Learn more: <a href="/k-mods/en/guide/what-are-mods/">What are mods?</a> · <a href="/k-mods/en/guide/install/">Install guide</a> · <a href="/k-mods/en/guide/safety/">Safety guide</a> · <a href="/k-mods/en/guide/cheatsheet/">Cheatsheet</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">Contributing guide</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/README.en.md">README</a></p>
+</article><aside class="guide-side"><p class="eyebrow">Guides</p><ul class="guide-nav"><li><a href="/k-mods/en/guide/what-are-mods/">What are mods?</a></li><li><a href="/k-mods/en/guide/install/">Install guide</a></li><li><a href="/k-mods/en/guide/safety/">Using mods safely</a></li><li><a href="/k-mods/en/guide/cheatsheet/">mods cheatsheet</a></li><li><a href="/k-mods/en/guide/make-your-own/" aria-current="page">Make your own mod</a></li></ul><div class="side-links"><span class="side-meta">Last updated · Oct 8, 2026</span><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/blob/main/docs/guide/make-your-own.en.md"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>View source on GitHub</a><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/edit/main/docs/guide/make-your-own.en.md"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>Edit this guide</a></div></aside></div></div></main><footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><p class="footer-logo"><span>k-mods</span><span class="dot dot--sm" aria-hidden="true"></span><span class="footer-copy">© 2026 · MIT</span></p><p class="footer-tagline">This catalog is generated from the registry of the SeongGwangJu/k-mods GitHub repository. Additions and fixes come in as pull requests.</p><a class="footer-sync mono" href="https://github.com/SeongGwangJu/k-mods/commit/10e9d6a3bf9be6f3dd3eadc4462fdf651bedca30">Last synced Oct 30, 2026 · 10e9d6a</a><a class="footer-star" href="https://github.com/SeongGwangJu/k-mods"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></svg>Found it useful? Star k-mods on GitHub</a></div><nav class="footer-nav" aria-label="Site links"><a href="https://github.com/SeongGwangJu/k-mods">GitHub</a><a href="/k-mods/en/guide/install/">Install guide</a><a href="/k-mods/en/guide/safety/">Using mods safely</a><a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">Contributing</a><a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">Suggest a mod</a><a href="https://seonggwangju.github.io/">Author</a></nav></div></footer><dialog class="modal" data-modal aria-label="Mod details"><button type="button" class="modal-arrow" data-modal-prev aria-label="Previous mod"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6" stroke-width="2"></path></svg></button><div class="modal-panel"><div class="modal-handle" aria-hidden="true"><span></span></div><div class="modal-bar"><a class="modal-expand" data-modal-expand href="#"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" stroke-width="1.6"></path></svg><span>Open as page</span><kbd class="key modal-key">⌘↵</kbd></a><span class="modal-crumb" data-modal-crumb></span><button type="button" class="icon-btn icon-btn--plain" data-modal-close aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M6 6l12 12"></path></svg></button></div><div class="modal-body" data-modal-body tabindex="-1"><p class="modal-loading">Loading</p></div></div><button type="button" class="modal-arrow" data-modal-next aria-label="Next mod"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" stroke-width="2"></path></svg></button><div class="hint" data-modal-hint aria-hidden="true"><span><kbd data-hint-mod>⌘</kbd><kbd>Enter</kbd>Full page</span><i></i><span><kbd>←</kbd><kbd>→</kbd>Prev / next</span><i></i><span><kbd>Esc</kbd>Close</span></div></dialog><p class="sr-only" aria-live="polite" data-live></p><script type="module" src="/k-mods/assets/Base.astro_astro_type_script_index_0_lang.BaoNknEh.js"></script></body></html>

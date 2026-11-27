@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Using mods safely · Claude Code mods guides · k-mods</title><meta name="description" content="Mods run inside Claude Code with your permissions and without a sandbox. So it matters to know what a mod can do before you install it."><link rel="canonical" href="https://seonggwangju.github.io/k-mods/en/guide/safety/"><link rel="alternate" hreflang="ko" href="https://seonggwangju.github.io/k-mods/guide/safety/"><link rel="alternate" hreflang="en" href="https://seonggwangju.github.io/k-mods/en/guide/safety/"><link rel="alternate" hreflang="x-default" href="https://seonggwangju.github.io/k-mods/guide/safety/"><meta property="og:type" content="article"><meta property="og:site_name" content="k-mods"><meta property="og:title" content="Using mods safely · Claude Code mods guides · k-mods"><meta property="og:description" content="Mods run inside Claude Code with your permissions and without a sandbox. So it matters to know what a mod can do before you install it."><meta property="og:url" content="https://seonggwangju.github.io/k-mods/en/guide/safety/"><meta property="og:image" content="https://seonggwangju.github.io/k-mods/og/k-mods.png"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1318"><link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;circle cx='50' cy='50' r='44' fill='%2349B3EF'/&gt;&lt;/svg&gt;"><link rel="sitemap" href="/k-mods/sitemap-index.xml"><link rel="alternate" type="text/plain" title="llms.txt" href="/k-mods/llms.txt"><link rel="preload" href="/k-mods/fonts/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"><style>@font-face{font-family:"SUIT Variable";src:url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2-variations"),url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}</style><script>(function(){try{var t=localStorage.getItem('kmods-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Using mods safely","description":"Mods run inside Claude Code with your permissions and without a sandbox. So it matters to know what a mod can do before you install it.","url":"https://seonggwangju.github.io/k-mods/en/guide/safety/","inLanguage":"en","dateModified":"2026-10-08T15:48:47+09:00","author":{"@type":"Person","name":"Seong Gwang Ju","url":"https://seonggwangju.github.io/","sameAs":["https://github.com/SeongGwangJu","https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]},"publisher":{"@type":"Person","name":"Seong Gwang Ju","url":"https://seonggwangju.github.io/","sameAs":["https://github.com/SeongGwangJu","https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]},"about":{"@type":"Thing","name":"Claude Code mods"},"isPartOf":{"@id":"https://seonggwangju.github.io/k-mods/#website"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"k-mods","item":"https://seonggwangju.github.io/k-mods/en/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://seonggwangju.github.io/k-mods/en/guide/"},{"@type":"ListItem","position":3,"name":"Using mods safely","item":"https://seonggwangju.github.io/k-mods/en/guide/safety/"}]}</script><link rel="stylesheet" href="/k-mods/assets/Base.BXNGk-Gx.css"><link rel="stylesheet" href="/k-mods/paper.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&amp;display=swap">
+</head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="container header-bar"><a class="logo" href="/k-mods/en/">k-mods<span class="dot" aria-hidden="true"></span></a><div class="header-actions"><nav class="seg" aria-label="Language"><a href="/k-mods/guide/safety/" hreflang="ko" lang="ko">KO</a><a href="/k-mods/en/guide/safety/" hreflang="en" lang="en" aria-current="true">EN</a></nav><button type="button" class="icon-btn" data-theme-toggle aria-label="Toggle color theme"><svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg></button><a class="icon-btn" href="https://github.com/SeongGwangJu/k-mods" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></header><main id="main"><div class="container guide-page"><nav class="crumb" aria-label="Breadcrumb"><a href="/k-mods/en/">k-mods</a><span aria-hidden="true">/</span><a href="/k-mods/en/guide/">Guides</a><span aria-hidden="true">/</span><span aria-current="page">Using mods safely</span></nav><div class="guide-layout"><article class="prose"><h1 id="using-mods-safely">Using mods safely</h1>
+<p>Mods run inside Claude Code with your permissions and without a sandbox. So it matters to know what a mod can do before you install it. This guide covers what a mod can reach, how to check a mod yourself before installing, k-mods’ review criteria and access labels, the controls available to organization admins, and warning signs.</p>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#mods-are-not-sandboxed">Mods are not sandboxed</a></li>
+<li><a href="#check-before-you-install">Check before you install</a></li>
+<li><a href="#how-k-mods-reviews-mods">How k-mods reviews mods</a></li>
+<li><a href="#access-labels">Access labels</a></li>
+<li><a href="#how-to-read-a-k-mods-mod-page">How to read a k-mods mod page</a></li>
+<li><a href="#using-mods-at-work-or-in-an-organization">Using mods at work or in an organization</a></li>
+<li><a href="#mods-to-be-careful-with">Mods to be careful with</a></li>
+</ul>
+<h2 id="mods-are-not-sandboxed">Mods are not sandboxed</h2>
+<p>Once a mod is loaded, it can do these things.</p>
+<ul>
+<li><strong>Act as you on your computer</strong>: Read and write files anywhere your account can reach, run programs, and send network requests.</li>
+<li><strong>Read your secrets</strong>: Read environment variables and settings files, including any API keys in them.</li>
+<li><strong>See your session</strong>: See every prompt you send and every tool Claude calls.</li>
+<li><strong>Change your session</strong>: Rewrite prompts or tool calls, send prompts as if you typed them, or send messages to your other sessions.</li>
+<li><strong>Act without asking</strong>: Approve tool calls before the user is even asked.</li>
+<li><strong>Use your quota</strong>: Call models with your plan or API key.</li>
+</ul>
+<p>Even with <a href="https://code.claude.com/docs/en/sandboxing">sandboxing</a> turned on, mods are not affected. The sandbox isolates only the Bash commands Claude runs, and processes a mod starts itself run outside the sandbox.</p>
+<p>A mod that approves tool calls can also approve calls that an <code>ask</code> rule would prompt for, or that your <code>PreToolUse</code> hook blocked. Going further, for an <strong>individual user with no managed settings who is not logged in with a Team or Enterprise plan</strong>, the built-in guard (<code>sec-default@builtin</code>) is not loaded at all, so a mod can even override and approve calls you blocked with <code>deny</code> rules. However, a mod <strong>cannot change Claude Code’s permission confirmation dialog itself.</strong> It cannot control what is shown to the user. (Official docs: <a href="https://code.claude.com/docs/en/permissions#extend-permissions-with-hooks">Extend permissions with hooks</a>)</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/mods/overview#decide-whether-to-trust-a-mod">Decide whether to trust a mod</a>, <a href="https://code.claude.com/docs/en/plugins/mods/admin#know-what-happens-by-default">Know what happens by default</a></p>
+<h2 id="check-before-you-install">Check before you install</h2>
+<p>Before installing straight from a marketplace, you can see which events a mod receives and which APIs it calls, without running it. Clone the repository, then run this in the shell.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> validate</span><span style="color:#A5D6FF"> ./some-mod</span></span></code></pre>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>  ❯ ./register.js hooks: session.start, tool.call, ui.render{component=Pane}</span></span>
+<span class="line"><span>  ❯ ./register.js calls: $.fs.read, $.http.fetch, $.store.set, $.ui.open</span></span></code></pre>
+<p>Pay particular attention to these items on the <code>calls:</code> line.</p>
+<table>
+<thead>
+<tr>
+<th>Call</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$.fs.read</code>, <code>$.fs.write</code></td>
+<td>Reads or writes files anywhere your account can reach</td>
+</tr>
+<tr>
+<td><code>$.process.run</code>, <code>$.process.spawn</code></td>
+<td>Runs programs with your permissions</td>
+</tr>
+<tr>
+<td><code>$.http.fetch</code></td>
+<td>Sends network requests</td>
+</tr>
+<tr>
+<td><code>$.env.get</code>, <code>$.settings.read</code></td>
+<td>Reads environment variables and settings. They may contain API keys. The <code>env reads:</code> line in the output shows which variables.</td>
+</tr>
+<tr>
+<td><code>$.env.set</code></td>
+<td>Sets environment variables. This can affect every command and MCP server Claude Code runs afterward. The <code>env writes:</code> line shows which variables.</td>
+</tr>
+<tr>
+<td><code>$.mcp.call</code></td>
+<td>Calls a connected MCP server’s tools, under the session’s permission rules</td>
+</tr>
+<tr>
+<td><code>$.model.complete</code></td>
+<td>Calls a model with your plan or API key</td>
+</tr>
+<tr>
+<td><code>$.prompt.submit</code></td>
+<td>Sends a prompt on your behalf. It can look like you typed it</td>
+</tr>
+<tr>
+<td><code>$.session.send</code></td>
+<td>Sends a message that Claude in another session or subagent reads</td>
+</tr>
+</tbody>
+</table>
+<p>On the <code>hooks:</code> line, these matter. <code>tool.call</code> and <code>prompt.submit</code> mean the mod can see and change every tool call and prompt, and <code>session.append</code> means it can rewrite each line of the conversation before it is saved. <code>ui.render{component=AskUserQuestion}</code> means it can redraw the dialog where Claude asks the user a question, and <code>tool.check</code> means it can approve or deny a tool call before the permission prompt even appears.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/mods/admin#review-what-a-mod-can-do">Review what a mod can do</a></p>
+<h2 id="how-k-mods-reviews-mods">How k-mods reviews mods</h2>
+<p>A mod listed in the k-mods catalog goes through these steps before you install it.</p>
+<ol>
+<li><strong>License gate</strong>: Code from a repository with no license is not listed without the author’s permission.</li>
+<li><strong>Commit pinning (<code>sha</code>)</strong>: A mod taken as is from its source is pinned to the exact commit that was reviewed. Even if the source repository changes later, you get exactly the code that was reviewed. Updates are listed only after a new review.</li>
+<li><strong>Static analysis + code reading</strong>: We check that it passes <code>claude plugin validate</code>, and a person reads all of the code (<code>code-read</code>). If the mod has tests, we check that they pass (<code>unit-test</code>), and for mods that draw on screen, we run them once in a real session (<code>live-session</code>). The “Review method” section of each mod page shows which steps it went through.</li>
+<li><strong>Access labels</strong>: Based on the calls found by static analysis, we attach labels that describe what the mod does on your computer. See <a href="#access-labels">Access labels</a> below.</li>
+<li><strong>Re-review on update</strong>: A mod with a new version goes through the same steps as the first time.</li>
+<li><strong>Removal on author request</strong>: If the original author asks for it to be taken down, it is removed from the catalog right away.</li>
+</ol>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/security">Plugin security and trust</a></p>
+<h2 id="access-labels">Access labels</h2>
+<p>Each mod page has labels for the permissions found by static analysis. They are listed from the most dangerous.</p>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🌐 Network</td>
+<td>Talks to the internet or external servers through <code>$.http</code> or <code>$.mcp</code>. Conversation content may leave your machine, so check the destination</td>
+</tr>
+<tr>
+<td>⚙️ Runs programs</td>
+<td>Runs programs on your computer through <code>$.process</code></td>
+</tr>
+<tr>
+<td>✏️ File writes</td>
+<td>Writes files through <code>$.fs.write</code></td>
+</tr>
+<tr>
+<td>🤖 Model calls</td>
+<td>Calls a model through <code>$.model</code>. Uses your quota</td>
+</tr>
+<tr>
+<td>🛡️ Tool-call gating</td>
+<td>Can block a tool call or answer in its place through the <code>tool.call</code> or <code>tool.check</code> hooks</td>
+</tr>
+<tr>
+<td>💬 Prompt input</td>
+<td>Puts in or sends a prompt on your behalf through <code>$.prompt.submit</code> or <code>$.prompt.fill</code></td>
+</tr>
+<tr>
+<td>👀 Reads conversation</td>
+<td>Reaches conversation content through the <code>prompt.submit</code>, <code>turn.complete</code>, or <code>session.append</code> hooks, screens that draw the conversation, or <code>$.session.messages</code></td>
+</tr>
+<tr>
+<td>🔑 Env/settings reads</td>
+<td>Reads <code>$.env</code> or <code>$.settings</code></td>
+</tr>
+<tr>
+<td>📂 File reads</td>
+<td>Reads files through the <code>$.fs.read</code> family</td>
+</tr>
+<tr>
+<td>📨 Session messages</td>
+<td>Sends messages to other sessions through <code>$.session.send</code></td>
+</tr>
+<tr>
+<td>🔊 Sound</td>
+<td>Plays sound through <code>$.audio</code></td>
+</tr>
+<tr>
+<td>🎨 Display only</td>
+<td>Draws on screen and does none of the above</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How to read the labels.</strong> Almost every mod that draws on screen gets 👀 (Reads conversation). Even just receiving the signal that a turn ended brings in Claude’s last answer. So 👀 alone is nothing to worry about. What you should really look at is the <strong>combination</strong>. Even with 👀, if there is no 🌐 (Network), ⚙️ (Runs programs), or 💬 (Prompt input), the mod has no way to send the conversation off your device. 💬 is checked together with them because it can be a detour: asking Claude to send things on its behalf. On the other hand, if 👀 and 🌐 appear together, be sure to check the “addresses in the code” on the mod page and the review notes to see what is sent where.</p>
+<p>A mod can have several labels. If there are no labels, the mod only changes the display.</p>
+<h2 id="how-to-read-a-k-mods-mod-page">How to read a k-mods mod page</h2>
+<p>On each mod page (or the details you see in <code>/plugin</code>), check these.</p>
+<ul>
+<li><strong>Kind</strong>: <code>오리지널</code> (k-mods built it from scratch), <code>한국 수정판</code> (k-mods patched the original), <code>원본</code> (the original as is, with only the commit pinned), <code>묶음</code> (an install set that groups several other mods)</li>
+<li><strong>Access labels</strong>: The labels in the table above</li>
+<li><strong>Review record</strong>: Review date, the Claude Code version used for the review, the review method (<code>validate</code>/<code>code-read</code>/<code>unit-test</code>/<code>live-session</code>), and what was found during the review (network destinations, external programs run, and so on)</li>
+<li><strong>Source</strong>: For a mod taken from upstream, the original author’s repository and a link to the pinned commit. For a patched edition, what was changed from the original</li>
+</ul>
+<p>If anything looks suspicious, run <code>claude plugin validate &lt;cloned folder&gt;</code> yourself once more before installing.</p>
+<h2 id="using-mods-at-work-or-in-an-organization">Using mods at work or in an organization</h2>
+<p>In a company Claude Code environment, admins can set their own mod policy.</p>
+<ul>
+<li><strong><code>allowManagedModsOnly</code></strong>: When on, mods that users installed do not load at all. Only mods the organization deployed and Claude Code’s built-in mods run. k-mods mods may not load under this policy either.</li>
+<li><strong><code>prependPlugins</code>/<code>appendPlugins</code></strong>: Set the order so the organization’s policy mods run before (or after) user mods.</li>
+<li><strong><code>sec-default@builtin</code></strong>: A built-in guard that loads before every mod the user installed, when managed settings exist or you are logged in with a Team or Enterprise plan. It keeps user mods from touching the organization-managed system prompt, the managed <code>CLAUDE.md</code>, and the tools and descriptions of managed MCP servers. It blocks nothing else.</li>
+</ul>
+<p>If a particular k-mods mod does not show up in a company environment, first check whether these policies are the cause. How admins configure them is in the official docs.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/mods/admin">Manage mods for your organization</a></p>
+<h2 id="mods-to-be-careful-with">Mods to be careful with</h2>
+<ul>
+<li>The <code>calls:</code> line has <code>$.http.fetch</code> or <code>$.process.run</code>, but nothing in the description says why it is needed.</li>
+<li>The <code>hooks:</code> line has <code>prompt.submit</code> or <code>session.append</code>, but nothing says that conversation content is not sent off your device.</li>
+<li>It can approve or deny tool calls, like <code>tool.check</code>, but the source is private or you cannot tell which commit you are getting.</li>
+<li>It is code from a repository with no license at all.</li>
+<li>It takes a token or password but stores it in plain text, without marking it <code>sensitive</code> in <code>userConfig</code>.</li>
+<li>The description says it “only changes the display”, but it carries a 🌐 Network or ⚙️ Runs programs label. When the description and the permissions do not match, it is better to read more of the code.</li>
+</ul>
+<hr>
+<p>Learn more: <a href="/k-mods/en/guide/what-are-mods/">What are mods?</a> · <a href="/k-mods/en/guide/install/">Install guide</a> · <a href="/k-mods/en/guide/make-your-own/">Make your own mod</a> · <a href="/k-mods/en/guide/cheatsheet/">Cheatsheet</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">Contributing guide</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/README.en.md">README</a></p>
+</article><aside class="guide-side"><p class="eyebrow">Guides</p><ul class="guide-nav"><li><a href="/k-mods/en/guide/what-are-mods/">What are mods?</a></li><li><a href="/k-mods/en/guide/install/">Install guide</a></li><li><a href="/k-mods/en/guide/safety/" aria-current="page">Using mods safely</a></li><li><a href="/k-mods/en/guide/cheatsheet/">mods cheatsheet</a></li><li><a href="/k-mods/en/guide/make-your-own/">Make your own mod</a></li></ul><div class="side-links"><span class="side-meta">Last updated · Oct 8, 2026</span><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/blob/main/docs/guide/safety.en.md"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>View source on GitHub</a><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/edit/main/docs/guide/safety.en.md"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>Edit this guide</a></div></aside></div></div></main><footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><p class="footer-logo"><span>k-mods</span><span class="dot dot--sm" aria-hidden="true"></span><span class="footer-copy">© 2026 · MIT</span></p><p class="footer-tagline">This catalog is generated from the registry of the SeongGwangJu/k-mods GitHub repository. Additions and fixes come in as pull requests.</p><a class="footer-sync mono" href="https://github.com/SeongGwangJu/k-mods/commit/10e9d6a3bf9be6f3dd3eadc4462fdf651bedca30">Last synced Oct 30, 2026 · 10e9d6a</a><a class="footer-star" href="https://github.com/SeongGwangJu/k-mods"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></svg>Found it useful? Star k-mods on GitHub</a></div><nav class="footer-nav" aria-label="Site links"><a href="https://github.com/SeongGwangJu/k-mods">GitHub</a><a href="/k-mods/en/guide/install/">Install guide</a><a href="/k-mods/en/guide/safety/">Using mods safely</a><a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">Contributing</a><a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">Suggest a mod</a><a href="https://seonggwangju.github.io/">Author</a></nav></div></footer><dialog class="modal" data-modal aria-label="Mod details"><button type="button" class="modal-arrow" data-modal-prev aria-label="Previous mod"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6" stroke-width="2"></path></svg></button><div class="modal-panel"><div class="modal-handle" aria-hidden="true"><span></span></div><div class="modal-bar"><a class="modal-expand" data-modal-expand href="#"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" stroke-width="1.6"></path></svg><span>Open as page</span><kbd class="key modal-key">⌘↵</kbd></a><span class="modal-crumb" data-modal-crumb></span><button type="button" class="icon-btn icon-btn--plain" data-modal-close aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M6 6l12 12"></path></svg></button></div><div class="modal-body" data-modal-body tabindex="-1"><p class="modal-loading">Loading</p></div></div><button type="button" class="modal-arrow" data-modal-next aria-label="Next mod"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" stroke-width="2"></path></svg></button><div class="hint" data-modal-hint aria-hidden="true"><span><kbd data-hint-mod>⌘</kbd><kbd>Enter</kbd>Full page</span><i></i><span><kbd>←</kbd><kbd>→</kbd>Prev / next</span><i></i><span><kbd>Esc</kbd>Close</span></div></dialog><p class="sr-only" aria-live="polite" data-live></p><script type="module" src="/k-mods/assets/Base.astro_astro_type_script_index_0_lang.BaoNknEh.js"></script></body></html>

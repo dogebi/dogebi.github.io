@@ -1,0 +1,847 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>mods 치트시트 (한국어) · Claude Code mods 가이드 · k-mods</title><meta name="description" content="mods 개발에 필요한 파일 구성, 이벤트, API, 렌더 사이트, 한계를 표로 압축했어요. 설명은 최대한 짧게 줄였으니 전체 맥락은 mods가 뭔가요?와 나만의 mod 만들기를 먼저 보세요."><link rel="canonical" href="https://seonggwangju.github.io/k-mods/guide/cheatsheet/"><link rel="alternate" hreflang="ko" href="https://seonggwangju.github.io/k-mods/guide/cheatsheet/"><link rel="alternate" hreflang="en" href="https://seonggwangju.github.io/k-mods/en/guide/cheatsheet/"><link rel="alternate" hreflang="x-default" href="https://seonggwangju.github.io/k-mods/guide/cheatsheet/"><meta property="og:type" content="article"><meta property="og:site_name" content="k-mods"><meta property="og:title" content="mods 치트시트 (한국어) · Claude Code mods 가이드 · k-mods"><meta property="og:description" content="mods 개발에 필요한 파일 구성, 이벤트, API, 렌더 사이트, 한계를 표로 압축했어요. 설명은 최대한 짧게 줄였으니 전체 맥락은 mods가 뭔가요?와 나만의 mod 만들기를 먼저 보세요."><meta property="og:url" content="https://seonggwangju.github.io/k-mods/guide/cheatsheet/"><meta property="og:image" content="https://seonggwangju.github.io/k-mods/og/k-mods.png"><meta property="og:locale" content="ko_KR"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1318"><link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;circle cx='50' cy='50' r='44' fill='%2349B3EF'/&gt;&lt;/svg&gt;"><link rel="sitemap" href="/k-mods/sitemap-index.xml"><link rel="alternate" type="text/plain" title="llms.txt" href="/k-mods/llms.txt"><link rel="preload" href="/k-mods/fonts/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"><style>@font-face{font-family:"SUIT Variable";src:url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2-variations"),url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}</style><script>(function(){try{var t=localStorage.getItem('kmods-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"mods 치트시트 (한국어)","description":"mods 개발에 필요한 파일 구성, 이벤트, API, 렌더 사이트, 한계를 표로 압축했어요. 설명은 최대한 짧게 줄였으니 전체 맥락은 mods가 뭔가요?와 나만의 mod 만들기를 먼저 보세요.","url":"https://seonggwangju.github.io/k-mods/guide/cheatsheet/","inLanguage":"ko","dateModified":"2026-10-07T00:10:15+09:00","author":{"@type":"Person","name":"Seong Gwang Ju","url":"https://seonggwangju.github.io/","sameAs":["https://github.com/SeongGwangJu","https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]},"publisher":{"@type":"Person","name":"Seong Gwang Ju","url":"https://seonggwangju.github.io/","sameAs":["https://github.com/SeongGwangJu","https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]},"about":{"@type":"Thing","name":"Claude Code mods"},"isPartOf":{"@id":"https://seonggwangju.github.io/k-mods/#website"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"k-mods","item":"https://seonggwangju.github.io/k-mods/"},{"@type":"ListItem","position":2,"name":"가이드","item":"https://seonggwangju.github.io/k-mods/guide/"},{"@type":"ListItem","position":3,"name":"mods 치트시트 (한국어)","item":"https://seonggwangju.github.io/k-mods/guide/cheatsheet/"}]}</script><link rel="stylesheet" href="/k-mods/assets/Base.BXNGk-Gx.css"><link rel="stylesheet" href="/k-mods/paper.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&amp;display=swap">
+</head><body><a class="skip" href="#main">본문으로 건너뛰기</a><header class="site-header"><div class="container header-bar"><a class="logo" href="/k-mods/">k-mods<span class="dot" aria-hidden="true"></span></a><div class="header-actions"><nav class="seg" aria-label="언어 선택"><a href="/k-mods/guide/cheatsheet/" hreflang="ko" lang="ko" aria-current="true">KO</a><a href="/k-mods/en/guide/cheatsheet/" hreflang="en" lang="en">EN</a></nav><button type="button" class="icon-btn" data-theme-toggle aria-label="화면 테마 바꾸기"><svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg></button><a class="icon-btn" href="https://github.com/SeongGwangJu/k-mods" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></header><main id="main"><div class="container guide-page"><nav class="crumb" aria-label="현재 위치"><a href="/k-mods/">k-mods</a><span aria-hidden="true">/</span><a href="/k-mods/guide/">가이드</a><span aria-hidden="true">/</span><span aria-current="page">mods 치트시트 (한국어)</span></nav><div class="guide-layout"><article class="prose"><h1 id="mods-치트시트-한국어">mods 치트시트 (한국어)</h1>
+<p>mods 개발에 필요한 파일 구성, 이벤트, API, 렌더 사이트, 한계를 표로 압축했어요. 설명은 최대한 짧게 줄였으니 전체 맥락은 <a href="/k-mods/guide/what-are-mods/">mods가 뭔가요?</a>와 <a href="/k-mods/guide/make-your-own/">나만의 mod 만들기</a>를 먼저 보세요.</p>
+<blockquote>
+<p>기준 버전은 Claude Code <strong>2.1.291</strong>이에요. 버전마다 이벤트·API가 바뀔 수 있어서, 정확한 정의는 <code>--plugin-dir</code>로 mod를 불러올 때 생성되는 타입 선언(<code>.claude-plugin/types/claude-code/index.d.ts</code>)이 이 문서보다 우선해요.</p>
+</blockquote>
+<h2 id="목차">목차</h2>
+<ul>
+<li><a href="#%ED%8C%8C%EC%9D%BC-%EA%B5%AC%EC%84%B1">파일 구성</a></li>
+<li><a href="#%ED%9B%85-%ED%95%A8%EC%88%98-%EC%9D%B8%EC%9E%90">훅 함수 인자</a></li>
+<li><a href="#%EC%9D%B4%EB%B2%A4%ED%8A%B8">이벤트</a></li>
+<li><a href="#-api-%EB%84%A4%EC%9E%84%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%8A%A4"><code>$</code> API 네임스페이스</a></li>
+<li><a href="#%EB%A0%8C%EB%8D%94-%EC%82%AC%EC%9D%B4%ED%8A%B8">렌더 사이트</a></li>
+<li><a href="#%EC%9A%94%EC%86%8C-elements">요소 (elements)</a></li>
+<li><a href="#%ED%95%9C%EA%B3%84-limits">한계 (limits)</a></li>
+<li><a href="#%EC%84%A4%EC%A0%95%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98">설정·환경변수</a></li>
+<li><a href="#%EB%AA%85%EB%A0%B9%EC%96%B4">명령어</a></li>
+</ul>
+<h2 id="파일-구성">파일 구성</h2>
+<table>
+<thead>
+<tr>
+<th>파일</th>
+<th>필수</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.claude-plugin/plugin.json</code></td>
+<td>예</td>
+<td>플러그인 매니페스트. mod라서 추가로 필요한 필드는 없어요</td>
+</tr>
+<tr>
+<td><code>hooks/hooks.json</code></td>
+<td>예</td>
+<td><code>modules</code>: 훅 모듈 경로 배열. <code>"modules": ["./register.js"]</code>처럼 하나만 적어요. 설정 훅도 <code>hooks</code> 키 아래 같이 담을 수 있어요</td>
+</tr>
+<tr>
+<td>훅 모듈 (예: <code>hooks/register.ts</code>)</td>
+<td>예</td>
+<td>mod의 진입점. <code>register(on, options)</code>를 내보내는 ES 모듈. 확장자: <code>.js</code>, <code>.mjs</code>, <code>.cjs</code>, <code>.jsx</code>, <code>.ts</code>, <code>.mts</code>, <code>.cts</code>, <code>.tsx</code></td>
+</tr>
+<tr>
+<td><code>types/index.d.ts</code> (매니페스트의 <code>types</code>가 가리킴)</td>
+<td><code>$.state</code>를 쓰거나 mods API에 네임스페이스를 더할 때만</td>
+<td><code>PluginState</code> 값과 추가 네임스페이스 선언</td>
+</tr>
+<tr>
+<td><code>*.test.ts</code> / <code>*.test.tsx</code></td>
+<td>아니요</td>
+<td><code>claude plugin test</code>가 돌리는 테스트</td>
+</tr>
+</tbody>
+</table>
+<p><code>register</code>는 <code>on</code>과 <code>options</code>를 받아요. <code>options</code>는 <code>userConfig</code> 필드 값이고, 기본값이 채워져 있어요.</p>
+<h2 id="훅-함수-인자">훅 함수 인자</h2>
+<p><code>on(이벤트 이름, 매처?, 훅)</code>로 등록해요. 매처는 이벤트 필드를 거르는 선택적 필터고, <code>on</code>의 반환값은 <code>.catch(핸들러)</code>를 붙일 수 있는 registration이에요.</p>
+<table>
+<thead>
+<tr>
+<th>인자</th>
+<th>뜻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$</code></td>
+<td>mods API. 반드시 <code>$.네임스페이스.메서드(...)</code>로 끝까지 풀어서 써요</td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td>이벤트 입력값. 깊이 동결(frozen)돼 있어 직접 못 고쳐요. 바꾸려면 복사해서 <code>next</code>에 넘겨요</td>
+</tr>
+<tr>
+<td><code>next(e)</code></td>
+<td>다음 핸들러(다른 mod, 마지막엔 Claude Code 자체 동작)를 불러요. 결과로 resolve돼요</td>
+</tr>
+<tr>
+<td><code>next.signal</code></td>
+<td>이벤트가 중단되면 abort되는 <code>AbortSignal</code></td>
+</tr>
+<tr>
+<td><code>next.origin</code></td>
+<td>이 이벤트를 쏜 쪽을 담은 <code>{ plugin, tier }</code>. Claude Code 자신은 <code>{ plugin: 'engine', tier: 'core' }</code>이고, mod의 <code>tier</code>는 <code>prepend</code>/<code>user</code>/<code>append</code>/<code>builtin</code></td>
+</tr>
+<tr>
+<td><code>next.budget</code></td>
+<td>이 훅의 시간 제한. <code>next.budget.ms</code>는 전체 한도, <code>next.budget.remainingMs</code>는 남은 시간</td>
+</tr>
+<tr>
+<td><code>next.to(e, tier)</code></td>
+<td><code>append</code>/<code>builtin</code>/<code>core</code> 중 더 뒤 tier로 건너뛰어요. <code>prependPlugins</code>·<code>appendPlugins</code>에 속한 mod만 부를 수 있어요</td>
+</tr>
+<tr>
+<td><code>next.error</code>, <code>next.called</code></td>
+<td><code>.catch</code> 핸들러 안에서만 써요. <code>next.error.kind</code>는 <code>throw</code>나 <code>timeout</code>, <code>next.called</code>는 실패한 훅이 <code>next</code>를 불렀었는지</td>
+</tr>
+</tbody>
+</table>
+<h2 id="이벤트">이벤트</h2>
+<p>표의 “돌려줄 수 있는 것”에서 <code>next(e)</code>는 그대로 통과, <code>next({ ...e, text })</code>는 그 필드만 바꿔 통과, 객체를 바로 반환하면 <code>next</code>를 안 부르고 직접 응답하는 거예요.</p>
+<p><strong>도구</strong></p>
+<table>
+<thead>
+<tr>
+<th>이벤트</th>
+<th>언제</th>
+<th>돌려줄 수 있는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tool.call</code></td>
+<td>도구를 실행하기 직전</td>
+<td><code>next(e)</code>, <code>{ deny: 이유 }</code>, <code>{ result }</code></td>
+</tr>
+<tr>
+<td><code>tool.check</code></td>
+<td><code>tool.call</code>과 <code>PreToolUse</code> 훅 다음, 실행 여부를 결정할 때</td>
+<td><code>{ decision }</code> (<code>allow</code>/<code>ask</code>/<code>deny</code>)</td>
+</tr>
+<tr>
+<td><code>tool.describe</code></td>
+<td>도구 설명을 Claude에게 처음 보낼 때, 도구마다 한 번</td>
+<td><code>{ description, isDeferred? }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>프롬프트와 Claude가 읽는 것</strong></p>
+<table>
+<thead>
+<tr>
+<th>이벤트</th>
+<th>언제</th>
+<th>돌려줄 수 있는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prompt.submit</code></td>
+<td>프롬프트가 제출될 때</td>
+<td><code>next({ ...e, text })</code>, <code>next({ ...e, context })</code>, <code>{ drop: 이유 }</code></td>
+</tr>
+<tr>
+<td><code>prompt.fill</code>, <code>prompt.suggest</code></td>
+<td>프롬프트 입력창에 초안·흐린 제안이 들어가기 직전</td>
+<td>바뀐 텍스트로 <code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>prompt.edit</code></td>
+<td>사용자가 프롬프트 입력창을 편집할 때</td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>prompt.compose</code></td>
+<td>시스템 프롬프트를 그릴 때</td>
+<td><code>{ sections }</code></td>
+</tr>
+<tr>
+<td><code>prompt.section</code></td>
+<td>시스템 프롬프트의 이름 붙은 섹션마다 한 번</td>
+<td><code>{ text }</code>, 생략하려면 <code>{ text: null }</code></td>
+</tr>
+<tr>
+<td><code>prompt.context</code></td>
+<td>대화마다 한 번, 첫 메시지와 보내는 맥락</td>
+<td><code>{ blocks }</code></td>
+</tr>
+<tr>
+<td><code>prompt.attachment</code></td>
+<td>Claude Code가 리마인더 같은 메시지를 자체 추가할 때</td>
+<td><code>{ text }</code>, 생략하려면 <code>{ text: null }</code></td>
+</tr>
+<tr>
+<td><code>skill.prompt</code></td>
+<td>스킬 글이 Claude에게 펼쳐질 때</td>
+<td><code>{ text }</code></td>
+</tr>
+<tr>
+<td><code>attribution.text</code></td>
+<td>커밋·PR 귀속 문구를 만들 때</td>
+<td><code>{ text }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>명령과 설정</strong></p>
+<table>
+<thead>
+<tr>
+<th>이벤트</th>
+<th>언제</th>
+<th>돌려줄 수 있는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>command.run</code></td>
+<td>명령이 실행되기 직전</td>
+<td><code>{ text }</code>, <code>{}</code>, <code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>command.describe</code></td>
+<td>명령 목록용 설명, 명령마다 한 번</td>
+<td><code>{ description, argumentHint, isHidden }</code></td>
+</tr>
+<tr>
+<td><code>config.set</code></td>
+<td><code>/config</code> 행 값이 바뀌기 직전</td>
+<td><code>next({ ...e, value })</code>, <code>{ deny: 이유 }</code></td>
+</tr>
+<tr>
+<td><code>config.describe</code></td>
+<td><code>/config</code> 행마다 한 번</td>
+<td><code>{ label, description, isHidden }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>턴</strong></p>
+<table>
+<thead>
+<tr>
+<th>이벤트</th>
+<th>언제</th>
+<th>돌려줄 수 있는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>turn.start</code></td>
+<td>턴이 시작될 때</td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>turn.step</code></td>
+<td>모델에 요청 하나를 보내기 직전 (도구 호출이 있으면 여러 번)</td>
+<td><code>yield* next(e)</code>, <code>next({ ...e, model })</code>, <code>next({ ...e, effort })</code></td>
+</tr>
+<tr>
+<td><code>turn.complete</code></td>
+<td>턴이 끝났을 때</td>
+<td><code>next(e)</code>, 또는 답변 아래 한 줄을 보여줄 <code>{ text }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>세션</strong></p>
+<table>
+<thead>
+<tr>
+<th>이벤트</th>
+<th>언제</th>
+<th>돌려줄 수 있는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>session.start</code></td>
+<td>mod마다 한 번, 첫 프롬프트 전 (리로드 후에도 실행, <code>/clear</code>·<code>/resume</code>·<code>/branch</code> 후엔 안 됨)</td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>session.end</code></td>
+<td>세션 종료, 또는 <code>/clear</code>·<code>/resume</code>·<code>/branch</code></td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>session.compact</code></td>
+<td>대화를 압축하기 직전</td>
+<td><code>{ skip: 이유 }</code></td>
+</tr>
+<tr>
+<td><code>session.receive</code>, <code>session.send</code></td>
+<td>다른 에이전트·세션과 메시지를 주고받을 때</td>
+<td>받기 <code>{ consumed: 이유 }</code>, 보내기 <code>{ isDelivered: false, reason }</code></td>
+</tr>
+<tr>
+<td><code>session.append</code></td>
+<td>대화에 남는 각 행이 저장되기 전</td>
+<td><code>next({ ...e, message })</code></td>
+</tr>
+<tr>
+<td><code>session.attach</code>, <code>session.detach</code></td>
+<td>다른 앱이 세션에 연결·해제될 때</td>
+<td><code>next(e)</code></td>
+</tr>
+<tr>
+<td><code>session.measure</code></td>
+<td>턴이 끝날 때마다, 플랜 한도 퍼센트가 바뀔 때</td>
+<td><code>next(e)</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>서브에이전트</strong></p>
+<table>
+<thead>
+<tr>
+<th>이벤트</th>
+<th>언제</th>
+<th>돌려줄 수 있는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agent.offer</code></td>
+<td>서브에이전트 종류를 Claude에게 제안할 때</td>
+<td>숨기려면 <code>{ isOffered: false }</code></td>
+</tr>
+<tr>
+<td><code>agent.spawn</code></td>
+<td>서브에이전트·에이전트 팀 동료가 시작되기 직전</td>
+<td>모델 지정 <code>next({ ...e, model })</code>, 거부 <code>{ deny: 이유 }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>인터페이스</strong></p>
+<table>
+<thead>
+<tr>
+<th>이벤트</th>
+<th>언제</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ui.render</code></td>
+<td>렌더 사이트를 그리기 직전</td>
+</tr>
+<tr>
+<td><code>ui.resolve</code></td>
+<td>mod 로드 시, 앱·사이트·mod마다 한 번</td>
+</tr>
+<tr>
+<td><code>ui.press</code>, <code>ui.input</code>, <code>ui.select</code></td>
+<td>mod가 그린 <code>Button</code>/<code>Input</code>/<code>Select</code>를 쓸 때</td>
+</tr>
+<tr>
+<td><code>ui.focus</code>, <code>ui.scroll</code></td>
+<td>포커스·스크롤 위치가 바뀌기 직전</td>
+</tr>
+<tr>
+<td><code>ui.close</code></td>
+<td>패널이 닫히기 직전</td>
+</tr>
+<tr>
+<td><code>ui.message</code></td>
+<td><code>Client</code> 요소가 mod에 데이터를 보낼 때</td>
+</tr>
+<tr>
+<td><code>ui.fault</code></td>
+<td>mod가 그린 <code>Client</code>가 로드·그리기·실행에 실패할 때 (2.1.289+)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>다른 mod</strong></p>
+<table>
+<thead>
+<tr>
+<th>이벤트</th>
+<th>언제</th>
+<th>돌려줄 수 있는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>plugin.register</code></td>
+<td>훅 모듈이 로드되기 직전. <code>e.uses</code>에 그 mod가 받는 이벤트·호출·환경변수·상태가 담김</td>
+<td><code>{ refuse: 이유 }</code></td>
+</tr>
+<tr>
+<td><code>engine.create</code></td>
+<td>이 mod용 mods API를 만들 때</td>
+<td>네임스페이스를 더하거나 뺀 API</td>
+</tr>
+</tbody>
+</table>
+<p><strong>텔레메트리</strong></p>
+<table>
+<thead>
+<tr>
+<th>이벤트</th>
+<th>언제</th>
+<th>돌려줄 수 있는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>telemetry.log</code>, <code>telemetry.mark</code></td>
+<td>사용량 기록이 남거나 기능 사용이 표시될 때. 설치한 mod는 <code>{ to: 'collector' }</code> 매처 필수</td>
+<td><code>next(e)</code>, <code>{ deny: 이유 }</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>설정 훅 이벤트</strong>: <code>classic.&lt;이벤트&gt;</code> 형태예요 (예: <code>classic.Stop</code>, <code>classic.PostToolUse</code>). <code>e</code>는 설정 훅이 stdin으로 받는 JSON 그대로예요.</p>
+<p><strong>mods API 호출 자체</strong>: 모든 mods API 메서드는 <code>네임스페이스.메서드</code> 이름의 이벤트이기도 해요 (예: <code>fs.read</code>, <code>model.complete</code>, <code>ui.open</code>). 앞선 mod가 가로채서 <code>next(e)</code>, <code>{ deny: 이유 }</code>, <code>{ value }</code>로 답할 수 있어요.</p>
+<h2 id="-api-네임스페이스"><code>$</code> API 네임스페이스</h2>
+<table>
+<thead>
+<tr>
+<th>네임스페이스</th>
+<th>메서드</th>
+<th>뜻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$.plugin</code></td>
+<td><code>name</code>, <code>root</code></td>
+<td>이 플러그인의 이름과 디렉터리</td>
+</tr>
+<tr>
+<td><code>$.ui</code></td>
+<td><code>resolve</code>, <code>invalidate</code>, <code>open</code>, <code>close</code>, <code>panes</code>, <code>focus</code>, <code>scroll</code>, <code>toast</code>, <code>status</code>, <code>log</code>, <code>notice</code>, <code>ask</code>, <code>copy</code>, <code>selection</code>, <code>blit</code></td>
+<td>화면 그리기, 패널 열고 닫기, 토스트·질문 띄우기</td>
+</tr>
+<tr>
+<td><code>$.command</code></td>
+<td><code>register</code>, <code>run</code>, <code>list</code></td>
+<td><code>/명령어</code> 추가·실행·목록</td>
+</tr>
+<tr>
+<td><code>$.tool</code></td>
+<td><code>register</code>, <code>call</code>, <code>check</code>, <code>list</code></td>
+<td>Claude가 쓸 도구 추가·호출·검사·목록</td>
+</tr>
+<tr>
+<td><code>$.agent</code></td>
+<td><code>register</code>, <code>spawn</code>, <code>list</code></td>
+<td>서브에이전트 등록·실행·목록</td>
+</tr>
+<tr>
+<td><code>$.model</code></td>
+<td><code>complete</code>, <code>fork</code>, <code>classify</code></td>
+<td>대화 바깥에서 모델에 직접 질문</td>
+</tr>
+<tr>
+<td><code>$.prompt</code></td>
+<td><code>submit</code>, <code>read</code>, <code>fill</code>, <code>suggest</code>, <code>compose</code></td>
+<td>프롬프트 제출·읽기·입력창 채우기</td>
+</tr>
+<tr>
+<td><code>$.turn</code></td>
+<td><code>abort</code></td>
+<td>진행 중인 턴 중단</td>
+</tr>
+<tr>
+<td><code>$.session</code></td>
+<td><code>messages</code>, <code>cwd</code>, <code>root</code>, <code>model</code>, <code>turns</code>, <code>id</code>, <code>repo</code>, <code>surfaces</code>, <code>usage</code>, <code>version</code>, <code>compact</code>, <code>send</code>, <code>append</code>, <code>authorize</code></td>
+<td>세션 정보 읽기, 다른 세션에 메시지 보내기</td>
+</tr>
+<tr>
+<td><code>$.config</code></td>
+<td><code>list</code>, <code>set</code></td>
+<td><code>/config</code> 값 읽기·쓰기</td>
+</tr>
+<tr>
+<td><code>$.settings</code></td>
+<td><code>read</code></td>
+<td>설정 파일·관리 정책 읽기</td>
+</tr>
+<tr>
+<td><code>$.env</code></td>
+<td><code>get</code>, <code>set</code></td>
+<td>환경변수 읽기·쓰기</td>
+</tr>
+<tr>
+<td><code>$.fs</code></td>
+<td><code>read</code>, <code>write</code>, <code>list</code>, <code>exists</code>, <code>stat</code>, <code>ancestors</code></td>
+<td>파일 읽기·쓰기·목록</td>
+</tr>
+<tr>
+<td><code>$.store</code></td>
+<td><code>get</code>, <code>set</code>, <code>delete</code>, <code>keys</code></td>
+<td>이 컴퓨터의 모든 세션이 공유하는 키-값 저장소</td>
+</tr>
+<tr>
+<td><code>$.state</code></td>
+<td><code>get</code>, <code>set</code> (+ <code>atom</code>, <code>read</code>, <code>update</code>, <code>derive</code>, <code>memberOf</code> 임포트)</td>
+<td>반응형 상태. 값을 쓰면 그 값을 읽는 화면이 자동으로 다시 그려짐</td>
+</tr>
+<tr>
+<td><code>$.clock</code></td>
+<td><code>now</code>, <code>sleep</code>, <code>after</code>, <code>every</code></td>
+<td>타이머 (<code>setTimeout</code>·<code>setInterval</code> 대신)</td>
+</tr>
+<tr>
+<td><code>$.http</code></td>
+<td><code>fetch</code></td>
+<td>네트워크 요청</td>
+</tr>
+<tr>
+<td><code>$.process</code></td>
+<td><code>run</code>, <code>spawn</code></td>
+<td>프로그램 실행</td>
+</tr>
+<tr>
+<td><code>$.mcp</code></td>
+<td><code>call</code>, <code>connect</code></td>
+<td>연결된 MCP 서버 도구 호출</td>
+</tr>
+<tr>
+<td><code>$.audio</code></td>
+<td><code>play</code>, <code>speak</code></td>
+<td>소리 재생</td>
+</tr>
+<tr>
+<td><code>$.telemetry</code></td>
+<td><code>log</code>, <code>mark</code></td>
+<td>사용량 기록 (Claude Code·내장 mod가 부를 때만 실제 전송됨)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="렌더-사이트">렌더 사이트</h2>
+<table>
+<thead>
+<tr>
+<th>사이트</th>
+<th><code>e.props</code></th>
+<th><code>e.requestId</code></th>
+<th>그려지는 곳</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Pane</code></td>
+<td><code>title</code>, <code>isFocused</code>, <code>bodyColumns</code>, <code>placement</code>, <code>scroll</code>, <code>view</code></td>
+<td>그 패널의 <code>id</code></td>
+<td>터미널, 데스크톱</td>
+</tr>
+<tr>
+<td><code>AbovePrompt</code></td>
+<td><code>hasSurvey</code>, <code>isWorking</code>, <code>maxRows</code>, <code>bodyColumns</code>, <code>scroll</code>, <code>view</code></td>
+<td>단일 인스턴스</td>
+<td>터미널, 데스크톱</td>
+</tr>
+<tr>
+<td><code>UserMessage</code></td>
+<td><code>text</code>, <code>origin</code>, <code>isExpanded</code> 등</td>
+<td>메시지 id</td>
+<td>터미널, 데스크톱</td>
+</tr>
+<tr>
+<td><code>AssistantMessage</code></td>
+<td>답변 텍스트</td>
+<td>메시지 id</td>
+<td>터미널, 데스크톱</td>
+</tr>
+<tr>
+<td><code>ToolUse</code>, <code>ToolResult</code>, <code>ToolGroup</code></td>
+<td>도구 이름·입력·결과</td>
+<td>도구 호출 id</td>
+<td>터미널, 데스크톱</td>
+</tr>
+<tr>
+<td><code>CommandOutput</code></td>
+<td><code>command</code>, <code>text</code></td>
+<td>메시지 id</td>
+<td>터미널, 데스크톱</td>
+</tr>
+<tr>
+<td><code>AskUserQuestion</code></td>
+<td>질문과 선택지</td>
+<td>도구 호출 id</td>
+<td>터미널, 데스크톱</td>
+</tr>
+<tr>
+<td><code>ToolProgress</code></td>
+<td><code>kind</code></td>
+<td>도구 호출 id</td>
+<td>터미널</td>
+</tr>
+<tr>
+<td><code>Spinner</code></td>
+<td><code>word</code>, <code>message</code>, <code>suffix</code>, <code>mode</code></td>
+<td>에이전트 id</td>
+<td>터미널, 데스크톱</td>
+</tr>
+<tr>
+<td><code>TurnDuration</code></td>
+<td><code>word</code>, <code>durationMs</code></td>
+<td>메시지 id</td>
+<td>터미널</td>
+</tr>
+<tr>
+<td><code>InfoNotice</code></td>
+<td><code>text</code>, <code>command</code></td>
+<td>메시지 id</td>
+<td>터미널</td>
+</tr>
+<tr>
+<td><code>SessionMode</code></td>
+<td><code>modes</code></td>
+<td>단일 인스턴스</td>
+<td>터미널, 데스크톱</td>
+</tr>
+<tr>
+<td><code>PromptHint</code></td>
+<td><code>isDraft</code>, <code>isWorking</code>, <code>hint</code></td>
+<td>단일 인스턴스</td>
+<td>터미널, 데스크톱</td>
+</tr>
+</tbody>
+</table>
+<p><code>e.viewport</code>엔 <code>columns</code>·<code>rows</code>·<code>isFullscreen</code>이 담겨요 (측정 전엔 없음). 패널·띠의 너비는 <code>e.props.bodyColumns</code>로, dock 상태 패널의 높이는 <code>e.props.scroll.bodyRows</code>로 맞춰요.</p>
+<h2 id="요소-elements">요소 (elements)</h2>
+<table>
+<thead>
+<tr>
+<th>요소</th>
+<th>주요 props</th>
+<th style="text-align: center">터미널</th>
+<th style="text-align: center">데스크톱</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Box</code></td>
+<td><code>key</code>, 플렉스 레이아웃, <code>gap</code>, <code>padding</code>, <code>margin</code>, <code>width</code>, <code>height</code>, <code>borderStyle</code>, <code>backgroundColor</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Text</code></td>
+<td><code>color</code>, <code>backgroundColor</code>, <code>bold</code>, <code>italic</code>, <code>underline</code>, <code>dimColor</code>, <code>inverse</code>, <code>wrap</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Button</code></td>
+<td><code>key</code>, <code>label</code>, <code>onPress</code>, <code>hotkey</code>, <code>plain</code>, <code>dimColor</code>, <code>autoFocus</code>, <code>action</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Link</code></td>
+<td><code>href</code>, <code>label</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Code</code></td>
+<td>코드 본문 (최대 10,000자)</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Markdown</code></td>
+<td><code>text</code>(최대 10,000자), <code>key</code>, <code>dimColor</code>, <code>onLinkPress</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Input</code></td>
+<td><code>key</code>, <code>label</code>, <code>placeholder</code>, <code>value</code>, <code>submitLabel</code>, <code>onSubmit</code>, <code>onInput</code>, <code>autoFocus</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Select</code></td>
+<td><code>key</code>, <code>label</code>, <code>options</code>, <code>value</code>, <code>onSelect</code>, <code>autoFocus</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Svg</code></td>
+<td>SVG 문서 (최대 131,072자)</td>
+<td style="text-align: center"></td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Client</code></td>
+<td><code>module</code>, <code>key</code>. 별도 파일이 그리는 영역(애니메이션·포인터 입력)</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center">✓</td>
+</tr>
+<tr>
+<td><code>Raster</code></td>
+<td><code>key</code>, <code>columns</code>(최대 512), <code>rows</code>(최대 256), <code>cells</code></td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td><code>Image</code></td>
+<td>PNG·RGBA 바이트(최대 2MiB) 또는 파일 경로</td>
+<td style="text-align: center">✓</td>
+<td style="text-align: center"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="한계-limits">한계 (limits)</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>훅 하나의 실행 시간 (<code>next</code>·mods API 호출 대기 시간 제외)</td>
+<td>10초, <code>prompt.edit</code>는 50ms</td>
+</tr>
+<tr>
+<td><code>.catch</code> 핸들러 실행 시간</td>
+<td>1초</td>
+</tr>
+<tr>
+<td><code>session.end</code> 훅 전체</td>
+<td>SessionEnd 훅 예산만큼 (기본 1.5초)</td>
+</tr>
+<tr>
+<td><code>$.process.run</code> 타임아웃</td>
+<td>기본 30초, 최대 10분</td>
+</tr>
+<tr>
+<td><code>$.model.complete</code>의 <code>maxTokens</code></td>
+<td>기본 1024, 최대 64,000 또는 모델 한도</td>
+</tr>
+<tr>
+<td><code>$.fs.read</code>/<code>$.fs.write</code></td>
+<td>파일 하나당 4MiB</td>
+</tr>
+<tr>
+<td><code>Text</code> 자식 문자열 하나</td>
+<td>10,000자</td>
+</tr>
+<tr>
+<td><code>$.store</code></td>
+<td>전체 4MiB JSON</td>
+</tr>
+<tr>
+<td><code>$.session.messages()</code></td>
+<td>최신 4,096개 항목</td>
+</tr>
+<tr>
+<td><code>$.ui.invalidate('ui.render')</code> 다시 그리기</td>
+<td>초당 10회 (터미널의 보이는 패널·펼친 띠·힌트 줄은 30회)로 제한. 더 빠른 호출은 합쳐짐</td>
+</tr>
+<tr>
+<td><code>$.ui.toast</code></td>
+<td>기본 4초간 표시</td>
+</tr>
+<tr>
+<td>사용자 요청 없이 연 패널</td>
+<td>터미널 144칸부터 표시, 한 번 연 적 있으면 110칸부터</td>
+</tr>
+<tr>
+<td>명령·도구·서브에이전트·패널 이름</td>
+<td>영문자·숫자·<code>_</code>·<code>-</code>, 최대 64자</td>
+</tr>
+<tr>
+<td><code>claude plugin test</code> 테스트 하나</td>
+<td>기본 5초</td>
+</tr>
+</tbody>
+</table>
+<h2 id="설정환경변수">설정·환경변수</h2>
+<table>
+<thead>
+<tr>
+<th>이름</th>
+<th>어디서</th>
+<th>뜻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CLAUDE_CODE_PLUGIN_DIRS</code></td>
+<td>환경변수 또는 <code>~/.claude/settings.json</code>의 <code>env</code></td>
+<td><code>--plugin-dir</code>처럼 플러그인 디렉터리를 불러옴</td>
+</tr>
+<tr>
+<td><code>CLAUDE_CODE_PLUGIN_DIR_WATCH</code></td>
+<td>환경변수</td>
+<td><code>1</code>이면 비인터랙티브 세션도 저장할 때 <code>--plugin-dir</code> mod를 리로드</td>
+</tr>
+<tr>
+<td><code>prependPlugins</code>, <code>appendPlugins</code></td>
+<td>managed settings (managed settings가 없는 개인 사용자는 직접 설정 가능)</td>
+<td>mod 실행 순서를 사용자 mod보다 앞·뒤로 고정</td>
+</tr>
+<tr>
+<td><code>allowManagedModsOnly</code></td>
+<td>managed settings (내장 가드 옵션)</td>
+<td>조직 mod와 내장 mod만 로드</td>
+</tr>
+<tr>
+<td><code>allowModsToOverrideDenyRules</code></td>
+<td>managed settings (내장 가드 옵션)</td>
+<td>사용자 mod가 <code>deny</code> 규칙을 뒤집어 승인하게 허용</td>
+</tr>
+<tr>
+<td><code>allowManagedHooksOnly</code></td>
+<td>managed settings</td>
+<td>조직 것이 아닌 훅·설치 mod를 차단</td>
+</tr>
+<tr>
+<td><code>disableAllHooks</code></td>
+<td>모든 설정 파일</td>
+<td>설치된 mod의 훅을 전부 끔 (내 설정이면 내 mod만, managed settings면 전부)</td>
+</tr>
+<tr>
+<td><code>disableSideloadFlags</code></td>
+<td>managed settings</td>
+<td>시작할 때 <code>--plugin-dir</code>·<code>--plugin-url</code> 거부</td>
+</tr>
+<tr>
+<td><code>pluginConfigs</code></td>
+<td>사용자 또는 managed settings</td>
+<td>mod의 <code>userConfig</code> 값을 저장</td>
+</tr>
+</tbody>
+</table>
+<h2 id="명령어">명령어</h2>
+<table>
+<thead>
+<tr>
+<th>명령</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/plugin</code></td>
+<td>탭 아래 <code>N mods active · 이름</code>처럼 로드된 mod 수를 보여줌</td>
+</tr>
+<tr>
+<td><code>claude plugin validate &lt;경로&gt;</code></td>
+<td>매니페스트와 훅 모듈을 읽어 에러, 받는 이벤트(<code>hooks:</code>), 호출하는 API(<code>calls:</code>)를 출력. <code>--strict</code>는 경고도 에러로, <code>--json</code>은 기계가 읽을 보고서로</td>
+</tr>
+<tr>
+<td><code>claude plugin test [경로]</code></td>
+<td><code>.test.ts</code>/<code>.test.tsx</code>로 끝나는 파일을 전부 실행. 실패하면 종료 코드 1</td>
+</tr>
+<tr>
+<td><code>claude --plugin-dir &lt;경로&gt;</code></td>
+<td>세션 하나에만 플러그인 디렉터리를 불러오고, 저장할 때마다 훅 모듈을 리로드. 여러 번 반복 가능</td>
+</tr>
+<tr>
+<td><code>/reload-plugins</code></td>
+<td>지금 실행 중인 세션에 플러그인 변경 사항을 바로 반영</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>더 알아보기: <a href="/k-mods/guide/what-are-mods/">mods가 뭔가요?</a> · <a href="/k-mods/guide/install/">설치 가이드</a> · <a href="/k-mods/guide/make-your-own/">나만의 mod 만들기</a> · <a href="/k-mods/guide/safety/">안전 가이드</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/README.md">README</a></p>
+</article><aside class="guide-side"><p class="eyebrow">가이드</p><ul class="guide-nav"><li><a href="/k-mods/guide/what-are-mods/">mods가 뭔가요?</a></li><li><a href="/k-mods/guide/install/">설치 가이드</a></li><li><a href="/k-mods/guide/safety/">mod를 안전하게 쓰는 법</a></li><li><a href="/k-mods/guide/cheatsheet/" aria-current="page">mods 치트시트 (한국어)</a></li><li><a href="/k-mods/guide/make-your-own/">나만의 mod 만들기</a></li></ul><div class="side-links"><span class="side-meta">마지막 수정 · 2026년 10월 6일</span><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/blob/main/docs/guide/cheatsheet.md"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>GitHub에서 원문 보기</a><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/edit/main/docs/guide/cheatsheet.md"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>이 문서 고치기</a></div></aside></div></div></main><footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><p class="footer-logo"><span>k-mods</span><span class="dot dot--sm" aria-hidden="true"></span><span class="footer-copy">© 2026 · MIT</span></p><p class="footer-tagline">목록은 GitHub 저장소 SeongGwangJu/k-mods의 registry에서 자동으로 만들어져요. mod 추가와 수정은 PR로 받아요.</p><a class="footer-sync mono" href="https://github.com/SeongGwangJu/k-mods/commit/10e9d6a3bf9be6f3dd3eadc4462fdf651bedca30">마지막 반영 2026년 10월 30일 · 10e9d6a</a><a class="footer-star" href="https://github.com/SeongGwangJu/k-mods"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></svg>쓸 만했다면 GitHub에서 별을 눌러 주세요</a></div><nav class="footer-nav" aria-label="사이트 링크"><a href="https://github.com/SeongGwangJu/k-mods">GitHub</a><a href="/k-mods/guide/install/">설치 가이드</a><a href="/k-mods/guide/safety/">안전하게 쓰는 법</a><a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">기여하기</a><a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">mod 제안하기</a><a href="https://seonggwangju.github.io/">만든 사람</a></nav></div></footer><dialog class="modal" data-modal aria-label="mod 상세"><button type="button" class="modal-arrow" data-modal-prev aria-label="이전 mod"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6" stroke-width="2"></path></svg></button><div class="modal-panel"><div class="modal-handle" aria-hidden="true"><span></span></div><div class="modal-bar"><a class="modal-expand" data-modal-expand href="#"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" stroke-width="1.6"></path></svg><span>전체 페이지로 열기</span><kbd class="key modal-key">⌘↵</kbd></a><span class="modal-crumb" data-modal-crumb></span><button type="button" class="icon-btn icon-btn--plain" data-modal-close aria-label="닫기"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M6 6l12 12"></path></svg></button></div><div class="modal-body" data-modal-body tabindex="-1"><p class="modal-loading">불러오는 중</p></div></div><button type="button" class="modal-arrow" data-modal-next aria-label="다음 mod"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" stroke-width="2"></path></svg></button><div class="hint" data-modal-hint aria-hidden="true"><span><kbd data-hint-mod>⌘</kbd><kbd>Enter</kbd>전체 페이지</span><i></i><span><kbd>←</kbd><kbd>→</kbd>이전 / 다음</span><i></i><span><kbd>Esc</kbd>닫기</span></div></dialog><p class="sr-only" aria-live="polite" data-live></p><script type="module" src="/k-mods/assets/Base.astro_astro_type_script_index_0_lang.BaoNknEh.js"></script></body></html>

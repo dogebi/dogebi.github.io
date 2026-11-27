@@ -1,0 +1,458 @@
+/* paper.css — k-mods 위에 덧씌우는 인쇄물 테마.
+   1in8b.life 의 화면 언어를 옮겨 왔습니다: 종이 바탕, 머리글자 세리프, 머리카락 같은 괘선,
+   크림슨 한 점, 청록 도장, 4px 모서리, 그림자 없음.
+   base.css(해시 파일)는 건드리지 않고 토큰과 컴포넌트만 다시 칠합니다. */
+
+:root {
+  color-scheme: light;
+  --paper: #ebf0ed;
+  --card: #f7faf8;
+  --card-2: #f0f4f2;
+  --ink: #13212a;
+  --ink-2: #4a5a61;
+  --ink-3: #5f6e72;
+  --rule: #c7d2ce;
+  --rule-2: #dce4e1;
+  --accent: #8c1d3c;
+  --accent-ink: #ffffff;
+  --accent-soft: #f3e3e8;
+  --stamp: #0f6e68;
+  --stamp-soft: #dcedea;
+  --gold: #9c7020;
+  --good: #2b7a4e;
+  --bad: #b0362b;
+  --warn: #a8730f;
+
+  /* base.css 토큰을 같은 값으로 다시 정의 */
+  --bg: var(--paper);
+  --bg-soft: var(--card-2);
+  --surface: var(--card);
+  --ink-2: #4a5a61;
+  --muted: #5f6e72;
+  --line: var(--rule);
+  --line-strong: #b3c2bd;
+  --accent-tint: #8c1d3c14;
+  --focus: var(--stamp);
+  --success: var(--good);
+  --stage: #10161a;
+  --stage-edge: #2a3336;
+  --radius: 4px;
+  --font-display: "Noto Serif KR", "Nanum Myeongjo", Batang, "AppleMyungjo", Georgia, "Times New Roman", serif;
+  --font-ui: "SUIT Variable", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", system-ui, sans-serif;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #12171a;
+  --card: #1a2024;
+  --card-2: #171d21;
+  --ink: #e8ece9;
+  --ink-2: #b6c1bd;
+  --ink-3: #8c9a96;
+  --rule: #2a3336;
+  --rule-2: #222a2d;
+  --accent: #d8677f;
+  --accent-soft: #33202a;
+  --stamp: #4fa79f;
+  --stamp-soft: #1c2e2c;
+  --gold: #c9a45c;
+  --good: #5fae7d;
+  --bg: var(--paper);
+  --bg-soft: var(--card-2);
+  --surface: var(--card);
+  --ink-2: #b6c1bd;
+  --muted: #8c9a96;
+  --line: var(--rule);
+  --line-strong: #3a4548;
+  --accent-tint: #d8677f1f;
+  --focus: var(--stamp);
+}
+
+/* ---- 종이 바탕 -------------------------------------------------------- */
+body {
+  background-color: var(--paper);
+  background-image: radial-gradient(color-mix(in srgb, var(--rule) 45%, transparent) 0.5px, transparent 0.6px);
+  background-size: 26px 26px;
+  background-position: -11px -11px;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--accent-soft); color: var(--ink); }
+
+/* ---- 머리글 ---------------------------------------------------------- */
+.site-header {
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  border-bottom: 1px solid var(--rule);
+  box-shadow: none;
+}
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  font-size: 21px;
+}
+.logo .dot { background: var(--stamp); }
+
+.seg {
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  padding: 2px;
+  background: transparent;
+  gap: 0;
+}
+.seg a {
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .06em;
+  color: var(--ink-2);
+  padding: 4px 11px;
+}
+.seg a:hover { color: var(--ink); background: var(--card-2); }
+.seg a[aria-current="true"] { background: var(--ink); color: var(--paper); }
+
+.icon-btn, .icon-btn--plain {
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink-2);
+}
+.icon-btn:hover, .icon-btn--plain:hover { border-color: var(--ink); color: var(--ink); background: var(--card); }
+
+/* ---- 표제부 ---------------------------------------------------------- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.eyebrow .dot { background: var(--stamp); }
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.14;
+  color: var(--ink);
+}
+.hero-title em, .hero-title strong, .hero-title .accent { color: var(--accent); font-style: normal; }
+.hero-lead { color: var(--ink-2); font-size: 16px; line-height: 1.7; }
+.hero-wip { color: var(--ink-3); }
+.hero-wip-dot { background: var(--warn); }
+.hero-meta {
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink-2);
+  padding: 5px 14px;
+  font-size: 13px;
+}
+.hero-meta:hover { border-color: var(--ink); color: var(--ink); }
+.hero-meta b { font-family: var(--font-mono); font-weight: 500; color: var(--ink); }
+.hero-meta-dot { background: var(--stamp); }
+.hero-meta-sep { color: var(--rule); }
+
+/* 코드 블록 / 설치 한 줄 */
+.quick-install .code, pre {
+  background: var(--card-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  color: var(--ink);
+  box-shadow: none;
+}
+.quick-install .prompt { color: var(--stamp); }
+.copy-btn { border: 1px solid var(--rule); border-radius: 999px; background: var(--card); color: var(--ink-2); }
+.copy-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+/* 미리보기(터미널) 틀 */
+.hero-figure, .stage {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--stage);
+  box-shadow: none;
+  overflow: hidden;
+}
+.hero-figure figcaption { color: var(--ink-3); font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .04em; }
+
+/* ---- 카드 ------------------------------------------------------------ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: none;
+  transition: border-color .16s var(--ease), background-color .16s var(--ease);
+}
+.card:hover, .card:focus-within { border-color: var(--ink); background: var(--card); }
+.card-title, .card--featured .card-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+.card-title a { color: inherit; }
+.card-title a:after { background: var(--accent); height: 1px; }
+.card:hover .card-title a { color: var(--accent); }
+.card-summary, .card--featured .card-summary { color: var(--ink-2); }
+.card-meta { color: var(--ink-3); font-size: 12.5px; }
+.card-id, .card-by { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .03em; color: var(--ink-3); }
+
+.badge {
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--card-2);
+  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 2px 9px;
+}
+.badge--original { background: var(--stamp-soft); border-color: color-mix(in srgb, var(--stamp) 35%, transparent); color: var(--stamp); }
+.badge--patched { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 30%, transparent); color: var(--accent); }
+.badge--bundle { background: color-mix(in srgb, var(--gold) 14%, transparent); border-color: color-mix(in srgb, var(--gold) 35%, transparent); color: var(--gold); }
+
+/* ---- 목록 / 섹션 ----------------------------------------------------- */
+.section-head, .catalog-head, .featured, .catalog { background: transparent; }
+h1, h2 { font-family: var(--font-display); letter-spacing: -.015em; color: var(--ink); }
+h3, h4, h5 { color: var(--ink); }
+.section-head { border-bottom: 1px solid var(--rule); padding-bottom: 14px; }
+
+/* ---- 버튼 / 링크 ----------------------------------------------------- */
+.btn {
+  border-radius: 999px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn--primary, .btn[data-variant="primary"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn--primary:hover { background: color-mix(in srgb, var(--accent) 86%, black); border-color: color-mix(in srgb, var(--accent) 86%, black); color: #fff; }
+
+.link { color: var(--accent); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+.link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--stamp); outline-offset: 2px; }
+
+.round-btn {
+  border: 1px solid var(--rule);
+  background: var(--card);
+  color: var(--ink-2);
+  border-radius: 999px;
+}
+.round-btn:hover:not(:disabled) { border-color: var(--ink); color: var(--ink); }
+
+/* ---- 안내 카드 / 사이드 ------------------------------------------------- */
+.guide-card, .detail-badges > * {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+.guide-card:hover { border-color: var(--ink); }
+.guide-card-title { font-family: var(--font-display); color: var(--ink); }
+.guide-card-tag { font-family: var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--stamp); }
+
+/* ---- 꼬리글 ---------------------------------------------------------- */
+.site-footer { border-top: 1px solid var(--rule); background: transparent; }
+.footer-brand, .footer-logo { font-family: var(--font-display); color: var(--ink); }
+.footer-copy, .footer-tagline, .footer-nav a, .footer-sync { color: var(--ink-3); }
+.footer-nav a:hover, .footer-sync:hover { color: var(--accent); }
+.footer-star { border: 1px solid var(--rule); border-radius: 999px; background: var(--card); color: var(--ink); }
+.footer-star:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ---- 문서형 페이지(안내) --------------------------------------------- */
+.prose h2 { border-top: 1px solid var(--rule); padding-top: 22px; margin-top: 34px; }
+.prose code, .prose pre { background: var(--card-2); border: 1px solid var(--rule); }
+.prose blockquote { border-left: 2px solid var(--stamp); color: var(--ink-2); }
+
+@media (max-width: 720px) {
+  .hero-title { font-size: clamp(30px, 9vw, 44px); }
+  .logo { font-size: 19px; }
+}
+
+/* ---- 필터 칩 --------------------------------------------------------- */
+.chip {
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink-2);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  padding: 4px 13px;
+}
+.chip:hover { border-color: var(--ink); color: var(--ink); }
+.chip[aria-pressed="true"], .chip[aria-current="true"], .chip.on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.chip .n { font-family: var(--font-mono); font-size: 11px; opacity: .75; }
+
+/* ---- 터미널 미리보기 ------------------------------------------------- */
+.term {
+  background: var(--card-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: none;
+  color: var(--ink);
+}
+.term-name { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-3); letter-spacing: .04em; }
+.term-dots span, .term-dots i { background: var(--rule); }
+.term-cmd, .term-foot { font-family: var(--font-mono); color: var(--ink-2); }
+.term-caret { background: var(--accent); }
+.term-cursor { color: var(--stamp); }
+
+/* ---- 속성/권한 행 ---------------------------------------------------- */
+.prop, .perm {
+  border-top: 1px solid var(--rule-2);
+  padding: 9px 0;
+  font-size: 13.5px;
+}
+.prop b, .perm b { color: var(--ink); font-weight: 600; }
+.prop span, .perm span { color: var(--ink-2); }
+.mono { font-family: var(--font-mono); font-size: 12.5px; }
+
+/* ---- 탭 (문서형) ----------------------------------------------------- */
+.tab {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  color: var(--ink-3);
+  font-family: var(--font-ui);
+  padding: 8px 2px;
+  margin-right: 18px;
+}
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"], .tab.active {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---- 태그 ------------------------------------------------------------ */
+.tags a, .tags span {
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .05em;
+  padding: 2px 10px;
+}
+
+/* ---- 코드 블록 ------------------------------------------------------- */
+pre.astro-code, .prose pre, .astro-code {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+.prose code, .line code, :not(pre) > code {
+  background: var(--card-2);
+  border: 1px solid var(--rule-2);
+  border-radius: 3px;
+  color: var(--ink);
+  padding: 1px 5px;
+}
+
+/* ---- 선별 카드(.pick) / 사이드 메타 --------------------------------- */
+.pick { color: var(--ink-2); }
+.side-meta { color: var(--ink-3); font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .04em; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.skip { background: var(--accent); color: var(--accent-ink); border-radius: 999px; }
+
+/* ---- 표제부 주변 링크 (base 규칙보다 우선) ---------------------------- */
+.quick-note .link, .hero-figure figcaption .link {
+  color: var(--accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.quick-note .link:hover, .hero-figure figcaption .link:hover { border-bottom-color: var(--accent); }
+.tip-btn {
+  color: var(--ink-2);
+  border-bottom: 1px dotted var(--rule);
+  background: transparent;
+  font-size: 13px;
+}
+.tip-btn:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.tip .tip-body, .tip [role="region"] {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+
+/* ---- 사이드 목차: 카드가 아니라 괘선 목록 ----------------------------- */
+.side-links { border-top: 1px solid var(--rule); }
+.side-link {
+  border-bottom: 1px solid var(--rule-2);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink-2);
+  padding: 10px 2px 10px 10px;
+  border-left: 2px solid transparent;
+}
+.side-link:hover { color: var(--ink); background: transparent; border-left-color: var(--rule); }
+.side-link[aria-current="true"], .side-link[aria-current="page"] {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 600;
+  background: transparent;
+}
+.side-links a[class*="btn"], .side-links > a {
+  border-radius: var(--radius);
+}
+
+/* ---- 문서 본문 링크: 종이 위 잉크 밑줄, 강조는 호버에서 ------------- */
+.prose a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+.prose a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.prose ul, .prose ol { color: var(--ink-2); }
+.prose li::marker { color: var(--rule); }
+
+/* ---- 위치 표시줄 / 모달 --------------------------------------------- */
+.crumb {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: .05em;
+  color: var(--ink-3);
+}
+.crumb a { color: var(--ink-2); border-bottom: 1px solid var(--rule); }
+.crumb [aria-current] { color: var(--ink); }
+.guide-nav .eyebrow { color: var(--ink-3); }
+
+.modal-panel, .modal-body {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+.modal-bar, .modal-crumb { background: var(--card-2); border-bottom: 1px solid var(--rule); }
+.modal-crumb { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-3); }
+.key {
+  border: 1px solid var(--rule);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  background: var(--card-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-2);
+  padding: 1px 6px;
+}
+
+/* ---- 좁은 화면의 설치 한 줄: 잘리지 않고 옆으로 스크롤 ------------- */
+.quick-install .code { overflow: hidden; }
+.quick-install .code pre, .quick-install pre {
+  overflow-x: auto;
+  padding-right: 44px;
+  scrollbar-width: thin;
+}

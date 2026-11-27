@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Install guide · Claude Code mods guides · k-mods</title><meta name="description" content="k-mods is a regular Claude Code plugin marketplace. So installing, updating, and uninstalling all work through Claude Code's /plugin command and the claude plug…"><link rel="canonical" href="https://seonggwangju.github.io/k-mods/en/guide/install/"><link rel="alternate" hreflang="ko" href="https://seonggwangju.github.io/k-mods/guide/install/"><link rel="alternate" hreflang="en" href="https://seonggwangju.github.io/k-mods/en/guide/install/"><link rel="alternate" hreflang="x-default" href="https://seonggwangju.github.io/k-mods/guide/install/"><meta property="og:type" content="article"><meta property="og:site_name" content="k-mods"><meta property="og:title" content="Install guide · Claude Code mods guides · k-mods"><meta property="og:description" content="k-mods is a regular Claude Code plugin marketplace. So installing, updating, and uninstalling all work through Claude Code's /plugin command and the claude plug…"><meta property="og:url" content="https://seonggwangju.github.io/k-mods/en/guide/install/"><meta property="og:image" content="https://seonggwangju.github.io/k-mods/og/k-mods.png"><meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1318"><link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;circle cx='50' cy='50' r='44' fill='%2349B3EF'/&gt;&lt;/svg&gt;"><link rel="sitemap" href="/k-mods/sitemap-index.xml"><link rel="alternate" type="text/plain" title="llms.txt" href="/k-mods/llms.txt"><link rel="preload" href="/k-mods/fonts/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"><style>@font-face{font-family:"SUIT Variable";src:url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2-variations"),url("/k-mods/fonts/SUIT-Variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}</style><script>(function(){try{var t=localStorage.getItem('kmods-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}})()</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Install guide","description":"k-mods is a regular Claude Code plugin marketplace. So installing, updating, and uninstalling all work through Claude Code's /plugin command and the claude plug…","url":"https://seonggwangju.github.io/k-mods/en/guide/install/","inLanguage":"en","dateModified":"2026-10-11T04:26:01+09:00","author":{"@type":"Person","name":"Seong Gwang Ju","url":"https://seonggwangju.github.io/","sameAs":["https://github.com/SeongGwangJu","https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]},"publisher":{"@type":"Person","name":"Seong Gwang Ju","url":"https://seonggwangju.github.io/","sameAs":["https://github.com/SeongGwangJu","https://www.linkedin.com/in/%EC%84%B1%EA%B4%91-%EC%A3%BC-7048302ab"]},"about":{"@type":"Thing","name":"Claude Code mods"},"isPartOf":{"@id":"https://seonggwangju.github.io/k-mods/#website"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"k-mods","item":"https://seonggwangju.github.io/k-mods/en/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://seonggwangju.github.io/k-mods/en/guide/"},{"@type":"ListItem","position":3,"name":"Install guide","item":"https://seonggwangju.github.io/k-mods/en/guide/install/"}]}</script><link rel="stylesheet" href="/k-mods/assets/Base.BXNGk-Gx.css"><link rel="stylesheet" href="/k-mods/paper.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&amp;display=swap">
+</head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="container header-bar"><a class="logo" href="/k-mods/en/">k-mods<span class="dot" aria-hidden="true"></span></a><div class="header-actions"><nav class="seg" aria-label="Language"><a href="/k-mods/guide/install/" hreflang="ko" lang="ko">KO</a><a href="/k-mods/en/guide/install/" hreflang="en" lang="en" aria-current="true">EN</a></nav><button type="button" class="icon-btn" data-theme-toggle aria-label="Toggle color theme"><svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg></button><a class="icon-btn" href="https://github.com/SeongGwangJu/k-mods" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></header><main id="main"><div class="container guide-page"><nav class="crumb" aria-label="Breadcrumb"><a href="/k-mods/en/">k-mods</a><span aria-hidden="true">/</span><a href="/k-mods/en/guide/">Guides</a><span aria-hidden="true">/</span><span aria-current="page">Install guide</span></nav><div class="guide-layout"><article class="prose"><h1 id="install-guide">Install guide</h1>
+<p>k-mods is a regular Claude Code plugin marketplace. So installing, updating, and uninstalling all work through Claude Code’s <code>/plugin</code> command and the <code>claude plugin</code> shell commands. This guide covers, in order, checking your version, adding the marketplace, install scopes, using k-mods with teammates, and troubleshooting.</p>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#check-your-version">Check your version</a></li>
+<li><a href="#add-the-marketplace">Add the marketplace</a></li>
+<li><a href="#install">Install</a></li>
+<li><a href="#install-scope">Install scope</a></li>
+<li><a href="#disable-and-uninstall">Disable and uninstall</a></li>
+<li><a href="#apply-changes-to-the-current-session">Apply changes to the current session</a></li>
+<li><a href="#check-installed-mods">Check installed mods</a></li>
+<li><a href="#set-config-values-userconfig">Set config values (userConfig)</a></li>
+<li><a href="#keep-mods-up-to-date">Keep mods up to date</a></li>
+<li><a href="#use-with-your-team">Use with your team</a></li>
+<li><a href="#troubleshooting-checklist">Troubleshooting checklist</a></li>
+</ul>
+<h2 id="check-your-version">Check your version</h2>
+<p>A mod needs a minimum version to load.</p>
+<ul>
+<li><strong>Terminal</strong>: Claude Code 2.1.287 or later. Check with <code>claude --version</code> in the shell.</li>
+<li><strong>Desktop app</strong>: 2.1.286 or later. Enter <code>/status</code> in the Code tab and the version appears on the <strong>Claude Code</strong> line.</li>
+</ul>
+<p>If your version is older, update Claude Code or the desktop app and try again.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/mods/overview#turn-mods-on-or-off">Turn mods on or off</a></p>
+<h2 id="add-the-marketplace">Add the marketplace</h2>
+<p>To install k-mods, first register the marketplace once. You can do it in a session or from the shell.</p>
+<p><strong>In a session</strong></p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/plugin marketplace add SeongGwangJu/k-mods</span></span></code></pre>
+<p><strong>From the shell</strong> (without opening a session, for example in scripts)</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> marketplace</span><span style="color:#A5D6FF"> add</span><span style="color:#A5D6FF"> SeongGwangJu/k-mods</span></span></code></pre>
+<p>On success, <code>Successfully added marketplace: k-mods</code> appears. The marketplace name comes from the <code>name</code> field in <code>marketplace.json</code>, not from the repository name. For k-mods the two are the same. After that, you install with the form <code>&lt;mod name&gt;@k-mods</code>.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/install#add-a-marketplace">Add a marketplace</a></p>
+<h2 id="install">Install</h2>
+<p><strong>In a session</strong></p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/plugin install starter@k-mods</span></span></code></pre>
+<p>In a session, <code>/plugin install</code> does not install right away. It first shows the mod’s details in the <code>/plugin</code> panel (description, added commands and hooks, permissions). It installs when you pick an install scope there.</p>
+<p><strong>From the shell</strong> (installs right away)</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> install</span><span style="color:#A5D6FF"> starter@k-mods</span></span></code></pre>
+<p>k-mods also has sets that are bundled in advance.</p>
+<ul>
+<li><code>starter@k-mods</code>: The recommended set. Installs the ⭐ mods (ko-ui, skins, pixel-pals, ctx-strip, mod-store) in one go.</li>
+<li><code>korean-pack@k-mods</code>: The Korean pack only (menu, settings and status-line translation, ko-ui).</li>
+</ul>
+<p>To pick mods one by one, install <code>mod-store@k-mods</code>, then enter <code>/k-mods</code> in a session. The catalog opens in a pane, and you can install and delete with buttons.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/install#install-a-plugin">Install a plugin</a></p>
+<h2 id="install-scope">Install scope</h2>
+<p>When you install, you pick one of three scopes. The scope decides “who gets this mod” and “which settings file records it”.</p>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Who gets it</th>
+<th>File it is recorded in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user</td>
+<td>Only you, in every project on this computer</td>
+<td><code>~/.claude/settings.json</code></td>
+</tr>
+<tr>
+<td>project</td>
+<td>Everyone who works in this repository</td>
+<td><code>.claude/settings.json</code> (a committed file)</td>
+</tr>
+<tr>
+<td>local</td>
+<td>Only you, in this repository</td>
+<td><code>.claude/settings.local.json</code> (usually not committed)</td>
+</tr>
+</tbody>
+</table>
+<p>In the shell, pick one with <code>--scope user|project|local</code>. If you omit it, the scope is <code>user</code>.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> install</span><span style="color:#A5D6FF"> blast-radius-ko@k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span></code></pre>
+<p>If the same mod is configured in several scopes, <strong>local &gt; project &gt; user</strong> takes priority. For example, to turn off a mod that the project enabled, for yourself only, turn it off in the local scope.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/install#choose-an-install-scope">Choose an install scope</a></p>
+<h2 id="disable-and-uninstall">Disable and uninstall</h2>
+<p><strong>In a session</strong>: In <code>/plugin</code> → <strong>Installed</strong> tab, select an item and menus such as <strong>Disable plugin</strong> and <strong>Uninstall</strong> appear. You can also run them directly with <code>/plugin enable &lt;mod&gt;@k-mods</code>, <code>/plugin disable &lt;mod&gt;@k-mods</code>, and <code>/plugin uninstall &lt;mod&gt;@k-mods</code>.</p>
+<p><strong>From the shell</strong></p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> disable</span><span style="color:#A5D6FF"> blast-radius-ko@k-mods</span></span>
+<span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> enable</span><span style="color:#A5D6FF"> blast-radius-ko@k-mods</span></span>
+<span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> uninstall</span><span style="color:#A5D6FF"> blast-radius-ko@k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span></code></pre>
+<p>For <code>enable</code> and <code>disable</code>, if you omit <code>--scope</code>, the scope where the mod is already configured is found automatically. For <code>uninstall</code>, omitting it removes the <code>user</code> scope.</p>
+<p>If you <strong>Uninstall</strong> a mod that the project enabled, you are asked whether to turn it off only for you or remove it for everyone. To turn it off only for you, choose the option that writes <code>false</code> in <code>.claude/settings.local.json</code> (the default key <strong>y</strong>). To remove it for everyone, choose the option that changes the shared file itself (<strong>u</strong>).</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/install#manage-installed-plugins">Manage installed plugins</a></p>
+<h2 id="apply-changes-to-the-current-session">Apply changes to the current session</h2>
+<p>If you installed, updated, or deleted a mod from the shell, or changed a settings file outside the <code>/plugin</code> panel, an open session does not pick up the change automatically. Enter this in the session.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/reload-plugins</span></span></code></pre>
+<p>When you close the <code>/plugin</code> panel and something changed, Claude Code runs <code>/reload-plugins</code> for you. But if this reload could break the prompt cache (for example, when an MCP server is added or removed), it does not apply right away and only warns you. In that case you can force it with <code>/reload-plugins --force</code>. The next request is then handled without the cache, so it costs more.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/cli-reference#reload-plugins">/reload-plugins</a></p>
+<h2 id="check-installed-mods">Check installed mods</h2>
+<p>In a session, enter <code>/plugin</code> and a dim line like <code>N mods active · name1, name2</code> appears under the tabs. <strong>Built-in mods are not included</strong> in this line. If you installed a mod and its name is not on this line, it failed to load.</p>
+<p>From the shell, you can see more detail.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> list</span></span>
+<span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> details</span><span style="color:#A5D6FF"> mod-store</span></span></code></pre>
+<p><code>plugin list</code> shows version, scope, and status. <code>plugin details</code> shows the list of commands, hooks, and agents the mod adds, and its context cost.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/mods/overview#see-which-mods-a-session-loaded">See which mods a session loaded</a></p>
+<h2 id="set-config-values-userconfig">Set config values (userConfig)</h2>
+<p>Some mods ask for extra values when you install them (an API address, a token, and so on). These values are declared as the plugin’s <code>userConfig</code>.</p>
+<ul>
+<li><strong>At install or enable time</strong>: If a value is empty, a settings dialog opens automatically.</li>
+<li><strong>Reopen it later</strong>: Enter <code>/plugin configure &lt;mod&gt;@k-mods</code> in a session.</li>
+<li><strong>See everything at a glance</strong>: On Claude Code 2.1.269 or later, the <code>/config</code> panel shows a settings row for each enabled mod. Sensitive values (<code>sensitive</code>) and multi-select values (<code>multiple</code>) do not appear in <code>/config</code>.</li>
+<li><strong>Set values from the shell</strong>: Add <code>--config key=value</code> when you install, or after installing, pipe JSON to standard input as below.</li>
+</ul>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> '{"api_url": "https://example.com"}'</span><span style="color:#FF7B72"> |</span><span style="color:#FFA657"> claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> configure</span><span style="color:#A5D6FF"> my-mod@k-mods</span><span style="color:#79C0FF"> --values-stdin</span></span></code></pre>
+<p>Sensitive values are stored in the operating system’s secure storage (macOS Keychain and so on), not in <code>settings.json</code>.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/manifest-reference#user-configuration">User configuration</a></p>
+<h2 id="keep-mods-up-to-date">Keep mods up to date</h2>
+<p>Each marketplace has a different default for auto-update.</p>
+<ul>
+<li><strong>On by default</strong>: Most Anthropic official marketplaces</li>
+<li><strong>Off by default</strong>: All other marketplaces, including k-mods</li>
+</ul>
+<p>Auto-update is off by default for k-mods, so do one of the following once in a while to get the latest reviews and bug fixes.</p>
+<ul>
+<li>
+<p><strong>Turn on auto-update in a session</strong>: <code>/plugin</code> → <strong>Marketplaces</strong> tab → select <code>k-mods</code> → <strong>Enable auto-update</strong></p>
+</li>
+<li>
+<p><strong>Refresh only the marketplace catalog</strong> (to see whether new mods were added; mods you already installed stay as they are)</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> marketplace</span><span style="color:#A5D6FF"> update</span><span style="color:#A5D6FF"> k-mods</span></span></code></pre>
+</li>
+<li>
+<p><strong>Update installed mods too, in one step</strong>: In a session, <code>/plugin</code> → <strong>Marketplaces</strong> tab → select <code>k-mods</code> → <strong>Update marketplace</strong></p>
+</li>
+<li>
+<p><strong>Update one mod only</strong></p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> update</span><span style="color:#A5D6FF"> starter@k-mods</span></span></code></pre>
+</li>
+</ul>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/install#keep-plugins-updated">Keep plugins updated</a></p>
+<h2 id="use-with-your-team">Use with your team</h2>
+<p>If you commit the setting to the repository, the k-mods marketplace is registered automatically for every teammate who opens it, and the mods you specify start in the “enabled” state. Write this in <code>.claude/settings.json</code> and commit it.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E6EDF3">{</span></span>
+<span class="line"><span style="color:#7EE787">  "extraKnownMarketplaces"</span><span style="color:#E6EDF3">: {</span></span>
+<span class="line"><span style="color:#7EE787">    "k-mods"</span><span style="color:#E6EDF3">: {</span></span>
+<span class="line"><span style="color:#7EE787">      "source"</span><span style="color:#E6EDF3">: { </span><span style="color:#7EE787">"source"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"github"</span><span style="color:#E6EDF3">, </span><span style="color:#7EE787">"repo"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"SeongGwangJu/k-mods"</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  },</span></span>
+<span class="line"><span style="color:#7EE787">  "enabledPlugins"</span><span style="color:#E6EDF3">: {</span></span>
+<span class="line"><span style="color:#7EE787">    "starter@k-mods"</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">true</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+<p>Run this once in the shell and the file is created automatically.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> marketplace</span><span style="color:#A5D6FF"> add</span><span style="color:#A5D6FF"> SeongGwangJu/k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span>
+<span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> install</span><span style="color:#A5D6FF"> starter@k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span></code></pre>
+<p><strong>Note</strong>: A mod listed in <code>enabledPlugins</code> only becomes “enabled”. It is not downloaded to teammates’ computers automatically. Each teammate who freshly clones the repository must run the command below once for it to actually install (after trusting the workspace).</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#A5D6FF"> plugin</span><span style="color:#A5D6FF"> install</span><span style="color:#A5D6FF"> starter@k-mods</span><span style="color:#79C0FF"> --scope</span><span style="color:#A5D6FF"> project</span></span></code></pre>
+<p>If this step is skipped, Claude Code tells them that “<code>.claude/settings.json</code> enabled the plugin but it is not installed”.</p>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/host-marketplace#register-the-marketplace-for-everyone-in-a-repository">Register the marketplace for everyone in a repository</a>, <a href="https://code.claude.com/docs/en/settings-reference#extraknownmarketplaces">extraKnownMarketplaces</a>, <a href="https://code.claude.com/docs/en/settings-reference#enabledplugins">enabledPlugins</a></p>
+<h2 id="troubleshooting-checklist">Troubleshooting checklist</h2>
+<p>If a mod is installed but nothing happens, check from top to bottom.</p>
+<ol>
+<li>
+<p><strong>Version too old</strong>: Check <code>claude --version</code>, or <code>/status</code> in the desktop app. See <a href="#check-your-version">Check your version</a>.</p>
+</li>
+<li>
+<p><strong>Workspace not trusted yet</strong>: Open an interactive session in this directory once and accept the trust prompt. Otherwise mods do not load.</p>
+</li>
+<li>
+<p><strong>Started with <code>--bare</code> or <code>--safe-mode</code></strong>: Both flags turn off all installed mods. Restart without the flag.</p>
+</li>
+<li>
+<p><strong><code>disableAllHooks</code> is set</strong>: If this value is <code>true</code> in your settings file or your organization’s managed settings, all installed mods are off.</p>
+</li>
+<li>
+<p><strong>Blocked by organization policy</strong>: If an admin turned on <code>allowManagedModsOnly</code>, only mods the organization deployed load. See the <a href="/k-mods/en/guide/safety/">Safety guide</a> for details.</p>
+</li>
+<li>
+<p><strong>No name on the “N mods active” line in <code>/plugin</code></strong>: The mod is installed but failed to load. Check with <code>claude plugin validate &lt;path&gt;</code> first, or look at the debug log below.</p>
+</li>
+<li>
+<p><strong>Check the debug log</strong>: Run the following in the shell, and the reason it does not show up is logged as one line.</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">claude</span><span style="color:#79C0FF"> --debug-file</span><span style="color:#A5D6FF"> ./mod-debug.log</span><span style="color:#79C0FF"> --plugin-dir</span><span style="color:#A5D6FF"> ./problem-mod</span></span>
+<span class="line"><span style="color:#FFA657">tail</span><span style="color:#79C0FF"> -f</span><span style="color:#A5D6FF"> ./mod-debug.log</span><span style="color:#FF7B72"> |</span><span style="color:#FFA657"> grep</span><span style="color:#A5D6FF"> problem-mod</span></span></code></pre>
+</li>
+</ol>
+<p>Official docs: <a href="https://code.claude.com/docs/en/plugins/mods/troubleshoot#find-out-why-a-mod-does-nothing">Find out why a mod does nothing</a>, <a href="https://code.claude.com/docs/en/plugins/mods/troubleshoot#check-whether-mods-can-load">Check whether mods can load</a></p>
+<hr>
+<p>Learn more: <a href="/k-mods/en/guide/what-are-mods/">What are mods?</a> · <a href="/k-mods/en/guide/safety/">Safety guide</a> · <a href="/k-mods/en/guide/make-your-own/">Make your own mod</a> · <a href="/k-mods/en/guide/cheatsheet/">Cheatsheet</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">Contributing guide</a> · <a href="https://github.com/SeongGwangJu/k-mods/blob/main/README.en.md">README</a></p>
+</article><aside class="guide-side"><p class="eyebrow">Guides</p><ul class="guide-nav"><li><a href="/k-mods/en/guide/what-are-mods/">What are mods?</a></li><li><a href="/k-mods/en/guide/install/" aria-current="page">Install guide</a></li><li><a href="/k-mods/en/guide/safety/">Using mods safely</a></li><li><a href="/k-mods/en/guide/cheatsheet/">mods cheatsheet</a></li><li><a href="/k-mods/en/guide/make-your-own/">Make your own mod</a></li></ul><div class="side-links"><span class="side-meta">Last updated · Oct 10, 2026</span><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/blob/main/docs/guide/install.en.md"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>View source on GitHub</a><a class="side-link" href="https://github.com/SeongGwangJu/k-mods/edit/main/docs/guide/install.en.md"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>Edit this guide</a></div></aside></div></div></main><footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><p class="footer-logo"><span>k-mods</span><span class="dot dot--sm" aria-hidden="true"></span><span class="footer-copy">© 2026 · MIT</span></p><p class="footer-tagline">This catalog is generated from the registry of the SeongGwangJu/k-mods GitHub repository. Additions and fixes come in as pull requests.</p><a class="footer-sync mono" href="https://github.com/SeongGwangJu/k-mods/commit/10e9d6a3bf9be6f3dd3eadc4462fdf651bedca30">Last synced Oct 30, 2026 · 10e9d6a</a><a class="footer-star" href="https://github.com/SeongGwangJu/k-mods"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></svg>Found it useful? Star k-mods on GitHub</a></div><nav class="footer-nav" aria-label="Site links"><a href="https://github.com/SeongGwangJu/k-mods">GitHub</a><a href="/k-mods/en/guide/install/">Install guide</a><a href="/k-mods/en/guide/safety/">Using mods safely</a><a href="https://github.com/SeongGwangJu/k-mods/blob/main/CONTRIBUTING.md">Contributing</a><a href="https://github.com/SeongGwangJu/k-mods/issues/new?template=suggest-mod.yml">Suggest a mod</a><a href="https://seonggwangju.github.io/">Author</a></nav></div></footer><dialog class="modal" data-modal aria-label="Mod details"><button type="button" class="modal-arrow" data-modal-prev aria-label="Previous mod"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6" stroke-width="2"></path></svg></button><div class="modal-panel"><div class="modal-handle" aria-hidden="true"><span></span></div><div class="modal-bar"><a class="modal-expand" data-modal-expand href="#"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" stroke-width="1.6"></path></svg><span>Open as page</span><kbd class="key modal-key">⌘↵</kbd></a><span class="modal-crumb" data-modal-crumb></span><button type="button" class="icon-btn icon-btn--plain" data-modal-close aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M6 6l12 12"></path></svg></button></div><div class="modal-body" data-modal-body tabindex="-1"><p class="modal-loading">Loading</p></div></div><button type="button" class="modal-arrow" data-modal-next aria-label="Next mod"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" stroke-width="2"></path></svg></button><div class="hint" data-modal-hint aria-hidden="true"><span><kbd data-hint-mod>⌘</kbd><kbd>Enter</kbd>Full page</span><i></i><span><kbd>←</kbd><kbd>→</kbd>Prev / next</span><i></i><span><kbd>Esc</kbd>Close</span></div></dialog><p class="sr-only" aria-live="polite" data-live></p><script type="module" src="/k-mods/assets/Base.astro_astro_type_script_index_0_lang.BaoNknEh.js"></script></body></html>
