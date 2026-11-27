@@ -1,0 +1,1 @@
+import{a as s,h as d}from"./hardware-Bs3K0Hsr.js";const r=document.querySelector("#hardware-list");if(r)for(const[o,c]of Object.entries(s).sort((e,t)=>e[1].localeCompare(t[1]))){const{vram:e,bandwidth:t}=d[o],a=document.createElement("li"),n=document.createElement("a");n.href="./?gpu="+encodeURIComponent(o)+"#gpu",n.textContent=c,a.append(n,` · ${e} GB · ${t} GB/s`),r.append(a)}
