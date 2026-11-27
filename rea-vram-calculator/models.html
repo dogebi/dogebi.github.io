@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>模型目录 · dogebi</title>
   <script type="module" crossorigin src="/rea-vram-calculator/assets/hardware-iCGVmbQm.js"></script>
-  <script type="module" crossorigin src="/rea-vram-calculator/assets/catalog-DToPN0mq.js"></script>
+  <script type="module" crossorigin src="/rea-vram-calculator/assets/catalog-DZPp_y5B.js"></script>
   <link rel="stylesheet" crossorigin href="/rea-vram-calculator/assets/hardware-90vFQHJy.css">
 </head>
 <body class="catalog-page" data-catalog="models">
@@ -24,6 +24,7 @@
 <p class="catalog-intro">通过 Hugging Face 实时搜索文本生成模型。受支持的模型可将公开配置导入计算器。</p>
 <form class="catalog-filters">
 <label>搜索<input id="catalog-search" type="search" placeholder="例如 Qwen3"></label>
+<label>数据源<select id="catalog-hub"><option value="https://hf-mirror.com">HF Mirror</option><option value="https://huggingface.co">Hugging Face</option></select></label>
 <label>发布者<select id="catalog-vendor"><option value="">全部</option></select></label>
 
 <label>排序<select id="catalog-sort"><option value="default">下载量</option><option value="name">名称</option><option value="desc">参数规模从大到小</option><option value="asc">参数规模从小到大</option></select></label>
@@ -32,11 +33,11 @@
 <p id="catalog-source-status" role="status"></p><p id="catalog-status" role="status"></p>
 <div class="catalog-table-wrap" tabindex="0" role="region" aria-label="模型列表">
 <table class="catalog-table">
-<thead><tr><th scope="col">模型</th><th scope="col">发布者</th><th scope="col">Safetensors 参数量</th><th scope="col">估算</th></tr></thead>
+<thead><tr><th scope="col">下载排名</th><th scope="col">模型</th><th scope="col">发布者</th><th scope="col">Safetensors 参数量</th><th scope="col">下载量</th><th scope="col">估算</th></tr></thead>
 <tbody id="catalog-rows"></tbody>
 </table>
 </div>
-<p class="catalog-note"><a href="https://huggingface.co/models">Hugging Face Hub</a> · 每次查询最多显示 30 项。缺少 Safetensors 数据时显示破折号。</p>
+<p class="catalog-note"><a href="https://hf-mirror.com/">HF Mirror</a> · 每次最多 30 项，排名按搜索结果的 Hub 下载量排列。发布者筛选保留原排名，缺失数据以破折号表示。</p>
 </main>
 </div>
 </body>
